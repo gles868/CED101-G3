@@ -1,0 +1,52 @@
+@import './reset';
+
+//  color 顏色 
+$deeppurple: #351360;
+$purple: #58009a;
+$purplered: #742274;
+$orange: #ffa500;
+$yellow: #ffd02e;
+
+$lightpurple: #7540e2;
+$lightyellow: #ffffaa;
+$white: #fff;
+
+//  font 字體 
+$contentFont: '微軟正黑體' 'Arial';
+$navFont: '思源宋體';
+$fontRoot: 10px;
+
+$p: 14px;
+$h1: 48px;
+$h2: 36px;
+$h3: 28px;
+$h4: 24px;
+$h5: 18px; 
+
+$navletterSpacing: 3px;
+$lineHeight: 10px;
+
+//  button 按鈕 
+@mixin btnPurple{
+    background-color: $purple;
+    color: #fff;
+    width: 140px; 
+    height: 48px;  
+    border: 1px solid transparent;
+    outline: none;
+    border-radius: 25px; 
+    font-size: $h5;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-align: center;
+    text-decoration: none;
+    margin: 20px 30px;
+    cursor: pointer;
+    &:hover{
+        background-color: lighten($purple, 8%);
+        transition: background-color .2s;
+    }
+}
+
+
+//  header 

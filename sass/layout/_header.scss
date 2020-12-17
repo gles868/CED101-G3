@@ -1,0 +1,37 @@
+// 這裡是header
+#header{
+    // border: 1px solid red;
+    position: fixed;
+    width: 100%;
+    height: auto;
+    z-index: 999;
+    background-color: $purple;
+    #nav{
+        // border: 1px solid blue;
+        display: flex;
+        align-items: center;
+        max-width: 95%;
+        height: 80px;
+        margin: 0 auto;
+        ul{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            li{
+                // border: 1px solid gold;
+                padding: 10px;
+                text-align: center;
+                &:nth-child(3){
+                    background-image: url("../img/logo.png");
+                }
+                a{
+                    text-decoration: none;
+                    color: #fff;
+                    text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
+                    font-family: $navFont;
+                    letter-spacing: $letterSpacing;
+                }
+            }
+        }
+    }
+}
