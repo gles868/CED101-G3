@@ -1,0 +1,8 @@
+@import 'base/common';
+
+// 這裡是按鈕 -- 紫色
+.btn-purple{
+    @include btnPurple();
+}
+
+
