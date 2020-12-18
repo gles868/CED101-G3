@@ -1,63 +1,16 @@
 * {
   box-sizing: border-box;
 }
-img {
-  max-width: 100%;
+li{
+  list-style-type: none;
 }
 
-header {
-  width: 100%;
-  /* position: fixed; */
-  /* position: sticky; */
-  top: 0;
-}
-
-.nav_box {
-  width: 80%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-}
-
-.nav_left_box {
-  font-size: 24px;
-  color: #ffffff;
-  height: 40px;
-  margin-top: 40px;
-}
-
-.nav_left_box > a {
-  font-size: 24px;
-  color: #ffffff;
-  text-decoration: none;
-  margin-left: 50px;
-  text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
-}
-.nav_right_box {
-  font-size: 24px;
-  color: #ffffff;
-  height: 40px;
-  margin-top: 40px;
-}
-
-.nav_right_box > a {
-  font-size: 24px;
-  color: #ffffff;
-  text-decoration: none;
-  margin-left: 50px;
-  text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
-}
-div.logo_box {
-  width: 200px;
-}
-/* -------導覽列結束------- */
 body{  
   width: 100%;
   background-image: url(../img/membg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  
-}
+  }
 
 .memTopOut{
   width: 100%;
