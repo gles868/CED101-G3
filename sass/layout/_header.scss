@@ -1,36 +1,58 @@
-// 這裡是header
-#header{
-    // border: 1px solid red;
+header{
     position: fixed;
     width: 100%;
     height: auto;
     z-index: 999;
-    background-color: $purple;
-    #nav{
-        // border: 1px solid blue;
+    background-color: transparent;
+    nav{
         display: flex;
         align-items: center;
         max-width: 95%;
-        height: 80px;
+        height: 105px;
         margin: 0 auto;
-        ul{
+        .nav{
             width: 100%;
             display: flex;
             justify-content: space-evenly;
+            align-items: center;
             li{
-                // border: 1px solid gold;
                 padding: 10px;
-                text-align: center;
-                &:nth-child(3){
-                    background-image: url("../img/logo.png");
+                line-height: 3;
+                &:nth-child(3) a img{
+                    width: 180px;
                 }
                 a{
                     text-decoration: none;
                     color: #fff;
-                    text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
+                    text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
                     font-family: $navFont;
+                    font-size: 22px;
                     letter-spacing: $letterSpacing;
+                    display: flex;
+                    align-content: center;
+                    &:hover{
+                        text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
+                    }
                 }
+            }
+        }
+        .nav-right{     
+            display: flex;
+            justify-content: space-evenly;
+            li{
+                padding: 10px;
+                a{
+                    text-decoration: none;
+                    color: #fff;
+                    text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
+                    font-family: $navFont;
+                    font-size: 22px;
+                    letter-spacing: $letterSpacing;
+                    &:hover{
+                        text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
+                    }
+                }
+                
             }
         }
     }

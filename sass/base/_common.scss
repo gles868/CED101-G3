@@ -1,20 +1,19 @@
 @import './reset';
 
 //  color 顏色 
-$deeppurple: #351360;
 $purple: #58009a;
 $purplered: #742274;
+$darkpurple: #351360;
 $orange: #ffa500;
 $yellow: #ffd02e;
 
 $lightpurple: #7540e2;
 $lightyellow: #ffffaa;
 $white: #fff;
+$darkgray: #191925;
 
 //  font 字體 
-$contentFont: '微軟正黑體' 'Arial';
 $navFont: '思源宋體';
-$fontRoot: 10px;
 
 $p: 14px;
 $h1: 48px;
@@ -23,7 +22,7 @@ $h3: 28px;
 $h4: 24px;
 $h5: 18px; 
 
-$navletterSpacing: 3px;
+$letterSpacing: 3px;
 $lineHeight: 10px;
 
 //  button 按鈕 
@@ -36,10 +35,11 @@ $lineHeight: 10px;
     outline: none;
     border-radius: 25px; 
     font-size: $h5;
-    font-weight: 600;
-    letter-spacing: 3px;
+    font-weight: ˋ00;
+    letter-spacing: $letterSpacing;
     text-align: center;
     text-decoration: none;
+    text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
     margin: 20px 30px;
     cursor: pointer;
     &:hover{
