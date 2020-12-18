@@ -37,27 +37,35 @@ div.shop {
     position: relative;
     display: flex;
     /* border: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 div.shop > img {
     height: 100%;
     width: 100%;
-    /* position: absolute; */
+    position: absolute;
     z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* ========================== 商品第一排 ========================== */
 
 div.product_box {
+    margin: 0 auto;
     z-index: 999;
     width: 70%;
     display: flex;
     flex-direction: column;
-    margin-top: 120px;
-    margin-left: 50px;
-    position: absolute;
-    top: 50px;
+    // margin-top: 120px;
+    // margin-left: 50px;
+    // position: absolute;
+    // top: 50px;
     /* border: 3px solid red; */
-    left: 0;
+    // left: 0;
 }
 
 div.one_probox {
@@ -247,6 +255,18 @@ div.list_box {
     z-index: 9999;
     width: 100%;
     color: #ffffff;
+    // justify-content: center;
+    // align-items: center;
+}
+.list_text {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    div {
+        background-color: #ca4cca;
+        padding: 5px;
+    }
 }
 
 /* ===================================泡泡=================================== */
