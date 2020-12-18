@@ -17,17 +17,17 @@
 
 
 // 這裡是按鈕 -- 紫色
-.btn-purple{
-    @include btnPurple();
-}
+// .btn-purple{
+//     @include btnPurple();
+// }
 
-// 以下background-color / div高度 再自行做修改
-body{
-    background-color: $darkpurple;
-}
+// // 以下background-color / div高度 再自行做修改
+// body{
+//     background-color: $darkpurple;
+// }
 
-div{
-    height: 100vh;
-    color: #fff;
-}
+// div{
+//     height: 100vh;
+//     color: #fff;
+// }
 

@@ -1,52 +1,52 @@
-@import './reset';
+// @import './reset';
 
-//  color 顏色 
-$purple: #58009a;
-$purplered: #742274;
-$darkpurple: #351360;
-$orange: #ffa500;
-$yellow: #ffd02e;
+// //  color 顏色 
+// $purple: #58009a;
+// $purplered: #742274;
+// $darkpurple: #351360;
+// $orange: #ffa500;
+// $yellow: #ffd02e;
 
-$lightpurple: #7540e2;
-$lightyellow: #ffffaa;
-$white: #fff;
-$darkgray: #191925;
+// $lightpurple: #7540e2;
+// $lightyellow: #ffffaa;
+// $white: #fff;
+// $darkgray: #191925;
 
-//  font 字體 
-$navFont: '思源宋體';
+// //  font 字體 
+// $navFont: '思源宋體';
 
-$p: 14px;
-$h1: 48px;
-$h2: 36px;
-$h3: 28px;
-$h4: 24px;
-$h5: 18px; 
+// $p: 14px;
+// $h1: 48px;
+// $h2: 36px;
+// $h3: 28px;
+// $h4: 24px;
+// $h5: 18px; 
 
-$letterSpacing: 3px;
-$lineHeight: 10px;
+// $letterSpacing: 3px;
+// $lineHeight: 10px;
 
-//  button 按鈕 
-@mixin btnPurple{
-    background-color: $purple;
-    color: #fff;
-    width: 140px; 
-    height: 48px;  
-    border: 1px solid transparent;
-    outline: none;
-    border-radius: 25px; 
-    font-size: $h5;
-    font-weight: ˋ00;
-    letter-spacing: $letterSpacing;
-    text-align: center;
-    text-decoration: none;
-    text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
-    margin: 20px 30px;
-    cursor: pointer;
-    &:hover{
-        background-color: lighten($purple, 8%);
-        transition: background-color .2s;
-    }
-}
+// //  button 按鈕 
+// @mixin btnPurple{
+//     background-color: $purple;
+//     color: #fff;
+//     width: 140px; 
+//     height: 48px;  
+//     border: 1px solid transparent;
+//     outline: none;
+//     border-radius: 25px; 
+//     font-size: $h5;
+//     font-weight: ˋ00;
+//     letter-spacing: $letterSpacing;
+//     text-align: center;
+//     text-decoration: none;
+//     text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
+//     margin: 20px 30px;
+//     cursor: pointer;
+//     &:hover{
+//         background-color: lighten($purple, 8%);
+//         transition: background-color .2s;
+//     }
+// }
 
 
-//  header 
+// //  header 
