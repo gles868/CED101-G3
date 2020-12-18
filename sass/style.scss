@@ -1,8 +1,33 @@
 @import 'base/common';
+@import 'base/reset';
+
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/login';
+
+@import 'page/index';
+@import 'page/course';
+@import 'page/registration';
+@import 'page/teacher';
+@import 'page/mall';
+@import 'page/cart';
+@import 'page/game';
+@import 'page/member';
+@import 'page/backstage';
+
 
 // 這裡是按鈕 -- 紫色
 .btn-purple{
     @include btnPurple();
 }
 
+// 以下background-color / div高度 再自行做修改
+body{
+    background-color: $darkpurple;
+}
+
+div{
+    height: 100vh;
+    color: #fff;
+}
 
