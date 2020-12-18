@@ -1,0 +1,354 @@
+* {
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+}
+body {
+    background-image: url(../img/bg02.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+/* ========================== 商品櫥窗 & 人物 ========================== */
+
+div.shop_big_box {
+    width: 100%;
+    display: flex;
+    /* flex-direction: row; */
+}
+div.shopbox {
+    display: flex;
+}
+div.girl > img {
+    height: 400px;
+    margin-top: 160px;
+    margin: 160px auto auto 90px;
+}
+div.girl {
+    width: 25%;
+    z-index: -999;
+}
+div.shop {
+    /* width: 75%; */
+    margin-left: 70px;
+    height: 580px;
+    width: 920px;
+    position: relative;
+    display: flex;
+    /* border: 3px solid red; */
+}
+div.shop > img {
+    height: 100%;
+    width: 100%;
+    /* position: absolute; */
+    z-index: 1;
+}
+
+/* ========================== 商品第一排 ========================== */
+
+div.product_box {
+    z-index: 999;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 120px;
+    margin-left: 50px;
+    position: absolute;
+    top: 50px;
+    /* border: 3px solid red; */
+    left: 0;
+}
+
+div.one_probox {
+    display: flex;
+    z-index: 999;
+    width: 100%;
+    /* padding: 0px 10px 0px 10px; */
+    align-items: flex-end;
+    justify-content: space-around;
+}
+/* div.pro1 {
+  color: floralwhite;
+  display: flex;
+  flex-direction: column;
+} */
+div.pro1_name,
+div.pro1_price {
+    width: 100%;
+    margin: 0 auto;
+}
+
+div.pro1 {
+    width: 15%;
+}
+div.pro1_photo {
+    font-size: 0;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* ============================================================= */
+div.pro2_name,
+div.pro2_price {
+    width: 100%;
+    margin: 0 auto;
+}
+div.pro2 {
+    width: 15%;
+}
+div.pro2_photo {
+    font-size: 0;
+    width: 80%;
+    margin: 0 auto;
+}
+/* ============================================================= */
+div.pro3_name,
+div.pro3_price {
+    width: 100%;
+    margin: 0 auto;
+}
+div.pro3 {
+    width: 15%;
+}
+div.pro3_photo {
+    font-size: 0;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* ========================== 商品第二排 ========================== */
+
+div.two_probox {
+    display: flex;
+    z-index: 999;
+    width: 100%;
+    /* padding: 0px 10px 0px 10px; */
+    align-items: flex-end;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+div.pro4_name,
+div.pro4_price {
+    width: 100%;
+    margin: 0 auto;
+}
+div.pro4 {
+    width: 15%;
+}
+div.pro4_photo {
+    font-size: 0;
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* ============================================================= */
+
+div.pro5_name,
+div.pro5_price {
+    width: 100%;
+    margin: 0 auto;
+}
+div.pro5 {
+    width: 15%;
+}
+div.pro5_photo {
+    font-size: 0;
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* ============================================================= */
+
+div.pro6_name,
+div.pro6_price {
+    width: 100%;
+    margin: 0 auto;
+}
+div.pro6 {
+    width: 15%;
+}
+div.pro6_photo {
+    font-size: 0;
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* ========================== 商品第三排 ========================== */
+
+div.three_probox {
+    display: flex;
+    z-index: 999;
+    width: 100%;
+    /* padding: 0px 10px 0px 10px; */
+    align-items: flex-end;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+div.pro7_name,
+div.pro7_price {
+    width: 100%;
+    margin: 0 auto;
+}
+div.pro7 {
+    width: 15%;
+}
+div.pro7_photo {
+    font-size: 0;
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* ============================================================= */
+
+div.pro8_name,
+div.pro8_price {
+    width: 100%;
+    margin: 0 auto;
+}
+div.pro8 {
+    width: 15%;
+}
+div.pro8_photo {
+    font-size: 0;
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* ============================================================= */
+
+div.pro9_name,
+div.pro9_price {
+    width: 100%;
+    margin: 0 auto;
+}
+div.pro9 {
+    width: 15%;
+}
+div.pro9_photo {
+    font-size: 0;
+    width: 70%;
+    margin: 0 auto;
+}
+
+div.box {
+    color: floralwhite;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-shadow: 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
+}
+
+/* =============================商品篩選================================ */
+div.list_box {
+    display: flex;
+    z-index: 9999;
+    width: 100%;
+    color: #ffffff;
+}
+
+/* ===================================泡泡=================================== */
+.bubble {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*z-index defult value=1*/
+    z-index: -1;
+    /*upgrade gpu rendering*/
+    transform: translateZ(0);
+}
+
+.bubble li {
+    position: absolute;
+    list-style: none;
+    display: block;
+    bottom: -100px;
+    animation: bubble-ani 15s linear infinite;
+    border-radius: 100%;
+}
+
+/* glow of the bubbles*/
+.bubble li:before {
+    position: absolute;
+    left: 20%;
+    top: 21%;
+    width: 25%;
+    content: '';
+    background: rgba(255, 255, 255, 0.3);
+    display: block;
+    height: 25%;
+    border-radius: 100%;
+}
+
+.bubble li:nth-child(1) {
+    width: 30px;
+    height: 30px;
+    left: 1.5%;
+    background: rgba(66, 180, 85, 0.3);
+}
+
+.bubble li:nth-child(2) {
+    width: 40px;
+    height: 40px;
+    left: 3%;
+    animation-duration: 13s;
+    animation-delay: 1s;
+    background: rgba(28, 117, 42, 0.986);
+}
+
+.bubble li:nth-child(2) {
+    width: 40px;
+    height: 40px;
+    left: 10%;
+    animation-duration: 13s;
+    animation-delay: 1s;
+    background: rgba(28, 117, 41, 0.801);
+}
+.bubble li:nth-child(3) {
+    width: 35px;
+    height: 35px;
+    left: 15%;
+    animation-duration: 18s;
+    animation-delay: 1.3s;
+    background: rgba(253, 255, 182, 0.425);
+}
+
+.bubble li:nth-child(4) {
+    width: 50px;
+    height: 50px;
+    left: 20%;
+    animation-duration: 10s;
+    animation-delay: 1s;
+    background: rgba(71, 156, 22, 0.5);
+}
+
+/* .bubble li:nth-child(5) {
+  width: 30px;
+  height: 30px;
+  right: 1%;
+  animation-duration: 16s;
+  animation-delay: 1.2s;
+  background: rgba(31, 160, 6, 0.3);
+} */
+
+.bubble li:nth-child(6) {
+    width: 35px;
+    height: 35px;
+    left: 4%;
+    animation-duration: 16s;
+    animation-delay: 2s;
+    background: rgba(181, 255, 121, 0.384);
+}
+
+@keyframes bubble-ani {
+    0% {
+        transform: translateY(5vh);
+    }
+    100% {
+        transform: translateY(-90vh);
+    }
+}
