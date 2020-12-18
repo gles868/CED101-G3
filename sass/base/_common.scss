@@ -1,5 +1,3 @@
-@import './reset';
-
 //  color 顏色 
 $purple: #58009a;
 $purplered: #742274;
@@ -10,7 +8,7 @@ $yellow: #ffd02e;
 $lightpurple: #7540e2;
 $lightyellow: #ffffaa;
 $white: #fff;
-$darkgray: #191925;
+$darkgray: #191925; // footer bgcolor
 
 //  font 字體 
 $navFont: '思源宋體';
@@ -35,7 +33,7 @@ $lineHeight: 10px;
     outline: none;
     border-radius: 25px; 
     font-size: $h5;
-    font-weight: ˋ00;
+    font-weight: 400;
     letter-spacing: $letterSpacing;
     text-align: center;
     text-decoration: none;
@@ -47,6 +45,3 @@ $lineHeight: 10px;
         transition: background-color .2s;
     }
 }
-
-
-//  header 
