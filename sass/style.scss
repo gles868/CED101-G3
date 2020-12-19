@@ -1,22 +1,15 @@
-@import 'base/common';
 @import 'base/reset';
+@import 'base/common';
 
 @import 'layout/header';
 @import 'layout/footer';
 @import 'layout/login';
 
-@import 'page/index';
-@import 'page/course';
-@import 'page/registration';
-@import 'page/teacher';
-@import 'page/mall';
-@import 'page/cart';
-@import 'page/game';
-@import 'page/member';
-@import 'page/backstage';
-
+body {
+    font-family: '微軟正黑體', 'Arial';
+}
 
 // 這裡是按鈕 -- 紫色
-.btn-purple{
+.btn-purple {
     @include btnPurple();
 }

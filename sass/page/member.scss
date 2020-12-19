@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+li{
+  list-style-type: none;
+}
+
+body{  
+  width: 100%;
+  background-image: url(../img/membg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+
+.memTopOut{
+  width: 100%;
+}
+.memTop{
+  width: 65%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid blue;
+}
+.mempic{
+  width: 40%;
+  border:1px solid red;
+  text-align: center;
+}
+
+.mempic > img {
+  width: 70%;
+  border-radius: 50%;
+
+}
+
+.memdataMid,.memdataRight{
+  width: 40%;
+  border: 1px solid orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: ivory;  
+}
