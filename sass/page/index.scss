@@ -1,3 +1,76 @@
-body{
-    border: 1px solid saddlebrown;
+@import '../style';
+
+#first{
+    background: {
+        image: url("../../img/index/[first]bg.png");
+        repeat: no-repeat;
+        size: cover;
+    }
+    height: 100vh;
+}
+#second{
+    background: {
+        image: url("../../img/index/[lessons]bg.png");
+        repeat: no-repeat;
+        size: cover;
+    }
+    height: 100vh;
+    .title{
+        // position: relative;
+        h2{
+            // border: 1px solid blue;
+            font-family: $navFont;
+            font-size: $h2;
+            font-weight: 600;
+            color: $white;
+            letter-spacing: $letterSpacing;
+            text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            &:after{
+                // border: 1px solid tomato;
+                content: "";
+                display: block;
+                height: 300px; 
+                width: 98.5vw;  //
+                background-image: url("../../img/index/[lessons]leaves.png");
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+        }  
+    }
+    .wrapper{
+        .container{
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 70px;
+        }
+    }
+}
+#third{
+    background: {
+        image: url("../../img/index/[teachers]bg.png");
+        repeat: no-repeat;
+        size: cover;
+    }
+    height: 100vh;
+}
+#fourth{
+    background: {
+        image: url("../../img/index/[signup]bg.png");
+        repeat: no-repeat;
+        size: cover;
+    }
+    height: 100vh;
+}
+#fifth{
+    background: {
+        image: url("../../img/index/[products]bg.png");
+        repeat: no-repeat;
+        size: cover;
+    }
+    height: 100vh;
 }
