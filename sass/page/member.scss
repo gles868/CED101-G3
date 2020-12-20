@@ -1,3 +1,5 @@
+@import'../style';
+
 * {
   box-sizing: border-box;
 }
@@ -20,7 +22,11 @@ body{
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  border: 1px solid blue;
+  border: 3px solid ivory;
+  border-radius: 10px;
+  box-shadow: 0 0 0.4em ivory;
+  
+
 }
 .mempic{
   width: 40%;
@@ -31,6 +37,7 @@ body{
 .mempic > img {
   width: 70%;
   border-radius: 50%;
+  padding: 10px;
 
 }
 
@@ -40,5 +47,6 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  color: ivory;  
+  color: ivory;
+  padding: 10px;
 }
