@@ -9,14 +9,7 @@ body {
     font-family: '微軟正黑體', 'Arial';
 }
 
-// 這裡是按鈕 -- 紫色
+// 按鈕 -- 紫色
 .btn-purple {
     @include btnPurple();
 }
-
-// h2{
-//     font-size: $h2;
-//     font-weight: 600;
-//     color: $white;
-//     letter-spacing: $letterSpacing;
-// }
