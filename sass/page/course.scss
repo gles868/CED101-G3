@@ -1,19 +1,48 @@
-
+@import '../style.scss';
 
 main.main {
     width: 1140px;
     margin: 0 auto;
-    // border: 1px solid yellow;
+    border: 1px solid rgb(10, 87, 111);
+
+}
+
+body{
+    background-image: 
+    url(../img/course_cards/bg01.png),
+    url(../img/course_cards/bg06.png);
+    // url(../img/course_cards/bg01.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position:0 0, 0;
+    
 }
 
 div.course_filter {
     // border: 1px solid red;
-    width: 100%;
+    background-image: url(../img/course_cards/bg01.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 960px;
+    height: 400px;
     margin: 0 auto;
-    padding: 50px 30px;
-    background-color: rgba(150, 106, 162, 0.209);
     border-radius: 20px;
+    margin-top: 100px;
     margin-bottom: 30px;
+    background-image: url(../img/course_cards/filter_background.png);
+    background-repeat: no-repeat;
+
+    img.img_bat{
+        position: absolute;
+        top: 20%;
+        left: 30%;
+    }
+}
+
+div.filter_container {
+    // border: 1px solid red;
+    position: relative;
+    top: 40%;
 }
 
 div.course_class {
@@ -23,6 +52,7 @@ div.course_class {
     width: 600px;
     margin: 0 auto;
     margin-bottom: 30px;
+
 
     div.fliter_block {
         width: 400px;
@@ -112,7 +142,7 @@ div.card{
 
     p.course_title{
         font-size: 24px;
-        letter-spacing: 3px;
+        letter-spacing: $letterSpacing;
         color:#dcb127;
         position: absolute;
         top: 10%;
@@ -120,7 +150,7 @@ div.card{
     }
     p.course_price{
         font-size: 18px;
-        letter-spacing: 3px;
+        letter-spacing: $letterSpacing;
         color:#dcb127;
         position: absolute;
         top: 80%;
@@ -128,7 +158,7 @@ div.card{
     }
     p.course_class{
         font-size: 18px;
-        letter-spacing: 3px;
+        letter-spacing: $letterSpacing;
         color:#dcb127;
         position: absolute;
         top: 70%;
