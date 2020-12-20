@@ -1,3 +1,186 @@
-body{
-    border: 1px solid saddlebrown;
+@import '../style';
+
+#first{
+    background: {
+        image: url("../../img/index/[first]bg.png");
+        repeat: no-repeat;
+        size: cover;
+    }
+    height: 100vh;
+}
+@mixin titleStyle{
+    font-weight: $fontWeight;
+    letter-spacing: $titleLetterSpacing;
+    margin: 10px;
+}
+@mixin paraStyle{
+    font-size: $p;
+    letter-spacing: $paraLetterSpacing;
+    line-height: $lineHeight;
+    margin: 10px;
+}
+#second{
+    background: {
+        image: url("../../img/index/[lessons]bg.png");
+        repeat: no-repeat;
+        size: cover;
+    }
+    .wrapper{
+        // border: 2px solid gold;
+        height: 100vh;  
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        .title{
+            // border: 1px solid green;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            &::after{
+                // border: 1px solid blue;
+                content: "";
+                background: {
+                    image: url("../../img/index/[lessons]leaves.png");
+                    repeat: no-repeat;
+                    position: center bottom;
+                    size: cover;
+                }
+                display: inline-block;
+                width: 100%;
+                height: 220px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 0;
+            }   
+            h2{
+                // border: 1px solid #fff;
+                font-size: $h2;
+                font-weight: 600;
+                color: #fff;
+                letter-spacing: 3px;
+                text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
+                padding-top: 40px;
+                position: absolute;
+                z-index: 1;
+                display: flex;
+                justify-content: center;
+            } 
+        }
+        .container{
+            // border: 1px solid rgb(253, 229, 253);
+            display: flex;
+            justify-content: space-evenly;
+            flex-grow: 1;
+            margin: 0 50px;
+            margin-top: 80px;
+            .card{
+                // border: 1px solid saddlebrown;
+                width: 350px;
+                height: 475px;
+                display: flex;
+                margin-top: 50px;
+                background: {
+                    image: url("../../img/index/[lessons]board.png");
+                    repeat: no-repeat;
+                    size: cover;
+                }
+                .content{
+                    // border: 1px solid salmon;
+                    width: 200px;
+                    margin: 60px auto;
+                    display: flex;
+                    justify-content: space-around;
+                    flex-direction: column;
+                    h3{
+                        // border: 1px solid brown; 
+                        color: #fff;
+                        font-size: $h3;
+                        @include titleStyle;
+                        text-align: center;
+                        flex-grow: 1;
+                        text-shadow: 0 0 0.6em #6600b4, 0 0 0.6em #6600b4;
+                    }
+                    p{
+                        // border: 1px solid blue;
+                        color: #fff;
+                        @include paraStyle;
+                        text-align: center;
+                        flex-grow: 4;
+                    }
+                }
+            }
+        }
+        .rock{
+            // border: 1px solid rgb(228, 76, 16);
+            background: {
+                image: url("../../img/index/[lessons]rocks04.png");
+                repeat: no-repeat;
+                size: contain;
+                position: bottom;
+            }
+            height: 150px;
+            position: relative;
+            img{
+                // border: 1px solid aquamarine;
+                position: absolute;
+                bottom: 0;
+                &:nth-child(1){
+                    left: 0;
+                }
+                &:nth-child(2){
+                    right: 300px;
+                }
+                &:nth-child(3){
+                    right: 0;
+                }
+            }  
+        }
+    }         
+}
+#third{
+    background: {
+        image: url("../../img/index/[teachers]bg.png");
+        repeat: no-repeat;
+        size: cover;
+    }
+    height: 100vh;
+}
+#fourth{
+    background: {
+        image: url("../../img/index/[signUpLesson]bg.png");
+        repeat: no-repeat;
+        size: cover;
+    }
+    height: 100vh;
+    .wrapper{
+        display: flex;
+        justify-content: space-between;
+        .left{
+            border: 1px solid red;
+        }
+        .text_content{
+            border: 1px solid chartreuse;
+            text-align: center;
+            h2{
+                border: 1px solid darkcyan;
+                font-size: $h2;
+                font-weight: 600;
+                color: #fff;
+                letter-spacing: $paraLetterSpacing;
+                text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
+            }
+        }
+        .right{
+            border: 1px solid grey;
+        }
+    }
+}
+#fifth{
+    background: {
+        image: url("../../img/index/[products]bg.png");
+        repeat: no-repeat;
+        size: cover;
+    }
+    height: 100vh;
 }
