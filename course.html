@@ -6,16 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./css/course.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <script src="./js/course/course.js"></script>
 
-
-
-
-    <title>Document</title>
+    <title>課程總覽</title>
 </head>
 
 <body>
@@ -36,6 +35,7 @@
             </ul>
         </nav>
     </header>
+
     <main class="main">
         <div class="course_filter">
             <img class="img_bat" src="./img/course_cards/bat.png" alt="">
@@ -67,6 +67,11 @@
         <div class="all_course_card">
 
             <div class="card">
+                <div class="center-content">
+                    <div class="heart">
+                        <div class="heart-inner"></div>
+                    </div>
+                </div>
                 <div class="front">
                     <img class="front_card" src="./img/course_cards/course_01.png" alt="">
                 </div>
@@ -81,35 +86,59 @@
 
 
             <div class="card">
+                <div class="center-content">
+                    <div class="heart">
+                        <div class="heart-inner"></div>
+                    </div>
+                </div>
                 <div class="front">
                     <img class="front_card" src="./img/course_cards/course_02.png" alt="">
                 </div>
                 <div class="back">
                     <img class="back_card" src="./img/course_cards/card_back.png" alt="">
-                    <p class="course_title">光劍術</p>
-
+                    <p class="course_title">毒藥術</p>
+                    <p class="course_price">$4800</p>
+                    <p class="course_class">屬性：攻擊型</p>
                 </div>
             </div>
 
 
 
             <div class="card">
+                <div class="center-content">
+                    <div class="heart">
+                        <div class="heart-inner"></div>
+                    </div>
+                </div>
                 <div class="front">
                     <img class="front_card" src="./img/course_cards/course_03.png" alt="">
                 </div>
                 <div class="back">
                     <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+                    <p class="course_title">詛咒術</p>
+                    <p class="course_price">$16800</p>
+                    <p class="course_class">屬性：攻擊型</p>
+
                 </div>
             </div>
 
 
 
             <div class="card">
+                <div class="center-content">
+                    <div class="heart">
+                        <div class="heart-inner"></div>
+                    </div>
+                </div>
                 <div class="front">
                     <img class="front_card" src="./img/course_cards/course_04.png" alt="">
                 </div>
                 <div class="back">
                     <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+
+                    <p class="course_title">光盾術</p>
+                    <p class="course_price">$7290</p>
+                    <p class="course_class">屬性：輔助型</p>
                 </div>
             </div>
 
@@ -118,77 +147,198 @@
 
 
             <div class="card">
+                <div class="center-content">
+                    <div class="heart">
+                        <div class="heart-inner"></div>
+                    </div>
+                </div>
                 <div class="front">
                     <img class="front_card" src="./img/course_cards/course_05.png" alt="">
                 </div>
                 <div class="back">
                     <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+                    <p class="course_title">召喚術</p>
+                    <p class="course_price">$4800</p>
+                    <p class="course_class">屬性：攻擊型</p>
                 </div>
             </div>
 
 
 
             <div class="card">
+                <div class="center-content">
+                    <div class="heart">
+                        <div class="heart-inner"></div>
+                    </div>
+                </div>
                 <div class="front">
                     <img class="front_card" src="./img/course_cards/course_06.png" alt="">
                 </div>
                 <div class="back">
                     <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+                    <p class="course_title">隱身術</p>
+                    <p class="course_price">$4800</p>
+                    <p class="course_class">屬性：攻擊型</p>
                 </div>
             </div>
 
 
             <div class="card">
+                <div class="center-content">
+                    <div class="heart">
+                        <div class="heart-inner"></div>
+                    </div>
+                </div>
                 <div class="front">
                     <img class="front_card" src="./img/course_cards/course_07.png" alt="">
                 </div>
                 <div class="back">
                     <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+                    <p class="course_title">煉金術</p>
+                    <p class="course_price">$3280</p>
+                    <p class="course_class">屬性：輔助型</p>
                 </div>
             </div>
 
 
 
-            <div class="card col-4">
+            <div class="card">
+                <div class="center-content">
+                    <div class="heart">
+                        <div class="heart-inner"></div>
+                    </div>
+                </div>
                 <div class="front">
                     <img class="front_card" src="./img/course_cards/course_08.png" alt="">
                 </div>
                 <div class="back">
                     <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+                    <p class="course_title">治癒術</p>
+                    <p class="course_price">$9800</p>
+                    <p class="course_class">屬性：輔助型</p>
                 </div>
             </div>
 
-            <div class="card col-4">
+            <div class="card">
+                <div class="center-content">
+                    <div class="heart">
+                        <div class="heart-inner"></div>
+                    </div>
+                </div>
                 <div class="front">
                     <img class="front_card" src="./img/course_cards/course_09.png" alt="">
                 </div>
                 <div class="back">
                     <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+                    <p class="course_title">飛行術</p>
+                    <p class="course_price">$12800</p>
+                    <p class="course_class">屬性：魔法型</p>
                 </div>
             </div>
 
-            <div class="card col-4">
+            <div class="card">
+                <div class="center-content">
+                    <div class="heart">
+                        <div class="heart-inner"></div>
+                    </div>
+                </div>
                 <div class="front">
                     <img class="front_card" src="./img/course_cards/course_10.png" alt="">
                 </div>
                 <div class="back">
                     <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+                    <p class="course_title">變形術</p>
+                    <p class="course_price">$4800</p>
+                    <p class="course_class">屬性：攻擊型</p>
                 </div>
             </div>
 
+        </div>
 
 
+        <div class="course_accessory">
+            <p>你可能需要的道具</p>
+            <div class="titleimg_block">
+                <img class="white_title" src="./img/course_cards/title-white-line.png" alt="">
+            </div>
 
-
+            <div class="accessory_container">
+                <div class="sliderboard">
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p1.png" alt="">
+                    </div>
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p2.png" alt="">
+                    </div>
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p3.png" alt="">
+                    </div>
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p4.png" alt="">
+                    </div>
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p5.png" alt="">
+                    </div>
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p6.png" alt="">
+                    </div>
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p7.png" alt="">
+                    </div>
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p8.png" alt="">
+                    </div>
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p9.png" alt="">
+                    </div>
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p10.png" alt="">
+                    </div>
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p11.png" alt="">
+                    </div>
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p12.png" alt="">
+                    </div>
+                    <div class="single_accessory">
+                        <img src="./img/course_cards/accessory/p13.png" alt="">
+                    </div>
+                </div>
+            </div>
 
         </div>
 
+
     </main>
 
+    <footer>
+        <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
+
+    <script>
+
+        $(".heart").click(function () {
+            $(this).toggleClass("loved");
+        });
+
+        $('.sliderboard').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            autoplay: true,
+            autoplaySpeed: 3000
+        });
+
+
+//    document.querySelector('.heart').addEventListener('click', function () {
+//         this.classList.toggle('loved');
+//     });
+
+
+    </script>
 
 </body>
-<script>
-
-</script>
 
 </html>

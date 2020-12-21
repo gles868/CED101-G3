@@ -9,3 +9,7 @@ $(function () {
     });
 });
 
+
+// $(".heart").click(function(){
+//     $(this).toggleClass("loved");
+// });
