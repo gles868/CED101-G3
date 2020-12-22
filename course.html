@@ -319,9 +319,7 @@
 
     <script>
 
-        $(".heart").click(function () {
-            $(this).toggleClass("loved");
-        });
+
 
         $('.sliderboard').slick({
             infinite: true,
@@ -331,10 +329,14 @@
             autoplaySpeed: 3000
         });
 
+        $(".heart").click(function () {
+            $(this).toggleClass("loved");
+        });
 
-//    document.querySelector('.heart').addEventListener('click', function () {
-//         this.classList.toggle('loved');
-//     });
+
+        // document.querySelector('.heart').addEventListener('click', function () {
+        //     this.classList.toggle('loved');
+        // });
 
 
     </script>
