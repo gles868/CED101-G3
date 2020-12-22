@@ -10,9 +10,9 @@
             crossorigin="anonymous"
         />
         <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/cart.css" />
+        <link rel="stylesheet" href="css/payStep1.css" />
         <script src="/vendors/jquery/jquery-3.5.1.min.js"></script>
-        <title>麻瓜特訓班 | 購物車</title>
+        <title>麻瓜特訓班 | 購買第一步驟</title>
     </head>
 
     <body>
@@ -41,8 +41,8 @@
                 </ul>
             </nav>
         </header>
-        <div class="cart_title_box">
-            <div class="cart_title">魔法購物車</div>
+        <div class="confirm_title_box">
+            <div class="confirm_title">確認購買</div>
         </div>
         <div class="cartpro_box">
             <div class="cartpro_a_box">
@@ -68,9 +68,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="delete_box">
-                    <div class="delete_btn">刪除</div>
-                </div>
+            </div>
+        </div>
+        <div class="pay_type_box">
+            <div class="pay_box">
+                <div class="pay_type">付款方式</div>
+                <select class="type_choose">
+                    <option selected disabled>選擇付款方式</option>
+                    <option>信用卡</option>
+                    <option>超商</option>
+                </select>
             </div>
         </div>
         <div class="deliver_box">
@@ -84,48 +91,13 @@
             </div>
             <div class="total_text">3394</div>
         </div>
-        <div class="buy_box">
-            <div class="buytext">
-                <a href="./payStep1.html">我要購買</a>
+        <div class="next_box">
+            <div class="nextText">
+                <a href="./payStep2.html">下一步</a>
             </div>
         </div>
-        <!-- 若沒有商品加入購物車 -->
-        <div class="space_box">
-            <div class="space_photo">
-                <img src="./img/props/p10.png" />
-                <img src="./img/props/p11.png" />
-                <img src="./img/props/p12.png" />
-            </div>
-            <div class="space_text">您的購物車是空的喔</div>
-            <div class="space_text">快去商城逛逛吧！</div>
-            <div class="space_backmall">
-                <a href="./mall.html">回商城</a>
-            </div>
-        </div>
-
         <footer>
             <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
         </footer>
-        <script>
-            $(document).ready(function () {
-                $('.delete_btn').click(function () {
-                    $('.cartpro_a_box').css({
-                        display: 'none',
-                    });
-                    $('.deliver').css({
-                        display: 'none',
-                    });
-                    $('.total_box').css({
-                        display: 'none',
-                    });
-                    $('.buy_box').css({
-                        display: 'none',
-                    });
-                    $('.space_box').css({
-                        display: 'flex',
-                    });
-                });
-            });
-        </script>
     </body>
 </html>

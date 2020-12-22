@@ -11,6 +11,7 @@
         />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/mall.css" />
+        <script src="./vendors/jquery/jquery-3.5.1.min.js"></script>
         <title>麻瓜特訓班 | 商城</title>
     </head>
 
@@ -41,127 +42,166 @@
             </nav>
         </header>
 
-        <div class="shop_big_box">
-            <div class="shopbox">
-                <div class="girl">
-                    <img src="./img/witch02.png" />
+        <!-- <div class="shop_big_box"> -->
+        <div class="shop_box">
+            <div class="girl">
+                <img src="./img/witch02.png" />
+            </div>
+            <div class="shop">
+                <div class="list_box">
+                    <div class="pro_all">全部商品</div>
+                    <div class="pro_att">攻擊</div>
+                    <div class="pro_def">防禦</div>
+                    <div class="pro_ass">輔助</div>
                 </div>
-                <div class="shop">
-                    <img src="./img/shop.png" />
-                    <div class="list_box">
-                        <div class="list_text">
-                            <div class="pro_all" onclick="">全部商品</div>
-                            <div class="pro_att" onclick="">攻擊</div>
-                            <div class="pro_def" onclick="">防禦</div>
-                            <div class="pro_ass" onclick="">輔助</div>
+                <div class="allPro_box">
+                    <div class="pro_big_box1">
+                        <div class="pro1_box box">
+                            <div class="pro_photo">
+                                <img src="./img/props/p1.png" />
+                            </div>
+                            <div class="pro_namebox">
+                                <div class="pro_name">貝爾法師帽</div>
+                            </div>
+                            <div class="pro_pricebox">
+                                <div class="pro_price">$ 3333</div>
+                            </div>
+                        </div>
+                        <div class="pro2_box box">
+                            <div class="pro_photo">
+                                <img src="./img/props/p2.png" />
+                            </div>
+                            <div class="pro_namebox">
+                                <div class="pro_name">愛的寶石</div>
+                            </div>
+                            <div class="pro_pricebox">
+                                <div class="pro_price">$ 1314</div>
+                            </div>
+                        </div>
+                        <div class="pro3_box box">
+                            <div class="pro_photo">
+                                <img src="./img/props/p3.png" />
+                            </div>
+                            <div class="pro_namebox">
+                                <div class="pro_name">魔力技能書</div>
+                            </div>
+                            <div class="pro_pricebox">
+                                <div class="pro_price">$ 8787</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="product_box">
-                        <div class="one_probox">
-                            <div class="pro1 box">
-                                <div class="pro1_photo">
-                                    <img src="./img/p1.png" />
-                                </div>
-                                <div class="pro1_namebox">
-                                    <div class="pro1_name">貝爾法師帽</div>
-                                </div>
-                                <div class="pro1_pricebox">
-                                    <div class="pro1_price">$ 3333</div>
-                                </div>
+                    <div class="pro_big_box2">
+                        <div class="pro4_box box">
+                            <div class="pro_photo">
+                                <img src="./img/props/p4.png" />
                             </div>
-
-                            <div class="pro2 box">
-                                <div class="pro2_photo">
-                                    <img src="./img/p2.png" />
-                                </div>
-                                <div class="pro2_namebox">
-                                    <div class="pro2_name">愛的寶石</div>
-                                </div>
-                                <div class="pro2_pricebox">
-                                    <div class="pro2_price">$ 1314</div>
-                                </div>
+                            <div class="pro_namebox">
+                                <div class="pro_name">魔法能量水</div>
                             </div>
-                            <div class="pro3 box">
-                                <div class="pro3_photo">
-                                    <img src="./img/p3.png" />
-                                </div>
-                                <div class="pro3_namebox">
-                                    <div class="pro3_name">魔力技能書</div>
-                                </div>
-                                <div class="pro3_pricebox">
-                                    <div class="pro3_price">$ 8787</div>
-                                </div>
+                            <div class="pro_pricebox">
+                                <div class="pro_price">$ 3333</div>
                             </div>
                         </div>
-                        <div class="two_probox">
-                            <div class="pro4 box">
-                                <div class="pro4_photo">
-                                    <img src="./img/p4.png" />
-                                </div>
-                                <div class="pro4_namebox">
-                                    <div class="pro4_name">魔法能量水</div>
-                                </div>
-                                <div class="pro4_pricebox">
-                                    <div class="pro4_price">$ 6666</div>
-                                </div>
+                        <div class="pro5_box box">
+                            <div class="pro_photo">
+                                <img src="./img/props/p5.png" />
                             </div>
-                            <div class="pro5 box">
-                                <div class="pro5_photo">
-                                    <img src="./img/p5.png" />
-                                </div>
-                                <div class="pro5_namebox">
-                                    <div class="pro5_name">預見水晶球</div>
-                                </div>
-                                <div class="pro5_pricebox">
-                                    <div class="pro5_price">$ 3394</div>
-                                </div>
+                            <div class="pro_namebox">
+                                <div class="pro_name">閃亮水晶球</div>
                             </div>
-                            <div class="pro6 box">
-                                <div class="pro6_photo">
-                                    <img src="./img/p32.png" />
-                                </div>
-                                <div class="pro6_namebox">
-                                    <div class="pro6_name">扭曲的時間</div>
-                                </div>
-                                <div class="pro6_pricebox">
-                                    <div class="pro6_price">$ 55551</div>
-                                </div>
+                            <div class="pro_pricebox">
+                                <div class="pro_price">$ 3394</div>
                             </div>
                         </div>
-                        <div class="three_probox">
-                            <div class="pro7 box">
-                                <div class="pro7_photo">
-                                    <img src="./img/p7.png" />
-                                </div>
-                                <div class="pro7_namebox">
-                                    <div class="pro7_name">星火卷軸</div>
-                                </div>
-                                <div class="pro7_pricebox">
-                                    <div class="pro7_price">$ 9981</div>
-                                </div>
+                        <div class="pro6_box box">
+                            <div class="pro_photo">
+                                <img src="./img/props/p32.png" />
                             </div>
-                            <div class="pro8 box">
-                                <div class="pro8_photo">
-                                    <img src="./img/p8.png" />
-                                </div>
-                                <div class="pro8_namebox">
-                                    <div class="pro8_name">蜘蛛寶寶</div>
-                                </div>
-                                <div class="pro8_pricebox">
-                                    <div class="pro8_price">$ 7749</div>
-                                </div>
+                            <div class="pro_namebox">
+                                <div class="pro_name">扭曲的時間</div>
                             </div>
-                            <div class="pro9 box">
-                                <div class="pro9_photo">
-                                    <img src="./img/p9.png" />
-                                </div>
-
-                                <div class="pro8_namebox">
-                                    <div class="pro8_name">時間寶石</div>
-                                </div>
-                                <div class="pro8_pricebox">
-                                    <div class="pro8_price">$ 88900</div>
-                                </div>
+                            <div class="pro_pricebox">
+                                <div class="pro_price">$ 8787</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pro_big_box3">
+                        <div class="pro7_box box">
+                            <div class="pro_photo">
+                                <img src="./img/props/p7.png" />
+                            </div>
+                            <div class="pro_namebox">
+                                <div class="pro_name">星火卷軸</div>
+                            </div>
+                            <div class="pro_pricebox">
+                                <div class="pro_price">$ 3333</div>
+                            </div>
+                        </div>
+                        <div class="pro8_box box">
+                            <div class="pro_photo">
+                                <img src="./img/props/p8.png" />
+                            </div>
+                            <div class="pro_namebox">
+                                <div class="pro_name">蜘蛛寶寶</div>
+                            </div>
+                            <div class="pro_pricebox">
+                                <div class="pro_price">$ 3394</div>
+                            </div>
+                        </div>
+                        <div class="pro9_box box">
+                            <div class="pro_photo">
+                                <img src="./img/props/p9.png" />
+                            </div>
+                            <div class="pro_namebox">
+                                <div class="pro_name">時間寶石</div>
+                            </div>
+                            <div class="pro_pricebox">
+                                <div class="pro_price">$ 8787</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="attPro_box">
+                    <div class="pro_big_box1">
+                        <div class="pro1_box box">
+                            <div class="pro_photo">
+                                <img src="./img/props/p12.png" />
+                            </div>
+                            <div class="pro_namebox">
+                                <div class="pro_name">詛咒娃娃</div>
+                            </div>
+                            <div class="pro_pricebox">
+                                <div class="pro_price">$ 3333</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="defPro_box">
+                    <div class="pro_big_box1">
+                        <div class="pro1_box box">
+                            <div class="pro_photo">
+                                <img src="./img/props/p1.png" />
+                            </div>
+                            <div class="pro_namebox">
+                                <div class="pro_name">貝爾法師帽</div>
+                            </div>
+                            <div class="pro_pricebox">
+                                <div class="pro_price">$ 3333</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="assPro_box">
+                    <div class="pro_big_box1">
+                        <div class="pro1_box box">
+                            <div class="pro_photo">
+                                <img src="./img/props/p3.png" />
+                            </div>
+                            <div class="pro_namebox">
+                                <div class="pro_name">魔力技能書</div>
+                            </div>
+                            <div class="pro_pricebox">
+                                <div class="pro_price">$ 8787</div>
                             </div>
                         </div>
                     </div>
@@ -176,9 +216,133 @@
             <li></li>
             <li></li>
         </ul>
+        <!-- 燈箱 -->
+        <div class="product">
+            <div class="pro_complete_box">
+                <i class="fas fa-times close"></i>
+                <div class="pro_complete_left">
+                    <div class="pro_complete_photo">
+                        <img src="/img/props/p5.png" />
+                    </div>
+                    <div class="pro_complete_price_box">
+                        <img src="/img/dollar.png" />
+                        <div class="pro_complete_price">3394</div>
+                    </div>
+                    <div class="pro_complete_amount_box">
+                        <div class="pro_complete_text">數量</div>
+                        <div class="pro_complete_amount"></div>
+                    </div>
+                </div>
+                <div class="pro_complete_right">
+                    <div class="pro_complete_name_box">
+                        <div class="pro_complete_name">閃亮水晶球</div>
+                    </div>
+                    <div class="pro_complete_content_box">
+                        <div class="pro_complete_content1 content">
+                            學習詛咒術的時候，
+                        </div>
+                        <div class="pro_complete_content2 content">
+                            必須要有閃亮水晶球，
+                        </div>
+                        <div class="pro_complete_content3 content">
+                            才能夠看到敵人的狀態來施詛咒術，
+                        </div>
+                        <div class="pro_complete_content4 content">
+                            是身為一位魔法師不可缺少的。
+                        </div>
+                    </div>
+                    <div class="addandbuy_box">
+                        <span id="props_p5" class="addButton">
+                            加入購物車
+                            <input
+                                type="hidden"
+                                value="crystalball|p5.png|3394"
+                            />
+                        </span>
+                        <span id="props_p5" class="buyButton">
+                            直接購買
+                            <input
+                                type="hidden"
+                                value="crystalball|p5.png|3394"
+                            />
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <footer>
             <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
         </footer>
     </body>
+    <script>
+        $(document).ready(function () {
+            $('.box').click(function () {
+                $('.product').css({
+                    display: 'block',
+                });
+            });
+            $('.close').click(function () {
+                $('.product').css({
+                    display: 'none',
+                });
+            });
+            $('.pro_all').click(function () {
+                $('.allPro_box').css({
+                    display: 'flex',
+                });
+                $('.attPro_box').css({
+                    display: 'none',
+                });
+                $('.defPro_box').css({
+                    display: 'none',
+                });
+                $('.assPro_box').css({
+                    display: 'none',
+                });
+            });
+            $('.pro_att').click(function () {
+                $('.allPro_box').css({
+                    display: 'none',
+                });
+                $('.attPro_box').css({
+                    display: 'flex',
+                });
+                $('.defPro_box').css({
+                    display: 'none',
+                });
+                $('.assPro_box').css({
+                    display: 'none',
+                });
+            });
+            $('.pro_def').click(function () {
+                $('.allPro_box').css({
+                    display: 'none',
+                });
+                $('.attPro_box').css({
+                    display: 'none',
+                });
+                $('.defPro_box').css({
+                    display: 'flex',
+                });
+                $('.assPro_box').css({
+                    display: 'none',
+                });
+            });
+            $('.pro_ass').click(function () {
+                $('.allPro_box').css({
+                    display: 'none',
+                });
+                $('.attPro_box').css({
+                    display: 'none',
+                });
+                $('.defPro_box').css({
+                    display: 'none',
+                });
+                $('.assPro_box').css({
+                    display: 'flex',
+                });
+            });
+        });
+    </script>
 </html>

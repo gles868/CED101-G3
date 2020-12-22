@@ -1,0 +1,203 @@
+* {
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+}
+body {
+    background-image: url(/img/cartbac.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-size: cover;
+}
+
+// 標題
+div.confirm_title_box {
+    width: 60%;
+    text-align: left;
+    margin: 20px auto;
+}
+div.confirm_title {
+    font-size: 28px;
+    width: 60%;
+    margin: 0 auto;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 0 0 0.2em #ff0000, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
+}
+//確認資料區塊
+div.confirm_data_box {
+    width: 90%;
+    margin: 0 auto;
+}
+div.confirm_data {
+    width: 66%;
+    background-color: #ffffff49;
+    border: 1px solid #ffffff49;
+    border-radius: 30px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 24px;
+    color: #ffffff;
+    text-shadow: 0 0 0.2em #863186, 0 0 0.2em #863186, 0 0 0.2em #863186;
+}
+//姓名
+div.name_box {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+div.name {
+    width: 70%;
+}
+//電話
+div.phone_box {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+div.phone {
+    width: 70%;
+}
+//地址
+div.add_box {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+div.add {
+    width: 70%;
+}
+//付款方式
+div.pay_box {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+div.pay {
+    width: 70%;
+    margin-right: 10px;
+}
+div.pay_title {
+    margin-left: -10px;
+}
+//折扣點數
+div.point_box {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+div.point {
+    width: 70%;
+    margin-right: 10px;
+}
+div.point_title {
+    margin-left: -10px;
+}
+
+//購買內容
+
+div.cartpro_box {
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+}
+
+div.cartpro_a_box {
+    width: 65%;
+    display: flex;
+    margin: 50px auto;
+    background-color: #ffffff2f;
+    padding: 20px 15px;
+    border: 1px solid #ffffff2f;
+    border-radius: 30px;
+}
+div.crystalball_left_box {
+    width: 20%;
+}
+div.crystalball_right_box {
+    width: 80%;
+    padding: 10px;
+}
+div.crystalball_name_box {
+    width: 30%;
+    font-size: 24px;
+    color: #ffffff;
+    text-shadow: 0 0 0.2em #f57af5, 0 0 0.2em #f57af5, 0 0 0.2em #f57af5;
+}
+div.crystalball_text {
+    font-size: 18px;
+    color: #ffffff;
+    margin-top: 20px;
+    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+}
+
+//分隔線
+div.deliver_box {
+    width: 60%;
+    margin: 0 auto;
+}
+
+// 總額
+
+div.total_photoandtext > img {
+    width: 30px;
+}
+div.total_photoandtext {
+    font-size: 20px;
+    align-items: center;
+    color: #ffffff;
+    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+}
+div.total_box {
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+    align-items: center;
+    // text-align: right;
+
+    justify-content: flex-end;
+}
+
+div.total_text {
+    font-size: 18px;
+    color: #ffffff;
+    margin-left: 20px;
+    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+}
+
+//上下步
+
+div.back_next_box {
+    display: flex;
+    width: 60%;
+    margin: 20px auto 10px auto;
+    justify-content: space-between;
+}
+//上一步
+
+div.backText {
+    background-color: #ffffff;
+    padding: 5px 15px 5px 15px;
+    text-align: center;
+    border: 3px solid #863186;
+    border-radius: 15px;
+}
+div.backText > a {
+    text-decoration: none;
+    color: #863186;
+}
+
+// 下一步
+
+div.nextText {
+    background-color: #ffffff;
+    padding: 5px 15px 5px 15px;
+    text-align: center;
+    border: 3px solid #863186;
+    border-radius: 15px;
+}
+div.nextText > a {
+    text-decoration: none;
+    color: #863186;
+}

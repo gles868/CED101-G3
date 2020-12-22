@@ -10,9 +10,9 @@
             crossorigin="anonymous"
         />
         <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/cart.css" />
+        <link rel="stylesheet" href="css/payStep3.css" />
         <script src="/vendors/jquery/jquery-3.5.1.min.js"></script>
-        <title>麻瓜特訓班 | 購物車</title>
+        <title>麻瓜特訓班 | 購買第三步驟</title>
     </head>
 
     <body>
@@ -41,8 +41,32 @@
                 </ul>
             </nav>
         </header>
-        <div class="cart_title_box">
-            <div class="cart_title">魔法購物車</div>
+        <div class="confirm_title_box">
+            <div class="confirm_title">確認資料</div>
+        </div>
+        <div class="confirm_data_box">
+            <div class="confirm_data">
+                <div class="name_box">
+                    <div class="name_title">姓名</div>
+                    <div class="name">溫宗益</div>
+                </div>
+                <div class="phone_box">
+                    <div class="phone_title">電話</div>
+                    <div class="phone">091234567</div>
+                </div>
+                <div class="add_box">
+                    <div class="add_title">地址</div>
+                    <div class="add">魔幻森林菇菇區123號</div>
+                </div>
+                <div class="pay_box">
+                    <div class="pay_title">付款方式</div>
+                    <div class="pay">寶貝幣</div>
+                </div>
+                <div class="point_box">
+                    <div class="point_title">折扣點數</div>
+                    <div class="point">9487</div>
+                </div>
+            </div>
         </div>
         <div class="cartpro_box">
             <div class="cartpro_a_box">
@@ -61,15 +85,6 @@
                             詛咒術，是身為一位魔法師不可缺少的。
                         </div>
                     </div>
-                    <div class="crystalball_priceAmount_box">
-                        <div class="pro_complete_price_box">
-                            <img src="/img/dollar.png" />
-                            <div class="pro_complete_price">3394</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="delete_box">
-                    <div class="delete_btn">刪除</div>
                 </div>
             </div>
         </div>
@@ -84,48 +99,21 @@
             </div>
             <div class="total_text">3394</div>
         </div>
-        <div class="buy_box">
-            <div class="buytext">
-                <a href="./payStep1.html">我要購買</a>
+        <div class="back_next_box">
+            <div class="back_box">
+                <div class="backText">
+                    <a href="./payStep2.html">上一步</a>
+                </div>
             </div>
-        </div>
-        <!-- 若沒有商品加入購物車 -->
-        <div class="space_box">
-            <div class="space_photo">
-                <img src="./img/props/p10.png" />
-                <img src="./img/props/p11.png" />
-                <img src="./img/props/p12.png" />
-            </div>
-            <div class="space_text">您的購物車是空的喔</div>
-            <div class="space_text">快去商城逛逛吧！</div>
-            <div class="space_backmall">
-                <a href="./mall.html">回商城</a>
+            <div class="next_box">
+                <div class="nextText">
+                    <a href="./payStepDone.html">完成購買</a>
+                </div>
             </div>
         </div>
 
         <footer>
             <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
         </footer>
-        <script>
-            $(document).ready(function () {
-                $('.delete_btn').click(function () {
-                    $('.cartpro_a_box').css({
-                        display: 'none',
-                    });
-                    $('.deliver').css({
-                        display: 'none',
-                    });
-                    $('.total_box').css({
-                        display: 'none',
-                    });
-                    $('.buy_box').css({
-                        display: 'none',
-                    });
-                    $('.space_box').css({
-                        display: 'flex',
-                    });
-                });
-            });
-        </script>
     </body>
 </html>
