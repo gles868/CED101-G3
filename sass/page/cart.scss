@@ -1,0 +1,188 @@
+* {
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+}
+body {
+    background-image: url(/img/cartbac.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+// 標題
+
+div.cart_title_box {
+    width: 60%;
+    text-align: left;
+    margin: 20px auto 10px auto;
+}
+div.cart_title {
+    font-size: 28px;
+    color: #ffffff;
+    text-shadow: 0 0 0.2em #ff0000, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
+}
+
+// 內容
+div.cartpro_box {
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+}
+div.delete_box {
+    width: 6%;
+}
+.delete_btn {
+    background-color: #ffffff;
+    color: #863186;
+    padding: 5px;
+    text-align: center;
+    border: 3px solid #863186;
+    border-radius: 10px;
+}
+div.cartpro_a_box {
+    width: 65%;
+    display: flex;
+    margin: 50px auto;
+    justify-content: space-between;
+    background-color: #ffffff2f;
+    padding: 20px 15px;
+    border: 1px solid #ffffff2f;
+    border-radius: 30px;
+}
+div.crystalball_left_box {
+    width: 20%;
+}
+div.crystalball_right_box {
+    margin-left: 20px;
+}
+div.crystalball_name_box {
+    width: 30%;
+    font-size: 24px;
+    color: #ffffff;
+    text-shadow: 0 0 0.2em #f57af5, 0 0 0.2em #f57af5, 0 0 0.2em #f57af5;
+}
+
+div.pro_complete_price_box > img {
+    width: 30px;
+}
+div.pro_complete_price_box {
+    display: flex;
+    width: 18%;
+    text-align: right;
+}
+div.crystalball_priceAmount_box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+div.crystalball_text {
+    font-size: 18px;
+    color: #ffffff;
+    margin-top: 20px;
+    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+}
+div.pro_complete_price_box {
+    color: #ffffff;
+    font-size: 18px;
+    margin-top: 20px;
+}
+div.pro_complete_price {
+    margin-left: 20px;
+    margin-top: 5px;
+    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+}
+div.deliver_box {
+    width: 60%;
+    margin: 0 auto;
+}
+
+// ========================================================================
+
+div.total_photoandtext > img {
+    width: 30px;
+}
+div.total_photoandtext {
+    font-size: 20px;
+    align-items: center;
+    color: #ffffff;
+    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+}
+div.total_box {
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+    align-items: center;
+    // text-align: right;
+
+    justify-content: flex-end;
+}
+
+div.total_text {
+    font-size: 18px;
+    color: #ffffff;
+    margin-left: 20px;
+    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+}
+
+// ==========================================================================
+
+div.buy_box {
+    width: 60%;
+    margin: 20px auto;
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    color: #863186;
+}
+div.buytext {
+    background-color: #ffffff;
+    padding: 5px;
+    text-align: center;
+    border: 3px solid #863186;
+    border-radius: 15px;
+}
+div.buytext > a {
+    text-decoration: none;
+    color: #863186;
+}
+
+// =============================空的購物車=============================
+
+div.space_box {
+    width: 60%;
+    // display: flex;
+    display: none;
+    margin: 40px auto;
+    text-align: center;
+    font-size: 30px;
+    background-color: #ffffff2f;
+    border: 1px solid #ffffff2f;
+    border-radius: 30px;
+    padding: 30px 20px 20px 20px;
+    flex-direction: column;
+}
+div.space_photo > img {
+    width: 15%;
+}
+div.space_text {
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 0 5px 0;
+    color: #ffffff;
+    text-shadow: 0 0 0.2em #f57af5, 0 0 0.2em #f57af5, 0 0 0.2em #f57af5;
+}
+div.space_backmall > a {
+    background-color: #ffffff;
+    color: #863186;
+    padding: 3px 5px 3px 5px;
+    text-align: center;
+    border: 3px solid #863186;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 24px;
+}
+div.space_backmall {
+    margin: 40px auto 20px auto;
+}

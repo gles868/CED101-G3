@@ -9,9 +9,22 @@
             integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
             crossorigin="anonymous"
         />
+        <!-- Bootstrap 的 CSS -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+        />
+        <!-- JavaScript -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+            integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+            crossorigin="anonymous"
+        ></script>
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="./css/member.css" />
-        <title>麻瓜特訓班 | 首頁</title>
+        <title>麻瓜特訓班 | 會員中心</title>
     </head>
 
     <body>
@@ -42,21 +55,583 @@
                 <div class="mempic">
                     <img src="./img/wenhead.jpg" alt="" />
                 </div>
-                <div class="memdataMid">
-                    <div class="memName">姓名:溫宗益</div>
-                    <div class="memNickname">暱稱:小溫溫</div>
-                    <div class="memPoint">可折抵點數:100點</div>
-                </div>
-                <div class="memdataRight">
+                <div class="memdata">
+                    <div class="memName">會員名稱:小溫溫</div>
                     <div class="memId">帳號:wenwen0487</div>
-                    <div class="memphone">電話:0912-345678</div>
+                    <div class="memPoint">可折抵點數:100點</div>
                     <div class="mail">信箱:wenwen0487@gmail.com</div>
                 </div>
             </div>
         </section>
 
+        <section class="memLevel">
+            <div class="memLevProgress">
+                <div class="progress" style="height: 25px">
+                    <div
+                        class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
+                        role="progressbar"
+                        aria-valuenow="75"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        style="width: 50%"
+                    ></div>
+                </div>
+            </div>
+            <div class="memLevTitle">
+                <h5 class="memMuggle">麻瓜</h5>
+                <h5 class="memIntern">魔法實習生</h5>
+                <h5 class="memMagician">魔法師</h5>
+            </div>
+        </section>
+
+        <section class="memMenu">
+            <div class="memMenuOut">
+                <button
+                    type="button"
+                    id="memClassOut"
+                    class="btn btn-outline-light btn-lg"
+                    style="background-color: white; color: black"
+                >
+                    <i class="fas fa-book"></i>我的課程
+                </button>
+                <button type="button" id="memKeepOut" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-heart"></i>我的收藏
+                </button>
+                <button type="button" id="memOrderOut" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-list-alt"></i>歷史訂單
+                </button>
+                <button type="button" id="memInfoOut" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-user-cog"></i>個人資料
+                </button>
+
+                <!-- <div class="memMenuClass">我的課程</div>
+            <div class="memMenuKeep">我的收藏</div>
+            <div class="memOrder">歷史訂單</div>
+            <div class="memInfo">個人資料</div> -->
+            </div>
+        </section>
+
+        <!-- 各項內容區塊 -->
+
+        <!-- 我的課程開始 -->
+        <section class="memClassOut menuCG">
+            <div class="memContent">
+                <div class="memMainAreaClass">
+                    <div id="courseDate" style="background-color: white">
+                        <h3>查看課表時間</h3>
+                    </div>
+                    <div id="courseStatus" style="background-color: gray; color: white">
+                        <h3>課程清單</h3>
+                    </div>
+                </div>
+
+                <div class="courseDate courseCG">查看課表時間日曆在這邊</div>
+
+                <div class="courseStatus courseCG">
+                    <div id="tab">
+                        <!-- 頁籤按鈕 -->
+                        <ul>
+                            <li id="tab-content-1" style="color: black; background-color: white">
+                                <div>
+                                    <div class="courseReg">
+                                        <h5>已報名</h5>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="tab-content-2" style="color: white">
+                                <div>
+                                    <div class="courseFinish">
+                                        <h5>已完課</h5>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="tab-content-3" style="color: white">
+                                <div>
+                                    <div class="courseIng">
+                                        <h5>上課中</h5>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- 頁籤的內容區塊 -->
+                        <!-- 已報名 -->
+                        <div class="tab-content-1 con">
+                            <div class="CRD">
+                                <div class="CRD_pic">
+                                    <img src="./img/course_cards/course_07.png" alt="" srcset="" />
+                                </div>
+                                <div class="CRD_Text">
+                                    <h5 class="CRD_TextTit">煉金術</h5>
+                                    <div class="CRD_TextCon">
+                                        <p>煉金術是一門很厲害的課</p>
+                                        <p>煉金術是一門很厲害的課</p>
+                                        <p>煉金術是一門很厲害的課</p>
+                                        <p>煉金術是一門很厲害的課</p>
+                                        <p>煉金術是一門很厲害的課</p>
+                                    </div>
+                                </div>
+                                <div class="courseCancel">
+                                    <button type="button" class="btn btn-outline-dark">取消報名</button>
+                                </div>
+                            </div>
+
+                            <div class="CRD">
+                                <div class="CRD_pic">
+                                    <img src="./img/course_cards/course_07.png" alt="" srcset="" />
+                                </div>
+                                <div class="CRD_Text">
+                                    <h5 class="CRD_TextTit">煉金術2</h5>
+                                    <div class="CRD_TextCon">
+                                        <p>煉金術是一門很厲害的課</p>
+                                        <p>煉金術是一門很厲害的課</p>
+                                        <p>煉金術是一門很厲害的課</p>
+                                        <p>煉金術是一門很厲害的課</p>
+                                        <p>煉金術是一門很厲害的課</p>
+                                    </div>
+                                </div>
+                                <div class="courseCancel">
+                                    <button type="button" class="btn btn-outline-dark">取消報名</button>
+                                </div>
+                            </div>
+
+                            <div class="CRD">
+                                <div class="CRD_pic">
+                                    <img src="./img/course_cards/course_07.png" alt="" srcset="" />
+                                </div>
+                                <div class="CRD_Text">
+                                    <h5 class="CRD_TextTit">煉金術3</h5>
+                                    <div class="CRD_TextCon">
+                                        <p>煉金術是一門很厲害的課</p>
+                                        <p>煉金術是一門很厲害的課</p>
+                                        <p>煉金術是一門很厲害的課</p>
+                                        <p>煉金術是一門很厲害的課</p>
+                                        <p>煉金術是一門很厲害的課</p>
+                                    </div>
+                                </div>
+                                <div class="courseCancel">
+                                    <button type="button" class="btn btn-outline-dark">取消報名</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 已完課 -->
+                        <div class="tab-content-2 con">
+                            <div class="CFD_Out">
+                                <div class="CFD_Top">
+                                    <div class="CRD_pic">
+                                        <img src="./img/course_cards/course_03.png" alt="" srcset="" />
+                                    </div>
+                                    <div class="CRD_Text">
+                                        <div class="CRD_TextTit">治癒學</div>
+                                        <div class="CRD_TextCon">
+                                            <p>治癒學是一門療癒身心的課</p>
+                                            <p>治癒學是一門療癒身心的課</p>
+                                            <p>治癒學是一門療癒身心的課</p>
+                                            <p>治癒學是一門療癒身心的課</p>
+                                            <p>治癒學是一門療癒身心的課</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="CFD_Bottom">
+                                    <div class="CFD_BottomComm">
+                                        <div class="CFD_commTitle">
+                                            <h5>評論本課</h5>
+                                        </div>
+                                        <!-- 評價星星開始 -->
+                                        <div class="CFD_commStar">
+                                            <fieldset class="rating">
+                                                <input type="radio" id="star5" name="rating" value="5" /><label
+                                                    class="full"
+                                                    for="star5"
+                                                    title="Awesome - 5 stars"
+                                                ></label>
+                                                <input
+                                                    type="radio"
+                                                    id="star4half"
+                                                    name="rating"
+                                                    value="4 and a half"
+                                                /><label
+                                                    class="half"
+                                                    for="star4half"
+                                                    title="Pretty good - 4.5 stars"
+                                                ></label>
+                                                <input type="radio" id="star4" name="rating" value="4" /><label
+                                                    class="full"
+                                                    for="star4"
+                                                    title="Pretty good - 4 stars"
+                                                ></label>
+                                                <input
+                                                    type="radio"
+                                                    id="star3half"
+                                                    name="rating"
+                                                    value="3 and a half"
+                                                /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                                <input type="radio" id="star3" name="rating" value="3" /><label
+                                                    class="full"
+                                                    for="star3"
+                                                    title="Meh - 3 stars"
+                                                ></label>
+                                                <input
+                                                    type="radio"
+                                                    id="star2half"
+                                                    name="rating"
+                                                    value="2 and a half"
+                                                /><label
+                                                    class="half"
+                                                    for="star2half"
+                                                    title="Kinda bad - 2.5 stars"
+                                                ></label>
+                                                <input type="radio" id="star2" name="rating" value="2" /><label
+                                                    class="full"
+                                                    for="star2"
+                                                    title="Kinda bad - 2 stars"
+                                                ></label>
+                                                <input
+                                                    type="radio"
+                                                    id="star1half"
+                                                    name="rating"
+                                                    value="1 and a half"
+                                                /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                                <input type="radio" id="star1" name="rating" value="1" /><label
+                                                    class="full"
+                                                    for="star1"
+                                                    title="Sucks big time - 1 star"
+                                                ></label>
+                                                <input type="radio" id="starhalf" name="rating" value="half" /><label
+                                                    class="half"
+                                                    for="starhalf"
+                                                    title="Sucks big time - 0.5 stars"
+                                                ></label>
+                                            </fieldset>
+                                        </div>
+                                        <!-- 評價星星結束 -->
+
+                                        <div class="CFD_commText">
+                                            <form action="">
+                                                <input type="text" placeholder="評論老師/課程" />
+                                                <button type="submit"><i class="far fa-paper-plane"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="CFD_Out">
+                                <div class="CFD_Top">
+                                    <div class="CRD_pic">
+                                        <img src="./img/course_cards/course_03.png" alt="" srcset="" />
+                                    </div>
+                                    <div class="CRD_Text">
+                                        <div class="CRD_TextTit">治癒學</div>
+                                        <div class="CRD_TextCon">
+                                            <p>治癒學是一門療癒身心的課</p>
+                                            <p>治癒學是一門療癒身心的課</p>
+                                            <p>治癒學是一門療癒身心的課</p>
+                                            <p>治癒學是一門療癒身心的課</p>
+                                            <p>治癒學是一門療癒身心的課</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="CFD_Bottom">
+                                    <div class="CFD_BottomComm">
+                                        <div class="CFD_commTitle">
+                                            <h5>評論本課</h5>
+                                        </div>
+                                        <!-- 評價星星開始 -->
+                                        <div class="CFD_commStar">
+                                            <fieldset class="rating">
+                                                <input type="radio" id="star5" name="rating" value="5" /><label
+                                                    class="full"
+                                                    for="star5"
+                                                    title="Awesome - 5 stars"
+                                                ></label>
+                                                <input
+                                                    type="radio"
+                                                    id="star4half"
+                                                    name="rating"
+                                                    value="4 and a half"
+                                                /><label
+                                                    class="half"
+                                                    for="star4half"
+                                                    title="Pretty good - 4.5 stars"
+                                                ></label>
+                                                <input type="radio" id="star4" name="rating" value="4" /><label
+                                                    class="full"
+                                                    for="star4"
+                                                    title="Pretty good - 4 stars"
+                                                ></label>
+                                                <input
+                                                    type="radio"
+                                                    id="star3half"
+                                                    name="rating"
+                                                    value="3 and a half"
+                                                /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                                <input type="radio" id="star3" name="rating" value="3" /><label
+                                                    class="full"
+                                                    for="star3"
+                                                    title="Meh - 3 stars"
+                                                ></label>
+                                                <input
+                                                    type="radio"
+                                                    id="star2half"
+                                                    name="rating"
+                                                    value="2 and a half"
+                                                /><label
+                                                    class="half"
+                                                    for="star2half"
+                                                    title="Kinda bad - 2.5 stars"
+                                                ></label>
+                                                <input type="radio" id="star2" name="rating" value="2" /><label
+                                                    class="full"
+                                                    for="star2"
+                                                    title="Kinda bad - 2 stars"
+                                                ></label>
+                                                <input
+                                                    type="radio"
+                                                    id="star1half"
+                                                    name="rating"
+                                                    value="1 and a half"
+                                                /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                                <input type="radio" id="star1" name="rating" value="1" /><label
+                                                    class="full"
+                                                    for="star1"
+                                                    title="Sucks big time - 1 star"
+                                                ></label>
+                                                <input type="radio" id="starhalf" name="rating" value="half" /><label
+                                                    class="half"
+                                                    for="starhalf"
+                                                    title="Sucks big time - 0.5 stars"
+                                                ></label>
+                                            </fieldset>
+                                        </div>
+                                        <!-- 評價星星結束 -->
+
+                                        <div class="CFD_commText">
+                                            <form action="">
+                                                <input type="text" placeholder="評論老師/課程" />
+                                                <button type="submit"><i class="far fa-paper-plane"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 上課中(當天) -->
+                        <div class="tab-content-3 con">
+                            <div class="CRD">
+                                <div class="CRD_pic">
+                                    <img src="./img/course_cards/course_03.png" alt="" srcset="" />
+                                </div>
+                                <div class="CRD_Text">
+                                    <div class="CRD_TextTit">射箭術</div>
+                                    <div class="CRD_TextCon">
+                                        <p>射箭術是一門攻擊型的課</p>
+                                        <p>射箭術是一門攻擊型的課</p>
+                                        <p>射箭術是一門攻擊型的課</p>
+                                        <p>射箭術是一門攻擊型的課</p>
+                                        <p>射箭術是一門攻擊型的課</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 我的課程結束 -->
+
+        <!-- 我的收藏開始 -->
+        <section class="memKeepOut menuCG" style="display: none">
+            <div class="memContent">
+                <div id="memKeepTitle">
+                    <ul>
+                        <li id="memKeepCourse" style="background-color: white; color: black"><h5>課程</h5></li>
+                        <li id="memKeepPro" style="color: white"><h5>商品</h5></li>
+                    </ul>
+                </div>
+                <div class="memKeepContent">
+                    <div class="memKeepCourse memcon">
+                        <div class="CRD">
+                            <div class="CRD_pic">
+                                <img src="./img/course_cards/course_07.png" alt="" srcset="" />
+                            </div>
+                            <div class="CRD_Text">
+                                <h5 class="CRD_TextTit">收藏煉金術1</h5>
+                                <div class="CRD_TextCon">
+                                    <p>煉金術是一門很厲害的課</p>
+                                    <p>煉金術是一門很厲害的課</p>
+                                    <p>煉金術是一門很厲害的課</p>
+                                    <p>煉金術是一門很厲害的課</p>
+                                    <p>煉金術是一門很厲害的課</p>
+                                </div>
+                            </div>
+                            <div class="memKeepCourseBtn">
+                                <a href="/registration.html"
+                                    ><button type="button" class="btn btn-outline-dark">報名本課</button></a
+                                >
+                                <div class="MKC_cancel">
+                                    <button type="button" class="btn btn-outline-dark">取消收藏</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="CRD">
+                            <div class="CRD_pic">
+                                <img src="./img/course_cards/course_07.png" alt="" srcset="" />
+                            </div>
+                            <div class="CRD_Text">
+                                <h5 class="CRD_TextTit">收藏煉金術2</h5>
+                                <div class="CRD_TextCon">
+                                    <p>煉金術是一門很厲害的課</p>
+                                    <p>煉金術是一門很厲害的課</p>
+                                    <p>煉金術是一門很厲害的課</p>
+                                    <p>煉金術是一門很厲害的課</p>
+                                    <p>煉金術是一門很厲害的課</p>
+                                </div>
+                            </div>
+                            <div class="memKeepCourseBtn">
+                                <a href="/registration.html"
+                                    ><button type="button" class="btn btn-outline-dark">報名本課</button></a
+                                >
+                                <div class="MKC_cancel">
+                                    <button type="button" class="btn btn-outline-dark">取消收藏</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="memKeepPro memcon">
+                        <div class="CRD">
+                            <div class="MKP_pic">
+                                <img src="./img/props/p13.png" alt="" srcset="" />
+                            </div>
+                            <div class="CRD_Text">
+                                <h5 class="CRD_TextTit">發光水波蛋蛋1</h5>
+                                <div class="CRD_TextCon">
+                                    <p>發光水波蛋蛋是很厲害的道具</p>
+                                    <p>發光水波蛋蛋是很厲害的道具</p>
+                                    <p>發光水波蛋蛋是很厲害的道具</p>
+                                    <p>發光水波蛋蛋是很厲害的道具</p>
+                                    <p>發光水波蛋蛋是很厲害的道具</p>
+                                </div>
+                            </div>
+                            <div class="memKeepCourseBtn">
+                                <a href="/mall.html"
+                                    ><button type="button" class="btn btn-outline-dark">直接購買</button></a
+                                >
+                                <div class="MKC_cancel">
+                                    <button type="button" class="btn btn-outline-dark">取消收藏</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="CRD">
+                            <div class="MKP_pic">
+                                <img src="./img/props/p13.png" alt="" srcset="" />
+                            </div>
+                            <div class="CRD_Text">
+                                <h5 class="CRD_TextTit">發光水波蛋蛋2</h5>
+                                <div class="CRD_TextCon">
+                                    <p>發光水波蛋蛋是很厲害的道具</p>
+                                    <p>發光水波蛋蛋是很厲害的道具</p>
+                                    <p>發光水波蛋蛋是很厲害的道具</p>
+                                    <p>發光水波蛋蛋是很厲害的道具</p>
+                                    <p>發光水波蛋蛋是很厲害的道具</p>
+                                </div>
+                            </div>
+                            <div class="memKeepCourseBtn">
+                                <a href="/mall.html"
+                                    ><button type="button" class="btn btn-outline-dark">直接購買</button></a
+                                >
+                                <div class="MKC_cancel">
+                                    <button type="button" class="btn btn-outline-dark">取消收藏</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 我的收藏結束 -->
+
+        <!-- 歷史訂單開始 -->
+        <section class="memOrderOut menuCG" style="display: none">
+            <div class="memContent">
+                <div class="memOrder">訂單開始</div>
+            </div>
+        </section>
+        <!-- 歷史訂單結束 -->
+
+        <!-- 個人資料開始 -->
+        <section class="memInfoOut menuCG" style="display: none">
+            <div class="memContent">
+                <div class="memInfo">
+                    <div class="memInfoLeft">
+                        <div class="memhead">
+                            <img src="./img/wenhead.jpg" alt="" />
+                        </div>
+                        <h5 class="memPoint">可折抵點數:100點</h5>
+                    </div>
+                    <div class="memInfoRight">
+                        <div class="memInfoFormOut">
+                            <div class="memInfoForm">
+                                <form action="">
+                                    <table>
+                                        <div class="MIF_Data">
+                                            <h5 class="MIF_Left">會員編號:</h5>
+                                            <h5 class="MIF_Right">001</h5>
+                                        </div>
+                                        <div class="MIF_Data">
+                                            <h5 class="MIF_Left">會員姓名:</h5>
+                                            <h5 class="MIF_Right">小溫溫</h5>
+                                        </div>
+                                        <div class="MIF_Data">
+                                            <h5 class="MIF_Left">會員帳號:</h5>
+                                            <h5 class="MIF_Right">wenwen0487</h5>
+                                        </div>
+                                        <div class="MIF_Data">
+                                            <h5 class="MIF_Left">會員密碼:</h5>
+                                            <h5 class="MIF_Right">123456</h5>
+                                        </div>
+                                        <div class="MIF_Data">
+                                            <h5 class="MIF_Left">會員信箱:</h5>
+                                            <h5 class="MIF_Right">wenwen0487@gmail.com</h5>
+                                        </div>
+
+                                        <div class="memInfoBtn">
+                                            <button type="button">修改資料</button>
+                                        </div>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 個人資料結束 -->
+
         <footer>
             <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
         </footer>
+
+        <!-- member.JS -->
+        <script src="./js/member.js"></script>
+
+        <!-- body 結束標籤之前，載入Bootstrap 的 JS 及其相依性安裝(jQuery、Popper) -->
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"
+        ></script>
     </body>
 </html>

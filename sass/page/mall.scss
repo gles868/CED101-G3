@@ -9,265 +9,145 @@ body {
     background-repeat: no-repeat;
     background-size: 100%;
 }
+html {
+    position: relative;
+}
+div.shop_box {
+    width: 90%;
 
-/* ========================== 商品櫥窗 & 人物 ========================== */
-
-div.shop_big_box {
-    width: 100%;
+    margin: 0 auto;
     display: flex;
-    /* flex-direction: row; */
-}
-div.shopbox {
-    display: flex;
-}
-div.girl > img {
-    height: 400px;
-    margin-top: 160px;
-    margin: 160px auto auto 90px;
-}
-div.girl {
-    width: 25%;
-    z-index: -999;
 }
 div.shop {
-    /* width: 75%; */
-    margin-left: 70px;
-    height: 580px;
-    width: 920px;
-    position: relative;
+    width: 70%;
+    margin: 0 auto 20px auto;
+}
+div.girl > img {
+    // height: 400px;
+    // margin-top: 160px;
+    width: 75%;
+    margin: 100px auto auto 90px;
+}
+div.girl {
+    width: 30%;
+    z-index: -1;
+}
+div.list_box {
+    color: #ffffff;
     display: flex;
-    /* border: 3px solid red; */
+    width: 70%;
+    font-size: 20px;
+    margin: 30px auto 20px auto;
+    justify-content: space-evenly;
+}
+div.pro_all {
+    background-color: #ffffff;
+    color: #863186;
+    padding: 3px 5px 3px 5px;
+    text-align: center;
+    border: 3px solid #863186;
+    border-radius: 15px;
+    text-decoration: none;
+}
+div.pro_att {
+    background-color: #ffffff;
+    color: #863186;
+    width: 12%;
+    padding: 3px 5px 3px 5px;
+    text-align: center;
+    border: 3px solid #863186;
+    border-radius: 15px;
+    text-decoration: none;
+}
+div.pro_def {
+    background-color: #ffffff;
+    color: #863186;
+    width: 12%;
+    padding: 3px 5px 3px 5px;
+    text-align: center;
+    border: 3px solid #863186;
+    border-radius: 15px;
+    text-decoration: none;
+}
+div.pro_ass {
+    background-color: #ffffff;
+    color: #863186;
+    width: 12%;
+    padding: 3px 5px 3px 5px;
+    text-align: center;
+    border: 3px solid #863186;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+/* ===================================全部商品=================================== */
+
+div.allPro_box {
+    width: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-div.shop > img {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* ========================== 商品第一排 ========================== */
-
-div.product_box {
     margin: 0 auto;
-    z-index: 999;
-    width: 70%;
-    display: flex;
+}
+div.attPro_box {
+    width: 80%;
+    display: none;
     flex-direction: column;
-    // margin-top: 120px;
-    // margin-left: 50px;
-    // position: absolute;
-    // top: 50px;
-    /* border: 3px solid red; */
-    // left: 0;
+    margin: 0 auto;
 }
-
-div.one_probox {
+div.defPro_box {
+    width: 80%;
+    display: none;
+    flex-direction: column;
+    margin: 0 auto;
+}
+div.assPro_box {
+    width: 80%;
+    display: none;
+    flex-direction: column;
+    margin: 0 auto;
+}
+div.pro_big_box1 {
     display: flex;
-    z-index: 999;
     width: 100%;
-    /* padding: 0px 10px 0px 10px; */
     align-items: flex-end;
     justify-content: space-around;
 }
-/* div.pro1 {
-  color: floralwhite;
-  display: flex;
-  flex-direction: column;
-} */
-div.pro1_name,
-div.pro1_price {
-    width: 100%;
-    margin: 0 auto;
-}
-
-div.pro1 {
-    width: 15%;
-}
-div.pro1_photo {
-    font-size: 0;
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* ============================================================= */
-div.pro2_name,
-div.pro2_price {
-    width: 100%;
-    margin: 0 auto;
-}
-div.pro2 {
-    width: 15%;
-}
-div.pro2_photo {
-    font-size: 0;
-    width: 80%;
-    margin: 0 auto;
-}
-/* ============================================================= */
-div.pro3_name,
-div.pro3_price {
-    width: 100%;
-    margin: 0 auto;
-}
-div.pro3 {
-    width: 15%;
-}
-div.pro3_photo {
-    font-size: 0;
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* ========================== 商品第二排 ========================== */
-
-div.two_probox {
+div.pro_big_box2 {
     display: flex;
-    z-index: 999;
     width: 100%;
-    /* padding: 0px 10px 0px 10px; */
     align-items: flex-end;
     justify-content: space-around;
+}
+div.pro_big_box3 {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+div.pro_name,
+div.pro_price {
+    width: 100%;
+    margin: 0 auto;
+}
+div.pro_price {
     margin-top: 10px;
 }
-
-div.pro4_name,
-div.pro4_price {
-    width: 100%;
-    margin: 0 auto;
-}
-div.pro4 {
-    width: 15%;
-}
-div.pro4_photo {
-    font-size: 0;
-    width: 70%;
-    margin: 0 auto;
-}
-
-/* ============================================================= */
-
-div.pro5_name,
-div.pro5_price {
-    width: 100%;
-    margin: 0 auto;
-}
-div.pro5 {
-    width: 15%;
-}
-div.pro5_photo {
-    font-size: 0;
-    width: 70%;
-    margin: 0 auto;
-}
-
-/* ============================================================= */
-
-div.pro6_name,
-div.pro6_price {
-    width: 100%;
-    margin: 0 auto;
-}
-div.pro6 {
-    width: 15%;
-}
-div.pro6_photo {
-    font-size: 0;
-    width: 70%;
-    margin: 0 auto;
-}
-
-/* ========================== 商品第三排 ========================== */
-
-div.three_probox {
-    display: flex;
-    z-index: 999;
-    width: 100%;
-    /* padding: 0px 10px 0px 10px; */
-    align-items: flex-end;
-    justify-content: space-around;
-    margin-top: 10px;
-}
-
-div.pro7_name,
-div.pro7_price {
-    width: 100%;
-    margin: 0 auto;
-}
-div.pro7 {
-    width: 15%;
-}
-div.pro7_photo {
-    font-size: 0;
-    width: 70%;
-    margin: 0 auto;
-}
-
-/* ============================================================= */
-
-div.pro8_name,
-div.pro8_price {
-    width: 100%;
-    margin: 0 auto;
-}
-div.pro8 {
-    width: 15%;
-}
-div.pro8_photo {
-    font-size: 0;
-    width: 70%;
-    margin: 0 auto;
-}
-
-/* ============================================================= */
-
-div.pro9_name,
-div.pro9_price {
-    width: 100%;
-    margin: 0 auto;
-}
-div.pro9 {
-    width: 15%;
-}
-div.pro9_photo {
-    font-size: 0;
-    width: 70%;
-    margin: 0 auto;
-}
-
 div.box {
-    color: floralwhite;
+    color: #ffffff;
+    width: 20%;
     display: flex;
+    margin-bottom: 10px;
     flex-direction: column;
     text-align: center;
     text-shadow: 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
 }
+div.pro_photo {
+    font-size: 0;
+    width: 70%;
+    margin: 0 auto;
+}
 
-/* =============================商品篩選================================ */
-div.list_box {
-    display: flex;
-    z-index: 9999;
-    width: 100%;
-    color: #ffffff;
-    // justify-content: center;
-    // align-items: center;
-}
-.list_text {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    div {
-        background-color: #ca4cca;
-        padding: 5px;
-    }
-}
+/* ===================================攻擊商品=================================== */
 
 /* ===================================泡泡=================================== */
 .bubble {
@@ -275,10 +155,8 @@ div.list_box {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    /*z-index defult value=1*/
+    height: 66%;
     z-index: -1;
-    /*upgrade gpu rendering*/
     transform: translateZ(0);
 }
 
@@ -291,7 +169,6 @@ div.list_box {
     border-radius: 100%;
 }
 
-/* glow of the bubbles*/
 .bubble li:before {
     position: absolute;
     left: 20%;
@@ -300,7 +177,8 @@ div.list_box {
     content: '';
     background: rgba(255, 255, 255, 0.3);
     display: block;
-    height: 25%;
+    // height: 25%;
+    height: 5%;
     border-radius: 100%;
 }
 
@@ -346,14 +224,14 @@ div.list_box {
     background: rgba(71, 156, 22, 0.5);
 }
 
-/* .bubble li:nth-child(5) {
-  width: 30px;
-  height: 30px;
-  right: 1%;
-  animation-duration: 16s;
-  animation-delay: 1.2s;
-  background: rgba(31, 160, 6, 0.3);
-} */
+.bubble li:nth-child(5) {
+    width: 30px;
+    height: 30px;
+    left: 23%;
+    animation-duration: 16s;
+    animation-delay: 1.2s;
+    background: rgba(31, 160, 6, 0.3);
+}
 
 .bubble li:nth-child(6) {
     width: 35px;
@@ -369,6 +247,139 @@ div.list_box {
         transform: translateY(5vh);
     }
     100% {
-        transform: translateY(-90vh);
+        transform: translateY(-55vh);
+    }
+}
+
+// ======================燈箱======================
+.product {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // overflow-y: auto;
+    margin: auto auto;
+    z-index: 99;
+    opacity: 1;
+
+    /* width: 75%; */
+    // // margin-left: 70px;
+    // height: 580px;
+    // width: 920px;
+    // position: relative;
+    // display: flex;
+    /* border: 3px solid red; */
+    // display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000007e;
+
+    /* ========================== 商品 ========================== */
+    div.pro_complete_box {
+        // margin: 100px auto;
+        z-index: 1;
+        width: 50%;
+        display: flex;
+        margin: 200px auto;
+        padding: 40px 0 0 0;
+        // background-color: #fff;
+        background-image: url('/img/cartbac.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        position: relative;
+    }
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    //=============================左半邊=============================
+
+    div.pro_complete_left {
+        // border: 1px solid red;
+        width: 50%;
+        z-index: 1;
+        text-shadow: 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
+    }
+    div.pro_complete_photo {
+        width: 60%;
+        margin: 0 auto;
+    }
+    div.pro_complete_price_box {
+        border: 1px solid pink;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        width: 70%;
+        margin: 20px auto;
+        text-align: center;
+        background-color: rgb(141, 52, 119);
+    }
+    div.pro_complete_price_box > img {
+        width: 18%;
+    }
+    div.pro_complete_price {
+        text-align: center;
+        font-size: 20px;
+        padding: 10px;
+        margin-left: 40px;
+        color: #ffffff;
+        text-shadow: 0 0 0.5em #ca4cca, 0 0 0.5em #ca4cca, 0 0 0.5em #ca4cca;
+    }
+    div.pro_complete_amount_box {
+        border: 1px solid pink;
+        text-align: center;
+        display: flex;
+        width: 70%;
+        margin: 20px auto;
+        text-align: center;
+    }
+    div.pro_complete_text {
+        text-align: center;
+        font-size: 20px;
+        padding: 10px;
+
+        color: #ffffff;
+        text-shadow: 0 0 0.5em #ca4cca, 0 0 0.5em #ca4cca, 0 0 0.5em #ca4cca;
+    }
+
+    //=============================右半邊=============================
+    div.pro_complete_right {
+        width: 50%;
+        text-shadow: 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
+        color: #ffffff;
+    }
+    div.pro_complete_name_box {
+        margin-top: 10px;
+    }
+    div.pro_complete_name {
+        font-size: 28px;
+        text-align: center;
+    }
+    div.pro_complete_content_box {
+        margin-top: 10px;
+    }
+    div.content {
+        font-size: 18px;
+        line-height: 55px;
+    }
+
+    /* =========================購物車和直接購買============================ */
+    div.addandbuy_box {
+        // border: 1px solid black;
+        padding: 20px 0 20px 0;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin: 0 auto;
+    }
+    span.addButton {
+        font-size: 20px;
+    }
+    span.buyButton {
+        font-size: 20px;
     }
 }

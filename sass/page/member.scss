@@ -1,3 +1,5 @@
+@import'../style';
+
 * {
   box-sizing: border-box;
 }
@@ -5,40 +7,427 @@ li{
   list-style-type: none;
 }
 
+p {
+  font-size: $p;
+}
+h1 {
+  font-size: $h1;
+}
+h2 {
+  font-size: $h2;
+}
+h3 {
+  font-size: $h3;
+}
+h4 {
+  font-size: $h4;
+}
+h5 {
+  font-size: $h5;
+}
+
 body{  
   width: 100%;
   background-image: url(../img/membg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
   }
 
 .memTopOut{
   width: 100%;
 }
 .memTop{
-  width: 65%;
+  width: 80%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  border: 1px solid blue;
+  border: 3px solid ivory;
+  border-radius: 10px;
+  box-shadow: 0 0 0.4em ivory;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .mempic{
   width: 40%;
-  border:1px solid red;
+  // border:1px solid red;
   text-align: center;
 }
 
 .mempic > img {
-  width: 70%;
+  width: 50%;
   border-radius: 50%;
+  padding: 10px;
 
 }
 
-.memdataMid,.memdataRight{
-  width: 40%;
-  border: 1px solid orange;
+.memdata{
+  width: 50%;
+  // border: 1px solid yellow;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  color: ivory;  
+  color: ivory;
+  padding: 10px;
+}
+
+// ==========會員進度條開始==========
+
+.memLevel{
+  width: 100%;
+  margin: 3rem auto;
+}
+
+.memLevProgress{
+  width: 80%;
+  margin: 0 auto;
+}
+.memLevTitle{
+  width: 80%;
+  margin: 5px auto;
+  display: flex;
+  justify-content: space-between;
+  color: ivory;
+}
+// ==========會員進度條結束==========
+
+// ==========選單切換開始==========
+.memMenu{
+  width: 100%;
+  margin: 3rem auto;
+}
+.memMenuOut{
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.memMenuOut > button{
+  border-radius: 0px;
+  box-shadow: 0 0 0.4em ivory;
+  cursor: pointer;
+}
+
+// .memMenuOut > button:hover{
+//   background-color: white !important;;
+//   color: black !important;;
+// }
+
+i{
+  margin: auto 5px;
+}
+
+.memClassOut,
+.memKeepOut,
+.memOrderOut,
+.memInfoOut{
+  width: 100%;
+}
+.memContent{
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 80%;
+  margin: 1rem auto;
+  padding: 10px;
+  border: 3px solid white;
+  box-shadow: 0 0 0.4em ivory;
+  border-radius: 10px;
+
+}
+.memMainAreaClass{
+  // border: 1px solid white;
+  width: 80%;
+  margin: 1rem auto;
+  text-align: center;
+  display: flex;
+}
+
+#courseDate,
+#courseStatus{
+  // border: 1px solid red;
+  width: 50%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+//日曆
+.courseDate{
+  color: white;
+}
+
+//------課程狀態頁籤開始--------
+.courseStatusDetailOut{
+  width: 80%;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid white;
+  box-shadow: 0 0 0.4em ivory;
+}
+
+.courseStatus{
+  // border: 1px solid orange;
+  width: 70%;
+  margin: 1rem auto;
+  display: none;
+}
+  
+ 
+  .CRD{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    border-bottom: 1px dotted black;
+  }
+  .CFD_Top{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+  }
+
+  .CFD_Out{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .courseRegDetail,
+  .courseFinishDetail,
+  .courseIngDetail{
+    padding: 10px;
+  }
+
+  #tab > ul{
+    display: flex;
+  }
+
+  #tab > ul > li{
+    border: 1px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .tab-content-1,
+  .tab-content-2,
+  .tab-content-3{
+    background-color: white;
+  }
+  .tab-content-2,.tab-content-3{
+    display: none;    
+  }
+
+  .CRD_Text{
+    // border: 1px solid blue;
+    width: 40%;
+    color: black;
+    text-align: center;
+    align-items: center;
+    line-height: 3rem;
+    padding: 10px;
+  }
+
+  .courseCancel{
+    // border: 1px solid black;
+    position: relative;
+    width: 15%;
+  }
+
+  .courseCancel button{
+    position: absolute;
+    // border: 1px solid red;
+    height: 10%;
+    width: 100%;
+    top: 50%;
+    right: 10%;
+  }
+
+  // --------已完課--------
+.CFD_Bottom{
+  width: 100%;
+  margin: 1rem auto;
+}
+
+.CFD_BottomComm{
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.CFD_commTitle{
+  background-color: rgba(128, 128, 128, 0.5);
+  padding: 5px;
+  text-align: center;
+}
+
+//評價星星開始
+// .CFD_commStar,
+// .CFD_commText{
+//   border: 1px solid red;
+// }
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 3em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+//評價星星結束
+
+.CFD_commText>form{
+  font-size: 24px;
+}
+.CFD_commText>form>input{
+width: 80%;
+}
+
+//-------我的收藏------
+#memKeepTitle > ul{
+  width: 70%;
+  // border: 1px solid red;
+  margin: 0 auto;
+}
+#memKeepTitle > ul{
+  display: flex;
+}
+#memKeepTitle > ul >li{
+  border: 1px solid white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+  .memKeepCourse,
+  .memKeepPro{
+    background-color: white;
+    width: 70%;
+    margin: 0 auto;
+  }
+  .memKeepPro{
+    display: none;    
+  }
+
+  .CRD_Text{
+    // border: 1px solid blue;
+    width: 40%;
+    color: black;
+    text-align: center;
+    align-items: center;
+    line-height: 3rem;
+    padding: 10px;
+  }
+  .memKeepCourseBtn{
+    width: 30%;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .MKP_pic{
+    position: relative;
+    text-align: center;
+    width: 50%;
+  }
+  .MKP_pic > img{
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    // box-shadow: 0 0 0.4em rgb(201, 10, 207);  
+  }
+
+//-------歷史訂單------
+
+//-------個人資料------
+.memInfo{
+  display: flex;
+  color: white;
+}
+.memInfoLeft{
+  border: 1px solid red;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 30px;
+}
+.memInfoRight{
+  border: 1px solid black;
+  width: 60%;
+}
+
+.memhead{
+  // border:1px solid red;
+  text-align: center;
+}
+
+.memhead > img {
+  width: 60%;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.memInfoLeft > .memPoint{
+  text-align: center;
+}
+
+.memInfoFormOut{
+  width: 100%;
+  padding: 30px;
+
+  .memInfoForm{
+    width: 80%;
+    margin: 0 auto;
+
+    .MIF_Data{
+      display: flex;
+      justify-content: space-around;
+      line-height: 2rem;
+      margin: 30px;
+      .MIF_Left{
+        border: 1px solid red;
+        text-align: center;
+        width: 30%;
+      }
+      .MIF_Right{
+        border: 1px solid black;
+        width: 60%;
+      }
+    }
+  }
 }
