@@ -28,7 +28,7 @@ h5 {
 
 body{  
   width: 100%;
-  background-image: url(../img/membg.jpg);
+  background-image: url(../../img/membg_1.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -41,33 +41,34 @@ body{
 .memTop{
   width: 80%;
   margin: 0 auto;
+  padding: 30px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   border: 3px solid ivory;
   border-radius: 10px;
   box-shadow: 0 0 0.4em ivory;
   background-color: rgba(255, 255, 255, 0.2);
+  .memTopUp{
+    display: flex;
+    justify-content: space-between;
+  .mempic{
+    width: 40%;
+    text-align: center;
+    }
+    .mempic > img {
+      width: 50%;
+      border-radius: 50%;
+      }
+  }  
 }
-.mempic{
-  width: 40%;
-  // border:1px solid red;
-  text-align: center;
-}
-
-.mempic > img {
-  width: 50%;
-  border-radius: 50%;
-  padding: 10px;
-
-}
-
 .memdata{
   width: 50%;
-  // border: 1px solid yellow;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   color: ivory;
+  text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
+
   padding: 10px;
 }
 
@@ -75,7 +76,7 @@ body{
 
 .memLevel{
   width: 100%;
-  margin: 3rem auto;
+  margin: 1rem auto;
 }
 
 .memLevProgress{
@@ -88,6 +89,9 @@ body{
   display: flex;
   justify-content: space-between;
   color: ivory;
+  @include textShadowHeader;
+  // text-shadow: 0 0 0.4em #000dc3, 0 0 0.4em #000dc3, 0 0 0.4em #000dc3;                    
+
 }
 // ==========會員進度條結束==========
 
@@ -269,7 +273,7 @@ i{
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 fieldset, label { margin: 0; padding: 0; }
-body{ margin: 20px; }
+// body{ margin: 20px; }
 
 /****** Style Star Rating Widget *****/
 

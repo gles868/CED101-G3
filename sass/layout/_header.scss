@@ -99,7 +99,6 @@ header{
                         text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
                         font-family: $navFont;
                         font-size: 22px;
-                        letter-spacing: $titleLetterSpacing;
                         display: flex;
                         align-content: center;
                         &:hover{
@@ -119,7 +118,7 @@ header{
                         text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
                         font-family: $navFont;
                         font-size: 22px;
-                        letter-spacing: $titleLetterSpacing;
+                        letter-spacing: $letterSpacing;
                         &:hover{
                             text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
                         }

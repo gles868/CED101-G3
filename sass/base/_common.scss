@@ -1,4 +1,4 @@
-//  顏色變數
+//  color 顏色 
 $purple: #58009a;
 $purplered: #742274;
 $darkpurple: #351360;
@@ -10,55 +10,43 @@ $lightyellow: #ffffaa;
 $white: #fff;
 $darkgray: #191925; // footer bgcolor
 
-//  字體變數
-$navFont: '思源宋體';  // 只有導覽列要使用此字體
+//header文字的陰影 by魚
+@mixin textShadowHeader {
+    text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
+}
+//  font 字體 
+$navFont: '思源宋體';  // 這是導覽列的字體，其餘皆使用已預設的微軟正黑體
 
-// -- 字體大小
-$p: 16px;
+$p: 14px;
 $h1: 48px;
 $h2: 36px;
 $h3: 28px;
 $h4: 24px;
 $h5: 18px; 
 
-// -- 標題樣式
-$fontWeight: 600;
-$titleLetterSpacing: 3px;
+// $title
+$letterSpacing: 3px;
+$lineHeight: 10px;
 
-// -- 段落文字樣式
-$paraLetterSpacing: 1.5px;
-$lineHeight: 24px;
-
-//  紫色按鈕樣式: 用 @include載入
+//  button 按鈕 
 @mixin btnPurple{
     background-color: $purple;
     color: #fff;
     width: 140px; 
     height: 48px;  
-    border: 1px solid lighten($purple, 8%);
+    border: 1px solid transparent;
     outline: none;
     border-radius: 25px; 
     font-size: $h5;
     font-weight: 400;
-    letter-spacing: $titleLetterSpacing;
+    letter-spacing: $letterSpacing;
     text-align: center;
     text-decoration: none;
     text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
-    margin: 30px 0;
+    margin: 20px 30px;
     cursor: pointer;
-    box-shadow: 0 0 10px $lightpurple;
     &:hover{
         background-color: lighten($purple, 8%);
-        transition: background-color 0.2s;
+        transition: background-color .2s;
     }
 }
-
-// -- **不能用** 標題樣式: 用 @include載入，代入參數更改'字體大小'及'顏色'
-// ex. @include titleStyle($h3, #fff);
-// @mixin titleStyle($titleSize, $color){ 
-//     font-size: $titleSize;
-//     font-weight: 600;
-//     color: $color;
-//     letter-spacing: 3px;
-//     text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
-// }
