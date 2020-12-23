@@ -3,32 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麻瓜特訓班 | 首頁</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="css/index.css">
-    <title>麻瓜特訓班 | 首頁</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
 </head>
 
 <body>
-    <!-- <header>
+    <header>
         <nav>
-            <ul class="nav">
-                <li><a href="course.html">課程總覽</a></li>
-                <li><a href="teacher.html">教師總覽</a></li>
-                <li>
-                    <a href="index.html"><img src="./img/logo.png"></a>
-                </li>
-                <li><a href="mall.html">商城</a></li>
-                <li><a href="game.html">小遊戲</a></li>
-            </ul>
-            <ul class="nav-right">
-                <li><a href="member.html"><i class="fas fa-user-circle fa-lg"></i></a></li>
-                <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
-            </ul>
+            <div class="menu_toggle">
+                <input type="checkbox">
+                <ul class="nav">
+                    <li><a href="course.html">課程總覽</a></li>
+                    <li><a href="teacher.html">教師總覽</a></li>
+                    <li>
+                        <a href="index.html"><img src="./img/logo.png"></a>
+                    </li>
+                    <li><a href="mall.html">商城</a></li>
+                    <li><a href="game.html">小遊戲</a></li>
+                </ul>
+                <!-- <ul class="nav-right">
+                    <li><a href="member.html"><i class="fas fa-user-circle fa-lg"></i></a></li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+                </ul> -->
+                <div>
+                    <span class="ham"></span> 
+                    <span class="ham"></span> 
+                    <span class="ham"></span>
+                </div>
+            </div>
         </nav>
-    </header> -->
-    <section id="first">
-        
-    </section>
+    </header>
+
+    <!-- <nav id="nav"> -->
+        <!-- <div id="menu_toggle">
+          <input type="checkbox">
+          <ul class="nav">
+            <li class="browse"><a href="./intro.html">選錄旅書</a></li>
+            <li class="about"><a href="./about.html">關於我們</a></li>
+            <li class="login">
+              <span id="spanLogin">會員登入</span>
+            </li>
+          </ul>
+          <span class="ham"></span> 
+          <span class="ham"></span> 
+          <span class="ham"></span>  
+        </div> -->
+    <!-- </nav> -->
+    
+    <div id="pinContainer"> <!-- scroll magic觸發點 -->
+        <!-- <section class="first one">
+            <div class="para">
+                <p>
+                    在三千年後，眾魔法師與邪惡勢力爆發過無數次戰爭，傷亡眾多的魔法師，<br>
+                    為了魔法世界的和平，培養更多麻瓜成為魔法師，對抗邪惡勢力，<br>
+                    要成為魔法師，必須學會以下課程⋯
+                </p>
+            </div>
+            <div class="witch">
+                <img src="img/index/[first]witch.svg" alt="" width="250px">
+            </div>
+        </section> -->
+        <section class="first two -on">
+            <!-- <div class="para">
+                <p>
+                    在三千年後，眾魔法師與邪惡勢力爆發過無數次戰爭，傷亡眾多的魔法師，<br>
+                    為了魔法世界的和平，培養更多麻瓜成為魔法師，對抗邪惡勢力，<br>
+                    要成為魔法師，必須學會以下課程⋯
+                </p>
+            </div> -->
+            <div class="lay01 full"></div>
+            <div class="lay02 full"></div>
+            <div class="lay03 full"></div>
+            <div class="lay04 full"></div>
+            <div class="lay05 full"></div>
+            <div class="lay06 full">
+                <p>
+                    <!-- 在三千年後，眾魔法師與邪惡勢力爆發過無數次戰爭，傷亡眾多的魔法師，<br>
+                    為了魔法世界的和平，培養更多麻瓜成為魔法師，對抗邪惡勢力，<br>
+                    要成為魔法師，必須學會以下課程⋯ -->
+                </p>
+            </div>
+        </section>
+    </div>  
+
     <section id="second">
         <div class="wrapper">
             <div class="title">
@@ -38,21 +101,35 @@
             <div class="container">
                 <div class="card card01">
                     <div class="content">
-                        <h3>飛行學</h3>
-                        <p>飛行學授課內容飛行學授課內容飛行學授課內容</p>
+                        <h3>飛行術</h3>
+                        <p>
+                            傳授如何進入隱身狀態，安排補血時機及定點放置
+                            <!-- 長時間下來可以增加續戰力 -->
+                        </p>
+                        <p>課程價格</p>
+                        <p>報名人數</p>
                     </div>
                 </div>
                 <div class="card card02">
                     <div class="content">
-                        <h3>飛行學</h3>
-                        <p>飛行學授課內容飛行學授課內容飛行學授課內容</p>
+                        <h3>光箭術</h3>
+                        <p>
+                            傳授如何進入隱身狀態，安排補血時機及定點放置
+                            <!-- 長時間下來可以增加續戰力 -->
+                        </p>
+                        <p>課程價格</p>
+                        <p>報名人數</p>
                     </div>
                 </div>
                 <div class="card card03">
                     <div class="content">
-                        <h3>飛行學</h3>
-                        <p>飛行學授課內容飛行學授課內容飛行學授課內容</p>
-                        <p>飛行學授課內容飛行學授課內容飛行學授課內容</p>
+                        <h3>隱身術</h3>
+                        <p>
+                            傳授如何進入隱身狀態，安排補血時機及定點放置
+                            <!-- 長時間下來可以增加續戰力 -->
+                        </p>
+                        <p>課程價格</p>
+                        <p>報名人數</p>
                     </div>
                 </div>
             </div>
@@ -64,22 +141,33 @@
             </div>
         </div>
     </section>
+<!-- <p>
+    在三千年後，眾魔法師與邪惡勢力爆發過無數次戰爭，傷亡眾多的魔法師，<br>
+    為了魔法世界的和平，培養更多麻瓜成為魔法師，對抗邪惡勢力，<br>
+    要成為魔法師，必須學會以下課程⋯
+</p> -->
+
     <section id="third">
 
     </section>
     <section id="fourth">
         <div class="wrapper">
             <div class="left">
-                <img src="img/index/[signUpLesson]star.png" alt="" width="480px">
+                <img src="img/index/[signUpLesson]star.png" alt="" width="450px">
+                <img src="img/index/[signUpLesson]star_s.png" alt="" width="195px">
             </div>    
             <div class="text_content">
-                <h2>立刻加入我們</h2>
+                <h2>加入我們！</h2>
                 <button class="btn-purple" onclick="location.href='course.html'">我要報名</button>
             </div>
             <div class="right">
-                <img src="img/index/[signUpLesson]teacher.png" alt="" width="300px">
+                <img src="img/index/[signUpLesson]teacher.png" alt="" width="280px">
                 <img src="img/index/[signUpLesson]magic_circle.png" alt="" width="500px">
+                <img src="img/index/[signUpLesson]magic_circle_s.png" alt="" width="163px">
             </div>
+        </div>
+        <div class="cloud">
+            <img src="img/index/[signUpLesson]clouds.png" alt="" height="375px">
         </div>
     </section>
     <section id="fifth">
@@ -89,6 +177,8 @@
     <footer>
         <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
     </footer>
+
+    <script src="js/index.js"></script>
 </body>
 
 </html>

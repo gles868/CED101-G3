@@ -29,23 +29,13 @@ $titleLetterSpacing: 3px;
 $paraLetterSpacing: 1.5px;
 $lineHeight: 24px;
 
-// -- **不能用** 標題樣式: 用 @include載入，代入參數更改'字體大小'及'顏色'
-// ex. @include titleStyle($h3, #fff);
-// @mixin titleStyle($titleSize, $color){ 
-//     font-size: $titleSize;
-//     font-weight: 600;
-//     color: $color;
-//     letter-spacing: 3px;
-//     text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
-// }
-
 //  紫色按鈕樣式: 用 @include載入
 @mixin btnPurple{
     background-color: $purple;
     color: #fff;
     width: 140px; 
     height: 48px;  
-    border: 1px solid transparent;
+    border: 1px solid lighten($purple, 8%);
     outline: none;
     border-radius: 25px; 
     font-size: $h5;
@@ -56,8 +46,19 @@ $lineHeight: 24px;
     text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
     margin: 30px 0;
     cursor: pointer;
+    box-shadow: 0 0 10px $lightpurple;
     &:hover{
         background-color: lighten($purple, 8%);
-        transition: background-color .2s;
+        transition: background-color 0.2s;
     }
 }
+
+// -- **不能用** 標題樣式: 用 @include載入，代入參數更改'字體大小'及'顏色'
+// ex. @include titleStyle($h3, #fff);
+// @mixin titleStyle($titleSize, $color){ 
+//     font-size: $titleSize;
+//     font-weight: 600;
+//     color: $color;
+//     letter-spacing: 3px;
+//     text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
+// }
