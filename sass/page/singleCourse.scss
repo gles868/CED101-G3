@@ -1,14 +1,259 @@
 @import '../style.scss';
 
-main.main{
+
+body {
+    background-image: url(../img/course_cards/bg03.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main.main {
     width: 1140px;
     margin: 0 auto;
 }
 
-section.course_info{
+section.course_info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+    margin-top: 8%;
 
 
-    div.course_card_block{
-        
+    div.course_card_block {
+        width: 550px;
+        position: relative;
+
+        img.course_card {
+            position: absolute;
+            top: 12%;
+            left: 28%;
+        }
+
+    }
+
+    div.info_block {
+        height: 480px;
+        margin: auto;
     }
 }
+
+section.teacher_info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+
+    div.teacher_img_block {
+        width: 550px;
+        height: 650px;
+        position: relative;
+
+        img.teacher_bg {
+            margin-top: 40%;
+
+        }
+
+        img.teacher01 {
+            position: absolute;
+            top: 0;
+            left: 8%;
+        }
+
+        p.register {
+            color: #57EDEA;
+            font-size: $h4;
+            letter-spacing: 3px;
+            position: relative;
+            left: 35%;
+            bottom: 18%;
+        }
+        p.register:hover{
+           text-shadow: 1px 0px 0.2em #73d7d6, 0 0 0.2em #73d7d6, 0 0 0.2em #73d7d6;
+        }
+    }
+
+
+    div.teacher_info_block {
+        height: 480px;
+        margin: auto;
+    }
+}
+
+section.accessory_container{
+
+    p.title{
+        color: white;
+        font-size: $h4;
+        letter-spacing: 3px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    p.name{
+        color: white;
+        font-size: $h5;
+        letter-spacing: 3px;
+        text-align: center;
+    }
+
+    div.titleimg_block{
+        width: 400px;
+        margin: 0 auto;
+        margin-bottom: 40px;
+    }
+
+    div.accessories_needed{
+        display: flex;
+        justify-content: space-between;
+        width: 600px;
+        margin: 0 auto;
+        margin-bottom: 100px;
+    }
+}
+
+section.course_container{
+    
+    p{
+        color: white;
+        font-size: $h4;
+        letter-spacing: 3px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    div.titleimg_block{
+        width: 400px;
+        margin: 0 auto;
+        margin-bottom: 100px;
+    }
+
+    div.course_cards{
+        width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+    
+        div.card {
+            position: relative;
+        
+            p.course_title {
+                font-size: 24px;
+                letter-spacing: 3px;
+                color: #e6b619;
+                position: absolute;
+                top: -8%;
+                right: 35%;
+            }
+        
+            p.course_price {
+                font-size: 18px;
+                letter-spacing: 3px;
+                color: #dcb127;
+                position: absolute;
+                top: 80%;
+                right: 35%;
+            }
+        
+            p.course_class {
+                font-size: 18px;
+                letter-spacing: 3px;
+                color: #dcb127;
+                position: absolute;
+                top: 70%;
+                right: 25%;
+            }
+        }
+     
+    }
+}
+
+
+//愛心開始
+.center-content {
+    position: absolute;
+    top: -5%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.heart {
+    display: block;
+    width: 1em;
+    height: 1em;
+    font-size: 18px;
+
+    .heart-inner {
+
+        &,
+        &::before,
+        &::after {
+            background-color: white;
+
+        }
+    }
+
+    &.loved .heart-inner {
+
+        &,
+        &::before,
+        &::after {
+            background-color: rgb(249, 48, 48);
+        }
+    }
+
+    &.loved {
+        animation: loved .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+}
+
+.heart-inner {
+    display: block;
+    width: 1em;
+    height: 1em;
+    transform: rotate(45deg);
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        border-radius: 1em;
+    }
+
+    &::before {
+        left: 0;
+        top: -50%;
+    }
+
+    &::after {
+        left: -50%;
+        top: 0;
+    }
+}
+
+@keyframes loved {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(0.6, 0.8);
+    }
+
+    35% {
+        transform: scale(0.8, 0.6);
+    }
+
+    70% {
+        transform: scale(1.4);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+//愛心結束
+
+
