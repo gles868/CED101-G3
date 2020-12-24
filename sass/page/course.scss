@@ -7,12 +7,11 @@ main.main {
 }
 
 body {
-    background-image:
-        url(../img/course_cards/bg01.png),
-        url(../img/course_cards/bg06.png);
-    background-size: 100%;
+    background-image: url(../img/course_cards/bg01.png);
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: 0 0, 0 0;
+    background-color: rgb(50, 25, 120);
+    // background-position: 0 0, 0 0;
 
 }
 
@@ -21,7 +20,7 @@ div.course_filter {
     background-image: url(../img/course_cards/bg01.png);
     background-size: 100%;
     background-repeat: no-repeat;
-    opacity: 0.8;
+    opacity: 0.9;
     width: 960px;
     height: 400px;
     margin: 0 auto;
@@ -30,11 +29,12 @@ div.course_filter {
     margin-bottom: 100px;
     background-image: url(../img/course_cards/filter_background.png);
     background-repeat: no-repeat;
+    position: relative;
 
     img.img_bat {
         position: absolute;
-        top: 20%;
-        left: 30%;
+        top: -10%;
+        left: 20%;
     }
 }
 
@@ -64,7 +64,7 @@ div.course_class {
 
         h4 {
             color: white;
-            background-color: purple;
+            background-color: $purplered;
             border-radius: 15px;
             padding: 10px 12px 10px 15px;
             margin-right: 20px;
@@ -95,7 +95,7 @@ div.course_price {
 
         h4 {
             color: white;
-            background-color: purple;
+            background-color: $purplered;
             border-radius: 15px;
             padding: 10px 15px;
             cursor: pointer;
@@ -110,6 +110,7 @@ div.all_course_card {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    position: relative;
     // border: 1px solid red;
 
     div.card {
@@ -122,6 +123,13 @@ div.all_course_card {
     img {
         cursor: pointer;
     }
+    div.cloud_img{
+        // border: 1px solid red;
+        position: absolute;
+        top: 55%;
+        left: 30%;
+        z-index: -1;
+    }
 }
 
 
@@ -131,9 +139,9 @@ div.card {
     p.course_title {
         font-size: 24px;
         letter-spacing: 3px;
-        color: #dcb127;
+        color: #e6b619;
         position: absolute;
-        top: 10%;
+        top: -8%;
         right: 35%;
     }
 
