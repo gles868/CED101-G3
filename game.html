@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下樓梯！</title>
+    <script src="https://cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
+    <!-- <link rel="stylesheet" href="./header.css"> -->
+    <style>
+        body {
+            position: relative;
+        }
+
+        .cover {
+            width: 550px;
+            height: 200px;
+            position: absolute;
+
+            left: 28%;
+            bottom: 0;
+            /* background-image: url(./assets/start.png); */
+            background-color: blueviolet;
+            border: 1px solid blue;
+            /* z-index: 999; */
+        }
+
+        /* .cover img {
+            width: 100%;
+            height: 100%;
+        } */
+        .cover p {
+            font-size: 40px;
+        }
+
+        canvas {
+            margin: 0 auto !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <header>
+        <nav class="nav_box">
+            <div class="nav_left_box">
+                <a href="#" target="_parent">課程總覽</a>
+                <a href="#" target="_parent">教師總覽</a>
+            </div>
+            <div class="logo_box">
+                <a href="./index.html"><img src="./images/logosmall.png" /></a>
+            </div>
+            <div class="nav_right_box">
+                <a href="#" target="_parent">商城</a>
+                <a href="#" target="_parent">小遊戲</a>
+            </div>
+
+            <div class="icon"></div>
+        </nav>
+    </header> -->
+    <form>
+        <input type="button" value="Start count!" onClick="timedCount()">
+        <input type="text" id="txt">
+    </form>
+    <script src="./js/game.js"></script>
+
+    <div class="game-box">
+        <div id="canvas"></div>
+    </div>
+
+
+    <!-- <div class="cover">
+        <p>遊戲規則</p>
+    </div> -->
+
+    <script>
+
+    </script>
+</body>
+
+</html>
