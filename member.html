@@ -3,25 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="stylesheet"
-            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-            crossorigin="anonymous"
-        />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+
         <!-- Bootstrap 的 CSS -->
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-            crossorigin="anonymous"
-        />
-        <!-- JavaScript -->
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
-            integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
-            crossorigin="anonymous"
-        ></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
+        
+        <!-- Jquery 大家都裝npm就可拿掉-->        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" ></script>
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="./css/member.css" />
         <title>麻瓜特訓班 | 會員中心</title>
@@ -123,7 +112,7 @@
         <section class="memClassOut menuCG">
             <div class="memContent">
                 <div class="memMainAreaClass">
-                    <div id="courseDate" style="background-color: white">
+                    <div id="courseDate" style="background-color: white;box-shadow: 0 0 0.2em white, 0 0 0.4em white, 0 0 0.3em white">
                         <h3>查看課表時間</h3>
                     </div>
                     <div id="courseStatus" style="background-color: gray; color: white">
@@ -131,30 +120,36 @@
                     </div>
                 </div>
 
-                <div class="courseDate courseCG">查看課表時間日曆在這邊</div>
+                <div class="courseDate courseCG">
+                    <div id='calendar-container'>
+                        <div id='calendar'>
+                        </div>
+                        
+                    </div>
+                </div>
 
                 <div class="courseStatus courseCG">
                     <div id="tab">
                         <!-- 頁籤按鈕 -->
                         <ul>
-                            <li id="tab-content-1" style="color: black; background-color: white">
+                            <li id="tab-content-1" style="color: white;text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4; background-color: rgba(170, 170, 170, 0.5)">
                                 <div>
                                     <div class="courseReg">
-                                        <h5>已報名</h5>
+                                        <h4>已報名</h4>
                                     </div>
                                 </div>
                             </li>
                             <li id="tab-content-2" style="color: white">
                                 <div>
                                     <div class="courseFinish">
-                                        <h5>已完課</h5>
+                                        <h4>已完課</h4>
                                     </div>
                                 </div>
                             </li>
                             <li id="tab-content-3" style="color: white">
                                 <div>
                                     <div class="courseIng">
-                                        <h5>上課中</h5>
+                                        <h4>上課中</h4>
                                     </div>
                                 </div>
                             </li>
@@ -167,17 +162,17 @@
                                     <img src="./img/course_cards/course_07.png" alt="" srcset="" />
                                 </div>
                                 <div class="CRD_Text">
-                                    <h5 class="CRD_TextTit">煉金術</h5>
+                                    <h4 class="CRD_TextTit">煉金術</h4>
                                     <div class="CRD_TextCon">
-                                        <p>煉金術是一門很厲害的課</p>
-                                        <p>煉金術是一門很厲害的課</p>
-                                        <p>煉金術是一門很厲害的課</p>
-                                        <p>煉金術是一門很厲害的課</p>
-                                        <p>煉金術是一門很厲害的課</p>
+                                        <h5>煉金術是一門很厲害的課</h5>
+                                        <h5>煉金術是一門很厲害的課</h5>
+                                        <h5>煉金術是一門很厲害的課</h5>
+                                        <h5>煉金術是一門很厲害的課</h5>
+                                        <h5>煉金術是一門很厲害的課</h5>
                                     </div>
                                 </div>
                                 <div class="courseCancel">
-                                    <button type="button" class="btn btn-outline-dark">取消報名</button>
+                                    <button type="button" class="btn btn-outline-light">取消報名</button>
                                 </div>
                             </div>
 
@@ -186,17 +181,17 @@
                                     <img src="./img/course_cards/course_07.png" alt="" srcset="" />
                                 </div>
                                 <div class="CRD_Text">
-                                    <h5 class="CRD_TextTit">煉金術2</h5>
+                                    <h4 class="CRD_TextTit">煉金術2</h4>
                                     <div class="CRD_TextCon">
-                                        <p>煉金術是一門很厲害的課</p>
-                                        <p>煉金術是一門很厲害的課</p>
-                                        <p>煉金術是一門很厲害的課</p>
-                                        <p>煉金術是一門很厲害的課</p>
-                                        <p>煉金術是一門很厲害的課</p>
+                                        <h5>煉金術是一門很厲害的課</h5>
+                                        <h5>煉金術是一門很厲害的課</h5>
+                                        <h5>煉金術是一門很厲害的課</h5>
+                                        <h5>煉金術是一門很厲害的課</h5>
+                                        <h5>煉金術是一門很厲害的課</h5>
                                     </div>
                                 </div>
                                 <div class="courseCancel">
-                                    <button type="button" class="btn btn-outline-dark">取消報名</button>
+                                    <button type="button" class="btn btn-outline-light">取消報名</button>
                                 </div>
                             </div>
 
@@ -205,17 +200,17 @@
                                     <img src="./img/course_cards/course_07.png" alt="" srcset="" />
                                 </div>
                                 <div class="CRD_Text">
-                                    <h5 class="CRD_TextTit">煉金術3</h5>
+                                    <h4 class="CRD_TextTit">煉金術3</h4>
                                     <div class="CRD_TextCon">
-                                        <p>煉金術是一門很厲害的課</p>
-                                        <p>煉金術是一門很厲害的課</p>
-                                        <p>煉金術是一門很厲害的課</p>
-                                        <p>煉金術是一門很厲害的課</p>
-                                        <p>煉金術是一門很厲害的課</p>
+                                        <h5>煉金術是一門很厲害的課</h5>
+                                        <h5>煉金術是一門很厲害的課</h5>
+                                        <h5>煉金術是一門很厲害的課</h5>
+                                        <h5>煉金術是一門很厲害的課</h5>
+                                        <h5>煉金術是一門很厲害的課</h5>
                                     </div>
                                 </div>
                                 <div class="courseCancel">
-                                    <button type="button" class="btn btn-outline-dark">取消報名</button>
+                                    <button type="button" class="btn btn-outline-light">取消報名</button>
                                 </div>
                             </div>
                         </div>
@@ -228,20 +223,20 @@
                                         <img src="./img/course_cards/course_03.png" alt="" srcset="" />
                                     </div>
                                     <div class="CRD_Text">
-                                        <div class="CRD_TextTit">治癒學</div>
+                                        <h4 class="CRD_TextTit">治癒學</h4>
                                         <div class="CRD_TextCon">
-                                            <p>治癒學是一門療癒身心的課</p>
-                                            <p>治癒學是一門療癒身心的課</p>
-                                            <p>治癒學是一門療癒身心的課</p>
-                                            <p>治癒學是一門療癒身心的課</p>
-                                            <p>治癒學是一門療癒身心的課</p>
+                                            <h5>治癒學是一門療癒身心的課</h5>
+                                            <h5>治癒學是一門療癒身心的課</h5>
+                                            <h5>治癒學是一門療癒身心的課</h5>
+                                            <h5>治癒學是一門療癒身心的課</h5>
+                                            <h5>治癒學是一門療癒身心的課</h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="CFD_Bottom">
                                     <div class="CFD_BottomComm">
                                         <div class="CFD_commTitle">
-                                            <h5>評論本課</h5>
+                                            <h4>評論本課</h4>
                                         </div>
                                         <!-- 評價星星開始 -->
                                         <div class="CFD_commStar">
@@ -311,116 +306,20 @@
                                             </fieldset>
                                         </div>
                                         <!-- 評價星星結束 -->
-
+                                        <!-- 評論老師/課程 -->
                                         <div class="CFD_commText">
                                             <form action="">
-                                                <input type="text" placeholder="評論老師/課程" />
-                                                <button type="submit"><i class="far fa-paper-plane"></i></button>
+                                                <div id="input-container"><input type="text" placeholder="評論老師/課程" /></div>
+                                                <div id="button-container">
+                                                    <button class="user"><i class="fa fa-user"></i></button
+                                                    ><button class="send"><i class="fas fa-paper-plane"></i></i></button>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="CFD_Out">
-                                <div class="CFD_Top">
-                                    <div class="CRD_pic">
-                                        <img src="./img/course_cards/course_03.png" alt="" srcset="" />
-                                    </div>
-                                    <div class="CRD_Text">
-                                        <div class="CRD_TextTit">治癒學</div>
-                                        <div class="CRD_TextCon">
-                                            <p>治癒學是一門療癒身心的課</p>
-                                            <p>治癒學是一門療癒身心的課</p>
-                                            <p>治癒學是一門療癒身心的課</p>
-                                            <p>治癒學是一門療癒身心的課</p>
-                                            <p>治癒學是一門療癒身心的課</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="CFD_Bottom">
-                                    <div class="CFD_BottomComm">
-                                        <div class="CFD_commTitle">
-                                            <h5>評論本課</h5>
-                                        </div>
-                                        <!-- 評價星星開始 -->
-                                        <div class="CFD_commStar">
-                                            <fieldset class="rating">
-                                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                                    class="full"
-                                                    for="star5"
-                                                    title="Awesome - 5 stars"
-                                                ></label>
-                                                <input
-                                                    type="radio"
-                                                    id="star4half"
-                                                    name="rating"
-                                                    value="4 and a half"
-                                                /><label
-                                                    class="half"
-                                                    for="star4half"
-                                                    title="Pretty good - 4.5 stars"
-                                                ></label>
-                                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                                    class="full"
-                                                    for="star4"
-                                                    title="Pretty good - 4 stars"
-                                                ></label>
-                                                <input
-                                                    type="radio"
-                                                    id="star3half"
-                                                    name="rating"
-                                                    value="3 and a half"
-                                                /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                                    class="full"
-                                                    for="star3"
-                                                    title="Meh - 3 stars"
-                                                ></label>
-                                                <input
-                                                    type="radio"
-                                                    id="star2half"
-                                                    name="rating"
-                                                    value="2 and a half"
-                                                /><label
-                                                    class="half"
-                                                    for="star2half"
-                                                    title="Kinda bad - 2.5 stars"
-                                                ></label>
-                                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                                    class="full"
-                                                    for="star2"
-                                                    title="Kinda bad - 2 stars"
-                                                ></label>
-                                                <input
-                                                    type="radio"
-                                                    id="star1half"
-                                                    name="rating"
-                                                    value="1 and a half"
-                                                /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                                    class="full"
-                                                    for="star1"
-                                                    title="Sucks big time - 1 star"
-                                                ></label>
-                                                <input type="radio" id="starhalf" name="rating" value="half" /><label
-                                                    class="half"
-                                                    for="starhalf"
-                                                    title="Sucks big time - 0.5 stars"
-                                                ></label>
-                                            </fieldset>
-                                        </div>
-                                        <!-- 評價星星結束 -->
-
-                                        <div class="CFD_commText">
-                                            <form action="">
-                                                <input type="text" placeholder="評論老師/課程" />
-                                                <button type="submit"><i class="far fa-paper-plane"></i></button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- 從這邊開始加入第二個收藏項目 -->
                         </div>
                         <!-- 上課中(當天) -->
                         <div class="tab-content-3 con">
@@ -429,13 +328,13 @@
                                     <img src="./img/course_cards/course_03.png" alt="" srcset="" />
                                 </div>
                                 <div class="CRD_Text">
-                                    <div class="CRD_TextTit">射箭術</div>
+                                    <h4 class="CRD_TextTit">射箭術</h4>
                                     <div class="CRD_TextCon">
-                                        <p>射箭術是一門攻擊型的課</p>
-                                        <p>射箭術是一門攻擊型的課</p>
-                                        <p>射箭術是一門攻擊型的課</p>
-                                        <p>射箭術是一門攻擊型的課</p>
-                                        <p>射箭術是一門攻擊型的課</p>
+                                        <h5>射箭術是一門攻擊型的課</h5>
+                                        <h5>射箭術是一門攻擊型的課</h5>
+                                        <h5>射箭術是一門攻擊型的課</h5>
+                                        <h5>射箭術是一門攻擊型的課</h5>
+                                        <h5>射箭術是一門攻擊型的課</h5>
                                     </div>
                                 </div>
                             </div>
@@ -451,8 +350,8 @@
             <div class="memContent">
                 <div id="memKeepTitle">
                     <ul>
-                        <li id="memKeepCourse" style="background-color: white; color: black"><h5>課程</h5></li>
-                        <li id="memKeepPro" style="color: white"><h5>商品</h5></li>
+                        <li id="memKeepCourse" style="background-color: rgba(170, 170, 170, 0.5); color: white;text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4; "><h4>課程</h4></li>
+                        <li id="memKeepPro" style="color: white"><h4>商品</h4></li>
                     </ul>
                 </div>
                 <div class="memKeepContent">
@@ -462,21 +361,21 @@
                                 <img src="./img/course_cards/course_07.png" alt="" srcset="" />
                             </div>
                             <div class="CRD_Text">
-                                <h5 class="CRD_TextTit">收藏煉金術1</h5>
+                                <h4 class="CRD_TextTit">收藏煉金術1</h4>
                                 <div class="CRD_TextCon">
-                                    <p>煉金術是一門很厲害的課</p>
-                                    <p>煉金術是一門很厲害的課</p>
-                                    <p>煉金術是一門很厲害的課</p>
-                                    <p>煉金術是一門很厲害的課</p>
-                                    <p>煉金術是一門很厲害的課</p>
+                                    <h5>煉金術是一門很厲害的課</h5>
+                                    <h5>煉金術是一門很厲害的課</h5>
+                                    <h5>煉金術是一門很厲害的課</h5>
+                                    <h5>煉金術是一門很厲害的課</h5>
+                                    <h5>煉金術是一門很厲害的課</h5>
                                 </div>
                             </div>
                             <div class="memKeepCourseBtn">
                                 <a href="/registration.html"
-                                    ><button type="button" class="btn btn-outline-dark">報名本課</button></a
+                                    ><button type="button" class="btn btn-outline-light">報名本課</button></a
                                 >
                                 <div class="MKC_cancel">
-                                    <button type="button" class="btn btn-outline-dark">取消收藏</button>
+                                    <button type="button" class="btn btn-outline-light">取消收藏</button>
                                 </div>
                             </div>
                         </div>
@@ -486,21 +385,21 @@
                                 <img src="./img/course_cards/course_07.png" alt="" srcset="" />
                             </div>
                             <div class="CRD_Text">
-                                <h5 class="CRD_TextTit">收藏煉金術2</h5>
+                                <h4 class="CRD_TextTit">收藏煉金術2</h4>
                                 <div class="CRD_TextCon">
-                                    <p>煉金術是一門很厲害的課</p>
-                                    <p>煉金術是一門很厲害的課</p>
-                                    <p>煉金術是一門很厲害的課</p>
-                                    <p>煉金術是一門很厲害的課</p>
-                                    <p>煉金術是一門很厲害的課</p>
+                                    <h5>煉金術是一門很厲害的課</h5>
+                                    <h5>煉金術是一門很厲害的課</h5>
+                                    <h5>煉金術是一門很厲害的課</h5>
+                                    <h5>煉金術是一門很厲害的課</h5>
+                                    <h5>煉金術是一門很厲害的課</h5>
                                 </div>
                             </div>
                             <div class="memKeepCourseBtn">
                                 <a href="/registration.html"
-                                    ><button type="button" class="btn btn-outline-dark">報名本課</button></a
+                                    ><button type="button" class="btn btn-outline-light">報名本課</button></a
                                 >
                                 <div class="MKC_cancel">
-                                    <button type="button" class="btn btn-outline-dark">取消收藏</button>
+                                    <button type="button" class="btn btn-outline-light">取消收藏</button>
                                 </div>
                             </div>
                         </div>
@@ -511,21 +410,21 @@
                                 <img src="./img/props/p13.png" alt="" srcset="" />
                             </div>
                             <div class="CRD_Text">
-                                <h5 class="CRD_TextTit">發光水波蛋蛋1</h5>
+                                <h4 class="CRD_TextTit">發光水波蛋蛋1</h4>
                                 <div class="CRD_TextCon">
-                                    <p>發光水波蛋蛋是很厲害的道具</p>
-                                    <p>發光水波蛋蛋是很厲害的道具</p>
-                                    <p>發光水波蛋蛋是很厲害的道具</p>
-                                    <p>發光水波蛋蛋是很厲害的道具</p>
-                                    <p>發光水波蛋蛋是很厲害的道具</p>
+                                    <h5>發光水波蛋蛋是很厲害的道具</h5>
+                                    <h5>發光水波蛋蛋是很厲害的道具</h5>
+                                    <h5>發光水波蛋蛋是很厲害的道具</h5>
+                                    <h5>發光水波蛋蛋是很厲害的道具</h5>
+                                    <h5>發光水波蛋蛋是很厲害的道具</h5>
                                 </div>
                             </div>
                             <div class="memKeepCourseBtn">
                                 <a href="/mall.html"
-                                    ><button type="button" class="btn btn-outline-dark">直接購買</button></a
+                                    ><button type="button" class="btn btn-outline-light">直接購買</button></a
                                 >
                                 <div class="MKC_cancel">
-                                    <button type="button" class="btn btn-outline-dark">取消收藏</button>
+                                    <button type="button" class="btn btn-outline-light">取消收藏</button>
                                 </div>
                             </div>
                         </div>
@@ -535,21 +434,21 @@
                                 <img src="./img/props/p13.png" alt="" srcset="" />
                             </div>
                             <div class="CRD_Text">
-                                <h5 class="CRD_TextTit">發光水波蛋蛋2</h5>
+                                <h4 class="CRD_TextTit">發光水波蛋蛋2</h4>
                                 <div class="CRD_TextCon">
-                                    <p>發光水波蛋蛋是很厲害的道具</p>
-                                    <p>發光水波蛋蛋是很厲害的道具</p>
-                                    <p>發光水波蛋蛋是很厲害的道具</p>
-                                    <p>發光水波蛋蛋是很厲害的道具</p>
-                                    <p>發光水波蛋蛋是很厲害的道具</p>
+                                    <h5>發光水波蛋蛋是很厲害的道具</h5>
+                                    <h5>發光水波蛋蛋是很厲害的道具</h5>
+                                    <h5>發光水波蛋蛋是很厲害的道具</h5>
+                                    <h5>發光水波蛋蛋是很厲害的道具</h5>
+                                    <h5>發光水波蛋蛋是很厲害的道具</h5>
                                 </div>
                             </div>
                             <div class="memKeepCourseBtn">
                                 <a href="/mall.html"
-                                    ><button type="button" class="btn btn-outline-dark">直接購買</button></a
+                                    ><button type="button" class="btn btn-outline-light">直接購買</button></a
                                 >
                                 <div class="MKC_cancel">
-                                    <button type="button" class="btn btn-outline-dark">取消收藏</button>
+                                    <button type="button" class="btn btn-outline-light">取消收藏</button>
                                 </div>
                             </div>
                         </div>
@@ -562,7 +461,99 @@
         <!-- 歷史訂單開始 -->
         <section class="memOrderOut menuCG" style="display: none">
             <div class="memContent">
-                <div class="memOrder">訂單開始</div>
+                <div class="memOrder">歷史訂單區
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button
+                                    class="accordion-button"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne"
+                                    aria-expanded="true"
+                                    aria-controls="collapseOne"
+                                >
+                                    Accordion Item #1
+                                </button>
+                            </h2>
+                            <div
+                                id="collapseOne"
+                                class="accordion-collapse collapse"
+                                aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample"
+                            >
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong> It is hidden by default, until the
+                                    collapse plugin adds the appropriate classes that we use to style each element. These classes
+                                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                                    modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                                    that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                                    does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo"
+                                    aria-expanded="false"
+                                    aria-controls="collapseTwo"
+                                >
+                                    Accordion Item #2
+                                </button>
+                            </h2>
+                            <div
+                                id="collapseTwo"
+                                class="accordion-collapse collapse"
+                                aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample"
+                            >
+                                <div class="accordion-body">
+                                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the
+                                    collapse plugin adds the appropriate classes that we use to style each element. These classes
+                                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                                    modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                                    that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                                    does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree"
+                                    aria-expanded="false"
+                                    aria-controls="collapseThree"
+                                >
+                                    Accordion Item #3
+                                </button>
+                            </h2>
+                            <div
+                                id="collapseThree"
+                                class="accordion-collapse collapse"
+                                aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample"
+                            >
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                                    collapse plugin adds the appropriate classes that we use to style each element. These classes
+                                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                                    modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                                    that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                                    does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
             </div>
         </section>
         <!-- 歷史訂單結束 -->
@@ -572,8 +563,16 @@
             <div class="memContent">
                 <div class="memInfo">
                     <div class="memInfoLeft">
-                        <div class="memhead">
-                            <img src="./img/wenhead.jpg" alt="" />
+                        <div class="memheadBox">
+                            <div class="memhead">
+                                <img src="./img/wenhead.jpg" alt="" />
+                            </div>
+                            <div class="memheadCG">
+                                <div class="memheadCG_pic"><i class="fas fa-camera"></i>
+                                    <!-- <input type="file" id="mem_ava_edit" name="mem_ava_edit" accept="image/*"> ==0 -->
+                                </div>
+
+                            </div>
                         </div>
                         <h5 class="memPoint">可折抵點數:100點</h5>
                     </div>
@@ -588,23 +587,31 @@
                                         </div>
                                         <div class="MIF_Data">
                                             <h5 class="MIF_Left">會員姓名:</h5>
-                                            <h5 class="MIF_Right">小溫溫</h5>
+                                            <h5 class="MIF_Right MIF_Default">小溫溫</h5>
+                                            <input type="text" class="memInfoCG" placeholder="">
                                         </div>
                                         <div class="MIF_Data">
                                             <h5 class="MIF_Left">會員帳號:</h5>
-                                            <h5 class="MIF_Right">wenwen0487</h5>
-                                        </div>
-                                        <div class="MIF_Data">
-                                            <h5 class="MIF_Left">會員密碼:</h5>
-                                            <h5 class="MIF_Right">123456</h5>
-                                        </div>
-                                        <div class="MIF_Data">
-                                            <h5 class="MIF_Left">會員信箱:</h5>
-                                            <h5 class="MIF_Right">wenwen0487@gmail.com</h5>
+                                            <h5 class="MIF_Right MIF_Default">wenwen0487</h5>
+                                            <input type="text" class="memInfoCG" placeholder="wenwen0487">
                                         </div>
 
+                                        <div class="MIF_Data">
+                                            <h5 class="MIF_Left">會員密碼:</h5>
+                                            <h5 class="MIF_Right MIF_Default">123456</h5>
+                                            <div class="memInfoCG">
+                                                <input type="text" class="memPsw" placeholder="請輸入舊密碼(6~20英數字)">
+                                                <input type="text" class="memPsw" placeholder="請輸入新密碼(6~20英數字)">
+                                                <input type="text" class="memPsw" placeholder="請再次輸入新密碼">                                      </div>
+                                            </div>
+                                        <div class="MIF_Data">
+                                            <h5 class="MIF_Left">會員信箱:</h5>
+                                            <h5 class="MIF_Right MIF_Default">wenwen0487@gmail.com</h5>
+                                            <input type="text" class="memInfoCG" placeholder="">
+                                        </div>
                                         <div class="memInfoBtn">
-                                            <button type="button">修改資料</button>
+                                            <button type="button" id="memInfoCG" class="btn btn-outline-light">修改資料</button>
+
                                         </div>
                                     </table>
                                 </form>
@@ -620,24 +627,15 @@
             <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
         </footer>
 
-        <!-- member.JS -->
-        <script src="./js/member.js"></script>
 
-        <!-- body 結束標籤之前，載入Bootstrap 的 JS 及其相依性安裝(jQuery、Popper) -->
-        <script
-            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"
-        ></script>
+        <!-- fullcalendar -->
+         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script>
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css">
+         
+         <script src="js/member.js"></script>
+       
+
+         <!-- body 結束標籤之前 bootstrap  -->
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     </body>
 </html>

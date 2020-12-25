@@ -28,7 +28,7 @@ h5 {
 
 body{  
   width: 100%;
-  background-image: url(../../img/membg_1.png);
+  background-image: url(../../img/membg_2.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -44,10 +44,10 @@ body{
   padding: 30px;
   display: flex;
   flex-direction: column;
-  border: 3px solid ivory;
+  // border: 3px solid ivory;
   border-radius: 10px;
   box-shadow: 0 0 0.4em ivory;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.315);
   .memTopUp{
     display: flex;
     justify-content: space-between;
@@ -66,10 +66,8 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  color: ivory;
-  text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
-
   padding: 10px;
+  @include textShadowMem;
 }
 
 // ==========會員進度條開始==========
@@ -88,9 +86,8 @@ body{
   margin: 5px auto;
   display: flex;
   justify-content: space-between;
-  color: ivory;
-  @include textShadowHeader;
-  // text-shadow: 0 0 0.4em #000dc3, 0 0 0.4em #000dc3, 0 0 0.4em #000dc3;                    
+  color: ivory;    
+  @include textShadowMem;
 
 }
 // ==========會員進度條結束==========
@@ -113,12 +110,7 @@ body{
   cursor: pointer;
 }
 
-// .memMenuOut > button:hover{
-//   background-color: white !important;;
-//   color: black !important;;
-// }
-
-i{
+.memMenuOut > button > i{
   margin: auto 5px;
 }
 
@@ -129,11 +121,10 @@ i{
   width: 100%;
 }
 .memContent{
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.315);
   width: 80%;
   margin: 1rem auto;
   padding: 10px;
-  border: 3px solid white;
   box-shadow: 0 0 0.4em ivory;
   border-radius: 10px;
 
@@ -158,6 +149,37 @@ i{
 //日曆
 .courseDate{
   color: white;
+  @include textShadowMem;
+}
+
+//--------fullcalendar---------
+.fc-view-harness{
+  background-color: rgba(170, 170, 170, 0.5) !important;
+}
+
+.fc-today-button,
+.fc-dayGridMonth-button{
+  border-radius: 5px !important;
+  margin:auto 10px !important;
+  background-color: none !important;
+  box-shadow: 0 0 0.4em white, 0 0 0.4em white, 0 0 0.4em white !important;
+}
+.fc-prev-button,
+.fc-next-button{
+  border-radius: 5px !important;
+  margin: auto 3px !important;
+  background-color: none !important;
+  box-shadow: 0 0 0.4em white, 0 0 0.4em white, 0 0 0.4em white !important;
+}
+
+//多餘的class
+.fc--button,
+.fc-addRoom-button,
+.fc-addReservation-button,
+.fc-timeGridWeek-button,
+.fc-timeGridDay-button
+{
+  display: none !important;
 }
 
 //------課程狀態頁籤開始--------
@@ -172,7 +194,7 @@ i{
 
 .courseStatus{
   // border: 1px solid orange;
-  width: 70%;
+  width: 80%;
   margin: 1rem auto;
   display: none;
 }
@@ -206,7 +228,7 @@ i{
   }
 
   #tab > ul > li{
-    border: 1px solid white;
+    // border: 1px solid white;
     padding: 10px 20px;
     cursor: pointer;
   }
@@ -214,7 +236,7 @@ i{
   .tab-content-1,
   .tab-content-2,
   .tab-content-3{
-    background-color: white;
+    background-color: rgba(170, 170, 170, 0.5);
   }
   .tab-content-2,.tab-content-3{
     display: none;    
@@ -223,12 +245,14 @@ i{
   .CRD_Text{
     // border: 1px solid blue;
     width: 40%;
-    color: black;
-    text-align: center;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     line-height: 3rem;
     padding: 10px;
+    @include textShadowMem;    
   }
+    
 
   .courseCancel{
     // border: 1px solid black;
@@ -259,7 +283,7 @@ i{
 }
 
 .CFD_commTitle{
-  background-color: rgba(128, 128, 128, 0.5);
+  background-color: white;
   padding: 5px;
   text-align: center;
 }
@@ -331,30 +355,19 @@ width: 80%;
   display: flex;
 }
 #memKeepTitle > ul >li{
-  border: 1px solid white;
   padding: 10px 20px;
   cursor: pointer;
 }
 
   .memKeepCourse,
   .memKeepPro{
-    background-color: white;
+    background-color: rgba(170, 170, 170, 0.5);
     width: 70%;
     margin: 0 auto;
   }
   .memKeepPro{
     display: none;    
-  }
-
-  .CRD_Text{
-    // border: 1px solid blue;
-    width: 40%;
-    color: black;
-    text-align: center;
-    align-items: center;
-    line-height: 3rem;
-    padding: 10px;
-  }
+  }  
   .memKeepCourseBtn{
     width: 30%;
     align-items: center;
@@ -380,10 +393,10 @@ width: 80%;
 //-------個人資料------
 .memInfo{
   display: flex;
-  color: white;
+  @include textShadowMem;
 }
 .memInfoLeft{
-  border: 1px solid red;
+  // border: 1px solid red;
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -391,20 +404,41 @@ width: 80%;
   padding: 30px;
 }
 .memInfoRight{
-  border: 1px solid black;
+  // border: 1px solid black;
   width: 60%;
 }
 
-.memhead{
+.memheadBox{
   // border:1px solid red;
+  position: relative;
   text-align: center;
+  .memhead > img {
+    width: 70%;
+    border-radius: 50%;
+    padding: 10px;
+    }
+  .memheadCG{
+    // border: 1px solid rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    cursor: pointer;
+    bottom: 0;
+    right: 90px;
+    box-shadow: 0 0 0.4em white, 0 0 0.4em white, 0 0 0.4em white;;
+    .memheadCG_pic{
+      
+      i{
+        font-size: 25px;
+        margin: 0 auto;
+      }
+    }
+  }
 }
 
-.memhead > img {
-  width: 60%;
-  border-radius: 50%;
-  padding: 10px;
-}
+
 
 .memInfoLeft > .memPoint{
   text-align: center;
@@ -424,14 +458,113 @@ width: 80%;
       line-height: 2rem;
       margin: 30px;
       .MIF_Left{
-        border: 1px solid red;
+        // border: 1px solid red;
         text-align: center;
         width: 30%;
       }
-      .MIF_Right{
-        border: 1px solid black;
+      .MIF_Right,
+      .memInfoCG,
+      input{
+        // border: 1px solid black;
         width: 60%;
       }
+      .memPsw{
+        width: 100%;
+      }
+    }
+    .memInfoBtn{
+      text-align: center;
     }
   }
+}
+
+.MIF_Data input {
+  box-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4;
+}
+
+//修改欄位預設不占位
+.memInfoCG{
+  display: none;
+}
+.memInfoCG input:nth-child(1),
+.memInfoCG input:nth-child(2){
+  margin-bottom: 2rem;
+}
+
+//評論課程(點選icon切換)
+
+.CFD_commText button, input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+#input-container, #button-container {
+  display: inline-block;
+  font-size: 18px;
+}
+
+#input-container {
+  background: white;
+  padding: 4px;
+  border-radius: 6px;
+  position: relative;
+}
+
+#input-container:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 12px solid white;
+  border-right: 12px solid transparent;
+  border-left: 0 solid transparent;
+  position: absolute;
+  top: 0;
+}
+
+#button-container {
+  width: 36px;
+  height: 36px;
+  vertical-align: middle;
+  margin-left: 6px;
+  border-radius: 50%;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+#button-container.show .send {
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  top: 0;
+  left: 0;
+  background: #0091EA;
+}
+
+#button-container > button {
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  color: white;
+}
+
+#button-container > button.user {
+  background: #00C853;
+}
+
+#button-container > button.send {
+  background: none;
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  text-indent: -2px;
+  transition: all .2s;
+  border-radius: 50%;
 }
