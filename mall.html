@@ -215,11 +215,12 @@
             <li></li>
             <li></li>
             <li></li>
+            <li></li>
         </ul>
         <!-- 燈箱 -->
         <div class="product">
             <div class="pro_complete_box">
-                <i class="fas fa-times close"></i>
+                <div class="close"><img src="./img/close.png" /></div>
                 <div class="pro_complete_left">
                     <div class="pro_complete_photo">
                         <img src="/img/props/p5.png" />
@@ -230,7 +231,29 @@
                     </div>
                     <div class="pro_complete_amount_box">
                         <div class="pro_complete_text">數量</div>
-                        <div class="pro_complete_amount"></div>
+                        <div class="amount_input">
+                            <input
+                                id="min"
+                                class="butDec"
+                                name=""
+                                type="button"
+                                value="-"
+                            />
+                            <input
+                                id="quantity"
+                                name=""
+                                type="text"
+                                value="1"
+                            />
+                            <input
+                                id="addamount"
+                                class="butDec"
+                                name=""
+                                type="button"
+                                value="+"
+                            />
+                            <!-- <div class="pro_complete_amount"></div> -->
+                        </div>
                     </div>
                 </div>
                 <div class="pro_complete_right">
@@ -343,6 +366,29 @@
                     display: 'flex',
                 });
             });
+        });
+    </script>
+    <script>
+        $(function () {
+            var t = $('#quantity');
+            $('#addamount').click(function () {
+                t.val(parseInt(t.val()) + 1);
+                $('#min').removeAttr('disabled'); //當按加1時，解除$("#min")不可讀狀態
+                setTotal();
+            });
+            $('#min').click(function () {
+                if (parseInt(t.val()) > 1) {
+                    //判斷數量值大於1時才可以減少
+                    t.val(parseInt(t.val()) - 1);
+                } else {
+                    $('#min').attr('disabled', 'disabled'); //當$("#min")為1時，$("#min")不可讀狀態
+                }
+                setTotal();
+            });
+            function setTotal() {
+                $('#total').html((parseInt(t.val()) * 3.95).toFixed(2));
+            }
+            setTotal();
         });
     </script>
 </html>

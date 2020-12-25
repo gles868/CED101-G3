@@ -10,9 +10,13 @@ $lightyellow: #ffffaa;
 $white: #fff;
 $darkgray: #191925; // footer bgcolor
 
-//header文字的陰影 by魚
+//文字的陰影 by魚
 @mixin textShadowHeader {
     text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
+}
+@mixin textShadowMem {
+    color: white;
+    text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4;
 }
 //  font 字體 
 $navFont: '思源宋體';  // 這是導覽列的字體，其餘皆使用已預設的微軟正黑體

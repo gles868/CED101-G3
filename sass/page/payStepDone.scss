@@ -5,10 +5,24 @@ img {
     max-width: 100%;
 }
 body {
-    background-image: url(/img/cartbac.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-size: cover;
+    background: radial-gradient(
+        100% 100% at bottom center,
+        #f7f7b6,
+        #e96f92,
+        #75517d,
+        #1b2947
+    );
+    background: radial-gradient(
+        100% 100% at top center,
+        #1b2947 10%,
+        #75517d 40%,
+        #e96f92 65%,
+        #f7f7b6
+    );
+    background-attachment: fixed;
+    overflow-x: hidden;
+
+    // height: 500px;
 }
 
 div.done_big_box {
@@ -49,4 +63,32 @@ div.back > a {
 }
 div.back {
     padding: 0 30px 0 30px;
+}
+
+//RWD
+@media (max-width: 768px) {
+    div.done_text_box {
+        font-size: 26px;
+    }
+}
+@media (max-width: 575px) {
+    div.done_big_box {
+        flex-direction: column;
+        width: 80%;
+    }
+    div.girl {
+        width: 50%;
+        margin: 0 auto;
+    }
+    div.done_box {
+        width: 80%;
+        margin: 0 auto;
+        align-items: center;
+    }
+    div.back > a {
+        font-size: 18px;
+    }
+    div.backIndex_box {
+        margin: 0 auto;
+    }
 }
