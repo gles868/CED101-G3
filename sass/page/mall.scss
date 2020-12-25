@@ -49,6 +49,7 @@ div.pro_all {
     border-radius: 15px;
     text-decoration: none;
 }
+
 div.pro_att {
     background-color: #ffffff;
     color: #863186;
@@ -168,7 +169,6 @@ div.pro_photo {
     animation: bubble-ani 15s linear infinite;
     border-radius: 100%;
 }
-
 .bubble li:before {
     position: absolute;
     left: 20%;
@@ -177,22 +177,21 @@ div.pro_photo {
     content: '';
     background: rgba(255, 255, 255, 0.3);
     display: block;
-    // height: 25%;
-    height: 5%;
+    height: 25%;
     border-radius: 100%;
 }
 
 .bubble li:nth-child(1) {
     width: 30px;
     height: 30px;
-    left: 1.5%;
+    left: 7%;
     background: rgba(66, 180, 85, 0.3);
 }
 
 .bubble li:nth-child(2) {
     width: 40px;
     height: 40px;
-    left: 3%;
+    left: 10%;
     animation-duration: 13s;
     animation-delay: 1s;
     background: rgba(28, 117, 42, 0.986);
@@ -236,10 +235,18 @@ div.pro_photo {
 .bubble li:nth-child(6) {
     width: 35px;
     height: 35px;
-    left: 4%;
+    left: 29%;
     animation-duration: 16s;
     animation-delay: 2s;
     background: rgba(181, 255, 121, 0.384);
+}
+.bubble li:nth-child(7) {
+    width: 40px;
+    height: 40px;
+    left: 33%;
+    animation-duration: 10s;
+    animation-delay: 1s;
+    background: rgba(71, 156, 22, 0.658);
 }
 
 @keyframes bubble-ani {
@@ -291,10 +298,11 @@ div.pro_photo {
         background-size: 100%;
         position: relative;
     }
-    .close {
+    div.close {
         position: absolute;
         top: 20px;
         right: 20px;
+        width: 3%;
     }
     //=============================左半邊=============================
 
@@ -313,58 +321,80 @@ div.pro_photo {
         border-radius: 20px;
         text-align: center;
         display: flex;
-        width: 70%;
+        width: 65%;
         margin: 20px auto;
         text-align: center;
         background-color: rgb(141, 52, 119);
     }
     div.pro_complete_price_box > img {
-        width: 18%;
+        width: 16%;
     }
     div.pro_complete_price {
         text-align: center;
         font-size: 20px;
         padding: 10px;
-        margin-left: 40px;
+        margin-left: 50px;
         color: #ffffff;
         text-shadow: 0 0 0.5em #ca4cca, 0 0 0.5em #ca4cca, 0 0 0.5em #ca4cca;
     }
     div.pro_complete_amount_box {
-        border: 1px solid pink;
-        text-align: center;
         display: flex;
-        width: 70%;
-        margin: 20px auto;
+        margin: 0 auto 20px auto;
+
+        width: 65%;
+        justify-content: space-evenly;
         text-align: center;
+        align-items: center;
     }
     div.pro_complete_text {
-        text-align: center;
-        font-size: 20px;
-        padding: 10px;
-
+        font-size: 18px;
         color: #ffffff;
-        text-shadow: 0 0 0.5em #ca4cca, 0 0 0.5em #ca4cca, 0 0 0.5em #ca4cca;
+    }
+    .butDec {
+        color: rgb(0, 0, 0);
+        background-color: rgb(184, 69, 155);
+        border: 0px;
+    }
+    #quantity {
+        width: 50%;
+        font-size: 18px;
+        text-align: center;
+    }
+    #min {
+        font-size: 28px;
+        width: 30%;
+    }
+    #addamount {
+        font-size: 22px;
+        width: 30%;
+    }
+    div.amount_input {
+        display: flex;
+        width: 40%;
     }
 
     //=============================右半邊=============================
     div.pro_complete_right {
         width: 50%;
-        text-shadow: 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
-        color: #ffffff;
     }
     div.pro_complete_name_box {
         margin-top: 10px;
+        margin-bottom: 20px;
     }
     div.pro_complete_name {
         font-size: 28px;
         text-align: center;
+        text-shadow: 0 0 0.2em #f57af5, 0 0 0.2em #f57af5, 0 0 0.2em #f57af5;
+        color: #ffffff;
     }
     div.pro_complete_content_box {
         margin-top: 10px;
     }
     div.content {
-        font-size: 18px;
+        font-size: 22px;
         line-height: 55px;
+        text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+        color: #ffffff;
     }
 
     /* =========================購物車和直接購買============================ */
@@ -378,8 +408,20 @@ div.pro_photo {
     }
     span.addButton {
         font-size: 20px;
+        background-color: #ffffff;
+        padding: 5px;
+        text-align: center;
+        border: 3px solid #863186;
+        border-radius: 15px;
+        color: #863186;
     }
     span.buyButton {
         font-size: 20px;
+        background-color: #ffffff;
+        padding: 5px;
+        text-align: center;
+        border: 3px solid #863186;
+        border-radius: 15px;
+        color: #863186;
     }
 }
