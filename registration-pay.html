@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/registration-pay.css">
+
+</head>
+
+<body>
+
+    <div id="step1">
+        <h4><span class="highlight"> STEP1. 選擇付款方式</span></h4>
+        <div class="allBtn">
+            <div class="row justify-content-center">
+                <button type="button" class="btn btn-light">
+                    <img src="https://gitlab.com/loveabo103103/payment/raw/master/credit-card.svg" alt=""><br>
+                    信用卡/金融卡
+                </button>
+            </div>
+
+            <div class="row justify-content-center mt-3">
+                <button type="button" class="btn btn-light">
+                    <img src="https://gitlab.com/loveabo103103/payment/raw/master/atm.svg" alt=""><br>
+                    ATM 轉帳
+                </button>
+            </div>
+        </div>
+
+        <button id="goS2" type="button" class="btn btn-info">下一步</button>
+    </div>
+
+
+
+
+    <div id="step2" style="display: none">
+        <h4 style="text-align: center"><span class="highlight">STEP2. 填寫付款資訊</span></h4>
+        <p id="mark" style="text-align: center;font-weight: bolder;"></p>
+        <form id="myForm" class="allBtn" role="form" data-toggle="validator" style="display: none">
+            <div class="pay_input form-group">
+                <input type="radio" id="pay1" name="payMethod" value="oncePayment" required>
+                <label for="pay1"></label>
+                一次付款
+                <input class="ml-5" type="radio" id="pay2" name="payMethod" value="installment" required>
+                <label for="pay2"></label>
+                分期付款
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="pay_creditCard_number form-group">
+                <p>信用卡卡號 : </p>
+                <input type="text" required data-error="請填寫四位數" data-minlength="4" pattern="[0-9]{4}">
+                －
+                <input type="text" data-error="請填寫四位數" required data-minlength="4" pattern="[0-9]{4}">
+                －
+                <input type="text" required data-error="請填寫四位數" data-minlength="4" pattern="[0-9]{4}">
+                －
+                <input type="text" data-error="請填寫四位數" required data-minlength="4" pattern="[0-9]{4}">
+
+                <img src="https://gitlab.com/loveabo103103/payment/raw/master/visa.svg" alt="icon" width="41.4px">
+                <img src="https://gitlab.com/loveabo103103/payment/raw/master/mastercard.svg" alt="icon" width="37.9px">
+                <img src="https://gitlab.com/loveabo103103/payment/raw/master/jcb.svg" alt="icon" width="38px">
+                <div class="help-block with-errors"></div>
+            </div>
+
+            <div class="pay_creditCard_date form-group">
+                <p>有效年月 : </p>
+                <select name="month" required>
+                    <option value="">選擇</option>
+                    <option value="1">01</option>
+                </select>
+                /
+                <select name="year" required>
+                    <option value="">選擇</option>
+                    <option value="2019">2019</option>
+                </select>
+                年
+            </div>
+            <div class="pay_creditCard_last form-group">
+                <p>背面末三碼</p>
+                <input type="text" data-error="請填寫三位數" required data-minlength="3" pattern="[0-9]{3}">
+                <img src="https://gitlab.com/loveabo103103/payment/raw/master/back-three.svg" alt="icon" width="35.3px">
+                <div class="help-block with-errors"></div>
+
+            </div>
+            <div class="pay_mail form-group">
+                <p>填寫付款人信箱 : </p>
+                <input type="email" required data-error="請填寫正確信箱地址">
+                <div class="help-block with-errors"></div>
+
+            </div>
+            <div class="pay_check form-group">
+                <input class="form-check-input" type="checkbox" id="check" data-error="您尚未打勾" required>
+                <label class="form-check-label" for="check">
+                    請再次確認「訂單資訊」與「付款資訊」，付款完成後將發送通知信至您的 E-mail 信箱</label>
+                <br><a href="#">第三方支付金流平台服務條款</a>
+                <div class="help-block with-errors"></div>
+            </div>
+            <button id="goS3" type="submit" class="btn btn-info">下一步</button>
+        </form>
+
+
+
+
+
+        <form id="myForm5" class="allBtn" role="form" data-toggle="validator" style="display: none">
+            <table class="table table-hover">
+                <td>
+                    <tr>
+                        <th>銀行代碼</th>
+                        <th>013國泰世華銀行</th>
+                    </tr>
+                </td>
+                <td>
+                    <tr>
+                        <td>轉帳帳號</td>
+                        <td>0135000878787</td>
+                    </tr>
+                    <tr>
+                        <td>轉帳金額</td>
+                        <td>$600</td>
+                    </tr>
+                    <tr>
+                        <td>繳款期限</td>
+                        <td>2019年8月11日23點59分前</td>
+                    </tr>
+                </td>
+            </table>
+            <button id="goS3" type="submit" class="btn btn-info">去轉帳</button>
+        </form>
+    </div>
+
+
+
+
+    <div id="step3" style="display: none">
+        <h4 style="text-align: center"><span id="myTitle" class="highlight"></span></h4>
+        <div id="end" style="display: none">
+            <div class="down">
+                <img src="https://gitlab.com/loveabo103103/payment/raw/master/finish.svg" alt="">
+            </div>
+            <div class="finish">
+                <p>稍後將寄送訂單詳細資訊至您的E-mail</p>
+                <button id="goS1" type="button" class="btn btn-info">返回首頁</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+
+    <script src="./js/registration-pay.js"></script>
+
+</body>
+
+</html>
