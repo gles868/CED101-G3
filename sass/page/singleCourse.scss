@@ -41,6 +41,7 @@ section.teacher_info {
     display: flex;
     justify-content: space-between;
     margin-bottom: 100px;
+    border: 1px solid white;
 
     div.teacher_img_block {
         width: 550px;
@@ -66,8 +67,9 @@ section.teacher_info {
             left: 35%;
             bottom: 18%;
         }
-        p.register:hover{
-           text-shadow: 1px 0px 0.2em #73d7d6, 0 0 0.2em #73d7d6, 0 0 0.2em #73d7d6;
+
+        p.register:hover {
+            text-shadow: 1px 0px 0.2em #73d7d6, 0 0 0.2em #73d7d6, 0 0 0.2em #73d7d6;
         }
     }
 
@@ -78,9 +80,9 @@ section.teacher_info {
     }
 }
 
-section.accessory_container{
+section.accessory_container {
 
-    p.title{
+    p.title {
         color: white;
         font-size: $h4;
         letter-spacing: 3px;
@@ -88,20 +90,20 @@ section.accessory_container{
         margin-bottom: 20px;
     }
 
-    p.name{
+    p.name {
         color: white;
         font-size: $h5;
         letter-spacing: 3px;
         text-align: center;
     }
 
-    div.titleimg_block{
+    div.titleimg_block {
         width: 400px;
         margin: 0 auto;
         margin-bottom: 40px;
     }
 
-    div.accessories_needed{
+    div.accessories_needed {
         display: flex;
         justify-content: space-between;
         width: 600px;
@@ -110,9 +112,9 @@ section.accessory_container{
     }
 }
 
-section.course_container{
-    
-    p{
+section.course_container {
+
+    p {
         color: white;
         font-size: $h4;
         letter-spacing: 3px;
@@ -120,21 +122,21 @@ section.course_container{
         margin-bottom: 20px;
     }
 
-    div.titleimg_block{
+    div.titleimg_block {
         width: 400px;
         margin: 0 auto;
         margin-bottom: 100px;
     }
 
-    div.course_cards{
+    div.course_cards {
         width: 900px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
-    
+
         div.card {
             position: relative;
-        
+
             p.course_title {
                 font-size: 24px;
                 letter-spacing: 3px;
@@ -143,7 +145,7 @@ section.course_container{
                 top: -8%;
                 right: 35%;
             }
-        
+
             p.course_price {
                 font-size: 18px;
                 letter-spacing: 3px;
@@ -152,7 +154,7 @@ section.course_container{
                 top: 80%;
                 right: 35%;
             }
-        
+
             p.course_class {
                 font-size: 18px;
                 letter-spacing: 3px;
@@ -162,7 +164,7 @@ section.course_container{
                 right: 25%;
             }
         }
-     
+
     }
 }
 
@@ -254,6 +256,17 @@ section.course_container{
         transform: scale(1);
     }
 }
+
 //愛心結束
 
-
+section.calendar {
+    width: 1140px;
+    border: 1px solid yellow;
+    margin-bottom: 100px;
+    #calendar {
+        max-width: 1140px;
+        height: 600px;
+        margin: 0 auto;
+        color: white;
+    }
+}
