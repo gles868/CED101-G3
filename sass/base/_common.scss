@@ -1,4 +1,4 @@
-//  color 顏色 
+//  顏色變數
 $purple: #58009a;
 $purplered: #742274;
 $darkpurple: #351360;
@@ -18,9 +18,10 @@ $darkgray: #191925; // footer bgcolor
     color: white;
     text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4;
 }
-//  font 字體 
-$navFont: '思源宋體';  // 這是導覽列的字體，其餘皆使用已預設的微軟正黑體
+//  字體變數
+$navFont: '思源宋體';  // 只有導覽列要使用此字體
 
+// -- 字體大小
 $p: 14px;
 $h1: 48px;
 $h2: 36px;
@@ -28,27 +29,32 @@ $h3: 28px;
 $h4: 24px;
 $h5: 18px; 
 
-// $title
-$letterSpacing: 3px;
-$lineHeight: 10px;
+// -- 標題樣式
+$fontWeight: 600;
+$titleLetterSpacing: 3px;
 
-//  button 按鈕 
+// -- 段落文字樣式
+$paraLetterSpacing: 1.5px;
+$lineHeight: 24px;
+
+//  紫色按鈕樣式: 用 @include載入
 @mixin btnPurple{
     background-color: $purple;
     color: #fff;
     width: 140px; 
     height: 48px;  
-    border: 1px solid transparent;
+    border: 1px solid lighten($purple, 8%);
     outline: none;
     border-radius: 25px; 
     font-size: $h5;
     font-weight: 400;
-    letter-spacing: $letterSpacing;
+    letter-spacing: $titleLetterSpacing;
     text-align: center;
     text-decoration: none;
     text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
-    margin: 20px 30px;
+    margin: 30px 0;
     cursor: pointer;
+    box-shadow: 0 0 10px $lightpurple;
     &:hover{
         background-color: lighten($purple, 8%);
         transition: background-color .2s;

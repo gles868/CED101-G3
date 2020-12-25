@@ -1,0 +1,226 @@
+@import '../style';
+
+@mixin titleStyle{
+    font-weight: $fontWeight;
+    letter-spacing: $titleLetterSpacing;
+    margin: 10px;
+}
+@mixin paraStyle{
+    font-size: $p;
+    letter-spacing: $paraLetterSpacing;
+    line-height: $lineHeight;
+    margin: 10px;
+}
+@mixin starPercent{
+    font-family: none;
+    &::before{
+        content: "★★★★★";
+        position: absolute;
+        overflow: hidden;
+        z-index: 1;
+        left: 0px;
+        top: 0px;
+        color: gold;
+        text-shadow: 0 0 0.1em #fff;
+    }
+    &::after{
+        content: "★★★★★";
+        position: relative;
+        color: #ccc;
+        text-shadow: 0 0 0.05em #bebebe;
+    }
+    &:NOT([data-percent])::before, &[data-percent="0"]::before{
+        display: none;
+    }
+    &[data-percent="10"]::before{
+        width: 10%;
+    }
+    &[data-percent="20"]::before{
+        width: 20%;
+    }
+    &[data-percent="30"]::before{
+        width: 30%;
+    }
+    &[data-percent="40"]::before{
+        width: 40%;
+    }
+    &[data-percent="50"]::before{
+        width: 50%;
+    }
+    &[data-percent="60"]::before{
+        width: 60%;
+    }
+    &[data-percent="70"]::before{
+        width: 70%;
+    }
+    &[data-percent="80"]::before{
+        width: 80%;
+    }
+    &[data-percent="90"]::before{
+        width: 90%;
+    }
+    &[data-percent="100"]::before{
+        width: 100%;
+    }
+}
+
+header{
+    margin-top: -105px; 
+}
+.select{
+    // border: 1px solid olive;
+    position: fixed;
+    top: 15%;
+    left: 44%;
+    z-index: 99;
+    select{
+        border: 1px solid #fff;
+        width: 150px;
+        height: 33px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 23px;
+        color: #fff;
+        @include paraStyle;
+        padding: 5px;
+        cursor: pointer;
+        option{
+            color: $darkpurple;
+        }
+    }
+}
+
+#scrollPage{
+    .section{
+        background: {
+            image: url("../../img/teacher/teacher_bg.png");
+            repeat: no-repeat;
+            size: cover;
+        }
+        .container{
+            display: flex; 
+            align-items: flex-end;
+            justify-content: center; 
+            .tr{
+                border: 1px solid greenyellow;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                position: relative;
+                @media all and (max-width: 1140px){
+                    border: 1px solid slateblue;
+                }
+                .img{
+                    position: relative;
+                    img{
+                        // border: 1px solid steelblue;
+                        position: relative;
+                    }
+                    .shadow{
+                        width: 315px;
+                        height: 25px;
+                        position: absolute;
+                        left: 35px;
+                        bottom: -5px;
+                        border-radius: 50%;
+                        background-color: #171717;
+                        box-shadow: 0 0 6px 8px #171717;
+                        opacity: 40%;
+                    }
+                }
+            }
+            .wrapper{
+                border: 1px solid red;
+                display: flex;
+                flex-direction: column;
+                margin-left: 50px;
+                .intro{
+                    width: 600px;
+                    .title{
+                        // border: 1px solid seagreen;
+                        display: flex;
+                        h3{
+                            color: #fff;
+                            font-size: $h3;
+                            @include titleStyle;
+                            text-shadow: 0 0 0.6em #6600b4;
+                        }
+                        .star{
+                            // border: 1px solid tomato;
+                            display: inline-block;
+                            position: relative;
+                            font-size: 40px;
+                            @include starPercent;
+                            // transform: rotate(5deg);
+                        }
+                    }
+                    p{
+                        color: #fff;
+                        @include paraStyle;
+                        margin-top: 20px;
+                        height: 60px;
+                    }
+                }
+                .comm_card{
+                    // border: 1px solid wheat;
+                    display: flex;
+                    justify-content: flex-start;
+                    border-radius: 10px;
+                    width: 95%;
+                    margin: 20px;
+                    background-color: #7200ca47;
+                    box-shadow: 0 0 0.4em #9862c2, 0 0 0.05em #ae6ae3;
+                    .card{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        margin: 15px;
+                        width: 20%;
+                        min-width: 140px;
+                    .avatar{
+                            border: 1px solid teal;
+                            border-radius: 50%;
+                            width: 80px;
+                            height: 80px;
+                            overflow: hidden;
+                        } 
+                        p{
+                            // border: 1px solid peru;
+                            color: #fff;
+                            @include paraStyle;
+                        }
+                    }
+                    .comm{
+                        // border: 1px solid red;
+                        width: 75%;
+                        margin: auto;
+                        height: 120px;
+                        .star{
+                            // border: 1px solid blue;
+                            display: inline-block;
+                            width: 125px;
+                            position: relative;
+                            font-size: 28px;
+                            margin: 10px;
+                            @include starPercent;
+                        }
+                        .text{
+                            // border: 1px solid skyblue;
+                            color: #fff;
+                            @include paraStyle;
+                            margin-top: 10px;
+                            height: 50px;
+                        }
+                    }
+                }
+                .more{
+                    // border: 1px solid red;
+                    text-align: right;
+                    @include paraStyle;
+                    a{
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
