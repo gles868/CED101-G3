@@ -5,10 +5,23 @@ img {
     max-width: 100%;
 }
 body {
-    background-image: url(/img/cartbac.png);
     background-repeat: no-repeat;
     background-size: 100%;
     background-size: cover;
+    background: radial-gradient(
+        100% 100% at bottom center,
+        #f7f7b6,
+        #e96f92,
+        #75517d,
+        #1b2947
+    );
+    background: radial-gradient(
+        100% 100% at top center,
+        #1b2947 10%,
+        #75517d 40%,
+        #e96f92 65%,
+        #f7f7b6
+    );
 }
 
 // 標題
@@ -181,4 +194,64 @@ div.nextText {
 div.nextText > a {
     text-decoration: none;
     color: #863186;
+}
+
+.star,
+.planet {
+    border-radius: 100%;
+    position: absolute;
+    display: block;
+}
+
+.star {
+    animation: twinkle 2s linear 0s infinite normal;
+    background: #f6f6f6;
+    z-index: 1;
+    left: 100%;
+    top: 100%;
+}
+
+.planet {
+    animation: twinkle 5s linear 0s infinite normal;
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5);
+    border-radius: 100%;
+    z-index: 2;
+    left: 300%;
+    top: 300%;
+}
+
+.moon {
+    box-shadow: inset 0px 0px 50px 1px #6d8f94,
+        0px 0px 80px 30px rgba(143, 189, 255, 0.7);
+    box-shadow: inset 16px 0px rgba(0, 0, 0, 0.05),
+        inset 16px 0px 1px 2px rgba(0, 0, 0, 0.05),
+        0px 0px 75px 0px rgba(255, 255, 255, 0.5);
+    background: linear-gradient(
+        325deg,
+        rgba(213, 211, 230, 1) 0%,
+        rgba(179, 179, 179, 1) 100%
+    );
+    transform: rotate(35deg);
+    border-radius: 100%;
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    z-index: 4;
+    right: 10%;
+    top: 10%;
+}
+
+@keyframes twinkle {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }

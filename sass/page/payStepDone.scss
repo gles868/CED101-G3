@@ -92,3 +92,43 @@ div.back {
         margin: 0 auto;
     }
 }
+
+// =================================================================
+.star,
+.planet {
+    border-radius: 100%;
+    position: absolute;
+    display: block;
+}
+
+.star {
+    animation: twinkle 2s linear 0s infinite normal;
+    background: #f6f6f6;
+    z-index: 1;
+    left: 100%;
+    top: 100%;
+}
+
+.planet {
+    animation: twinkle 5s linear 0s infinite normal;
+    box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+    border-radius: 100%;
+    z-index: 2;
+    left: 300%;
+    top: 300%;
+}
+
+@keyframes twinkle {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
