@@ -291,16 +291,12 @@ div.pro_photo {
 
     /* ========================== 商品 ========================== */
     div.pro_complete_box {
-        // margin: 100px auto;
         z-index: 1;
-        width: 50%;
+        width: 55%;
+        // width: 800px;
         display: flex;
         margin: 200px auto;
-        padding: 40px 0 0 0;
-        // background-color: #fff;
-        // background-image: url('/img/cartbac.png');
-        // background-repeat: repeat-y;
-        // background-size: 100%;
+        padding: 40px 20px 20px 10px;
         position: relative;
         background: radial-gradient(
             200% 100% at bottom center,
@@ -325,7 +321,7 @@ div.pro_photo {
         text-shadow: 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
     }
     div.pro_complete_photo {
-        width: 60%;
+        width: 200px;
         margin: 0 auto;
         position: relative;
     }
@@ -334,26 +330,33 @@ div.pro_photo {
         border-radius: 20px;
         text-align: center;
         display: flex;
-        width: 65%;
+        align-items: center;
+        // width: 65%;
+        width: 200px;
         margin: 20px auto;
-        text-align: center;
+        position: relative;
+
         background-color: rgb(141, 52, 119);
     }
     div.pro_complete_price_box > img {
-        width: 17%;
+        // width: 17%;
+        width: 40px;
     }
     div.pro_complete_price {
         text-align: center;
+        position: absolute;
         font-size: 20px;
         padding: 10px;
-        margin-left: 50px;
+        left: 70px;
+        // margin-left: 50px;
+        align-items: center;
         color: #ffffff;
         text-shadow: 0 0 0.5em #ca4cca, 0 0 0.5em #ca4cca, 0 0 0.5em #ca4cca;
     }
     div.pro_complete_amount_box {
         display: flex;
         margin: 0 auto 20px auto;
-
+        // width: 200px;
         width: 65%;
         justify-content: space-evenly;
         text-align: center;
@@ -369,26 +372,30 @@ div.pro_photo {
         border: 0px;
     }
     #quantity {
-        width: 50%;
+        // width: 50%;
         font-size: 18px;
         text-align: center;
+        width: 80px;
     }
     #min {
         font-size: 28px;
-        width: 30%;
+        // width: 30%;
+        width: 30px;
     }
     #addamount {
         font-size: 22px;
-        width: 30%;
+        // width: 30%;
+        width: 30px;
     }
     div.amount_input {
         display: flex;
-        width: 40%;
+        // width: 40%;
+        width: 140px;
     }
 
     //=============================右半邊=============================
     div.pro_complete_right {
-        width: 55%;
+        width: 70%;
         padding: 20px;
     }
 
@@ -457,6 +464,22 @@ div.pro_photo {
     div.girl > img {
         width: 100%;
     }
+    div.pro_complete_box {
+        flex-direction: column;
+    }
+    div.pro_complete_left {
+        margin: 0 auto;
+    }
+    div.pro_complete_amount_box {
+        border: 1px solid red;
+    }
+    div.amount_input {
+        width: 140px;
+        border: 1px solid blue;
+    }
+    div.pro_complete_right {
+        margin: 0 auto;
+    }
 }
 @media (max-width: 910px) {
     div.pro_big_box2 {
@@ -500,9 +523,6 @@ div.pro_photo {
     div.box {
         width: 30%;
     }
-    // div.pro_big_box1 {
-    //     justify-content: space-around;
-    // }
     div.allPro_box {
         width: 95%;
     }
@@ -605,6 +625,7 @@ div.pro_photo {
         width: 90%;
     }
 }
+
 @media (max-width: 376px) {
     div.list_box {
         width: 100%;
@@ -613,6 +634,7 @@ div.pro_photo {
         width: 100%;
     }
 }
+
 ////////
 .count {
     display: none;
@@ -644,7 +666,7 @@ body {
     display: block;
     width: 1em;
     height: 1em;
-    font-size: 18px;
+    font-size: 14px;
     position: absolute;
     left: 10px;
     top: 10px;
