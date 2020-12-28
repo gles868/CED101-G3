@@ -1005,7 +1005,7 @@ width: 80%;
   @include textShadowMem;
 }
 .memInfoLeft{
-  border: 1px solid red;
+  // border: 1px solid red;
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -1013,12 +1013,12 @@ width: 80%;
   padding: 30px;
 }
 .memInfoRight{
-  border: 1px solid black;
+  // border: 1px solid black;
   width: 60%;
 }
 
 .memheadBox{
-  border:1px solid blue;
+  // border:1px solid blue;
   position: relative;
   text-align: center;
   width: 80%;
@@ -1032,7 +1032,7 @@ width: 80%;
     }
   }
   .memheadCG{
-    border: 1px solid red;
+    // border: 1px solid red;
     background: rgba(0, 0, 0, 0.5);
     width: 25%;
     height: 27%;
@@ -1044,7 +1044,7 @@ width: 80%;
     right: 5%;
     box-shadow: 0 0 0.4em white, 0 0 0.4em white, 0 0 0.4em white;       
       i{
-        border: 1px solid black;
+        // border: 1px solid black;
         // display: block;
         font-size: 25px;
         position: absolute;
@@ -1133,7 +1133,7 @@ width: 80%;
     .memInfoForm{
         width: 100%;
         .MIF_Data{
-          border: 1px solid green;
+          // border: 1px solid green;
           margin: 5px 0px;          
         }             
       }
