@@ -53,6 +53,9 @@ section.course_info {
             top: 12%;
             left: 28%;
         }
+        img.light{
+            z-index: -5;
+        }
     }
 
     @media (max-width: 1139px) {

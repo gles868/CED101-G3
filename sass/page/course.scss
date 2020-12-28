@@ -259,12 +259,34 @@ div.card {
         top: 50%;
         right: 25%;
     }
-    
-    p.registration{
-        @include btnPurple;
+
+    p.registration {
+        background-color: $purple;
+        color: #fff;
+        // width: 140px;
+        // height: 36px;
+        padding: 10px 10px 10px 10px;
+        border: 1px solid lighten($purple, 8%);
+        outline: none;
+        border-radius: 25px;
+        font-size: $h5;
+        font-weight: 400;
+        letter-spacing: $titleLetterSpacing;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
+        // margin: 30px 0;
+        cursor: pointer;
+        box-shadow: 0 0 10px $lightpurple;
+
+        &:hover {
+            background-color: lighten($purple, 8%);
+            transition: background-color .2s;
+        }
+
         position: absolute;
-        top: 70%;
-        right: 14%;
+        top: 75%;
+        right: 30%;
 
     }
 }
@@ -430,7 +452,7 @@ div.course_accessory {
 
         div.titleimg_block {
             width: 375px;
-            
+
         }
 
         img.white_title {
@@ -450,6 +472,7 @@ div.accessory_container {
         div.single_accessory {
             width: 200px;
             margin: 0 auto;
+            border: 1px solid rgba(235, 235, 235, 0);
 
             img {
                 margin: 0 auto;
