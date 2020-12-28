@@ -4,35 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>麻瓜特訓班 | 首頁</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="css/index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- gsap3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script> -->
+    
+    <!-- scroll magic -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
 
-    <!-- <style>
-        .common{
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            background-color: transparent;
-            background-repeat: no-repeat;
-            background-position: 0 bottom;
-            background-size: cover;
-        }
-        .lay01{
-            background-image: url("../img/[first]1rock.png");
-            z-index: 10;
-            background-size: contain;
-        }
-        .lay02{
-            background-image: url("../img/[first]2rock.png");
-            z-index: 9;
-            background-size: contain;
-        }
-    </style> -->
+    <!-- parallax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
 </head>
 
 <body>
@@ -52,100 +38,128 @@
                     <li><a href="mall.html">商城</a></li>
                     <li><a href="game.html">小遊戲</a></li>
                 </ul>
-                <ul class="nav-right">
-                    <li><a href="member.html"><i class="fas fa-user-circle fa-lg"></i></a></li>
-                    <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
-                </ul>
                 <div class="ham">
                     <span></span> 
                     <span></span> 
                     <span></span>
                 </div>
+                <ul class="nav-right">
+                    <li><a href="member.html"><i class="fas fa-user-circle fa-lg"></i></a></li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+                </ul>
             </div>
         </nav>
     </header>
 
-    <div id="triggerPoint"></div> <!--最上方觸發點: trigger1-->
+    <!--觸發點 trigger1-->
+    <div id="triggerPoint"></div> 
     <section id="pinSection">
+        <!-- <div class="lay00 common"><img src="../img/index/[signUpLesson]clouds.png" alt=""></div> -->
         <div class="lay01 common"></div>
-        <div class="lay02 common"></div> <!--rock-->
-        <div class="lay03 common">  <!--para-->
+        <!--rock-->
+        <div class="lay02 common"></div> 
+        <!--para-->
+        <div class="lay03 common">  
             <p>
-                在三千年後，眾魔法師與邪惡勢力爆發過無數次戰爭，傷亡眾多的魔法師，<br>
-                為了魔法世界的和平，培養更多麻瓜成為魔法師，對抗邪惡勢力，<br>
-                要成為魔法師，必須學會以下課程⋯
+                在三千年後，眾魔法師與邪惡勢力爆發過無數次戰爭，<br>
+                為了魔法世界的和平，傷亡眾多的魔法師們，成立了麻瓜特訓班。<br>
+                致力培養更多麻瓜成為魔法師，對抗邪惡勢力⋯<br>
             </p>
         </div>
-        <div class="lay04 common"></div> <!--castle-->
+        <div class="lay03-2 common">
+            <p>
+                要成為魔法師，必須選修本特訓班開授的魔法課程。<br>
+                根據本班的規定，修滿八門課程，為魔法實習生<br>
+                修滿十六門課，則升級成為正式魔法師。
+            </p>
+        </div> 
+        <!--castle-->
+        <div class="lay04 common"></div> 
+        <!-- witch -->
+        <!-- <div class="witch"></div> -->
         <div class="lay05 common"></div>
+        <div class="moon common"></div>
         <div class="lay06 common"></div>
+
+        <div class="cloud_move common">
+            <img src="./img/index/clouds2.png" alt="">
+            <img src="./img/index/clouds2.png" alt="">
+            <img src="./img/index/clouds3.png" alt="">
+        </div>
     </section>  
 
-    <section id="second">
-        <div class="wrapper">
-            <div class="title">
-                <h2>熱門課程</h2>
-            </div>
-    
-            <div class="container">
-                <div class="card card01">
-                    <div class="content">
-                        <h3>飛行術</h3>
-                        <p>
-                            傳授如何進入隱身狀態，安排補血時機及定點放置
-                            <!-- 長時間下來可以增加續戰力 -->
-                        </p>
-                        <p>課程價格</p>
-                        <p>報名人數</p>
+    <div class="bg_wrapper">
+        <section id="second">
+            <div class="wrapper">
+                <div class="title">
+                    <h2>熱門課程</h2>
+                </div>
+        
+                <div class="container">
+                    <div class="card card01">
+                        <a href="./singleCourse.html">
+                            <div class="content">
+                                <h3>飛行術</h3>
+                                <p>
+                                    傳授如何進入隱身狀態，安排補血時機及定點放置，成為魔法師的必修課。
+                                    <!-- 長時間下來可以增加續戰力 -->
+                                </p>
+                                <p>課程價格: <span>$12,800</span></p>
+                                <p>報名人數: <span>12</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card card02">
+                        <a href="./singleCourse.html">
+                            <div class="content">
+                                <h3>光箭術</h3>
+                                <p>
+                                    傳授如何進入隱身狀態，安排補血時機及定點放置，成為魔法師的必修課。
+                                    <!-- 長時間下來可以增加續戰力 -->
+                                </p>
+                                <p>課程價格: <span>$4,800</span></p>
+                                <p>報名人數: <span>12</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card card03">
+                        <a href="./singleCourse.html">
+                            <div class="content">
+                                <h3>隱身術</h3>
+                                <p>
+                                    傳授如何進入隱身狀態，安排補血時機及定點放置，成為魔法師的必修課。
+                                    <!-- 長時間下來可以增加續戰力 -->
+                                </p>
+                                <p>課程價格: <span>$2,680</span></p>
+                                <p>報名人數: <span>12</span></p>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <div class="card card02">
-                    <div class="content">
-                        <h3>光箭術</h3>
-                        <p>
-                            傳授如何進入隱身狀態，安排補血時機及定點放置
-                            <!-- 長時間下來可以增加續戰力 -->
-                        </p>
-                        <p>課程價格</p>
-                        <p>報名人數</p>
-                    </div>
-                </div>
-                <div class="card card03">
-                    <div class="content">
-                        <h3>隱身術</h3>
-                        <p>
-                            傳授如何進入隱身狀態，安排補血時機及定點放置
-                            <!-- 長時間下來可以增加續戰力 -->
-                        </p>
-                        <p>課程價格</p>
-                        <p>報名人數</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="rock">
-                <img src="./img/index/[lessons]rocks03.png" alt="" width="370">
-                <img src="./img/index/[lessons]rocks02.png" alt="" width="500">
-                <img src="./img/index/[lessons]rocks01.png" alt="" width="380">
+                <div class="rock">
+                    <img src="./img/index/[lessons]rocks03.png" alt="" width="370">
+                    <img src="./img/index/[lessons]rocks02.png" alt="" width="500">
+                    <img src="./img/index/[lessons]rocks01.png" alt="" width="380">
+                </div>
             </div>
-        </div>
-    </section>
-<!-- <p>
-    在三千年後，眾魔法師與邪惡勢力爆發過無數次戰爭，傷亡眾多的魔法師，<br>
-    為了魔法世界的和平，培養更多麻瓜成為魔法師，對抗邪惡勢力，<br>
-    要成為魔法師，必須學會以下課程⋯
-</p> -->
-
+        </section>
+    </div>
+    <!-- <div id="scene">
+        <div data-depth="0.2">My first Layer!</div>
+        <div data-depth="0.6">My second Layer!</div>
+      </div> -->
     <section id="third">
         <div class="tea-over">
-            <div class="tea-bg">
+            <div class="tea-bg" id="scene">
                 <div class="title">
                     <h2>熱門教師</h2>
                 </div>
-                <div class="tea-all">
+                <div class="tea-all" data-depth="0.2">
                     <div class="tea-all-in">
-                        <div class="teacher-big1">
+                        <div class="teacher-big1" >
                             <div class="teacher">
+                                <div class="shadow"></div>
                                 <img src="./img/index/[teachers]teacher01.png" alt="">
                             </div>
                             <div class="tea-box">
@@ -154,7 +168,7 @@
                             <div class="inf-all">
                                 <div class="tea-name">哈利菠菜</div>
                                 <div class="tea-inf">大家好我叫哈利波菜,我是很好的老師,不服來辯</div>
-                                <div class="tea-star" data-percent="37"></div>
+                                <div class="tea-star" data-percent="90"></div>
                                 <ul class="tea-list">
                                     <li>飛行學</li>
                                     <li>煉金學</li>
@@ -163,8 +177,9 @@
                             </div>
                         </div>
     
-                        <div class="teacher-big2">
+                        <div class="teacher-big2" >
                             <div class="teacher2">
+                                <div class="shadow"></div>
                                 <img src="./img/index/[teachers]teacher02.png" alt="">
                             </div>
                             <div class="tea-box2">
@@ -173,7 +188,7 @@
                             <div class="inf-all2">
                                 <div class="tea-name">哈利菠菜</div>
                                 <div class="tea-inf">大家好我叫哈利波菜,我是很好的老師,不服來辯</div>
-                                <div class="tea-star" data-percent="37"></div>
+                                <div class="tea-star" data-percent="80"></div>
                                 <ul class="tea-list">
                                     <li>飛行學</li>
                                     <li>煉金學</li>
@@ -182,8 +197,9 @@
                             </div>
                         </div>
     
-                        <div class="teacher-big3">
+                        <div class="teacher-big3" >
                             <div class="teacher3">
+                                <div class="shadow"></div>
                                 <img src="./img/index/[teachers]teacher03.png" alt="">
                             </div>
                             <div class="tea-box3">
@@ -192,7 +208,7 @@
                             <div class="inf-all3">
                                 <div class="tea-name">哈利菠菜</div>
                                 <div class="tea-inf">大家好我叫哈利波菜,我是很好的老師,不服來辯</div>
-                                <div class="tea-star" data-percent="37"></div>
+                                <div class="tea-star" data-percent="50"></div>
                                 <ul class="tea-list">
                                     <li>飛行學</li>
                                     <li>煉金學</li>
@@ -201,6 +217,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="float_obj" data-depth="0.4">
+                    <!-- <img src="./img/index/cat.png" alt=""> -->
+                    <img src="./img/index/bat.png" alt="">
+                    <img src="./img/index/bat.png" alt="">
                 </div>
             </div>
             <div class="sup-tea-bg">

@@ -24,7 +24,7 @@
         text-shadow: 0 0 0.1em #fff;
     }
     &::after{
-        content: "";
+        content: "★★★★★";
         position: relative;
         color: #ccc;
         text-shadow: 0 0 0.1em #bebebe;
@@ -71,10 +71,13 @@ header{
     margin-top: -105px;
 }
 #pinSection{
+    // border: 1px solid orange;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 .common{
+    // border: 1px solid silver;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -83,6 +86,16 @@ header{
         repeat: no-repeat;
         position: 0 bottom;
         size: cover;
+    }
+    overflow: hidden;
+}
+.lay00{
+    // background-image: url("../../img/index/[signUpLesson]clouds.png");
+    z-index: 11;
+    // background-size: contain;
+    overflow: hidden;
+    img{
+        width: 300%;
     }
 }
 .lay01{
@@ -96,13 +109,15 @@ header{
     background-size: contain;
 }
 // para
-.lay03{
+.lay03, .lay03-2{
     z-index: 8;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
+    top: 50px;
+    background-color: #1d002d8c;
     p{
         // border: 1px solid red;
         color: #fff;
@@ -113,6 +128,12 @@ header{
         text-align: center;
     }
 }
+// .lay3_bg{
+//     z-index: 8;
+//     height: 100vh;
+//     opacity: 0;
+//     background-color: #1d002d8c;
+// }
 .lay04{
     background-image: url("../../img/index/[first]3castle.png");
     z-index: 7;
@@ -121,18 +142,53 @@ header{
     background-image: url("../../img/index/[first]4mount.png");
     z-index: 6;
 }
-.lay06{
-    background-image: url("../../img/index/[first]5bg.png");
+.moon{
+    background-image: url("../../img/index/[first]moon.png");
+    background-position: top right;
+    background-size: contain;
     z-index: 5;
 }
+.lay06{
+    background-image: url("../../img/index/[first]5bg.png");
+    z-index: 4;
+}
+.cloud_move{
+    img{
+        z-index: 8;
+        &:nth-child(1){
+            animation: move 20s linear infinite;
+            position: absolute;
+            bottom: 50px;
+        }
+        &:nth-child(2){
+            animation: move 20s 16s linear infinite;
+            position: absolute;
+            bottom: 470px;
+            left: -700px;
+            width: 520px;
+        }
+        &:nth-child(3){
+            animation: move 20s 3s linear infinite;
+            position: absolute;
+            bottom: 280px;
+            left: -350px;
+            z-index: 6;
+            width: 280px;
+        }
+    }
+}
 
+.bg_wrapper{
+    overflow: hidden;
+}
 #second{
     background: {
         image: url("../../img/index/[lessons]bg.png");
         repeat: no-repeat;
-        size: cover;
+        size: 120% 120%;
     }
-    margin-top: 100px;
+    animation: gradient 15s linear infinite;
+    // margin-top: 100px;
     .wrapper{
         // border: 2px solid gold;
         height: 100vh;  
@@ -165,7 +221,7 @@ header{
                 position: absolute;
                 top: 0;
                 left: 0;
-                z-index: 0;
+                z-index: 1;
             }   
             h2{
                 // border: 1px solid #fff;
@@ -174,9 +230,9 @@ header{
                 color: #fff;
                 letter-spacing: 3px;
                 text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
-                padding-top: 40px;
+                padding-top: 110px;
                 position: absolute;
-                z-index: 1;
+                z-index: 2;
                 display: flex;
                 justify-content: center;
             } 
@@ -187,7 +243,7 @@ header{
             justify-content: space-evenly;
             flex-grow: 1;
             margin: 0 50px;
-            margin-top: 80px;
+            margin-top: 130px;
             @media all and (max-width: 1020px){
                 flex-wrap: wrap;
             }
@@ -208,13 +264,33 @@ header{
                     repeat: no-repeat;
                     size: contain;
                 }
-                @media all and (max-width: 1020px){
-                    
+                &:hover{
+                    backface-visibility: hidden;
+                    transform-style: preserve-3d;
+                    transform: rotateY(180deg);
+                    transition: all 0.65s ease-out 0s;
+                }
+                a{
+                    display: flex;
+                }
+                &:nth-child(1){
+                    animation: float 2.5s infinite;
+                    animation-timing-function: ease-in-out;
+                }
+                &:nth-child(2){
+                    animation: float 2.5s infinite;
+                    animation-timing-function: ease-in-out;
+                    animation-delay: 0.5s;
+                }
+                &:nth-child(3){
+                    animation: float 2.5s infinite;
+                    animation-timing-function: ease-in-out;
+                    animation-delay: 0.3s;
                 }
                 .content{
                     // border: 1px solid salmon;
                     width: 200px;
-                    margin: 60px auto;
+                    margin: 60px;
                     display: flex;
                     justify-content: space-around;
                     flex-direction: column;
@@ -226,6 +302,23 @@ header{
                         text-align: center;
                         flex-grow: 1;
                         text-shadow: 0 0 0.6em #6600b4, 0 0 0.6em #6600b4;
+                        position: relative;
+                        &::before{
+                            content: "✧";
+                            font-size: 12px;
+                            position: absolute;
+                            top: 0;
+                            right: 30px;
+                            animation: caret 1s infinite;
+                        }
+                        &::after{
+                            content: "✧";
+                            font-size: 12px;
+                            position: absolute;
+                            bottom: 10px;
+                            left: 22px;
+                            animation: caret 1.1s infinite;
+                        }
                     }
                     p{
                         // border: 1px solid blue;
@@ -236,8 +329,13 @@ header{
                         margin: 10px 20px;
                         // &:nth-child(1){
                         //     border: 1px solid blue;
-                        //     // flex-grow: 6;`
+                        //     // flex-grow: 6;
                         // }
+                        span{
+                            font-size: $h5;
+                            @include titleStyle();
+                            margin: 40px;
+                        }
                     }
                 }
             }
@@ -311,8 +409,10 @@ header{
                 color: #fff;
                 letter-spacing: 3px;
                 text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
-                padding-top: 40px;
+                padding-top: 130px;
                 position: absolute;
+                left: 0;
+                right: 0;
                 z-index: 1;
                 display: flex;
                 justify-content: center;
@@ -320,13 +420,17 @@ header{
         }
     }
     .tea-all {
+        // border: 1px solid blue;
         display: flex;
         position: relative;
         width: 75%;
-        margin: 50px auto;
-        // border: 1px solid blue;
+        margin: 150px auto;
         @media all and (max-width: 868px){
             padding: 70px 0;
+        }
+        .tea-all-in{
+            position: relative;
+            left: 20%;
         }
     }
     .teacher-big1 {
@@ -335,14 +439,25 @@ header{
         display: flex;
         position: relative;
         margin-top: 60px;
-    }
-    .teacher {
-        width: 50%;
-        // border: 1px solid red;
-        z-index: 2;
-        
-        img {
-            width: 100%;
+        .teacher {
+            width: 50%;
+            // border: 1px solid red;
+            z-index: 2;
+            .shadow{
+                width: 160px;
+                height: 5px;
+                position: absolute;
+                left: 30px;
+                bottom: 4px;
+                border-radius: 50%;
+                background-color: #000000;
+                box-shadow: 0 0 6px 8px #000000;
+                opacity: 35%;
+                z-index: -1;
+            }
+            img {
+                width: 100%;
+            }
         }
     }
     .tea-box {
@@ -350,16 +465,45 @@ header{
         width: 85%;
         position: absolute;
         top: -30%;
-        left: 17%;
+        left: 25%;
         z-index: 1;
-        
         // background-image: url(./img/[teachers]card-04.png);
         // background-repeat: no-repeat;
         // height: 100%;
         // background-size: cover;
-        
         img {
             width: 100%;
+        }
+    }
+    // .tea-box, .tea-box2, .tea-box3{
+    //     animation: float 2s infinite;
+    // }
+    .inf-all, .inf-all2, .inf-all3{
+        // animation: float 2s infinite;
+        .tea-name{
+            font-size: $h5;
+            @include titleStyle;
+        }
+        .tea-inf {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .tea-star{
+            // border: 1px solid blue;
+            display: inline-block;
+            width: 125px;
+            position: relative;
+            font-size: 28px;
+            margin: 10px;
+            @include starPercent;
+        }
+        .tea-list{
+            display: flex;
+            justify-content: space-evenly;
+            margin: 15px;
+            li {
+                list-style-type: none;
+            }
         }
     }
     .inf-all {
@@ -368,46 +512,36 @@ header{
         // border: 1px solid yellow;
         position: absolute;
         top: -9%;
-        left: 31%;
+        left: 39%;
         z-index: 1;
         color: white;
         @include paraStyle;
-    }
-    .tea-inf {
-        width: 80%;
-        margin: 0 auto;
-    }
-    .tea-star{
-        // border: 1px solid blue;
-        display: inline-block;
-        width: 125px;
-        position: relative;
-        font-size: 28px;
-        margin: 10px;
-        @include starPercent;
-    }
-    .tea-list{
-        display: flex;
-        justify-content: space-evenly;
-        li {
-            list-style-type: none;
-        }
+        margin: 0;
     }
     .teacher-big2 {
         width: 370px;
         // border: 1px solid green;
         display: flex;
-        position: relative;
-        margin-top: 60px;
         position: absolute;
-        top: 113%;
-        left: 20%;
+        top: 100%;
+        left: 21%;
     }
     .teacher2 {
         width: 55%;
         // border: 1px solid red;
         z-index: 2;
-        
+        .shadow{
+            width: 180px;
+            height: 10px;
+            position: absolute;
+            left: 30px;
+            bottom: 4px;
+            border-radius: 50%;
+            background-color: #000000;
+            box-shadow: 0 0 6px 8px #000000;
+            opacity: 65%;
+            z-index: -1;
+        }
         img {
             width: 100%;
         }
@@ -416,8 +550,8 @@ header{
         // border: 1px solid blue;
         width: 90%;
         position: absolute;
-        top: -70%;
-        left: 17%;
+        top: -30%;
+        left: 33%;
         z-index: 1;
     }
     .inf-all2 {
@@ -425,8 +559,8 @@ header{
         width: 60%;
         // border: 1px solid yellow;
         position: absolute;
-        top: -40%;
-        left: 33%;
+        top: -10%;
+        left: 45%;
         z-index: 1;
         color: white;
         @include paraStyle;
@@ -443,12 +577,24 @@ header{
         // transform: translateY(90px);
         position: absolute;
         top: 20%;
-        left: 55%;
+        left: 62%;
     }
     .teacher3 {
         width: 40%;
         // border: 1px solid red;
         z-index: 2;
+        .shadow{
+            width: 160px;
+            height: 5px;
+            position: absolute;
+            left: 0;
+            bottom: 1px;
+            border-radius: 50%;
+            background-color: #000000;
+            box-shadow: 0 0 6px 8px #000000;
+            opacity: 65%;
+            z-index: -1;
+        }
         img {
             width: 100%;
         }
@@ -457,8 +603,8 @@ header{
         // border: 1px solid blue;
         width: 90%;
         position: absolute;
-        top: 21%;
-        left: 16%;
+        top: -15%;
+        left: 20%;
         z-index: 1;
     }
     .inf-all3 {
@@ -466,8 +612,8 @@ header{
         width: 60%;
         // border: 1px solid yellow;
         position: absolute;
-        top: 35%;
-        left: 30%;
+        top: 5%;
+        left: 33%;
         z-index: 1;
         color: white;
         @include paraStyle;
@@ -623,6 +769,7 @@ header{
                     position: absolute;
                     bottom: -50px;
                     left: -100px;
+                    z-index: 3;
                     @media all and (max-width: 1200px){
                         left: 0;
                         width: 45%;
@@ -635,6 +782,8 @@ header{
                 }
                 &:nth-child(2){
                     display: block;
+                    animation: rotate 120s infinite;
+                    animation-timing-function: linear;
                     @media all and (max-width: 1200px){
                         width: 80%;
                         min-width: 350px;
@@ -662,6 +811,7 @@ header{
         bottom: 0;
         overflow: hidden;
         width: 100%;
+        z-index: 10;
         // @media all and (max-width: 576px){
         //     overflow: hidden;
         //     width: 100%;
@@ -699,7 +849,7 @@ header{
                 letter-spacing: 3px;
                 text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
                 padding-top: 40px;
-                margin-top: 30px;
+                margin-top: 100px;
                 position: absolute;
                 z-index: 1;
                 display: flex;
@@ -760,30 +910,35 @@ header{
     .toy_1 {
         width: 70px;
         // border: 1px solid black;
+        animation: float 2.5s ease-in-out infinite 0.3s;
         img {
             width: 100%;
         }
     }
     .toy_2 {
         width: 70px;
+        animation: float 2.5s ease-in-out infinite 0.9s;
         img {
             width: 100%;
         }
     }
     .toy_3 {
         width: 70px;
+        animation: float 2.5s ease-in-out infinite 0.5s;
         // border: 1px solid black;
         img {
             width: 100%;
         }
     }
     .toy_hat {
+        animation: float 2.5s ease-in-out infinite 0.2s;
         width: 110px;
         img {
             width: 100%;
         }
     }
     .toy_droom {
+        animation: float 2.5s ease-in-out infinite 0.3s;
         width: 90px;
         img {
             width: 100%;
@@ -808,6 +963,7 @@ header{
         .all_box {
         //   flex-direction: ;
             flex-wrap: wrap;
+            height: 100%;
         }
         .bg_box2 {
             transform: translateY(20px);
@@ -831,7 +987,36 @@ header{
         }
 }
 
-
+// 動畫keyframes
+// 漂浮
+@keyframes float{
+    0%{
+        transform: translateY(0px);
+    }
+    50%{        
+        transform: translateY(7px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+// 課程標題 閃星星
+@keyframes caret {
+	50% { color: transparent }
+}
+// 漸層變化
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 50% 80%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+// 雲飄浮
 @keyframes cloudmove{
     0%{
         transform: translateY(0px);
@@ -841,5 +1026,23 @@ header{
     }
     100%{
         transform: translateY(0px);
+    }
+}
+// 旋轉
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+// 移動
+@keyframes move {
+    0%{
+        transform: translateX(-700px);
+    }
+    100%{
+        transform: translateX(1500px);
     }
 }

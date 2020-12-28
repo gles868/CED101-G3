@@ -75,41 +75,53 @@ header{
         size: cover;
     }
     .section01{
-        // border: 1px solid rgb(0, 238, 255);
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        @media screen and (max-width: 700px){
+            height: 100%;
+            padding: 100px 0;
+        }
         .container{
+            // border: 1px solid rgb(0, 238, 255);
             display: flex; 
             align-items: center;
             justify-content: center; 
+            width: 95%;
+            @media screen and (max-width: 700px){
+                flex-direction: column;
+            }
             .tr{
                 // border: 1px solid greenyellow;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-end;
-                .star{
-                    // border: 1px solid tomato;
-                    display: inline-block;
-                    width: 125px;
-                    position: relative;
-                    font-size: 45px;
-                    @include starPercent;
-                    // transform: rotate(5deg);
+                @media screen and (max-width: 700px){
+                    margin-top: 50px;
                 }
                 .img{
                     position: relative;
                     img{
                         // border: 1px solid steelblue;
                         position: relative;
+                        width: 100%;
+                        min-width: 250px;
+                        animation: float 2.5s infinite;
+                        @media screen and (max-width: 700px){
+                            width: 95%;
+                        }
+                        @media screen and (max-width: 476px){
+                            min-width: 200px;
+                            width: 85%;
+                        }
                     }
                     .shadow{
                         width: 315px;
                         height: 25px;
                         position: absolute;
                         left: 35px;
-                        bottom: -5px;
+                        bottom: -15px;
                         border-radius: 50%;
                         background-color: #171717;
                         box-shadow: 0 0 6px 8px #171717;
@@ -122,14 +134,31 @@ header{
                 display: flex;
                 flex-direction: column;
                 margin-left: 50px;
+                @media screen and (max-width: 700px){
+                    margin: 0;
+                    margin-top: 50px;
+                    text-align: center;
+                }
                 .intro{
-                    width: 600px;
+                    width: 100%;
+                    max-width: 600px;
                     h3{
                         color: #fff;
                         font-size: $h3;
                         @include titleStyle;
                         text-shadow: 0 0 0.6em #6600b4;
-
+                    }
+                    .star{
+                        border: 1px solid tomato;
+                        display: inline-block;
+                        margin: 10px;
+                        position: relative;
+                        font-size: 45px;
+                        @include starPercent;
+                        // transform: rotate(5deg);
+                        @media screen and (max-width: 700px){
+                            font-size: 40px;
+                        }
                     }
                     p{
                         color: #fff;
@@ -144,6 +173,9 @@ header{
     .section02{
         // border: 1px solid rgb(0, 238, 255);
         height: 100vh;
+        @media all and (max-width: 976px){
+            height: 100%;
+        }
         .title{
             text-align: center;
             h2{
@@ -158,10 +190,12 @@ header{
             // border: 1px solid blueviolet;
             display: flex;
             justify-content: space-evenly;
+            flex-wrap: wrap;
             padding: 40px;
             .card{
                 // border: 1px solid red;
                 position: relative;
+                margin: 20px;
                 img{
                     box-shadow: 0 0 0.4em rgb(127, 75, 196);
                     border-radius: 15px;
@@ -181,6 +215,9 @@ header{
     .section03{
         // border: 1px solid rgb(0, 238, 255);
         height: 80vh;
+        @media (max-width: 976px){
+            height: 100%;
+        }
         .title{
             text-align: center;
             h2{
@@ -192,8 +229,8 @@ header{
             }
         }
         .container{
-            // border: 1px solid purple;
-            width: 75%;
+            border: 1px solid purple;
+            width: 80%;
             margin: 0 auto;
             display: flex;
             justify-content: space-evenly;
@@ -250,6 +287,13 @@ header{
                         height: 70px;
                     }
                 }
+                .report{
+                        // border: 1px solid red;
+                        padding: 20px;
+                    .fas{
+                        color: #ffffffd6;
+                    }
+                }
             }
         }
         .btn{
@@ -262,5 +306,32 @@ header{
                 box-shadow: 0 0 0 0 ;
             }
         }
+    }
+}
+
+// 動畫keyframes
+// 漂浮
+@keyframes float{
+    0%{
+        transform: translateY(0px);
+    }
+    50%{        
+        transform: translateY(15px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+// 閃星星
+@keyframes caret {
+	50% { color: transparent }
+}
+// 移動
+@keyframes move {
+    0%{
+        transform: translateX(-1200px);
+    }
+    100%{
+        transform: translateX(1000px);
     }
 }

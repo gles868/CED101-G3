@@ -73,8 +73,19 @@ header{
     top: 15%;
     left: 44%;
     z-index: 99;
+    @media all and (max-width: 768px){
+        left: 37%;
+        top: 12%;
+    }
+    // @media all and (max-width: 700px){
+    //     left: 65%; 
+    // }
+    @media all and (max-width: 700px){
+        left: 30%;
+        top: 12%;
+    }
     select{
-        border: 1px solid #fff;
+        // border: 1px solid #fff;
         width: 150px;
         height: 33px;
         background-color: rgba(255, 255, 255, 0.5);
@@ -100,20 +111,43 @@ header{
             display: flex; 
             align-items: flex-end;
             justify-content: center; 
+            @media all and (max-width: 1200px){
+                // border: 1px solid blue;
+                width: 80%;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-evenly;
+            }
+            @media all and (max-width: 768px){
+                flex-direction: column;
+                height: 80%;
+                align-items: center;
+            }
+            @media all and (max-width: 700px){
+                width: 95%;
+            }
             .tr{
-                border: 1px solid greenyellow;
+                // border: 1px solid greenyellow;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-end;
                 position: relative;
-                @media all and (max-width: 1140px){
-                    border: 1px solid slateblue;
-                }
                 .img{
                     position: relative;
                     img{
                         // border: 1px solid steelblue;
                         position: relative;
+                        width: 100%;
+                        min-width: 280px;
+                        @media all and (max-width: 768px){
+                            width: 230px;
+                            min-width: 200px;
+                            margin-top: 130px;
+                        }
+                        @media all and (max-width: 700px){
+                            width: 210px;
+                            min-width: 180px;
+                        }
                     }
                     .shadow{
                         width: 315px;
@@ -125,16 +159,38 @@ header{
                         background-color: #171717;
                         box-shadow: 0 0 6px 8px #171717;
                         opacity: 40%;
+                        @media all and (max-width: 768px){
+                            width: 200px;
+                        }
                     }
                 }
             }
             .wrapper{
-                border: 1px solid red;
+                // border: 1px solid red;
                 display: flex;
                 flex-direction: column;
                 margin-left: 50px;
+                width: 45%;
+                @media all and (max-width: 1200px){
+                    margin: 0;
+                }
+                @media all and (max-width: 1140px){
+                    width: 60%;
+                }
+                @media all and (max-width: 768px){
+                    width: 85%;
+                    transform: scale(0.9);
+                }
+                @media all and (max-width: 700px){
+                    width: 100%;
+                }
                 .intro{
-                    width: 600px;
+                    // min-width: 600px;
+                @media all and (max-width: 1140px){
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
                     .title{
                         // border: 1px solid seagreen;
                         display: flex;
@@ -154,10 +210,14 @@ header{
                         }
                     }
                     p{
+                        // border: 1px solid orange;
                         color: #fff;
                         @include paraStyle;
                         margin-top: 20px;
-                        height: 60px;
+                        height: 70px;
+                        @media all and (max-width: 768px){
+                            display: none;
+                        }
                     }
                 }
                 .comm_card{
@@ -169,6 +229,9 @@ header{
                     margin: 20px;
                     background-color: #7200ca47;
                     box-shadow: 0 0 0.4em #9862c2, 0 0 0.05em #ae6ae3;
+                    @media all and (max-width: 768px){
+                        margin: 0;
+                    }
                     .card{
                         display: flex;
                         flex-direction: column;
@@ -177,7 +240,7 @@ header{
                         width: 20%;
                         min-width: 140px;
                     .avatar{
-                            border: 1px solid teal;
+                            // border: 1px solid teal;
                             border-radius: 50%;
                             width: 80px;
                             height: 80px;
