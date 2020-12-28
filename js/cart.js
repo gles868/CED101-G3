@@ -98,6 +98,7 @@ $(document).ready(function () {
       $('.deliver_box').remove();
       $('.total_box').remove();
       $('.buy_box').remove();
+      $('.btn-wrapper').remove();
   });
 });
  

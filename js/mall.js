@@ -164,7 +164,7 @@ function addItem(itemId, itemValue){
 }
 window.addEventListener('load', doFirst);
 
-//
+// 愛心
 
 $(".heart").click(function () {
     $(this).toggleClass("loved");

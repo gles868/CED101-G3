@@ -39,13 +39,19 @@ div.list_box {
     color: #ffffff;
     display: flex;
     width: 70%;
-    font-size: px;
+
     margin: 30px auto 20px auto;
     justify-content: space-evenly;
     div {
         cursor: pointer;
         opacity: 0.6;
         &:hover {
+            opacity: 1;
+        }
+        @media (max-width: 376px) {
+            font-size: 16px;
+            // border: 1px solid red;
+            width: 24%;
             opacity: 1;
         }
     }
@@ -154,10 +160,10 @@ div.box {
     text-align: center;
     text-shadow: 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
     cursor: pointer;
-    opacity: 0.6;
-    &:hover {
-        opacity: 1;
-    }
+    // opacity: 0.6;
+    // &:hover {
+    //     opacity: 1;
+    // }
 }
 div.pro_photo {
     font-size: 0;
@@ -292,7 +298,7 @@ div.pro_photo {
     /* ========================== 商品 ========================== */
     div.pro_complete_box {
         z-index: 1;
-        width: 55%;
+        width: 50%;
         // width: 800px;
         display: flex;
         margin: 200px auto;
@@ -304,6 +310,25 @@ div.pro_photo {
             #75517d,
             #1b2947
         );
+        @media (max-width: 1120px) {
+            padding: 40px 20px 0px 10px;
+        }
+        @media (max-width: 1018px) {
+            flex-direction: column;
+        }
+        @media (max-width: 787px) {
+            width: 60%;
+        }
+        @media (max-width: 635px) {
+            width: 70%;
+        }
+        @media (max-width: 522px) {
+            width: 75%;
+            margin: 150px auto;
+        }
+        @media (max-width: 379px) {
+            width: 80%;
+        }
     }
 
     div.close {
@@ -316,9 +341,13 @@ div.pro_photo {
 
     div.pro_complete_left {
         // border: 1px solid red;
-        width: 45%;
+        width: 50%;
         z-index: 1;
         text-shadow: 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
+        @media (max-width: 1018px) {
+            margin: 0 auto;
+            width: 80%;
+        }
     }
     div.pro_complete_photo {
         width: 200px;
@@ -331,8 +360,8 @@ div.pro_photo {
         text-align: center;
         display: flex;
         align-items: center;
-        // width: 65%;
-        width: 200px;
+        width: 65%;
+        // width: 200px;
         margin: 20px auto;
         position: relative;
 
@@ -347,11 +376,14 @@ div.pro_photo {
         position: absolute;
         font-size: 20px;
         padding: 10px;
-        left: 70px;
-        // margin-left: 50px;
+        // left: 70px;
+        left: 35%;
         align-items: center;
         color: #ffffff;
         text-shadow: 0 0 0.5em #ca4cca, 0 0 0.5em #ca4cca, 0 0 0.5em #ca4cca;
+        @media (max-width: 1018px) {
+            // left: 100px;
+        }
     }
     div.pro_complete_amount_box {
         display: flex;
@@ -372,31 +404,36 @@ div.pro_photo {
         border: 0px;
     }
     #quantity {
-        // width: 50%;
+        width: 50%;
         font-size: 18px;
         text-align: center;
-        width: 80px;
+        // width: 80px;
     }
     #min {
         font-size: 28px;
-        // width: 30%;
-        width: 30px;
+        width: 30%;
+        // width: 30px;
     }
     #addamount {
         font-size: 22px;
-        // width: 30%;
-        width: 30px;
+        width: 30%;
+        // width: 30px;
     }
     div.amount_input {
         display: flex;
-        // width: 40%;
-        width: 140px;
+        width: 60%;
+        // width: 140px;
     }
 
     //=============================右半邊=============================
     div.pro_complete_right {
         width: 70%;
         padding: 20px;
+        @media (max-width: 1018px) {
+            margin: 0 auto;
+            width: 80%;
+            padding: 10px;
+        }
     }
 
     div.pro_complete_name_box {
@@ -439,8 +476,9 @@ div.pro_photo {
         border: 3px solid #863186;
         border-radius: 15px;
         color: #863186;
+        cursor: pointer;
     }
-    span.buyButton {
+    .buyButton {
         font-size: 20px;
         background-color: #ffffff;
         padding: 5px;
@@ -448,6 +486,8 @@ div.pro_photo {
         border: 3px solid #863186;
         border-radius: 15px;
         color: #863186;
+        cursor: pointer;
+        text-decoration: none;
     }
 }
 
@@ -463,22 +503,6 @@ div.pro_photo {
     }
     div.girl > img {
         width: 100%;
-    }
-    div.pro_complete_box {
-        flex-direction: column;
-    }
-    div.pro_complete_left {
-        margin: 0 auto;
-    }
-    div.pro_complete_amount_box {
-        border: 1px solid red;
-    }
-    div.amount_input {
-        width: 140px;
-        border: 1px solid blue;
-    }
-    div.pro_complete_right {
-        margin: 0 auto;
     }
 }
 @media (max-width: 910px) {
@@ -610,16 +634,16 @@ div.pro_photo {
         background: rgba(71, 156, 22, 0.658);
     }
     div.pro_all {
-        width: 22%;
+        width: 23%;
     }
     div.pro_att {
-        width: 22%;
+        width: 23%;
     }
     div.pro_def {
-        width: 22%;
+        width: 23%;
     }
     div.pro_ass {
-        width: 22%;
+        width: 23%;
     }
     div.shop {
         width: 90%;
@@ -640,14 +664,29 @@ div.pro_photo {
     display: none;
     position: absolute;
     top: 50px;
-    right: 50px;
-    width: 50px;
-    border-radius: 50%;
-    background-color: red;
-    color: #fff;
-    font-size: 16px;
+    // right: 40px;
+    right: 3%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background-color: #dc52ff;
+    color: #ffffff;
     font-weight: bold;
     line-height: 16px;
+    text-align: center;
+    align-items: center;
+    z-index: 999;
+    font-size: 18px;
+    @media (max-width: 701px) {
+        right: 12%;
+        top: 6%;
+    }
+    @media (max-width: 570px) {
+        right: 14%;
+    }
+    @media (max-width: 376px) {
+        right: 16%;
+    }
 }
 body {
     position: relative;

@@ -32,6 +32,7 @@ div.done_big_box {
     display: flex;
     margin: 15px auto;
     padding: 15px;
+    min-height: calc(100vh - 180px);
 }
 div.done_box {
     width: 60%;
@@ -54,14 +55,15 @@ div.done_text_box {
     line-height: 50px;
 }
 div.back > a {
-    background-color: #ffffff;
-    color: #863186;
-    padding: 3px 10px 3px 10px;
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+    padding: 5px 10px 5px 10px;
     text-align: center;
-    border: 3px solid #863186;
-    border-radius: 15px;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 22px;
+    background-color: #f33494;
+    border-radius: 15px;
+    border: 1px solid palevioletred;
+    color: #fff;
 }
 div.back {
     padding: 0 30px 0 30px;
