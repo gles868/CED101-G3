@@ -17,19 +17,30 @@
 <body>
     <header>
         <nav>
-            <ul class="nav">
-                <li><a href="course.html">課程總覽</a></li>
-                <li><a href="teacher.html">教師總覽</a></li>
-                <li>
+            <div class="menu_toggle">
+                <input type="checkbox">
+                <div class="logo">
                     <a href="index.html"><img src="./img/logo.png"></a>
-                </li>
-                <li><a href="mall.html">商城</a></li>
-                <li><a href="game.html">小遊戲</a></li>
-            </ul>
-            <ul class="nav-right">
-                <li><a href="member.html"><i class="fas fa-user-circle fa-lg"></i></a></li>
-                <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
-            </ul>
+                </div>
+                <ul class="nav">
+                    <li><a href="course.html">課程總覽</a></li>
+                    <li><a href="teacher.html">教師總覽</a></li>
+                    <li>
+                        <a href="index.html"><img src="./img/logo.png"></a>
+                    </li>
+                    <li><a href="mall.html">商城</a></li>
+                    <li><a href="game.html">小遊戲</a></li>
+                </ul>
+                <div class="ham">
+                    <span></span> 
+                    <span></span> 
+                    <span></span>
+                </div>
+                <ul class="nav-right">
+                    <li><a href="member.html"><i class="fas fa-user-circle fa-lg"></i></a></li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -167,22 +178,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <script src="./js/course/fullCalnedar/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="./js/course/singleCourse.js"></script>
-
-    <script>
-        $(function () {
-            $('.card').flip({
-                axis: 'y',
-                speed: 650,
-                trigger: 'hover'
-
-            });
-        });
-
-        $(".heart").click(function () {
-            $(this).toggleClass("loved");
-        });
-    </script>
 
 </body>
 
