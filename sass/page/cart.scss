@@ -289,15 +289,24 @@ div.space_backmall {
     div.pro_complete_price_box {
         width: 20%;
     }
+    div.amount {
+        width: 20%;
+    }
 }
 
 @media (max-width: 992px) {
     div.pro_complete_price_box {
         width: 24%;
     }
+    div.amount {
+        width: 24%;
+    }
 }
 @media (max-width: 850px) {
     div.pro_complete_price_box {
+        width: 27%;
+    }
+    div.amount {
         width: 27%;
     }
 }
@@ -317,6 +326,9 @@ div.space_backmall {
     div.pro_complete_price_box {
         width: 25%;
     }
+    div.amount {
+        width: 25%;
+    }
 }
 @media (max-width: 575px) {
     div.pro_complete_price_box {
@@ -325,6 +337,10 @@ div.space_backmall {
     }
     div.pro_complete_price_box > img {
         width: 30%;
+    }
+    div.amount {
+        width: 30%;
+        font-size: 16px;
     }
 }
 
@@ -358,6 +374,9 @@ div.space_backmall {
     }
     div.space_backmall > a {
         font-size: 22px;
+    }
+    div.amount {
+        width: 40%;
     }
 }
 

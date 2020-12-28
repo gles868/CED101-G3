@@ -1,0 +1,34 @@
+.btn-wrapper {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    border-radius: 50%;
+    /* border: 1px solid blue; */
+    position: relative;
+}
+
+.star-svg {
+    fill: #254355;
+    transition: opacity 0.3s ease-out;
+}
+
+[data-name='outer-stroke'],
+[data-name='center-star-stroke'],
+[data-name='center-star-fill'] {
+    fill: inherit;
+}
+
+.Btn {
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 40px;
+    margin-top: -20px;
+    margin-left: -40px;
+    background-color: #ff0081;
+    border: 1px solid palevioletred;
+    color: #fff;
+    /* display: none; */
+}
