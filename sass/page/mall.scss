@@ -1,3 +1,5 @@
+@import '../style';
+
 * {
     box-sizing: border-box;
 }
@@ -6,15 +8,15 @@ img {
 }
 body {
     background-image: url(../img/bg02.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
+    background-repeat: cover;
+    background-size: auto;
 }
+
 html {
     position: relative;
 }
 div.shop_box {
     width: 90%;
-
     margin: 0 auto;
     display: flex;
 }
@@ -23,22 +25,30 @@ div.shop {
     margin: 0 auto 20px auto;
 }
 div.girl > img {
-    // height: 400px;
-    // margin-top: 160px;
     width: 75%;
-    margin: 100px auto auto 90px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 div.girl {
     width: 30%;
     z-index: -1;
+    position: relative;
 }
 div.list_box {
     color: #ffffff;
     display: flex;
     width: 70%;
-    font-size: 20px;
+    font-size: px;
     margin: 30px auto 20px auto;
     justify-content: space-evenly;
+    div {
+        cursor: pointer;
+        opacity: 0.6;
+        &:hover {
+            opacity: 1;
+        }
+    }
 }
 div.pro_all {
     background-color: #ffffff;
@@ -49,7 +59,6 @@ div.pro_all {
     border-radius: 15px;
     text-decoration: none;
 }
-
 div.pro_att {
     background-color: #ffffff;
     color: #863186;
@@ -130,6 +139,9 @@ div.pro_price {
     width: 100%;
     margin: 0 auto;
 }
+div.pro_name {
+    margin-top: 10px;
+}
 div.pro_price {
     margin-top: 10px;
 }
@@ -141,14 +153,17 @@ div.box {
     flex-direction: column;
     text-align: center;
     text-shadow: 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
+    cursor: pointer;
+    opacity: 0.6;
+    &:hover {
+        opacity: 1;
+    }
 }
 div.pro_photo {
     font-size: 0;
     width: 70%;
     margin: 0 auto;
 }
-
-/* ===================================攻擊商品=================================== */
 
 /* ===================================泡泡=================================== */
 .bubble {
@@ -248,7 +263,6 @@ div.pro_photo {
     animation-delay: 1s;
     background: rgba(71, 156, 22, 0.658);
 }
-
 @keyframes bubble-ani {
     0% {
         transform: translateY(5vh);
@@ -270,15 +284,6 @@ div.pro_photo {
     margin: auto auto;
     z-index: 99;
     opacity: 1;
-
-    /* width: 75%; */
-    // // margin-left: 70px;
-    // height: 580px;
-    // width: 920px;
-    // position: relative;
-    // display: flex;
-    /* border: 3px solid red; */
-    // display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -293,11 +298,18 @@ div.pro_photo {
         margin: 200px auto;
         padding: 40px 0 0 0;
         // background-color: #fff;
-        background-image: url('/img/cartbac.png');
-        background-repeat: no-repeat;
-        background-size: 100%;
+        // background-image: url('/img/cartbac.png');
+        // background-repeat: repeat-y;
+        // background-size: 100%;
         position: relative;
+        background: radial-gradient(
+            200% 100% at bottom center,
+            #9e4a62,
+            #75517d,
+            #1b2947
+        );
     }
+
     div.close {
         position: absolute;
         top: 20px;
@@ -308,13 +320,14 @@ div.pro_photo {
 
     div.pro_complete_left {
         // border: 1px solid red;
-        width: 50%;
+        width: 45%;
         z-index: 1;
         text-shadow: 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
     }
     div.pro_complete_photo {
         width: 60%;
         margin: 0 auto;
+        position: relative;
     }
     div.pro_complete_price_box {
         border: 1px solid pink;
@@ -327,7 +340,7 @@ div.pro_photo {
         background-color: rgb(141, 52, 119);
     }
     div.pro_complete_price_box > img {
-        width: 16%;
+        width: 17%;
     }
     div.pro_complete_price {
         text-align: center;
@@ -375,10 +388,12 @@ div.pro_photo {
 
     //=============================右半邊=============================
     div.pro_complete_right {
-        width: 50%;
+        width: 55%;
+        padding: 20px;
     }
+
     div.pro_complete_name_box {
-        margin-top: 10px;
+        // margin-top: 10px;
         margin-bottom: 20px;
     }
     div.pro_complete_name {
@@ -389,10 +404,13 @@ div.pro_photo {
     }
     div.pro_complete_content_box {
         margin-top: 10px;
+        background-color: #ffffff1e;
+        border-radius: 20px;
+        padding: 15px;
     }
     div.content {
         font-size: 22px;
-        line-height: 55px;
+        line-height: 40px;
         text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
         color: #ffffff;
     }
@@ -425,3 +443,279 @@ div.pro_photo {
         color: #863186;
     }
 }
+
+// ====================== RWD ======================
+@media (max-width: 1200px) {
+    div.list_box {
+        width: 80%;
+    }
+}
+@media (max-width: 1062px) {
+    div.list_box {
+        width: 100%;
+    }
+    div.girl > img {
+        width: 100%;
+    }
+}
+@media (max-width: 910px) {
+    div.pro_big_box2 {
+        margin-top: 20px;
+    }
+    div.pro_big_box3 {
+        margin-top: 20px;
+    }
+    div.girl > img {
+        width: 100%;
+    }
+    div.pro_all {
+        width: 16%;
+    }
+    div.pro_att {
+        width: 16%;
+    }
+    div.pro_def {
+        width: 16%;
+    }
+    div.pro_ass {
+        width: 16%;
+    }
+}
+@media (max-width: 850px) {
+    div.list_box {
+        width: 100%;
+    }
+    div.pro_all {
+        width: 17%;
+    }
+    div.pro_att {
+        width: 17%;
+    }
+    div.pro_def {
+        width: 17%;
+    }
+    div.pro_ass {
+        width: 17%;
+    }
+    div.box {
+        width: 30%;
+    }
+    // div.pro_big_box1 {
+    //     justify-content: space-around;
+    // }
+    div.allPro_box {
+        width: 95%;
+    }
+}
+@media (max-width: 768px) {
+    div.list_box {
+        justify-content: space-between;
+    }
+    div.pro_all {
+        width: 20%;
+    }
+    div.pro_att {
+        width: 20%;
+    }
+    div.pro_def {
+        width: 20%;
+    }
+    div.pro_ass {
+        width: 20%;
+    }
+}
+@media (max-width: 672px) {
+    div.girl {
+        display: none;
+    }
+
+    .bubble li:nth-child(2) {
+        width: 40px;
+        height: 40px;
+        left: 15%;
+        animation-duration: 13s;
+        animation-delay: 1s;
+        background: rgba(28, 117, 42, 0.986);
+    }
+
+    .bubble li:nth-child(2) {
+        width: 40px;
+        height: 40px;
+        left: 20%;
+        animation-duration: 13s;
+        animation-delay: 1s;
+        background: rgba(20, 82, 29, 0.801);
+    }
+    .bubble li:nth-child(3) {
+        width: 35px;
+        height: 35px;
+        left: 35%;
+        animation-duration: 18s;
+        animation-delay: 1.3s;
+        background: rgba(253, 255, 182, 0.425);
+    }
+
+    .bubble li:nth-child(4) {
+        width: 50px;
+        height: 50px;
+        left: 50%;
+        animation-duration: 10s;
+        animation-delay: 1s;
+        background: rgba(71, 156, 22, 0.5);
+    }
+
+    .bubble li:nth-child(5) {
+        width: 30px;
+        height: 30px;
+        left: 65%;
+        animation-duration: 16s;
+        animation-delay: 1.2s;
+        background: rgba(31, 160, 6, 0.3);
+    }
+
+    .bubble li:nth-child(6) {
+        width: 35px;
+        height: 35px;
+        left: 75%;
+        animation-duration: 16s;
+        animation-delay: 2s;
+        background: rgba(181, 255, 121, 0.384);
+    }
+    .bubble li:nth-child(7) {
+        width: 40px;
+        height: 40px;
+        left: 85%;
+        animation-duration: 10s;
+        animation-delay: 1s;
+        background: rgba(71, 156, 22, 0.658);
+    }
+    div.pro_all {
+        width: 22%;
+    }
+    div.pro_att {
+        width: 22%;
+    }
+    div.pro_def {
+        width: 22%;
+    }
+    div.pro_ass {
+        width: 22%;
+    }
+    div.shop {
+        width: 90%;
+    }
+}
+@media (max-width: 376px) {
+    div.list_box {
+        width: 100%;
+    }
+    div.shop {
+        width: 100%;
+    }
+}
+////////
+.count {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: red;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 16px;
+}
+body {
+    position: relative;
+}
+
+//愛心開始
+.center-content {
+    position: absolute;
+    top: -5%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.heart {
+    display: block;
+    width: 1em;
+    height: 1em;
+    font-size: 18px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+
+    .heart-inner {
+        &,
+        &::before,
+        &::after {
+            background-color: white;
+        }
+    }
+
+    &.loved .heart-inner {
+        &,
+        &::before,
+        &::after {
+            background-color: rgb(249, 48, 48);
+        }
+    }
+
+    &.loved {
+        animation: loved 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+}
+
+.heart-inner {
+    display: block;
+    width: 1em;
+    height: 1em;
+    transform: rotate(45deg);
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        border-radius: 1em;
+    }
+
+    &::before {
+        left: 0;
+        top: -50%;
+    }
+
+    &::after {
+        left: -50%;
+        top: 0;
+    }
+}
+
+@keyframes loved {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(0.6, 0.8);
+    }
+
+    35% {
+        transform: scale(0.8, 0.6);
+    }
+
+    70% {
+        transform: scale(1.4);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+//愛心結束

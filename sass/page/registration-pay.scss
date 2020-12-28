@@ -1,40 +1,7 @@
-.list {
-    width: 100%;
-    height: auto;
-    background: #F3F3F3;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    padding: 30px;
-}
-
-.list>p {
-    color: #5E5E5E;
-    font-size: 18px;
-    line-height: 24px;
-}
-
-.main {
-    width: 100%;
-    height: 100vh;
-    border-top-right-radius: 10px;
-    background-color: white;
-    z-index: 999;
-    box-shadow: 0px 0px 9px rgba(0, 0, 0, .2);
-    overflow: scroll
-}
-
-
-
 #price,
 #name,
 #number {
-    color: black
-}
-
-#step1,
-#step2,
-#step3 {
-    padding: 40px 0;
+    color: rgb(255, 255, 255);
 }
 
 #step1 {
@@ -45,19 +12,23 @@
     position: relative;
 }
 
-.highlight:before {
-    content: "";
-    z-index: 0;
-    position: absolute;
-    height: 0.7em;
-    top: 0.6em;
-    background: #B5FFE4;
-    width: 100%;
-    opacity: 0.5;
+h4 {
+    font-size: 24px;
+    width: 60%;
+    margin: 20px auto 10px auto;
+    color: #ffffff;
+    text-align: left;
+    text-shadow: 0 0 0.2em #ff0000, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
 }
 
 .btn-info {
-    background-color: #36B996;
+    float: right;
+    background-color: #ffffff;
+    color: #863186;
+    padding: 3px 5px 3px 5px;
+    text-align: center;
+    border: 3px solid #863186;
+    border-radius: 5px;
 }
 
 .btn-light {
@@ -70,20 +41,19 @@
 }
 
 .btn-light:hover {
-    background-color: rgb(29, 228, 175);
+    background-color: #bd7fd6;
     color: white;
 }
 
-
-
-.btn-light>img {
+.btn-light > img {
     width: 61px;
     height: auto;
     margin-bottom: 10px;
 }
 
 .allBtn {
-    margin-top: 35px;
+    /* border: 1px solid blue; */
+    margin-top: 15px;
     margin-bottom: 35px;
     margin-left: 50px;
     margin-right: 50px;
@@ -92,26 +62,31 @@
 #goS2,
 #goS3 {
     float: right;
-    margin-right: 50px;
-    margin-bottom: 120px;
+
+    /* margin-bottom: 120px; */
+    background-color: #ffffff;
+    color: #863186;
+    padding: 3px 5px 3px 5px;
+    text-align: center;
+    border: 3px solid #863186;
+    border-radius: 5px;
 }
 
 #goS1 {
     margin: 0 auto;
 }
 
-input[type=text],
-input[type=email] {
+input[type='text'],
+input[type='email'] {
     border-radius: 3px;
-    border: 1px solid darkgray
+    border: 1px solid darkgray;
 }
 
 select {
     width: 100px;
 }
 
-
-.pay_creditCard_number>input {
+.pay_creditCard_number > input {
     width: 60px;
 }
 
@@ -133,7 +108,7 @@ p {
 
 .with-errors {
     font-size: 14px;
-    color: brown
+    color: brown;
 }
 
 ul {
@@ -145,7 +120,7 @@ ul {
     width: 200px;
     height: 200px;
     border-radius: 100px;
-    background: #B5FFE4
+    background: #ca4cca;
 }
 
 .finish {
@@ -153,39 +128,130 @@ ul {
 }
 
 .btnActive {
-    background-color: #36B996;
+    background-color: #ca4cca;
     color: white;
 }
 
-#end2>div>span,
-#end2>div>p {
-    font-size: 14px
+#end2 > div > span,
+#end2 > div > p {
+    font-size: 14px;
+}
+
+.creditcard {
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    margin-top: -270px;
+    margin-left: -250px;
+    background-color: rgb(255, 255, 255);
+}
+
+.ATM {
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    margin-top: -205px;
+    margin-left: -250px;
+    background-color: rgb(255, 255, 255);
+}
+
+.pay_close {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    padding: 3px;
+}
+
+.pay_close img {
+    width: 100%;
+}
+
+.card-inf,
+.ATM_inf {
+    width: 500px;
+    margin: 0 auto 20px auto;
+    font-size: 24px;
+    color: #ffffff;
+    line-height: 50px;
+    text-shadow: 0 0 0.2em #863186, 0 0 0.2em #863186, 0 0 0.2em #863186;
+}
+
+.pay-type {
+    margin: 0 auto;
+    /* border: 1px solid blue; */
+    width: 345px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.close-atm {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    padding: 3px;
+}
+
+.close-atm img {
+    width: 100%;
+}
+
+#allGo {
+    display: block;
+    margin: 0 auto 20px auto;
+    background-color: #ffffff;
+    color: #863186;
+    padding: 3px 5px 3px 5px;
+    text-align: center;
+    border: 3px solid #863186;
+    border-radius: 10px;
+    font-size: 18px;
+    width: 4%;
+    cursor: pointer;
+    opacity: 0.6;
+    &:hover {
+        opacity: 1;
+    }
+}
+.table {
+    line-height: 40px;
 }
 
 @media only screen and (min-width: 863px) and (max-width: 995px) {
     .col-lg-4 {
-        display: none
+        display: none;
     }
 }
 
 @media only screen and (min-width: 402px) and (max-width: 862px) {
     .mydiv {
         margin-top: 0 !important;
-        padding: 0
+        padding: 0;
     }
 
     .col-lg-4 {
-        display: none
+        display: none;
     }
 }
 
 @media only screen and (min-width: 0px) and (max-width: 401px) {
     .mydiv {
         margin-top: 0 !important;
-        padding: 0
+        padding: 0;
     }
 
     .col-lg-4 {
-        display: none
+        display: none;
     }
 }

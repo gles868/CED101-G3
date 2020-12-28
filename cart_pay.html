@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="css/cart_pay.css" />
+        <link rel="stylesheet" href="css/registration-pay.css" />
+        <script src="/vendors/jquery/jquery-3.5.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+        <title>麻瓜特訓班 | 確認購買與選擇付款方式</title>
+    </head>
+
+    <body>
+        <!-- <header>
+            <nav>
+                <ul class="nav">
+                    <li><a href="course.html">課程總覽</a></li>
+                    <li><a href="teacher.html">教師總覽</a></li>
+                    <li>
+                        <a href="index.html"><img src="./img/logo.png" /></a>
+                    </li>
+                    <li><a href="mall.html">商城</a></li>
+                    <li><a href="game.html">小遊戲</a></li>
+                </ul>
+                <ul class="nav-right">
+                    <li>
+                        <a href="member.html"
+                            ><i class="fas fa-user-circle fa-lg"></i
+                        ></a>
+                    </li>
+                    <li>
+                        <a href="cart.html"
+                            ><i class="fas fa-shopping-cart fa-lg"></i
+                        ></a>
+                    </li>
+                </ul>
+            </nav>
+        </header> -->
+        <div class="moon"></div>
+        <div class="confirm_title_box">
+            <div class="confirm_title">確認資料</div>
+        </div>
+        <div class="confirm_data_box">
+            <div class="confirm_data">
+                <div class="name_box">
+                    <div class="name_title title">姓名</div>
+                    <div class="name data_text">溫宗益</div>
+                </div>
+                <div class="phone_box">
+                    <div class="phone_title title">電話</div>
+                    <div class="phone data_text">091234567</div>
+                </div>
+                <div class="add_box">
+                    <div class="add_title title">地址</div>
+                    <div class="add data_text">魔幻森林菇菇區123號</div>
+                </div>
+                <!-- <div class="point_box">
+                    <div class="point_title">折扣點數</div>
+                    <div class="point data_text">0</div>
+                </div> -->
+            </div>
+        </div>
+        <div class="cartpro_box">
+            <div class="cartpro_a_box">
+                <div class="crystalball_left_box">
+                    <img src="./img/props/p5.png" />
+                </div>
+                <div class="crystalball_right_box">
+                    <div class="crystalball_name_box">
+                        <div class="crystalball_name">閃亮水晶球</div>
+                    </div>
+
+                    <div class="crystalball_text_box">
+                        <div class="crystalball_text">
+                            學習詛咒術的時候，必須要有閃亮水晶球，才能夠看到敵人的狀態來施詛咒術，是身為一位魔法師不可缺少的。
+                        </div>
+                    </div>
+                    <div class="crystalball_priceAmount_box">
+                        <div class="amount">數量：2</div>
+                        <div class="pro_complete_price_box">
+                            <img src="/img/dollar.png" />
+                            <div class="pro_complete_price">6788</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="deliver_box">
+            <div class="deliver">
+                <img src="./img/deliver.png" />
+            </div>
+        </div>
+        <div class="total_box">
+            <div class="total_photoandtext">
+                總額：<img src="/img/dollar.png" />
+            </div>
+            <div class="total_text">6788</div>
+        </div>
+
+        <!-- 付款方式區塊 -->
+
+        <div id="step1">
+            <h4><span class="highlight">選擇付款方式</span></h4>
+            <div class="allBtn pay-type" style="display: flex">
+                <div class="row justify-content-center">
+                    <button type="button" class="btn btn-light btn_CARD">
+                        <img
+                            src="https://gitlab.com/loveabo103103/payment/raw/master/credit-card.svg"
+                            alt=""
+                        /><br />
+                        信用卡/金融卡
+                    </button>
+                </div>
+
+                <div class="row justify-content-center mt-3">
+                    <button type="button" class="btn btn-light btn_ATM">
+                        <img
+                            src="https://gitlab.com/loveabo103103/payment/raw/master/atm.svg"
+                            alt=""
+                        /><br />
+                        ATM 轉帳
+                    </button>
+                </div>
+            </div>
+            <!-- <button id="goS2" type="button" class="btn btn-info">下一步</button> -->
+        </div>
+
+        <div class="creditcard" id="step2" style="display: none">
+            <!-- <h4 style="text-align: center"><span class="highlight">STEP2. 填寫付款資訊</span></h4>
+            <p id="mark" style="text-align: center;font-weight: bolder;"></p> -->
+            <form
+                id="myForm"
+                class="allBtn"
+                role="form"
+                data-toggle="validator"
+            >
+                <div class="pay_input form-group">
+                    <input
+                        type="radio"
+                        id="pay1"
+                        name="payMethod"
+                        value="oncePayment"
+                        required
+                    />
+                    <label for="pay1"></label>
+                    一次付款
+                    <input
+                        class="ml-5"
+                        type="radio"
+                        id="pay2"
+                        name="payMethod"
+                        value="installment"
+                        required
+                    />
+                    <label for="pay2"></label>
+                    分期付款
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="pay_creditCard_number form-group">
+                    <p>信用卡卡號 :</p>
+                    <input
+                        type="text"
+                        id="card_num_1"
+                        required
+                        data-error="請填寫四位數"
+                        data-minlength="4"
+                        pattern="[0-9]{4}"
+                    />
+                    －
+                    <input
+                        type="text"
+                        id="card_num_2"
+                        data-error="請填寫四位數"
+                        required
+                        data-minlength="4"
+                        pattern="[0-9]{4}"
+                    />
+                    －
+                    <input
+                        type="text"
+                        id="card_num_3"
+                        required
+                        data-error="請填寫四位數"
+                        data-minlength="4"
+                        pattern="[0-9]{4}"
+                    />
+                    －
+                    <input
+                        type="text"
+                        id="card_num_4"
+                        data-error="請填寫四位數"
+                        required
+                        data-minlength="4"
+                        pattern="[0-9]{4}"
+                    />
+
+                    <!-- <img src="https://gitlab.com/loveabo103103/payment/raw/master/visa.svg" alt="icon" width="41.4px">
+                    <img src="https://gitlab.com/loveabo103103/payment/raw/master/mastercard.svg" alt="icon" width="37.9px">
+                    <img src="https://gitlab.com/loveabo103103/payment/raw/master/jcb.svg" alt="icon" width="38px"> -->
+                    <div class="help-block with-errors"></div>
+                </div>
+
+                <div class="pay_creditCard_date form-group">
+                    <p>有效年月 :</p>
+                    <select name="month" required>
+                        <option value="">選擇</option>
+                        <option id="card_month" value="01">01</option>
+                    </select>
+                    /
+                    <select name="year" required>
+                        <option value="">選擇</option>
+                        <option id="card_year" value="2020">2020</option>
+                    </select>
+                    年
+                </div>
+                <div class="pay_creditCard_last form-group">
+                    <p>背面末三碼</p>
+                    <input
+                        type="text"
+                        id="card_back_num"
+                        data-error="請填寫三位數"
+                        required
+                        data-minlength="3"
+                        pattern="[0-9]{3}"
+                    />
+                    <img
+                        src="https://gitlab.com/loveabo103103/payment/raw/master/back-three.svg"
+                        alt="icon"
+                        width="35.3px"
+                    />
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="pay_mail form-group">
+                    <p>填寫付款人信箱 :</p>
+                    <input
+                        type="email"
+                        required
+                        data-error="請填寫正確信箱地址"
+                    />
+                    <div class="help-block with-errors"></div>
+                </div>
+
+                <button id="goS3" type="submit" class="btn btn-info">
+                    確定
+                </button>
+            </form>
+
+            <div class="pay_close">
+                <img src="./img/close.png" alt="" />
+            </div>
+        </div>
+
+        <div class="ATM" style="display: none">
+            <div id="myForm5" class="allBtn">
+                <table class="table table-hover">
+                    <td>
+                        <tr>
+                            <th>銀行代碼</th>
+                            <th>013國泰世華銀行</th>
+                        </tr>
+                    </td>
+                    <td>
+                        <tr>
+                            <td>轉帳帳號</td>
+                            <td>0135000878787</td>
+                        </tr>
+                        <tr>
+                            <td>轉帳金額</td>
+                            <td id="ATM_pay_from">$600</td>
+                        </tr>
+                        <tr>
+                            <td>繳款期限</td>
+                            <td>2019年8月11日23點59分前</td>
+                        </tr>
+                    </td>
+                </table>
+                <button id="goATM" class="btn btn-info">確認</button>
+            </div>
+
+            <div class="close-atm">
+                <img src="./img/close.png" alt="" />
+            </div>
+        </div>
+
+        <div class="card-inf" style="display: none">
+            <div class="card-num-inf" style="display: flex">
+                <div class="card-num-title">信用卡卡號:</div>
+                <div class="card-num"></div>
+            </div>
+            <div class="card-deadline" style="display: flex">
+                <div class="card-deadline-title">有效年月:</div>
+                <div class="card-month"></div>
+                <div class="card-year"></div>
+            </div>
+            <div class="card-back-inf" style="display: flex">
+                <div class="card-back-title">背面末三碼:</div>
+                <div class="card-back-num"></div>
+            </div>
+            <div class="card-email-inf" style="display: flex">
+                <div class="card-email-title">付款人信箱:</div>
+                <div class="card-email"></div>
+            </div>
+        </div>
+
+        <table class="ATM_inf" style="display: none">
+            <td>
+                <tr>
+                    <th>銀行代碼:</th>
+                    <th>013國泰世華銀行</th>
+                </tr>
+            </td>
+            <td>
+                <tr>
+                    <td>轉帳帳號:</td>
+                    <td>0135000878787</td>
+                </tr>
+                <tr>
+                    <td>轉帳金額:</td>
+                    <td id="ATM_pay"></td>
+                </tr>
+                <tr>
+                    <td>繳款期限:</td>
+                    <td>2019年8月11日23點59分前</td>
+                </tr>
+            </td>
+        </table>
+
+        <button id="allGo">送出</button>
+
+        <footer>
+            <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
+        </footer>
+        <script>
+            $(document).ready(function () {
+                // Array for planet colors
+                var background = [
+                    'rgba(143, 189, 255, 0.7)',
+                    'rgba(255,255,255,0.6)',
+                    'rgba(255,255,255,0.9)',
+                ];
+
+                // Function for planet colors
+                function backgroundColor() {
+                    return background[
+                        Math.floor(Math.random() * background.length)
+                    ];
+                }
+
+                // Get viewport size
+                var viewportWidth = $(window).width();
+                var viewportHeight = $(window).height();
+                var viewportSize = viewportWidth + viewportHeight;
+
+                // Set limit for amount of stars and planets based on viewport size
+                var starLimit = viewportSize * 0.12;
+                var planetLimit = viewportSize * 0.025;
+
+                // Get random number
+                function getRandom() {
+                    return Math.random();
+                }
+
+                // Function for creating a star
+                function newStar() {
+                    var starDiv = document.createElement('div');
+                    starDiv.innerHTML = '<figure class="star"></figure>';
+                    return starDiv.firstChild;
+                }
+
+                // Function for creating a planet
+                function newPlanet() {
+                    var planetDiv = document.createElement('div');
+                    planetDiv.innerHTML = '<figure class="planet"></figure>';
+                    return planetDiv.firstChild;
+                }
+
+                // Loop for creating stars
+                function createStars() {
+                    for (var i = 0; i <= starLimit; i++) {
+                        var star = newStar();
+                        star.style.top = getRandom() * 100 + '%';
+                        star.style.left = getRandom() * 100 + '%';
+                        star.style.height = getRandom() * 3 + 'px';
+                        star.style.width = star.style.height;
+                        star.style.webkitAnimationDelay = getRandom() + 's';
+                        star.style.mozAnimationDelay = getRandom() + 's';
+                        star.style.webkitAnimationDuration =
+                            getRandom() + 1 + 's';
+                        star.style.mozAnimationDuration = getRandom() + 1 + 's';
+                        document.body.appendChild(star);
+                    }
+                }
+
+                // Loop for creating planets
+                function createPlanets() {
+                    for (var i = 0; i <= planetLimit; i++) {
+                        var planet = newPlanet();
+                        planet.style.top = getRandom() * 100 + '%';
+                        planet.style.left = getRandom() * 100 + '%';
+                        planet.style.height = getRandom() * 6 + 2 + 'px';
+                        planet.style.width = planet.style.height;
+                        planet.style.opacity = getRandom() + 0.15;
+                        planet.style.webkitAnimationDelay = getRandom() + 's';
+                        planet.style.mozAnimationDelay = getRandom() + 's';
+                        planet.style.webkitAnimationDuration =
+                            getRandom() + 3 + 's';
+                        planet.style.mozAnimationDuration =
+                            getRandom() + 3 + 's';
+                        planet.style.background = backgroundColor();
+                        document.body.appendChild(planet);
+                    }
+                }
+
+                // Call functions
+                createStars();
+                createPlanets();
+            });
+        </script>
+
+        <script src="./js/registration-pay.js"></script>
+    </body>
+</html>

@@ -1,3 +1,5 @@
+@import '../style';
+
 * {
     box-sizing: border-box;
 }
@@ -72,11 +74,15 @@ div.cart_title {
 }
 
 // 內容
+div.check {
+    width: 30%;
+}
 div.cartpro_box {
     width: 90%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    min-height: calc(100vh - 250px);
 }
 div.close {
     position: absolute;
@@ -107,11 +113,18 @@ div.cartpro_a_box {
 }
 div.crystalball_left_box {
     width: 30%;
-    border: 1px solid blue;
+}
+div.crystalball_left_box > img {
+    width: 100%;
+}
+div.crystalball_left_box2 {
+    width: 25%;
+}
+div.crystalball_left_box2 > img {
+    width: 100%;
 }
 div.crystalball_right_box {
     margin-left: 20px;
-    border: 1px solid blue;
     justify-content: space-around;
     display: flex;
     flex-direction: column;
@@ -133,7 +146,14 @@ div.pro_complete_price_box {
     display: flex;
     width: 100%;
     text-align: right;
-    border: 1px solid purple;
+}
+div.amount {
+    color: #ffffff;
+    font-size: 18px;
+    width: 16%;
+    line-height: 40px;
+    text-align: center;
+    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
 }
 div.crystalball_priceAmount_box {
     display: flex;
@@ -142,7 +162,6 @@ div.crystalball_priceAmount_box {
 div.crystalball_text {
     font-size: 18px;
     color: #ffffff;
-
     line-height: 30px;
     text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
 }
@@ -150,19 +169,20 @@ div.pro_complete_price_box {
     color: #ffffff;
     font-size: 18px;
     width: 16%;
-
     align-items: center;
-    // margin-top: 20px;
 }
 div.pro_complete_price {
-    // margin-left: 20px;
-    // margin-top: 5px;
     text-align: right;
     text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
 }
 div.deliver_box {
     width: 60%;
     margin: 0 auto;
+
+    img {
+        width: 100%;
+        margin-left: 10px;
+    }
 }
 
 // ========================================================================
@@ -181,13 +201,12 @@ div.total_box {
     width: 60%;
     margin: 0 auto;
     align-items: center;
-    // text-align: right;
-
     justify-content: flex-end;
 }
 
 div.total_text {
     font-size: 18px;
+
     color: #ffffff;
     margin-left: 10px;
     text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
@@ -222,7 +241,7 @@ div.space_box {
     width: 60%;
     // display: flex;
     display: none;
-    margin: 40px auto;
+    margin: 50px auto;
     text-align: center;
     font-size: 30px;
     background-color: #ffffff2f;
@@ -232,11 +251,11 @@ div.space_box {
     flex-direction: column;
 }
 div.space_photo > img {
-    width: 15%;
+    width: 20%;
 }
 div.space_text {
     width: 100%;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 30px 0 5px 0;
     color: #ffffff;
     text-shadow: 0 0 0.2em #f57af5, 0 0 0.2em #f57af5, 0 0 0.2em #f57af5;

@@ -1,3 +1,5 @@
+@import '../style';
+
 * {
     box-sizing: border-box;
 }
@@ -25,22 +27,23 @@ body {
 
 // 標題
 div.confirm_title_box {
-    width: 60%;
+    width: 90%;
     text-align: left;
     margin: 20px auto;
 }
 div.confirm_title {
     font-size: 28px;
-    width: 60%;
-    margin: 0 auto;
+    width: 66%;
+    margin: 20px auto 10px auto;
     color: #ffffff;
-    text-align: center;
+    text-align: left;
     text-shadow: 0 0 0.2em #ff0000, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
 }
 //確認資料區塊
 div.confirm_data_box {
     width: 90%;
-    margin: 0 auto;
+    margin: 30px auto 0px auto;
+    padding: 20px 15px;
 }
 div.confirm_data {
     width: 66%;
@@ -128,7 +131,7 @@ div.cartpro_box {
 div.cartpro_a_box {
     width: 65%;
     display: flex;
-    margin: 50px auto;
+    margin: 30px auto 20px auto;
     justify-content: space-between;
     background-color: #ffffff2f;
     padding: 20px 15px;
@@ -138,11 +141,10 @@ div.cartpro_a_box {
 }
 div.crystalball_left_box {
     width: 30%;
-    border: 1px solid blue;
 }
 div.crystalball_right_box {
     margin-left: 20px;
-    border: 1px solid blue;
+
     justify-content: space-around;
     display: flex;
     flex-direction: column;
@@ -164,7 +166,6 @@ div.pro_complete_price_box {
     display: flex;
     width: 100%;
     text-align: right;
-    border: 1px solid purple;
 }
 div.crystalball_priceAmount_box {
     display: flex;
@@ -177,24 +178,35 @@ div.crystalball_text {
     line-height: 30px;
     text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
 }
+div.amount {
+    color: #ffffff;
+    font-size: 18px;
+    width: 16%;
+    line-height: 40px;
+    text-align: center;
+    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+}
 div.pro_complete_price_box {
     color: #ffffff;
     font-size: 18px;
     width: 16%;
-
     align-items: center;
-    // margin-top: 20px;
 }
+
 div.pro_complete_price {
-    // margin-left: 20px;
-    // margin-top: 5px;
     text-align: right;
     text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
 }
 div.deliver_box {
     width: 60%;
     margin: 0 auto;
+
+    img {
+        width: 100%;
+        margin-left: 10px;
+    }
 }
+
 // 總額
 
 div.total_photoandtext > img {
@@ -277,10 +289,19 @@ div.nextText > a {
     div.pro_complete_price_box {
         width: 20%;
     }
+    div.amount {
+        width: 20%;
+    }
+    div.deliver_box {
+        width: 70%;
+    }
 }
 
 @media (max-width: 992px) {
     div.pro_complete_price_box {
+        width: 24%;
+    }
+    div.amount {
         width: 24%;
     }
 }
@@ -288,17 +309,29 @@ div.nextText > a {
     div.pro_complete_price_box {
         width: 27%;
     }
+    div.amount {
+        width: 27%;
+    }
 }
 
 @media (max-width: 768px) {
     div.confirm_data {
         font-size: 20px;
+        width: 90%;
+    }
+    div.title {
+        text-align: center;
+        // padding: 4px 0px 0px 0px;
+    }
+    div.confirm_title {
+        width: 85%;
     }
     div.data_text {
         margin-left: 10px;
     }
     div.cartpro_a_box {
         flex-direction: column;
+        width: 85%;
     }
     div.crystalball_right_box {
         margin: 0 auto;
@@ -307,15 +340,27 @@ div.nextText > a {
         margin: 10px auto;
         width: 40%;
     }
-
     div.pro_complete_price_box {
         width: 25%;
+    }
+    div.amount {
+        width: 25%;
+    }
+    div.deliver_box {
+        width: 85%;
     }
 }
 @media (max-width: 575px) {
     div.pro_complete_price_box {
         width: 30%;
         font-size: 16px;
+    }
+    div.amount {
+        width: 30%;
+        font-size: 16px;
+    }
+    div.title {
+        padding: 4px 0px 0px 0px;
     }
     div.pro_complete_price_box > img {
         width: 30%;
@@ -336,6 +381,9 @@ div.nextText > a {
     div.pro_complete_price_box {
         width: 40%;
         font-size: 16px;
+    }
+    div.amount {
+        width: 40%;
     }
     div.total_box {
         width: 80%;
