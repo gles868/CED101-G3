@@ -75,7 +75,7 @@
                     <img class="front_card" src="./img/course_cards/course_01.png" alt="">
                 </div>
                 <div class="back">
-                    <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+                   <a href="./singleCourse.html"><img class="back_card" src="./img/course_cards/card_back.png" alt=""></a> 
                     <p class="course_price">$4800</p>
                     <p class="course_class">屬性：攻擊型</p>
                     <p class="registration">立即報名</p>
@@ -314,21 +314,25 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
-    <script src="./js/course/course.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="./js/course/course.js"></script>
+
     <script>
 
-        $('.sliderboard').slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            autoplay: true,
-            autoplaySpeed: 3000
-        });
+        // $('.sliderboard').slick({
+        //     infinite: true,
+        //     slidesToShow: 3,
+        //     slidesToScroll: 3,
+        //     autoplay: true,
+        //     autoplaySpeed: 3000
+        // });
 
-        $(".heart").click(function () {
-            $(this).toggleClass("loved");
-        });
+        // $(".heart").click(function () {
+        //     $(this).toggleClass("loved");
+        // });
+
+        // gsap.to('.img_bat', {rotation: 360, x: 50, duration: 2});
 
 
         // document.querySelectorAll('.heart ').addEventListener('click', function () {
