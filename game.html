@@ -1,76 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>下樓梯！</title>
-        <script src="https://cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
-        <!-- <link rel="stylesheet" href="./header.css"> -->
-        <style>
-            body {
-                position: relative;
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下樓梯！</title>
+    <script src="https://cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- <link rel="stylesheet" href="./css/game.css"> -->
+
+    <style>
+        body {
+            background-image: url(./img/midnight_2.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        canvas {
+            margin: 90px auto !important;
+            border: 1px solid blue;
+            /* margin-top: 90px; */
+        }
+    </style>
+</head>
+
+<body>
+    <iframe id="header" src="./iframe.html" frameborder='0' onload="init()"></iframe>
+
+    <input type="text" id="txt" style="display: none;">
+    <!-- 計時器  -->
+
+    <script src="./js/game.js"></script>
+
+    <div id="game-box">
+        <!-- <div id="canvas"></div> -->
+    </div>
+
+    <footer id="footer">
+        <p>copyright{{year}} CED101_G3 {{webName}}.All Rights Reserved</p>
+    </footer>
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
+    <script>
+        function init() {
+            let template = document.getElementById('header').contentWindow.document;
+            let vm = new Vue({
+                el: '#header',
+                data: {
+                    course: '課程總覽',
+                    teacher: '教師總覽',
+                    mall: '商城',
+                    game: '小遊戲',
+                },
+                template: template.getElementById('header-template'),
+            })
+        }
+
+        new Vue({
+            el: '#footer',
+            data: {
+                year: '©' + new Date().getFullYear(),
+                webName: '麻瓜特訓班',
             }
+        })
+    </script>
 
-            .cover {
-                width: 550px;
-                height: 200px;
-                position: absolute;
 
-                left: 28%;
-                bottom: 0;
-                /* background-image: url(./assets/start.png); */
-                background-color: blueviolet;
-                border: 1px solid blue;
-                /* z-index: 999; */
-            }
 
-            /* .cover img {
-            width: 100%;
-            height: 100%;
-        } */
-            .cover p {
-                font-size: 40px;
-            }
+</body>
 
-            canvas {
-                margin: 0 auto !important;
-            }
-        </style>
-    </head>
-
-    <body>
-        <!-- <header>
-        <nav class="nav_box">
-            <div class="nav_left_box">
-                <a href="#" target="_parent">課程總覽</a>
-                <a href="#" target="_parent">教師總覽</a>
-            </div>
-            <div class="logo_box">
-                <a href="./index.html"><img src="./images/logosmall.png" /></a>
-            </div>
-            <div class="nav_right_box">
-                <a href="#" target="_parent">商城</a>
-                <a href="#" target="_parent">小遊戲</a>
-            </div>
-
-            <div class="icon"></div>
-        </nav>
-    </header> -->
-        <form>
-            <input type="button" value="Start count!" onClick="timedCount()" />
-            <input type="text" id="txt" />
-        </form>
-        <script src="./js/game.js"></script>
-
-        <div class="game-box">
-            <div id="canvas"></div>
-        </div>
-
-        <!-- <div class="cover">
-        <p>遊戲規則</p>
-    </div> -->
-
-        <script></script>
-    </body>
 </html>

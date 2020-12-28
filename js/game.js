@@ -1,4 +1,4 @@
-var game = new Phaser.Game(550, 500, Phaser.AUTO, '',
+var game = new Phaser.Game(550, 500, Phaser.AUTO, 'game-box',
     { preload: preload, create: create, update: update });
 
 var player;
@@ -27,8 +27,8 @@ var background;
 
 
 function preload() {
-    game.load.spritesheet('button', './assets/button_sprite_sheet1.png', 193, 71);
-    game.load.image('gamerules', './assets/game-rules.png');
+    game.load.spritesheet('button', 'assets/button_sprite_sheet1.png', 193, 71);
+    game.load.image('gamerules', './assets/gameRules.png');
     // game.load.image('start', 'assets/start.png');
     game.load.spritesheet('playerdied', './assets/explode1.png', 130, 118);  //死亡後爆炸
     game.load.spritesheet('player', './assets/dude.png', 32, 48);
@@ -50,7 +50,6 @@ function preload() {
 function create() {
 
     var bg = game.add.image(19, 0, 'background'); //背景
-    // background = game.add.tileSprite(0, 0, 800, 600, 'background');
     creatBounders();     //呼叫兩側牆壁跟天花板刺
     if (isCanPlay == "true") {
         createPlayer();
@@ -194,13 +193,32 @@ function update() {   //每秒都要偵測的部分 (持續更改)
                 orin.height = 20;
                 orin.width = 60;
                 // window.location.href = "./wenTest1.html";
-
-
                 c = 0;
-                setTimeout(killbutton, 14);
+                // setTimeout(killbutton, 14);
 
             }
         });
+        // game.input.onDown.add(function () {
+        //     if (status == 'gameOver') {
+        //         ~async function () {
+
+        //             await this.game.state.restart();
+        //             // creatPl = setInterval(createPlatform, speed_time);   //每1200毫秒執行createPlatform這個function
+        //             isCanPlay = 'true';
+        //             playerdied.visible = false;
+        //             point = 0;
+        //             lastTime = 0;
+        //             Bonus_num = 0;
+        //             text_over.visible = false;  //死亡的字這時候顯示為true
+        //             createPlayer();
+        //             status = 'running';
+
+        //             await killbutton();
+        //             c = 0;
+        //             // setTimeout(killbutton, 14);
+        //         }
+        //     }
+        // });
         speedChange();    //延遲建磚塊速度
 
         changePoint();    //算分數
@@ -604,20 +622,20 @@ function killbutton() {
     // gamerules.visible = false;
 }
 
-function resize() {
-    const canvas = document.querySelector("canvas");
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    const windowRatio = windowWidth / windowHeight;
-    const gameRatio = game.config.width / game.config.height;
-    if (windowRatio < gameRatio) {
-        canvas.style.width = windowWidth + "px";
-        canvas.style.height = (windowWidth / gameRatio) + "px";
-    }
-    else {
-        canvas.style.width = (windowHeight * gameRatio) + "px";
-        canvas.style.height = windowHeight + "px";
-    }
-}
+// function resize() {
+//     const canvas = document.querySelector("canvas");
+//     const windowWidth = window.innerWidth;
+//     const windowHeight = window.innerHeight;
+//     const windowRatio = windowWidth / windowHeight;
+//     const gameRatio = game.config.width / game.config.height;
+//     if (windowRatio < gameRatio) {
+//         canvas.style.width = windowWidth + "px";
+//         canvas.style.height = (windowWidth / gameRatio) + "px";
+//     }
+//     else {
+//         canvas.style.width = (windowHeight * gameRatio) + "px";
+//         canvas.style.height = windowHeight + "px";
+//     }
+// }
 
 
