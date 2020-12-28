@@ -11,37 +11,51 @@
         />
         <link rel="stylesheet" href="css/cart_pay.css" />
         <link rel="stylesheet" href="css/registration-pay.css" />
+        <link rel="stylesheet" href="./css/btn.css" />
         <script src="/vendors/jquery/jquery-3.5.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
         <title>麻瓜特訓班 | 確認購買與選擇付款方式</title>
     </head>
 
     <body>
-        <!-- <header>
+        <header>
             <nav>
-                <ul class="nav">
-                    <li><a href="course.html">課程總覽</a></li>
-                    <li><a href="teacher.html">教師總覽</a></li>
-                    <li>
+                <div class="menu_toggle">
+                    <input type="checkbox" />
+                    <div class="logo">
                         <a href="index.html"><img src="./img/logo.png" /></a>
-                    </li>
-                    <li><a href="mall.html">商城</a></li>
-                    <li><a href="game.html">小遊戲</a></li>
-                </ul>
-                <ul class="nav-right">
-                    <li>
-                        <a href="member.html"
-                            ><i class="fas fa-user-circle fa-lg"></i
-                        ></a>
-                    </li>
-                    <li>
-                        <a href="cart.html"
-                            ><i class="fas fa-shopping-cart fa-lg"></i
-                        ></a>
-                    </li>
-                </ul>
+                    </div>
+                    <ul class="nav">
+                        <li><a href="course.html">課程總覽</a></li>
+                        <li><a href="teacher.html">教師總覽</a></li>
+                        <li>
+                            <a href="index.html"
+                                ><img src="./img/logo.png"
+                            /></a>
+                        </li>
+                        <li><a href="mall.html">商城</a></li>
+                        <li><a href="game.html">小遊戲</a></li>
+                    </ul>
+                    <div class="ham">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul class="nav-right">
+                        <li>
+                            <a href="member.html"
+                                ><i class="fas fa-user-circle fa-lg"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a href="cart.html"
+                                ><i class="fas fa-shopping-cart fa-lg"></i
+                            ></a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
-        </header> -->
+        </header>
         <div class="moon"></div>
         <div class="confirm_title_box">
             <div class="confirm_title">確認資料</div>
@@ -330,99 +344,77 @@
                 </tr>
             </td>
         </table>
-
-        <button id="allGo">送出</button>
+        <div class="btn-wrapper">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 65 65"
+                class="star-svg"
+            >
+                <path
+                    data-name="star-10"
+                    d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                    fill="#fd7865"
+                />
+                <path
+                    data-name="star-9"
+                    d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                    fill="#489ba9"
+                />
+                <path
+                    data-name="star-8"
+                    d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                    fill="#fd7865"
+                />
+                <path
+                    data-name="star-7"
+                    d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                    fill="#fcc14c"
+                />
+                <path
+                    data-name="star-6"
+                    d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                    fill="#489ba9"
+                />
+                <path
+                    data-name="star-5"
+                    d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                    fill="#fd7865"
+                />
+                <path
+                    data-name="star-4"
+                    d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                    fill="#fcc14c"
+                />
+                <path
+                    data-name="star-3"
+                    d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                    fill="#fd7865"
+                />
+                <path
+                    data-name="star-2"
+                    d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                    fill="#489ba9"
+                />
+                <path
+                    data-name="star-1"
+                    d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                    fill="#fcc14c"
+                />
+            </svg>
+            <a class="Btn" href="./payStepDone.html"
+                ><input class="Btn" type="button" value="送出"
+            /></a>
+        </div>
+        <!-- <button id="allGo">送出</button> -->
 
         <footer>
             <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
         </footer>
-        <script>
-            $(document).ready(function () {
-                // Array for planet colors
-                var background = [
-                    'rgba(143, 189, 255, 0.7)',
-                    'rgba(255,255,255,0.6)',
-                    'rgba(255,255,255,0.9)',
-                ];
 
-                // Function for planet colors
-                function backgroundColor() {
-                    return background[
-                        Math.floor(Math.random() * background.length)
-                    ];
-                }
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+        <script src="./js/button.js"></script>
 
-                // Get viewport size
-                var viewportWidth = $(window).width();
-                var viewportHeight = $(window).height();
-                var viewportSize = viewportWidth + viewportHeight;
-
-                // Set limit for amount of stars and planets based on viewport size
-                var starLimit = viewportSize * 0.12;
-                var planetLimit = viewportSize * 0.025;
-
-                // Get random number
-                function getRandom() {
-                    return Math.random();
-                }
-
-                // Function for creating a star
-                function newStar() {
-                    var starDiv = document.createElement('div');
-                    starDiv.innerHTML = '<figure class="star"></figure>';
-                    return starDiv.firstChild;
-                }
-
-                // Function for creating a planet
-                function newPlanet() {
-                    var planetDiv = document.createElement('div');
-                    planetDiv.innerHTML = '<figure class="planet"></figure>';
-                    return planetDiv.firstChild;
-                }
-
-                // Loop for creating stars
-                function createStars() {
-                    for (var i = 0; i <= starLimit; i++) {
-                        var star = newStar();
-                        star.style.top = getRandom() * 100 + '%';
-                        star.style.left = getRandom() * 100 + '%';
-                        star.style.height = getRandom() * 3 + 'px';
-                        star.style.width = star.style.height;
-                        star.style.webkitAnimationDelay = getRandom() + 's';
-                        star.style.mozAnimationDelay = getRandom() + 's';
-                        star.style.webkitAnimationDuration =
-                            getRandom() + 1 + 's';
-                        star.style.mozAnimationDuration = getRandom() + 1 + 's';
-                        document.body.appendChild(star);
-                    }
-                }
-
-                // Loop for creating planets
-                function createPlanets() {
-                    for (var i = 0; i <= planetLimit; i++) {
-                        var planet = newPlanet();
-                        planet.style.top = getRandom() * 100 + '%';
-                        planet.style.left = getRandom() * 100 + '%';
-                        planet.style.height = getRandom() * 6 + 2 + 'px';
-                        planet.style.width = planet.style.height;
-                        planet.style.opacity = getRandom() + 0.15;
-                        planet.style.webkitAnimationDelay = getRandom() + 's';
-                        planet.style.mozAnimationDelay = getRandom() + 's';
-                        planet.style.webkitAnimationDuration =
-                            getRandom() + 3 + 's';
-                        planet.style.mozAnimationDuration =
-                            getRandom() + 3 + 's';
-                        planet.style.background = backgroundColor();
-                        document.body.appendChild(planet);
-                    }
-                }
-
-                // Call functions
-                createStars();
-                createPlanets();
-            });
-        </script>
-
+        <script src="./js/cart_pay.js"></script>
         <script src="./js/registration-pay.js"></script>
     </body>
 </html>

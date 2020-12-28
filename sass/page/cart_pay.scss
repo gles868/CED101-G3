@@ -1,4 +1,4 @@
-@import '../style';
+@import '../style.scss';
 
 * {
     box-sizing: border-box;
@@ -21,6 +21,18 @@ body {
         #e96f92 65%,
         #f7f7b6
     );
+    // background: radial-gradient(
+    //     100% 100% at bottom center,
+    //     #892570,
+    //     #75517d,
+    //     #3a6186
+    // );
+    // background: radial-gradient(
+    //     100% 100% at top center,
+    //     #3a6186 10%,
+    //     #75517d 40%,
+    //     #892570 65%
+    // );
     background-attachment: fixed;
     overflow-x: hidden;
 }

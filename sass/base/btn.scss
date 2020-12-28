@@ -1,10 +1,11 @@
 .btn-wrapper {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     cursor: pointer;
     border-radius: 50%;
     /* border: 1px solid blue; */
     position: relative;
+    margin: 0 auto;
 }
 
 .star-svg {
@@ -27,7 +28,8 @@
     height: 40px;
     margin-top: -20px;
     margin-left: -40px;
-    background-color: #ff0081;
+    background-color: #f33494;
+    border-radius: 15px;
     border: 1px solid palevioletred;
     color: #fff;
     /* display: none; */
