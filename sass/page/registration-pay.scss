@@ -45,7 +45,7 @@ h4 {
     color: white;
 }
 
-.btn-light > img {
+.btn-light>img {
     width: 61px;
     height: auto;
     margin-bottom: 10px;
@@ -86,7 +86,7 @@ select {
     width: 100px;
 }
 
-.pay_creditCard_number > input {
+.pay_creditCard_number>input {
     width: 60px;
 }
 
@@ -132,8 +132,8 @@ ul {
     color: white;
 }
 
-#end2 > div > span,
-#end2 > div > p {
+#end2>div>span,
+#end2>div>p {
     font-size: 14px;
 }
 
@@ -221,10 +221,12 @@ ul {
     width: 4%;
     cursor: pointer;
     opacity: 0.6;
+
     &:hover {
         opacity: 1;
     }
 }
+
 .table {
     line-height: 40px;
 }
