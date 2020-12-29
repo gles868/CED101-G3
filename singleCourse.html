@@ -183,6 +183,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="./js/course/singleCourse.js"></script>
 
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 60) {
+                $("header").addClass("-active");
+            } else {
+                $("header").removeClass("-active");
+            }
+        });
+    </script>
 </body>
 
 </html>

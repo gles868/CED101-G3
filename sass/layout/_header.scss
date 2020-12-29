@@ -237,3 +237,9 @@ header{
         }
     }
 }
+
+//scroll後更改header背景色
+.-active{
+    background-color: rgba(255, 111, 221, 0.401);
+    transition: 1s;
+  }
