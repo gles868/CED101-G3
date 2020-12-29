@@ -139,6 +139,7 @@ header{
                         position: relative;
                         width: 100%;
                         min-width: 280px;
+                        animation: float 2.5s infinite;
                         @media all and (max-width: 768px){
                             width: 230px;
                             min-width: 200px;
@@ -285,5 +286,19 @@ header{
                 }
             }
         }
+    }
+}
+
+// 動畫keyframes
+// 漂浮
+@keyframes float{
+    0%{
+        transform: translateY(0px);
+    }
+    50%{        
+        transform: translateY(15px);
+    }
+    100%{
+        transform: translateY(0px);
     }
 }
