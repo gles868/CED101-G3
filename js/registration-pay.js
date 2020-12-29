@@ -93,13 +93,14 @@ close_atm.onclick = function () {
 
 
 //送出鍵
-let allGO = document.getElementById('allGo');
+let allGO = document.querySelector('.Btn');
 let card_inf = document.querySelector('.card-inf');
 allGO.onclick = function () {
     if (ATM_inf.style.display == 'none' && card_inf.style.display == 'none') {
         alert('未選擇付款方式');
     }
 }
+
 
 //ATM的繳款期限 動態更新
 let ATM_deadline_from = document.getElementById('ATM_deadline_from');

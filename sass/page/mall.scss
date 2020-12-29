@@ -336,6 +336,9 @@ div.pro_photo {
         top: 20px;
         right: 20px;
         width: 3%;
+        @media (max-width: 379px) {
+            width: 5%;
+        }
     }
     //=============================左半邊=============================
 
@@ -347,6 +350,10 @@ div.pro_photo {
         @media (max-width: 1018px) {
             margin: 0 auto;
             width: 80%;
+        }
+        @media (max-width: 376px) {
+            width: 90%;
+            margin-left: 20px;
         }
     }
     div.pro_complete_photo {
@@ -434,6 +441,10 @@ div.pro_photo {
             width: 80%;
             padding: 10px;
         }
+        @media (max-width: 376px) {
+            width: 90%;
+            margin-left: 20px;
+        }
     }
 
     div.pro_complete_name_box {
@@ -457,6 +468,9 @@ div.pro_photo {
         line-height: 40px;
         text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
         color: #ffffff;
+        @media (max-width: 376px) {
+            font-size: 18px;
+        }
     }
 
     /* =========================購物車和直接購買============================ */
@@ -477,6 +491,9 @@ div.pro_photo {
         border-radius: 15px;
         color: #863186;
         cursor: pointer;
+        @media (max-width: 376px) {
+            font-size: 18px;
+        }
     }
     .buyButton {
         font-size: 20px;
@@ -488,6 +505,9 @@ div.pro_photo {
         color: #863186;
         cursor: pointer;
         text-decoration: none;
+        @media (max-width: 376px) {
+            font-size: 18px;
+        }
     }
 }
 
@@ -547,7 +567,10 @@ div.pro_photo {
     div.box {
         width: 30%;
     }
-    div.allPro_box {
+    div.allPro_box,
+    div.attPro_box,
+    div.defPro_box,
+    div.assPro_box {
         width: 95%;
     }
 }
