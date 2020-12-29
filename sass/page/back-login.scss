@@ -1,0 +1,98 @@
+* {
+    font-family: '微軟正黑體';
+}
+body {
+	background-image: url(../img/bg10.png);
+    background-size: cover;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+	/* margin: -20px 0 50px; */
+}
+
+form {
+    background-color: rgba(124, 53, 149 , 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px 200px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+h2{
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+    border-radius: 5px;
+    outline-style: none;
+}
+
+button {
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #807EFB;
+    background-color: #807EFB;
+    color: #FFFFFF;
+    padding: 5px 50px;
+    margin-top: 30px;
+    transition: .5s;
+}
+
+button:hover{
+    background-color: #5E5DB9;
+    border: 1px solid #5E5DB9;
+}
+
+
+/* ------------ RWD  ------------ */ 
+@media screen and (max-width: 575px){
+    form{
+        padding: 20px 40px;  
+    }
+
+    input{
+        padding: 10px;
+        margin: 8px 0;  
+    }
+
+    button{
+        padding: 5px 20px;
+    }
+
+    h2{
+        margin: 10px;
+        letter-spacing: 0px;
+    }
+
+    body{
+        background-position: center;
+    }
+}
+  
+  
+@media (min-width: 576px) and (max-width: 767px){
+    form{
+        padding: 50px 100px;  
+    }
+
+    body{
+        background-position: center;
+    }
+}
+  
+@media (min-width: 768px) and (max-width: 1024px){
+    form{
+        padding: 50px 150px;  
+    }
+}
