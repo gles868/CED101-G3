@@ -567,7 +567,10 @@ div.pro_photo {
     div.box {
         width: 30%;
     }
-    div.allPro_box {
+    div.allPro_box,
+    div.attPro_box,
+    div.defPro_box,
+    div.assPro_box {
         width: 95%;
     }
 }
