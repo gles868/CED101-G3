@@ -114,6 +114,9 @@ header{
                     transform: translate(100%, 0);
                     transition: transform 0.7s cubic-bezier(.04,.27,.5,1.01), opacity 1s ease;  
                 }
+                // .active{
+                //     border-bottom: 2px solid $darkpurple;    
+                // }
                 li{
                     padding: 10px;
                     line-height: 3;

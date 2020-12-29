@@ -60,3 +60,27 @@ $lineHeight: 24px;
         transition: background-color .2s;
     }
 }
+
+//  白框按鈕
+@mixin btnWhite{
+    background-color: transparent;
+    color: #fff;
+    width: 140px; 
+    height: 48px;  
+    border: 1px solid $white;
+    outline: none;
+    border-radius: 25px; 
+    font-size: $h5;
+    font-weight: 400;
+    letter-spacing: $titleLetterSpacing;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
+    margin: 30px 0;
+    cursor: pointer;
+    box-shadow: 0 0 10px $lightpurple;
+    &:hover{
+        background-color: darken($purple, 8%);
+        transition: background-color .2s;
+    }
+}

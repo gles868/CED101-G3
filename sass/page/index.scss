@@ -70,6 +70,11 @@ body{
 header{
     margin-top: -105px;
 }
+.scrollmagic-pin-spacer{
+    width: 100% !important;
+    min-width: 100% !important;
+    overflow: hidden;
+}
 #pinSection{
     // border: 1px solid orange;
     width: 100vw;
@@ -137,6 +142,9 @@ header{
 .lay04{
     background-image: url("../../img/index/[first]3castle.png");
     z-index: 7;
+    @media all and (max-width: 700px){
+        transform: translate(0px) !important;
+    }
 }
 .lay05{
     background-image: url("../../img/index/[first]4mount.png");
@@ -380,14 +388,20 @@ header{
     }         
 }
 #third{
+    // border: 1px solid skyblue;
     background: {
         image: url("../../img/index/[teachers]bg.png");
         repeat: no-repeat;
         size: cover;
     }
     height: 100vh;
+    overflow: hidden;
+    // width: 100%;
     @media all and (max-width: 868px){
         height: 100%;
+    }
+    .tea-over{
+        position: relative;
     }
     // .tea-bg {
     //     background-image: url(./img/[teachers]bg-04.png);
@@ -397,6 +411,7 @@ header{
     //     /* border: 5px solid yellow; */
     // }
     .tea-bg{
+        // border: 1px solid red;
         .title{
             // border: 1px solid green;
             position: relative;
@@ -627,6 +642,39 @@ header{
         background-color: #100213;
         display: none;
     }
+    .float_obj{
+        width: 100%;
+        height: 100vh;
+        div{
+            &:nth-child(1){
+                position: absolute;
+                top: 120px;
+                left: 45px;
+                transform: scale(0.7) rotate(5deg);
+                img{
+                    animation: float 1.8s infinite;
+                }
+            }
+            &:nth-child(2){
+                position: absolute;
+                top: 30px;
+                right: 110px;
+                transform: scale(0.5) rotate(4deg) rotateY(180deg);
+                img{
+                    animation: float 1.2s 0.5s infinite;
+                }
+            }
+        }
+    }
+    .btn{
+        // border: 1px solid springgreen;
+        position: absolute;
+        right: 200px;
+        top: 600px;
+        button{
+            @include btnPurple;
+        }
+    }
     // .sup-tea-bg img {
     //     width: 100%;
     // }
@@ -720,6 +768,9 @@ header{
                     @media all and (max-width: 868px){
                         display: inline-block;
                     }
+                    @media all and (max-width: 700px){
+                        width: 45%;
+                    }
                 }
             }
         }
@@ -764,12 +815,13 @@ header{
                 position: absolute;
                 top: 0;
             }
-            img{
+            > img{
                 &:nth-child(1){
                     position: absolute;
                     bottom: -50px;
                     left: -100px;
                     z-index: 3;
+                    animation: float 1.4s ease-in-out infinite 0.3s;
                     @media all and (max-width: 1200px){
                         left: 0;
                         width: 45%;
@@ -780,7 +832,12 @@ header{
                         left: -100px;
                     }
                 }
-                &:nth-child(2){
+            }
+            > div{
+                overflow: hidden;  
+            }
+            .circle{
+                img{
                     display: block;
                     animation: rotate 120s infinite;
                     animation-timing-function: linear;
@@ -791,19 +848,20 @@ header{
                     }
                     @media all and (max-width: 868px){
                         display: none;
-                    }
+                    }    
                 }
-                &:nth-child(3){
+            }
+            .circle_small{
+                img{
                     display: none;
                     @media all and (max-width: 868px){
                         display: block;
-                        // position: absolute;
-                        // right: 0;
-                        // bottom: 0;
                         float: right;
+                        // animation: rotate 120s infinite;
+                        // animation-timing-function: linear;
                     }
                 }
-            }
+            } 
         }
     }
     .cloud{
@@ -856,6 +914,10 @@ header{
                 justify-content: center;
                 flex-direction: column;
                 align-items: center;
+                @media all and (max-width: 810px){
+                    margin: 0;
+                    padding: 0;
+                }
                 img{
                     margin: 20px;
                 }
@@ -863,86 +925,240 @@ header{
         }
     }
     .all_box {
+        // border: 1px solid blue; 
         display: flex;
         justify-content: space-around;
-        // border: 1px solid blue; 
         position: relative;
         height: 100vh;
         align-items: center;
-    }
-    .bg_box1 {
-        width: 470px;
-        // border: 1px solid green; 
-    }
-    .bg_box2 {
-        width: 430px;
-        transform: translateY(170px);
-        // border: 1px solid green;
-    }
-    .bg_box3 {
-        width: 350px;
-        // border: 1px solid green;
-    }
-    
-    .rock {
-        width: 100%;
-        
-        img {
-            width: 100%;
-        //   border: 1px solid blue;
+        width: 95%;
+        margin: 0 auto;
+        .bg_box1 {
+            width: 470px;
+            // border: 1px solid green; 
+            @media all and (max-width: 810px){
+                margin-top: 150px;
+            }
+            .toy_line {
+                margin-left: 10px;
+                width: 90%;
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-around;
+                transform: translateY(10px);
+                .toy{
+                    position: relative;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                    &:hover::before{
+                        // border: 1px solid blue;
+                        position: absolute;
+                        top: -50px;
+                        left: -20px;
+                        width: 100px;
+                        height: 30px;
+                        border-radius: 2px;
+                        text-align: center;
+                        font-size: 14px;
+                        letter-spacing: 1.5px;
+                        color: #fff;
+                        margin: 0;
+                        line-height: 2;
+                        background-color: #333333d1;
+                    }
+                    &:hover::after{
+                        border: solid;
+                        border-color: #333333d1 transparent;
+                        border-width: 12px 6px 0 6px;
+                        content: "";
+                        position: absolute;
+                        top: -20px;
+                        left: 25px;
+                    }
+                    &:nth-child(1){
+                        &:hover::before{
+                            content: "閃亮水晶球";
+                        }
+                    }
+                    &:nth-child(2){
+                        &:hover::before{
+                            content: "魔法能量水";
+                        }
+                    }
+                    &:nth-child(3){
+                        &:hover::before{
+                            content: "魔力技能書";
+                        }
+                    }
+                }
+                .toy_ball {
+                    width: 70px;
+                    // border: 1px solid black;
+                    animation: float 2.5s ease-in-out infinite 0.3s;
+                    img {
+                        width: 100%;
+                    }
+                }
+                .toy_drink {
+                    width: 60px;
+                    animation: float 2.5s ease-in-out infinite 0.9s;
+                    img {
+                        width: 100%;
+                    }
+                }
+                .toy_book {
+                    width: 100px;
+                    animation: float 2.5s ease-in-out infinite 0.5s;
+                    // border: 1px solid black;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
         }
-    }
-    .toy_line {
-        margin-left: 10px;
-        width: 330px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-around;
-        transform: translateY(20px);
-    }
-    .toy_line3 {
-        width: 200px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-around;
-        transform: translateY(20px);
-    }
-    .toy_1 {
-        width: 70px;
-        // border: 1px solid black;
-        animation: float 2.5s ease-in-out infinite 0.3s;
-        img {
-            width: 100%;
+        .bg_box2 {
+            // border: 1px solid green;
+            width: 430px;
+            transform: translateY(170px);
+            @media screen and (max-width: 810px){
+                transform: translateY(20px);
+            }
+            .toy_line {
+                margin-left: 10px;
+                width: 90%;
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-around;
+                transform: translateY(10px);
+                .toy{
+                    position: relative;
+                    &:hover::before{
+                        // border: 1px solid blue;
+                        position: absolute;
+                        top: -50px;
+                        left: -20px;
+                        width: 100px;
+                        height: 30px;
+                        border-radius: 2px;
+                        text-align: center;
+                        font-size: 14px;
+                        letter-spacing: 1.5px;
+                        color: #fff;
+                        margin: 0;
+                        line-height: 2;
+                        background-color: #333333d1;
+                    }
+                    &:hover::after{
+                        border: solid;
+                        border-color: #333333d1 transparent;
+                        border-width: 12px 6px 0 6px;
+                        content: "";
+                        position: absolute;
+                        top: -20px;
+                        left: 25px;
+                    }
+                    &:nth-child(1){
+                        &:hover::before{
+                            content: "貝爾法師帽";
+                        }
+                    }
+                    &:nth-child(2){
+                        &:hover::before{
+                            content: "愛的魔法棒";
+                        }
+                    }
+                }
+                .toy_hat {
+                    animation: float 2.5s ease-in-out infinite 0.2s;
+                    width: 140px;
+                    img {
+                        width: 100%;
+                    }
+                }
+                .toy_pen {
+                    width: 80px;
+                    animation: float 2.5s ease-in-out infinite 0.9s;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
         }
-    }
-    .toy_2 {
-        width: 70px;
-        animation: float 2.5s ease-in-out infinite 0.9s;
-        img {
-            width: 100%;
+        .bg_box3 {
+            // border: 1px solid green;
+            @media screen and (max-width: 810px){
+                transform: translateY(30px);
+            }
+            width: 350px;
+            .toy_line3 {
+                width: 200px;
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-around;
+                transform: translate(100px, 20px);
+                @media all and (max-width: 1050px){
+                    transform: translateX(20px);
+                }
+                @media screen and (max-width: 810px){
+                    transform: translate(70px, 20px) scale(1.1);
+                }
+                .toy{
+                    position: relative;
+                    &:hover::before{
+                        // border: 1px solid blue;
+                        position: absolute;
+                        top: -50px;
+                        left: -20px;
+                        width: 100px;
+                        height: 30px;
+                        border-radius: 2px;
+                        text-align: center;
+                        font-size: 14px;
+                        letter-spacing: 1.5px;
+                        color: #fff;
+                        margin: 0;
+                        line-height: 2;
+                        background-color: #333333d1;
+                    }
+                    &:hover::after{
+                        border: solid;
+                        border-color: #333333d1 transparent;
+                        border-width: 12px 6px 0 6px;
+                        content: "";
+                        position: absolute;
+                        top: -20px;
+                        left: 25px;
+                    }
+                    &:nth-child(1){
+                        &:hover::before{
+                            content: "魔幻掃帚";
+                        }
+                    }
+                }
+                .toy_droom {
+                    animation: float 2.5s ease-in-out infinite 0.3s;
+                    width: 130px;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
         }
-    }
-    .toy_3 {
-        width: 70px;
-        animation: float 2.5s ease-in-out infinite 0.5s;
-        // border: 1px solid black;
-        img {
+        .rock {
             width: 100%;
+            @media all and (max-width: 465px){
+                width: 98%;
+            }
+            img {
+                width: 100%;
+            //   border: 1px solid blue;
+            }
         }
-    }
-    .toy_hat {
-        animation: float 2.5s ease-in-out infinite 0.2s;
-        width: 110px;
-        img {
-            width: 100%;
-        }
-    }
-    .toy_droom {
-        animation: float 2.5s ease-in-out infinite 0.3s;
-        width: 90px;
-        img {
-            width: 100%;
-        }
+        // .name{
+        //     @include paraStyle();
+        //     color: #fff;
+        // }
     }
     @media screen and (max-width: 1199px) {
         .toy_1, .toy_2, .toy_3 {
@@ -958,15 +1174,11 @@ header{
         //   border: 1px solid yellow;
         }
     }
-    
     @media screen and (max-width: 810px) {
         .all_box {
         //   flex-direction: ;
             flex-wrap: wrap;
             height: 100%;
-        }
-        .bg_box2 {
-            transform: translateY(20px);
         }
         .bg {
             height: 100%;

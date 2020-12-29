@@ -149,7 +149,7 @@ header{
                         text-shadow: 0 0 0.6em #6600b4;
                     }
                     .star{
-                        border: 1px solid tomato;
+                        // border: 1px solid tomato;
                         display: inline-block;
                         margin: 10px;
                         position: relative;
@@ -196,8 +196,38 @@ header{
                 // border: 1px solid red;
                 position: relative;
                 margin: 20px;
-                img{
+                transition: all 1s;
+                &:hover{
+                    transform: translateY(-30px);
+                    transition: all 0.4s ease-out;
+                }
+                &:hover > img{
                     box-shadow: 0 0 0.4em rgb(127, 75, 196);
+                    transition: all 0.4s ease-out;
+                }
+                .title{
+                    text-align: center;
+                    h3{
+                        color: #e1be4c;
+                        font-size: $h3;
+                        @include titleStyle;
+                        // text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
+                        margin: 20px;
+                    }
+                }
+                .info{
+                    // border: 1px solid red;
+                    position: absolute;
+                    bottom: 100px;
+                    left: 0;
+                    right: 0;
+                    text-align: center;
+                    color: #e1be4c;
+                    @include paraStyle;
+                    font-size: $h5;
+                    line-height: 1.6;
+                }
+                img{
                     border-radius: 15px;
                 }
                 .shadow{
@@ -214,7 +244,7 @@ header{
     }
     .section03{
         // border: 1px solid rgb(0, 238, 255);
-        height: 80vh;
+        position: relative;
         @media (max-width: 976px){
             height: 100%;
         }
@@ -229,7 +259,7 @@ header{
             }
         }
         .container{
-            border: 1px solid purple;
+            // border: 1px solid purple;
             width: 80%;
             margin: 0 auto;
             display: flex;
@@ -245,6 +275,11 @@ header{
                 margin: 20px;
                 background-color: #7200ca47;
                 box-shadow: 0 0 0.4em #dfb5ff, 0 0 0.05em #ae6ae3;
+                transition: all 0.6s ease;
+                &:hover{
+                    transform: scale(0.98);
+                    transition: all 0.3s ease;
+                }
                 .card{
                     display: flex;
                     flex-direction: column;
@@ -253,7 +288,7 @@ header{
                     width: 20%;
                     min-width: 140px;
                 .avatar{
-                        border: 1px solid teal;
+                        // border: 1px solid teal;
                         border-radius: 50%;
                         width: 80px;
                         height: 80px;
@@ -290,11 +325,91 @@ header{
                 .report{
                         // border: 1px solid red;
                         padding: 20px;
+                        .report_btn{
+                            // border: 1px solid blueviolet;
+                            cursor: pointer;
+                            .fas{
+                                color: #ffffffd6;
+                                &:hover{
+                                    opacity: 60%;
+                                    transition: all 0.2s ease;
+                                }
+                            }
+                        }
+                }
+            }
+        }
+        .lightbox{
+            // border: 1px solid red; 
+            background-color: $purple;
+            // width: 25%;
+            height: 170px;
+            padding: 70px;
+            border-radius: 5px;
+            margin: 0 auto;
+            position: absolute;
+            z-index: 2;
+            width: 20%;
+            min-width: 280px;
+            top: 0;  
+            left: 0; 
+            right: 0;
+            box-shadow: 0px 5px 30px -6px #0000004f;
+            span{
+                color: #fff;
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                cursor: pointer;
+                font-size: 28px;
+                font-family: monospace;
+                &:hover{
+                    opacity: 60%;
+                    transition: all 0.2s ease;
+                }
+            }
+            .lightbox_text{
+                text-align: center;
+                h4{
+                    @include titleStyle();
+                    font-size: $h4;
+                    color: #fff;
+                }
+                p{
+                    @include paraStyle();
+                    color: #fff;
+                }
+                select{
+                    opacity: 90%;
+                    border-radius: 3px;
+                    border: 1px solid #fff;
+                    background-color: white;
+                    color: #351360;
+                    padding: 7px;
+                    width: 130px;
+                }
+                button{
+                    @include btnWhite();
+                    transform: scale(0.9);
+                    margin-top: 40px;
+                    box-shadow: 0 0 transparent;
+                    text-shadow: 0 0 transparent;
+                    width: 120px;
+                    height: 40px;
                     .fas{
-                        color: #ffffffd6;
+                        margin: 6px;
                     }
                 }
             }
+        }
+        .lightbox_container{
+            // border: 1px solid blueviolet;
+            // height: 100vh;
+            // width: 100%;
+            position: absolute;
+            background-color: #00000061;
+            // margin-top: -480px;
+            z-index: 1;
         }
         .btn{
             // border: 1px solid darkblue;
