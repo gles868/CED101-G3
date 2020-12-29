@@ -1053,7 +1053,6 @@ width: 80%;
         margin-top: -12px;
         margin-left: -12px;
       }
-    
   }
 }
 
@@ -1061,6 +1060,7 @@ width: 80%;
 .memInfoLeft {
   .memPoint{
     text-align: center;
+    // margin: 10px auto;
   }
 } 
 
@@ -1111,8 +1111,41 @@ width: 80%;
 .memInfoCG input:nth-child(2){
   margin-bottom: 2rem;
 }
+@media (max-width: 1200px){
+  .memheadBox{
+    // .memhead{
+    //   img {
+    //   }
+    // }
+    .memheadCG{
+      i{
+        font-size: 20px;
+        margin-top: -10px;
+        margin-left: -10px;
+      }
+    }
+  }
 
+  .memInfoCG input:nth-child(1),
+  .memInfoCG input:nth-child(2){
+    margin-bottom: 1.2rem;
+  }
+}
 @media (max-width: 992px){
+  .memheadBox{
+    // .memhead{
+    //   img {
+    //   }
+    // }
+    .memheadCG{
+      i{
+        font-size: 18px;
+        margin-top: -8px;
+        margin-left: -8px;
+      }
+    }
+  }
+
   .memInfoFormOut{
     padding: 0px;
   
@@ -1123,37 +1156,73 @@ width: 80%;
   }
 }
 @media (max-width: 768px){
-.memInfoOut{
-  h5{
-    font-size: 16px;
-  }
-}
-.memInfoRight{
-  .memInfoFormOut{
-    .memInfoForm{
-        width: 100%;
-        .MIF_Data{
-          // border: 1px solid green;
-          margin: 5px 0px;          
-        }             
+  .memheadBox{
+    // .memhead{
+    //   img {
+    //   }
+    // }
+    .memheadCG{
+      i{
+        font-size: 16px;
       }
     }
   }
+
+  .memInfoOut{
+    h5{
+      font-size: 16px;
+    }
+  }
+  .memInfoRight{
+    .memInfoFormOut{
+      .memInfoForm{
+          width: 100%;
+          .MIF_Data{
+            margin: 5px 0px;          
+          }             
+        }
+     }
+    }
+  .memInfoCG input:nth-child(1),
+  .memInfoCG input:nth-child(2){
+    margin-bottom: 5px;
+  }
 }
-// .memInfoCG input:nth-child(1),
-// .memInfoCG input:nth-child(2){
-//   margin-bottom: 10px;
-// }
+
 @media (max-width: 576px){
+  .memheadBox{
+    // .memhead{
+    //   img {
+    //   }
+    // }
+    .memheadCG{
+      i{
+        font-size: 20px;
+        margin-top: -10px;
+        margin-left: -10px;
+      }
+    }
+  }
+  .memInfoRight{
+    width: 90%;
+    .memInfoFormOut{
+      .memInfoForm{
+          .MIF_Data{
+            margin-bottom: 1rem;          
+          }             
+        }
+      }
+    }
   .memInfo{
     flex-direction: column;
     align-items: center;
     .memInfoLeft{
       width: 90%;
     }
-    .memInfoRight{
-      width: 90%;
-    }
+  }
+  .memInfoCG input:nth-child(1),
+  .memInfoCG input:nth-child(2){
+    margin-bottom: 1rem;
   }
 }
   
