@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麻瓜特訓班 | 後台登入</title>
+    <link rel="stylesheet" href="css/back-login.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link href="css/hamburgers.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+<body>
+  <form action="#">
+    <h2>管理員登入</h2>
+    <input type="text" id="adminId" placeholder="請輸入帳號"/>
+    <input type="password" id="adminPwd" placeholder="請輸入密碼"/>
+    <button type="button" id="adminLogin" name="button" class="btnLogin">登入</button>
+  </form>
+
+  <script>
+    // 後台登入帳密確認
+    function sendForm(){
+      let adminId = document.getElementById("adminId").value;
+      let adminPwd = document.getElementById("adminPwd").value;
+
+      if(adminId === "admin" && adminPwd === "1111") { //管理員後台:帳號 admin , 密碼 1111
+        location.href = "back-admin.html";
+      } else if(adminId === "teacher" && adminPwd === "2222"){ //老師後台:帳號 teacher , 密碼 2222
+        location.href = "back-course-search.html";
+      } else {
+        alert("帳密錯誤");
+      }
+    }
+
+    function init(){
+      document.getElementById("adminLogin").onclick = sendForm;
+    };
+
+    window.addEventListener("load", init, false);
+  </script>
+</body>
+</html>

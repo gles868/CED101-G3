@@ -49,7 +49,7 @@ new ScrollMagic.Scene({
 })
 .setPin("#pinSection")
 .setTween(scroll)
-.addIndicators()
+// .addIndicators()  // 標記
 .addTo(controller);
 
 // parallax.js

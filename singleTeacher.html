@@ -6,15 +6,9 @@
     <title>麻瓜特訓班 | 單一教師</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="css/singleTeacher.css">
+    
+    <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/vendors/jquery.easings.min.jss"></script>
-    <!-- This following line is only necessary in the case of using the option `scrollOverflow:true` -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/vendors/scrolloverflow.min.js"></script>
-    <!-- fullPage.js v2.9.5 -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="vendors/fullpage/fullpage.css">
-    <script src="vendors/fullpage/fullpage.js"></script>
 </head>
 <body>
     <header>
@@ -58,7 +52,7 @@
                 <div class="wrapper">
                     <div class="intro">  
                         <h3>雅各·科沃斯基</h3>
-                        <div class="star" data-percent="80"></div>
+                        <div class="star" data-percent="50"></div>
                         <p>
                             鳳凰會時代，天狼星把波特夫婦藏身處守密人的重要任務，交付給佩迪魯的
                             理由是「食死人絕不會想到鳳凰會會把如此重要的任務交付給佩迪魯」
@@ -73,24 +67,52 @@
                 <h2>所授課程</h2>
             </div>
             <div class="wrapper">
-                <div class="card card01">
-                    <img src="./img/course_cards/course_01.png" alt="">
-                    <div class="shadow"></div>
-                </div>
-                <div class="card card02">
-                    <img src="./img/course_cards/course_02.png" alt="">
-                    <div class="shadow"></div>
-                </div>
-                <div class="card card03">
-                    <img src="./img/course_cards/course_03.png" alt="">
-                    <div class="shadow"></div>
-                </div>
+                <a href="./singleCourse.html">
+                    <div class="card card01">
+                        <div class="title">
+                            <h3>飛行術</h3>
+                        </div>
+                        <div class="info">
+                            <p>屬性: 魔法型</p>
+                            <p>價錢: $12800</p>
+                        </div>
+                        <img src="./img/course_cards/card_back.png" alt="">
+                        <div class="shadow"></div>
+                    </div>
+                </a>
+                <a href="./singleCourse.html">
+                    <div class="card card02">
+                        <div class="title">
+                            <h3>煉金術</h3>
+                        </div>
+                        <div class="info">
+                            <p>屬性: 魔法型</p>
+                            <p>價錢: $12800</p>
+                        </div>
+                        <img src="./img/course_cards/card_back.png" alt="">
+                        <div class="shadow"></div>
+                    </div>
+                </a>
+                <a href="./singleCourse.html">
+                    <div class="card card03">
+                        <div class="title">
+                            <h3>魔藥學</h3>
+                        </div>
+                        <div class="info">
+                            <p>屬性: 魔法型</p>
+                            <p>價錢: $12800</p>
+                        </div>
+                        <img src="./img/course_cards/card_back.png" alt="">
+                        <div class="shadow"></div>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="section03">
             <div class="title">
                 <h2>教師評論</h2>
             </div>
+            <!-- 所有評論開始 -->
             <div class="container">
                 <div class="comm_card">
                     <div class="card">
@@ -100,10 +122,14 @@
                         <p>挖洗白白</p>
                     </div>
                     <div class="comm">
-                        <div class="star" data-percent="37"></div>
+                        <div class="star" data-percent="70"></div>
                         <div class="text">ㄎㄎㄎㄎㄎㄎㄎ</div>
                     </div>
-                    <div class="report"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="report">
+                        <div class="report_btn">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
                 </div>
                 <div class="comm_card">
                     <div class="card">
@@ -113,10 +139,14 @@
                         <p>挖洗白白</p>
                     </div>
                     <div class="comm">
-                        <div class="star" data-percent="37"></div>
+                        <div class="star" data-percent="50"></div>
                         <div class="text">ㄎㄎㄎㄎㄎㄎㄎㄎㄎㄎㄎㄎㄎㄎㄎㄎㄎ</div>
                     </div>
-                    <div class="report"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="report">
+                        <div class="report_btn">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
                 </div>
                 <div class="comm_card">
                     <div class="card">
@@ -126,10 +156,14 @@
                         <p>挖洗白白</p>
                     </div>
                     <div class="comm">
-                        <div class="star" data-percent="37"></div>
+                        <div class="star" data-percent="90"></div>
                         <div class="text">我要成為魔法師</div>
                     </div>
-                    <div class="report"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="report">
+                        <div class="report_btn">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
                 </div>
                 <div class="comm_card">
                     <div class="card">
@@ -139,12 +173,95 @@
                         <p>挖洗白白</p>
                     </div>
                     <div class="comm">
-                        <div class="star" data-percent="37"></div>
+                        <div class="star" data-percent="50"></div>
                         <div class="text">ㄎㄎㄎㄎㄎㄎㄎ</div>
                     </div>
-                    <div class="report"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="report">
+                        <div class="report_btn">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="comm_card">
+                    <div class="card">
+                        <div class="avatar">
+                            <img src="img/teacher/bai.jpg" alt="" width="80px">
+                        </div>
+                        <p>挖洗白白</p>
+                    </div>
+                    <div class="comm">
+                        <div class="star" data-percent="80"></div>
+                        <div class="text">ㄎㄎㄎㄎㄎㄎㄎ</div>
+                    </div>
+                    <div class="report">
+                        <div class="report_btn">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="comm_card">
+                    <div class="card">
+                        <div class="avatar">
+                            <img src="img/teacher/bai.jpg" alt="" width="80px">
+                        </div>
+                        <p>挖洗白白</p>
+                    </div>
+                    <div class="comm">
+                        <div class="star" data-percent="20"></div>
+                        <div class="text">ㄎㄎㄎㄎㄎㄎㄎ</div>
+                    </div>
+                    <div class="report">
+                        <div class="report_btn">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="comm_card">
+                    <div class="card">
+                        <div class="avatar">
+                            <img src="img/teacher/bai.jpg" alt="" width="80px">
+                        </div>
+                        <p>挖洗白白</p>
+                    </div>
+                    <div class="comm">
+                        <div class="star" data-percent="50"></div>
+                        <div class="text">ㄎㄎㄎㄎㄎㄎㄎ</div>
+                    </div>
+                    <!-- 檢舉按鈕 -->
+                    <div class="report">
+                        <div class="report_btn">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- 所有評論結束 -->
+
+            <!-- 燈箱開始 -->
+            <!-- pop-up lightbox -->
+            <div class="lightbox">
+                <span>x</span>
+                <div class="lightbox_text">
+                    <h4>
+                        <i class="fas fa-exclamation-triangle"></i>
+                        檢舉本則留言
+                    </h4>
+                    <p>請選擇檢舉原因：</p>
+                    <select>
+                        <option value="1">內容不當</option>
+                        <option value="2">與網站無關</option>
+                        <option value="3">其他</option>
+                    </select><br>
+                    <button type="submit" value="submit">
+                        送出<i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- pop-up bg -->
+            <div class="lightbox_container"></div>
+            <!-- 燈箱結束 -->
+
+            <!-- show more btn -->
             <div class="btn">
                 <button class="btn-purple">查看更多</button>
             </div>
@@ -155,6 +272,32 @@
         <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
     </footer>
 
-    <script src="js/teacher.js"></script>
+    <script>
+        // show more comments
+        $(document).ready(function(){
+            $('.container .comm_card').slice(0, 4).addClass('shown');
+            $('.container .comm_card').not('.shown').hide();
+            $('.btn-purple').click(function(){
+                $('.container .comm_card').not('.shown').toggle();
+                // $(this).toggleClass('showLess');
+            });
+
+            // $('fas').click(function(){});
+        });
+
+        // lightbox
+        $('.lightbox').hide(0);
+        $('.lightbox_container').hide(0);
+        // 點按鈕時出現燈箱
+        $('.report_btn').click(function(){
+            $('.lightbox_container').show(0);
+            $('.lightbox').fadeIn(300);
+        });
+        // 點X關閉燈箱
+        $('.lightbox span').click(function() {
+            $('.lightbox_container').hide(0);
+            $('.lightbox').hide(0);
+        });
+    </script>
 </body>
 </html>

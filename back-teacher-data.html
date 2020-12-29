@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麻瓜特訓班 | 教師後台 | 個人資料管理</title>
+    <link rel="stylesheet" href="css/back-teacher-data.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link href="css/hamburgers.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+    <!-- 上方header -->
+    <header>
+        <nav>
+            <button class="hamburger hamburger--spin" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+            <div class="nav-left">
+                <img src="./img/logo.png">
+            </div>
+            <div class="nav-right">
+                <p>您好！<span id="ename"></span><i class="fas fa-user-circle fa-lg"></i></p>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- 中間內容 -->
+    <section class="content-wrap">
+        <ul class="left-block">
+            <h2>教師後台</h2>
+            <li id="back-course-search"><a href="back-course-search.html">課表查詢</a></li>
+            <li id="back-teacher-data"><a href="back-teacher-data.html">個人資料管理</a></li>
+        </ul>
+
+        <div class="right-block">
+            <div class="main">
+                <h2>個人資料管理</h2>
+                <div class="form-wrap">
+                    <div class="content-list">
+                        <table class="form-list">
+                            <tr>
+                              <th>編號</th>
+                              <th>帳號</th>
+                              <th>姓名</th>
+                              <th>生日</th>
+                              <th>性別</th>
+                              <th>電話</th>
+                              <th>地址</th>
+                              <th>編輯</th>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>a123456</td>
+                              <td>王大明</td>
+                              <td>1988/07/10</td>
+                              <td>男</td>
+                              <td>0912345678</td>
+                              <td>菇菇森林</td>
+                              <td><button type="button" id="edit" name="button" class="edit-btn">編輯</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部footer -->
+    <footer>
+        <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
+    </footer>
+
+
+    <!-- 引入js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/hamburgers.js"></script>
+
+    
+</body>
+</html>

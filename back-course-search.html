@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麻瓜特訓班 | 教師後台 | 課表查詢</title>
+    <link rel="stylesheet" href="css/back-course-search.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link href="css/hamburgers.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href='./vendors/fullCalendar/main.css' rel='stylesheet' />
+    <script src='/vendors/fullCalendar/main.js'></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+    
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+          },
+          initialDate: '2020-09-12',
+          navLinks: true, // can click day/week names to navigate views
+          businessHours: true, // display business hours
+          editable: true,
+          selectable: true,
+          events: [
+            {
+              title: 'Business Lunch',
+              start: '2020-09-03T13:00:00',
+              constraint: 'businessHours'
+            },
+            {
+              title: 'Meeting',
+              start: '2020-09-13T11:00:00',
+              constraint: 'availableForMeeting', // defined below
+              color: '#257e4a'
+            },
+            {
+              title: 'Conference',
+              start: '2020-09-18',
+              end: '2020-09-20'
+            },
+            {
+              title: 'Party',
+              start: '2020-09-29T20:00:00'
+            },
+    
+            // areas where "Meeting" must be dropped
+            {
+              groupId: 'availableForMeeting',
+              start: '2020-09-11T10:00:00',
+              end: '2020-09-11T16:00:00',
+              display: 'background'
+            },
+            {
+              groupId: 'availableForMeeting',
+              start: '2020-09-13T10:00:00',
+              end: '2020-09-13T16:00:00',
+              display: 'background'
+            },
+    
+            // red areas where no events can be dropped
+            {
+              start: '2020-09-24',
+              end: '2020-09-28',
+              overlap: false,
+              display: 'background',
+              color: '#ff9f89'
+            },
+            {
+              start: '2020-09-06',
+              end: '2020-09-08',
+              overlap: false,
+              display: 'background',
+              color: '#ff9f89'
+            }
+          ]
+        });
+    
+        calendar.render();
+      });
+    </script>
+</head>
+<body>
+  <!-- 上方header -->
+  <header>
+    <nav>
+        <button class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
+        <div class="nav-left">
+            <img src="./img/logo.png">
+        </div>
+        <div class="nav-right">
+            <p>您好！<span id="ename"></span><i class="fas fa-user-circle fa-lg"></i></p>
+        </div>
+    </nav>
+  </header>
+
+
+  <!-- 中間內容 -->
+  <section class="content-wrap">
+    <ul class="left-block">
+      <h2>教師後台</h2>
+      <li id="back-course-search"><a href="back-course-search.html">課表查詢</a></li>
+      <li id="back-teacher-data"><a href="back-teacher-data.html">個人資料管理</a></li>
+    </ul>
+
+    <div class="right-block">
+      <div class="tab_container">
+        <div class="tab_list_block">
+          <ul class="tab_list">
+            <li><a href="#" data-target="tab1" class="tab -on">查看課表時間</a></li>
+            <li><a href="#" data-target="tab2" class="tab">開課情況</a></li>
+          </ul>
+        </div>
+        
+        <div class="tab_contents">
+          <div class="tab tab1 -on">
+            <div class="calendar-wrap">
+              <div id='calendar'></div>
+            </div>   
+          </div>
+          
+          <div class="tab tab2">
+            <div class="item">
+                <div class="pic">
+                    <img src="img/course01.png">
+                </div>
+                <div class="txt">
+                    <h3>課程名稱</h3>
+                    <p>目前報名人數:3/5</p>
+                </div>
+            </div>
+          </div>
+        </div>
+            
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部footer -->
+  <footer>
+      <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
+  </footer>
+
+  <!-- 引入js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="js/hamburgers.js"></script>
+  <!-- 頁籤js -->
+  <script>
+      $(function(){
+          $("a.tab").on("click", function(e){
+              e.preventDefault();
+              
+              /* 將頁籤列表移除所有 -on，再將指定的加上 -on */
+              $(this).closest("ul").find("a.tab").removeClass("-on");
+              $(this).addClass("-on");
+              
+              /* 找到對應的頁籤內容，加上 -on 來顯示 */
+              $("div.tab").removeClass("-on");
+              $("div.tab." + $(this).attr("data-target")).addClass("-on");
+          });
+      });
+  </script>
+</body>
+</html>
