@@ -1,0 +1,219 @@
+* {
+    box-sizing: border-box;
+    font-family: '微軟正黑體';
+}
+
+body{
+    margin: 0;
+}
+
+/* ------------ header ------------ */ 
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(to right,#5f2c82 , #49a09d);
+}
+
+.nav-left > img{
+    width: 50%;
+}
+
+.nav-right{
+    color: #ffff;
+}
+
+.nav-right > p{
+    margin: 0;
+}
+
+
+button.hamburger{
+    display: none;
+}
+
+
+/* ------------ 中間內容區塊 ------------ */ 
+.content-wrap{
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
+}
+  
+
+/* ------------ 左邊區塊 ------------ */   
+ul.left-block{
+    width: 15%;
+    background-color: #F4F4F4;
+    padding: 10px;
+    margin: 0;
+}
+
+ul.left-block li{
+    list-style: none;
+    padding: 5px;
+    background-color: #807EFB;
+    margin: 15px;
+    text-align: center;
+    border-radius: 20px;
+    transition: .3s;
+}
+
+ul.left-block li a{
+    text-decoration: none;
+    color: #ffff;
+}
+
+ul.left-block li:hover{
+    background-color: #5E5DB9; 
+}
+
+
+/* ------------ 右邊區塊 ------------ */ 
+.right-block{
+    width: 85%;
+    padding: 20px;
+}
+
+h2{
+    color: #555555;
+}
+
+
+/*------------ 顯示使用者現在所在位置 ------------*/
+#back-course-search{
+    background-color: #5E5DB9;  
+}
+
+
+/* ------------ 頁籤區塊 ------------ */ 
+/* 整個頁籤及內容最外層區塊 */
+div.tab_container{
+  margin-top: 20px;
+}
+
+/* 頁籤列表 */
+div.tab_container div.tab_list_block ul.tab_list{
+  list-style: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+div.tab_container div.tab_list_block ul.tab_list > li{
+  display: inline-block;
+}
+
+div.tab_container div.tab_list_block ul.tab_list > li > a{
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 40px;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  color: #555555;
+  font-size: 20px;
+  position: relative;
+  top: 1px;
+  background-color:#F5EFFD;
+}
+
+div.tab_container div.tab_list_block ul.tab_list > li > a.-on{
+  color: #ffff;
+  background-color:#D1BEE8;
+}
+
+/* 頁籤內容區塊 */
+div.tab_container div.tab_contents{
+  background-color:#D1BEE8;
+}
+
+div.tab_container div.tab_contents div.tab{
+  padding: 10px;
+  display: none;
+}
+
+div.tab_container div.tab_contents div.tab.-on{
+  display: block;
+}
+
+/* ------------ 開課情況 ------------ */
+.item{
+    display: flex;
+}
+
+.pic{
+    width: 30%;
+}
+
+.pic img{
+    width: 90%;
+}
+
+.txt{
+    width: 70%;
+}
+
+
+/* ------------ 月曆區塊 ------------ */ 
+.calendar-wrap{
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: auto;
+}
+
+
+/* ------------ footer ------------ */ 
+footer{
+    width: 100%;
+    color: #ffff;
+	margin: 0;
+    background-color: #141414;
+}
+
+footer > p {
+    font-size: 12px;
+	text-align: center;
+	padding: 8px 0px;
+	margin: 0;
+}
+
+
+/* ------------ RWD ------------ */ 
+@media screen and (max-width: 767px){
+    .nav-left > img{
+        width: 40%;
+    }
+
+    div.tab_container div.tab_list_block ul.tab_list > li > a{
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px 5px 0 0;
+      }
+
+}
+  
+@media screen and (min-width: 992px){
+    ul.left-block{
+      display: block !important;
+    }
+}
+  
+@media screen and (max-width: 991px){
+    .content-wrap{
+        flex-direction: column;
+    }
+
+    ul.left-block{
+        display: none;
+        width: 100%;
+    }
+ 
+    button.hamburger{
+        display: inline-block;
+    }
+
+    .right-block{
+        width: 100%;
+    } 
+}

@@ -1,0 +1,337 @@
+* {
+    box-sizing: border-box;
+	font-family: '微軟正黑體';
+	margin: 0;
+    padding: 0;
+}
+
+/* ------------ 導覽列 ------------ */
+header{
+	background-color: rgba(255, 255, 255, 0.3);
+	box-shadow: 0px 5px 5px rgba(67, 67, 67, 0.3);
+}
+
+nav{
+	display: flex;
+}
+
+li{
+    display: inline-block;
+    list-style: none;
+    /* margin: 5px; */
+    vertical-align: middle;
+}
+
+ul.nav > li > a{
+	color: #fff;
+	text-decoration: none;
+	margin: 0 10px;
+}
+
+ul.nav-right > li > a{
+	color: #fff;
+}
+
+
+/* ------------ 中間內容 ------------ */
+body {
+	background-image: url(../img/bg07.jpg);
+	background-size: cover;
+}
+
+h2 {
+	margin: 0;
+}
+
+span {
+/* 	font-size: 12px; */
+	transition: .3s;
+	padding: 5px 0;
+}
+
+span:hover {
+	cursor: pointer;
+    color: #F43752;
+}
+
+button {
+	border-radius: 20px;
+	border: 1px solid #6287C0;
+	background-color: #6287C0;
+    color: #FFFFFF;
+    margin-top: 10px;
+	font-size: 16px;
+	padding: 10px 45px;
+	letter-spacing: 1px;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:focus {
+	outline: none;
+}
+
+button.check {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+input:focus {
+    outline-color: #BDBDBD;
+}
+
+.container {
+    margin: 100px auto;
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
+}
+
+.form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+
+.container.right-panel-active .sign-in-container {
+	transform: translateX(100%);
+}
+
+.sign-up-container {
+	left: 0;
+	width: 50%;
+	opacity: 0;
+	z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 5;
+	animation: show 0.6s;
+}
+
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+
+.overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+}
+
+.container.right-panel-active .overlay-container{
+	transform: translateX(-100%);
+}
+
+.overlay {
+	background: #5f2c82;
+	background: -webkit-linear-gradient(to right,#49a09d , #5f2c82);
+	background: linear-gradient(to right,#49a09d , #5f2c82);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+  	transform: translateX(50%);
+}
+
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+	transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+	transform: translateX(0);
+}
+
+.overlay-right {
+	right: 0;
+	transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+	transform: translateX(20%);
+}
+
+
+
+/* ------------ footer ------------ */
+footer{
+    width: 100%;
+    color: #ffff;
+	margin: 0;
+    background-color: #141414;
+}
+
+footer > p {
+    font-size: 12px;
+	text-align: center;
+	padding: 8px 0px;
+	margin: 0;
+}
+
+
+
+/* ------------ RWD  ------------ */ 
+@media screen and (max-width: 575px){
+	.container{
+		width: 350px;
+		min-height: 320px;
+	}
+
+	form {
+		padding: 0 20px;
+	}
+
+	h2 {
+		font-size: 18px;
+	}
+	
+	span {
+		font-size: 12px;
+	}
+
+	input {
+		padding: 5px;
+		margin: 5px 0;
+		width: 100%;
+		font-size: 12px;
+	}
+	button {
+		margin-top: 10px;
+		font-size: 14px;
+		padding: 5px 25px;
+		letter-spacing: 0px;
+	}
+
+	.overlay-panel{
+		padding: 0 20px;
+	}
+}
+  
+  
+@media (min-width: 576px) and (max-width: 767px){
+	.container{
+		width: 550px;
+		min-height: 360px;
+	}
+
+	form {
+		padding: 0 30px;
+	}
+
+	h2 {
+		font-size: 20px;
+	}
+	
+	span {
+		font-size: 12px;
+	}
+
+	input {
+		padding: 5px;
+		margin: 5px 0;
+		width: 100%;
+		font-size: 12px;
+	}
+	button {
+		margin-top: 10px;
+		font-size: 14px;
+		padding: 8px 30px;
+		letter-spacing: 1px;
+	}
+
+	.overlay-panel{
+		padding: 0 30px;
+	}
+}
+  
+@media (min-width: 768px) and (max-width: 991px){
+    .container{
+		width: 700px;
+		min-height: 450px;
+	}
+
+	form {
+		padding: 0 40px;
+	}
+	.overlay-panel{
+		padding: 0 40px;
+	}
+}
