@@ -1,0 +1,19 @@
+[
+  {
+      "courseNo":"100001",
+      "courTypeNo":"ct0001",
+      "courseName":"光劍術",
+      "courseImg":"https://tibamef2e.com/ced101/project/g3/img/course_cards/course_01.png",
+      "courseDescription":"光劍術是一門攻擊型的課程，學完這門課並配合我們的光劍小道具讓你成為最強攻擊型魔法師!!",
+      "coursePrice":"4800"
+
+  },
+  {
+    "courseNo":"100002",
+    "courTypeNo":"ct0002",
+    "courseName":"毒藥術",
+    "courseImg":"https://tibamef2e.com/ced101/project/g3/img/course_cards/course_02.png",
+    "courseDescription":"毒藥術是一門攻擊型的課程，學完這門課並將魔法技能書中的配方記下，可以自行條配出毒藥毒殺敵人!!",
+    "coursePrice":"9800"
+  }
+]

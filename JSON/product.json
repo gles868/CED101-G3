@@ -1,0 +1,22 @@
+[
+  {
+    "proNo":"p00001",
+    "courseNo":"100001",
+    "proName":"貝爾法師帽",
+    "proPrice":"3333",
+    "proStatus":"1",
+    "proImg":"https://tibamef2e.com/ced101/project/g3/img/props/p1.png",
+    "proDescription":"這是第一個商品的敘述，是一頂被修補過的魔法帽-貝爾法師帽，配合光劍術",
+    "proType":"攻擊"
+  },
+  {
+    "proNo":"p00002",
+    "courseNo":"100002",
+    "proName":"愛的寶石",
+    "proPrice":"1314",
+    "proStatus":"1",
+    "proImg":"https://tibamef2e.com/ced101/project/g3/img/props/p2.png",
+    "proDescription":"這是第二個商品的敘述，是一顆充滿愛的石頭-愛的寶石，配合毒藥術",
+    "proType":"攻擊"
+  }
+]

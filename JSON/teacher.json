@@ -1,0 +1,20 @@
+[
+  {
+      "teachNo":"t00001",
+      "empNo":"e00001",
+      "teachName":"雅各·科沃斯基",
+      "commStarTotal":"************",
+      "commNum":"3",
+      "teachImg":"https://tibamef2e.com/ced101/project/g3/img/teacher/tr01.png",
+      "teachDescription":"這是第一個老師的敘述，有三個評價次數，總共12個星星(一次4顆)"
+  },
+  {
+      "teachNo":"t00002",
+      "empNo":"e00002",
+      "teachName":"哈利菠菜",
+      "commStarTotal":"**********",
+      "commNum":"2",
+      "teachImg":"https://tibamef2e.com/ced101/project/g3/img/teacher/tr01.png",
+      "teachDescription":"這是第二個老師的敘述，有兩個評價次數，總共10個星星(一次5顆)"
+  }
+]

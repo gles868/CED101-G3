@@ -1,0 +1,19 @@
+[
+  {
+      "registNo":"300001",
+      "memberNo":"m00001",
+      "classNo":"400001",
+      "commStar":"****",
+      "commContent":"這是第一個評論，給了四星好評唷!!但我不知道這是給哪個老師呢!",
+      "registStatus":"0" 
+
+  },
+  {
+    "registNo":"300002",
+      "memberNo":"m00002",
+      "classNo":"400002",
+      "commStar":"*****",
+      "commContent":"這是第二個評論，給了五星好評推推!!但又是給哪個老師呢!?",
+      "registStatus":"0"
+  }
+]
