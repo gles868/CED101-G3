@@ -56,23 +56,13 @@ $(document).ready(function(){
 //查看課表時間fullcalendar
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
-  
+
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      initialDate: '2020-12-14',
-      headerToolbar: {
-        left: 'prev,next today, addRoom, addReservation',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-      },
-              customButtons: {
-              addRoom: {
-                  text: 'Add room',
-              },
-              addReservation: {
-                  text: 'Add reservation',
-              },
-          },
+      initialDate: '2021-01-01',
+      editable: true,
+      selectable: true,
+      businessHours: true,
+      dayMaxEvents: true, // allow "more" link when too many events
       events: [
         {
           title: 'All Day Event',
@@ -84,12 +74,12 @@ document.addEventListener('DOMContentLoaded', function() {
           end: '2020-09-10'
         },
         {
-          groupId: '999',
+          groupId: 999,
           title: 'Repeating Event',
           start: '2020-09-09T16:00:00'
         },
         {
-          groupId: '999',
+          groupId: 999,
           title: 'Repeating Event',
           start: '2020-09-16T16:00:00'
         },
@@ -112,6 +102,14 @@ document.addEventListener('DOMContentLoaded', function() {
           start: '2020-09-12T14:30:00'
         },
         {
+          title: 'Happy Hour',
+          start: '2020-09-12T17:30:00'
+        },
+        {
+          title: 'Dinner',
+          start: '2020-09-12T20:00:00'
+        },
+        {
           title: 'Birthday Party',
           start: '2020-09-13T07:00:00'
         },
@@ -122,9 +120,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       ]
     });
-  
+
     calendar.render();
   });
+
   
 //課程清單切換 已報名|已完課|上課中
 $(document).ready(function () {
