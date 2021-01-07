@@ -1,0 +1,317 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  font-family: '微軟正黑體';
+}
+
+body {
+  margin: 0;
+}
+h2 {
+  color: #555555;
+}
+/* ------------ header ------------ */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(to right, #5f2c82, #49a09d);
+}
+
+.nav-left > img {
+  width: 50%;
+}
+
+.nav-right {
+  color: #ffff;
+}
+
+.nav-right > p {
+  margin: 0;
+}
+
+button.hamburger {
+  display: none;
+}
+
+.back_bottom{
+  width: 100%;
+  display: flex;
+}
+
+
+/* ------------ 左邊內容區塊 ------------ */
+.content-wrap {
+  width: 15%;
+  display: flex;
+  min-height: 100vh;
+  ul{
+    color: white;
+  }
+  .left-block {
+    width: 100%;
+    background-color: #F4F4F4;
+    padding: 10px;
+    margin: 0;
+    li {
+      list-style: none;
+      padding: 5px 10px;
+      background-color: #807EFB;
+      margin: 15px;
+      text-align: center;
+      border-radius: 20px;
+      transition: .3s;
+    }
+    
+  }
+}
+.left-block li:hover {
+  background-color: #5E5DB9;
+}
+.add-bar{
+  margin-bottom: 10px;
+}
+/* ------------ 右邊區塊=>狀態btn ------------ */
+.button{
+    display:block;   
+  }
+  .switch[type="checkbox"] {
+    position:relative;
+    width: 3rem;
+    height: 1.5rem;
+    -webkit-appearance:none;
+    background-color:rgba(255,255,255,.2);
+    outline:none;
+    border-radius:1.5rem;
+    box-shadow:inset 0 0 5px rgba(0,0,0,0.3);
+    transition:.5s;
+  }
+  .switch:checked[type="checkbox"] {
+    background-color:purple;
+  }
+  .switch[type="checkbox"]::before {
+    content:"";
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius:1.5rem;
+    top: 0;
+    left: 0;
+    background:white;
+    transition:.5s;
+    box-shadow:0 2px 5px rgba(0,0,0,.2);
+  }
+  .switch:checked[type="checkbox"]::before {
+    left:1.5rem;
+  }
+  .ios[type="checkbox"]::before {
+    transform:scale(.9);
+  }
+  .windows[type="checkbox"] {
+    border-radius:0;
+  }
+  .windows[type="checkbox"]::before {
+    border-radius:0;
+  }
+/* ------------ 右邊區塊=>管理者管理 ------------ */
+.right-block_admin,
+.right-block_member,
+.right-block_teacher,
+.right-block_course,
+.right-block_comment,
+.right-block_mall,
+.right-block_game{
+  width: 85%;
+  .right-block {
+    width: 100%;
+    padding: 20px;
+  }
+  .form-wrap {
+    padding: 10px;
+    background-color: #D1BEE8;
+  }
+  .content-list {
+    border-radius: 10px;
+    background-color: #F5EFFD;
+    padding: 10px;
+    display: flex;
+    overflow: auto;
+  }
+  .form-list {
+    width: 100%;
+    overflow: auto;
+  }
+  th {
+    padding: 5px;
+  }
+  td {
+    padding: 10px;
+    text-align: center;
+  }
+}
+/* ------------ 右邊區塊=>課程管理燈箱 ------------ */
+.right-block_course,
+.right-block_mall{
+  .add-modal-wrapper{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
+.modal {
+    position: absolute;
+    top: 20%;
+    left: 34%;
+    background-color: #e6ecf0;
+    padding: 30px 0 30px;
+    border-radius: 10px;
+    width: 450px;
+    height: auto;
+    text-align: center;
+}
+
+.fa-times {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: rgba(128, 128, 128, 0.46);
+    cursor: pointer;
+}
+
+#add-form {
+    width: 100%;
+    h2{
+      color: #5f5d60;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .addcoursecon{
+      display: flex;
+      margin: 10px auto;
+      .acc_title{
+        width: 40%;
+      }
+      .acc_con{
+        width: 50%;
+      }
+    }
+}
+
+#submit-btn {
+    display: inline-block;
+    padding: 10px 100px;
+    background-color: #2E9DEC;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    margin: 10px auto;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#demoImg{
+    width:50%;
+}
+
+.content-list img{
+    width: 80%;
+}
+
+td.prodImg{
+    width: 100px;
+    height: 100px;
+}
+
+
+/*------------ 燈箱RWD ------------*/
+@media screen and (max-width: 767px){
+    .modal {
+      top: 20%;
+      left: 10%;
+      padding: 15px 0 15px;
+      width: 300px;
+    }
+  
+    #submit-btn {
+      display: inline-block;
+      padding: 10px 100px;
+  
+    }
+
+    .content-list img{
+        width: 100%;
+    }
+}
+  
+  
+@media (min-width: 768px) and (max-width: 991px){
+    .modal {
+        top: 20%;
+        left: 20%;
+        padding: 30px 0 30px;
+        width: 450px;
+    }
+}
+
+}
+
+
+/* ------------ footer ------------ */
+footer {
+  width: 100%;
+  color: #ffff;
+  margin: 0;
+  background-color: #141414;
+}
+
+footer > p {
+  font-size: 12px;
+  text-align: center;
+  padding: 8px 0px;
+  margin: 0;
+}
+
+/* ------------ RWD ------------ */
+@media screen and (max-width: 767px) {
+  .nav-left > img {
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  ul.left-block {
+    display: block !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .content-wrap {
+    flex-direction: column;
+  }
+  ul.left-block {
+    display: none;
+    width: 100%;
+  }
+  button.hamburger {
+    display: inline-block;
+  }
+  .right-block {
+    width: 100%;
+  }
+}
+
+.add-bar {
+  margin-bottom: 10px;
+}
+
+/*------------ 顯示使用者現在所在位置 ------------*/
+#back-admin {
+  background-color: #5E5DB9;
+}
+/*# sourceMappingURL=back-admin.css.map */
