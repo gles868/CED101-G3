@@ -47,7 +47,8 @@ body{
   flex-direction: column;
   border-radius: 10px;
   box-shadow: 0 0 0.4em ivory;
-  background-color: rgba(255, 255, 255, 0.315);
+  background-color: #7200ca47;
+  // background-color: rgba(255, 255, 255, 0.315);
   .memTopUp{
     display: flex;
     justify-content: space-between;
@@ -130,6 +131,9 @@ body{
   }
 }
 @media (max-width: 576px){
+  h5{
+    font-size: 17px;
+  }
   .memTop{
     width: 95%;
     padding: 10px;
@@ -145,15 +149,14 @@ body{
       }
       .memdata{
       width: 100%;
-      // border: 1px solid red;
       margin: 0 auto;
-      font-size: 12px;
         .memName,.memId,.memPoint,.memMail{
           width: 100%;
           display: flex;
           margin-bottom: 10px;
           .memdataTitle{
-          width: 38%;
+          // border: 1px solid red;
+          width: 35%;
           }
           .memdataContent{
           width: 55%;
@@ -165,10 +168,8 @@ body{
 }
 @media (max-width: 375px){
   .memdata{
-    // border: 1px solid red;
     margin: 0;
     .memdataTitle{
-      // border: 1px solid yellow;
       text-align: left;
       width: 35%;
     }
@@ -206,7 +207,8 @@ body{
   width: 100%;
 }
 .memContent{
-  background-color: rgba(255, 255, 255, 0.315);
+  // background-color: rgba(255, 255, 255, 0.315);
+  background-color: #7200ca47;
   width: 80%;
   margin: 1rem auto;
   padding: 10px;
@@ -308,22 +310,28 @@ body{
 }
 
 //多餘的class
-.fc--button,
-.fc-addRoom-button,
-.fc-addReservation-button,
-.fc-timeGridWeek-button,
-.fc-timeGridDay-button
-{
-  display: none !important;
-}
+// .fc--button,
+// .fc-addRoom-button,
+// .fc-addReservation-button,
+// .fc-timeGridWeek-button,
+// .fc-timeGridDay-button
+// {
+//   display: none !important;
+// }
 
 @media (max-width: 576px){
   .fc-today-button{
-    margin: 10px auto !important;
+    // margin: 10px auto !important;
+    width: 55px !important;
+    padding:0 5px!important;
+    margin: 0 !important;
   }
   .fc-prev-button,
   .fc-next-button{
-    width: 10% !important;
+    // border: 1px solid red !important;
+    padding: 0 !important;
+    width: 25px !important;
+    margin: 0 5px !important;
   }
 }
 
@@ -556,6 +564,10 @@ width: 80%;
   padding: 4px;
   border-radius: 6px;
   position: relative;
+  // border: 1px solid red;
+  input{
+    width: 500px;
+  }
 }
 
 #input-container:after {
@@ -612,7 +624,13 @@ width: 80%;
   transition: all .2s;
   border-radius: 50%;
 }
-
+@media (max-width: 1200px){
+  #input-container {   
+    input{
+      width: 400px;
+    }
+  }
+}
 @media (max-width: 768px){
   .CFD_Out{
     .CFD_Top{
@@ -630,6 +648,11 @@ width: 80%;
       }
     }
   }
+  #input-container {   
+    input{
+      width: 300px;
+    }
+  }
 }
 @media (max-width: 576px){
   .CFD_Out{
@@ -645,12 +668,12 @@ width: 80%;
       }
       .CRD_Text{
         width: 100%;
-        // border: 1px solid red;
       }
     }
   }
 
   .CFD_Bottom{
+    // text-align: center;
     width: 100%;
     .CFD_BottomComm{
       width: 100%;
@@ -662,11 +685,15 @@ width: 80%;
         width: 85%;
       }
       .rating{
-        // border: 1px solid red;
         width: 100%;
       }
     }
     
+  }
+  #input-container {   
+    input{
+      width: 250px;
+    }
   }
   
 }
@@ -786,10 +813,10 @@ width: 80%;
 
 //-------歷史訂單------
 //切換箭頭圖片
-// .accordion-button::after,
-// .accordion-button:not(.collapsed)::after {
-//   background-image: url(../../img/logosmall.png) ;
-// }
+.accordion-button::after,
+.accordion-button:not(.collapsed)::after {
+  background-image: url(../../img/arrow.png) ;
+}
 .memOrederList{
   width: 100%;
   text-shadow: 0 0 0.3em blue, 0 0 0.3em blue, 0 0 0.3em blue;
@@ -876,8 +903,9 @@ width: 80%;
         width: 100%;
         color: white;
         text-shadow: 0 0 0.3em blue, 0 0 0.3em blue, 0 0 0.3em blue;
-        // border: 1px solid red;
         .MOL_Intextbox{
+          // border: 1px solid red;
+          text-align: left;
           width: 100%;
           font-size: 16px;
           margin: 10px auto;

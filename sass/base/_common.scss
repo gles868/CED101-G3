@@ -1,3 +1,4 @@
+
 //  顏色變數
 $purple: #58009a;
 $purplered: #742274;
@@ -19,7 +20,7 @@ $darkgray: #191925; // footer bgcolor
     text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4;
 }
 //  字體變數
-$navFont: '思源宋體';  // 只有導覽列要使用此字體
+$navFont: 'Noto Serif TC', serif;  // 只有導覽列要使用此字體
 
 // -- 字體大小
 $p: 14px;
