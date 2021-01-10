@@ -11,7 +11,12 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="./js/course/course.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script> -->
     <title>課程總覽</title>
 </head>
 
@@ -52,9 +57,10 @@
                 <div class="course_class">
                     <h3>依照屬性篩選</h3>
                     <div class="fliter_block">
-                        <h4>攻擊型</h4>
-                        <h4>魔法型</h4>
-                        <h4>輔助型</h4>
+
+                        <h4 class="courseType" id="攻擊型">攻擊型</h4>
+                        <h4 class="courseType" id="防禦型">防禦型</h4>
+                        <h4 class="courseType" id="輔助型">輔助型</h4>
                     </div>
 
                 </div>
@@ -63,218 +69,16 @@
                 <div class="course_price">
                     <h3>依照價位篩選</h3>
                     <div class="fliter_block">
-
-                        <h4>$5000以下</h4>
-                        <h4>$5000~$10000</h4>
-                        <h4>$10000以上</h4>
+                        <h4 class="coursePrice">$5000以下</h4>
+                        <h4 class="coursePrice">$10000以下</h4>
+                        <h4 class="coursePrice">$10000以上</h4>
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <div class="all_course_card">
+        <div class="all_course_card" id="course_block">
 
-            <div class="card">
-                <p class="course_title">光劍術</p>
-                <div class="center-content">
-                    <div class="heart">
-                        <div class="heart-inner"></div>
-                    </div>
-                </div>
-                <div class="front">
-                    <img class="front_card" src="./img/course_cards/course_01.png" alt="">
-                </div>
-                <div class="back">
-                    <a href="./singleCourse.html"><img class="back_card" src="./img/course_cards/card_back.png" dalt=""></a>
-                    <p class="course_price">$4800</p>
-                    <p class="course_class">屬性：攻擊型</p>
-                    <a href="./registration.html"><p class="registration">立即報名</p></a> 
-                </div>
-            </div>
-
-
-
-            <div class="card">
-                <p class="course_title">毒藥術</p>
-                <div class="center-content">
-                    <div class="heart">
-                        <div class="heart-inner"></div>
-                    </div>
-                </div>
-                <div class="front">
-                    <img class="front_card" src="./img/course_cards/course_02.png" alt="">
-                </div>
-                <div class="back">
-                    <a href="./singleCourse.html"><img class="back_card" src="./img/course_cards/card_back.png" dalt=""></a>
-                    <p class="course_price">$9800</p>
-                    <p class="course_class">屬性：攻擊型</p>
-                    <a href="./registration.html"><p class="registration">立即報名</p></a> 
-                </div>
-            </div>
-
-
-
-            <div class="card">
-                <p class="course_title">詛咒術</p>
-                <div class="center-content">
-                    <div class="heart">
-                        <div class="heart-inner"></div>
-                    </div>
-                </div>
-                <div class="front">
-                    <img class="front_card" src="./img/course_cards/course_03.png" alt="">
-                </div>
-                <div class="back">
-                    <a href="./singleCourse.html"><img class="back_card" src="./img/course_cards/card_back.png" dalt=""></a>
-                    <p class="course_price">$16800</p>
-                    <p class="course_class">屬性：魔法型</p>
-                <a href="./registration.html"><p class="registration">立即報名</p></a> 
-
-                </div>
-            </div>
-
-
-
-            <div class="card">
-                <p class="course_title">光盾術</p>
-                <div class="center-content">
-                    <div class="heart">
-                        <div class="heart-inner"></div>
-                    </div>
-                </div>
-                <div class="front">
-                    <img class="front_card" src="./img/course_cards/course_04.png" alt="">
-                </div>
-                <div class="back">
-                    <a href="./singleCourse.html"><img class="back_card" src="./img/course_cards/card_back.png" dalt=""></a>
-
-                    <p class="course_price">$7290</p>
-                    <p class="course_class">屬性：輔助型</p>
-                    <a href="./registration.html"><p class="registration">立即報名</p></a> 
-
-                </div>
-            </div>
-
-
-            <div class="card">
-                <p class="course_title">召喚術</p>
-                <div class="center-content">
-                    <div class="heart">
-                        <div class="heart-inner"></div>
-                    </div>
-                </div>
-                <div class="front">
-                    <img class="front_card" src="./img/course_cards/course_05.png" alt="">
-                </div>
-                <div class="back">
-                    <a href="./singleCourse.html"><img class="back_card" src="./img/course_cards/card_back.png" dalt=""></a>
-                    <p class="course_price">$5800</p>
-                    <p class="course_class">屬性：攻擊型</p>
-                    <a href="./registration.html"><p class="registration">立即報名</p></a> 
-
-                </div>
-            </div>
-
-
-
-            <div class="card">
-                <p class="course_title">隱身術</p>
-                <div class="center-content">
-                    <div class="heart">
-                        <div class="heart-inner"></div>
-                    </div>
-                </div>
-                <div class="front">
-                    <img class="front_card" src="./img/course_cards/course_06.png" alt="">
-                </div>
-                <div class="back">
-                    <a href="./singleCourse.html"><img class="back_card" src="./img/course_cards/card_back.png" dalt=""></a>
-                    <p class="course_price">$2680</p>
-                    <p class="course_class">屬性：魔法型</p>
-                    <a href="./registration.html"><p class="registration">立即報名</p></a> 
-
-                </div>
-            </div>
-
-
-            <div class="card">
-                <p class="course_title">煉金術</p>
-                <div class="center-content">
-                    <div class="heart">
-                        <div class="heart-inner"></div>
-                    </div>
-                </div>
-                <div class="front">
-                    <img class="front_card" src="./img/course_cards/course_07.png" alt="">
-                </div>
-                <div class="back">
-                    <a href="./singleCourse.html"><img class="back_card" src="./img/course_cards/card_back.png" dalt=""></a>
-                    <p class="course_price">$6800</p>
-                    <p class="course_class">屬性：輔助型</p>
-                    <a href="./registration.html"><p class="registration">立即報名</p></a> 
-
-                </div>
-            </div>
-
-
-
-            <div class="card">
-                <p class="course_title">治癒術</p>
-                <div class="center-content">
-                    <div class="heart">
-                        <div class="heart-inner"></div>
-                    </div>
-                </div>
-                <div class="front">
-                    <img class="front_card" src="./img/course_cards/course_08.png" alt="">
-                </div>
-                <div class="back">
-                    <a href="./singleCourse.html"><img class="back_card" src="./img/course_cards/card_back.png" dalt=""></a>
-                    <p class="course_price">$15000</p>
-                    <p class="course_class">屬性：輔助型</p>
-                    <a href="./registration.html"><p class="registration">立即報名</p></a> 
-
-                </div>
-            </div>
-
-            <div class="card">
-                <p class="course_title">飛行術</p>
-                <div class="center-content">
-                    <div class="heart">
-                        <div class="heart-inner"></div>
-                    </div>
-                </div>
-                <div class="front">
-                    <img class="front_card" src="./img/course_cards/course_09.png" alt="">
-                </div>
-                <div class="back">
-                    <a href="./singleCourse.html"><img class="back_card" src="./img/course_cards/card_back.png" dalt=""></a>
-                    <p class="course_price">$12800</p>
-                    <p class="course_class">屬性：魔法型</p>
-                    <a href="./registration.html"><p class="registration">立即報名</p></a> 
-
-                </div>
-            </div>
-
-            <div class="card">
-                <p class="course_title">變形術</p>
-                <div class="center-content">
-                    <div class="heart">
-                        <div class="heart-inner"></div>
-                    </div>
-                </div>
-                <div class="front">
-                    <img class="front_card" src="./img/course_cards/course_10.png" alt="">
-                </div>
-                <div class="back">
-                    <a href="./singleCourse.html"><img class="back_card" src="./img/course_cards/card_back.png" dalt=""></a>
-                    <p class="course_price">$3600</p>
-                    <p class="course_class">屬性：魔法型</p>
-                    <a href="./registration.html"><p class="registration">立即報名</p></a> 
-
-                </div>
-            </div>
         </div>
 
 
@@ -339,11 +143,11 @@
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-    <script src="./js/course/course.js"></script>
+
+    <script>
+       
+
+    </script>
 
 </body>
 
