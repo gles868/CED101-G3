@@ -1,50 +1,61 @@
 window.addEventListener("load", function () {
 
-    //產生課程卡片
-    let courseRows;
-    function showCourse() {
-        let result = '';
-        for (let i = 0; i < courseRows.length; i++) {
-            result += `
-<div class="card">
-    <p class="course_title">${courseRows[i].courseName}</p>
-    <div class="center-content">
-        <div class="heart">
-            <div class="heart-inner"></div>
-        </div>
-    </div>
-    <div class="front">
-        <img class="front_card" src="${courseRows[i].courseImg}" alt="">
-    </div>
-    <div class="back">
-        <a href="singleCourse.php?courseNo=${courseRows[i].courseNo}"><img class="back_card" src="./img/course_cards/card_back.png"
-                dalt=""></a>
-        <p class="course_price">$ ${courseRows[i].coursePrice}</p>
-        <p class="course_class">屬性： ${courseRows[i].courTypeName}</p>
-        <a href="./registration.html">
-            <p class="registration">立即報名</p>
-        </a>
-    </div>
-</div>
-`;
-        }
-        document.getElementById("course_block").innerHTML = result;
+    let classRows;
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        app.classRows = JSON.parse(xhr.responseText);
+        console.log(app.classRows);
     }
+    xhr.open('get', 'getCourse.php', true);
+    xhr.send(null);
+    //產生課程卡片
+    //     let courseRows;
+    //     function showCourse() {
+    //         let result = '';
+    //         let goBtn = document.querySelectorAll('.registration');
+    //         for (let i = 0; i < courseRows.length; i++) {
+    //             result += `
+    // <div class="card">
+    //     <p class="course_title">${courseRows[i].courseName}</p>
+    //     <div class="center-content">
+    //         <div class="heart">
+    //             <div class="heart-inner"></div>
+    //         </div>
+    //     </div>
+    //     <div class="front">
+    //         <img class="front_card" src="${courseRows[i].courseImg}" alt="">
+    //     </div>
+    //     <div class="back">
+    //         <a href="singleCourse.php?courseNo=${courseRows[i].courseNo}"><img class="back_card" src="./img/course_cards/card_back.png"
+    //                 dalt=""></a>
+    //         <p class="course_price">$ ${courseRows[i].coursePrice}</p>
+    //         <p class="course_class">屬性： ${courseRows[i].courTypeName}</p>
+    //         <a href="./registration.html">
+    //             <p class="registration">立即報名</p>
+    //         </a>
+    //     </div>
+    // </div>
+    // `;
+    //             // var goBtn = document.querySelectorAll('.registration');
+
+    //         }
+    //         document.getElementById("course_block").innerHTML = result;
+    //     }
 
     //取出json陣列
-    function getCourse(courTypeName) {
-        let xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-            courseRows = JSON.parse(xhr.responseText);
-            showCourse();
-            console.log(courseRows);
-        }
-        xhr.open("get", `getCourse.php?courTypeName=${courTypeName}`, false);
-        xhr.send(null);
-        console.log(courTypeName);
-    }
+    // function getCourse(courTypeName) {
+    //     let xhr = new XMLHttpRequest();
+    //     xhr.onload = function () {
+    //         courseRows = JSON.parse(xhr.responseText);
+    //         showCourse();
+    //         console.log(courseRows);
+    //     }
+    //     xhr.open("get", `getCourse.php?courTypeName=${courTypeName}`, false);
+    //     xhr.send(null);
+    //     console.log(courTypeName);
+    // }
 
-    getCourse();
+    // getCourse();
 
     //在按鈕上綁定click事件
     let courseTypeBtn = document.getElementsByClassName("courseType")
