@@ -33,14 +33,22 @@ document.addEventListener('DOMContentLoaded', function() {
         center: 'title',
         right: 'dayGridMonth',
       },
-      initialDate: '2020-12-01',
+      initialDate: '2021-01-01',
       navLinks: true, // can click day/week names to navigate views
       businessHours: true, // display business hours
       editable: true,
       selectable: true,
-      events: [
+      events: 
+      'loadCalendar.php'
+      
+      // [
+      //   {
+      //     title: '光劍術',
+      //     start: '2021-01-15',
+
+      //   },
         
-      ]
+      // ]
     });
 
     calendar.render();

@@ -26,14 +26,27 @@ window.addEventListener("load", function () {
         </a>
     </div>
 </div>
+
 `;
         }
         document.getElementById("course_block").innerHTML = result;
     }
 
     //取出json陣列
+
+    // function getCourse(courTypeName) {
+    //     $.ajax({
+    //         url: `getCourse.php?courTypeName=${courTypeName}`,
+    //         type: 'GET',
+    //         dataType: "json",
+    //         success(data) {
+    //             courseRows = data;
+    //             showCourse();
+    //         },
+    //     });
+    // }
+    let xhr = new XMLHttpRequest();
     function getCourse(courTypeName) {
-        let xhr = new XMLHttpRequest();
         xhr.onload = function () {
             courseRows = JSON.parse(xhr.responseText);
             showCourse();
@@ -44,18 +57,21 @@ window.addEventListener("load", function () {
         console.log(courTypeName);
     }
 
-    getCourse();
+    getCourse('');
 
     //在按鈕上綁定click事件
     let courseTypeBtn = document.getElementsByClassName("courseType")
     for (let i = 0; i < courseTypeBtn.length; i++) {
-        courseTypeBtn[i].addEventListener('click', function () {
+        courseTypeBtn[i].addEventListener('click', function (e) {
 
             let courTypeName = this.innerText; //攻擊型 防禦型 輔助型
             console.log(courTypeName);
             getCourse(courTypeName);
+            // console.log(e.target.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling.firstChild.nextSibling);
         })
     }
+
+
 
 
     //slick輪播
@@ -77,12 +93,12 @@ window.addEventListener("load", function () {
     gsap.to('.img_bat', { y: 20, duration: 2, repeat: -1, yoyo: true });
 
     //卡片翻轉
-    $(function () {
-        $('.card').flip({
-            axis: 'y',
-            speed: 650,
-            trigger: 'hover'
-        });
-    }, false);
+
+    $('.card').flip({
+        axis: 'y',
+        speed: 650,
+        trigger: 'hover'
+    });
+
 
 });

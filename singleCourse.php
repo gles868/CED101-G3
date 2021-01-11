@@ -1,16 +1,22 @@
 <?php 
-try {
+
 	require_once("connectced101g3_test.php");
 	$sql = "select * from course where courseNo = ? ";
 	$allcourse = $pdo->prepare($sql);
 	$allcourse->bindValue(1, $_GET["courseNo"]);
     $allcourse->execute();
     $courseRow = $allcourse->fetch(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-	echo "錯誤原因 : ", $e->getMessage(), "<br>";
-	echo "錯誤行號 : ", $e->getLine(), "<br>";
-	// echo "系統錯誤, 請通知系統維護人員<br>";
-}    
+
+    require_once("connectced101g3_test.php");
+    $sql = "select * 
+            from course 
+            where courseNo = ? ";
+	$allcourse = $pdo->prepare($sql);
+	$allcourse->bindValue(1, $_GET["courseNo"]);
+    $allcourse->execute();
+    $courseRow = $allcourse->fetch(PDO::FETCH_ASSOC);
+
+
 ?>
 
 <!DOCTYPE html>
