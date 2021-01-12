@@ -27,75 +27,83 @@ body {
     // height: 500px;
 }
 
+// 卷軸
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #75517d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #75517d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #1b2947;
+}
 div.done_big_box {
     width: 65%;
     display: flex;
     margin: 15px auto;
     padding: 15px;
     min-height: calc(100vh - 180px);
-}
-div.done_box {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    justify-content: space-evenly;
-}
-div.girl_box {
-    border: 1px solid red;
-}
-div.girl {
-    width: 34%;
-}
-div.done_text_box {
-    font-size: 32px;
-    color: #ffffff;
-    text-shadow: 0 0 0.2em #f57af5, 0 0 0.2em #f57af5, 0 0 0.2em #f57af5;
-    padding: 30px;
-    line-height: 50px;
-}
-div.back > a {
-    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
-    padding: 5px 10px 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 22px;
-    background-color: #f33494;
-    border-radius: 15px;
-    border: 1px solid palevioletred;
-    color: #fff;
-}
-div.back {
-    padding: 0 30px 0 30px;
-}
-
-//RWD
-@media (max-width: 768px) {
-    div.done_text_box {
-        font-size: 26px;
-    }
-}
-@media (max-width: 575px) {
-    div.done_big_box {
+    @media (max-width: 575px) {
         flex-direction: column;
         width: 80%;
     }
-    div.girl {
-        width: 50%;
-        margin: 0 auto;
+    .girl {
+        width: 34%;
+        @media (max-width: 575px) {
+            width: 50%;
+            margin: 0 auto;
+        }
     }
-    div.done_box {
-        width: 80%;
+    .done_box {
+        width: 66%;
+        display: flex;
+        flex-direction: column;
         margin: 0 auto;
+        justify-content: space-evenly;
         align-items: center;
-    }
-    div.back > a {
-        font-size: 18px;
-    }
-    div.backIndex_box {
-        margin: 0 auto;
+        text-align: center;
+        @media (max-width: 575px) {
+            width: 80%;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .done_text_box {
+            font-size: 32px;
+            color: #fff;
+            text-shadow: 0 0 0.2em #f57af5, 0 0 0.2em #f57af5, 0 0 0.2em #f57af5;
+            padding: 30px;
+            line-height: 50px;
+            @media (max-width: 768px) {
+                font-size: 26px;
+            }
+        }
     }
 }
+
+// div.back > a {
+//     box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+//     padding: 5px 10px 5px 10px;
+//     text-align: center;
+//     text-decoration: none;
+//     font-size: 22px;
+//     background-color: #f33494;
+//     border-radius: 15px;
+//     border: 1px solid palevioletred;
+//     color: #fff;
+// }
+// div.back {
+//     padding: 0 30px 0 30px;
+// }
 
 // =================================================================
 .star,
