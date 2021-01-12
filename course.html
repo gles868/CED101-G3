@@ -77,8 +77,30 @@
             </div>
         </div>
 
-        <div class="all_course_card" id="course_block">
+        <div class="all_course_card app" id="course_block">
+            <div class="card" v-for='classRow in classRows'>
+                <p class="course_title">{{classRow.courseName}}</p>
+                <div class="center-content">
+                    <div class="heart">
+                        <div class="heart-inner"></div>
+                    </div>
+                </div>
+                <div class="front">
+                    <img class="front_card" :src=classRow.courseImg alt="">
+                </div>
+                <div class="back">
+                    <a href="singleCourse.php?courseNo=${courseRows[i].courseNo}">
+                        <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+                    </a>
+                    <p class="course_price">{{classRow.coursePrice}}</p>
+                    <p class="course_class">屬性：{{classRow.courTypeName}}</p>
+                    <a href="./registration.html">
+                        <p class="registration" @click='classJump(classRow.courseName,classRow.coursePrice)'> 立即報名
+                        </p>
+                    </a>
 
+                </div>
+            </div>
         </div>
 
 
@@ -142,99 +164,28 @@
     </footer>
 
 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
 
 
-    <!-- <script>
-
-        window.addEventListener("load", function () {
-
-            //產生課程卡片
-            let courseRows;
-            function showCourse() {
-                let result = '';
-                for (let i = 0; i < courseRows.length; i++) {
-                    result += `
-                    <div class="card">
-                    <p class="course_title">${courseRows[i].courseName}</p>
-                    <div class="center-content">
-                        <div class="heart">
-                            <div class="heart-inner"></div>
-                        </div>
-                    </div>
-                    <div class="front">
-                        <img class="front_card" src="${courseRows[i].courseImg}" alt="">
-                    </div>
-                    <div class="back">
-                        <a href="singleCourse.php?courseNo=${courseRows[i].courseNo}"><img class="back_card" src="./img/course_cards/card_back.png"
-                                dalt=""></a>
-                        <p class="course_price">$ ${courseRows[i].coursePrice}</p>
-                        <p class="course_class">屬性： ${courseRows[i].courTypeName}</p>
-                        <a href="./registration.html">
-                            <p class="registration">立即報名</p>
-                        </a>
-                    </div>
-                    </div>
-                    `;
-                }
-                document.getElementById("course_block").innerHTML = result;
-            }
-
-            //取出json陣列
-            function getCourse(courTypeName) {
-                let xhr = new XMLHttpRequest();
-                xhr.onload = function () {
-                    courseRows = JSON.parse(xhr.responseText);
-                    showCourse();
-                    console.log(courseRows);
-                }
-                xhr.open("get", `getCourse.php?courTypeName=${courTypeName}`, false);
-                xhr.send(null);
-                console.log(courTypeName);
-            }
-
-            getCourse();
-
-            //在按鈕上綁定click事件
-            let courseTypeBtn = document.getElementsByClassName("courseType")
-            for (let i = 0; i < courseTypeBtn.length; i++) {
-                courseTypeBtn[i].addEventListener('click', function () {
-
-                    let courTypeName = this.innerText; //攻擊型 防禦型 輔助型
-                    console.log(courTypeName);
-                    getCourse(courTypeName);
-                })
-            }
 
 
-            //slick輪播
-            $('.sliderboard').slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                autoplay: true,
-                autoplaySpeed: 3000
-            });
+    <script>
+        let storage = sessionStorage;
+        let app = new Vue({
+            el: '.app',
+            data: {
+                classRows: [],
+            },
+            methods: {
+                classJump(name, Price) {
+                    storage['className'] = name;
+                    storage['classPrice'] = Price;
+                },
+            },
+        })
 
 
-            //愛心切換
-            $(".heart").click(function () {
-                $(this).toggleClass("loved");
-            });
-
-            //蝙蝠浮動
-            gsap.to('.img_bat', { y: 20, duration: 2, repeat: -1, yoyo: true });
-
-            //卡片翻轉
-            $(function () {
-                $('.card').flip({
-                    axis: 'y',
-                    speed: 650,
-                    trigger: 'hover'
-                });
-            }, false);
-
-        });
-    </script> -->
+    </script>
 
 </body>
 

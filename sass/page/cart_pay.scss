@@ -36,90 +36,91 @@ body {
     background-attachment: fixed;
     overflow-x: hidden;
 }
+// 卷軸
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #75517d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #75517d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #1b2947;
+}
 
 // 標題
 div.confirm_title_box {
     width: 90%;
     text-align: left;
     margin: 20px auto;
-}
-div.confirm_title {
-    font-size: 28px;
-    width: 66%;
-    margin: 20px auto 10px auto;
-    color: #ffffff;
-    text-align: left;
-    text-shadow: 0 0 0.2em #ff0000, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
+    .confirm_title {
+        font-size: 28px;
+        width: 66%;
+        margin: 20px auto 10px auto;
+        color: #ffffff;
+        text-align: left;
+        text-shadow: 0 0 0.2em #ff0000, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
+        @media (max-width: 768px) {
+            width: 85%;
+        }
+    }
 }
 //確認資料區塊
 div.confirm_data_box {
     width: 90%;
     margin: 30px auto 0px auto;
     padding: 20px 15px;
-}
-div.confirm_data {
-    width: 66%;
-    background-color: #ffffff49;
-    border: 1px solid #ffffff49;
-    border-radius: 30px;
-    margin: 0 auto;
-    padding: 20px;
-    font-size: 24px;
-    color: #ffffff;
-    text-shadow: 0 0 0.2em #863186, 0 0 0.2em #863186, 0 0 0.2em #863186;
-}
-//姓名
-div.name_box {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-}
-div.name {
-    width: 70%;
-}
-//電話
-div.phone_box {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-}
-div.phone {
-    width: 70%;
-}
-//地址
-div.add_box {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-}
-div.add {
-    width: 70%;
-}
-//付款方式
-div.pay_box {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-}
-div.pay {
-    width: 70%;
-    margin-right: 10px;
-}
-div.pay_title {
-    margin-left: -10px;
-}
-//折扣點數
-div.point_box {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-}
-div.point {
-    width: 70%;
-    margin-right: 10px;
-}
-div.point_title {
-    margin-left: -10px;
+    .confirm_data {
+        width: 66%;
+        background-color: #ffffff49;
+        border: 1px solid #ffffff49;
+        border-radius: 30px;
+        margin: 0 auto;
+        padding: 20px;
+        font-size: 24px;
+        color: #ffffff;
+        text-shadow: 0 0 0.2em #863186, 0 0 0.2em #863186, 0 0 0.2em #863186;
+        @media (max-width: 1200px) {
+            width: 70%;
+        }
+        @media (max-width: 768px) {
+            font-size: 20px;
+            width: 90%;
+        }
+        .name_box {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            .name {
+                width: 70%;
+            }
+        }
+        .phone_box {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            .phone {
+                width: 70%;
+            }
+        }
+        .add_box {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            .add {
+                width: 70%;
+            }
+        }
+    }
 }
 
 //購買內容
@@ -129,80 +130,127 @@ div.cartpro_box {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    .cartpro_a_box {
+        width: 65%;
+        display: flex;
+        margin: 30px auto 20px auto;
+        justify-content: space-between;
+        background-color: #ffffff2f;
+        padding: 20px 15px;
+        border: 1px solid #ffffff2f;
+        border-radius: 30px;
+        position: relative;
+        @media (max-width: 1200px) {
+            width: 70%;
+        }
+        @media (max-width: 768px) {
+            flex-direction: column;
+            width: 85%;
+        }
+        .crystalball_left_box {
+            width: 30%;
+            @media (max-width: 768px) {
+                margin: 10px auto;
+                width: 40%;
+            }
+            @media (max-width: 375px) {
+                width: 50%;
+            }
+        }
+        .crystalball_right_box {
+            margin-left: 20px;
+            justify-content: space-around;
+            display: flex;
+            flex-direction: column;
+            @media (max-width: 1200px) {
+                width: 90%;
+                margin-right: 10px;
+            }
+            @media (max-width: 768px) {
+                margin: 0 auto;
+            }
+            .crystalball_name_box {
+                width: 100%;
+                font-size: 24px;
+                margin-bottom: 15px;
+
+                color: #ffffff;
+                text-shadow: 0 0 0.2em #f57af5, 0 0 0.2em #f57af5,
+                    0 0 0.2em #f57af5;
+            }
+            .crystalball_text {
+                font-size: 18px;
+                color: #ffffff;
+                line-height: 30px;
+                text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186,
+                    0 0 0.3em #863186;
+            }
+            .crystalball_priceAmount_box {
+                display: flex;
+                justify-content: flex-end;
+                .amount {
+                    color: #ffffff;
+                    font-size: 18px;
+                    width: 16%;
+                    line-height: 40px;
+                    text-align: center;
+                    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186,
+                        0 0 0.3em #863186;
+                    @media (max-width: 1200px) {
+                        width: 20%;
+                    }
+                    @media (max-width: 992px) {
+                        width: 24%;
+                    }
+                    @media (max-width: 850px) {
+                        width: 27%;
+                    }
+                    @media (max-width: 768px) {
+                        width: 25%;
+                    }
+                    @media (max-width: 375px) {
+                        width: 40%;
+                    }
+                }
+            }
+        }
+    }
 }
 
-.delete_btn {
-    background-color: #ffffff;
-    color: #863186;
-    padding: 5px;
-    text-align: center;
-    border: 3px solid #863186;
-    border-radius: 10px;
-    width: 100%;
-}
-div.cartpro_a_box {
-    width: 65%;
-    display: flex;
-    margin: 30px auto 20px auto;
-    justify-content: space-between;
-    background-color: #ffffff2f;
-    padding: 20px 15px;
-    border: 1px solid #ffffff2f;
-    border-radius: 30px;
-    position: relative;
-}
-div.crystalball_left_box {
-    width: 30%;
-}
-div.crystalball_right_box {
-    margin-left: 20px;
-
-    justify-content: space-around;
-    display: flex;
-    flex-direction: column;
-}
-div.crystalball_name_box {
-    width: 100%;
-    font-size: 24px;
-    margin-bottom: 15px;
-
-    color: #ffffff;
-    text-shadow: 0 0 0.2em #f57af5, 0 0 0.2em #f57af5, 0 0 0.2em #f57af5;
-}
-
-div.pro_complete_price_box > img {
-    width: 30px;
-    margin-right: 10px;
-}
 div.pro_complete_price_box {
     display: flex;
-    width: 100%;
     text-align: right;
-}
-div.crystalball_priceAmount_box {
-    display: flex;
-    justify-content: flex-end;
-}
-div.crystalball_text {
-    font-size: 18px;
-    color: #ffffff;
-
-    line-height: 30px;
-    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
-}
-div.amount {
-    color: #ffffff;
-    font-size: 18px;
-    width: 16%;
-    line-height: 40px;
-    text-align: center;
-    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
-}
-div.pro_complete_price_box {
     color: #ffffff;
     font-size: 18px;
     width: 16%;
     align-items: center;
+    @media (max-width: 1200px) {
+        width: 20%;
+    }
+    @media (max-width: 992px) {
+        width: 24%;
+    }
+    @media (max-width: 850px) {
+        width: 27%;
+    }
+    @media (max-width: 768px) {
+        width: 25%;
+    }
+    @media (max-width: 575px) {
+        width: 30%;
+        font-size: 16px;
+    }
+    @media (max-width: 375px) {
+        width: 40%;
+        font-size: 16px;
+    }
+    img {
+        width: 30px;
+        margin-right: 10px;
+        @media (max-width: 575px) {
+            width: 30%;
+        }
+    }
 }
 
 div.pro_complete_price {
@@ -212,7 +260,16 @@ div.pro_complete_price {
 div.deliver_box {
     width: 60%;
     margin: 0 auto;
-
+    @media (max-width: 1200px) {
+        width: 70%;
+    }
+    @media (max-width: 768px) {
+        width: 85%;
+    }
+    @media (max-width: 375px) {
+        width: 80%;
+        margin: 0 auto;
+    }
     img {
         width: 100%;
         margin-left: 10px;
@@ -220,154 +277,43 @@ div.deliver_box {
 }
 
 // 總額
-
-div.total_photoandtext > img {
-    width: 30px;
-}
-div.total_photoandtext {
-    font-size: 20px;
-    align-items: center;
-    color: #ffffff;
-    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
-}
 div.total_box {
     display: flex;
     width: 60%;
     margin: 0 auto;
     align-items: center;
-    // text-align: right;
-
     justify-content: flex-end;
-}
-
-div.total_text {
-    font-size: 18px;
-    color: #ffffff;
-    margin-left: 10px;
-    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
-}
-
-//上下步
-
-div.back_next_box {
-    display: flex;
-    width: 60%;
-    margin: 20px auto 10px auto;
-    justify-content: space-between;
-}
-//上一步
-
-div.backText {
-    background-color: #ffffff;
-    padding: 5px 15px 5px 15px;
-    text-align: center;
-    border: 3px solid #863186;
-    border-radius: 15px;
-}
-div.backText > a {
-    text-decoration: none;
-    color: #863186;
-}
-
-// 下一步
-
-div.nextText {
-    background-color: #ffffff;
-    padding: 5px 15px 5px 15px;
-    text-align: center;
-    border: 3px solid #863186;
-    border-radius: 15px;
-}
-div.nextText > a {
-    text-decoration: none;
-    color: #863186;
+    @media (max-width: 375px) {
+        width: 80%;
+    }
+    .total_photoandtext {
+        font-size: 20px;
+        align-items: center;
+        color: #ffffff;
+        text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+        img {
+            width: 30px;
+        }
+    }
+    .total_text {
+        font-size: 18px;
+        color: #ffffff;
+        margin-left: 10px;
+        text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+    }
 }
 
 // ====================== RWD ======================
-@media (max-width: 1200px) {
-    div.confirm_data {
-        width: 70%;
-    }
-    div.cartpro_a_box {
-        width: 70%;
-    }
-    div.crystalball_right_box {
-        width: 90%;
-        margin-right: 10px;
-    }
-    div.delete_box {
-        width: 90px;
-    }
-    div.pro_complete_price_box {
-        width: 20%;
-    }
-    div.amount {
-        width: 20%;
-    }
-    div.deliver_box {
-        width: 70%;
-    }
-}
-
-@media (max-width: 992px) {
-    div.pro_complete_price_box {
-        width: 24%;
-    }
-    div.amount {
-        width: 24%;
-    }
-}
-@media (max-width: 850px) {
-    div.pro_complete_price_box {
-        width: 27%;
-    }
-    div.amount {
-        width: 27%;
-    }
-}
 
 @media (max-width: 768px) {
-    div.confirm_data {
-        font-size: 20px;
-        width: 90%;
-    }
     div.title {
         text-align: center;
-        // padding: 4px 0px 0px 0px;
     }
-    div.confirm_title {
-        width: 85%;
-    }
-
     div.data_text {
         margin-left: 10px;
     }
-    div.cartpro_a_box {
-        flex-direction: column;
-        width: 85%;
-    }
-    div.crystalball_right_box {
-        margin: 0 auto;
-    }
-    div.crystalball_left_box {
-        margin: 10px auto;
-        width: 40%;
-    }
-    div.pro_complete_price_box {
-        width: 25%;
-    }
-    div.amount {
-        width: 25%;
-    }
-    div.deliver_box {
-        width: 85%;
-    }
 }
 @media (max-width: 575px) {
-    div.pro_complete_price_box {
-        width: 30%;
-        font-size: 16px;
-    }
     div.amount {
         width: 30%;
         font-size: 16px;
@@ -375,37 +321,13 @@ div.nextText > a {
     div.title {
         padding: 4px 0px 0px 0px;
     }
-    div.pro_complete_price_box > img {
-        width: 30%;
-    }
+    // div.pro_complete_price_box > img {
+    //     width: 30%;
+    // }
     div.data_text {
         line-height: 30px;
     }
 }
-
-@media (max-width: 375px) {
-    div.crystalball_left_box {
-        width: 50%;
-    }
-    div.deliver_box {
-        width: 80%;
-        margin: 0 auto;
-    }
-    div.pro_complete_price_box {
-        width: 40%;
-        font-size: 16px;
-    }
-    div.amount {
-        width: 40%;
-    }
-    div.total_box {
-        width: 80%;
-    }
-    div.buy_box {
-        width: 80%;
-    }
-}
-
 // =================================================================
 .star,
 .planet {
