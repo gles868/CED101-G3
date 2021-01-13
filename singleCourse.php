@@ -9,12 +9,12 @@
 
     require_once("connectced101g3_test.php");
     $sql = "select * 
-            from course 
+            from course join teacher on courseNo = teacher.teachNo
             where courseNo = ? ";
-	$allcourse = $pdo->prepare($sql);
-	$allcourse->bindValue(1, $_GET["courseNo"]);
-    $allcourse->execute();
-    $courseRow = $allcourse->fetch(PDO::FETCH_ASSOC);
+	$allteacher = $pdo->prepare($sql);
+	$allteacher->bindValue(1, $_GET["courseNo"]);
+    $allteacher->execute();
+    $teacherRow = $allteacher->fetch(PDO::FETCH_ASSOC);
 
 
 ?>

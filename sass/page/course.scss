@@ -51,6 +51,7 @@ div.course_filter {
     div.course_filter {
         background-image: none;
         width: 375px;
+        height: 400px;
         background-color: rgba(192, 167, 246, 0.305);
 
         img.img_bat {
@@ -87,12 +88,13 @@ div.course_class {
     h3 {
         font-size: 20px;
         color: $purplered;
+        font-weight: $fontWeight;
     }
 
     div.fliter_block {
-        width: 400px;
+        width: 430px;
         display: flex;
-        justify-content: left;
+        justify-content: space-between;
 
 
         h4 {
@@ -100,7 +102,6 @@ div.course_class {
             background-color: $purplered;
             border-radius: 15px;
             padding: 10px 12px 10px 15px;
-            margin-right: 20px;
             letter-spacing: 5px;
             cursor: pointer;
         }
@@ -114,16 +115,19 @@ div.course_class {
         width: 80%;
         margin: 0 auto;
         margin-bottom: 30px;
-
+        // border: 1px solid red;
         h3 {
             font-size: 20px;
             color: white;
         }
 
         div.fliter_block {
-            width: 110px;
-            display: inline-block;
-            margin-left: 40%;
+            width: 250px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+            border: 1px solid red;
 
 
             h4 {
@@ -153,6 +157,7 @@ div.course_price {
     h3 {
         font-size: 20px;
         color: $purplered;
+        font-weight: $fontWeight;
     }
 
     div.fliter_block {
@@ -186,7 +191,8 @@ div.course_price {
         div.fliter_block {
             width: 130px;
             display: inline-block;
-            margin-left: 40%;
+            margin-left: 10%;
+            margin-top: 20px;
 
             h4 {
                 color: white;
@@ -204,17 +210,20 @@ div.course_price {
 
 
 div.all_course_card {
-    width: 1140px;
+    width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    // border: 1px solid red;
 
 
     div.card {
-        width: calc((100% - 60px) / 4);
-        margin-right: 20px;
+        // width: calc((100% -40px) / 4);
+        // width: 100;
+        // margin-right: 20px;
         margin-bottom: 100px;
+        // border: 1px solid white;
 
     }
 
@@ -222,12 +231,7 @@ div.all_course_card {
         cursor: pointer;
     }
 
-    div.cloud_img {
-        position: absolute;
-        top: 55%;
-        left: 30%;
-        z-index: -1;
-    }
+   
 }
 
 div.card {
@@ -235,11 +239,13 @@ div.card {
 
     p.course_title {
         font-size: 24px;
+        font-weight: $fontWeight;
         letter-spacing: 3px;
         color: #e6b619;
         position: absolute;
         top: -8%;
         right: 35%;
+
     }
 
     p.course_price {
@@ -247,7 +253,7 @@ div.card {
         letter-spacing: 3px;
         color: #dcb127;
         position: absolute;
-        top: 60%;
+        top: 5%;
         right: 35%;
     }
 
@@ -256,7 +262,7 @@ div.card {
         letter-spacing: 3px;
         color: #dcb127;
         position: absolute;
-        top: 50%;
+        top: 60%;
         right: 25%;
     }
 
@@ -285,7 +291,7 @@ div.card {
         }
 
         position: absolute;
-        top: 75%;
+        top: 150%;
         right: 30%;
 
     }
@@ -521,3 +527,102 @@ div.accessory_container {
         }
     }
 }
+
+
+
+
+.card {
+    width: 262px;
+    height: 436px;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.container {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.front,
+.back {
+    background-position: center;
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    backface-visibility: hidden;
+    text-align: center;
+    height: 436px;
+    width: 262px;
+    border-radius: 10px;
+}
+
+.front img {
+    width: 100%;
+}
+
+.back img {
+    width: 100%;
+}
+
+
+.front:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    content: '';
+    display: block;
+    opacity: .3;
+    background-color: #000;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.container:hover .front,
+.container:hover .back {
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.inner {
+    transform: translateY(-50%) translateZ(60px) scale(0.94);
+    top: 50%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    font-size: .7em;
+    box-sizing: border-box;
+    outline: 1px solid transparent;
+    perspective: inherit;
+    z-index: 2;
+}
+
+.container .back {
+    transform: rotateY(180deg);
+    transform-style: preserve-3d;
+}
+
+.container .front {
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+}
+
+.container:hover .back {
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+}
+
+.container:hover .front {
+    transform: rotateY(-180deg);
+    transform-style: preserve-3d;
+}
+
+

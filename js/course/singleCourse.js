@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       initialDate: '2021-01-01',
       navLinks: true, // can click day/week names to navigate views
-      businessHours: true, // display business hours
+      // businessHours: true, // display business hours
       editable: true,
       selectable: true,
       events: 
