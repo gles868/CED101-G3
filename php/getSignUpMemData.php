@@ -1,6 +1,6 @@
 <?php
     try{
-        require_once("connectced101g3.php");
+        require_once("connect_ced101g3.php");
 
         $memId = $_POST['memId'];
         $memPsw = $_POST['memPsw'];

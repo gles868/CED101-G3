@@ -225,3 +225,134 @@ input.focusout(function() {
                   }
 });
 });
+
+
+// ===== 已完課 撈課+評分留言 =====
+window.addEventListener('load', function(){
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+        if(xhr.status == 200){
+            let memCourseRows;
+            app.memCourseRows = JSON.parse(xhr.responseText);
+            
+        }else{
+            alert(xhr.status);
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.open('get', 'php/memCourse.php', true);
+    xhr.send(null);
+});
+
+Vue.component('mem-course-component', {
+    props: ['course-img', 'course-name', 'course-description', 'regist-no'],
+    template: `
+        <div class="tab-content-2 con">
+            <div class="CFD_Out">
+                <div class="CFD_Top">
+                    <div class="CRD_pic">
+                        <img :src="courseImg" alt="" srcset="" />
+                    </div>
+                    <div class="CRD_Text">
+                        <h4 class="CRD_TextTit">{{courseName}}</h4>
+                        <div class="CRD_TextCon">
+                            <h5>{{courseDescription}}</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="CFD_Bottom">
+                    <div class="CFD_BottomComm">
+                        <div class="CFD_commTitle">
+                            <h4>評論本課</h4>
+                            </div>
+                            <div class="commText">
+                                <form onsubmit="return false;">
+                                    <star-rating v-model="rating"
+                                    text-class="custom-text"
+                                    :star-size="20"
+                                    @rating-selected ="setRating">
+                                    </star-rating>
+                                    <div id="input-container">
+                                        <input type="text"
+                                        v-model="commText"
+                                        placeholder="評論老師/課程" 
+                                        maxlength="100">
+                                        </div>
+                                        <div id="button-container">
+                                            <button class="user"><i class="fa fa-user"></i></button>
+                                            <button class="send" @click="sendComm">
+                                                <i class="fas fa-paper-plane"></i>
+                                                </button>
+                                                </div>
+                                    <input type="hidden" name="registNo" :value="registNo">
+                                    <input type="hidden" name="commStar" :value="rating">
+                                    <input type="hidden" name="commContent" :value="commText">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `,
+    data: function(){
+        return{
+            rating: 0,
+            commText: '',
+        }
+    },
+    methods: {
+        setRating: function(rating){
+            this.rating= rating;
+        },
+        sendComm: function(){
+            this.$emit('send-comm');
+        },
+    },
+})
+
+// 組件 - vue star rating
+Vue.component('star-rating', VueStarRating.default);
+
+let app = new Vue({
+    el: '#app',
+    data: {
+        nameVal: '',
+        memCourseRows: [],
+    },
+    methods: {
+        sendComm: function(){
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                if(xhr.status == 200){
+                    alert('成功送出評論');
+                    console.log(xhr.responseText);
+                    // console.log(this);
+                    // let alreadyComment = JSON.parse(xhr.responseText);
+                    if(xhr.responseText.indexOf('您已評分') !== -1){
+                        alert('嗨嗨');
+                        let commText = document.getElementsByClassName('commText')[0];
+                        commText.firstChild.style.display = 'none';
+                        commText.innerHTML = `
+                            <h5 style="margin: 20px; text-align: 
+                               center; color: white; 
+                               text-shadow: 0 0 0.2em #87f, 0 0 0.4em #ff0018, 0 0 0.3em #ff00cc;">
+                               已送出您的課程評論！
+                            </h5>`;
+                    }else{
+                        alert('fail');
+                    }
+                    
+                }else{
+                    alert(xhr.status);
+                    console.log(xhr.responseText);
+                }
+            }
+            url = 'php/memSendComm.php';
+            xhr.open('post', url, true);
+            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            let data_info = `commStar=${document.getElementsByName('commStar')[0].value}&commContent=${document.getElementsByName('commContent')[0].value}&registNo=${document.getElementsByName('registNo')[0].value}`;
+            xhr.send(data_info);
+        },
+    },
+})

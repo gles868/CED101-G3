@@ -1,6 +1,6 @@
 <?php
     try{
-        require_once("connectced101g3.php");
+        require_once("connect_ced101g3.php");
         // *預計要從網址get到該教師的teachNo ---- 先寫死
         $sql = "select * from `teacher` WHERE teachNo = 4"; 
             // $sql = "select * from `teacher` WHERE teachNo = :teachNo"; 

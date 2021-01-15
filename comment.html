@@ -36,7 +36,7 @@
                     console.log(xhr.responseText);
                 }
             }
-            xhr.open('get', 'memCourse.php', true);
+            xhr.open('get', 'php/memCourse.php', true);
             xhr.send(null);
         });
 
@@ -137,7 +137,7 @@
                             console.log(xhr.responseText);
                         }
                     }
-                    url = 'comment.php';
+                    url = 'php/memSendComment.php';
                     xhr.open('post', url, true);
                     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
                     let data_info = `commStar=${document.getElementsByName('commStar')[0].value}&commContent=${document.getElementsByName('commContent')[0].value}&registNo=${document.getElementsByName('registNo')[0].value}`;

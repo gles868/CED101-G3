@@ -13,6 +13,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" ></script>
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="./css/member.css" />
+        
+        <!-- vueJs -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
+        <!-- vue-star-rating js -->
+        <script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>
+        
         <title>麻瓜特訓班 | 會員中心</title>
     </head>
 
@@ -236,7 +242,17 @@
                         </div>
 
                         <!-- 已完課 -->
-                        <div class="tab-content-2 con">
+                        <div id="app">
+                            <mem-course-component v-for="memCourse in memCourseRows"
+                                                  :key="memCourse.registNo"
+                                                  :regist-no="memCourse.registNo"
+                                                  :course-img="memCourse.courseImg"
+                                                  :course-name="memCourse.courseName"
+                                                  :course-description="memCourse.courseDescription"
+                                                  @send-comm="sendComm">
+                            </mem-course-component>
+                        </div>
+                        <!-- <div class="tab-content-2 con">
                             <div class="CFD_Out">
                                 <div class="CFD_Top">
                                     <div class="CRD_pic">
@@ -258,7 +274,7 @@
                                         <div class="CFD_commTitle">
                                             <h4>評論本課</h4>
                                         </div>
-                                        <!-- 評價星星開始 -->
+                                        <!-- 評價星星開始 
                                         <div class="CFD_commStar">
                                             <fieldset class="rating">
                                                 <input type="radio" id="star5" name="rating" value="5" /><label
@@ -325,12 +341,11 @@
                                                 ></label>
                                             </fieldset>
                                         </div>
-                                        <!-- 評價星星結束 -->
-                                        <!-- 評論老師/課程 -->
+                                        <!-- 評價星星結束 
+                                        <!-- 評論老師/課程 
                                         <div class="CFD_commText">
                                             <form action="">
-                                                <div id="input-container">
-                                                    <input type="text" placeholder="評論老師/課程" /></div>
+                                                <div id="input-container"><input type="text" placeholder="評論老師/課程" /></div>
                                                 <div id="button-container">
                                                     <button class="user"><i class="fa fa-user"></i></button
                                                     ><button class="send"><i class="fas fa-paper-plane"></i></i></button>
@@ -340,8 +355,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- 從這邊開始加入第二個收藏項目 -->
-                        </div>
+                            <!-- 從這邊開始加入第二個收藏項目 
+                        </div> -->
+                        
                         <!-- 上課中(當天) -->
                         <div class="tab-content-3 con">
                             <div class="CRD">

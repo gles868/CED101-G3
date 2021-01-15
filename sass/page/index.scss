@@ -104,12 +104,12 @@ header{
     }
 }
 .lay01{
-    background-image: url("../../img/index/[first]1rock.png");
+    background-image: url("./../img/index/[first]1rock.png");
     z-index: 10;
     background-size: contain;
 }
 .lay02{
-    background-image: url("../../img/index/[first]2rock.png");
+    background-image: url("./../img/index/[first]2rock.png");
     z-index: 9;
     background-size: contain;
 }
@@ -140,24 +140,24 @@ header{
 //     background-color: #1d002d8c;
 // }
 .lay04{
-    background-image: url("../../img/index/[first]3castle.png");
+    background-image: url("./../img/index/[first]3castle.png");
     z-index: 7;
     @media all and (max-width: 700px){
         transform: translate(0px) !important;
     }
 }
 .lay05{
-    background-image: url("../../img/index/[first]4mount.png");
+    background-image: url("./../img/index/[first]4mount.png");
     z-index: 6;
 }
 .moon{
-    background-image: url("../../img/index/[first]moon.png");
+    background-image: url("./../img/index/[first]moon.png");
     background-position: top right;
     background-size: contain;
     z-index: 5;
 }
 .lay06{
-    background-image: url("../../img/index/[first]5bg.png");
+    background-image: url("./../img/index/[first]5bg.png");
     z-index: 4;
 }
 .cloud_move{
@@ -191,7 +191,7 @@ header{
 }
 #second{
     background: {
-        image: url("../../img/index/[lessons]bg.png");
+        image: url("./../img/index/[lessons]bg.png");
         repeat: no-repeat;
         size: 120% 120%;
     }
@@ -218,7 +218,7 @@ header{
                 // border: 1px solid blue;
                 content: "";
                 background: {
-                    image: url("../../img/index/[lessons]leaves.png");
+                    image: url("./../img/index/[lessons]leaves.png");
                     repeat: no-repeat;
                     position: center bottom;
                     size: cover;
@@ -268,7 +268,7 @@ header{
                 display: flex;
                 margin-top: 50px;
                 background: {
-                    image: url("../../img/index/[lessons]board.png");
+                    image: url("./../img/index/[lessons]board.png");
                     repeat: no-repeat;
                     size: contain;
                 }
@@ -351,7 +351,7 @@ header{
         .rock{
             // border: 1px solid rgb(228, 76, 16);
             background: {
-                image: url("../../img/index/[lessons]rocks04.png");
+                image: url("./../img/index/[lessons]rocks04.png");
                 repeat: no-repeat;
                 size: contain;
                 position: bottom;
@@ -390,7 +390,7 @@ header{
 #third{
     // border: 1px solid skyblue;
     background: {
-        image: url("../../img/index/[teachers]bg.png");
+        image: url("./../img/index/[teachers]bg.png");
         repeat: no-repeat;
         size: cover;
     }
@@ -720,7 +720,7 @@ header{
 }
 #fourth{
     background: {
-        image: url("../../img/index/[signUpLesson]bg.png");
+        image: url("./../img/index/[signUpLesson]bg.png");
         repeat: no-repeat;
         size: cover;
     }
@@ -883,7 +883,7 @@ header{
 }
 #fifth{
     background: {
-        image: url("../../img/index/[products]bg.png");
+        image: url("./../img/index/[products]bg.png");
         repeat: no-repeat;
         size: cover;
     }

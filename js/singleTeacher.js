@@ -8,7 +8,7 @@ window.addEventListener('load', function(){
         // 將json字串轉為js物件
         app.dataRows = JSON.parse(xhr.responseText);
     }
-    xhr.open('get', 'singleTeacherData.php', true);
+    xhr.open('get', 'php/singleTeacherData.php', true);
     xhr.send(null);
 });
 
@@ -112,7 +112,7 @@ let app = new Vue({
                     alert(xhr.status);
                 }
             }
-            url = './commentReport.php';
+            url = 'php/commentReport.php';
             xhr.open('post', url, true);
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             let data_info = `reportReason=${document.getElementsByName('reportReason')[i].value}&registNo=${document.getElementsByName('registNo')[i].value}`;

@@ -164,6 +164,22 @@ header{
                         }
                     }
                 }
+                .active{
+                    position: relative;
+                    &::before{
+                        // border: 1px solid rebeccapurple;
+                        content: "";
+                        // background-image: url("../../img/magic.png");
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        display: inline-block;
+                        width: 30px;
+                        height: 30px;
+                        position: absolute;
+                        top: 30px;
+                        left: -28px;
+                    }
+                }
             }
             .nav-right{     
                 // border:1px solid greenyellow;
@@ -242,6 +258,11 @@ header{
 
 //scroll後更改header背景色
 .-active{
-    background-color: rgba(255, 111, 221, 0.401);
-    transition: 1s;
+    // background-color: rgba(255, 111, 221, 0.401);
+    // transition: 1s;
+    background-color: #1e072fa3;
+    box-shadow: 0px 5px 27px -7px #1e072fa3;
+    // background: rgb(70,0,128); 
+    // background: linear-gradient(180deg, #5200a6ab 0%, #2f005600 100%);
+    transition: .6s;
   }

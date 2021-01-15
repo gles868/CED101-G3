@@ -2,7 +2,7 @@
 // 將會員資料寫進session
     session_start();
     try{
-        require_once("connectced101g3.php");
+        require_once("connect_ced101g3.php");
 
         $sql = "select * from `member` WHERE memName = '瓜瓜'";  // 先寫死where條件
         $member = $pdo->query($sql);
@@ -25,7 +25,7 @@
 // session_start(); 
 // 按下submit後將檢舉資料寫進database
     try{
-        require_once("connectced101g3.php");
+        require_once("connect_ced101g3.php");
 
         // 取得檢舉人會員編號
         $memberNo = $_SESSION['memberNo'];  // 會員編號從session抓，***這裡要判斷是否已登入

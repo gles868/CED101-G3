@@ -49,7 +49,7 @@ function getDataShowLightbox(){
             });
         }
     }
-    xhr.open('get', 'getLoginData.php', true);
+    xhr.open('get', 'php/getLoginData.php', true);
     xhr.send(null);
 }
 // 關燈箱
@@ -105,7 +105,7 @@ function sendData(){
             console.log(xhr.responsetext);
         }
     }
-    let url = 'login.php';
+    let url = 'php/login.php';
     xhr.open('post', url, true);
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
     let data_info = `memId=${memId.value}&memPsw=${memPsw.value}`;
@@ -160,7 +160,7 @@ function checkEmail(){
                 }
             }
         }
-        let url = `checkSignUpId.php?memMail=${signUpEmail.value}`;
+        let url = `php/checkSignUpId.php?memMail=${signUpEmail.value}`;
         xhr.open('get', url, true);
         xhr.send(null);
     }
@@ -186,7 +186,7 @@ function checkId(){
                 }
             }
         }
-        let url = `checkSignUpId.php?memId=${signUpId.value}`;
+        let url = `php/checkSignUpId.php?memId=${signUpId.value}`;
         xhr.open('get', url, true);
         xhr.send(null);
     }
@@ -238,7 +238,7 @@ function submitMemData(){
                 console.log(xhr.responsetext);
             }
         }
-        let url = 'getSignUpMemData.php';
+        let url = 'php/getSignUpMemData.php';
         xhr.open('post', url, true);
         xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
         let data_info = `memId=${signUpId.value}&memPsw=${signUpPsw.value}&memName=${signUpName.value}&memMail=${signUpEmail.value}`;

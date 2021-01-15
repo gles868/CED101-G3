@@ -1,7 +1,7 @@
 <?php
     session_start();
     try{
-        require_once("connectced101g3.php");
+        require_once("connect_ced101g3.php");
         $sql = "SELECT * FROM `member` 
                     WHERE memId=:memId AND memPsw=:memPsw"; 
         $member = $pdo->prepare($sql);

@@ -2,7 +2,7 @@
 // 將會員資料寫進session
     session_start();
     try{
-        require_once("connectced101g3.php");
+        require_once("connect_ced101g3.php");
         $sql = "select * from `member` WHERE memName = '董董'";  // 先寫死where條件
         $member = $pdo->query($sql);
 
@@ -19,7 +19,7 @@
 
 <?php
     try{
-        require_once("connectced101g3.php");
+        require_once("connect_ced101g3.php");
         $memberNo = $_SESSION['memberNo'];
 
         // 取得課程報名編號 | 班級編號 | 會員編號 | 課程編號 | 課程名稱 | 課程圖片 | 課程說明 | 課程狀態

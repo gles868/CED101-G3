@@ -51,10 +51,57 @@
         </nav>
     </header>
 
+    <!-- 登入註冊燈箱 -->
+    <div class="lightbox-bg"></div>
+    <div class="container" id="container">
+        <span class="close"><i class="fas fa-times fa-xs"></i></span>
+        <!-- 註冊 -->
+        <div class="form-container sign-up-container">
+            <form id="signUpForm">
+                <h2>會員註冊</h2>
+                <input type="text" id="signUpName" placeholder="輸入姓名" />
+                <input type="email" id="sigUpEmail" placeholder="輸入email" />
+                <input type="text" id="signUpId" placeholder="輸入帳號" />
+                <input type="password" id="signUpPsw" placeholder="輸入密碼(6-12碼，至少含各一位英數字)" />
+                <input type="password" id="checkPsw" placeholder="確認密碼" name="checkPsw">
+                <input type="button" id="signUpSubmit" value="註冊">
+
+                <div class="notice" style="top: 84px"></div>
+                <div class="notice" style="top: 140px"></div>
+                <div class="notice" style="top: 198px"></div>
+                <div class="notice" style="top: 255px"></div>
+                <div class="notice" style="top: 313px"></div>
+            </form>
+        </div>      
+        <!-- 登入 -->
+        <div class="form-container sign-in-container">
+            <form id="signInForm">
+                <h2>會員登入</h2>
+                <input type="text" name="memId" id="memId" placeholder="輸入帳號" />
+                <input type="password" name="memPsw" id="memPsw" placeholder="輸入密碼" />
+                <span id="forgetPsw">忘記密碼?</span>
+                <input type="button" id="signInSubmit" value="登入">
+                
+                <div class="notice" style="top: 140px"></div>
+                <div class="notice" style="top: 198px"></div>
+            </form>
+        </div>
+        
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <button type="button" class="check" id="signIn">登入</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <button type="button" class="check" id="signUp">註冊</button>
+                </div>
+            </div>
+        </div> 
+    </div>
+    
     <!--觸發點 trigger1-->
     <div id="triggerPoint"></div> 
     <section id="pinSection">
-        <!-- <div class="lay00 common"><img src="../img/index/[signUpLesson]clouds.png" alt=""></div> -->
         <div class="lay01 common"></div>
         <!--rock-->
         <div class="lay02 common"></div> 
@@ -326,6 +373,18 @@
     </footer>
 
     <script src="js/index_scroll.js"></script>
+    <script src="js/login.js"></script>        
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 60) {
+                $("header").addClass("-active");
+            } else {
+                $("header").removeClass("-active");
+            }
+        });
+    </script>
 </body>
 
 </html>

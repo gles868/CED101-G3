@@ -1,6 +1,6 @@
 <?php
     try{
-        require_once("connectced101g3.php");
+        require_once("connect_ced101g3.php");
         
         // 取得所有教師
         $sql = "SELECT * FROM `teacher`";

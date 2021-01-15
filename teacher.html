@@ -9,13 +9,12 @@
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- vueJs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
 
     <!-- fullpage.js -->
-        <!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/vendors/jquery.easings.min.jss"></script>
-        <!-- This following line is only necessary in the case of using the option `scrollOverflow:true` -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/vendors/scrolloverflow.min.js"></script>
-        <!-- fullPage.js v2.9.5 -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.js"></script> -->
     <link rel="stylesheet" type="text/css" href="vendors/fullpage/fullpage.css">
     <script src="vendors/fullpage/fullpage.js"></script>
@@ -32,7 +31,7 @@
                 </div>
                 <ul class="nav">
                     <li><a href="course.html">課程總覽</a></li>
-                    <li class="active"><a href="teacher.html" >教師總覽</a></li>
+                    <li><a href="teacher.html" >教師總覽</a></li>
                     <li>
                         <a href="index.html"><img src="./img/logo.png"></a>
                     </li>
@@ -65,6 +64,15 @@
     </div>
     <div id="scrollPage">
 		<div class="section section1">
+            <teacher-component v-for="(teacher, i) in dataRows[0]"
+                               :key="teacher.teachNo"
+                               :teach-img="teacher.teachImg"
+                               :teach-name="teacher.teachName"
+                               :teach-description="teachDescription"
+                               :teach-no="teacher.teachNo">
+            </teacher-component>
+            <!-- 教師組件裡塞評論+星星組件 -->
+
             <div class="container">
                 <div class="tr">
                     <div class="img">
@@ -82,7 +90,6 @@
                             鳳凰會時代，天狼星把波特夫婦藏身處守密人的重要任務，交付給佩迪魯的理由是食死人絕不會想到鳳凰會會把如此重要的任務交付給佩迪魯
                         </p>
                     </div>
-                    <!-- <p>最新評論</p> -->
                     <div class="comm_card">
                         <div class="card">
                             <div class="avatar">
@@ -102,7 +109,6 @@
             </div>
         </div>
 		<div class="section section2">
-            
                 <div class="container">
                     <div class="tr">
                         <div class="img">
@@ -216,12 +222,11 @@
             
         </div>
 		<div class="section section5">
-            
                 <div class="container">
                     <div class="tr">
                         <div class="img">
                             <div class="shadow"></div>
-                            <img src="img/teacher/tr01.png" alt="">
+                            <img src="img/teacher/tr05.png" alt="">
                         </div>
                     </div>
                     <div class="wrapper">
@@ -259,7 +264,7 @@
                     <div class="tr">
                         <div class="img">
                             <div class="shadow"></div>
-                            <img src="img/teacher/tr01.png" alt="">
+                            <img src="img/teacher/tr06.png" alt="">
                         </div>
                     </div>
                     <div class="wrapper">

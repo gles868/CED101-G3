@@ -3,52 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>麻瓜特訓班 | 會員登入 | 註冊</title>
+    <title>登入 | 註冊</title>
     <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
+                           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
-    <!-- 導覽列 -->
-     <!-- <header>
-        <nav>
-            <ul class="nav">
-                <li><a href="course.html">課程總覽</a></li>
-                <li><a href="teacher.html">教師總覽</a></li>
-                <li>
-                    <a href="index.html"><img src="./img/logo.png"></a>
-                </li>
-                <li><a href="mall.html">商城</a></li>
-                <li><a href="game.html">小遊戲</a></li>
-            </ul>
-            <ul class="nav-right">
-                <li><a href="member.html"><i class="fas fa-user-circle fa-lg"></i></a></li>
-                <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
-            </ul>
-        </nav>
-    </header> -->
-    
-
     <!-- 登入註冊區塊 -->
     <div class="container" id="container">
+        <!-- 註冊 -->
         <div class="form-container sign-up-container">
             <form action="#">
-                <h2>註冊</h2>
+                <h2>會員註冊</h2>
                 <input type="text" id="signUpName" placeholder="姓名" />
                 <input type="email" id="sigUpEmail" placeholder="Email" />
                 <input type="text" id="signUpAccount" placeholder="帳號" />
                 <input type="password" id="signUpPsw" placeholder="密碼" />
                 <input type="password" id="checkPsw" placeholder="確認密碼" name="checkPsw">
-                <button type="button" id="signUpSubmit">註冊</button>
+                <input type="button" id="signUpSubmit" value="註冊">
             </form>
-        </div>
-      
+        </div>      
+        <!-- 登入 -->
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form>
                 <h2>會員登入</h2>
-                <input type="email" id="signInAccount" placeholder="帳號" />
-                <input type="password" id="signInPsw" placeholder="密碼" />
+                <input type="text" name="memId" id="memId" placeholder="輸入帳號" />
+                <input type="password" name="memPsw" id="memPsw" placeholder="輸入密碼" />
                 <span id="forgetPsw">忘記密碼?</span>
-                <button type="button" id="signInSubmit">登入</button>
+                <input type="button" id="signInSubmit" value="登入">
             </span>
         </div>
       
@@ -63,27 +46,7 @@
             </div>
         </div> 
     </div>
-    
-    <!-- 底部footer -->
-    <!-- <footer>
-        <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
-    </footer> -->
 
-
-    <script>
-        // 登入註冊區塊
-        const signUpButton = document.getElementById('signUp');
-        const signInButton = document.getElementById('signIn');
-        const container = document.getElementById('container');
-
-        signUpButton.addEventListener('click', () => {
-            container.classList.add("right-panel-active");
-        });
-
-        signInButton.addEventListener('click', () => {
-            container.classList.remove("right-panel-active");
-        });
-    </script>
-
+    <script src="js/login.js"></script>                        
 </body>
 </html>
