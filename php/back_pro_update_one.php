@@ -5,26 +5,26 @@ try {
     $content = trim(file_get_contents("php://input"));
     $decoded = json_decode($content, true);
 
+    $proNo = $decoded["proNo"];
     $courseNo = $decoded["courseNo"];
-    $courTypeNo = $decoded["courTypeNo"];
-    $courseName = $decoded["courseName"];
-    $courseDescription = $decoded["courseDescription"];
-    $coursePrice = $decoded["coursePrice"];
+    $proName = $decoded["proName"];
+    $proDescription = $decoded["proDescription"];
+    $proPrice = $decoded["proPrice"];
 
-    $sql = "update course
-            set courTypeNo = :courTypeNo,
-                courseName = :courseName,
-                courseDescription = :courseDescription,
-                coursePrice = :coursePrice                
-            where courseNo = :courseNo
+    $sql = "update product
+            set courseNo = :courseNo,
+                proName = :proName,
+                proDescription = :proDescription,
+                proPrice = :proPrice                
+            where proNo = :proNo
             ";
     // $grouporddata = $pdo->query($sql);
     $per_ord_data = $pdo->prepare($sql);
+    $per_ord_data->bindValue(":proNo", $proNo);
     $per_ord_data->bindValue(":courseNo", $courseNo);
-    $per_ord_data->bindValue(":courTypeNo", $courTypeNo);
-    $per_ord_data->bindValue(":courseName", $courseName);
-    $per_ord_data->bindValue(":courseDescription", $courseDescription);
-    $per_ord_data->bindValue(":coursePrice", $coursePrice);
+    $per_ord_data->bindValue(":proName", $proName);
+    $per_ord_data->bindValue(":proDescription", $proDescription);
+    $per_ord_data->bindValue(":proPrice", $proPrice);
 
     $per_ord_data->execute();
 

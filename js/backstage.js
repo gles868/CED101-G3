@@ -692,7 +692,7 @@ Vue.component('course_edit', {
             </div>
             <div class="addcoursecon">
                 <div class="acc_title">課程金額</div>
-                <input type="text" id="coursePrice" class="acc_con" v-model="coursePrice"/>
+                <input type="text" required="required" id="coursePrice" class="acc_con" v-model="coursePrice"/>
                 {{error_text_price}}
             </div>
             <div class="form_btn" @click="edit_course_func(courTypeNo,
@@ -858,7 +858,7 @@ Vue.component('course_add', {
             </div>
             <div class="addcoursecon">
                 <div class="acc_title">課程金額</div>
-                <input type="text" id="coursePrice" class="acc_con" v-model="coursePrice"/>
+                <input type="text" required="required" id="coursePrice" class="acc_con" v-model="coursePrice"/>
                 {{error_text_price}}
             </div>
             <div class="form_btn" @click="add_course_func(courTypeNo,
@@ -1100,7 +1100,7 @@ Vue.component('back-mall', {
             <h2>商城管理</h2>
             <div class="form-wrap">
                 <div class="add-bar">
-                    <button type="button" id="add-show" name="button" class="add-btn">新增商品</button>
+                    <button type="button" id="add-show" name="button" class="add-btn" @click="pro_add()">新增商品</button>
                 </div>
                 <div class="content-list">
                     <table>
@@ -1114,9 +1114,9 @@ Vue.component('back-mall', {
                             <th>上架狀態</th>
                             <th>編輯</th>
                         </tr>
-                        <tr v-for="(value,key) in products">
+                        <tr v-for="(value,key) in products" >
                             <td>{{value.proNo}}</td>
-                            <td>{{value.proType}}</td>
+                            <td>{{changecourTypeNo(value.courTypeNo)}}</td>
                             <td>{{value.courseName}}</td>
                             <td>{{value.proName}}</td>
                             <td>{{value.proPrice}}</td>
@@ -1179,6 +1179,15 @@ Vue.component('back-mall', {
                 this.lightbox_text = '下架';
             }
         },
+        changecourTypeNo(courTypeNo) {
+            if (courTypeNo == 1) {
+                return '攻擊型';
+            } else if (courTypeNo == 2) {
+                return '防禦型';
+            } else if (courTypeNo == 3) {
+                return '輔助型';
+            }
+        },
         // 點擊 確定修改後 觸發 php程式。完成後 重新撈取一次資料
         change_status: async function (proNo, status) {
             const res = await fetch('./php/back_update_product.php', {
@@ -1229,15 +1238,16 @@ Vue.component('back-mall', {
     Vue.component('pro_edit', {
         data() {
             return {
+                courses: '',
                 courseNo: '',
                 proName: '',
                 proImg: '',
                 proDescription: '',
                 proPrice: '',
-                proType: '',
                 error_text: '',
                 error_text_des: '',
                 error_text_price: '',
+                updatecourseNo: '',
             };
         },
         props: ['proNo'],
@@ -1253,27 +1263,23 @@ Vue.component('back-mall', {
                 <div class="acc_con">{{proNo}}</div>
             </div>
             <div class="addcoursecon">
-                <div class="acc_title">課程編號</div>
-                <select name="courseNo" id="courseNo" class="acc_con" v-model="courseNo">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
+                <div class="acc_title">選擇課程</div>
+                <select name="courseNo" id="courseNo" class="acc_con" v-model="courseNo" >
+                    <option v-for="(value,key) in courses">
+                    {{value.courseNo}},
+                    {{changecourTypeNo(value.courTypeNo)}},
+                    {{value.courseName}}</option>
                 </select>
             </div>
             <div class="addcoursecon">
                 <div class="acc_title">商品名稱</div>
                 <input type="text" id="proName" class="acc_con" v-model="proName"/>
+                {{error_text}}
             </div>
             <div class="addcoursecon">
                 <div class="acc_title">商品價格</div>
-                <input type="text" id="proPrice" class="acc_con" v-model="proPrice"/>
+                <input type="text" required="required" id="proPrice" class="acc_con" v-model="proPrice"/>
+                {{error_text_price}}
             </div>
             <div class="addcoursecon">
                 <div class="acc_title">商品圖片</div>
@@ -1283,12 +1289,14 @@ Vue.component('back-mall', {
             <div class="addcoursecon">
                 <div class="acc_title">商品描述</div>
                 <textarea type="text" id="proDescription" class="acc_con" v-model="proDescription"></textarea>
+                {{error_text_des}}
             </div>
-            <div class="addcoursecon">
-                <div class="acc_title">商品類別</div>
-                <div class="acc_con">{{proType}}</div>
-            </div>
-            <button type="sumbit" class="form_btn">確定修改</button>
+            <button type="sumbit" class="form_btn" 
+                @click="edit_pro_func(courseNo,
+                proName,
+                proImg,
+                proDescription,
+                proPrice)">確定修改</button>
         </div>
     </div>
 </div>
@@ -1314,97 +1322,255 @@ Vue.component('back-mall', {
                 this.proImg = res[0].proImg;
                 this.proDescription = res[0].proDescription;
                 this.proType = res[0].proType;
+            },
+            //呼叫php程式，取回 課程 相關資料，並用json()轉回一般陣列
+            get_course: async function () {
+                const res = await fetch('./php/back_course.php', {}).then(function (data) {
+                    return data.json();
+                });
+                // 取回res值後，呼叫另一隻函式
+                this.courses = res;
+            },
+            changecourTypeNo(courTypeNo) {
+                if (courTypeNo == 1) {
+                    return '攻擊型';
+                } else if (courTypeNo == 2) {
+                    return '防禦型';
+                } else if (courTypeNo == 3) {
+                    return '輔助型';
+                }
+            },
+            //點擊 確認修改後將資料傳至DB
+            edit_pro_func: async function (courseNo, proName, proImg, proDescription, proPrice) {
+                console.log(courseNo, proName, proImg, proDescription, proPrice);
 
-                this.changetype();
+                //送出編輯前 確認欄位 是否符合規定
+                //商品名稱 中文(1~6字)
+                if (proName.replace(/[^\u4e00-\u9fa5]/g, '') && proName.length >= 1 && proName.length <= 6) {
+                    console.log('商品名稱 成功');
+                } else {
+                    this.error_text = '商品名稱，請輸入中文(1~6字)';
+                    return '';
+                }
+
+                //商品描述 (1~100字)
+                if (
+                    proDescription.replace(/[^\u4e00-\u9fa5]/g, '') &&
+                    proDescription.length >= 1 &&
+                    proDescription.length <= 100
+                ) {
+                    console.log('商品描述 成功');
+                } else {
+                    this.error_text_des = '商品描述，請輸入中文(1~100字)';
+                    return '';
+                }
+
+                //商品金額 數字
+                if (proPrice.replace(/\D/g, '')) {
+                    console.log('商品金額 成功');
+                } else {
+                    this.error_text_price = '商品金額，請輸入數字';
+                    return '';
+                }
+
+                const res = await fetch('./php/back_pro_update_one.php', {
+                    method: 'POST',
+                    mode: 'same-origin',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        proNo: this.proNo,
+                        courseNo: this.updatecourseNo,
+                        proName: proName,
+                        proImg: proImg,
+                        proDescription: proDescription,
+                        proPrice: proPrice,
+                    }),
+                });
+                //關燈箱
+                this.changelightbox();
             },
             //關燈箱
             changelightbox() {
                 this.$emit('changelightbox');
             },
-            // changetype() {
-            //     this.courses[this.edit_key].courTypeNo = event.currentTarget.value;
-
-            //     if (this.courTypeNo == 1) {
-            //         this.courTypeName = '攻擊型';
-            //     } else if (this.courTypeNo == 2) {
-            //         this.courTypeName = '防禦型';
-            //     } else if (this.courTypeNo == 3) {
-            //         this.courTypeName = '輔助型';
-            //     }
-            // },
-            // changename(event) {
-            //     this.courses[this.edit_key].courseName = event.currentTarget.value;
-            // },
         },
         created() {
             this.get_pro();
+            this.get_course();
+        },
+        watch: {
+            courseNo() {
+                this.updatecourseNo = this.courseNo.split(',')[0];
+            },
         },
     });
 //----------新增商品(組件)----------
 Vue.component('pro_add', {
     data() {
-        return {};
+        return {
+            courses: '',
+            courseNo: '',
+            proName: '',
+            proImg: '',
+            proDescription: '',
+            proPrice: '',
+            error_text: '',
+            error_text_des: '',
+            error_text_price: '',
+            updatecourseNo: '',
+        };
     },
     props: [],
 
     template: `
     <div class="lightbox_add_black">
-        <div class="lightbox">
-            <div class="manager_lightbox_close" @click="changelightbox"><img src="./img/close.png" /></div>
-            <div class="add-form">
-                <h2 id="pNameText">新增商品</h2>
-                <div class="addcoursecon">
-                    <div class="acc_title">商品編號</div>
-                    <input type="text" id="proNo" class="acc_con" />
-                </div>
-                <div class="addcoursecon">
-                    <div class="acc_title">課程編號</div>
-                    <select name="courseNo" id="courseNo" class="acc_con">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="addcoursecon">
-                    <div class="acc_title">商品名稱</div>
-                    <input type="text" id="proName" class="acc_con" />
-                </div>
-                <div class="addcoursecon">
-                    <div class="acc_title">商品價格</div>
-                    <input type="text" id="proPrice" class="acc_con" />
-                </div>
-                <div class="addcoursecon">
-                    <div class="acc_title">商品圖片</div>
-                    <input id="file" type="file" accept="image/*" class="acc_con" />
-                </div>
-                <div class="addcoursecon">
-                    <div class="acc_title">商品描述</div>
-                    <textarea type="text" id="proDescription" class="acc_con"></textarea>
-                </div>
-                <div class="addcoursecon">
-                    <div class="acc_title">商品類別</div>
-                    <select name="proType" id="proType" class="acc_con">
-                        <option value="1">攻擊型</option>
-                        <option value="2">防禦型</option>
-                        <option value="3">輔助型</option>
-                    </select>
-                </div>
-                <button type="sumbit" class="form_btn">確定新增</button>
+    <div class="lightbox">
+        <div class="manager_lightbox_close" @click="changelightbox"><img src="./img/close.png" /></div>
+        <div class="add-form">
+            <h2 id="pNameText">編輯商品</h2>
+            <div class="addcoursecon">
+                <div class="acc_title">商品編號</div>
+                <div class="acc_con"></div>
             </div>
+            <div class="addcoursecon">
+                <div class="acc_title">選擇課程</div>
+                <select name="courseNo" id="courseNo" class="acc_con" v-model="courseNo" >
+                    <option v-for="(value,key) in courses">
+                    {{value.courseNo}},
+                    {{changecourTypeNo(value.courTypeNo)}},
+                    {{value.courseName}}</option>
+                </select>
+            </div>
+            <div class="addcoursecon">
+                <div class="acc_title">商品名稱</div>
+                <input type="text" id="proName" class="acc_con" v-model="proName"/>
+                {{error_text}}
+            </div>
+            <div class="addcoursecon">
+                <div class="acc_title">商品價格</div>
+                <input type="text" required="required" id="proPrice" class="acc_con" v-model="proPrice"/>
+                {{error_text_price}}
+            </div>
+            <div class="addcoursecon">
+                <div class="acc_title">商品圖片</div>
+                <!-- <img :src="proImg" alt="" > -->
+                <input id="file" type="file" class="acc_con"  />
+            </div>
+            <div class="addcoursecon">
+                <div class="acc_title">商品描述</div>
+                <textarea type="text" id="proDescription" class="acc_con" v-model="proDescription"></textarea>
+                {{error_text_des}}
+            </div>
+            <button type="sumbit" class="form_btn" 
+                @click="add_pro_func(courseNo,
+                proName,
+                proImg,
+                proDescription,
+                proPrice)">確定新增</button>
         </div>
     </div>
+</div>
         `,
     methods: {
+        //呼叫php程式，取回 商品 相關資料，並用json()轉回一般陣列
+        get_pro: async function () {
+            const res = await fetch('./php/back_product.php', {}).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.products = res;
+        },
+        //呼叫php程式，取回 課程 相關資料，並用json()轉回一般陣列
+        get_course: async function () {
+            const res = await fetch('./php/back_course.php', {}).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.courses = res;
+        },
+        changecourTypeNo(courTypeNo) {
+            if (courTypeNo == 1) {
+                return '攻擊型';
+            } else if (courTypeNo == 2) {
+                return '防禦型';
+            } else if (courTypeNo == 3) {
+                return '輔助型';
+            }
+        },
+
         //關燈箱
         changelightbox() {
             this.$emit('changelightbox');
+        },
+        //點擊 確認新增後將資料傳至DB
+        add_pro_func: async function (courseNo, proName, proImg, proDescription, proPrice) {
+            console.log(courseNo, proName, proImg, proDescription, proPrice);
+
+            //送出新增前 確認欄位 是否符合規定
+            //商品名稱 中文(1~6字)
+            if (proName.replace(/[^\u4e00-\u9fa5]/g, '') && proName.length >= 1 && proName.length <= 6) {
+                console.log('商品名稱 成功');
+            } else {
+                this.error_text = '商品名稱，請輸入中文(1~6字)';
+                return '';
+            }
+
+            //商品描述 (1~100字)
+            if (
+                proDescription.replace(/[^\u4e00-\u9fa5]/g, '') &&
+                proDescription.length >= 1 &&
+                proDescription.length <= 100
+            ) {
+                console.log('商品描述 成功');
+            } else {
+                this.error_text_des = '商品描述，請輸入中文(1~100字)';
+                return '';
+            }
+
+            //商品金額 數字
+            if (proPrice.replace(/\D/g, '')) {
+                console.log('商品金額 成功');
+            } else {
+                this.error_text_price = '商品金額，請輸入數字';
+                return '';
+            }
+
+            const res = await fetch('./php/back_insert_product.php', {
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    courseNo: this.updatecourseNo,
+                    proName: proName,
+                    proImg: proImg,
+                    proDescription: proDescription,
+                    proPrice: proPrice,
+                }),
+            }).then(function () {
+                console.log('in');
+            });
+            console.log('完成');
+
+            //關燈箱
+            this.changelightbox();
+            //完成後 重新撈取一次資料
+            console.log('重撈');
+            this.get_pro();
+        },
+    },
+    created() {
+        this.get_pro();
+        this.get_course();
+    },
+    watch: {
+        courseNo() {
+            this.updatecourseNo = this.courseNo.split(',')[0];
         },
     },
 });

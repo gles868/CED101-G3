@@ -1,6 +1,6 @@
 <?php
 try {
-    require_once "./connect_g3_database.php";
+    require_once "./connect_ced101g3.php";
 
     // $content = trim(file_get_contents("php://input"));
     // $decoded = json_decode($content, true);
