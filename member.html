@@ -3,22 +3,22 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
         <!-- Bootstrap 的 CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
-        
-        <!-- Jquery 大家都裝npm就可拿掉-->        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" ></script>
+
+        <!-- Jquery 大家都裝npm就可拿掉-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="./css/member.css" />
-        
+
         <!-- vueJs -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
         <!-- vue-star-rating js -->
         <script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>
-        
+
         <title>麻瓜特訓班 | 會員中心</title>
     </head>
 
@@ -62,7 +62,7 @@
                     <div class="mempic">
                         <img src="./img/wenhead.jpg" alt="" />
                     </div>
-                    <div class="memdata">                        
+                    <div class="memdata">
                         <div class="memName">
                             <h5 class="memdataTitle">會員名稱:</h5>
                             <h5 class="memdataContent">小溫溫</h5>
@@ -70,7 +70,6 @@
                         <div class="memId">
                             <h5 class="memdataTitle">會員帳號:</h5>
                             <h5 class="memdataContent">wenwen0487</h5>
-                            
                         </div>
                         <div class="memPoint">
                             <h5 class="memdataTitle">可折抵點數:</h5>
@@ -89,6 +88,7 @@
                         <div class="memLevProgress">
                             <div class="progress" style="height: 25px">
                                 <div
+                                    jjdsoij
                                     class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
                                     role="progressbar"
                                     aria-valuenow="75"
@@ -138,7 +138,10 @@
         <section class="memClassOut menuCG">
             <div class="memContent">
                 <div class="memMainAreaClass">
-                    <div id="courseDate" style="background-color: white;box-shadow: 0 0 0.2em white, 0 0 0.4em white, 0 0 0.3em white">
+                    <div
+                        id="courseDate"
+                        style="background-color: white; box-shadow: 0 0 0.2em white, 0 0 0.4em white, 0 0 0.3em white"
+                    >
                         <h3>查看課表時間</h3>
                     </div>
                     <div id="courseStatus" style="background-color: gray; color: white">
@@ -147,10 +150,8 @@
                 </div>
 
                 <div class="courseDate courseCG">
-                    <div id='calendar-container'>
-                        <div id='calendar'>
-                        </div>
-                        
+                    <div id="calendar-container">
+                        <div id="calendar"></div>
                     </div>
                 </div>
 
@@ -158,7 +159,15 @@
                     <div id="tab">
                         <!-- 頁籤按鈕 -->
                         <ul>
-                            <li id="tab-content-1" style="color: white;text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4; background-color: rgba(170, 170, 170, 0.5)">
+                            <li
+                                id="tab-content-1"
+                                style="
+                                    color: white;
+                                    text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183),
+                                        0 0 0.3em #5f93c4;
+                                    background-color: rgba(170, 170, 170, 0.5);
+                                "
+                            >
                                 <div>
                                     <div class="courseReg">
                                         <h4>已報名</h4>
@@ -243,13 +252,15 @@
 
                         <!-- 已完課 -->
                         <div id="app">
-                            <mem-course-component v-for="memCourse in memCourseRows"
-                                                  :key="memCourse.registNo"
-                                                  :regist-no="memCourse.registNo"
-                                                  :course-img="memCourse.courseImg"
-                                                  :course-name="memCourse.courseName"
-                                                  :course-description="memCourse.courseDescription"
-                                                  @send-comm="sendComm">
+                            <mem-course-component
+                                v-for="memCourse in memCourseRows"
+                                :key="memCourse.registNo"
+                                :regist-no="memCourse.registNo"
+                                :course-img="memCourse.courseImg"
+                                :course-name="memCourse.courseName"
+                                :course-description="memCourse.courseDescription"
+                                @send-comm="sendComm"
+                            >
                             </mem-course-component>
                         </div>
                         <!-- <div class="tab-content-2 con">
@@ -357,7 +368,7 @@
                             </div>
                             <!-- 從這邊開始加入第二個收藏項目 
                         </div> -->
-                        
+
                         <!-- 上課中(當天) -->
                         <div class="tab-content-3 con">
                             <div class="CRD">
@@ -387,7 +398,16 @@
             <div class="memContent">
                 <div id="memKeepTitle">
                     <ul>
-                        <li id="memKeepCourse" style="background-color: rgba(170, 170, 170, 0.5); color: white;text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4; "><h4>課程</h4></li>
+                        <li
+                            id="memKeepCourse"
+                            style="
+                                background-color: rgba(170, 170, 170, 0.5);
+                                color: white;
+                                text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4;
+                            "
+                        >
+                            <h4>課程</h4>
+                        </li>
                         <li id="memKeepPro" style="color: white"><h4>商品</h4></li>
                     </ul>
                 </div>
@@ -519,23 +539,21 @@
                                     aria-expanded="true"
                                     aria-controls="collapseOne"
                                 >
-                                <!-- 主選單內容先隱藏START     -->
-                                <h4 class="MOL_Intextbox">
-                                    <div class="orederNo">訂單編號</div>
-                                    <div class="orderPay">付款方式</div>
-                                    <div class="orderAddress">寄送地點</div>
-                                    <div class="orderTotal">付款金額</div>
-                                </h4>
-                                <!-- 主選單內容先隱藏END     -->
+                                    <!-- 主選單內容先隱藏START     -->
+                                    <h4 class="MOL_Intextbox">
+                                        <div class="orederNo">訂單編號</div>
+                                        <div class="orderPay">付款方式</div>
+                                        <div class="orderAddress">寄送地點</div>
+                                        <div class="orderTotal">付款金額</div>
+                                    </h4>
+                                    <!-- 主選單內容先隱藏END     -->
 
-                                <h4 class="MOL_Contentbox">
-                                    <div class="orederNo">000001</div>
-                                    <div class="orderPay">信用卡付款</div>
-                                    <div class="orderAddress">魔幻森林菇菇區123號</div>
-                                    <div class="orderTotal">$8787</div>
-                                </h4>
-
-
+                                    <h4 class="MOL_Contentbox">
+                                        <div class="orederNo">000001</div>
+                                        <div class="orderPay">信用卡付款</div>
+                                        <div class="orderAddress">魔幻森林菇菇區123號</div>
+                                        <div class="orderTotal">$8787</div>
+                                    </h4>
                                 </button>
                             </h2>
                             <div
@@ -555,8 +573,8 @@
                                                     <div class="proTitle">商品預覽</div>
                                                     <h5 class="proContent">
                                                         <div class="proContentPic">
-                                                            <img src="./img/props/p3.png">
-                                                        </div>                                                        
+                                                            <img src="./img/props/p3.png" />
+                                                        </div>
                                                     </h5>
                                                 </div>
                                                 <div class="proNo">
@@ -577,7 +595,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                                   
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -591,22 +609,21 @@
                                     aria-expanded="false"
                                     aria-controls="collapseTwo"
                                 >
-                                   <!-- 主選單內容先隱藏START     -->
-                                <h4 class="MOL_Intextbox">
-                                    <div class="orederNo">訂單編號</div>
-                                    <div class="orderPay">付款方式</div>
-                                    <div class="orderAddress">寄送地點</div>
-                                    <div class="orderTotal">付款金額</div>
-                                </h4>
-                                <!-- 主選單內容先隱藏END     -->
+                                    <!-- 主選單內容先隱藏START     -->
+                                    <h4 class="MOL_Intextbox">
+                                        <div class="orederNo">訂單編號</div>
+                                        <div class="orderPay">付款方式</div>
+                                        <div class="orderAddress">寄送地點</div>
+                                        <div class="orderTotal">付款金額</div>
+                                    </h4>
+                                    <!-- 主選單內容先隱藏END     -->
 
-                                <h4 class="MOL_Contentbox">
-                                    <div class="orederNo">000002</div>
-                                    <div class="orderPay">信用卡付款</div>
-                                    <div class="orderAddress">魔幻森林菇菇區123號</div>
-                                    <div class="orderTotal">$8787</div>
-                                </h4>
-
+                                    <h4 class="MOL_Contentbox">
+                                        <div class="orederNo">000002</div>
+                                        <div class="orderPay">信用卡付款</div>
+                                        <div class="orderAddress">魔幻森林菇菇區123號</div>
+                                        <div class="orderTotal">$8787</div>
+                                    </h4>
                                 </button>
                             </h2>
                             <div
@@ -626,7 +643,7 @@
                                                     <div class="proTitle">商品預覽</div>
                                                     <h5 class="proContent">
                                                         <div class="proContentPic">
-                                                            <img src="./img/props/p3.png">
+                                                            <img src="./img/props/p3.png" />
                                                         </div>
                                                     </h5>
                                                 </div>
@@ -663,20 +680,20 @@
                                     aria-controls="collapseThree"
                                 >
                                     <!-- 主選單內容先隱藏START     -->
-                                <h4 class="MOL_Intextbox">
-                                    <div class="orederNo">訂單編號</div>
-                                    <div class="orderPay">付款方式</div>
-                                    <div class="orderAddress">寄送地點</div>
-                                    <div class="orderTotal">付款金額</div>
-                                </h4>
-                                <!-- 主選單內容先隱藏END     -->
+                                    <h4 class="MOL_Intextbox">
+                                        <div class="orederNo">訂單編號</div>
+                                        <div class="orderPay">付款方式</div>
+                                        <div class="orderAddress">寄送地點</div>
+                                        <div class="orderTotal">付款金額</div>
+                                    </h4>
+                                    <!-- 主選單內容先隱藏END     -->
 
-                                <h4 class="MOL_Contentbox">
-                                    <div class="orederNo">000003</div>
-                                    <div class="orderPay">信用卡付款</div>
-                                    <div class="orderAddress">魔幻森林菇菇區123號</div>
-                                    <div class="orderTotal">$8787</div>
-                                </h4>
+                                    <h4 class="MOL_Contentbox">
+                                        <div class="orederNo">000003</div>
+                                        <div class="orderPay">信用卡付款</div>
+                                        <div class="orderAddress">魔幻森林菇菇區123號</div>
+                                        <div class="orderTotal">$8787</div>
+                                    </h4>
                                 </button>
                             </h2>
                             <div
@@ -696,7 +713,7 @@
                                                     <div class="proTitle">商品預覽</div>
                                                     <h5 class="proContent">
                                                         <div class="proContentPic">
-                                                            <img src="./img/props/p3.png">
+                                                            <img src="./img/props/p3.png" />
                                                         </div>
                                                     </h5>
                                                 </div>
@@ -722,7 +739,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </section>
@@ -755,30 +772,40 @@
                                         <div class="MIF_Data">
                                             <h5 class="MIF_Left">會員名稱:</h5>
                                             <h5 class="MIF_Right MIF_Default">小溫溫</h5>
-                                            <input type="text" class="memInfoCG" placeholder="">
+                                            <input type="text" class="memInfoCG" placeholder="" />
                                         </div>
                                         <div class="MIF_Data">
                                             <h5 class="MIF_Left">會員帳號:</h5>
                                             <h5 class="MIF_Right MIF_Default">wenwen0487</h5>
-                                            <input type="text" class="memInfoCG" placeholder="wenwen0487">
+                                            <input type="text" class="memInfoCG" placeholder="wenwen0487" />
                                         </div>
 
                                         <div class="MIF_Data">
                                             <h5 class="MIF_Left">會員密碼:</h5>
                                             <h5 class="MIF_Right MIF_Default">123456</h5>
                                             <div class="memInfoCG">
-                                                <input type="text" class="memPsw" placeholder="請輸入舊密碼(6~20英數字)">
-                                                <input type="text" class="memPsw" placeholder="請輸入新密碼(6~20英數字)">
-                                                <input type="text" class="memPsw" placeholder="請再次輸入新密碼">                                      </div>
+                                                <input
+                                                    type="text"
+                                                    class="memPsw"
+                                                    placeholder="請輸入舊密碼(6~20英數字)"
+                                                />
+                                                <input
+                                                    type="text"
+                                                    class="memPsw"
+                                                    placeholder="請輸入新密碼(6~20英數字)"
+                                                />
+                                                <input type="text" class="memPsw" placeholder="請再次輸入新密碼" />
                                             </div>
+                                        </div>
                                         <div class="MIF_Data">
                                             <h5 class="MIF_Left">會員信箱:</h5>
                                             <h5 class="MIF_Right MIF_Default">wenwen0487@gmail.com</h5>
-                                            <input type="text" class="memInfoCG" placeholder="">
+                                            <input type="text" class="memInfoCG" placeholder="" />
                                         </div>
                                         <div class="memInfoBtn">
-                                            <button type="button" id="memInfoCG" class="btn btn-outline-light">修改資料</button>
-
+                                            <button type="button" id="memInfoCG" class="btn btn-outline-light">
+                                                修改資料
+                                            </button>
                                         </div>
                                     </table>
                                 </form>
@@ -794,15 +821,17 @@
             <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
         </footer>
 
-
         <!-- fullcalendar -->
-         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script>
-         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css">
-         
-         <script src="js/member.js"></script>
-       
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css" />
 
-         <!-- body 結束標籤之前 bootstrap  -->
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="js/member.js"></script>
+
+        <!-- body 結束標籤之前 bootstrap  -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"
+        ></script>
     </body>
 </html>
