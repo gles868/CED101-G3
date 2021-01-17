@@ -28,11 +28,27 @@ h5 {
 
 body {
     width: 100%;
-    background-image: url(../../img/membg_2.png);
+    background-image: url(../img/membg_2.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
+}
+a {
+    text-decoration: none !important;
+}
+.membtn {
+    color: ivory;
+    border: 1px solid ivory;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    cursor: pointer;
+}
+.membtn:hover {
+    background-color: ivory;
+    color: black;
 }
 
 //會員資料上方區塊
@@ -100,6 +116,14 @@ body {
     margin: 5px auto;
     display: flex;
     justify-content: space-between;
+    color: ivory;
+    @include textShadowMem;
+}
+.memClassNam {
+    width: 80%;
+    margin: 20px auto 0px auto;
+    display: flex;
+    justify-content: center;
     color: ivory;
     @include textShadowMem;
 }
@@ -186,22 +210,27 @@ body {
 .memMenu {
     width: 100%;
     margin: 3rem auto;
-}
-.memMenuOut {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-}
-
-.memMenuOut > button {
-    border-radius: 0px;
-    box-shadow: 0 0 0.4em ivory;
-    cursor: pointer;
-}
-
-.memMenuOut > button > i {
-    margin: auto 5px;
+    .memMenuOut {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        i {
+            margin: auto 5px;
+        }
+        .meunItem {
+            border: 1px solid ivory;
+            color: ivory;
+            box-shadow: 0 0 0.4em ivory;
+            cursor: pointer;
+            padding: 12px 15px;
+            font-size: 20px;
+        }
+        .meunItem:hover {
+            background-color: ivory;
+            color: black;
+        }
+    }
 }
 
 .memClassOut,
@@ -350,7 +379,6 @@ body {
     // border: 1px solid orange;
     width: 80%;
     margin: 1rem auto;
-    display: none;
 }
 
 .CRD {
@@ -384,16 +412,13 @@ body {
 #tab > ul > li {
     padding: 10px 20px;
     cursor: pointer;
+    color: white;
 }
 
 .tab-content-1,
 .tab-content-2,
 .tab-content-3 {
     background-color: rgba(170, 170, 170, 0.5);
-}
-.tab-content-2,
-.tab-content-3 {
-    display: none;
 }
 
 .CRD_Text {
@@ -727,9 +752,7 @@ input {
     width: 80%;
     margin: 0 auto;
 }
-.memKeepPro {
-    display: none;
-}
+
 .memKeepCourseBtn {
     width: 30%;
     align-items: center;
@@ -825,7 +848,7 @@ input {
 //切換箭頭圖片
 .accordion-button::after,
 .accordion-button:not(.collapsed)::after {
-    background-image: url(../../img/arrow.png);
+    background-image: url(../img/arrow.png);
 }
 .memOrederList {
     width: 100%;
@@ -1092,7 +1115,6 @@ input {
         }
     }
 }
-
 .memInfoLeft {
     .memPoint {
         text-align: center;
@@ -1130,6 +1152,12 @@ input {
         }
         .memInfoBtn {
             text-align: center;
+            .membtn {
+                margin: 0 auto;
+                width: 50%;
+                text-shadow: none;
+                cursor: pointer;
+            }
         }
     }
 }
@@ -1139,10 +1167,6 @@ input {
     border-radius: 10px;
 }
 
-//修改欄位預設不占位
-.memInfoCG {
-    display: none;
-}
 .memInfoCG input:nth-child(1),
 .memInfoCG input:nth-child(2) {
     margin-bottom: 2rem;
