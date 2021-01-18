@@ -227,124 +227,93 @@ Vue.component('courseReg', {
 Vue.component('courseFinish', {
     data() {
         return {
-            //撈出來的 資料
+            lightbox: false,
         };
     },
-    props: [],
-
+    props: ['course-img', 'course-name', 'course-description', 'regist-no'],
     template: `
-    <!-- 已完課 -->
         <div class="tab-content-2 con">
             <div class="CFD_Out">
                 <div class="CFD_Top">
                     <div class="CRD_pic">
-                        <img src="./img/course_cards/course_03.png" alt="" srcset="" />
+                        <img :src="courseImg" alt="" srcset="" />
                     </div>
                     <div class="CRD_Text">
-                        <h4 class="CRD_TextTit">詛咒術</h4>
+                        <h4 class="CRD_TextTit">{{courseName}}</h4>
                         <div class="CRD_TextCon">
-                            <h5>詛咒術是一門療癒身心的課</h5>
-                            <h5>詛咒術是一門療癒身心的課</h5>
-                            <h5>詛咒術是一門療癒身心的課</h5>
-                            <h5>詛咒術是一門療癒身心的課</h5>
-                            <h5>詛咒術是一門療癒身心的課</h5>
+                            <h5>{{courseDescription}}</h5>
                         </div>
                     </div>
                 </div>
+                
                 <div class="CFD_Bottom">
                     <div class="CFD_BottomComm">
                         <div class="CFD_commTitle">
                             <h4>評論本課</h4>
-                        </div>
-                        <!-- 評價星星開始 -->
-                        <div class="CFD_commStar">
-                            <fieldset class="rating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                    title="Awesome - 5 stars"
-                                ></label>
-                                <input
-                                    type="radio"
-                                    id="star4half"
-                                    name="rating"
-                                    value="4 and a half"
-                                /><label
-                                    class="half"
-                                    for="star4half"
-                                    title="Pretty good - 4.5 stars"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                    title="Pretty good - 4 stars"
-                                ></label>
-                                <input
-                                    type="radio"
-                                    id="star3half"
-                                    name="rating"
-                                    value="3 and a half"
-                                /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                    title="Meh - 3 stars"
-                                ></label>
-                                <input
-                                    type="radio"
-                                    id="star2half"
-                                    name="rating"
-                                    value="2 and a half"
-                                /><label
-                                    class="half"
-                                    for="star2half"
-                                    title="Kinda bad - 2.5 stars"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                    title="Kinda bad - 2 stars"
-                                ></label>
-                                <input
-                                    type="radio"
-                                    id="star1half"
-                                    name="rating"
-                                    value="1 and a half"
-                                /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                    title="Sucks big time - 1 star"
-                                ></label>
-                                <input type="radio" id="starhalf" name="rating" value="half" /><label
-                                    class="half"
-                                    for="starhalf"
-                                    title="Sucks big time - 0.5 stars"
-                                ></label>
-                            </fieldset>
-                        </div>
-                        <!-- 評價星星結束 -->
-                        <!-- 評論老師/課程 -->
-                        <div class="CFD_commText">
-                            <form action="">
-                                <div id="input-container">
-                                    <input type="text" placeholder="評論老師/課程" /></div>
-                                <div id="button-container">
-                                    <button class="user"><i class="fa fa-user"></i></button
-                                    ><button class="send"><i class="fas fa-paper-plane"></i></i></button>
-                                </div>
+                            </div>
+                            <div class="commText">
+                                <form onsubmit="return false;">
+                                    <star-rating v-model="rating"
+                                    text-class="custom-text"
+                                    :star-size="20"
+                                    @rating-selected ="setRating">
+                                    </star-rating>
+                                    <div id="input-container">
+                                        <input type="text"
+                                        v-model="commText"
+                                        placeholder="評論老師/課程" 
+                                        maxlength="100">
+                                        </div>
+                                        <div id="button-container">
+                                            <button class="user"><i class="fa fa-user"></i></button>
+                                            <button class="send" @click="sendComm">
+                                                <i class="fas fa-paper-plane"></i>
+                                                </button>
+                                                </div>
+                                    <input type="hidden" name="registNo" :value="registNo">
+                                    <input type="hidden" name="commStar" :value="rating">
+                                    <input type="hidden" name="commContent" :value="commText">
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- 從這邊開始加入第二個項目 -->
         </div>
-  `,
+    `,
+    data() {
+        return {
+            rating: 0,
+            commText: '',
+        };
+    },
     methods: {},
+});
+// ----------我的課程>課程清單>已完課lightbox(組件)----------
+Vue.component('lightbox', {
+    data() {
+        return {
+            rating: 0,
+            commText: '',
+        };
+    },
+    props: ['course-img', 'course-name', 'course-description', 'regist-no'],
+    template: `
+
+    `,
+    methods: {
+        setRating: function (rating) {
+            this.rating = rating;
+        },
+        sendComm: function () {
+            this.$emit('send-comm');
+        },
+    },
     // template 渲染前 會先去執行以下函式
     created() {},
 });
+
+// 組件 - vue star rating
+Vue.component('star-rating', VueStarRating.default);
 
 // ----------我的課程>課程清單>上課中(組件)----------
 Vue.component('courseIng', {
@@ -791,7 +760,7 @@ Vue.component('mem-info', {
             content: 'mem-info-default',
         };
     },
-    props: [],
+    props: ['memberno', 'memname', 'memid', 'mempsw', 'memname', 'memmail'],
 
     template: `
     <section class="memInfoOut menuCG">
@@ -812,7 +781,7 @@ Vue.component('mem-info', {
                     <div class="memInfoFormOut">
                         <div class="memInfoForm">
                             <div>
-                                <component :is="content" @change="change"></component>
+                                <component :memberno="memberno" :memmail="memmail" :memname="memname" :mempsw="mempsw" :memid="memid" :is="content" @change="change"></component>
                             </div>
                         </div>
                     </div>
@@ -834,31 +803,31 @@ Vue.component('mem-info-default', {
     data() {
         return {};
     },
-    props: [],
+    props: ['memberno', 'memname', 'memid', 'mempsw', 'memname', 'memmail'],
 
     template: `
 <form action="">
     <table>
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員編號:</h5>
-            <h5 class="MIF_Right">001</h5>
+            <h5 class="MIF_Right">{{memberno}}</h5>
         </div>
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員名稱:</h5>
-            <h5 class="MIF_Right MIF_Default">小溫溫</h5>
+            <h5 class="MIF_Right MIF_Default">{{memname}}</h5>
         </div>
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員帳號:</h5>
-            <h5 class="MIF_Right MIF_Default">wenwen0487</h5>
+            <h5 class="MIF_Right MIF_Default">{{memid}}</h5>
         </div>
 
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員密碼:</h5>
-            <h5 class="MIF_Right MIF_Default">123456</h5>            
+            <h5 class="MIF_Right MIF_Default">{{mempsw}}</h5>            
         </div>
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員信箱:</h5>
-            <h5 class="MIF_Right MIF_Default">wenwen0487@gmail.com</h5>
+            <h5 class="MIF_Right MIF_Default">{{memmail}}</h5>
         </div>
         <div class="memInfoBtn">
             <div class="membtn"  id="memInfoCG" @click="change">
@@ -882,7 +851,7 @@ Vue.component('mem-info-edit', {
             //撈出來的 資料
         };
     },
-    props: [],
+    props: ['memberno', 'memname', 'memid', 'mempsw', 'memname', 'memmail'],
 
     template: `
 <form action="">
@@ -893,16 +862,16 @@ Vue.component('mem-info-edit', {
         </div>
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員名稱:</h5>
-            <input type="text" class="memInfoCG" placeholder="" />
+            <input type="text" class="MIF_Right" placeholder="" />
         </div>
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員帳號:</h5>
-            <input type="text" class="memInfoCG" placeholder="wenwen0487" />
+            <h5 class="MIF_Right">wenwen0487</h5>
         </div>
 
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員密碼:</h5>
-            <div class="memInfoCG">
+            <div class="MIF_Right">
                 <input
                     type="text"
                     class="memPsw"
@@ -918,7 +887,7 @@ Vue.component('mem-info-edit', {
         </div>
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員信箱:</h5>
-            <input type="text" class="memInfoCG" placeholder="" />
+            <input type="text" class="MIF_Right" placeholder="" />
         </div>
         <div class="memInfoBtn">
             <div class="membtn" id="memInfoCG" @click="change">
@@ -940,10 +909,102 @@ Vue.component('mem-info-edit', {
 new Vue({
     el: '#app',
     data: {
+        progress: '',
         content: 'mem-course',
         memberno: 5,
+        memId: '',
+        memPsw: '',
+        gradeNo: '',
+        memName: '',
+        memMail: '',
+        memGamePoint: '',
+        courseTimes: '',
+        memAvatar: '',
+        nameVal: '',
+        memCourseRows: [],
     },
-    methods: {},
+    methods: {
+        get_mem: async function () {
+            const res = await fetch('./php/mem_get_one.php', {
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    memberno: this.memberno,
+                }),
+            }).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.memId = res.memId;
+            this.memPsw = res.memPsw;
+            this.gradeNo = res.gradeNo;
+            this.memName = res.memName;
+            this.memMail = res.memMail;
+            this.memGamePoint = res.memGamePoint;
+            this.courseTimes = res.courseTimes;
+            this.memAvatar = res.memAvatar;
+        },
+        get_mem_coursetimes: async function () {
+            const res = await fetch('./php/mem_get_coursetimes.php', {
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    memberno: this.memberno,
+                }),
+            }).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.courseTimes = res.courseTimes;
+            this.progress = (res.courseTimes / 16) * 100;
+        },
+        //星星組件
+        sendComm: function () {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    alert('成功送出評論');
+                    console.log(xhr.responseText);
+                    // console.log(this);
+                    // let alreadyComment = JSON.parse(xhr.responseText);
+                    if (xhr.responseText.indexOf('您已評分') !== -1) {
+                        let commText = document.getElementsByClassName('commText')[0];
+                        commText.firstChild.style.display = 'none';
+                        commText.innerHTML = `
+                            <h5 style="margin: 20px; text-align: 
+                               center; color: white; 
+                               text-shadow: 0 0 0.2em #87f, 0 0 0.4em #ff0018, 0 0 0.3em #ff00cc;">
+                               已送出您的課程評論！
+                            </h5>`;
+                    } else {
+                        alert('fail');
+                    }
+                } else {
+                    alert(xhr.status);
+                    console.log(xhr.responseText);
+                }
+            };
+            url = 'php/memSendComm.php';
+            xhr.open('post', url, true);
+            xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+            let data_info = `commStar=${document.getElementsByName('commStar')[0].value}&commContent=${
+                document.getElementsByName('commContent')[0].value
+            }&registNo=${document.getElementsByName('registNo')[0].value}`;
+            xhr.send(data_info);
+        },
+    },
+    created() {
+        this.get_mem();
+        this.get_mem_coursetimes();
+    },
     mounted() {
         $(document).ready(function () {
             $('.memMenuOut>div').click(function () {

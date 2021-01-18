@@ -1,119 +1,169 @@
 @charset "UTF-8";
 * {
-  box-sizing: border-box;
-  font-family: '微軟正黑體';
+    box-sizing: border-box;
+    font-family: '微軟正黑體';
 }
 
 body {
-  margin: 0;
+    margin: 0;
 }
 h2 {
-  color: #555555;
+    color: #555555;
 }
+
 /* ------------ header ------------ */
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background: linear-gradient(to right, #5f2c82, #49a09d);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(to right, #5f2c82, #49a09d);
 }
 
 .nav-left > img {
-  width: 50%;
+    width: 50%;
 }
 
 .nav-right {
-  color: #ffff;
+    color: #ffff;
 }
 
 .nav-right > p {
-  margin: 0;
+    margin: 0;
 }
 
 button.hamburger {
-  display: none;
+    display: none;
 }
 
-.back_bottom{
-  width: 100%;
-  display: flex;
+.back_bottom {
+    width: 100%;
+    display: flex;
 }
-
 
 /* ------------ 左邊內容區塊 ------------ */
 .content-wrap {
-  width: 15%;
-  display: flex;
-  min-height: 100vh;
-  ul{
-    color: white;
-  }
-  .left-block {
-    width: 100%;
-    background-color: #F4F4F4;
-    padding: 10px;
-    margin: 0;
-    li {
-      list-style: none;
-      padding: 5px 10px;
-      background-color: #807EFB;
-      margin: 15px;
-      text-align: center;
-      border-radius: 20px;
-      transition: .3s;
+    width: 15%;
+    display: flex;
+    min-height: 100vh;
+    ul {
+        color: white;
     }
-    
-  }
+    .left-block {
+        width: 100%;
+        background-color: #f4f4f4;
+        padding: 10px;
+        margin: 0;
+        li {
+            list-style: none;
+            padding: 5px 10px;
+            background-color: #807efb;
+            margin: 15px;
+            text-align: center;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+    }
 }
 .left-block li:hover {
-  background-color: #5E5DB9;
+    background-color: #5e5db9;
 }
-.add-bar{
-  margin-bottom: 10px;
+.add-bar {
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%;
+    .admin_edit_box {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        width: 18%;
+        // border: 1px solid blue;
+        label {
+            width: 15%;
+            // border: 1px solid red;
+        }
+        input {
+            width: 80%;
+            // border: 1px solid green;
+        }
+    }
 }
 /* ------------ 右邊區塊=>狀態btn ------------ */
-.button{
-    display:block;   
-  }
-  .switch[type="checkbox"] {
-    position:relative;
-    width: 3rem;
-    height: 1.5rem;
-    -webkit-appearance:none;
-    background-color:rgba(255,255,255,.2);
-    outline:none;
-    border-radius:1.5rem;
-    box-shadow:inset 0 0 5px rgba(0,0,0,0.3);
-    transition:.5s;
-  }
-  .switch:checked[type="checkbox"] {
-    background-color:purple;
-  }
-  .switch[type="checkbox"]::before {
-    content:"";
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius:1.5rem;
-    top: 0;
-    left: 0;
-    background:white;
-    transition:.5s;
-    box-shadow:0 2px 5px rgba(0,0,0,.2);
-  }
-  .switch:checked[type="checkbox"]::before {
-    left:1.5rem;
-  }
-  .ios[type="checkbox"]::before {
-    transform:scale(.9);
-  }
-  .windows[type="checkbox"] {
-    border-radius:0;
-  }
-  .windows[type="checkbox"]::before {
-    border-radius:0;
-  }
+.button {
+    display: block;
+    label {
+        position: relative;
+        display: inline-block;
+        width: 48px;
+        height: 24px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+        -webkit-tap-highlight-color: transparent;
+
+        //白點點
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 24px;
+            width: 24px;
+            background-color: white;
+            border-radius: 24px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease-in-out;
+            animation: moveLeft 0.3s ease-in-out;
+        }
+    }
+
+    input {
+        display: none;
+        &:checked + label {
+            background-color: purple;
+            &:before {
+                transform: translateX(25px);
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+                animation: moveRight 0.3s ease-in-out;
+            }
+        }
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        width: 23px;
+        transform: translateX(0);
+    }
+
+    45% {
+        width: 26px;
+    }
+
+    100% {
+        width: 23px;
+        transform: translateX(24px);
+    }
+}
+
+@keyframes moveLeft {
+    0% {
+        width: 23px;
+        transform: translateX(24px);
+    }
+
+    45% {
+        width: 26px;
+    }
+
+    100% {
+        width: 23px;
+        transform: translateX(0);
+    }
+}
+
 /* ------------ 右邊區塊=>管理者管理 ------------ */
 .right-block_admin,
 .right-block_member,
@@ -121,197 +171,228 @@ button.hamburger {
 .right-block_course,
 .right-block_comment,
 .right-block_mall,
-.right-block_game{
-  width: 85%;
-  .right-block {
-    width: 100%;
-    padding: 20px;
-  }
-  .form-wrap {
-    padding: 10px;
-    background-color: #D1BEE8;
-  }
-  .content-list {
-    border-radius: 10px;
-    background-color: #F5EFFD;
-    padding: 10px;
-    display: flex;
-    overflow: auto;
-  }
-  .form-list {
-    width: 100%;
-    overflow: auto;
-  }
-  th {
-    padding: 5px;
-  }
-  td {
-    padding: 10px;
-    text-align: center;
-  }
-}
-/* ------------ 右邊區塊=>課程管理燈箱 ------------ */
-.right-block_course,
-.right-block_mall{
-  .add-modal-wrapper{
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 100;
-}
-
-.modal {
-    position: absolute;
-    top: 20%;
-    left: 34%;
-    background-color: #e6ecf0;
-    padding: 30px 0 30px;
-    border-radius: 10px;
-    width: 450px;
-    height: auto;
-    text-align: center;
-}
-
-.fa-times {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: rgba(128, 128, 128, 0.46);
-    cursor: pointer;
-}
-
-#add-form {
-    width: 100%;
-    h2{
-      color: #5f5d60;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-    }
-    .addcoursecon{
-      display: flex;
-      margin: 10px auto;
-      .acc_title{
-        width: 40%;
-      }
-      .acc_con{
-        width: 50%;
-      }
-    }
-}
-
-#submit-btn {
-    display: inline-block;
-    padding: 10px 100px;
-    background-color: #2E9DEC;
-    border: none;
-    border-radius: 3px;
-    color: white;
-    margin: 10px auto;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-#demoImg{
-    width:50%;
-}
-
-.content-list img{
-    width: 80%;
-}
-
-td.prodImg{
-    width: 100px;
-    height: 100px;
-}
-
-
-/*------------ 燈箱RWD ------------*/
-@media screen and (max-width: 767px){
-    .modal {
-      top: 20%;
-      left: 10%;
-      padding: 15px 0 15px;
-      width: 300px;
-    }
-  
-    #submit-btn {
-      display: inline-block;
-      padding: 10px 100px;
-  
-    }
-
-    .content-list img{
+.right-block_game {
+    width: 85%;
+    .right-block {
         width: 100%;
+        padding: 20px;
     }
-}
-  
-  
-@media (min-width: 768px) and (max-width: 991px){
-    .modal {
-        top: 20%;
-        left: 20%;
-        padding: 30px 0 30px;
-        width: 450px;
+    .form-wrap {
+        padding: 10px;
+        background-color: #d1bee8;
+    }
+    .content-list {
+        border-radius: 10px;
+        background-color: #f5effd;
+        padding: 10px;
+        display: flex;
+        overflow: auto;
+        .item_img {
+            width: 100px;
+            padding: 0;
+            display: flex;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .form-list {
+        width: 100%;
+        overflow: auto;
+    }
+    th {
+        padding: 5px;
+    }
+    td {
+        padding: 10px;
+        text-align: center;
     }
 }
 
-}
+/* ------------ 修改狀態 管理員&會員&教師 管理燈箱 ------------ */
 
+.right-block_admin,
+.right-block_member,
+.right-block_teacher,
+.right-block_course,
+.right-block_comment,
+.right-block_mall,
+.right-block_game {
+    .lightbox_black {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 20;
+        .lightbox {
+            position: absolute;
+            background-color: #e6ecf0;
+            padding: 30px 0 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 500px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            div:nth-child(2) {
+                margin-bottom: 80px;
+                span:nth-child(1) {
+                    color: purple;
+                    font-weight: bold;
+                }
+                span:nth-child(2) {
+                    color: red;
+                    font-weight: bold;
+                }
+            }
+            div:nth-child(3) {
+                display: inline-block;
+                background-color: #2e9dec;
+                padding: 10px 75px;
+                border: none;
+                border-radius: 3px;
+                color: white;
+                margin: 10px auto;
+                cursor: pointer;
+                font-size: 16px;
+            }
+        }
+    }
+}
+.manager_lightbox_close {
+    margin-bottom: 50px;
+    img {
+        position: absolute;
+        width: 25px;
+        top: 15px;
+        right: 15px;
+        color: rgba(128, 128, 128, 0.46);
+        cursor: pointer;
+    }
+}
+/* ------------ 右邊區塊=>課程&商城管理燈箱(jQuery) ------------ */
+.right-block_course,
+.right-block_mall {
+    .lightbox_add_black {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 20;
+        .lightbox {
+            position: absolute;
+            background-color: #e6ecf0;
+            padding: 30px 0 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 600px;
+            height: 500px;
+            align-items: center;
+            font-size: 18px;
+            .add-form {
+                // border: 1px solid red;
+                width: 100%;
+                h2 {
+                    color: #5f5d60;
+                    letter-spacing: 1px;
+                    margin: 20px auto;
+                    font-size: 24px;
+                    text-align: center;
+                }
+                .addcoursecon {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    margin: 10px auto;
+                    .acc_title {
+                        width: 30%;
+                        // border: 1px solid red;
+                    }
+                    .acc_con {
+                        width: 55%;
+                        text-align: left;
+                        // border: 1px solid black;
+                    }
+                }
+                .form_btn {
+                    display: inline-block;
+                    background-color: #2e9dec;
+                    padding: 10px 75px;
+                    border: none;
+                    border-radius: 3px;
+                    color: white;
+                    margin: 10px auto;
+                    cursor: pointer;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
 
 /* ------------ footer ------------ */
 footer {
-  width: 100%;
-  color: #ffff;
-  margin: 0;
-  background-color: #141414;
+    width: 100%;
+    color: #ffff;
+    margin: 0;
+    background-color: #141414;
 }
 
 footer > p {
-  font-size: 12px;
-  text-align: center;
-  padding: 8px 0px;
-  margin: 0;
+    font-size: 12px;
+    text-align: center;
+    padding: 8px 0px;
+    margin: 0;
 }
 
 /* ------------ RWD ------------ */
 @media screen and (max-width: 767px) {
-  .nav-left > img {
-    width: 40%;
-  }
+    .nav-left > img {
+        width: 40%;
+    }
 }
 
 @media screen and (min-width: 992px) {
-  ul.left-block {
-    display: block !important;
-  }
+    ul.left-block {
+        display: block !important;
+    }
 }
 
 @media screen and (max-width: 991px) {
-  .content-wrap {
-    flex-direction: column;
-  }
-  ul.left-block {
-    display: none;
-    width: 100%;
-  }
-  button.hamburger {
-    display: inline-block;
-  }
-  .right-block {
-    width: 100%;
-  }
+    .content-wrap {
+        flex-direction: column;
+    }
+    ul.left-block {
+        display: none;
+        width: 100%;
+    }
+    button.hamburger {
+        display: inline-block;
+    }
+    .right-block {
+        width: 100%;
+    }
 }
 
-.add-bar {
-  margin-bottom: 10px;
-}
+// .add-bar {
+//   margin-bottom: 10px;
+// }
 
 /*------------ 顯示使用者現在所在位置 ------------*/
 #back-admin {
-  background-color: #5E5DB9;
+    background-color: #5e5db9;
 }
 /*# sourceMappingURL=back-admin.css.map */
