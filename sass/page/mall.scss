@@ -231,6 +231,10 @@ div.pro_price {
 }
 div.pro_name {
     margin-top: 10px;
+    opacity: 1;
+    &:hover {
+        opacity: 0.6;
+    }
 }
 div.pro_price {
     margin-top: 10px;
@@ -243,10 +247,6 @@ div.box {
     text-align: center;
     text-shadow: 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
     cursor: pointer;
-    // opacity: 0.6;
-    // &:hover {
-    //     opacity: 1;
-    // }
 
     @media (max-width: 850px) {
         width: 30%;
@@ -257,6 +257,10 @@ div.pro_photo {
     width: 52%;
     // width: 100%;
     margin: 0 auto;
+    opacity: 1;
+    &:hover {
+        opacity: 0.6;
+    }
     @media (max-width: 991px) {
         width: 60%;
     }
@@ -479,6 +483,24 @@ div.pro_photo {
     div.pro_complete_price_box > img {
         width: 40px;
     }
+    div.pro_type_box {
+        border-radius: 20px;
+        display: flex;
+        width: 40%;
+        margin: 20px auto;
+
+        font-size: 20px;
+        justify-content: space-evenly;
+    }
+    div.type_ani {
+        text-align: center;
+        align-items: center;
+        text-shadow: 0 0 0.2em #e96f92, 0 0 0.2em#e96f92, 0 0 0.2em#e96f92;
+        color: #ffffff;
+    }
+    div.pro_type_box > img {
+        width: 25px;
+    }
     div.pro_complete_price {
         text-align: center;
         position: relative;
@@ -698,8 +720,8 @@ div.pro_photo {
 }
 
 ////////
-.count {
-    display: none;
+.num_icon {
+    // display: block;
     position: absolute;
     top: 50px;
     // right: 40px;
@@ -707,12 +729,11 @@ div.pro_photo {
     width: 20px;
     height: 20px;
     border-radius: 50px;
-    background-color: #dc52ff;
+    background-color: #dc52ffc0;
+    text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
     color: #ffffff;
     font-weight: bold;
     line-height: 16px;
-    text-align: center;
-    align-items: center;
     z-index: 999;
     font-size: 18px;
     @media (max-width: 701px) {
@@ -724,6 +745,14 @@ div.pro_photo {
     }
     @media (max-width: 376px) {
         right: 16%;
+    }
+    .num_text {
+        // border: 1px solid red;
+        text-align: center;
+        align-items: center;
+        position: absolute;
+        top: 10%;
+        left: 25%;
     }
 }
 body {
@@ -817,3 +846,28 @@ body {
         transform: scale(1);
     }
 }
+
+// 全部商品的頁數
+
+.pagebutton {
+    margin: 10px auto;
+    // background-image: url('./img/star2.png');
+    button {
+        width: 30px;
+        height: 30px;
+        // background-color: rgba(248, 206, 213, 0.507);
+        color: #f5f5c7;
+        border: 0px;
+        font-size: 18px;
+        font-weight: bold;
+        text-shadow: 0 0 0.3em #e96f92, 0 0 0.3em#e96f92, 0 0 0.3em #e96f92;
+        background: none;
+        cursor: pointer;
+        opacity: 1;
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+}
+
+// 購物車動畫

@@ -1,84 +1,78 @@
-$(document).ready(function () {
-  // Array for planet colors
-  var background = [
-      'rgba(143, 189, 255, 0.7)',
-      'rgba(255,255,255,0.6)',
-      'rgba(255,255,255,0.9)',
-  ];
+window.addEventListener('load', function () {
+    let storage = sessionStorage;
 
-  // Function for planet colors
-  function backgroundColor() {
-      return background[
-          Math.floor(Math.random() * background.length)
-      ];
-  }
+    Vue.component('products', {
+        data() {
+            return {
+                item_info: [],
+            };
+        },
+        props: ['itemno'],
+        template: `
+        <div class="cartpro_a_box">
+            <div class="crystalball_left_box">
+                <img :src="item_info[0].proImg" />
+            </div>
+            <div class="crystalball_right_box">
+                <div class="crystalball_name_box">
+                    <div class="crystalball_name">{{item_info[0].proName}}</div>
+                </div>
+                <div class="crystalball_text_box">
+                    <div class="crystalball_text">
+                    {{item_info[0].proDescription}}
+                    </div>
+                </div>
+                <div class="crystalball_priceAmount_box">
+                        <div class="amount">
+                        數量：{{num}}
+                        </div>
+                    <div class="pro_complete_price_box">
+                        <img src="./img/dollar.png" />
+                        <div class="pro_complete_price">
+                            {{proPrice}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>     
+                `,
+        methods: {
+            get_data: async function (itemno) {
+                // console.log(itemno);
 
-  // Get viewport size
-  var viewportWidth = $(window).width();
-  var viewportHeight = $(window).height();
-  var viewportSize = viewportWidth + viewportHeight;
-
-  // Set limit for amount of stars and planets based on viewport size
-  var starLimit = viewportSize * 0.12;
-  var planetLimit = viewportSize * 0.025;
-
-  // Get random number
-  function getRandom() {
-      return Math.random();
-  }
-
-  // Function for creating a star
-  function newStar() {
-      var starDiv = document.createElement('div');
-      starDiv.innerHTML = '<figure class="star"></figure>';
-      return starDiv.firstChild;
-  }
-
-  // Function for creating a planet
-  function newPlanet() {
-      var planetDiv = document.createElement('div');
-      planetDiv.innerHTML = '<figure class="planet"></figure>';
-      return planetDiv.firstChild;
-  }
-
-  // Loop for creating stars
-  function createStars() {
-      for (var i = 0; i <= starLimit; i++) {
-          var star = newStar();
-          star.style.top = getRandom() * 100 + '%';
-          star.style.left = getRandom() * 100 + '%';
-          star.style.height = getRandom() * 3 + 'px';
-          star.style.width = star.style.height;
-          star.style.webkitAnimationDelay = getRandom() + 's';
-          star.style.mozAnimationDelay = getRandom() + 's';
-          star.style.webkitAnimationDuration =
-              getRandom() + 1 + 's';
-          star.style.mozAnimationDuration = getRandom() + 1 + 's';
-          document.body.appendChild(star);
-      }
-  }
-
-  // Loop for creating planets
-  function createPlanets() {
-      for (var i = 0; i <= planetLimit; i++) {
-          var planet = newPlanet();
-          planet.style.top = getRandom() * 100 + '%';
-          planet.style.left = getRandom() * 100 + '%';
-          planet.style.height = getRandom() * 6 + 2 + 'px';
-          planet.style.width = planet.style.height;
-          planet.style.opacity = getRandom() + 0.15;
-          planet.style.webkitAnimationDelay = getRandom() + 's';
-          planet.style.mozAnimationDelay = getRandom() + 's';
-          planet.style.webkitAnimationDuration =
-              getRandom() + 3 + 's';
-          planet.style.mozAnimationDuration =
-              getRandom() + 3 + 's';
-          planet.style.background = backgroundColor();
-          document.body.appendChild(planet);
-      }
-  }
-
-  // Call functions
-  createStars();
-  createPlanets();
+                const res = await fetch('./php/lightbox.php', {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'same-origin', // no-cors, *cors, same-origin
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        itemno: itemno,
+                    }),
+                }).then(function (data) {
+                    return data.json();
+                });
+                // 取回res值後，呼叫另一隻函式
+                this.item_info = res;
+            },
+        },
+        created() {
+            this.get_data(this.itemno);
+        },
+    });
+    new Vue({
+        el: '#app',
+        data: { itemlist: '' },
+        methods: {
+            split_products() {
+                let itemString = storage.getItem('addItemList');
+                let items = itemString
+                    .substr(0, itemString.length - 2)
+                    .split(', ');
+                this.itemlist = items;
+                // console.log(434353454354);
+            },
+        },
+    });
 });

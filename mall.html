@@ -48,28 +48,37 @@
                         </li>
                         <li>
                             <a href="cart.html"
-                                ><i class="fas fa-shopping-cart fa-lg"></i
+                                ><div id="cart_btn">
+                                    <i
+                                        class="fas fa-shopping-cart fa-lg"
+                                    ></i></div
                             ></a>
                         </li>
                     </ul>
                 </div>
             </nav>
         </header>
-        <!-- <div class="count"></div> -->
 
         <!-- <div class="shop_big_box"> -->
         <main id="app">
-            <div class="count"></div>
+            <div class="num_icon">
+                <div class="num_text">{{count}}</div>
+            </div>
             <!-- <div class="shop_big_box"> -->
             <div class="shop_box">
                 <div class="girl">
                     <img src="./img/witch02.png" />
                 </div>
                 <div class="shop">
-                    <type></type>
+                    <type
+                        @changetype="changetype"
+                        @changealltype="changealltype"
+                    ></type>
                     <products
                         @changeitemno="changeitemno"
                         @changelightbox="changelightbox"
+                        :type="type"
+                        :alltype="alltype"
                     ></products>
                 </div>
             </div>
@@ -87,18 +96,25 @@
                 :lightbox="lightbox"
                 @closelightbox="closelightbox"
                 :itemno="itemno"
+                @change_num="change_num"
             ></lightbox>
         </main>
 
         <footer>
             <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
         </footer>
+
+        <!-- <script>
+            document
+                .getElementById('cart_btn')
+                .addEventListener('click', function () {
+                    console.log(找不到);
+                    if (this.count > 1) {
+                        location.href = 'cart.html';
+                    } else {
+                        alert('請選擇商品');
+                    }
+                });
+        </script> -->
     </body>
-    <script>
-        $(document).ready(function () {
-            $('.heart').click(function () {
-                $(this).toggleClass('loved');
-            });
-        });
-    </script>
 </html>

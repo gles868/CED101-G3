@@ -1,6 +1,6 @@
 <?php
 try {
-    require_once "./connect_ced101g3_test.php";
+    require_once "./connect_ced101g3.php";
 
     $sql = "select *
             from product";

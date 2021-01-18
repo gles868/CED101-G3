@@ -22,6 +22,7 @@ body {
         #f7f7b6
     );
     background-attachment: fixed;
+    overflow-x: hidden;
     // overflow: hidden;
     // overflow-y: auto;
     // height: 500px;
@@ -173,8 +174,9 @@ div.cartpro_box {
                 div.amount {
                     color: #ffffff;
                     font-size: 18px;
-                    width: 16%;
+                    width: 20%;
                     line-height: 40px;
+
                     text-align: center;
                     text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186,
                         0 0 0.3em #863186;
@@ -197,6 +199,43 @@ div.cartpro_box {
                     @media (max-width: 375px) {
                         width: 40%;
                     }
+                    .butDec {
+                        color: rgb(0, 0, 0);
+                        background-color: rgb(184, 69, 155);
+                        border: 0px;
+                    }
+                    #quantity {
+                        // width: 50%;
+                        height: 29px;
+                        width: 60px;
+                        font-size: 20px;
+                        display: flex;
+
+                        color: #ffffff;
+                        background-color: #ffffff;
+                        align-items: center;
+                        text-align: center;
+                        span {
+                            margin: 0 auto;
+                        }
+                    }
+                    #min {
+                        font-size: 22px;
+                        width: 30px;
+                    }
+                    #addamount {
+                        font-size: 24px;
+                        width: 30px;
+                    }
+
+                    div.amount_input {
+                        display: flex;
+                        width: 80%;
+                        align-items: center;
+                        text-align: center;
+
+                        // height: 28px;
+                    }
                 }
             }
             div.pro_complete_price_box {
@@ -205,7 +244,7 @@ div.cartpro_box {
                 text-align: right;
                 color: #ffffff;
                 font-size: 18px;
-                width: 16%;
+                width: 20%;
                 align-items: center;
                 @media (max-width: 1200px) {
                     width: 20%;
@@ -294,8 +333,8 @@ div.total_box {
 
 div.space_box {
     width: 60%;
-    // display: flex;
-    display: none;
+    display: flex;
+    // display: none;
     margin: 50px auto;
     text-align: center;
     font-size: 30px;

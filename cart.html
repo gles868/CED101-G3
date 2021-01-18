@@ -11,7 +11,7 @@
         />
         <link rel="stylesheet" href="css/cart.css" />
         <link rel="stylesheet" href="./css/btn.css" />
-        <script src="/vendors/jquery/jquery-3.5.1.min.js"></script>
+        <script src="./vendors/jquery/jquery-3.5.1.min.js"></script>
         <script src="vendors/Vue/vue.js"></script>
         <title>麻瓜特訓班 | 購物車</title>
     </head>
@@ -59,34 +59,29 @@
         <div class="cart_title_box">
             <div class="cart_title">魔法購物車</div>
         </div>
-        <div class="cartpro_box">
-            <div class="cartpro_a_box">
-                <div class="crystalball_left_box">
-                    <img src="./img/props/p5.png" />
-                </div>
-                <div class="crystalball_right_box">
-                    <div class="crystalball_name_box">
-                        <div class="crystalball_name">閃亮水晶球</div>
-                    </div>
-                    <div class="close"><img src="./img/close.png" /></div>
-                    <div class="crystalball_text_box">
-                        <div class="crystalball_text">
-                            學習詛咒術的時候，必須要有閃亮水晶球，才能夠看到敵人的狀態來施詛咒術，是身為一位魔法師不可缺少的。
-                        </div>
-                    </div>
-
-                    <div class="crystalball_priceAmount_box">
-                        <div class="amount">數量：2</div>
-                        <div class="pro_complete_price_box">
-                            <img src="/img/dollar.png" />
-                            <div class="pro_complete_price">6788</div>
-                        </div>
-                    </div>
+        <main id="app">
+            <div class="cartpro_box" v-if="itemlist">
+                <products
+                    v-for="value in itemlist"
+                    :itemno="value"
+                    @add_price="add_price"
+                    @min_price="min_price"
+                    @deleteproduct="deleteproduct"
+                ></products>
+            </div>
+            <div class="deliver_box" v-if="deliver_box">
+                <div class="deliver">
+                    <img src="./img/deliver2.png" />
                 </div>
             </div>
+            <div class="total_box" v-if="total_box">
+                <div class="total_photoandtext">
+                    總額：<img src="./img/dollar.png" />
+                </div>
+                <div class="total_text">{{total_price}}</div>
+            </div>
 
-            <!-- 若沒有商品加入購物車 -->
-            <div class="space_box">
+            <div class="space_box" v-if="space_box">
                 <div class="space_photo">
                     <img src="./img/props/p10.png" />
                     <img src="./img/props/p11.png" />
@@ -98,85 +93,73 @@
                     <a href="./mall.html">回商城</a>
                 </div>
             </div>
-        </div>
+            <div class="byu_btn" v-if="Btn" @click="addToStorage">
+                <div class="btn-wrapper" @mouseover="btnani">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 65 65"
+                        class="star-svg"
+                    >
+                        <path
+                            data-name="star-10"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#D0104C"
+                        />
+                        <path
+                            data-name="star-9"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#489ba9"
+                        />
+                        <path
+                            data-name="star-8"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#D0104C"
+                        />
+                        <path
+                            data-name="star-7"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#F05E1C"
+                        />
+                        <path
+                            data-name="star-6"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#489ba9"
+                        />
+                        <path
+                            data-name="star-5"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#D0104C"
+                        />
+                        <path
+                            data-name="star-4"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#F05E1C"
+                        />
+                        <path
+                            data-name="star-3"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#D0104C"
+                        />
+                        <path
+                            data-name="star-2"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#489ba9"
+                        />
+                        <path
+                            data-name="star-1"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#F05E1C"
+                        />
+                    </svg>
+                    <a class="Btn" href="./cart_pay.html"
+                        ><input class="Btn" type="button" value="我要購買"
+                    /></a>
+                </div>
+            </div>
+        </main>
 
-        <div class="deliver_box">
-            <div class="deliver">
-                <img src="./img/deliver.png" />
-            </div>
-        </div>
-        <div class="total_box">
-            <div class="total_photoandtext">
-                總額：<img src="/img/dollar.png" />
-            </div>
-            <div class="total_text">6788</div>
-        </div>
-        <!-- <div class="buy_box">
-            <div class="buytext">
-                <a href="./cart_pay.html">前往購買</a>
-            </div>
-        </div> -->
-        <div class="btn-wrapper">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 65 65"
-                class="star-svg"
-            >
-                <path
-                    data-name="star-10"
-                    d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
-                    fill="#D0104C"
-                />
-                <path
-                    data-name="star-9"
-                    d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
-                    fill="#489ba9"
-                />
-                <path
-                    data-name="star-8"
-                    d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
-                    fill="#D0104C"
-                />
-                <path
-                    data-name="star-7"
-                    d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
-                    fill="#F05E1C"
-                />
-                <path
-                    data-name="star-6"
-                    d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
-                    fill="#489ba9"
-                />
-                <path
-                    data-name="star-5"
-                    d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
-                    fill="#D0104C"
-                />
-                <path
-                    data-name="star-4"
-                    d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
-                    fill="#F05E1C"
-                />
-                <path
-                    data-name="star-3"
-                    d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
-                    fill="#D0104C"
-                />
-                <path
-                    data-name="star-2"
-                    d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
-                    fill="#489ba9"
-                />
-                <path
-                    data-name="star-1"
-                    d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
-                    fill="#F05E1C"
-                />
-            </svg>
-            <a class="Btn" href="./cart_pay.html"
-                ><input class="Btn" type="button" value="我要購買"
-            /></a>
-        </div>
+        <!-- 若沒有商品加入購物車 -->
+
         <footer>
             <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
         </footer>
@@ -184,109 +167,6 @@
         <script src="./js/cart.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
         <script src="./js/button.js"></script>
-        <script>
-            // 動畫
-            $(document).ready(function () {
-                // Array for planet colors
-                var background = [
-                    'rgba(143, 189, 255, 0.7)',
-                    'rgba(255,255,255,0.6)',
-                    'rgba(255,255,255,0.9)',
-                ];
-
-                // Function for planet colors
-                function backgroundColor() {
-                    return background[
-                        Math.floor(Math.random() * background.length)
-                    ];
-                }
-
-                // Get viewport size
-                var viewportWidth = $(window).width();
-                var viewportHeight = $(window).height();
-                var viewportSize = viewportWidth + viewportHeight;
-
-                // Set limit for amount of stars and planets based on viewport size
-                var starLimit = viewportSize * 0.12;
-                var planetLimit = viewportSize * 0.025;
-
-                // Get random number
-                function getRandom() {
-                    return Math.random();
-                }
-
-                // Function for creating a star
-                function newStar() {
-                    var starDiv = document.createElement('div');
-                    starDiv.innerHTML = '<figure class="star"></figure>';
-                    return starDiv.firstChild;
-                }
-
-                // Function for creating a planet
-                function newPlanet() {
-                    var planetDiv = document.createElement('div');
-                    planetDiv.innerHTML = '<figure class="planet"></figure>';
-                    return planetDiv.firstChild;
-                }
-
-                // Loop for creating stars
-                function createStars() {
-                    for (var i = 0; i <= starLimit; i++) {
-                        var star = newStar();
-                        star.style.top = getRandom() * 100 + '%';
-                        star.style.left = getRandom() * 100 + '%';
-                        star.style.height = getRandom() * 3 + 'px';
-                        star.style.width = star.style.height;
-                        star.style.webkitAnimationDelay = getRandom() + 's';
-                        star.style.mozAnimationDelay = getRandom() + 's';
-                        star.style.webkitAnimationDuration =
-                            getRandom() + 1 + 's';
-                        star.style.mozAnimationDuration = getRandom() + 1 + 's';
-                        document.body.appendChild(star);
-                    }
-                }
-
-                // Loop for creating planets
-                function createPlanets() {
-                    for (var i = 0; i <= planetLimit; i++) {
-                        var planet = newPlanet();
-                        planet.style.top = getRandom() * 100 + '%';
-                        planet.style.left = getRandom() * 100 + '%';
-                        planet.style.height = getRandom() * 6 + 2 + 'px';
-                        planet.style.width = planet.style.height;
-                        planet.style.opacity = getRandom() + 0.15;
-                        planet.style.webkitAnimationDelay = getRandom() + 's';
-                        planet.style.mozAnimationDelay = getRandom() + 's';
-                        planet.style.webkitAnimationDuration =
-                            getRandom() + 3 + 's';
-                        planet.style.mozAnimationDuration =
-                            getRandom() + 3 + 's';
-                        planet.style.background = backgroundColor();
-                        document.body.appendChild(planet);
-                    }
-                }
-
-                // Call functions
-                createStars();
-                createPlanets();
-            });
-
-            // 刪除
-            $(document).ready(function () {
-                $('.close').click(function () {
-                    $(this).parent().parent().remove();
-
-                    if ($('.cartpro_a_box').length <= 0) {
-                        $('.space_box').css({
-                            display: 'block',
-                        });
-                    }
-                    $('.deliver_box').remove();
-                    $('.total_box').remove();
-                    $('.buy_box').remove();
-                    $('.btn-wrapper').remove();
-                });
-            });
-        </script>
+        <script src="./js/star.js"></script>
     </body>
 </html>

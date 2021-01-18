@@ -1,130 +1,55 @@
 window.addEventListener('load', function () {
+    const vm = new Vue();
     let storage = sessionStorage;
-    if (storage['addItemList'] == null) {
-        storage['addItemList'] = '';
-    }
+    // if (storage['addItemList'] == null) {
+    //     storage['addItemList'] = '';
+    // }
+    storage['addItemList'] = [];
 
     Vue.component('lightbox', {
         data() {
             return {
-                items: [
-                    {
-                        item_no: 1,
-                        item_name: '貝爾法師帽',
-                        item_note:
-                            '戴上貝爾法師帽，就可以增加自己的防禦，可以減少敵人對自己的傷害。',
-                        item_price: 4000,
-                        item_img: './img/props/p1.png',
-                    },
-                    {
-                        item_no: 2,
-                        item_name: '愛的寶石',
-                        item_note:
-                            '施煉金術的時候，愛的寶石是最好不過的材料了，愛的寶石光澤令人陶醉。',
-                        item_price: 1314,
-                        item_img: './img/props/p2.png',
-                    },
-                    {
-                        item_no: 3,
-                        item_name: '魔力技能書',
-                        item_note:
-                            '閱讀完魔法技能書，可以讓你的學習速度兩倍提升！',
-                        item_price: 8117,
-                        item_img: './img/props/p3.png',
-                    },
-                    {
-                        item_no: 4,
-                        item_name: '魔法能量水',
-                        item_note:
-                            '學習魔法是一條辛苦的道路，會消耗許多能量，所以一定要有魔法能量水！',
-                        item_price: 3333,
-                        item_img: './img/props/p4.png',
-                    },
-                    {
-                        item_no: 5,
-                        item_name: '閃亮水晶球',
-                        item_note:
-                            '學習詛咒術的時候，必須要有閃亮水晶球，才能夠看到敵人的狀態來施詛咒術，是身為一位魔法師不可缺少的。',
-                        item_price: 3394,
-                        item_img: './img/props/p5.png',
-                    },
-                    {
-                        item_no: 6,
-                        item_name: '魔物眼球',
-                        item_note:
-                            '施召喚術的時候，一定要搭配魔物眼球，不然魔物是不會理你的。',
-                        item_price: 5650,
-                        item_img: './img/props/p6.png',
-                    },
-                    {
-                        item_no: 7,
-                        item_name: '星火卷軸',
-                        item_note:
-                            '施光箭術的時候要先看過星火卷軸的內容，不然很容易造成整個魔法界的火災。',
-                        item_price: 4000,
-                        item_img: './img/props/p7.png',
-                    },
-                    {
-                        item_no: 8,
-                        item_name: '蜘蛛寶寶',
-                        item_note:
-                            '施毒藥術的時候一定要有蜘蛛寶寶，蜘蛛寶寶是魔法界中最毒的寶寶了。',
-                        item_price: 3394,
-                        item_img: './img/props/p8.png',
-                    },
-                    {
-                        item_no: 9,
-                        item_name: '時間寶石',
-                        item_note:
-                            '施變形術的時候一定要把當下的時間加快，不然時間趕不上變化的話就尷尬了。',
-                        item_price: 9999,
-                        item_img: './img/props/p9.png',
-                    },
-                ],
-                count: 1,
+                items: '',
+                shop_price: '',
+                count: '',
             };
         },
         props: ['lightbox', 'itemno'],
         template: `
       <div class="product" v-if="lightbox">
               <div class="pro_complete_box">
-                  <div class="close" @click="closelightbox(),count = 1 "><img src="./img/close.png" /></div>
+                  <div class="close" @click="closelightbox()"><img src="./img/close.png" /></div>
                   <div class="pro_complete_left">
                       <div class="pro_complete_photo">
                           <div class="heart">
                               <div class="heart-inner"></div>
                           </div>
-                          <img :src="items[itemno - 1].item_img" />
+                          <img :src="items[0].proImg" />
                       </div>
                       <div class="pro_complete_price_box">
-                          <img src="/img/dollar.png" />
-                          <div class="pro_complete_price">{{items[itemno - 1].item_price}}</div>
+                          <img src="./img/dollar.png" />
+                          <div class="pro_complete_price">{{items[0].proPrice}}</div>
                       </div>
-                      <div class="pro_complete_amount_box">
-                          <div class="pro_complete_text">數量</div>
-                          <div class="amount_input">
-                            <input @click="min" id="min" class="butDec" type="button" value="-"/>
-                            <div id="quantity"><span>{{count}}</span></div>
-                            <input @click="add" type="button" id="addamount" class="butDec" value="+"/>
-                          
-                          </div>
-                      </div>
+                      <div class="pro_type_box">
+                        <img src="./img/kira.png" />
+                        <div class="type_ani">{{items[0].proType}}</div>
+                      </div>                      
                   </div>
                   <div class="pro_complete_right">
                       <div class="pro_complete_name_box">
-                          <div class="pro_complete_name">{{items[itemno - 1].item_name}}</div>
+                          <div class="pro_complete_name">{{items[0].proName}}</div>
                       </div>
                       <div class="pro_complete_content_box">
                           <div class="pro_complete_content1 content">
-                          {{items[itemno - 1].item_note}}
+                          {{items[0].proDescription}}
                           </div>
                       </div>
-                      <div class="addandbuy_box" @click="addToStorage(items[itemno - 1].item_name)">
+                      <div class="addandbuy_box" @click="addToStorage(items[0].proNo,items[0].proName,items[0].proDescription,items[0].proImg,items[0].proPrice,items[0].proType),change_num()">
                           <span id="props_p5" class="addButton">
                               加入購物車
                               <input
                                   type="hidden"
-                                  value="crystalball|p5.png|3394"
+                                  
                               />
                           </span>
                           <span id="buy_p5" class="buyButton">
@@ -143,23 +68,70 @@ window.addEventListener('load', function () {
             closelightbox: function () {
                 this.$emit('closelightbox', false);
             },
-            min() {
-                if (this.count > 1) {
-                    this.count -= 1;
-                }
-            },
-            add: function () {
-                this.count += 1;
-            },
-            addToStorage(itemno) {
-                alert(`${itemno}`);
-                if (storage[itemno]) {
+            addToStorage(
+                proNo,
+                proName,
+                proDescription,
+                proImg,
+                proPrice,
+                proType
+            ) {
+                if (storage[proNo]) {
+                    // console.log('000');
                     alert('You have checked.');
                 } else {
-                    storage['addItemList'] += `${itemno}, `;
+                    storage[
+                        proNo
+                    ] = `${proNo}|${proName}|${proDescription}|${proImg}|${proPrice}|${proType}`;
+                    // storage['addItemList'] += `${proNo},`;
+                    storage['addItemList'] += `${proNo}, `;
+                    // alert(`${proName}`);
+                    this.closelightbox();
                 }
+            },
+            change_num() {
+                this.count++;
+                console.log(11);
+                this.$emit('change_num', this.count);
+            },
+            get_data: async function (itemno) {
+                // console.log(itemno);
 
-                console.log(222);
+                const res = await fetch('./php/lightbox.php', {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'same-origin', // no-cors, *cors, same-origin
+                    // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: {
+                        'Content-Type': 'application/json', // sent request
+                        // Accept: 'application/json', // expected data sent back
+                    },
+                    // redirect: 'follow', // manual, *follow, error
+                    // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                    body: JSON.stringify({
+                        itemno: itemno,
+                    }), // body data type must match "Content-Type" header
+                }).then(function (data) {
+                    return data.json();
+                });
+                // 取回res值後，呼叫另一隻函式
+                this.change(res);
+            },
+            change(res) {
+                this.items = res;
+            },
+        },
+        created() {
+            // console.log("----")
+            this.get_data(this.itemno);
+
+            // console.log(this.itemno);
+        },
+        // 監聽lightbox裡面內容要更改
+        // this.get_dara => 呼叫這個函數
+        watch: {
+            itemno() {
+                this.get_data(this.itemno);
             },
         },
     });
@@ -169,65 +141,122 @@ window.addEventListener('load', function () {
             return {
                 lightbox: false,
                 itemno: 0,
-                // items: [
-                //   { item_no: 1, item_name: "貝爾法師帽", item_note: "戴上貝爾法師帽，就可以增加自己的防禦，可以減少敵人對自己的傷害。", item_price: 4000, item_img: "./img/props/p1.png" },
-                //   { item_no: 2, item_name: "愛的寶石", item_note: "施煉金術的時候，愛的寶石是最好不過的材料了，愛的寶石光澤令人陶醉。", item_price: 1314, item_img: "./img/props/p2.png" },
-                //   { item_no: 3, item_name: "魔力技能書", item_note: "閱讀完魔法技能書，可以讓你的學習速度兩倍提升！", item_price: 8117, item_img: "./img/props/p3.png" },
-                //   { item_no: 4, item_name: "魔法能量水", item_note: "學習魔法是一條辛苦的道路，會消耗許多能量，所以一定要有魔法能量水！", item_price: 3333, item_img: "./img/props/p4.png" },
-                //   { item_no: 5, item_name: "閃亮水晶球", item_note: "學習詛咒術的時候，必須要有閃亮水晶球，才能夠看到敵人的狀態來施詛咒術，是身為一位魔法師不可缺少的。", item_price: 3394, item_img: "./img/props/p5.png" },
-                //   { item_no: 6, item_name: "魔物眼球", item_note: "施召喚術的時候，一定要搭配魔物眼球，不然魔物是不會理你的。", item_price: 5650, item_img: "./img/props/p6.png" },
-                //   { item_no: 7, item_name: "星火卷軸", item_note: "施光箭術的時候要先看過星火卷軸的內容，不然很容易造成整個魔法界的火災。", item_price: 4000, item_img: "./img/props/p7.png" },
-                //   { item_no: 8, item_name: "蜘蛛寶寶", item_note: "施毒藥術的時候一定要有蜘蛛寶寶，蜘蛛寶寶是魔法界中最毒的寶寶了。", item_price: 3394, item_img: "./img/props/p8.png" },
-                //   { item_no: 9, item_name: "時間寶石", item_note: "施變形術的時候一定要把當下的時間加快，不然時間趕不上變化的話就尷尬了。", item_price: 9999, item_img: "./img/props/p9.png" },
-                // ]
-                items: '',
+                items: [],
+                nowPage: 1,
+                pageItem: 9,
+                pageShow: true,
             };
         },
-        props: [],
+        props: ['type', 'alltype'],
         template: `
-              <div class="allPro_box" >
+              <div class="allPro_box">
                 <div class="pro_big_box1">
-                    <div class="pro1_box box" v-for="(value,index) in items" @click="itemno = value.item_no,changeitemno(),changelightbox()">
+                    <div class="pro1_box box" v-for="(value,index) in onePartInf" @click="itemno = value.proNo,changeitemno(),changelightbox()">
                         <div class="pro_photo">
-                            <img :src="value.item_img" />
+                            <img :src="value.proImg" />
                         </div>
                         <div class="pro_namebox">
-                            <div class="pro_name">{{value.item_name}}</div>
+                            <div class="pro_name">{{value.proName}}</div>
                         </div>
                         <div class="pro_pricebox">
-                            <div class="pro_price">$ {{value.item_price}}</div>
+                            <div class="pro_price">$ {{value.proPrice}}</div>
                         </div>
                     </div>
+                    <div class="pagebutton" v-show='pageShow'>
+                        <button @click='changePage(1)'>1</button>
+                        <button @click='changePage(2)'>2</button>
+                        <button @click='changePage(3)'>3</button>
+                    </div>
+
                 </div>
-              </div>`,
+              </div>
+              `,
+        computed: {
+            onePartInf() {
+                let startP = (this.nowPage - 1) * this.pageItem;
+                return this.items.slice(startP, startP + this.pageItem);
+            },
+            totalPage() {
+                return Math.ceil(this.items.length / this.pageItem);
+            },
+        },
+        mounted() {
+            vm.$on('reNewPage', () => (this.nowPage = 1));
+            vm.$on('reNewPage', () => (this.pageShow = false));
+            vm.$on('pageBack', () => (this.pageShow = true));
+        },
         methods: {
+            changePage(x) {
+                this.nowPage = x;
+                // if (this.nowPage < 1) {
+                //     this.nowPage = 1;
+                // } else if (this.nowPage > this.totalPage) {
+                //     this.nowPage = this.totalPage
+                // }
+            },
             changeitemno: function () {
-                console.log('----');
+                // console.log('----');
                 this.$emit('changeitemno', this.itemno);
             },
             changelightbox: function () {
                 this.lightbox = true;
                 this.$emit('changelightbox', this.lightbox);
             },
-            get_data: async function () {
-                // console.log("----")
-                const res = await fetch('./php/mall.php', {}).then(function (
+            // changeprice() {
+            //     this.$emit('changeprice', this.price);
+            // },
+
+            get_data: async function (type_no) {
+                // console.log(type_no);
+
+                const res = await fetch('./php/test.php', {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'same-origin', // no-cors, *cors, same-origin
+                    // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: {
+                        'Content-Type': 'application/json', // sent request
+                        // Accept: 'application/json', // expected data sent back
+                    },
+                    // redirect: 'follow', // manual, *follow, error
+                    // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                    body: JSON.stringify({
+                        type_no: type_no,
+                    }), // body data type must match "Content-Type" header
+                }).then(function (data) {
+                    return data.json();
+                });
+                // 取回res值後，呼叫另一隻函式
+                this.change(res);
+            },
+            change(res) {
+                this.items = res;
+            },
+
+            get_allpro: async function () {
+                const res = await fetch('./php/all.php', {}).then(function (
                     data
                 ) {
                     return data.json();
                 });
                 // 取回res值後，呼叫另一隻函式
                 this.items = res;
-                // this.get_type(res)
             },
-        },
-        mounted() {
-            // console.log("----")
         },
         created() {
             // console.log("----")
-
-            this.get_data(this.type);
+            // this.get_data(this.type);
+            // console.log(this.type);
+            this.get_allpro();
+        },
+        //監聽
+        watch: {
+            type() {
+                this.get_data(this.type);
+            },
+            alltype() {
+                this.get_allpro();
+            },
         },
     });
 
@@ -239,21 +268,57 @@ window.addEventListener('load', function () {
         props: [],
         template: `
                       <div class="list_box">
-                          <div class="pro_all" id="proAll">全部商品</div>
-                          <div class="pro_att" id="proAtt">攻擊型</div>
-                          <div class="pro_def" id="proDef">防禦型</div>
-                          <div class="pro_ass" id="proAss">輔助型</div>
+                          <div class="pro_all" @click="changealltype(),changecolor(0),pageBack()">
+                          全部商品</div>
+                          <div class="pro_att" @click="changetype('攻擊型'),changecolor(1),reNewPage()">
+                          攻擊型</div>
+                          <div class="pro_def" @click="changetype('防禦型'),changecolor(2),reNewPage()">
+                          防禦型</div>
+                          <div class="pro_ass" @click="changetype('輔助型'),changecolor(3),reNewPage()">
+                          輔助型</div>
                       </div>`,
-        methods: {},
+        methods: {
+            changetype(data) {
+                this.type = data;
+                this.$emit('changetype', this.type);
+            },
+            reNewPage() {
+                vm.$emit('reNewPage');
+            },
+            pageBack() {
+                vm.$emit('pageBack');
+            },
+            changealltype() {
+                // this.type = data;
+                this.$emit('changealltype');
+            },
+            //類型 點擊後 切換顏色
+            changecolor: function (num) {
+                //改大家的顏色
+                let test = document
+                    .querySelectorAll('.list_box>div')
+                    .forEach(function (e) {
+                        e.style.color = '#863186';
+                        e.style.backgroundColor = '#fff';
+                    });
+
+                //改變 被點到的人的顏色
+                let item = document.querySelectorAll('.list_box>div')[num];
+                item.style.color = '#fff';
+                item.style.backgroundColor = '#863186';
+            },
+        },
     });
 
     new Vue({
         el: '#app',
         data: {
             total: 0,
-            type: 1,
-            itemno: 0,
+            type: '', //預設攻擊型
+            alltype: 0,
+            itemno: 3,
             lightbox: false,
+            count: 0,
         },
         methods: {
             changeitemno: function (itemno) {
@@ -264,6 +329,16 @@ window.addEventListener('load', function () {
             },
             closelightbox: function (lightbox) {
                 this.lightbox = lightbox;
+            },
+            changetype: function (type) {
+                this.type = type;
+            },
+            // +=1是為了讓她動
+            changealltype: function (alltype) {
+                this.alltype += 1;
+            },
+            change_num: function (count) {
+                this.count = count;
             },
         },
     });
