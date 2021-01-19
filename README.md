@@ -4,6 +4,7 @@
   <pre><script src="js/login.js"></script></pre>
   
 <br>
+
   <b>(2)  在自己頁面的html，`<body>`結束前引入`<script>`</b> → 滾動導覽列加背景色(顏色暫定) & 接會員資料的new vue
   
 ```    
