@@ -222,7 +222,7 @@ section.teacher_info {
             letter-spacing: 5px;
             position: absolute;
             top: 10%;
-            left: 35%;
+            left: 15%;
         }
 
 
@@ -399,6 +399,7 @@ section.accessory_container {
         font-size: $h5;
         letter-spacing: 3px;
         text-align: center;
+        width: 220px;
     }
 
     div.titleimg_block {
@@ -415,7 +416,6 @@ section.accessory_container {
         margin-bottom: 100px;
 
         div.single_accessory img {
-            border: 1px solid white;
             width: 75%;
         }
     }

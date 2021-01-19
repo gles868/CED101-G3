@@ -9,7 +9,7 @@ window.addEventListener("load", function () {
             app.classRows = JSON.parse(xhr.responseText);
             console.log(app.classRows);
         }
-        xhr.open("get", `getCourse.php?courTypeName=${courTypeName}`, false);
+        xhr.open("get", `./php/getCourse.php?courTypeName=${courTypeName}`, false);
         xhr.send(null);
         console.log(courTypeName);
     }
