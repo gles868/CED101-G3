@@ -54,7 +54,8 @@ section.course_info {
             left: 28%;
             z-index: 1;
         }
-        img.light{
+
+        img.light {
             z-index: -2;
         }
     }
@@ -95,6 +96,7 @@ section.course_info {
         p.course_name {
             color: $purple;
             font-size: $h3;
+            font-weight: 600;
             letter-spacing: 5px;
             position: absolute;
             top: 10%;
@@ -106,9 +108,9 @@ section.course_info {
             font-size: $h5;
             width: 50%;
             letter-spacing: 3px;
-            line-height: 30px;
+            line-height: 32px;
             position: absolute;
-            top: 50%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
@@ -210,6 +212,31 @@ section.teacher_info {
     div.teacher_info_block {
         height: 480px;
         margin: auto;
+        // border: 1px solid white;
+        position: relative;
+
+        p.teacher_name {
+            color: $purple;
+            font-size: $h3;
+            font-weight: 600;
+            letter-spacing: 5px;
+            position: absolute;
+            top: 10%;
+            left: 35%;
+        }
+
+
+        p.teacher_content {
+            color: $darkgray;
+            font-size: $h5;
+            width: 50%;
+            letter-spacing: 3px;
+            line-height: 32px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
 }
 
@@ -378,8 +405,6 @@ section.accessory_container {
         width: 400px;
         margin: 0 auto;
         margin-bottom: 40px;
-
-
     }
 
     div.accessories_needed {
@@ -388,6 +413,11 @@ section.accessory_container {
         width: 600px;
         margin: 0 auto;
         margin-bottom: 100px;
+
+        div.single_accessory img {
+            border: 1px solid white;
+            width: 75%;
+        }
     }
 }
 
