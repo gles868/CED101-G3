@@ -1,22 +1,23 @@
 <?php
 // 將會員資料寫進session
-    session_start();
-    try{
-        require_once("connect_ced101g3.php");
-        $sql = "select * from `member` WHERE memName = '董董'";  // 先寫死where條件
-        $member = $pdo->query($sql);
+    // session_start();
+    // try{
+    //     require_once("connect_ced101g3.php");
+    //     $sql = "select * from `member` WHERE memName = '董董'";  // 先寫死where條件
+    //     $member = $pdo->query($sql);
 
-        //自資料庫中取回資料
-        $memRow = $member->fetch(PDO::FETCH_ASSOC);
+    //     //自資料庫中取回資料
+    //     $memRow = $member->fetch(PDO::FETCH_ASSOC);
 
-        // 將登入者的資料寫進session
-        $_SESSION["memberNo"] = $memRow["memberNo"]; 
-        $_SESSION["memId"] = $memRow["memId"];
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
+    //     // 將登入者的資料寫進session
+    //     $_SESSION["memberNo"] = $memRow["memberNo"]; 
+    //     $_SESSION["memId"] = $memRow["memId"];
+    // }catch(PDOException $e){
+    //     echo $e->getMessage();
+    // }
 ?>
 <?php
+    session_start();
     try{
         require_once("connect_ced101g3.php");
         

@@ -17,7 +17,8 @@
             // 將資料寫進session
             $_SESSION["memberNo"] = $memRow["memberNo"]; 
             $_SESSION["memId"] = $memRow["memId"]; 
-            $_SESSION["memName"] = $memRow["memName"];  
+            $_SESSION["memName"] = $memRow["memName"];
+            $_SESSION["memAvatar"] = $memRow["memAvatar"];
             // 傳回資料
             echo json_encode($memRow);
         }

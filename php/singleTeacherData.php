@@ -1,25 +1,44 @@
 <?php
     try{
         require_once("connect_ced101g3.php");
-        // *預計要從網址get到該教師的teachNo ---- 先寫死
-        $sql = "select * from `teacher` WHERE teachNo = 4"; 
-            // $sql = "select * from `teacher` WHERE teachNo = :teachNo"; 
-        $singleTeacher = $pdo->query($sql);
-            // $teacher = $pdo->prepare($sql);
-            // $teachers = $teacher->bindValue(':teachNo', $_GET['teachNo']);
-            // $teacher->execute();
-        $singleTeacherRows = $singleTeacher->fetchAll(PDO::FETCH_ASSOC);
 
-        // 取得評價星數 | 評論內容資料 | 會員名稱 | 會員頭像 | 課程報名編號
-        $sql = "SELECT m.memName, r.commStar, r.commContent, m.memAvatar, r.registNo
-                    FROM `registration` r JOIN `member` m ON (r.memberNo = m.memberNo)
-                    WHERE commStar IS NOT NULL AND commContent IS NOT NULL";
+        // 取得教師資料
+        $sql = "SELECT teachNo, teachName, teachImg, teachDescription, ROUND(commStarTotal/commNum, 1) 'commStarAvg' 
+                    FROM `teacher` WHERE teachNo = :teachNo";
+        $teachNo = $_GET['teachNo'];
+        $singleTeacher = $pdo->prepare($sql);
+        $singleTeacher->bindValue(':teachNo', $teachNo);
+        $singleTeacher->execute();
+        $singleTeacherRows = $singleTeacher->fetch(PDO::FETCH_ASSOC);
+
+        // 取得課程資料
+        $sql = "SELECT DISTINCT cour.courseNo, cour.courseName, cour.coursePrice, courtype.courTypeName
+                    FROM `course` cour JOIN `coursetype` courtype ON (cour.courTypeNo = courtype.courTypeNo)
+                                       JOIN `class` class ON (cour.courseNo = class.courseNo)
+                                       JOIN `teacher` teach ON (class.teachNo = teach.teachNo)
+                    WHERE teach.teachNo = :teachNo";
+        $teachNo = $_GET['teachNo'];
+        $course = $pdo->prepare($sql);
+        $course->bindValue(':teachNo', $teachNo);
+        $course->execute();
+        $courseRows = $course->fetchAll(PDO::FETCH_ASSOC);
+
+        // 取得評論資料
+        $sql = "SELECT DISTINCT m.memName, reg.commStar, reg.commContent, m.memAvatar, reg.registNo
+                    FROM `registration` reg JOIN `member` m ON (reg.memberNo = m.memberNo)
+                                            JOIN `report` rep ON (reg.registNo = rep.registNo)
+                                            JOIN `class` c ON (reg.classNo = c.classNo)
+                                            JOIN `teacher` t ON (c.teachNo = t.teachNo)            
+                    WHERE commStar IS NOT NULL AND commContent IS NOT NULL AND 
+                          rep.repoStatus != 1 AND t.teachNo = :teachNo";
+        $teachNo = $_GET['teachNo'];
         $comment = $pdo->prepare($sql);
+        $comment->bindValue(':teachNo', $teachNo);
         $comment->execute();
         $comments = $comment->fetchAll(PDO::FETCH_ASSOC);
 
         // 將資料塞進陣列並轉為json
-        $dataRows = [$singleTeacherRows, $comments];
+        $dataRows = [$singleTeacherRows, $courseRows, $comments];
         echo json_encode($dataRows);
 
     }catch(PDOException $e){

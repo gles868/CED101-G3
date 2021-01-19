@@ -1,6 +1,11 @@
-// ---- 取得資料
-window.addEventListener('load', function(){
+// ---- 取得頁面資料
+window.addEventListener('load', function(){  
+    getAllData();
+});
+
+function getAllData(){
     let dataRows;
+    let getTeachNo = location.href.split('?')[1];
     
     let xhr = new XMLHttpRequest();
     // 資料有回傳時(readyStatus:4)就執行
@@ -8,13 +13,65 @@ window.addEventListener('load', function(){
         // 將json字串轉為js物件
         app.dataRows = JSON.parse(xhr.responseText);
     }
-    xhr.open('get', 'php/singleTeacherData.php', true);
+    url = `php/singleTeacherData.php?${getTeachNo}`;
+    xhr.open('get', url, true);
     xhr.send(null);
-});
+}
+
+// 組件 - 教師
+Vue.component('teacher-component', {
+    props: ['data-rows', 'rating'],
+    template: `
+        <div class="container">
+            <div class="tr">
+                <div class="img">
+                    <div class="shadow"></div>
+                    <img :src="'img/teacher/' + dataRows.teachImg" alt="">
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="intro">
+                    <h3>{{dataRows.teachName}}</h3>
+                    <star-rating v-model="dataRows.commStarAvg"
+                                 text-class="custom-text"
+                                 :increment="0.1"
+                                 :star-size="32"
+                                 :glow="3"
+                                 :padding="3"
+                                 :read-only="true">
+                    </star-rating>
+                    <p>
+                        {{dataRows.teachDescription}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    `,
+})
+
+// 組件 - 課程
+Vue.component('course-component', {
+    props: ['course-no', 'course-name', 'cour-type-name', 'course-price'],
+    template: `
+        <a :href="'singleCourse.html?courseNo=' + courseNo">
+            <div class="card">
+                <div class="title">
+                    <h3>{{courseName}}</h3>
+                </div>
+                <div class="info">
+                    <p>屬性: {{courTypeName}}</p>
+                    <p>價錢: $ {{coursePrice}}</p>
+                </div>
+                <img src="./img/course_cards/card_back.png" alt="">
+                <div class="shadow"></div>
+            </div>
+        </a>
+    `,
+})
 
 // 組件 - 評論+檢舉燈箱
 Vue.component('comment-component', {
-    props: ['mem-avatar', 'mem-name', 'comm-star', 'comm-content', 'regist-no'],
+    props: ['mem-avatar', 'mem-name', 'comm-star', 'comm-content', 'regist-no', 'rating'],
     template: `
         <div class="comment_wrapper">
             <div class="container">
@@ -29,6 +86,8 @@ Vue.component('comment-component', {
                         <star-rating v-model="commStar"
                                      text-class="custom-text"
                                      :star-size="20"
+                                     :glow="2"
+                                     :padding="2"
                                      :read-only="true">
                         </star-rating>
                         <div class="text">{{commContent}}</div>
@@ -80,21 +139,71 @@ Vue.component('comment-component', {
         },
     },
 })
-// 組件 - vue star rating (塞進comment組件)
+
+// 組件 - vue star rating
 Vue.component('star-rating', VueStarRating.default);
 
-// new Vue - 評論+燈箱
+// new Vue
 let app = new Vue({
     el: '.bg',  
     data: {
         dataRows: [],  // 接到的資料在父層
+        rating: 0,
+        memData: {},
     },  
     methods: {
         showLightbox: function(i){
-            let lightbox = document.querySelectorAll('.lightbox_wrapper');
-            lightbox[i].style.display = '';  
-            // ******* 每次點擊時判斷是否已登入 | 已檢舉 ********
+            if(memNavInfo.memData.memberNo){  // 如果有登入會員
+                // 判斷會員是否已檢舉，傳回memberNo, registNo看是否有皆符合的檢舉編號
+                let xhr = new XMLHttpRequest();
+                xhr.onload = function(){
+                    if(xhr.responseText.indexOf('已檢舉') != -1){  // 如果回傳'已檢舉'
+                        alert('您已檢舉');
+                    }else{
+                        // 跳燈箱
+                        let lightbox = document.querySelectorAll('.lightbox_wrapper');
+                        lightbox[i].style.display = ''; 
+                    }
+                }
+                let registNo = document.getElementsByName('registNo')[i].value;
+                console.log(registNo);
+                url = `php/memRepoData.php?registNo=${registNo}`;
+                xhr.open('get', url, true);
+                xhr.send(null);
+                
+            }else{
+                // 如果未登入，跳出提示燈箱
+                alert('請登入會員');
+            }
         },
+        // showLightbox: function(i){
+        //     if(this.memData.memberNo){  // 如果有登入會員
+        //         console.log(`會員編號: ${this.memData.memberNo}`);
+        //         // 判斷會員是否已檢舉，傳回memberNo, registNo看是否有皆符合的檢舉編號
+        //         let xhr = new XMLHttpRequest();
+        //         xhr.onload = function(){
+        //             if(xhr.responseText.indexOf('已檢舉') != -1){  // 如果回傳'已檢舉'
+        //                 alert('您已檢舉');
+        //             }else{
+        //                 // 跳燈箱
+        //                 let lightbox = document.querySelectorAll('.lightbox_wrapper');
+        //                 lightbox[i].style.display = ''; 
+        //             }
+        //         }
+        //         let registNo = document.getElementsByName('registNo')[i].value;
+        //         let memberNo = this.memData.memberNo;
+        //         console.log(registNo);
+        //         console.log(memberNo);
+        //         url = `php/memRepoData.php?memberNo=${memberNo}&registNo=${registNo}`;
+        //         xhr.open('get', url, true);
+        //         xhr.send(null);
+                
+        //     }else{
+        //         // 如果未登入，跳出提示燈箱
+        //         alert('請登入會員');
+        //     }
+        // },
+        
         closeLightbox: function(i){
             let lightbox = document.querySelectorAll('.lightbox_wrapper');
             lightbox[i].style.display = 'none'; 
@@ -108,6 +217,8 @@ let app = new Vue({
                     console.log(xhr.responseText);
                     let lightbox_wrapper = document.querySelectorAll('.lightbox_wrapper');
                     lightbox_wrapper[i].style.display = 'none';
+                    // 重新載入評論資料
+                    getAllData();
                 }else{
                     alert(xhr.status);
                 }
