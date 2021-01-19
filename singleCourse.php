@@ -1,23 +1,63 @@
-<?php 
+<?php
 
-	require_once("connectced101g3_test.php");
-	$sql = "select * from course where courseNo = ? ";
-	$allcourse = $pdo->prepare($sql);
-	$allcourse->bindValue(1, $_GET["courseNo"]);
-    $allcourse->execute();
-    $courseRow = $allcourse->fetch(PDO::FETCH_ASSOC);
+        //取得課程資訊
+        require_once "./php/connectced101g3_test.php";
+        $sql = "select * from course where courseNo = ? ";
+        $allcourse = $pdo->prepare($sql);
+        $allcourse->bindValue(1, $_GET["courseNo"]);
+        $allcourse->execute();
+        $courseRow = $allcourse->fetch(PDO::FETCH_ASSOC);
+        //取得教師資訊
+        require_once "./php/connectced101g3_test.php";
+        $sql = "SELECT * from course JOIN class on course.courseNo = class.courseNo
+                            JOIN teacher on class.teachNo = teacher.teachNo
+                            WHERE course.courseNo = ? ";
+        $allteacher = $pdo->prepare($sql);
+        $allteacher->bindValue(1, $_GET["courseNo"]);
+        $allteacher->execute();
+        $teacherRow = $allteacher->fetch(PDO::FETCH_ASSOC);
+        //取得課程道具
+        require_once "./php/connectced101g3_test.php";
+        $sql = "SELECT c.courseNo, p.proImg, p.proName
+                    from course c join product p on c.courseNo = p.courseNo
+                    where c.courseNo = ?";
+        $allproduct = $pdo->prepare($sql);
+        $allproduct->bindValue(1, $_GET["courseNo"]);
+        $allproduct->execute();
+        $productRow = $allproduct->fetchAll(PDO::FETCH_ASSOC);
 
-    require_once("connectced101g3_test.php");
-    $sql = "select * 
-            from course join teacher on courseNo = teacher.teachNo
-            where courseNo = ? ";
-	$allteacher = $pdo->prepare($sql);
-	$allteacher->bindValue(1, $_GET["courseNo"]);
-    $allteacher->execute();
-    $teacherRow = $allteacher->fetch(PDO::FETCH_ASSOC);
+        $data = array();
+        foreach ($productRow as $row) {
+            $data[] = array(
+                $row['proImg'],
+                $row['proName'],
+            );
+        }
+        //取得推薦課程
+        require_once "./php/connectced101g3_test.php";
+        $sql = "select c.courseNo, c.courseName, c.courseImg, c.coursePrice, t.courTypeName
+                    from course c join coursetype t on c.courTypeNo = t.courTypeNo
+                    order by rand() LIMIT 3";
+        $allcard = $pdo->prepare($sql);
+        // $allcard->bindValue(1, $_GET["courseNo"]);
+        $allcard->execute();
+        $cardRow = $allcard->fetchAll(PDO::FETCH_ASSOC);
 
+        $cardData = array();
+        foreach ($cardRow as $row) {
+            $cardData[] = array(
+                $row['courseName'],
+                $row['courseImg'],
+                $row['coursePrice'],
+                $row['courTypeName'],
+                $row['courseNo'],
+            );
+        }
 
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +105,7 @@
         </nav>
     </header>
 
-   
+
 
     <main class="main">
 
@@ -78,27 +118,28 @@
                 <p class="course_name"> <?=$courseRow["courseName"]?> </p>
                 <p class="course_content"> <?=$courseRow["courseDescription"]?> </p>
                 <img class="white_bg" src="./img/course_cards/white-bg01.png" alt="">
-
             </div>
         </section>
 
-
-
-        <section class="calendar">
+        <section class="calendar" id="app">
             <div id='calendar'></div>
-
         </section>
+
 
         <section class="teacher_info">
             <div class="teacher_img_block">
                 <img class="teacher_bg" src="./img/course_cards/teacher/teacher-bg.png" alt="">
-                <img class="teacher_img" src="./img/course_cards/teacher/teacher01.png" alt="">
-                <a href="./registration.html">
-                    <p class="register">立即報名</P>
+
+                <img class="teacher_img" src="img/teacher/<?=$teacherRow["teachImg"]?>" alt="">
+                <a href="./teacher.html?teachNo=<?=$teacherRow["teachNo"]?>">
+                    <p class="register">教師資訊</P>
                 </a>
             </div>
             <div class="teacher_info_block">
                 <img class="white_bg" src="./img/course_cards/white-bg01.png" alt="">
+                <p class="teacher_name"> <?=$teacherRow["teachName"]?> </p>
+
+                <p class="teacher_content"> <?=$teacherRow["teachDescription"]?></p>
             </div>
         </section>
 
@@ -110,20 +151,43 @@
 
             <div class="accessories_needed">
 
+            <?php
+                for($i = 0; $i < count($data); $i++){
+            ?>
                 <div class="single_accessory">
-                    <img src="./img/course_cards/accessory/p1.png" alt="">
-                    <p class="name">貝爾法師帽</p>
-                </div>
-                <div class="single_accessory">
-                    <img src="./img/course_cards/accessory/p2.png" alt="">
-                    <p class="name">愛的寶石</p>
+
+                    <?php
+                    for($j =0; $j < 1; $j++){
+                    ?>
+                    <a href="mall.html">
+                    <img src="<?=$data[$i][$j]?>" alt="">
+                    <p class="name"><?=$data[$i][$j+1]?></p>
+                    </a>
+
+                  <?php 
+                  }
+                  ?>
 
                 </div>
-                <div class="single_accessory">
-                    <img src="./img/course_cards/accessory/p3.png" alt="">
-                    <p class="name">魔力技能書</p>
 
+                <?php  
+                }
+                ?>
+
+
+                <!-- <div class="single_accessory">
+                    <img src="<?=$data[0][0]?>" alt="">
+                    <p class="name"><?=$data[0][1]?></p>
                 </div>
+                <div class="single_accessory">
+                    <img src="<?=$data[1][0]?>" alt="">
+                    <p class="name"><?=$data[1][1]?></p>
+                </div>
+
+                <div class="single_accessory">
+                    <img src="<?=$data[2][0]?>" alt="">
+                    <p class="name"><?=$data[2][1]?></p>
+                </div> -->
 
             </div>
 
@@ -138,58 +202,50 @@
             <div class="course_cards">
 
                 <div class="card">
-                    <p class="course_title">光劍術</p>
-                    <div class="center-content">
-                        <div class="heart">
-                            <div class="heart-inner"></div>
-                        </div>
-                    </div>
+                    <p class="course_title"><?=$cardData[0][0]?></p>
+
                     <div class="front">
-                        <img class="front_card" src="./img/course_cards/course_01.png" alt="">
+                        <img class="front_card" src="<?=$cardData[0][1]?>" alt="">
                     </div>
+                    <a href="singleCourse.php?courseNo=<?=$cardData[0][4]?>">
                     <div class="back">
                         <img class="back_card" src="./img/course_cards/card_back.png" alt="">
-                        <p class="course_price">$4800</p>
-                        <p class="course_class">屬性：攻擊型</p>
+                        <p class="course_price">$<?=$cardData[0][2]?></p>
+                        <p class="course_class">屬性：<?=$cardData[0][3]?></p>
                     </div>
+                    </a>
                 </div>
 
                 <div class="card">
-                    <p class="course_title">光劍術</p>
-                    <div class="center-content">
-                        <div class="heart">
-                            <div class="heart-inner"></div>
-                        </div>
-                    </div>
+                    <p class="course_title"><?=$cardData[1][0]?></p>
+
                     <div class="front">
-                        <img class="front_card" src="./img/course_cards/course_01.png" alt="">
+                        <img class="front_card" src="<?=$cardData[1][1]?>" alt="">
                     </div>
+                    <a href="singleCourse.php?courseNo=<?=$cardData[1][4]?>">
                     <div class="back">
                         <img class="back_card" src="./img/course_cards/card_back.png" alt="">
-                        <p class="course_price">$4800</p>
-                        <p class="course_class">屬性：攻擊型</p>
+                        <p class="course_price">$<?=$cardData[1][2]?></p>
+                        <p class="course_class">屬性：<?=$cardData[1][3]?></p>
                     </div>
+                    </a>
                 </div>
 
                 <div class="card">
-                    <p class="course_title">光劍術</p>
-                    <div class="center-content">
-                        <div class="heart">
-                            <div class="heart-inner"></div>
-                        </div>
-                    </div>
+                    <p class="course_title"><?=$cardData[2][0]?></p>
                     <div class="front">
-                        <img class="front_card" src="./img/course_cards/course_01.png" alt="">
+                        <img class="front_card" src="<?=$cardData[2][1]?>" alt="">
                     </div>
+                    <a href="singleCourse.php?courseNo=<?=$cardData[2][4]?>">
                     <div class="back">
                         <img class="back_card" src="./img/course_cards/card_back.png" alt="">
-                        <p class="course_price">$4800</p>
-                        <p class="course_class">屬性：攻擊型</p>
+                        <p class="course_price">$<?=$cardData[2][2]?></p>
+                        <p class="course_class">屬性：<?=$cardData[2][3]?></p>
                     </div>
+                </a>
                 </div>
 
             </div>
-
 
         </section>
 
@@ -207,17 +263,86 @@
     <script src="./js/course/fullCalnedar/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="./js/course/singleCourse.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
 
     <script>
-        // $(window).scroll(function () {
-        //     if ($(this).scrollTop() > 60) {
-        //         $("header").addClass("-active");
-        //     } else {
-        //         $("header").removeClass("-active");
-        //     }
-        // });
+    let app = new Vue({
+            el: '#app',
+            data:{
+                group_ord_no:"",
+                info:"",
+            },
+            created(){
+                //切割字串
+            this.group_ord_no = window.location.search.split("=")[1];
+            this.get_mar()
+            },
+            mounted() {
+                // this.test();
+            },
 
-        
+            methods: {
+                click (){
+                    alert('hi')
+                },
+                get_mar: async function () {
+
+                // this.group_ord_no = window.location.search.split("=")[1];
+
+
+                // console.log('send2', drinkno)
+                const res = await fetch('./php/loadCalendar.php', {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'same-origin', // no-cors, *cors, same-origin
+                    // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: {
+                        'Content-Type': 'application/json', // sent request
+                        // Accept: 'application/json', // expected data sent back
+                    },
+                    // redirect: 'follow', // manual, *follow, error
+                    // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                    body: JSON.stringify({
+                        group_ord_no: this.group_ord_no,
+                    }), // body data type must match "Content-Type" header
+                }).then(function (data) {
+                    return data.json()
+                })
+                // 取回res值後，呼叫另一隻函式
+                this.info = res
+
+                this.test()
+            },
+                test(){
+
+                    var calendarEl = document.getElementById('calendar');
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        headerToolbar: {
+                        // left: 'prev,next today',
+                        // center: 'title',
+                        // right: 'dayGridMonth',
+                        },
+                        initialDate: '2021-01-01',
+                        navLinks: true, // can click day/week names to navigate views
+                        editable: true,
+                        selectable: true,
+
+                        events: this.info
+                    });
+
+                    calendar.render();
+                },
+            },
+        })
+
+        //滾動header變色
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 60) {
+                $("header").addClass("-active");
+            } else {
+                $("header").removeClass("-active");
+            }
+        });
 
     </script>
 </body>

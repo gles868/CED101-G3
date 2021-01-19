@@ -3,12 +3,10 @@ window.addEventListener("load", function () {
 
 
 
-    // 取出json陣列
     function getCourse(courTypeName) {
         let xhr = new XMLHttpRequest();
         xhr.onload = function () {
             app.classRows = JSON.parse(xhr.responseText);
-            // showCourse();
             console.log(app.classRows);
         }
         xhr.open("get", `getCourse.php?courTypeName=${courTypeName}`, false);
@@ -18,7 +16,7 @@ window.addEventListener("load", function () {
 
     getCourse('');
 
-    //在按鈕上綁定click事件
+    //在課程類別按鈕上綁定click事件
     let courseTypeBtn = document.getElementsByClassName("courseType")
     for (let i = 0; i < courseTypeBtn.length; i++) {
         courseTypeBtn[i].addEventListener('click', function () {
@@ -26,10 +24,19 @@ window.addEventListener("load", function () {
             let courTypeName = this.id; //攻擊型 防禦型 輔助型
             console.log(courTypeName);
             getCourse(courTypeName);
-            // console.log(e.target.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling.firstChild.nextSibling);
         })
     }
 
+    //在課程類別按鈕上綁定click事件
+    let priceBtn = document.getElementsByClassName("coursePrice")
+    for (let i = 0; i < priceBtn.length; i++) {
+        priceBtn[i].addEventListener('click', function () {
+            let coursePrice = this.id;
+            console.log(coursePrice);
+            getCourse(coursePrice);
+
+        })
+    }
 
 
 
@@ -43,21 +50,8 @@ window.addEventListener("load", function () {
     // });
 
 
-    // //愛心切換
-    // $(".heart").click(function () {
-    //     $(this).toggleClass("loved");
-    // });
-
     //蝙蝠浮動
     gsap.to('.img_bat', { y: 20, duration: 2, repeat: -1, yoyo: true });
-
-    //卡片翻轉
-
-    // $('.card').flip({
-    //     axis: 'y',
-    //     speed: 650,
-    //     trigger: 'hover'
-    // });
 
 
 });
