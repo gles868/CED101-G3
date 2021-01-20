@@ -1264,24 +1264,24 @@ input {
     border-radius: 10px;
     text-align: center;
     width: 400px;
-    height: 400px;
+    height: 300px;
     align-items: center;
     font-size: 18px;
-    // border: 1px solid red;
     @media screen and (max-width: 576px) {
         width: 300px;
         height: 300px;
     }
 }
 .alertLightbox {
-    padding: 60px 50px 50px 50px;
+    // padding: 60px 50px 50px 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     font-size: 24px;
-    color: #013b4f;
-    height: 100%;
+    color: ivory;
+    // height: 100%;
+    @include textShadowMem;
 
     @media screen and (max-width: 576px) {
         padding: 60px 50px 40px 50px;
@@ -1289,7 +1289,8 @@ input {
 
     div:first-child {
         font-weight: bold;
-        margin-top: 170px;
+        margin: 70px auto;
+        // margin-top: 170px;
 
         @media screen and (max-width: 576px) {
             margin-top: 94px;
@@ -1297,10 +1298,10 @@ input {
     }
 
     div:nth-child(2) {
-        background-color: #013b4f;
-        color: #fff;
+        background-color: purple;
         border-radius: 10px;
-        overflow: hidden;
+        width: 50%;
+        // overflow: hidden;
         padding: 8px 10px 6px 10px;
         cursor: pointer;
     }

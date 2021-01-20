@@ -701,7 +701,7 @@ Vue.component('course_edit', {
                 coursePrice)">確定修改
             </div>                                                
         </div>                                                                    
-    </div>
+    </div>lightbox_admin_name
 </div>
     `,
     methods: {

@@ -46,7 +46,17 @@
                     </div>
                     <ul class="nav-right">
                         <li>
-                            <a href="member.html"><i class="fas fa-user-circle fa-lg"></i></a>
+                            <a href="member.html">
+                                <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
+                                <i id="memIcon" class="fas fa-user-circle fa-lg"></i>
+                                <div id="memInfo">
+                                    <div id="avatar">
+                                        <!-- <img :src="'img/' + this.memData.memAvatar" alt="" /> -->
+                                        {{this.memData.memName}} 您好~
+                                    </div>
+                                </div>
+                            </a>
+                            <span id="logout"></span>
                         </li>
                         <li>
                             <a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
@@ -129,6 +139,7 @@
                 :memName="memName"
                 :memPsw="memPsw"
                 :memId="memId"
+                @sendup="receive_info"
                 :is="content"
             ></component>
             <alert_lightbox></alert_lightbox>
@@ -143,6 +154,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css" />
 
         <script src="js/member.js"></script>
+        <script src="js/login.js"></script>
 
         <!-- body 結束標籤之前 bootstrap  -->
         <script
@@ -150,5 +162,28 @@
             integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
             crossorigin="anonymous"
         ></script>
+
+        <script>
+            // scroll更改header背景色
+            window.addEventListener('scroll', function () {
+                let getScrollTop = document.documentElement.scrollTop;
+                let header = document.querySelector('header');
+
+                if (getScrollTop > 60) {
+                    header.classList.add('-active');
+                } else {
+                    header.classList.remove('-active');
+                }
+            });
+
+            // 專門給header接會員照片資料 | 判斷是否登入的new Vue
+            // 必須給new Vue一個名稱(memNavInfo)，才能接到php回傳的會員資料
+            let memNavInfo = new Vue({
+                el: '#memInfo',
+                data: {
+                    memData: {},
+                },
+            });
+        </script>
     </body>
 </html>
