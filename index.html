@@ -19,6 +19,9 @@
 
     <!-- parallax -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+
+    <!-- Vue -->
+    <script src="./js/vue.js"></script>
 </head>
 
 <body>
@@ -44,7 +47,19 @@
                     <span></span>
                 </div>
                 <ul class="nav-right">
-                    <li><a href="member.html"><i class="fas fa-user-circle fa-lg"></i></a></li>
+                    <li>
+                        <a href="member.html">
+                        <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
+                            <i id="memIcon" class="fas fa-user-circle fa-lg"></i>
+                            <div id="memInfo">
+                                <div id="avatar">
+                                    <img :src="'img/' + this.memData.memAvatar" alt="">
+                                </div>
+                                <!-- <span>{{this.memData.memName}}</span> -->
+                            </div>
+                        </a>
+                        <span id="logout"></span>
+                    </li>
                     <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
                 </ul>
             </div>
@@ -62,15 +77,15 @@
                 <input type="text" id="signUpName" placeholder="輸入姓名" />
                 <input type="email" id="sigUpEmail" placeholder="輸入email" />
                 <input type="text" id="signUpId" placeholder="輸入帳號" />
-                <input type="password" id="signUpPsw" placeholder="輸入密碼(6-12碼，至少含各一位英數字)" />
+                <input type="password" id="signUpPsw" placeholder="輸入密碼(至少含各一位英數字)" />
                 <input type="password" id="checkPsw" placeholder="確認密碼" name="checkPsw">
                 <input type="button" id="signUpSubmit" value="註冊">
 
-                <div class="notice" style="top: 84px"></div>
-                <div class="notice" style="top: 140px"></div>
-                <div class="notice" style="top: 198px"></div>
-                <div class="notice" style="top: 255px"></div>
-                <div class="notice" style="top: 313px"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
             </form>
         </div>      
         <!-- 登入 -->
@@ -149,7 +164,6 @@
                                 <h3>飛行術</h3>
                                 <p>
                                     傳授如何進入隱身狀態，安排補血時機及定點放置，成為魔法師的必修課。
-                                    <!-- 長時間下來可以增加續戰力 -->
                                 </p>
                                 <p>課程價格: <span>$12,800</span></p>
                                 <p>報名人數: <span>12</span></p>
@@ -162,7 +176,6 @@
                                 <h3>光箭術</h3>
                                 <p>
                                     傳授如何進入隱身狀態，安排補血時機及定點放置，成為魔法師的必修課。
-                                    <!-- 長時間下來可以增加續戰力 -->
                                 </p>
                                 <p>課程價格: <span>$4,800</span></p>
                                 <p>報名人數: <span>12</span></p>
@@ -175,7 +188,6 @@
                                 <h3>隱身術</h3>
                                 <p>
                                     傳授如何進入隱身狀態，安排補血時機及定點放置，成為魔法師的必修課。
-                                    <!-- 長時間下來可以增加續戰力 -->
                                 </p>
                                 <p>課程價格: <span>$2,680</span></p>
                                 <p>報名人數: <span>12</span></p>
@@ -372,19 +384,29 @@
         <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
     </footer>
 
-    <script src="js/index_scroll.js"></script>
-    <script src="js/login.js"></script>        
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <script>
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 60) {
-                $("header").addClass("-active");
-            } else {
-                $("header").removeClass("-active");
+        // scroll更改header背景色
+        window.addEventListener('scroll', function(){
+            let getScrollTop = document.documentElement.scrollTop;
+            let header = document.querySelector('header');
+            
+            if(getScrollTop > 60){
+                header.classList.add('-active');
+            }else{
+                header.classList.remove('-active');
             }
         });
+        
+        let memNavInfo = new Vue({
+            el: '#memInfo',
+            data: {
+                memData: {},
+            },
+        })
     </script>
+    <script src="js/index_scroll.js"></script>
+    <script src="js/login.js"></script>        
 </body>
 
 </html>

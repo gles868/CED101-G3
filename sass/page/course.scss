@@ -115,7 +115,6 @@ div.course_class {
         width: 80%;
         margin: 0 auto;
         margin-bottom: 30px;
-        // border: 1px solid red;
         h3 {
             font-size: 20px;
             color: white;
@@ -127,7 +126,6 @@ div.course_class {
             flex-wrap: wrap;
             justify-content: center;
             margin-top: 20px;
-            border: 1px solid red;
 
 
             h4 {
@@ -215,7 +213,6 @@ div.all_course_card {
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    // border: 1px solid red;
 
 
     div.card {
@@ -223,7 +220,6 @@ div.all_course_card {
         // width: 100;
         // margin-right: 20px;
         margin-bottom: 100px;
-        // border: 1px solid white;
 
     }
 
@@ -347,6 +343,7 @@ div.all_course_card>div.card:nth-child(4n) {
     width: 1em;
     height: 1em;
     font-size: 18px;
+    
 
     .heart-inner {
 
@@ -454,10 +451,10 @@ div.course_accessory {
 
 @media (max-width:549px) {
     div.course_accessory {
-        width: 375px;
+        width: 325px;
 
         div.titleimg_block {
-            width: 375px;
+            width: 325px;
 
         }
 
@@ -512,10 +509,10 @@ div.accessory_container {
 
 @media (max-width:549px) {
     div.accessory_container {
-        width: 375px;
+        width: 325px;
 
         div.sliderboard {
-            width: 350px;
+            width: 325px;
 
             div.single_accessory {
                 width: 100px;

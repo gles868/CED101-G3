@@ -1,34 +1,38 @@
 <?php
-// 將會員資料寫進session
-    session_start();
-    try{
-        require_once("connect_ced101g3.php");
-        $sql = "select * from `member` WHERE memName = '董董'";  // 先寫死where條件
-        $member = $pdo->query($sql);
+    // session_start();
+    // try{
+    //     require_once("connect_ced101g3.php");
+    //     $sql = "select * 
+    //             from member 
+    //             WHERE memberNo = :memberNo"; 
 
-        //自資料庫中取回資料
-        $memRow = $member->fetch(PDO::FETCH_ASSOC);
+    //     //自資料庫中取回資料
+    //     $memRow = $member->fetch(PDO::FETCH_ASSOC);
 
-        // 將登入者的資料寫進session
-        $_SESSION["memberNo"] = $memRow["memberNo"]; 
-        $_SESSION["memId"] = $memRow["memId"];
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
+        // $per_ord_data = $pdo->prepare($sql);
+        // $per_ord_data->bindValue(":memberNo", $mem_no);
+    
+        // $per_ord_data->execute();
+
+    // }catch(PDOException $e){
+    //     echo $e->getMessage();
+    // }
 ?>
 
 <?php
     try{
         require_once("connect_ced101g3.php");
-        $memberNo = $_SESSION['memberNo'];
+
+        $mem_no = $decoded["memberno"];
+
 
         // 取得課程報名編號 | 班級編號 | 會員編號 | 課程編號 | 課程名稱 | 課程圖片 | 課程說明 | 課程狀態
         $sql = "SELECT a.registNo, b.classNo, a.memberNo, c.courseNo, c.courseName, c.courseImg, c.courseDescription, c.courseStatus 
                     FROM registration a JOIN class b ON a.classNo = b.classNo 
                                         JOIN course c ON b.courseNo = c.courseNo 
-                    WHERE memberNo = :memNo AND commStar IS NULL";
+                    WHERE memberNo = :memberno AND commStar IS NULL";
         $memCourse = $pdo->prepare($sql);
-        $memCourse->bindValue(':memNo', $memberNo);
+        $memCourse->bindValue(":memberno", $mem_no);   
         $memCourse->execute();
         $memCourseRows = $memCourse->fetchAll(PDO::FETCH_ASSOC);
 

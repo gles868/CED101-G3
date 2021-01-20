@@ -148,6 +148,15 @@ header{
                         @include titleStyle;
                         text-shadow: 0 0 0.6em #6600b4;
                     }
+                    .vue-star-rating{
+                        margin: 5px;
+                        .custom-text{
+                            text-shadow: 0 0 0.3em #a547ec;
+                            color: #fff;
+                            font-size: 28px;
+                            font-weight: 600;
+                        }
+                    }
                     .star{
                         // border: 1px solid tomato;
                         display: inline-block;
@@ -305,6 +314,12 @@ header{
                     width: 75%;
                     margin: 15px;
                     margin-left: 0;
+                    .custom-text{
+                        text-shadow: 0 0 0.3em #a547ec;
+                        color: #fff;
+                        font-size: 18px;
+                        font-weight: 500;
+                    }
                     .star{
                         // border: 1px solid blue;
                         display: inline-block;
@@ -340,20 +355,19 @@ header{
             }
         }
         .lightbox{
-            // border: 1px solid red; 
-            background-color: $purple;
-            // width: 25%;
+            background-color: #58009a;
             height: 170px;
             padding: 70px;
             border-radius: 5px;
             margin: 0 auto;
-            position: absolute;
+            position: fixed;
             z-index: 2;
             width: 20%;
             min-width: 280px;
-            top: 0;  
-            left: 0; 
+            top: 50%;
+            left: 0;
             right: 0;
+            transform: translateY(-50%);
             box-shadow: 0px 5px 30px -6px #0000004f;
             span{
                 color: #fff;
@@ -403,13 +417,13 @@ header{
             }
         }
         .lightbox_container{
-            // border: 1px solid blueviolet;
-            // height: 100vh;
-            // width: 100%;
-            position: absolute;
-            background-color: #00000061;
-            // margin-top: -480px;
+            position: fixed;
+            top: 0;
+            background-color: #00000054;
             z-index: 1;
+            height: 100vh;
+            width: 100%;
+            cursor: pointer;
         }
         .btn{
             // border: 1px solid darkblue;

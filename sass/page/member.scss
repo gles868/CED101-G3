@@ -386,7 +386,7 @@ a {
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    border-bottom: 1px dotted black;
+    border-bottom: 1px dotted ivory;
 }
 .CFD_Top {
     display: flex;
@@ -422,7 +422,6 @@ a {
 }
 
 .CRD_Text {
-    // border: 1px solid blue;
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -430,9 +429,11 @@ a {
     line-height: 3rem;
     padding: 10px;
     @include textShadowMem;
+    .CRD_TextCon {
+        text-align: left;
+    }
 }
 .courseCancel {
-    // border: 1px solid black;
     position: relative;
     width: 15%;
 }
@@ -493,83 +494,60 @@ a {
 }
 
 // --------已完課--------
-.CFD_Bottom {
+.lightbox_black {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    margin: 1rem auto;
-}
-
-.CFD_BottomComm {
-    width: 80%;
-    margin: 0 auto;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    .lightbox {
+        position: absolute;
+        background-color: #d1bee8;
+        box-shadow: 0 0 0.4em ivory;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        width: 600px;
+        height: 400px;
+        align-items: center;
+        font-size: 18px;
+        .manager_lightbox_close {
+            margin-bottom: 50px;
+            img {
+                position: absolute;
+                width: 25px;
+                top: 15px;
+                right: 15px;
+                color: rgba(128, 128, 128, 0.46);
+                cursor: pointer;
+            }
+        }
+        .CRD_Text {
+            width: 100%;
+            .CRD_TextTit {
+                text-align: left;
+            }
+        }
+        .commText {
+            width: 100%;
+            .stars {
+                margin: auto auto 10px 20px;
+            }
+        }
+    }
 }
 
 .CFD_commTitle {
-    background-color: white;
+    color: ivory;
     padding: 5px;
     text-align: center;
+    @include textShadowMem;
 }
-
-//評價星星開始
-// .CFD_commStar,
-// .CFD_commText{
-//   border: 1px solid red;
-// }
-
-@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-
-fieldset,
-label {
-    margin: 0;
-    padding: 0;
-}
-// body{ margin: 20px; }
-
-/****** Style Star Rating Widget *****/
-
-.rating {
-    border: none;
-    float: left;
-}
-
-.rating > input {
-    display: none;
-}
-.rating > label:before {
-    margin: 5px;
-    font-size: 3em;
-    font-family: FontAwesome;
-    display: inline-block;
-    content: '\f005';
-}
-
-.rating > .half:before {
-    content: '\f089';
-    position: absolute;
-}
-
-.rating > label {
-    color: #ddd;
-    float: right;
-}
-
-/***** CSS Magic to Highlight Stars on Hover *****/
-
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label {
-    color: #ffd700;
-} /* hover previous stars in list */
-
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label {
-    color: #ffed85;
-}
-
-//評價星星結束
 
 .CFD_commText > form {
     font-size: 24px;
@@ -603,7 +581,7 @@ input {
     position: relative;
     // border: 1px solid red;
     input {
-        width: 500px;
+        width: 450px;
     }
 }
 
@@ -1125,38 +1103,33 @@ input {
 .memInfoFormOut {
     width: 100%;
     padding: 30px;
-
     .memInfoForm {
-        width: 80%;
-        margin: 0 auto;
-
-        .MIF_Data {
-            display: flex;
-            justify-content: space-around;
-            line-height: 2rem;
-            margin: 20px;
-            .MIF_Left {
-                // border: 1px solid red;
-                text-align: center;
-                width: 30%;
-            }
-            .MIF_Right,
-            .memInfoCG,
-            input {
-                // border: 1px solid black;
-                width: 60%;
-            }
-            .memPsw {
+        width: 100%;
+        form {
+            width: 100%;
+            table {
                 width: 100%;
-            }
-        }
-        .memInfoBtn {
-            text-align: center;
-            .membtn {
-                margin: 0 auto;
-                width: 50%;
-                text-shadow: none;
-                cursor: pointer;
+                .MIF_Data {
+                    width: 100%;
+                    display: flex;
+                    line-height: 2rem;
+                    margin: 20px;
+                    .MIF_Left {
+                        width: 25%;
+                    }
+                    .MIF_Right {
+                        width: 50%;
+                    }
+                }
+                .memInfoBtn {
+                    text-align: center;
+                    .membtn {
+                        margin: 0 auto;
+                        width: 50%;
+                        text-shadow: none;
+                        cursor: pointer;
+                    }
+                }
             }
         }
     }
@@ -1167,10 +1140,6 @@ input {
     border-radius: 10px;
 }
 
-.memInfoCG input:nth-child(1),
-.memInfoCG input:nth-child(2) {
-    margin-bottom: 2rem;
-}
 @media (max-width: 1200px) {
     .memheadBox {
         // .memhead{
@@ -1184,11 +1153,6 @@ input {
                 margin-left: -10px;
             }
         }
-    }
-
-    .memInfoCG input:nth-child(1),
-    .memInfoCG input:nth-child(2) {
-        margin-bottom: 1.2rem;
     }
 }
 @media (max-width: 992px) {
@@ -1243,10 +1207,6 @@ input {
             }
         }
     }
-    .memInfoCG input:nth-child(1),
-    .memInfoCG input:nth-child(2) {
-        margin-bottom: 5px;
-    }
 }
 
 @media (max-width: 576px) {
@@ -1280,8 +1240,68 @@ input {
             width: 90%;
         }
     }
-    .memInfoCG input:nth-child(1),
-    .memInfoCG input:nth-child(2) {
-        margin-bottom: 1rem;
+}
+
+//警示燈箱
+.alertLightbox_black {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.alertLightboxWrapper {
+    position: absolute;
+    background-color: #d1bee8;
+    box-shadow: 0 0 0.4em ivory;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    height: 400px;
+    align-items: center;
+    font-size: 18px;
+    // border: 1px solid red;
+    @media screen and (max-width: 576px) {
+        width: 300px;
+        height: 300px;
+    }
+}
+.alertLightbox {
+    padding: 60px 50px 50px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    color: #013b4f;
+    height: 100%;
+
+    @media screen and (max-width: 576px) {
+        padding: 60px 50px 40px 50px;
+    }
+
+    div:first-child {
+        font-weight: bold;
+        margin-top: 170px;
+
+        @media screen and (max-width: 576px) {
+            margin-top: 94px;
+        }
+    }
+
+    div:nth-child(2) {
+        background-color: #013b4f;
+        color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 8px 10px 6px 10px;
+        cursor: pointer;
     }
 }

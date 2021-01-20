@@ -3,7 +3,15 @@
         require_once("connect_ced101g3.php");
         
         // 取得所有教師
-        $sql = "SELECT * FROM `teacher`";
+        $sql = "SELECT t.teachNo, t.teachName, ROUND(t.commStarTotal/t.commNum, 1) 'commStarAvg', 
+                       t.teachImg, t.teachDescription, r.memberNo, r.commStar, r.commContent, 
+                       MAX(r.registNo), m.memName, m.memAvatar
+                    FROM `teacher` t 
+                    LEFT OUTER JOIN `class` c ON (t.teachNo = c.teachNo) 
+                    LEFT OUTER JOIN `registration` r ON (c.classNo = r.classNo) 
+                    LEFT OUTER JOIN `member` m ON (r.memberNo = m.memberNo)
+                    GROUP BY teachNo
+                    ORDER BY teachNo ASC;";
         $teacher = $pdo->query($sql);
         $teacherRows = $teacher->fetchAll(PDO::FETCH_ASSOC);
 

@@ -65,9 +65,10 @@
                                     <div class="commText">
                                         <form onsubmit="return false;">
                                             <star-rating v-model="rating"
-                                            text-class="custom-text"
-                                            :star-size="20"
-                                            @rating-selected ="setRating">
+                                                         text-class="custom-text"
+                                                         :star-size="20"
+                                                         :glow="1"
+                                                         @rating-selected ="setRating">
                                             </star-rating>
                                             <div id="input-container">
                                                 <input type="text"

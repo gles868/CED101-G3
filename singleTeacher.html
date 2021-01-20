@@ -25,7 +25,7 @@
                 </div>
                 <ul class="nav">
                     <li><a href="course.html">課程總覽</a></li>
-                    <li class="active"><a href="teacher.html">教師總覽</a></li>
+                    <li><a class="active" href="teacher.html">教師總覽</a></li>
                     <li>
                         <a href="index.html"><img src="./img/logo.png"></a>
                     </li>
@@ -45,32 +45,72 @@
         </nav>
     </header>
 
-    <div class="bg">
-        <div class="section01">
-            <div class="container" v-for="teacher in dataRows[0]"> 
-                <div class="tr">
-                    <div class="img">
-                        <div class="shadow"></div>
-                        <img :src="'img/teacher/' + teacher.teachImg" alt="">
-                    </div>
+    <!-- 登入註冊燈箱 -->
+    <div class="lightbox-bg"></div>
+    <div class="container" id="container">
+        <span class="close"><i class="fas fa-times fa-xs"></i></span>
+        <!-- 註冊 -->
+        <div class="form-container sign-up-container">
+            <form id="signUpForm">
+                <h2>會員註冊</h2>
+                <input type="text" id="signUpName" placeholder="輸入姓名" />
+                <input type="email" id="sigUpEmail" placeholder="輸入email" />
+                <input type="text" id="signUpId" placeholder="輸入帳號" />
+                <input type="password" id="signUpPsw" placeholder="輸入密碼(6-12碼，至少含各一位英數字)" />
+                <input type="password" id="checkPsw" placeholder="確認密碼" name="checkPsw">
+                <input type="button" id="signUpSubmit" value="註冊">
+
+                <div class="notice" style="top: 84px"></div>
+                <div class="notice" style="top: 140px"></div>
+                <div class="notice" style="top: 198px"></div>
+                <div class="notice" style="top: 255px"></div>
+                <div class="notice" style="top: 313px"></div>
+            </form>
+        </div>      
+        <!-- 登入 -->
+        <div class="form-container sign-in-container">
+            <form id="signInForm">
+                <h2>會員登入</h2>
+                <input type="text" name="memId" id="memId" placeholder="輸入帳號" />
+                <input type="password" name="memPsw" id="memPsw" placeholder="輸入密碼" />
+                <span id="forgetPsw">忘記密碼?</span>
+                <input type="button" id="signInSubmit" value="登入">
+                
+                <div class="notice" style="top: 140px"></div>
+                <div class="notice" style="top: 198px"></div>
+            </form>
+        </div>
+        
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <button type="button" class="check" id="signIn">登入</button>
                 </div>
-                <div class="wrapper" >
-                    <div class="intro">
-                        <h3>{{teacher.teachName}}</h3>
-                        <div class="star" data-percent="50"></div>
-                        <p>
-                            {{teacher.teachDescription}}
-                        </p>
-                    </div>
+                <div class="overlay-panel overlay-right">
+                    <button type="button" class="check" id="signUp">註冊</button>
                 </div>
             </div>
+        </div> 
+    </div>
+
+    <div class="bg">
+        <div class="section01">
+            <teacher-component :data-rows="dataRows[0]">
+            </teacher-component>
         </div>
         <div class="section02">
             <div class="title">
                 <h2>所授課程</h2>
             </div>
             <div class="wrapper">
-                <a href="./singleCourse.html">
+                <course-component v-for="(course, i) in dataRows[1]"
+                                  :key="course.courseNo"
+                                  :course-no="course.courseNo"
+                                  :course-name="course.courseName"
+                                  :cour-type-name="course.courTypeName"
+                                  :course-price="course.coursePrice">
+                </course-component>
+                <!-- <a href="./singleCourse.html">
                     <div class="card card01">
                         <div class="title">
                             <h3>飛行術</h3>
@@ -108,7 +148,7 @@
                         <img src="./img/course_cards/card_back.png" alt="">
                         <div class="shadow"></div>
                     </div>
-                </a>
+                </a> -->
             </div>
         </div>
         <div class="section03">
@@ -116,7 +156,7 @@
                 <h2>教師評論</h2>
             </div>
             <!-- 評論評分+檢舉燈箱開始 -->
-            <comment-component v-for="(comment, i) in dataRows[1]"
+            <comment-component v-for="(comment, i) in dataRows[2]"
                                :key="comment.registNo"
                                :mem-avatar="comment.memAvatar"
                                :mem-name="comment.memName"
@@ -126,7 +166,7 @@
                                @show-box="showLightbox(i)"
                                @close-box="closeLightbox(i)"
                                @send-report="sendReport(i)">
-                            </comment-component>
+            </comment-component>
             <!-- 評論評分+檢舉燈箱結束 -->
 
             <!-- 顯示更多btn -->
@@ -141,5 +181,6 @@
     </footer>
 
     <script src="./js/singleTeacher.js"></script>
+    <!-- <script src="js/login.js"></script>         -->
 </body>
 </html>

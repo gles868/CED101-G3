@@ -1,5 +1,6 @@
+// =============== 存取DOM元素 ===============
 // 燈箱
-let memIcon = document.querySelector('.nav-right > li:nth-child(1) > a');
+let memberLink = document.querySelector('.nav-right > li:nth-child(1) > a');
 let lightbox = document.querySelector('#container');
 let lightboxBg = document.querySelector('.lightbox-bg');
 let closeSpan = document.querySelector('.close');
@@ -21,7 +22,51 @@ let signUpInput = document.querySelectorAll('.sign-up-container input');
 let signUpBtn = document.getElementById('signUpSubmit');
 let checkNotice = document.querySelectorAll('#signUpForm > .notice');
 
-// --- 提示樣式
+// 登出
+let logout = document.getElementById('logout');
+
+// 導覽列
+let memIcon = document.getElementById('memIcon');
+let memInfo = document.getElementById('memInfo');
+
+// 登入註冊切換
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+
+// =============== 註冊事件聆聽 ===============
+window.addEventListener('load', function(){
+    // 載入會員資料
+    getLoginData(); 
+
+    // 燈箱
+    closeSpan.addEventListener('click', closeLightbox);
+    lightboxBg.addEventListener('click', closeLightbox);
+
+    // 登入
+    memId.addEventListener('blur', checkMemIdPsw);
+    memPsw.addEventListener('blur', checkMemIdPsw);
+    signInBtn.addEventListener('click', sendData);
+    
+    // 註冊
+    signUpName.addEventListener('blur', checkName);
+    signUpId.addEventListener('blur', checkId);
+    signUpEmail.addEventListener('blur', checkEmail);
+    signUpPsw.addEventListener('blur', checkPsw);
+    pswAgain.addEventListener('blur', checkPswAgain);
+    pswAgain.addEventListener('input', checkPswTheSame);
+    signUpBtn.addEventListener('click', submitMemData);
+
+    // 登出
+    logout.addEventListener('click', getLogout);
+
+    // 登入註冊切換
+    signUpButton.addEventListener('click', () => { container.classList.add("right-panel-active"); });
+    signInButton.addEventListener('click', () => { container.classList.remove("right-panel-active"); });
+});
+
+// 欄位提示樣式
 function warnStyle(i){
     signUpInput[i].style.border = '1px solid #f57c35';
     signUpInput[i].addEventListener('focus', function(){
@@ -30,40 +75,65 @@ function warnStyle(i){
     });
 }
 
-// 是否為會員 => 跳燈箱或會員中心
-function getDataShowLightbox(){
+// 載入會員資料，更改header狀態
+function getLoginData(){
     let xhr = new XMLHttpRequest();
     xhr.onload = function(){
         let memData = JSON.parse(xhr.responseText);
-        console.log(memData.memberNo);
-        if(memData.memberNo){  // 如果有資料
-            console.log('here');
-            // ------------導覽列要顯示會員名稱
-            // ------------顯示登出
+        // 將資料寫進 指定為memNavInfo的new Vue裡的data
+        memNavInfo.memData = memData;  
+
+        if(memNavInfo.memData.memberNo){  // 如果有登入
+            console.log(`已登入 會員編號: ${memNavInfo.memData.memberNo}`);
+
+            let memIcon = document.getElementById('memIcon');
+            let memInfo = document.getElementById('memInfo');
+            let logout = document.getElementById('logout');
+
+            memIcon.style.display = 'none';
+            memInfo.style.display = 'block';
+            logout.innerText = '登出';
+            return false;
+
         }else{
+            console.log('會員未登入');
+            
             // 顯示燈箱
-            memIcon.addEventListener('click', function(e){
+            memberLink.addEventListener('click', function(e){
                 e.preventDefault();
                 lightbox.style.display = 'block';
                 lightboxBg.style.display = 'block';
+                for(let i = 0; i < signInInput.length-1; i++){
+                    signInInput[i].value = '';
+                }
+                for(let i = 0; i < signUpInput.length-1; i++){
+                    signUpInput[i].value = '';
+                }
             });
+
+            let memInfo = document.getElementById('memInfo');
+            
+            memIcon.style.display = 'block';
+            memInfo.style.display = 'none';
+            logout.innerText = '';
         }
     }
     xhr.open('get', 'php/getLoginData.php', true);
     xhr.send(null);
 }
+
 // 關燈箱
 function closeLightbox(){
     lightbox.style.display = 'none';
     lightboxBg.style.display = 'none';
 }
-// 登入
+// =============== 登入 ===============
+// 確認欄位是否為空
 function checkMemIdPsw(){
     for(let i = 0; i < signInInput.length-1; i++){
         // 去除空格( \s空字串 \g全域匹配 ) 
         signInInput[i].value.replace(/\s+/g, '');
     }
-    // 欄位是否為空
     if(memId.value == '' || memId.value == undefined || memId.value == null){
         checkNoticeSignIn[0].innerText = '尚未輸入帳號';
         signInInput[0].style.border = '1px solid #f57c35';
@@ -81,11 +151,11 @@ function checkMemIdPsw(){
         });
     }
 }
+// 送出登入資料
 function sendData(){
-    // 是否已有該會員
     let xhr = new XMLHttpRequest();
     xhr.onload = function(){
-        if(xhr.status == 200){  // 請求送出，並且執行成功
+        if(xhr.status == 200){  // 是否已有該會員
             if(xhr.responseText.indexOf('無此會員') == -1){  // 登入成功
                 let membRow = JSON.parse(xhr.responseText);
                 alert(`hello${membRow.memName}, 你好：)`);
@@ -96,7 +166,7 @@ function sendData(){
                 lightbox.style.display = 'none';
                 lightboxBg.style.display = 'none';
                 // 載入會員資料
-                getDataShowLightbox();
+                getLoginData();
             }else{
                 alert('帳密錯誤');
             }
@@ -111,7 +181,7 @@ function sendData(){
     let data_info = `memId=${memId.value}&memPsw=${memPsw.value}`;
     xhr.send(data_info);
 }
-// 註冊
+// =============== 註冊 ===============
 for(let i = 0; i < signInInput.length-1; i++){ 
     signInInput[i].value.replace(/\s*/g, '');
 }
@@ -120,30 +190,20 @@ function checkName(){
     if(signUpName.value == '' || signUpName.value == undefined || signUpName.value == null){
         checkNotice[0].innerText = '尚未輸入姓名';
         warnStyle(0);
+        return false;
     }
 }
-// for(let i = 0; i < signUpInput.length-1; i++){
-//     signUpInput[i].addEventListener('blur', function(){
-//         if(signUpInput[i].value == '' || signUpInput[i].value == undefined || signUpInput[i].value == null){
-//             warnStyle(i);
-//             switch(signUpInput[i]){
-//                 case signUpInput[0]:
-//                     checkNotice[0].innerText = '尚未輸入姓名';
-//                     break;
-//             }
-//         }
-//     }); 
-// }
-
 // 驗證mail
 function checkEmail(){
     let mailFormat = /^\w+\@\w+\.[A-Za-z]+$/;
     if(signUpEmail.value == '' || signUpEmail.value == undefined || signUpEmail.value == null){
         checkNotice[1].innerText = '尚未輸入email';
         warnStyle(1);
+        return false;
     }else if(signUpEmail.value.search(mailFormat) == -1){
         checkNotice[1].innerText = '請輸入正確格式';
         warnStyle(1);
+        return false;
     }else{
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
@@ -170,6 +230,7 @@ function checkId(){
     if(signUpId.value == '' || signUpId.value == undefined || signUpId.value == null){
         checkNotice[2].innerText = '尚未輸入帳號';
         warnStyle(2);
+        return false;
     }else{
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
@@ -193,13 +254,15 @@ function checkId(){
 }
 // 驗證密碼
 function checkPsw(){
-    let pswFormat = /^(?=.*\d)(?=.*[a-z]).{6,12}$/;
+    let pswFormat = /^(?=.*\d)(?=.*[a-z]).{1,30}$/;
     if(signUpPsw.value == '' || signUpPsw.value == undefined || signUpPsw.value == null){
         checkNotice[3].innerText = '尚未輸入密碼';
         warnStyle(3);
+        return false;
     }else if(signUpPsw.value.search(pswFormat) == -1){
         checkNotice[3].innerText = '請至少包含各一位英數字';
         warnStyle(3);
+        return false;
     }
 }
 // 確認密碼欄位為空
@@ -207,19 +270,20 @@ function checkPswAgain(){
     if(pswAgain.value == '' || pswAgain.value == undefined || pswAgain.value == null){
         checkNotice[4].innerText = '尚未輸入密碼';
         warnStyle(4);
+        return false;
     }
 }
 // 確認密碼相同
 function checkPswTheSame(){
     if(pswAgain.value == signUpPsw.value){
-        console.log('欸');
         checkNotice[4].innerHTML = `
             <i class="fas fa-check" style="color: #588ad6;"></i>
             <span style="color: #588ad6;">密碼輸入正確</span>
         `;
+    }else{
+        return false;
     }
 }
-
 // 送出資料
 function submitMemData(){
     let memData = {};  // 空物件，接要傳送的資料
@@ -227,12 +291,21 @@ function submitMemData(){
     memData.memMail = signUpEmail.value;
     memData.memId = signUpId.value;
     memData.memPsw = signUpPsw.value;
-
-    let xhr = new XMLHttpRequest();
+    
+    if(signUpName.value == '' || signUpEmail.value == '' || signUpId.value == '' || signUpPsw.value == '' || pswAgain.value == ''){
+        alert('尚有欄位未填寫');
+        return false;
+    }else{
+        let xhr = new XMLHttpRequest();
         xhr.onload = function(){
-            if(xhr.status == 200){  // 請求送出，並且執行成功
+            if(xhr.status == 200){
                 alert('註冊成功');
                 console.log(xhr.responseText);
+                for(let i = 0; i < signUpInput.length-1; i++){
+                    signUpInput[i].value = '';
+                    checkNotice[i].style.display = 'none';
+                    signUpInput[i].style.border = '0px';
+                }
             }else{
                 alert(xhr.status);
                 console.log(xhr.responsetext);
@@ -243,33 +316,21 @@ function submitMemData(){
         xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
         let data_info = `memId=${signUpId.value}&memPsw=${signUpPsw.value}&memName=${signUpName.value}&memMail=${signUpEmail.value}`;
         xhr.send(data_info);
+    }
 }
 
-
-// 登入註冊切換
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
-
-signUpButton.addEventListener('click', () => { container.classList.add("right-panel-active"); });
-signInButton.addEventListener('click', () => { container.classList.remove("right-panel-active"); });
-
-
-window.addEventListener('load', function(){
-    getDataShowLightbox();  // 取得session會員資料
-
-    memId.addEventListener('blur', checkMemIdPsw);
-    memPsw.addEventListener('blur', checkMemIdPsw);
-    signInBtn.addEventListener('click', sendData);
-    closeSpan.addEventListener('click', closeLightbox);
-    lightboxBg.addEventListener('click', closeLightbox);
-    
-    signUpName.addEventListener('blur', checkName);
-    signUpId.addEventListener('blur', checkId);
-    signUpEmail.addEventListener('blur', checkEmail);
-    signUpPsw.addEventListener('blur', checkPsw);
-    pswAgain.addEventListener('blur', checkPswAgain);
-    pswAgain.addEventListener('input', checkPswTheSame);
-    
-    signUpBtn.addEventListener('click', submitMemData);
-});
+// =============== 登出 ===============
+function getLogout(){
+    if(memNavInfo.memData.memberNo){
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if(xhr.status == 200){
+                alert(xhr.responseText);
+                getLoginData();
+            }
+        }
+        let url = 'php/logout.php';
+        xhr.open('get', url, true);
+        xhr.send(null);
+    }
+}
