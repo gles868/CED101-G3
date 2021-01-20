@@ -38,6 +38,7 @@ html {
     background-color: #1b2947;
 }
 
+//
 div.shop_box {
     width: 90%;
     margin: 0 auto;
@@ -101,8 +102,8 @@ div.shop_box {
                 }
             }
             div.pro_all {
-                background-color: #ffffff;
-                color: #863186;
+                background-color: #863186;
+                color: #ffffff;
                 padding: 3px 5px 3px 5px;
                 text-align: center;
                 border: 3px solid #863186;
@@ -466,9 +467,12 @@ div.pro_photo {
         }
     }
     div.pro_complete_photo {
-        width: 60%;
+        width: 50%;
         margin: 0 auto;
         position: relative;
+        @media (max-width: 536px) {
+            width: 60%;
+        }
     }
     div.pro_complete_price_box {
         border: 1px solid pink;
@@ -759,87 +763,35 @@ body {
     position: relative;
 }
 
-//愛心開始
-.center-content {
-    position: absolute;
-    top: -5%;
-    left: 80%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-}
+// //愛心開始
 
-.heart {
+svg {
     display: block;
-    width: 1em;
-    height: 1em;
-    font-size: 14px;
-    position: absolute;
-    left: 10px;
-    top: 10px;
-
-    .heart-inner {
-        &,
-        &::before,
-        &::after {
-            background-color: white;
-        }
-    }
-
-    &.loved .heart-inner {
-        &,
-        &::before,
-        &::after {
-            background-color: rgb(249, 48, 48);
-        }
-    }
-
-    &.loved {
-        animation: loved 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
 }
 
-.heart-inner {
-    display: block;
-    width: 1em;
-    height: 1em;
-    transform: rotate(45deg);
-
-    &:before,
-    &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 1em;
-        height: 1em;
-        border-radius: 1em;
-    }
-
-    &::before {
-        left: 0;
-        top: -50%;
-    }
-
-    &::after {
-        left: -50%;
-        top: 0;
-    }
+.container {
+    display: flex;
+    justify-content: center;
+    width: 70vw;
+    height: 70vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
-@keyframes loved {
+@keyframes spring {
     0% {
         transform: scale(1);
     }
 
-    25% {
-        transform: scale(0.6, 0.8);
+    20% {
+        transform: scale(0.85);
     }
 
-    35% {
-        transform: scale(0.8, 0.6);
-    }
-
-    70% {
-        transform: scale(1.4);
+    60% {
+        transform: scale(1.2);
     }
 
     100% {
@@ -847,16 +799,59 @@ body {
     }
 }
 
+@keyframes squeeze {
+    0% {
+        transform: scale(1, 1) translate(0px, 0px);
+    }
+
+    20% {
+        transform: scale(1.2, 0.8) translate(0px, 3px);
+    }
+
+    40% {
+        transform: scale(0.8, 1.15) translate(0px, -1px);
+    }
+
+    80% {
+        transform: scale(1.1, 0.9) translate(0px, 2px);
+    }
+
+    100% {
+        transform: scale(1, 1) translate(0px, 0px);
+    }
+}
+
+.fav {
+    cursor: pointer;
+}
+
+.fav-1 {
+    @extend .fav;
+    path {
+        transition: stroke 0.2s 0.2s ease-in, fill 0.2s 0.2s ease-in,
+            transform 0.4s ease-out;
+        transform-origin: 50% 50%;
+    }
+    &.clicked {
+        path {
+            fill: #bf2030;
+            stroke: #bf2030;
+            transform: rotateY(360deg);
+        }
+    }
+}
+
 // 全部商品的頁數
 
 .pagebutton {
     margin: 10px auto;
+
     // background-image: url('./img/star2.png');
     button {
         width: 30px;
         height: 30px;
         // background-color: rgba(248, 206, 213, 0.507);
-        color: #f5f5c7;
+        // color: #f5f5c7;
         border: 0px;
         font-size: 18px;
         font-weight: bold;
@@ -864,10 +859,17 @@ body {
         background: none;
         cursor: pointer;
         opacity: 1;
+        outline: none;
+
         &:hover {
             opacity: 0.6;
         }
     }
 }
 
-// 購物車動畫
+.btnActive {
+    color: #f5f5c7;
+}
+.btnActiveFirst {
+    color: #f5f5c7;
+}

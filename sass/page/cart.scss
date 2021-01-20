@@ -424,3 +424,43 @@ div.space_box {
         opacity: 1;
     }
 }
+
+////////
+.num_icon {
+    // display: block;
+    position: absolute;
+    top: 50px;
+    // right: 40px;
+    right: 3%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background-color: #dc52ffc0;
+    text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
+    color: #ffffff;
+    font-weight: bold;
+    line-height: 16px;
+    z-index: 999;
+    font-size: 18px;
+    @media (max-width: 701px) {
+        right: 12%;
+        top: 6%;
+    }
+    @media (max-width: 570px) {
+        right: 14%;
+    }
+    @media (max-width: 376px) {
+        right: 16%;
+    }
+    .num_text {
+        // border: 1px solid red;
+        text-align: center;
+        align-items: center;
+        position: absolute;
+        top: 10%;
+        left: 25%;
+    }
+}
+body {
+    position: relative;
+}

@@ -1,5 +1,8 @@
 window.addEventListener('load', function () {
     let storage = sessionStorage;
+    if (storage['total'] == null) {
+        storage['total'] = '';
+    }
 
     Vue.component('products', {
         data() {
@@ -15,31 +18,31 @@ window.addEventListener('load', function () {
         
                 <div class="cartpro_a_box">
                     <div class="crystalball_left_box">
-                        <img :src="item_info[0].proImg" />
+                        <img :src="item_info.proImg" />
                     </div>
                     <div class="crystalball_right_box">
                         <div class="crystalball_name_box">
-                            <div class="crystalball_name">{{item_info[0].proName}}</div>
+                            <div class="crystalball_name">{{item_info.proName}}</div>
                         </div>
-                        <div class="close"><img src="./img/close.png" @click="deleteproduct(item_info[0].proNo)"></div>
+                        <div class="close"><img src="./img/close.png" @click="deleteproduct(item_info.proNo)"></div>
                         <div class="crystalball_text_box">
                             <div class="crystalball_text">
-                            {{item_info[0].proDescription}}
+                            {{item_info.proDescription}}
                             </div>
                         </div>
 
                         <div class="crystalball_priceAmount_box">
                         
-                            <div class="amount">
-                                <div class="amount_input">
-                                    <input @click="min" id="min" class="butDec" type="button" value="-"/>
-                                    <div id="quantity"><span>{{num}}</span></div>
-                                    <input @click="add" type="button" id="addamount" class="butDec" value="+"/>
-                                </div>
-                            </div>
+                        <div class="amount">
+                        <div class="amount_input">
+                            <input @click="min" id="min" class="butDec" type="button" value="-"/>
+                            <div id="quantity"><span>{{num}}</span></div>
+                            <input @click="add" type="button" id="addamount" class="butDec" value="+"/>
+                        </div>
+                    </div>
                             <div class="pro_complete_price_box">
                                 <img src="./img/dollar.png" />
-                                <div class="pro_complete_price" >{{num * item_info[0].proPrice}}</div>
+                                <div class="pro_complete_price" >{{num * item_info.proPrice}}</div>
                             </div>
                         </div>
                     </div>
@@ -52,16 +55,20 @@ window.addEventListener('load', function () {
                     return '';
                 }
                 this.num--;
-                this.$emit('min_price', this.item_info[0].proPrice);
+                this.$emit('min_price', this.item_info.proPrice);
+                storage[this.item_info.proNo] = `${this.item_info.proNo}|${
+                    this.num * this.item_info.proPrice
+                }|${this.num}`;
             },
             add() {
                 this.num += 1;
-                this.$emit('add_price', this.item_info[0].proPrice);
+                this.$emit('add_price', this.item_info.proPrice);
+                storage[this.item_info.proNo] = `${this.item_info.proNo}|${
+                    this.num * this.item_info.proPrice
+                }|${this.num}`;
             },
 
             get_data: async function (itemno) {
-                // console.log(itemno);
-
                 const res = await fetch('./php/lightbox.php', {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
                     mode: 'same-origin', // no-cors, *cors, same-origin
@@ -87,11 +94,11 @@ window.addEventListener('load', function () {
         created() {
             this.get_data(this.itemno);
         },
-        // watch: {
-        //     num() {
-        //         this.add_price();
-        //     },
-        // },
+        watch: {
+            // num() {
+            //     this.add_price();
+            // },
+        },
     });
 
     new Vue({
@@ -103,10 +110,8 @@ window.addEventListener('load', function () {
             deliver_box: true,
             total_box: true,
             Btn: true,
+            count: '',
         },
-        // computed:{
-        //     master.add(
-        // },
         methods: {
             //切割storage帶的商品編號
             split_products() {
@@ -118,7 +123,6 @@ window.addEventListener('load', function () {
                     .substr(0, itemString.length - 2)
                     .split(', ');
                 this.itemlist = items;
-                // console.log(434353454354);
             },
             changeStatus() {
                 if (this.itemlist == '') {
@@ -134,24 +138,14 @@ window.addEventListener('load', function () {
                 console.log('add');
 
                 this.total_price += parseInt(price);
-
-                // this.total_price = price;
-                // alert(count);total_price
-                // this.count * this.total_price;
             },
             min_price(price) {
                 console.log('min');
                 this.total_price -= parseInt(price);
-
-                // this.total_price;
-
-                // this.total_price = price;
-                // alert(count);total_price
-                // this.count * this.total_price;
             },
 
             deleteproduct(itemno) {
-                // 2.清除storage的資料
+                // 清除storage的資料
                 storage.removeItem(itemno);
                 storage['addItemList'] = storage['addItemList'].replace(
                     `${itemno}, `,
@@ -159,7 +153,8 @@ window.addEventListener('load', function () {
                 );
                 console.log(111);
                 this.split_products();
-                window.location.href = './cart.html';
+                // window.location.href = './cart.html';
+                history.go(0);
             },
             btnani() {
                 const wrapper = document.querySelector('.btn-wrapper');
@@ -221,9 +216,19 @@ window.addEventListener('load', function () {
                     master.play(0);
                 });
             },
+            // addToStorage(total_price) {
+            //     storage['addItemList'] += `${this.total_price}|`;
+            //     storage.setItem('font', document.getElementById('font').value);
+            // },
             addToStorage(total_price) {
-                storage['addItemList'] += `${this.total_price}|`;
-                storage.setItem('font', document.getElementById('font').value);
+                // storage['total'] += `${this.total_price} `;
+                if (storage['total']) {
+                    // console.log('000');
+                    storage.setItem('total', `${this.total_price}`);
+                    // storage['total'] += `${this.total_price} `;
+                } else {
+                    storage['total'] += `${this.total_price} `;
+                }
             },
         },
         created() {
