@@ -107,6 +107,7 @@ Vue.component('courseStatus', {
     data() {
         return {
             content: 'courseReg',
+            comm_null: '',
             //撈出來的 資料
         };
     },
@@ -155,36 +156,80 @@ Vue.component('courseReg', {
     data() {
         return {
             //撈出來的 資料
+            classes: '',
+            comm_null: '',
         };
     },
     props: ['memberno'],
 
     template: `
     <!-- 已報名 -->
-        <div class="tab-content-1 con">
-            <div class="CRD">
-                <div class="CRD_pic">
-                    <img src="./img/course_cards/course_07.png" alt="" srcset="" />
-                </div>
-                <div class="CRD_Text">
-                    <h4 class="CRD_TextTit">煉金術</h4>
-                    <div class="CRD_TextCon">
-                        <h5>煉金術是一門很厲害的課</h5>
-                        <h5>煉金術是一門很厲害的課</h5>
-                        <h5>煉金術是一門很厲害的課</h5>
-                        <h5>煉金術是一門很厲害的課</h5>
-                        <h5>煉金術是一門很厲害的課</h5>
-                    </div>
-                </div>
-                <div class="courseCancel">
-                    <div class="membtn">取消報名</div>
-                </div>
+<div class="tab-content-1 con">
+    <div class="CRD" v-for="(value,key) in classes">
+        <div class="CRD_pic">
+            <img :src="value.courseImg" />
+        </div>
+        <div class="CRD_Text">
+            <h4 class="CRD_TextTit">{{value.courseName}}</h4>
+            <div class="CRD_TextCon">
+                <h5>上課時間:{{value.courseStartDate}}</h5>
+                <h5>{{value.classDescription}}</h5>
             </div>
         </div>
+        <div class="courseCancel">
+            <div class="membtn" @click="regist_cancel(value.classNo,value.registNo)">取消報名</div>
+        </div>
+    </div>
+    <div class="CRD_Text" v-if="comm_null">全部已報名課程都上完嚕!!記得去給老師評論唷:))</div>
+</div>
   `,
-    methods: {},
+    methods: {
+        mem_get_regist: async function () {
+            const res = await fetch('./php/mem_get_regist.php', {
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    memberno: this.memberno,
+                }),
+            }).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.classes = res;
+
+            if (this.classes == '') {
+                this.comm_null = true;
+            }
+        },
+        regist_cancel: async function (classNo, registNo) {
+            const res = await fetch('./php/mem_delete_regist.php', {
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    memberno: this.memberno,
+                    classNo: classNo,
+                    registNo: registNo,
+                }),
+            });
+
+            //刪除成功跳出燈箱
+            bus.$emit('getAlert', '您已成功取消報名:((');
+            //重新渲染畫面
+            this.mem_get_regist();
+        },
+    },
     // template 渲染前 會先去執行以下函式
-    created() {},
+    created() {
+        this.mem_get_regist();
+    },
 });
 
 // ----------我的課程>課程清單>已完課(組件)----------
@@ -399,33 +444,57 @@ Vue.component('courseIng', {
     data() {
         return {
             //撈出來的 資料
+            classes: '',
+            comm_null: '',
         };
     },
     props: ['memberno'],
 
     template: `
     <!-- 上課中(當天) -->
-        <div class="tab-content-3 con">
-            <div class="CRD">
-                <div class="CRD_pic">
-                    <img src="./img/course_cards/course_03.png" alt="" srcset="" />
-                </div>
-                <div class="CRD_Text">
-                    <h4 class="CRD_TextTit">詛咒術</h4>
-                    <div class="CRD_TextCon">
-                        <h5>詛咒術是一門攻擊型的課</h5>
-                        <h5>詛咒術是一門攻擊型的課</h5>
-                        <h5>詛咒術是一門攻擊型的課</h5>
-                        <h5>詛咒術是一門攻擊型的課</h5>
-                        <h5>詛咒術是一門攻擊型的課</h5>
-                    </div>
-                </div>
+<div class="tab-content-3 con">
+    <div class="CRD" v-for="(value,key) in classes">
+        <div class="CRD_pic">
+            <img :src="value.courseImg" />
+        </div>
+        <div class="CRD_Text">
+            <h4 class="CRD_TextTit">{{value.courseName}}</h4>
+            <div class="CRD_TextCon">
+                <h5>上課時間:{{value.courseStartDate}}</h5>
+                <h5>{{value.classDescription}}</h5>
             </div>
         </div>
+    </div>
+    <div class="CRD_Text" v-if="comm_null">今天沒課唷!還不快去報名新課程!!</div>
+</div>
   `,
-    methods: {},
+    methods: {
+        mem_get_coursing: async function () {
+            const res = await fetch('./php/mem_get_coursing.php', {
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    memberno: this.memberno,
+                }),
+            }).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.classes = res;
+
+            if (this.classes == '') {
+                this.comm_null = true;
+            }
+        },
+    },
     // template 渲染前 會先去執行以下函式
-    created() {},
+    created() {
+        this.mem_get_coursing();
+    },
 });
 
 // ==========我的收藏============
@@ -848,7 +917,7 @@ Vue.component('mem-info', {
                 <div class="memInfoLeft">
                     <div class="memheadBox">
                         <div class="memhead">
-                            <img src="./img/wenhead.jpg" alt="" />
+                            <img src="./img/wenhead.jpg" @click="senddata" alt="" />
                         </div>
                         <div class="memheadCG">
                             <i class="fas fa-camera"></i>
@@ -859,7 +928,7 @@ Vue.component('mem-info', {
                 <div class="memInfoRight">
                     <div class="memInfoFormOut">
                         <div class="memInfoForm">
-                            <component :memberno="memberno" :memmail="memmail" :memname="memname" :mempsw="mempsw" :memid="memid" :is="content" @change="change"></component>                            
+                            <component :memberno="memberno" :memmail="memmail" :memname="memname" :mempsw="mempsw" :memid="memid" :is="content" @change="change" @send_info="senddata"></component>                            
                         </div>
                     </div>
                 </div>
@@ -870,6 +939,13 @@ Vue.component('mem-info', {
     methods: {
         change(data) {
             this.content = data;
+        },
+        senddata() {
+            this.test();
+        },
+        test() {
+            this.$emit('sendup');
+            console.log('sendup');
         },
     },
     // template 渲染前 會先去執行以下函式
@@ -1046,7 +1122,7 @@ Vue.component('mem-info-edit', {
             });
             if (res == '修改成功~!!') {
                 bus.$emit('getAlert', '修改成功');
-                this.get_mem();
+                this.$emit('send_info');
                 console.log('000');
             } else if (res == '修改失敗~!!') {
                 bus.$emit('getAlert', '修改失敗');
@@ -1079,9 +1155,6 @@ Vue.component('alert_lightbox', {
     methods: {
         closeAlertLightbox() {
             this.alertLightbox = false;
-            // if (this.alertText == '跟團時間已截止') {
-            //     location.href = 'index.html'
-            // }
         },
     },
     mounted() {
@@ -1143,6 +1216,10 @@ new Vue({
             this.memGamePoint = res.memGamePoint;
             this.courseTimes = res.courseTimes;
             this.memAvatar = res.memAvatar;
+        },
+        receive_info() {
+            console.log('receive_info');
+            this.get_mem();
         },
         get_mem_coursetimes: async function () {
             const res = await fetch('./php/mem_get_coursetimes.php', {

@@ -6,19 +6,17 @@ try {
     $decoded = json_decode($content, true);
 
     $mem_no = $decoded["memberno"];
-    // $registNo = $decoded["registNo"];
 
 
     $sql = "select *
             from registration r join class c on r.classNo = c.classNo
                                 join course co on c.courseNo = co.courseNo
-            where memberNo = :memberno AND c.courseStartDate > curdate();           
+            where memberNo = :memberno AND c.courseStartDate = curdate();           
             ";
 
     // $grouporddata = $pdo->query($sql);
     $per_ord_data = $pdo->prepare($sql);
     $per_ord_data->bindValue(":memberno", $mem_no);
-    // $per_ord_data->bindValue(":registNo", $registNo);
     $per_ord_data->execute();
 
     // echo "修改成功~!!";
