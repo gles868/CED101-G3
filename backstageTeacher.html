@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>麻瓜特訓班 | 教師後台</title>
     
-    <link rel="stylesheet" href="css/back-teacher-data.css">
+    <link rel="stylesheet" href="css/backstageTeacher.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="css/hamburgers.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <!-- Vue -->
     <script src="js/vue.js"></script>
+
 </head>
 <body>
     <!-- header -->
@@ -35,19 +36,22 @@
         </nav>
     </header>
 
-    <!-- 左邊選單 -->
-    <div id="app">
+    <div id="app" class="back_bottom">
+        <!-- 選單 -->
         <section class="content-wrap">
             <ul class="left-block">
                 <h2>教師後台</h2>
-                <li id="back-teacher-course" @click="content='back-teacher-course'">課表查詢</li>
-                <li id="back-teacher-data'" @click="content='back-teacher-data'">個人資料管理</li>
+                <li id="back_teacher_data" @click="content='back_teacher_data'" class="active">個人資料管理</li>
+                <li id="course_list" @click="content='course_list'">課程清單</li>
+                <li id="course_date" @click="content='course_date'">查看課表時間</li>
             </ul>
         </section>
+    
+        <!-- 內容 -->
+        <component :is="content"
+                   :teach-no="teachNo">
+        </component>
 
-        <!-- 右邊內容 -->
-        <!-- 透過<component>去指定其屬性is進行v-bind -->
-        <component :is="content"></component>
     </div>
 
     <!-- footer -->
@@ -57,8 +61,13 @@
 
 
     <!-- 引入js -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/hamburgers.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/hamburgers.js"></script>
+
+    <!-- fullcalendar -->
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css" />
+
     <script src="js/backstageTeacher.js"></script>
 
     

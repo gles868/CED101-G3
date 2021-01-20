@@ -1,0 +1,382 @@
+* {
+    box-sizing: border-box;
+    font-family: '微軟正黑體';
+}
+
+body{
+    margin: 0;
+}
+
+/* ------------ header ------------ */ 
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(to right,#5f2c82 , #49a09d);
+}
+
+.nav-left > img{
+    width: 50%;
+}
+
+.nav-right{
+    color: #ffff;
+}
+
+.nav-right > p{
+    margin: 0;
+}
+
+
+button.hamburger{
+    display: none;
+}
+
+.back_bottom{
+    width: 100%;
+    display: flex;
+    // flex-wrap: wrap;
+}
+/* ------------ 左側選單 ------------ */ 
+.content-wrap{
+    width: 15%;
+    min-width: 200px;
+    display: flex;
+    min-height: 100vh;
+    ul{
+        color: #fff;
+    }
+}
+
+ul.left-block{
+    width: 100%;
+    background-color: #F4F4F4;
+    padding: 10px;
+    margin: 0;
+}
+
+ul.left-block li{
+    list-style: none;
+    padding: 5px;
+    background-color: #807EFB;
+    margin: 15px;
+    text-align: center;
+    border-radius: 20px;
+    transition: .3s;
+    cursor: pointer;
+    &.active{
+        background-color: #5E5DB9;
+    }
+}
+
+ul.left-block li a{
+    text-decoration: none;
+    color: #ffff;
+}
+
+ul.left-block li:hover{
+    background-color: #5E5DB9; 
+}
+
+/* ------------ 中間內容 ------------ */ 
+.main_content{
+    width: 100%;
+}  
+ 
+.right-block{
+    width: 85%;
+    padding: 20px;
+    color: #555555;
+
+    .form-wrap{
+        padding: 10px;
+        background-color:#D1BEE8;
+        .content-list{
+            border-radius: 10px;
+            background-color: #F5EFFD;
+            padding: 15px 20px;
+            margin: 15px 5px;
+            display: flex;
+            overflow: auto;
+        }
+        .course-list{
+            height: 200px;
+            border-radius: 10px;
+            background-color: #F5EFFD;
+            padding: 15px 20px;
+            margin: 15px 5px;
+            display: flex;
+            overflow: auto;
+            transition: all .3s; 
+            &:hover{
+                background-color: #fff;
+                transition: all .2s; 
+            }
+            .img{
+                text-align: center;
+                width: 150px;
+                img{
+                    height: 100%;
+                }
+            }
+            .info{
+                margin-left: 20px;
+                margin-top: 10px;
+                h4{
+                    color: #555555;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
+h2{
+    color: #555555;
+    margin-bottom: 15px;
+    margin-left: 20px;
+}
+th{
+    padding: 20px;
+}
+td{
+    padding: 10px;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: #555555;
+}
+
+/* ------------ 查看課程 ------------ */
+.course{
+    width: 85%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    .menu{
+        display: flex;
+        margin-left: 10px;
+    }
+    #course_date, #course_list{
+        padding: 0 10px;
+        cursor: pointer;
+    }
+}
+
+.courseDate{
+    padding: 10px;
+    width: 100%;
+    background-color: #D1BEE8;
+    #calendar-container{
+        background-color: #F5EFFD;
+        padding: 20px 40px;
+        margin: 0 auto;
+        border-radius: 10px;
+        .fc-h-event{
+            border: 1px solid #807efb !important;
+            background-color: #7253ad !important;
+        }
+    }
+}
+
+/* ------------ 修改狀態 管理員&會員&教師 管理燈箱 ------------ */
+
+.right-block_admin,
+.right-block_member,
+.right-block_teacher,
+.right-block_course,
+.right-block_comment,
+.right-block_mall,
+.right-block_game {
+    .lightbox_black {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 20;
+        .lightbox {
+            position: absolute;
+            background-color: #e6ecf0;
+            padding: 30px 0 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 500px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            div:nth-child(2) {
+                margin-bottom: 80px;
+                span:nth-child(1) {
+                    color: purple;
+                    font-weight: bold;
+                }
+                span:nth-child(2) {
+                    color: red;
+                    font-weight: bold;
+                }
+            }
+            div:nth-child(3) {
+                display: inline-block;
+                background-color: #2e9dec;
+                padding: 10px 75px;
+                border: none;
+                border-radius: 3px;
+                color: white;
+                margin: 10px auto;
+                cursor: pointer;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.manager_lightbox_close {
+    margin-bottom: 50px;
+    img {
+        position: absolute;
+        width: 25px;
+        top: 15px;
+        right: 15px;
+        color: rgba(128, 128, 128, 0.46);
+        cursor: pointer;
+    }
+}
+
+/* ------------ 右邊區塊=>編輯燈箱(jQuery) ------------ */
+.right-block_teacher_data,
+.right-block_teacher_course {
+    .lightbox_add_black {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 20;
+        .lightbox {
+            position: absolute;
+            background-color: #e6ecf0;
+            padding: 30px 0 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 600px;
+            height: 500px;
+            align-items: center;
+            font-size: 18px;
+            .add-form {
+                // border: 1px solid red;
+                width: 100%;
+                h2 {
+                    color: #5f5d60;
+                    letter-spacing: 1px;
+                    margin: 20px auto;
+                    font-size: 24px;
+                    text-align: center;
+                }
+                .addcoursecon {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    margin: 10px auto;
+                    .acc_title {
+                        width: 30%;
+                        // border: 1px solid red;
+                    }
+                    .acc_con {
+                        width: 55%;
+                        text-align: left;
+                        // border: 1px solid black;
+                    }
+                }
+                .form_btn {
+                    display: inline-block;
+                    background-color: #2e9dec;
+                    padding: 10px 75px;
+                    border: none;
+                    border-radius: 3px;
+                    color: white;
+                    margin: 10px auto;
+                    cursor: pointer;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+
+
+/* ------------ footer ------------ */ 
+footer{
+    width: 100%;
+    color: #ffff;
+	margin: 0;
+    background-color: #141414;
+}
+
+footer > p {
+    font-size: 12px;
+	text-align: center;
+	padding: 8px 0px;
+	margin: 0;
+}
+
+
+/* ------------ RWD ------------ */ 
+@media screen and (max-width: 767px){
+    .nav-left > img{
+        width: 40%;
+    }
+}
+  
+@media screen and (min-width: 992px){
+    ul.left-block{
+      display: block !important;
+    }
+}
+  
+@media screen and (max-width: 991px){
+    .content-wrap{
+        flex-direction: column;
+    }
+
+    ul.left-block{
+        display: none;
+        width: 100%;
+    }
+ 
+    button.hamburger{
+        display: inline-block;
+    }
+
+    .right-block{
+        width: 100%;
+    } 
+}
+
+
+/*------------ 顯示使用者現在所在位置 ------------*/
+// #back-teacher-data, #back-teacher-course{
+//     background-color: #5E5DB9;  
+// }
+
+.right-block_teacher_data, .right-block_teacher_course{
+    width: 85%;
+    .right-block{
+        width: 100%;
+        padding: 20px;
+    }
+}

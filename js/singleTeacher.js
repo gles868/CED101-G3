@@ -153,57 +153,35 @@ let app = new Vue({
     },  
     methods: {
         showLightbox: function(i){
-            if(memNavInfo.memData.memberNo){  // 如果有登入會員
-                // 判斷會員是否已檢舉，傳回memberNo, registNo看是否有皆符合的檢舉編號
-                let xhr = new XMLHttpRequest();
-                xhr.onload = function(){
-                    if(xhr.responseText.indexOf('已檢舉') != -1){  // 如果回傳'已檢舉'
-                        alert('您已檢舉');
-                    }else{
-                        // 跳燈箱
-                        let lightbox = document.querySelectorAll('.lightbox_wrapper');
-                        lightbox[i].style.display = ''; 
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                let memData = JSON.parse(xhr.responseText); 
+                if(memData.memberNo){  // 如果有登入會員
+                    // 判斷會員是否已檢舉，傳回memberNo, registNo看是否有皆符合的檢舉編號
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = function(){
+                        if(xhr.responseText.indexOf('已檢舉') != -1){  // 如果回傳'已檢舉'
+                            alert('您已檢舉');
+                        }else{
+                            // 跳燈箱
+                            let lightbox = document.querySelectorAll('.lightbox_wrapper');
+                            lightbox[i].style.display = ''; 
+                        }
                     }
+                    let registNo = document.getElementsByName('registNo')[i].value;
+                    console.log(registNo);
+                    url = `php/memRepoData.php?registNo=${registNo}`;
+                    xhr.open('get', url, true);
+                    xhr.send(null);
+                    
+                }else{
+                    // 如果未登入，跳出提示燈箱
+                    alert('請登入會員');
                 }
-                let registNo = document.getElementsByName('registNo')[i].value;
-                console.log(registNo);
-                url = `php/memRepoData.php?registNo=${registNo}`;
-                xhr.open('get', url, true);
-                xhr.send(null);
-                
-            }else{
-                // 如果未登入，跳出提示燈箱
-                alert('請登入會員');
             }
-        },
-        // showLightbox: function(i){
-        //     if(this.memData.memberNo){  // 如果有登入會員
-        //         console.log(`會員編號: ${this.memData.memberNo}`);
-        //         // 判斷會員是否已檢舉，傳回memberNo, registNo看是否有皆符合的檢舉編號
-        //         let xhr = new XMLHttpRequest();
-        //         xhr.onload = function(){
-        //             if(xhr.responseText.indexOf('已檢舉') != -1){  // 如果回傳'已檢舉'
-        //                 alert('您已檢舉');
-        //             }else{
-        //                 // 跳燈箱
-        //                 let lightbox = document.querySelectorAll('.lightbox_wrapper');
-        //                 lightbox[i].style.display = ''; 
-        //             }
-        //         }
-        //         let registNo = document.getElementsByName('registNo')[i].value;
-        //         let memberNo = this.memData.memberNo;
-        //         console.log(registNo);
-        //         console.log(memberNo);
-        //         url = `php/memRepoData.php?memberNo=${memberNo}&registNo=${registNo}`;
-        //         xhr.open('get', url, true);
-        //         xhr.send(null);
-                
-        //     }else{
-        //         // 如果未登入，跳出提示燈箱
-        //         alert('請登入會員');
-        //     }
-        // },
-        
+            xhr.open('get', 'php/getLoginData.php', true);
+            xhr.send(null);   
+        },        
         closeLightbox: function(i){
             let lightbox = document.querySelectorAll('.lightbox_wrapper');
             lightbox[i].style.display = 'none'; 
