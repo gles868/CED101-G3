@@ -7,7 +7,7 @@
 
         <!-- Bootstrap 的 CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" /> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
         <!-- Jquery 大家都裝npm就可拿掉-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
@@ -123,14 +123,15 @@
 
             <!-- 透過<component>去指定其屬性is進行v-bind -->
             <component
+                :memGamePoint="memGamePoint"
                 :memberno="memberno"
                 :memMail="memMail"
                 :memName="memName"
                 :memPsw="memPsw"
                 :memId="memId"
-                :memName="memName"
                 :is="content"
             ></component>
+            <alert_lightbox></alert_lightbox>
         </div>
 
         <footer>

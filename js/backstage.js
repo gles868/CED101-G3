@@ -180,7 +180,6 @@ Vue.component('back-admin', {
                 }),
             });
 
-            console.log('000');
             //修改成功跳出 燈箱
             this.lightbox_admin_add = true;
             this.error_text = '新增成功';

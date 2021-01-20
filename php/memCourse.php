@@ -23,7 +23,7 @@
     try{
         require_once("connect_ced101g3.php");
 
-        // $mem_no = $decoded["memberno"];
+        $mem_no = $decoded["memberno"];
 
 
         // 取得課程報名編號 | 班級編號 | 會員編號 | 課程編號 | 課程名稱 | 課程圖片 | 課程說明 | 課程狀態
