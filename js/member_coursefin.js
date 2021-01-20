@@ -1,5 +1,3 @@
-const bus = new Vue();
-
 // ==========我的課程============
 Vue.component('mem-course', {
     data() {
@@ -110,7 +108,7 @@ Vue.component('courseStatus', {
             //撈出來的 資料
         };
     },
-    props: ['memberno'],
+    props: [],
 
     template: `
 <div class="courseStatus courseCG">
@@ -124,10 +122,10 @@ Vue.component('courseStatus', {
                     </div>
                 </div>
             </li>
-            <li id="tab-content-2" @click="content='courseFinish'" >
+            <li id="tab-content-2" @click="content='courseFinish'">
                 <div>
                     <div class="courseFinish">
-                        <h4>待評論</h4>
+                        <h4>已完課</h4>
                     </div>
                 </div>
             </li>
@@ -140,7 +138,7 @@ Vue.component('courseStatus', {
             </li>
         </ul>
         <div>
-            <component :is="content" :memberno="memberno"></component>
+            <component :is="content"></component>
         </div>
     </div>
 </div>
@@ -157,7 +155,7 @@ Vue.component('courseReg', {
             //撈出來的 資料
         };
     },
-    props: ['memberno'],
+    props: [],
 
     template: `
     <!-- 已報名 -->
@@ -168,6 +166,44 @@ Vue.component('courseReg', {
                 </div>
                 <div class="CRD_Text">
                     <h4 class="CRD_TextTit">煉金術</h4>
+                    <div class="CRD_TextCon">
+                        <h5>煉金術是一門很厲害的課</h5>
+                        <h5>煉金術是一門很厲害的課</h5>
+                        <h5>煉金術是一門很厲害的課</h5>
+                        <h5>煉金術是一門很厲害的課</h5>
+                        <h5>煉金術是一門很厲害的課</h5>
+                    </div>
+                </div>
+                <div class="courseCancel">
+                    <div class="membtn">取消報名</div>
+                </div>
+            </div>
+
+            <div class="CRD">
+                <div class="CRD_pic">
+                    <img src="./img/course_cards/course_07.png" alt="" srcset="" />
+                </div>
+                <div class="CRD_Text">
+                    <h4 class="CRD_TextTit">煉金術2</h4>
+                    <div class="CRD_TextCon">
+                        <h5>煉金術是一門很厲害的課</h5>
+                        <h5>煉金術是一門很厲害的課</h5>
+                        <h5>煉金術是一門很厲害的課</h5>
+                        <h5>煉金術是一門很厲害的課</h5>
+                        <h5>煉金術是一門很厲害的課</h5>
+                    </div>
+                </div>
+                <div class="courseCancel">
+                    <div class="membtn">取消報名</div>
+                </div>
+            </div>
+
+            <div class="CRD">
+                <div class="CRD_pic">
+                    <img src="./img/course_cards/course_07.png" alt="" srcset="" />
+                </div>
+                <div class="CRD_Text">
+                    <h4 class="CRD_TextTit">煉金術3</h4>
                     <div class="CRD_TextCon">
                         <h5>煉金術是一門很厲害的課</h5>
                         <h5>煉金術是一門很厲害的課</h5>
@@ -192,109 +228,57 @@ Vue.component('courseFinish', {
     data() {
         return {
             lightbox: false,
-            classes: '',
-            comm_null: '',
         };
     },
-    props: ['memberno'],
+    props: ['course-img', 'course-name', 'course-description', 'regist-no'],
     template: `
-        <div class="tab-content-2 con" >
-            <div class="CRD" v-for="(value,key) in classes" >
-                <div class="CRD_pic">
-                    <img :src="value.courseImg"/>
-                </div>
-                <div class="CRD_Text">
-                    <h4 class="CRD_TextTit">{{value.courseName}}</h4>
-                    <div class="CRD_TextCon">
-                        <h5>完課時間:{{value.courseStartDate}}</h5>
-                        <h5>{{value.classDescription}}</h5>
+        <div class="tab-content-2 con">
+            <div class="CFD_Out">
+                <div class="CFD_Top">
+                    <div class="CRD_pic">
+                        <img :src="courseImg" alt="" srcset="" />
+                    </div>
+                    <div class="CRD_Text">
+                        <h4 class="CRD_TextTit">{{courseName}}</h4>
+                        <div class="CRD_TextCon">
+                            <h5>{{courseDescription}}</h5>
+                        </div>
                     </div>
                 </div>
-                <div class="courseCancel">
-                    <div class="membtn" @click="comm_one(value.classNo,value.registNo)">評論本課</div>
-                </div>
             </div>
-            <div class="CRD_Text" v-if="comm_null">全部已完課課程已評論完畢:))</div>
-            <lightbox_comm v-if="lightbox" classNo="classNo" :memberno="memberno" :registNo="registNo"
-            @changelightbox="comm_calss()"></lightbox_comm>
         </div>
     `,
-    methods: {
-        get_mem_commcourse: async function () {
-            const res = await fetch('./php/mem_get_comm_course.php', {
-                method: 'POST',
-                mode: 'same-origin',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    memberno: this.memberno,
-                }),
-            }).then(function (data) {
-                return data.json();
-            });
-            // 取回res值後，呼叫另一隻函式
-            this.classes = res;
-
-            if (this.classes == '') {
-                this.comm_null = true;
-            }
-        },
-        comm_one(classNo, registNo) {
-            this.lightbox = true;
-            this.classNo = classNo;
-            this.registNo = registNo;
-        },
-
-        //關閉"評論課程"燈箱，同時重新渲染畫面
-        comm_calss() {
-            this.lightbox = false;
-            // this.get_course();
-        },
-    },
-    // template 渲染前 會先去執行以下函式
-    created() {
-        this.get_mem_commcourse();
-    },
-    mounted() {},
-    watch: {},
-});
-// ----------我的課程>課程清單>已完課lightbox(組件)----------
-Vue.component('lightbox_comm', {
     data() {
         return {
             rating: 0,
             commText: '',
-            courseImg: '',
-            courseName: '',
-            courseStartDate: '',
-            classDescription: '',
         };
     },
-    props: ['memberno', 'classNo', 'registNo'],
+    methods: {},
+});
+// ----------我的課程>課程清單>已完課lightbox(組件)----------
+Vue.component('lightbox', {
+    data() {
+        return {
+            rating: 0,
+            commText: '',
+        };
+    },
+    props: ['course-img', 'course-name', 'course-description', 'regist-no'],
     template: `
-    <div class="lightbox_black">
-                    <div class="lightbox">
-                        <div class="manager_lightbox_close" @click="changelightbox"><img src="./img/close.png"></div>
+    <div class="CFD_Bottom">
+                    <div class="CFD_BottomComm">
                         <div class="CFD_commTitle">
                             <h4>評論本課</h4>
-                        </div>
-                        <div class="CRD_Text">
-                            <h4 class="CRD_TextTit">{{courseName}}</h4>
-                            <div class="CRD_TextCon">
-                                <h5>完課時間:{{courseStartDate}}</h5>
-                                <h5>{{classDescription}}</h5>
                             </div>
-                        </div>
-                        <div class="commText">
-                            <form onsubmit="return false;">
-                                <star-rating class="stars" v-model="rating"
+                            <div class="commText">
+                                <form onsubmit="return false;">
+                                    <star-rating v-model="rating"
                                     text-class="custom-text"
                                     :star-size="20"
                                     @rating-selected ="setRating">
-                                </star-rating>
-                                <div id="input-container">
+                                    </star-rating>
+                                    <div id="input-container">
                                         <input type="text"
                                         v-model="commText"
                                         placeholder="評論老師/課程" 
@@ -315,80 +299,15 @@ Vue.component('lightbox_comm', {
                 </div>
     `,
     methods: {
-        get_mem_regist: async function () {
-            const res = await fetch('./php/mem_get_regist.php', {
-                method: 'POST',
-                mode: 'same-origin',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    memberno: this.memberno,
-                    registNo: this.registNo,
-                }),
-            }).then(function (data) {
-                return data.json();
-            });
-            // 取回res值後，呼叫另一隻函式
-            this.courseImg = res.courseImg;
-            this.courseName = res.courseName;
-            this.courseStartDate = res.courseStartDate;
-            this.classDescription = res.classDescription;
-        },
-
-        //關燈箱
-        changelightbox() {
-            this.$emit('changelightbox');
-            this.get_mem_regist();
-        },
-
         setRating: function (rating) {
             this.rating = rating;
         },
-        //星星組件
         sendComm: function () {
-            console.log('00');
-            let xhr = new XMLHttpRequest();
-            xhr.onload = function () {
-                if (xhr.status == 200) {
-                    alert('成功送出評論');
-                    console.log(xhr.responseText);
-                    // console.log(this);
-                    // let alreadyComment = JSON.parse(xhr.responseText);
-                    if (xhr.responseText.indexOf('您已評分') !== -1) {
-                        let commText = document.getElementsByClassName('commText')[0];
-                        commText.firstChild.style.display = 'none';
-                        commText.innerHTML = `
-                            <h5 style="margin: 20px; text-align: 
-                               center; color: white; 
-                               text-shadow: 0 0 0.2em #87f, 0 0 0.4em #ff0018, 0 0 0.3em #ff00cc;">
-                               已送出您的課程評論！
-                            </h5>`;
-                    } else {
-                        alert('fail');
-                    }
-                } else {
-                    alert(xhr.status);
-                    console.log(xhr.responseText);
-                }
-            };
-            url = 'php/memSendComm.php';
-            xhr.open('post', url, true);
-            xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-            let data_info = `commStar=${document.getElementsByName('commStar')[0].value}&commContent=${
-                document.getElementsByName('commContent')[0].value
-            }&registNo=${document.getElementsByName('registNo')[0].value}`;
-            xhr.send(data_info);
+            this.$emit('send-comm');
         },
-        // sendComm: function () {
-        //     this.$emit('send-comm');
-        // },
     },
     // template 渲染前 會先去執行以下函式
-    created() {
-        this.get_mem_regist();
-    },
+    created() {},
 });
 
 // 組件 - vue star rating
@@ -401,7 +320,7 @@ Vue.component('courseIng', {
             //撈出來的 資料
         };
     },
-    props: ['memberno'],
+    props: [],
 
     template: `
     <!-- 上課中(當天) -->
@@ -839,7 +758,7 @@ Vue.component('mem-info', {
             content: 'mem-info-default',
         };
     },
-    props: ['memberno', 'memname', 'memid', 'mempsw', 'memname', 'memmail', 'memgamepoint'],
+    props: ['memberno', 'memname', 'memid', 'mempsw', 'memname', 'memmail'],
 
     template: `
     <section class="memInfoOut menuCG">
@@ -854,12 +773,14 @@ Vue.component('mem-info', {
                             <i class="fas fa-camera"></i>
                         </div>
                     </div>
-                    <h5 class="memPoint">可折抵點數:{{memgamepoint}}點</h5>
+                    <h5 class="memPoint">可折抵點數:100點</h5>
                 </div>
                 <div class="memInfoRight">
                     <div class="memInfoFormOut">
                         <div class="memInfoForm">
-                            <component :memberno="memberno" :memmail="memmail" :memname="memname" :mempsw="mempsw" :memid="memid" :is="content" @change="change"></component>                            
+                            <div>
+                                <component :memberno="memberno" :memmail="memmail" :memname="memname" :mempsw="mempsw" :memid="memid" :is="content" @change="change"></component>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -907,7 +828,7 @@ Vue.component('mem-info-default', {
             <h5 class="MIF_Right MIF_Default">{{memmail}}</h5>
         </div>
         <div class="memInfoBtn">
-            <div class="membtn"  @click="changemem">
+            <div class="membtn"  id="memInfoCG" @click="change">
                 修改資料
             </div>
         </div>
@@ -915,7 +836,7 @@ Vue.component('mem-info-default', {
 </form>
     `,
     methods: {
-        changemem() {
+        change() {
             this.$emit('change', 'mem-info-edit');
         },
     },
@@ -926,50 +847,48 @@ Vue.component('mem-info-edit', {
     data() {
         return {
             //撈出來的 資料
-            old_psw: '',
-            new_psw: '',
-            new_psw2: '',
-            memname_new: '',
-            memid_new: '',
-            memmail_new: '',
         };
     },
-    props: ['memberno', 'memname', 'memid', 'mempsw', 'memmail'],
+    props: ['memberno', 'memname', 'memid', 'mempsw', 'memname', 'memmail'],
 
     template: `
 <form action="">
     <table>
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員編號:</h5>
-            <h5 class="MIF_Right">{{memberno}}</h5>
+            <h5 class="MIF_Right">001</h5>
         </div>
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員名稱:</h5>
-            <input type="text" class="MIF_Right" v-model="memname_new" />
+            <input type="text" class="MIF_Right" placeholder="" />
         </div>
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員帳號:</h5>
-            <input type="text" class="MIF_Right" v-model="memid_new"  /> 
+            <h5 class="MIF_Right">wenwen0487</h5>
         </div>
 
         <div class="MIF_Data">
-            <h5 class="MIF_Left">輸入舊密碼:</h5>            
-            <input type="text" class="MIF_Right" placeholder="請輸入6~20英數字" v-model="old_psw"/> 
-        </div>
-        <div class="MIF_Data">
-            <h5 class="MIF_Left">輸入新密碼:</h5>
-            <input type="text" class="MIF_Right" placeholder="請輸入6~20英數字" v-model="new_psw" />
-        </div>
-        <div class="MIF_Data">
-            <h5 class="MIF_Left">再次輸入新密碼:</h5>
-            <input type="text" class="MIF_Right" placeholder="請再次輸入新密碼" v-model="new_psw2" />
+            <h5 class="MIF_Left">會員密碼:</h5>
+            <div class="MIF_Right">
+                <input
+                    type="text"
+                    class="memPsw"
+                    placeholder="請輸入舊密碼(6~20英數字)"
+                />
+                <input
+                    type="text"
+                    class="memPsw"
+                    placeholder="請輸入新密碼(6~20英數字)"
+                />
+                <input type="text" class="memPsw" placeholder="請再次輸入新密碼" />
+            </div>
         </div>
         <div class="MIF_Data">
             <h5 class="MIF_Left">會員信箱:</h5>
-            <input type="text" class="MIF_Right" v-model="memmail_new" />
+            <input type="text" class="MIF_Right" placeholder="" />
         </div>
         <div class="memInfoBtn">
-            <div class="membtn"  @click="meminfo_edit(memname_new,memid,old_psw,new_psw,new_psw2,memmail_new)">
+            <div class="membtn" id="memInfoCG" @click="change">
                 確認修改
             </div>
         </div>
@@ -977,129 +896,12 @@ Vue.component('mem-info-edit', {
 </form>
   `,
     methods: {
-        get_mem: async function () {
-            const res = await fetch('./php/mem_get_one.php', {
-                method: 'POST',
-                mode: 'same-origin',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    memberno: this.memberno,
-                }),
-            }).then(function (data) {
-                return data.json();
-            });
-            // 取回res值後，呼叫另一隻函式
-            this.memId = res.memId;
-            this.memPsw = res.memPsw;
-            this.gradeNo = res.gradeNo;
-            this.memName = res.memName;
-            this.memMail = res.memMail;
-            this.memGamePoint = res.memGamePoint;
-            this.courseTimes = res.courseTimes;
-            this.memAvatar = res.memAvatar;
-        },
-        meminfo_edit: async function (memname_new, memid_new, old_psw, new_psw, new_psw2, memmail_new) {
-            //會員名稱長度是否符合
-            if ((this.memname_new.length > 10) | (this.memname_new.length < 1)) {
-                bus.$emit('getAlert', '請輸入會員名稱(1~10字)');
-                return;
-            }
-            //判斷 信箱規格是否正確
-            let isEmail = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/;
-            if (!isEmail.test(this.memmail_new) || this.memmail_new == '') {
-                this.$refs.signerror.innerText = '請輸入正確信箱';
-                return;
-            }
-
-            //判斷 舊密碼是否正確
-            if (this.old_psw != this.old_psw) {
-                bus.$emit('getAlert', '請輸入正確密碼');
-                return;
-            }
-            //判斷 新密碼兩次是否一致
-            if ((this.new_psw != '') | (this.new_psw2 != '')) {
-                if (this.new_psw != this.new_psw2) {
-                    bus.$emit('getAlert', '新密碼 兩次輸入不一致');
-                    return;
-                }
-            }
-            const res = await fetch('./php/mem_update_info.php', {
-                method: 'POST',
-                mode: 'same-origin',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    memberno: this.memberno,
-                    memname_new: this.memname_new,
-                    memid_new: this.memid_new,
-                    new_psw: this.new_psw,
-                    old_psw: this.old_psw,
-                    memmail_new: this.memmail_new,
-                }),
-            }).then(function (data) {
-                return data.text();
-            });
-            if (res == '修改成功~!!') {
-                bus.$emit('getAlert', '修改成功');
-                this.get_mem();
-                console.log('000');
-            } else if (res == '修改失敗~!!') {
-                bus.$emit('getAlert', '修改失敗');
-            }
-
-            //重新渲染畫面並 回到個人資料預設頁
-            this.change();
-        },
         change() {
             this.$emit('change', 'mem-info-default');
         },
     },
     // template 渲染前 會先去執行以下函式
-    created() {
-        this.memname_new = this.memname;
-        this.memid_new = this.memid;
-        this.old_psw = this.mempsw;
-        this.memmail_new = this.memmail;
-    },
-});
-
-//警示燈箱
-Vue.component('alert_lightbox', {
-    data() {
-        return {
-            alertLightbox: false,
-            alertText: '',
-        };
-    },
-    methods: {
-        closeAlertLightbox() {
-            this.alertLightbox = false;
-            // if (this.alertText == '跟團時間已截止') {
-            //     location.href = 'index.html'
-            // }
-        },
-    },
-    mounted() {
-        bus.$on('getAlert', (_alertText) => {
-            this.alertText = _alertText;
-            this.alertLightbox = true;
-        });
-    },
-    template: `
-<div class="alertLightbox_black" v-if="alertLightbox">
-    <div class="alertLightboxWrapper">
-        <div class="alertLightbox" >
-            <div>{{alertText}}</div>
-            <div @click="closeAlertLightbox">確定</div>
-        </div>
-    </div>
-</div>
-`,
+    created() {},
 });
 
 new Vue({
@@ -1161,6 +963,40 @@ new Vue({
             // 取回res值後，呼叫另一隻函式
             this.courseTimes = res.courseTimes;
             this.progress = (res.courseTimes / 16) * 100;
+        },
+        //星星組件
+        sendComm: function () {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    alert('成功送出評論');
+                    console.log(xhr.responseText);
+                    // console.log(this);
+                    // let alreadyComment = JSON.parse(xhr.responseText);
+                    if (xhr.responseText.indexOf('您已評分') !== -1) {
+                        let commText = document.getElementsByClassName('commText')[0];
+                        commText.firstChild.style.display = 'none';
+                        commText.innerHTML = `
+                            <h5 style="margin: 20px; text-align: 
+                               center; color: white; 
+                               text-shadow: 0 0 0.2em #87f, 0 0 0.4em #ff0018, 0 0 0.3em #ff00cc;">
+                               已送出您的課程評論！
+                            </h5>`;
+                    } else {
+                        alert('fail');
+                    }
+                } else {
+                    alert(xhr.status);
+                    console.log(xhr.responseText);
+                }
+            };
+            url = 'php/memSendComm.php';
+            xhr.open('post', url, true);
+            xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+            let data_info = `commStar=${document.getElementsByName('commStar')[0].value}&commContent=${
+                document.getElementsByName('commContent')[0].value
+            }&registNo=${document.getElementsByName('registNo')[0].value}`;
+            xhr.send(data_info);
         },
     },
     created() {
