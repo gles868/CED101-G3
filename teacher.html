@@ -20,7 +20,6 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.js"></script> -->
     <link rel="stylesheet" type="text/css" href="vendors/fullpage/fullpage.min.css">
     <script src="vendors/fullpage/vue-fullpage.min.js"></script>
-    
 
 </head>
 <body>
@@ -111,7 +110,8 @@
             </div>
         </div> 
     </div>
-    
+
+    <!-- select選單 -->
     <div class="select">
         <select onchange = "location = this.options[this.selectedIndex].value;">
             <option value="#" disabled selected>選擇教師</option>
@@ -124,9 +124,310 @@
         </select>
     </div>
 
-    <div id="app">
+    <div id="app" class="scrollPage">
         <full-page ref="fullpage" :options="options" id="fullpage">
-            <teacher-component v-for="(teacher, i) in dataRows[0]"
+
+            <div class="section">
+                <div class="container">
+                    <div class="tr">
+                        <div class="img">
+                            <div class="shadow"></div>
+                            <img :src="'img/teacher/' + dataRows[0][0].teachImg" alt="">
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="intro">  
+                            <div class="title">
+                                <h3>{{dataRows[0][0].teachName}}</h3>
+                                <star-rating v-model="dataRows[0][0].commStarAvg"
+                                            text-class="custom-text"
+                                            :increment="0.1" 
+                                            :star-size="28"
+                                            :glow="3"
+                                            :padding="3"
+                                            :read-only="true">
+                                </star-rating>
+                            </div>
+                            <p>
+                                {{dataRows[0][0].teachDescription}}
+                            </p>
+                        </div>
+                        <div class="comm_card">
+                            <div class="card">
+                                <div class="avatar">
+                                    <img :src="'img/teacher/' + dataRows[0][0].memAvatar" alt="" width="80px">
+                                </div>
+                                <p>{{dataRows[0][0].memName}}</p>
+                            </div>
+                            <div class="comm">
+                                <star-rating v-model="dataRows[0][0].commStar"
+                                                text-class="custom-text" 
+                                                :star-size="20"
+                                                :glow="2"
+                                                :padding="2"
+                                                :read-only="true">
+                                </star-rating>
+                                <div class="text">{{dataRows[0][0].commContent}}</div>
+                            </div>
+                        </div>
+                        <div class="more">
+                            <a :href="'singleTeacher.html?teachNo=' + dataRows[0][0].teachNo">more →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="container">
+                    <div class="tr">
+                        <div class="img">
+                            <div class="shadow"></div>
+                            <img :src="'img/teacher/' + dataRows[0][1].teachImg" alt="">
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="intro">  
+                            <div class="title">
+                                <h3>{{dataRows[0][1].teachName}}</h3>
+                                <star-rating v-model="dataRows[0][1].commStarAvg"
+                                            text-class="custom-text"
+                                            :increment="0.1" 
+                                            :star-size="28"
+                                            :glow="3"
+                                            :padding="3"
+                                            :read-only="true">
+                                </star-rating>
+                            </div>
+                            <p>
+                                {{dataRows[0][1].teachDescription}}
+                            </p>
+                        </div>
+                        <div class="comm_card">
+                            <div class="card">
+                                <div class="avatar">
+                                    <img :src="'img/teacher/' + dataRows[0][1].memAvatar" alt="" width="80px">
+                                </div>
+                                <p>{{dataRows[0][1].memName}}</p>
+                            </div>
+                            <div class="comm">
+                                <star-rating v-model="dataRows[0][1].commStar"
+                                                text-class="custom-text" 
+                                                :star-size="20"
+                                                :glow="2"
+                                                :padding="2"
+                                                :read-only="true">
+                                </star-rating>
+                                <div class="text">{{dataRows[0][1].commContent}}</div>
+                            </div>
+                        </div>
+                        <div class="more">
+                            <a :href="'singleTeacher.html?teachNo=' + dataRows[0][1].teachNo">more →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="container">
+                    <div class="tr">
+                        <div class="img">
+                            <div class="shadow"></div>
+                            <img :src="'img/teacher/' + dataRows[0][2].teachImg" alt="">
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="intro">  
+                            <div class="title">
+                                <h3>{{dataRows[0][2].teachName}}</h3>
+                                <star-rating v-model="dataRows[0][2].commStarAvg"
+                                            text-class="custom-text"
+                                            :increment="0.1" 
+                                            :star-size="28"
+                                            :glow="3"
+                                            :padding="3"
+                                            :read-only="true">
+                                </star-rating>
+                            </div>
+                            <p>
+                                {{dataRows[0][2].teachDescription}}
+                            </p>
+                        </div>
+                        <div class="comm_card">
+                            <div class="card">
+                                <div class="avatar">
+                                    <img :src="'img/teacher/' + dataRows[0][2].memAvatar" alt="" width="80px">
+                                </div>
+                                <p>{{dataRows[0][2].memName}}</p>
+                            </div>
+                            <div class="comm">
+                                <star-rating v-model="dataRows[0][2].commStar"
+                                                text-class="custom-text" 
+                                                :star-size="20"
+                                                :glow="2"
+                                                :padding="2"
+                                                :read-only="true">
+                                </star-rating>
+                                <div class="text">{{dataRows[0][2].commContent}}</div>
+                            </div>
+                        </div>
+                        <div class="more">
+                            <a :href="'singleTeacher.html?teachNo=' + dataRows[0][2].teachNo">more →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="container">
+                    <div class="tr">
+                        <div class="img">
+                            <div class="shadow"></div>
+                            <img :src="'img/teacher/' + dataRows[0][3].teachImg" alt="">
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="intro">  
+                            <div class="title">
+                                <h3>{{dataRows[0][3].teachName}}</h3>
+                                <star-rating v-model="dataRows[0][3].commStarAvg"
+                                            text-class="custom-text"
+                                            :increment="0.1" 
+                                            :star-size="28"
+                                            :glow="3"
+                                            :padding="3"
+                                            :read-only="true">
+                                </star-rating>
+                            </div>
+                            <p>
+                                {{dataRows[0][3].teachDescription}}
+                            </p>
+                        </div>
+                        <div class="comm_card">
+                            <div class="card">
+                                <div class="avatar">
+                                    <img :src="'img/teacher/' + dataRows[0][3].memAvatar" alt="" width="80px">
+                                </div>
+                                <p>{{dataRows[0][3].memName}}</p>
+                            </div>
+                            <div class="comm">
+                                <star-rating v-model="dataRows[0][3].commStar"
+                                                text-class="custom-text" 
+                                                :star-size="20"
+                                                :glow="2"
+                                                :padding="2"
+                                                :read-only="true">
+                                </star-rating>
+                                <div class="text">{{dataRows[0][3].commContent}}</div>
+                            </div>
+                        </div>
+                        <div class="more">
+                            <a :href="'singleTeacher.html?teachNo=' + dataRows[0][3].teachNo">more →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="container">
+                    <div class="tr">
+                        <div class="img">
+                            <div class="shadow"></div>
+                            <img :src="'img/teacher/' + dataRows[0][4].teachImg" alt="">
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="intro">  
+                            <div class="title">
+                                <h3>{{dataRows[0][4].teachName}}</h3>
+                                <star-rating v-model="dataRows[0][4].commStarAvg"
+                                            text-class="custom-text"
+                                            :increment="0.1" 
+                                            :star-size="28"
+                                            :glow="3"
+                                            :padding="3"
+                                            :read-only="true">
+                                </star-rating>
+                            </div>
+                            <p>
+                                {{dataRows[0][4].teachDescription}}
+                            </p>
+                        </div>
+                        <div class="comm_card">
+                            <div class="card">
+                                <div class="avatar">
+                                    <img :src="'img/teacher/' + dataRows[0][4].memAvatar" alt="" width="80px">
+                                </div>
+                                <p>{{dataRows[0][4].memName}}</p>
+                            </div>
+                            <div class="comm">
+                                <star-rating v-model="dataRows[0][4].commStar"
+                                                text-class="custom-text" 
+                                                :star-size="20"
+                                                :glow="2"
+                                                :padding="2"
+                                                :read-only="true">
+                                </star-rating>
+                                <div class="text">{{dataRows[0][4].commContent}}</div>
+                            </div>
+                        </div>
+                        <div class="more">
+                            <a :href="'singleTeacher.html?teachNo=' + dataRows[0][4].teachNo">more →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="container">
+                    <div class="tr">
+                        <div class="img">
+                            <div class="shadow"></div>
+                            <img :src="'img/teacher/' + dataRows[0][5].teachImg" alt="">
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="intro">  
+                            <div class="title">
+                                <h3>{{dataRows[0][5].teachName}}</h3>
+                                <star-rating v-model="dataRows[0][5].commStarAvg"
+                                            text-class="custom-text"
+                                            :increment="0.1" 
+                                            :star-size="28"
+                                            :glow="3"
+                                            :padding="3"
+                                            :read-only="true">
+                                </star-rating>
+                            </div>
+                            <p>
+                                {{dataRows[0][5].teachDescription}}
+                            </p>
+                        </div>
+                        <div class="comm_card">
+                            <div class="card">
+                                <div class="avatar">
+                                    <img :src="'img/teacher/' + dataRows[0][5].memAvatar" alt="" width="80px">
+                                </div>
+                                <p>{{dataRows[0][5].memName}}</p>
+                            </div>
+                            <div class="comm">
+                                <star-rating v-model="dataRows[0][5].commStar"
+                                                text-class="custom-text" 
+                                                :star-size="20"
+                                                :glow="2"
+                                                :padding="2"
+                                                :read-only="true">
+                                </star-rating>
+                                <div class="text">{{dataRows[0][5].commContent}}</div>
+                            </div>
+                        </div>
+                        <div class="more">
+                            <a :href="'singleTeacher.html?teachNo=' + dataRows[0][5].teachNo">more →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- <teacher-component v-for="(teacher, i) in dataRows[0]"
                                :teach-no="teacher.teachNo"
                                :teach-img="teacher.teachImg"
                                :teach-name="teacher.teachName"
@@ -138,7 +439,6 @@
                                :comm-content="teacher.commContent">
             </teacher-component>
 
-            <!-- div.section在這才可執行 -->
             <div class="section">
                 
             </div>
@@ -147,15 +447,15 @@
             </div>
             <div class="section">
                 <h3>Section 3</h3>
-            </div>
+            </div> -->
         </full-page>
     </div>
 
-    <div id="scrollPage">
-        <!-- 教師組件裡塞評論+星星組件 -->
+    <!-- <div id="scrollPage">
+        <!-- 教師組件裡塞評論+星星組件 
         <!-- <teacher-component :teacher-rows="dataRows[0]"
                            :comment-rows="dataRows[1]">
-        </teacher-component> -->
+        </teacher-component> -
 
 		<!-- <div class="section section1">
             <div class="container">
@@ -380,8 +680,8 @@
                     </div>
                 </div>
             
-        </div> -->
-	</div>
+        </div> -
+	</div> -->
 
     <footer>
         <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>

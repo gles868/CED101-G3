@@ -100,7 +100,7 @@ header{
     }
 }
 
-#scrollPage{
+.scrollPage{
     .section{
         background: {
             image: url("./../img/teacher/teacher_bg.png");
@@ -195,11 +195,22 @@ header{
                     .title{
                         // border: 1px solid seagreen;
                         display: flex;
+                        flex-direction: column;
                         h3{
                             color: #fff;
                             font-size: $h3;
                             @include titleStyle;
                             text-shadow: 0 0 0.6em #6600b4;
+                        }
+                        .vue-star-rating{
+                            margin: 5px;
+                            .custom-text{
+                                text-shadow: 0 0 0.3em #a547ec;
+                                color: #fff;
+                                font-size: 28px;
+                                font-weight: 600;
+                                letter-spacing: 2px;
+                            }
                         }
                         .star{
                             // border: 1px solid tomato;
@@ -243,9 +254,14 @@ header{
                     .avatar{
                             // border: 1px solid teal;
                             border-radius: 50%;
-                            width: 80px;
-                            height: 80px;
+                            width: 70px;
+                            height: 70px;
                             overflow: hidden;
+                            border: 1px solid #87f;
+                            box-shadow: 0px 2px 20px -10px #87f;
+                            img{
+                                width: 100%;
+                            }
                         } 
                         p{
                             // border: 1px solid peru;
@@ -258,6 +274,15 @@ header{
                         width: 75%;
                         margin: auto;
                         height: 120px;
+                        .vue-star-rating{
+                            margin: 5px;
+                            .custom-text{
+                                text-shadow: 0 0 0.3em #a547ec;
+                                color: #fff;
+                                font-size: 18px;
+                                font-weight: 400;
+                            }
+                        }
                         .star{
                             // border: 1px solid blue;
                             display: inline-block;
@@ -280,6 +305,7 @@ header{
                     // border: 1px solid red;
                     text-align: right;
                     @include paraStyle;
+                    margin-bottom: -40px;
                     a{
                         color: #fff;
                     }

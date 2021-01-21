@@ -21,7 +21,7 @@
     </head>
     <body>
         <!-- header -->
-        <header>
+        <header id="header">
             <nav>
                 <button class="hamburger hamburger--spin" type="button">
                     <span class="hamburger-box">
@@ -33,8 +33,8 @@
                 </div>
                 <div class="nav-right">
                     <p>
-                        您好!
-                        <span id="ename">管理員</span>
+                        {{employee.empName}} 管理員，您好：)
+                        <span id="ename"></span>
                     </p>
                 </div>
             </nav>
@@ -44,7 +44,7 @@
             <section class="content-wrap">
                 <ul class="left-block">
                     <h2>人員管理</h2>
-                    <li id="back-admin" @click="content='back-admin'">管理員管理</li>
+                    <li id="back-admin" @click="content='back-admin'" class="active">管理員管理</li>
                     <li id="back-member" @click="content='back-member'">會員管理</li>
                     <li id="back-teacher" @click="content='back-teacher'">教師管理</li>
                     <h2>後台管理</h2>

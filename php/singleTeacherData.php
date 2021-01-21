@@ -24,13 +24,12 @@
         $courseRows = $course->fetchAll(PDO::FETCH_ASSOC);
 
         // 取得評論資料
-        $sql = "SELECT DISTINCT m.memName, reg.commStar, reg.commContent, m.memAvatar, reg.registNo
-                    FROM `registration` reg JOIN `member` m ON (reg.memberNo = m.memberNo)
-                                            JOIN `report` rep ON (reg.registNo = rep.registNo)
-                                            JOIN `class` c ON (reg.classNo = c.classNo)
-                                            JOIN `teacher` t ON (c.teachNo = t.teachNo)            
-                    WHERE commStar IS NOT NULL AND commContent IS NOT NULL AND 
-                          rep.repoStatus != 1 AND t.teachNo = :teachNo";
+        $sql = "SELECT DISTINCT m.memName, reg.commStar, reg.commContent, m.memAvatar, reg.registNo, t.teachNo
+                    FROM `registration` reg LEFT OUTER JOIN `member` m ON (reg.memberNo = m.memberNo)
+                                            LEFT OUTER JOIN `report` rep ON (reg.registNo = rep.registNo)
+                                            LEFT OUTER JOIN `class` c ON (reg.classNo = c.classNo)
+                                            LEFT OUTER JOIN `teacher` t ON (c.teachNo = t.teachNo)            
+                    WHERE t.teachNo = :teachNo AND commStar IS NOT NULL AND commContent IS NOT NULL ";
         $teachNo = $_GET['teachNo'];
         $comment = $pdo->prepare($sql);
         $comment->bindValue(':teachNo', $teachNo);

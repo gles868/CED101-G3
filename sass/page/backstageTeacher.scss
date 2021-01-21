@@ -99,6 +99,20 @@ ul.left-block li:hover{
             margin: 15px 5px;
             display: flex;
             overflow: auto;
+            table{
+                tr > td{
+                    button{
+                        cursor: pointer;
+                        border-radius: 3px;
+                        width: 60px;
+                        height: 28px;
+                        border: 1px solid transparent;
+                        background-color: #8946a1 !important;
+                        color: #fff;
+                        transition: all .2s;
+                    }
+                }
+            }
         }
         .course-list{
             height: 200px;
@@ -276,6 +290,7 @@ a{
             height: 500px;
             align-items: center;
             font-size: 18px;
+            color: #555555;
             .add-form {
                 // border: 1px solid red;
                 width: 100%;
@@ -290,21 +305,21 @@ a{
                     width: 100%;
                     display: flex;
                     justify-content: center;
-                    margin: 10px auto;
+                    margin: 20px auto;
                     .acc_title {
                         width: 30%;
                         // border: 1px solid red;
                     }
                     .acc_con {
-                        width: 55%;
+                        width: 50%;
                         text-align: left;
                         // border: 1px solid black;
                     }
                 }
                 .form_btn {
                     display: inline-block;
-                    background-color: #2e9dec;
-                    padding: 10px 75px;
+                    background-color: #49a09d;
+                    padding: 8px 60px;
                     border: none;
                     border-radius: 3px;
                     color: white;

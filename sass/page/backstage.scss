@@ -62,6 +62,10 @@ button.hamburger {
             text-align: center;
             border-radius: 20px;
             transition: 0.3s;
+            cursor: pointer;
+            &.active{
+                background-color: #5E5DB9;
+            }
         }
     }
 }
@@ -70,8 +74,19 @@ button.hamburger {
 }
 .add-bar {
     display: flex;
+    align-items: center;
     margin-bottom: 10px;
     width: 100%;
+    min-width: 200px;
+    input{
+        width: 80%;
+        max-width: 200px;
+        height: 27px;
+        border-radius: 3px;
+        border: transparent;
+        opacity: 90%;
+        margin: 0 10px 0 2px;
+    }
     .admin_edit_box {
         display: flex;
         align-items: center;
@@ -80,11 +95,31 @@ button.hamburger {
         // border: 1px solid blue;
         label {
             width: 15%;
+            min-width: 40px;
             // border: 1px solid red;
         }
         input {
             width: 80%;
             // border: 1px solid green;
+            width: 80%;
+            height: 27px;
+            border-radius: 3px;
+            border: transparent;
+            opacity: 90%;
+            margin: 0 10px 0 2px;
+        }
+    }
+    button{
+        cursor: pointer;
+        border-radius: 40px;
+        width: 95px;
+        height: 30px;
+        border: 1px solid transparent;
+        background-color: #6f26a2;
+        color: #fff;
+        transition: all .2s;
+        &:hover{
+            background-color: #6d289d;
         }
     }
 }
@@ -187,6 +222,23 @@ button.hamburger {
         padding: 10px;
         display: flex;
         overflow: auto;
+        table{
+            tr > td{
+                button{
+                    cursor: pointer;
+                    border-radius: 3px;
+                    width: 60px;
+                    height: 28px;
+                    border: 1px solid transparent;
+                    background-color: #8946a1 !important;
+                    color: #fff;
+                    transition: all .2s;
+                    &:hover{
+                        background-color: #6d289d;
+                    }
+                }
+            }
+        }
         .item_img {
             width: 100px;
             padding: 0;
@@ -202,10 +254,15 @@ button.hamburger {
     }
     th {
         padding: 5px;
+        color: #555555;
     }
     td {
         padding: 10px;
         text-align: center;
+        color: #555555;
+    }
+    label {
+        color: #555555;
     }
 }
 
@@ -242,21 +299,23 @@ button.hamburger {
             justify-content: center;
             align-items: center;
             font-size: 24px;
+            color: #555555;
+            letter-spacing: 1px;
             div:nth-child(2) {
                 margin-bottom: 80px;
                 span:nth-child(1) {
-                    color: purple;
+                    color: #49a09d;
                     font-weight: bold;
                 }
                 span:nth-child(2) {
-                    color: red;
+                    color: #ee7812;
                     font-weight: bold;
                 }
             }
             div:nth-child(3) {
                 display: inline-block;
-                background-color: #2e9dec;
-                padding: 10px 75px;
+                background-color: #49a09d;
+                padding: 8px 60px;
                 border: none;
                 border-radius: 3px;
                 color: white;
@@ -268,14 +327,15 @@ button.hamburger {
     }
 }
 .manager_lightbox_close {
-    margin-bottom: 50px;
+    margin-bottom: 35px;
     img {
         position: absolute;
-        width: 25px;
+        width: 20px;
         top: 15px;
         right: 15px;
         color: rgba(128, 128, 128, 0.46);
         cursor: pointer;
+        opacity: 50%;
     }
 }
 /* ------------ 右邊區塊=>課程&商城管理燈箱(jQuery) ------------ */
@@ -302,6 +362,7 @@ button.hamburger {
             height: 500px;
             align-items: center;
             font-size: 18px;
+            color: #555555;
             .add-form {
                 // border: 1px solid red;
                 width: 100%;
@@ -316,21 +377,21 @@ button.hamburger {
                     width: 100%;
                     display: flex;
                     justify-content: center;
-                    margin: 10px auto;
+                    margin: 15px auto;
                     .acc_title {
                         width: 30%;
                         // border: 1px solid red;
                     }
                     .acc_con {
-                        width: 55%;
+                        width: 50%;
                         text-align: left;
                         // border: 1px solid black;
                     }
                 }
                 .form_btn {
                     display: inline-block;
-                    background-color: #2e9dec;
-                    padding: 10px 75px;
+                    background-color: #49a09d;
+                    padding: 8px 60px;
                     border: none;
                     border-radius: 3px;
                     color: white;
@@ -392,7 +453,7 @@ footer > p {
 // }
 
 /*------------ 顯示使用者現在所在位置 ------------*/
-#back-admin {
-    background-color: #5e5db9;
-}
+// #back-admin {
+//     background-color: #5e5db9;
+// }
 /*# sourceMappingURL=back-admin.css.map */

@@ -166,19 +166,21 @@
             <div class="title">
                 <h2>教師評論</h2>
             </div>
-            <!-- 評論評分+檢舉燈箱開始 -->
-            <comment-component v-for="(comment, i) in dataRows[2]"
-                               :key="comment.registNo"
-                               :mem-avatar="comment.memAvatar"
-                               :mem-name="comment.memName"
-                               :comm-star="comment.commStar"
-                               :comm-content="comment.commContent"
-                               :regist-no="comment.registNo"
-                               @show-box="showLightbox(i)"
-                               @close-box="closeLightbox(i)"
-                               @send-report="sendReport(i)">
-            </comment-component>
-            <!-- 評論評分+檢舉燈箱結束 -->
+            <div class="wrapper">
+                <!-- 評論評分+檢舉燈箱開始 -->
+                <comment-component v-for="(comment, i) in dataRows[2]"
+                                :key="comment.registNo"
+                                :mem-avatar="comment.memAvatar"
+                                :mem-name="comment.memName"
+                                :comm-star="comment.commStar"
+                                :comm-content="comment.commContent"
+                                :regist-no="comment.registNo"
+                                @show-box="showLightbox(i)"
+                                @close-box="closeLightbox(i)"
+                                @send-report="sendReport(i)">
+                </comment-component>
+                <!-- 評論評分+檢舉燈箱結束 -->
+            </div>
 
             <!-- 顯示更多btn -->
             <div class="btn">
