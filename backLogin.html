@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麻瓜特訓班 | 後台登入</title>
+    <link rel="stylesheet" href="css/backLogin.css">
+    <link href="css/hamburgers.css" rel="stylesheet">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!-- animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+</head>
+<body>
+    <form>
+        <h2>管理員登入</h2>
+        <input type="text" id="adminId" placeholder="請輸入帳號"/>
+        <input type="password" id="adminPsw" placeholder="請輸入密碼"/>
+        <button type="button" id="adminLogin" name="button" class="btnLogin">登入</button>
+    </form>
+
+    <script>
+        window.addEventListener("load", function(){
+
+            // =============== 存取DOM元素 ===============
+            let adminId = document.getElementById("adminId");
+            let adminPsw = document.getElementById("adminPsw");
+            let adminLogin = document.getElementById("adminLogin");
+
+            // =============== 註冊事件聆聽 ===============
+            adminLogin.addEventListener('click', sendForm);
+            // adminLogin.addEventListener('click', checkMemIdPsw);
+
+            // =============== function ===============
+            
+            // =============== 登入 ===============
+            // 驗證帳密
+            function sendForm(){
+                // 確認欄位是否為空
+                adminId.value.replace(/\s+/g, '');
+                adminPsw.value.replace(/\s+/g, '');
+
+                if(adminId.value == '' || adminId.value == undefined || adminId.value == null){
+                    alert('尚未輸入帳號');
+                    adminId.style.border = '1px solid #f57c35';
+                    adminId.addEventListener('focus', function(){
+                        adminId.style.border = '0px';
+                    });
+                    
+                }else if(adminPsw.value == '' || adminPsw.value == undefined || adminPsw.value == null){
+                    alert('尚未輸入密碼');
+                    adminPsw.style.border = '1px solid #f57c35';
+                    adminPsw.addEventListener('focus', function(){
+                        adminPsw.style.border = '0px';
+                    });
+                }else{
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = function(){
+                        if(xhr.status == 200){  // 是否已有該管理員
+                            if(xhr.responseText.indexOf('無此管理員') == -1){  // 登入成功
+                                let empRow = JSON.parse(xhr.responseText);
+                                alert(`hello${empRow.empName}, 你好：)`);
+                                // 清空欄位
+                                adminId.value = '';  
+                                adminPsw.value = '';  
+
+                                // 判斷要導向 管理員或教師後台
+                                if(empRow.empType == '0'){
+                                    console.log('我是管理員');
+                                    location.href = "backstage.html";
+                                    return false;
+                                }else if(empRow.empType == '1'){
+                                    location.href = "backstageTeacher.html";
+                                    console.log('我是老師兒');
+                                    return false;
+                                }
+
+                            }else{
+                                alert('帳密錯誤，請重新輸入');
+                                // 清空欄位
+                                adminId.value = '';  
+                                adminPsw.value = ''; 
+                            }
+                        }else{
+                            alert(xhr.status);
+                            console.log(xhr.responsetext);
+                        }
+                    }
+                    let url = 'php/backLogin.php';
+                    xhr.open('post', url, true);
+                    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+                    let data_info = `empId=${adminId.value}&empPsw=${adminPsw.value}`;
+                    xhr.send(data_info);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1685,8 +1685,54 @@ Vue.component('back-game', {
 
 new Vue({
     el: '#app',
+    name: '#app',
     data: {
         content: 'back-admin',
+        employee: '',
     },
-    methods: {},
+    methods: {
+        get_employee_data: async function () {
+            const res = await fetch('php/back_admin.php', {}).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.employee = res;
+        },
+    },
+    created() {
+        this.get_employee_data();
+    },
+});
+
+new Vue({
+    el: '#header',
+    name: '#header',
+    data: {
+        employee: '',
+    },
+    methods: {
+        get_employee_data: async function () {
+            const res = await fetch('php/backLogin_employee_data.php', {}).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.employee = res;
+        },
+    },
+    created() {
+        this.get_employee_data();
+    },
+});
+
+window.addEventListener('load', function () {
+    // 顯示使用者現在位置
+    let li = document.querySelectorAll('#app .content-wrap > ul > li');
+    for (let i = 0; i < li.length; i++) {
+        li[i].onclick = function () {
+            for (let i = 0; i < li.length; i++) {
+                li[i].classList.remove('active');
+                this.classList.add('active');
+            }
+        };
+    }
 });

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麻瓜特訓班 | 首頁</title>
+    <link rel="stylesheet" href="css/index.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- gsap3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script> -->
+    
+    <!-- scroll magic -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+
+    <!-- parallax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+
+    <!-- Vue -->
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="menu_toggle">
+                <input type="checkbox">
+                <div class="logo">
+                    <a href="index.html"><img src="./img/logo.png"></a>
+                </div>
+                <ul class="nav">
+                    <li><a href="course.html">課程總覽</a></li>
+                    <li><a href="teacher.html">教師總覽</a></li>
+                    <li>
+                        <a href="main.html"><img src="./img/logo.png"></a>
+                    </li>
+                    <li><a href="mall.html">商城</a></li>
+                    <li><a href="game.html">小遊戲</a></li>
+                </ul>
+                <div class="ham">
+                    <span></span> 
+                    <span></span> 
+                    <span></span>
+                </div>
+                <ul class="nav-right">
+                    <li>
+                        <a href="member.html">
+                        <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
+                            <i id="memIcon" class="fas fa-user-circle fa-lg"></i>
+                            <div id="memInfo">
+                                <div id="avatar">
+                                    <img :src="'img/' + this.memData.memAvatar" alt="">
+                                </div>
+                                <!-- <span>{{this.memData.memName}}</span> -->
+                            </div>
+                        </a>
+                        <span id="logout"></span>
+                    </li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 登入註冊燈箱 -->
+    <div class="lightbox-bg"></div>
+    <div class="container" id="container">
+        <span class="close"><i class="fas fa-times fa-xs"></i></span>
+        <!-- 註冊 -->
+        <div class="form-container sign-up-container">
+            <form id="signUpForm">
+                <h2>會員註冊</h2>
+                <input type="text" id="signUpName" placeholder="輸入姓名" />
+                <input type="email" id="sigUpEmail" placeholder="輸入email" />
+                <input type="text" id="signUpId" placeholder="輸入帳號" />
+                <input type="password" id="signUpPsw" placeholder="輸入密碼(至少含各一位英數字)" />
+                <input type="password" id="checkPsw" placeholder="確認密碼" name="checkPsw">
+                <input type="button" id="signUpSubmit" value="註冊">
+
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+            </form>
+        </div>      
+        <!-- 登入 -->
+        <div class="form-container sign-in-container">
+            <form id="signInForm">
+                <h2>會員登入</h2>
+                <input type="text" name="memId" id="memId" placeholder="輸入帳號" />
+                <input type="password" name="memPsw" id="memPsw" placeholder="輸入密碼" />
+                <span id="forgetPsw">忘記密碼?</span>
+                <input type="button" id="signInSubmit" value="登入">
+                
+                <div class="notice" style="top: 140px"></div>
+                <div class="notice" style="top: 198px"></div>
+            </form>
+        </div>
+        
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <button type="button" class="check" id="signIn">登入</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <button type="button" class="check" id="signUp">註冊</button>
+                </div>
+            </div>
+        </div> 
+    </div>
+    
+    <!--觸發點 trigger1-->
+    <div id="triggerPoint"></div> 
+    <section id="pinSection">
+        <div class="lay01 common"></div>
+        <!--rock-->
+        <div class="lay02 common"></div> 
+        <!--para-->
+        <div class="lay03 common">  
+            <p>
+                在三千年後，眾魔法師與邪惡勢力爆發過無數次戰爭，<br>
+                為了魔法世界的和平，傷亡眾多的魔法師們，成立了麻瓜特訓班。<br>
+                致力培養更多麻瓜成為魔法師，對抗邪惡勢力⋯<br>
+            </p>
+        </div>
+        <div class="lay03-2 common">
+            <p>
+                要成為魔法師，必須選修本特訓班開授的魔法課程。<br><br>
+                修滿八門課程，成為魔法實習生<br>
+                修滿十六門課，升級成為正式魔法師。
+            </p>
+        </div> 
+        <!--castle-->
+        <div class="lay04 common"></div> 
+        <!-- witch -->
+        <!-- <div class="witch"></div> -->
+        <div class="lay05 common"></div>
+        <div class="moon common"></div>
+        <div class="lay06 common"></div>
+
+        <div class="cloud_move common">
+            <img src="./img/index/clouds2.png" alt="">
+            <img src="./img/index/clouds2.png" alt="">
+            <img src="./img/index/clouds3.png" alt="">
+        </div>
+    </section>  
+
+    <div class="bg_wrapper">
+        <section id="second">
+            <div class="wrapper">
+                <div class="title">
+                    <h2>熱門課程</h2>
+                </div>
+        
+                <div class="container">
+                    <div class="card card01">
+                        <a href="./singleCourse.html">
+                            <div class="content">
+                                <h3>飛行術</h3>
+                                <p>
+                                    傳授如何進入隱身狀態，安排補血時機及定點放置，成為魔法師的必修課。
+                                </p>
+                                <p>課程價格: <span>$12,800</span></p>
+                                <p>報名人數: <span>12</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card card02">
+                        <a href="./singleCourse.html">
+                            <div class="content">
+                                <h3>光箭術</h3>
+                                <p>
+                                    傳授如何進入隱身狀態，安排補血時機及定點放置，成為魔法師的必修課。
+                                </p>
+                                <p>課程價格: <span>$4,800</span></p>
+                                <p>報名人數: <span>12</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card card03">
+                        <a href="./singleCourse.html">
+                            <div class="content">
+                                <h3>隱身術</h3>
+                                <p>
+                                    傳授如何進入隱身狀態，安排補血時機及定點放置，成為魔法師的必修課。
+                                </p>
+                                <p>課程價格: <span>$2,680</span></p>
+                                <p>報名人數: <span>12</span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="rock">
+                    <img src="./img/index/[lessons]rocks03.png" alt="" width="370">
+                    <img src="./img/index/[lessons]rocks02.png" alt="" width="500">
+                    <img src="./img/index/[lessons]rocks01.png" alt="" width="380">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section id="third">
+        <div class="tea-over">
+            <div class="tea-bg" id="scene">
+                <div class="title">
+                    <h2>熱門教師</h2>
+                </div>
+                <div class="tea-all" data-depth="0.2">
+                    <div class="tea-all-in">
+                        <a href="teacher.html#secondPage">
+                            <div class="teacher-big1" >
+                                <div class="teacher">
+                                    <div class="shadow"></div>
+                                    <img src="./img/index/[teachers]teacher01.png" alt="">
+                                </div>
+                                <div class="tea-box">
+                                    <img src="./img/index/[teachers]card-04.png" alt="">
+                                </div>
+                                <div class="inf-all">
+                                    <div class="tea-name">哈利菠菜</div>
+                                    <div class="tea-inf">大家好我叫哈利波菜,我是很好的老師,不服來辯</div>
+                                    <div class="tea-star" data-percent="90"></div>
+                                    <ul class="tea-list">
+                                        <li>飛行學</li>
+                                        <li>煉金學</li>
+                                        <li>魔藥學</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </a>
+    
+                        <div class="teacher-big2" >
+                            <div class="teacher2">
+                                <div class="shadow"></div>
+                                <img src="./img/index/[teachers]teacher02.png" alt="">
+                            </div>
+                            <div class="tea-box2">
+                                <img src="./img/index/[teachers]card-04.png" alt="">
+                            </div>
+                            <div class="inf-all2">
+                                <div class="tea-name">哈利菠菜</div>
+                                <div class="tea-inf">大家好我叫哈利波菜,我是很好的老師,不服來辯</div>
+                                <div class="tea-star" data-percent="80"></div>
+                                <ul class="tea-list">
+                                    <li>飛行學</li>
+                                    <li>煉金學</li>
+                                    <li>魔藥學</li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                        <div class="teacher-big3" >
+                            <div class="teacher3">
+                                <div class="shadow"></div>
+                                <img src="./img/index/[teachers]teacher03.png" alt="">
+                            </div>
+                            <div class="tea-box3">
+                                <img src="./img/index/[teachers]card-04.png" alt="">
+                            </div>
+                            <div class="inf-all3">
+                                <div class="tea-name">哈利菠菜</div>
+                                <div class="tea-inf">大家好我叫哈利波菜,我是很好的老師,不服來辯</div>
+                                <div class="tea-star" data-percent="50"></div>
+                                <ul class="tea-list">
+                                    <li>飛行學</li>
+                                    <li>煉金學</li>
+                                    <li>魔藥學</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="float_obj" data-depth="0.4">
+                    <!-- <img src="./img/index/cat.png" alt=""> -->
+                    <div><img src="./img/index/bat.png" alt=""></div>
+                    <div><img src="./img/index/bat.png" alt=""></div>
+                </div>
+            </div>
+            <div class="btn">
+                <button onclick="location.href='teacher.html'">看更多教師</button>
+            </div>
+            <div class="sup-tea-bg">
+                <!-- <img src="./img/[teachers]bg-04.png" alt=""> -->
+            </div>
+        </div>
+    </section>
+    <section id="fourth">
+        <div class="wrapper">
+            <div class="left">
+                <img src="./img/index/[signUpLesson]star.png" alt="" width="450px">
+                <img src="./img/index/[signUpLesson]star_s.png" alt="" width="250px">
+            </div>    
+            <div class="text_content">
+                <h2>加入我們！</h2>
+                <button class="btn-purple" onclick="location.href='course.html'">我要報名</button>
+            </div>
+            <div class="right">
+                <img src="./img/index/[signUpLesson]teacher.png" alt="" width="280px">
+                <div class="circle"><img src="./img/index/[signUpLesson]magic_circle.png" alt="" width="500px"></div>
+                <div class="circle_small"><img src="./img/index/[signUpLesson]magic_circle_s.png" alt="" width="200px"></div>
+            </div>
+        </div>
+        <div class="cloud">
+            <img src="./img/index/[signUpLesson]clouds.png" alt="" height="375px">
+        </div>
+    </section>
+
+    <section id="fifth">
+        <div class="bg">
+            <div class="title">
+                <h2>推薦道具<img src="./img/deliver.png" alt="" width="300px"></h2>
+            </div>
+            <div class="all_box">
+                <div class="bg_box1">
+                    <div class="toy_line">
+                        <a href="./mall.html">
+                            <div class="toy toy_ball">
+                                <!-- 閃亮水晶球 -->
+                                <img src="./img/index/ball.png" alt="">
+                            </div>
+                        </a>
+                        <a href="./mall.html">
+                            <div class="toy toy_drink">
+                                <!-- 魔法能量水 -->
+                                <img src="./img/index/drink.png" alt="">
+                            </div>
+                        </a>
+                        <a href="./mall.html">
+                            <div class="toy toy_book">
+                                <!-- 魔力技能書 -->
+                                <img src="./img/index/book.png" alt="">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="rock">
+                        <img src="./img/index/rocks01.png" alt="">
+                    </div>
+                </div>
+    
+                <div class="bg_box2">
+                    <div class="toy_line">
+                        <a href="./mall.html">
+                            <div class="toy toy_hat">
+                                <!-- 貝爾法師帽 -->
+                                <img src="./img/index/hat.png" alt="">
+                            </div>
+                        </a>
+                        <a href="./mall.html">
+                            <div class="toy toy_pen">
+                                <!-- 愛的魔法棒 -->
+                                <img src="./img/index/pen.png" alt="">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="rock">
+                        <img src="./img/index/rocks02.png" alt="">
+                    </div>
+                </div>
+    
+                <div class="bg_box3">
+                    <div class="toy_line3">
+                        <a href="./mall.html">
+                            <div class="toy toy_droom">
+                                <!-- 魔幻掃帚 -->
+                                <img src="./img/index/droom.png" alt="">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="rock">
+                        <img src="./img/index/rocks03.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
+    </footer>
+
+    
+    <script>
+        // scroll更改header背景色
+        window.addEventListener('scroll', function(){
+            let getScrollTop = document.documentElement.scrollTop;
+            let header = document.querySelector('header');
+            
+            if(getScrollTop > 60){
+                header.classList.add('-active');
+            }else{
+                header.classList.remove('-active');
+            }
+        });
+        
+        let memNavInfo = new Vue({
+            el: '#memInfo',
+            data: {
+                memData: {},
+            },
+        })
+    </script>
+    <script src="js/index_scroll.js"></script>
+    <script src="js/login.js"></script>        
+</body>
+
+</html>

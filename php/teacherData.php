@@ -10,6 +10,7 @@
                     LEFT OUTER JOIN `class` c ON (t.teachNo = c.teachNo) 
                     LEFT OUTER JOIN `registration` r ON (c.classNo = r.classNo) 
                     LEFT OUTER JOIN `member` m ON (r.memberNo = m.memberNo)
+                    WHERE commStar IS NOT NULL AND commContent IS NOT NULL
                     GROUP BY teachNo
                     ORDER BY teachNo ASC;";
         $teacher = $pdo->query($sql);

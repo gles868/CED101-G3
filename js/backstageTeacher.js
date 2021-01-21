@@ -342,15 +342,37 @@ Vue.component('course_date', {
 
 new Vue({
     el: '#app',
+    name: 'teacher',
     data: {
         content: 'back_teacher_data',
-        teachNo: 1,  // 寫死
+        teachNo: '',  
         current: 0,
     },
-    methods: {},
+});
+
+new Vue({
+    el: '#header',
+    name: 'header',
+    data: {
+        teacher: '',  
+    },
+    methods: {
+        get_teacher_data: async function () {
+            const res = await fetch('php/backTeacher_data.php', {})
+                        .then(function (data) {
+                            return data.json();
+                        });
+            // 取回res值後，呼叫另一隻函式
+            this.teacher = res;
+        },
+    },
+    created() {
+        this.get_teacher_data();
+    },
 });
 
 window.addEventListener('load', function(){
+    // 顯示使用者現在所在位置
     let li = document.querySelectorAll('#app .content-wrap > ul > li');
     for(let i = 0; i < li.length; i++){
         li[i].onclick = function(){

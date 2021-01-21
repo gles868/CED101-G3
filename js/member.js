@@ -585,7 +585,7 @@ Vue.component('memKeepCourse', {
             this.keepcourse = res;
         },
         cancel_keep: async function (courListNo) {
-            const res = await fetch('./php/mem_get_del_course.php', {
+            const res = await fetch('./php/mem_del_keep_course.php', {
                 method: 'POST',
                 mode: 'same-origin',
                 credentials: 'same-origin',
@@ -634,7 +634,7 @@ Vue.component('memKeepPro', {
                                 <div class="membtn">直接購買</div>
                             </a> -->
                             <div class="MKC_cancel">
-                                <div class="membtn">取消收藏</div>
+                                <div class="membtn" @click="cancel_keep(value.proListNo)">取消收藏</div>
                             </div>
                         </div>
                     </div>
@@ -658,6 +658,22 @@ Vue.component('memKeepPro', {
             // 取回res值後，呼叫另一隻函式
             this.keeppro = res;
         },
+        cancel_keep: async function (proListNo) {
+            const res = await fetch('./php/mem_del_keep_pro.php', {
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    memberno: this.memberno,
+                    proListNo: proListNo,
+                }),
+            });
+            this.mem_get_keep_pro();
+            bus.$emit('getAlert', '取消收藏嚕!!');
+        },
     },
     // template 渲染前 會先去執行以下函式
     created() {
@@ -676,7 +692,7 @@ Vue.component('mem-order', {
     props: ['memberno'],
 
     template: `
-    <!-- 歷史訂單開始 -->
+<!-- 歷史訂單開始 -->
     <section class="memOrderOut menuCG">
                 <div class="memContent">
                     <div class="memOrder">
@@ -778,6 +794,7 @@ Vue.component('mem-order', {
             // 取回res值後，呼叫另一隻函式
             this.orders = res;
         },
+        changetype() {},
     },
     // template 渲染前 會先去執行以下函式
     created() {

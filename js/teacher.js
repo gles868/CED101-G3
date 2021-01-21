@@ -7,16 +7,16 @@ window.addEventListener('load', function(){
     //     anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage'],  // 定義導航的錨文字 // → http://127.0.0.1:5502/teacher.html#firstPage
     // });
 
-    // 取得所有教師資料
-    let dataRows;
-    let xhr = new XMLHttpRequest();
-    xhr.onload = function(){
-        app.dataRows = JSON.parse(xhr.responseText);
-        console.log(app.dataRows);
-    }
-    xhr.open('get', 'php/teacherData.php', true);
-    xhr.send(null);
 });
+// 取得所有教師資料
+let dataRows;
+let xhr = new XMLHttpRequest();
+xhr.onload = function(){
+    app.dataRows = JSON.parse(xhr.responseText);
+    console.log(app.dataRows);
+}
+xhr.open('get', 'php/teacherData.php', true);
+xhr.send(null);
 
 Vue.component('teacher-component', {
     props: ['teach-no', 'teach-img', 'teach-name', 'comm-star-avg', 'teach-description', 
@@ -81,7 +81,6 @@ let app = new Vue({
     el: '#app',
     data: {
         dataRows: [],
-        memData: {},
         options: {
             afterLoad: this.afterLoad,
             navigation: true, // 顯示導行列

@@ -1,12 +1,14 @@
 <?php
+    session_start();
     try {
         require_once "connect_ced101g3.php";
 
-        $content = trim(file_get_contents("php://input"));
-        $decoded = json_decode($content, true);
-
-        $teachNo = $decoded["teachNo"];
-        $teachName = $decoded["teachName"];
+        // $content = trim(file_get_contents("php://input"));
+        // $decoded = json_decode($content, true);
+        // $teachNo = $decoded["teachNo"];
+        // $teachName = $decoded["teachName"];
+        $teachNo = $_SESSION["teachNo"]
+        $teachName = $_SESSION["teachName"]
 
         $sql = "UPDATE teacher 
                     SET teachName = :teachName               

@@ -1,11 +1,13 @@
 <?php
+    session_start();
     try{
         require_once "connect_ced101g3.php";
     
-        $content = trim(file_get_contents("php://input"));
-        $decoded = json_decode($content, true);
+        // $content = trim(file_get_contents("php://input"));
+        // $decoded = json_decode($content, true);
     
-        $teachNo = $decoded["teachNo"];
+        // $teachNo = $decoded["teachNo"];
+        $teachNo = $_SESSION["teachNo"];
         $classData = array();
     
         $sql = "SELECT co.courseNo, co.courseName, co.courseImg, co.courseDescription, 

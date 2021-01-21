@@ -91,7 +91,6 @@ Vue.component('comment-component', {
                                      :read-only="true">
                         </star-rating>
                         <div class="text">{{commContent}}</div>
-                        <p>{{registNo}}</p>
                     </div>
                     <div class="report">
                         <div class="report_btn" @click="showLightbox">
