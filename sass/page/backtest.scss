@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600&display=swap');
+@import '../style.scss';
+
 body {
     background: #000;
     padding: 0;
@@ -13,6 +16,7 @@ body {
     overflow: hidden;
     height: 100vh;
     width: 100vw;
+    font-family: $navFont;
 }
 
 .wrap {
@@ -112,8 +116,8 @@ body {
 .circle2 {
     // width: 210px;
     // height: 210px;
-    width: 240px;
-    height: 240px;
+    width: 250px;
+    height: 250px;
     border-style: dotted;
     opacity: 0;
     animation: fadeIn 0.5s 5s forwards, turnRight 6s 5s linear infinite;
@@ -234,7 +238,7 @@ body {
         box-shadow: 0 0 20px #fff;
     }
     100% {
-        box-shadow: 0 0 20px #800080;
+        box-shadow: 0 0 20px #eff173;
     }
 }
 
@@ -1598,7 +1602,7 @@ body {
     // margin: 50px;
     img {
         display: block;
-        animation: rotate 90s infinite;
+        animation: rotate2 90s infinite;
         animation-timing-function: linear;
         @media all and (max-width: 1200px) {
             width: 80%;
@@ -1633,5 +1637,13 @@ body {
     }
     to {
         transform: rotate(360deg);
+    }
+}
+@keyframes rotate2 {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
     }
 }
