@@ -1,4 +1,5 @@
 <?php
+// session_start();
 try {
     require_once "./connect_ced101g3.php";
 
@@ -16,7 +17,7 @@ try {
             
     // $memberdata = $pdo->query($sql);
     $managerdata = $pdo->prepare($sql);
-
+    // $managerdata->bindValue(":memberNo", $_SESSION['memberNo']);
     $managerdata->execute();
 
     if ($managerdata->rowCount() == 0) { //找不到

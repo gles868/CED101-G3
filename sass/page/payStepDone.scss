@@ -58,14 +58,30 @@ div.done_big_box {
         width: 80%;
     }
     .girl {
-        width: 34%;
+        width: 40%;
+        animation: girl 5s linear infinite;
         @media (max-width: 575px) {
-            width: 50%;
+            width: 70%;
             margin: 0 auto;
+        }
+        img {
+            width: 100%;
+        }
+
+        @keyframes girl {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(50px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
         }
     }
     .done_box {
-        width: 66%;
+        width: 60%;
         display: flex;
         flex-direction: column;
         margin: 0 auto;
@@ -82,11 +98,15 @@ div.done_big_box {
             color: #fff;
             text-shadow: 0 0 0.2em #f57af5, 0 0 0.2em #f57af5, 0 0 0.2em #f57af5;
             padding: 30px;
+            // margin-right: 50px;
             line-height: 50px;
             @media (max-width: 768px) {
                 font-size: 26px;
             }
         }
+        // .btn {
+        //     margin-left: 70px;
+        // }
     }
 }
 
@@ -128,6 +148,222 @@ div.done_big_box {
     z-index: 2;
     left: 300%;
     top: 300%;
+}
+
+@keyframes twinkle {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+//
+
+.bubble {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 66%;
+    z-index: -1;
+    transform: translateZ(0);
+}
+
+.bubble li:nth-child(1) {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: breath 1.5s linear infinite;
+    @media (max-width: 575px) {
+        top: 30%;
+        width: 40px;
+        height: 40px;
+    }
+}
+.bubble li:nth-child(2) {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: breath 1.5s 0.5s linear infinite;
+    @media (max-width: 575px) {
+        top: 30%;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.bubble li:nth-child(3) {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: breath 1.5s 1s linear infinite;
+    @media (max-width: 575px) {
+        top: 30%;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.bubble li:nth-child(4) {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 10%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    animation: breath 1.5s linear infinite;
+    @media (max-width: 575px) {
+        left: 15%;
+    }
+}
+.bubble li:nth-child(5) {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 10%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    animation: breath 1.5s 0.5s linear infinite;
+    @media (max-width: 575px) {
+        left: 15%;
+    }
+}
+.bubble li:nth-child(6) {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 10%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    animation: breath 1.5s 1s linear infinite;
+    @media (max-width: 575px) {
+        left: 15%;
+    }
+}
+
+.bubble li:nth-child(7) {
+    width: 78px;
+    height: 78px;
+    position: absolute;
+    right: 5%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    animation: breath 1.5s linear infinite;
+    @media (max-width: 575px) {
+        right: 3%;
+    }
+}
+.bubble li:nth-child(8) {
+    width: 78px;
+    height: 78px;
+    position: absolute;
+    right: 5%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    animation: breath 1.5s 0.5s linear infinite;
+    @media (max-width: 575px) {
+        right: 3%;
+    }
+}
+.bubble li:nth-child(9) {
+    width: 78px;
+    height: 78px;
+    position: absolute;
+    right: 5%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    animation: breath 1.5s 1s linear infinite;
+    @media (max-width: 575px) {
+        right: 3%;
+    }
+}
+
+@keyframes breath {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+body {
+    background: linear-gradient(#000005, #050520);
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.star,
+.planet {
+    border-radius: 100%;
+    position: absolute;
+    display: block;
+}
+
+.star {
+    animation: twinkle 2s linear 0s infinite normal;
+    background: #f6f6f6;
+    z-index: 1;
+    left: 100%;
+    top: 100%;
+}
+
+.planet {
+    animation: twinkle 5s linear 0s infinite normal;
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5);
+    border-radius: 100%;
+    z-index: 2;
+    left: 300%;
+    top: 300%;
+}
+
+.moon {
+    box-shadow: inset 0px 0px 50px 1px #6d8f94,
+        0px 0px 80px 30px rgba(143, 189, 255, 0.7);
+    box-shadow: inset 16px 0px rgba(0, 0, 0, 0.05),
+        inset 16px 0px 1px 2px rgba(0, 0, 0, 0.05),
+        0px 0px 75px 0px rgba(255, 255, 255, 0.5);
+    background: linear-gradient(
+        325deg,
+        rgba(213, 211, 230, 1) 0%,
+        rgba(179, 179, 179, 1) 100%
+    );
+    transform: rotate(35deg);
+    border-radius: 100%;
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    z-index: 4;
+    right: 10%;
+    top: 15%;
+    @media (max-width: 575px) {
+        height: 100px;
+        width: 100px;
+    }
 }
 
 @keyframes twinkle {

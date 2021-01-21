@@ -44,9 +44,22 @@
                     </div>
                     <ul class="nav-right">
                         <li>
-                            <a href="member.html"
-                                ><i class="fas fa-user-circle fa-lg"></i
-                            ></a>
+                            <a href="member.html">
+                                <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
+                                <i
+                                    id="memIcon"
+                                    class="fas fa-user-circle fa-lg"
+                                ></i>
+                                <div id="memInfo">
+                                    <div id="avatar">
+                                        <img
+                                            :src="'img/' + this.memData.memAvatar"
+                                            alt=""
+                                        />
+                                    </div>
+                                </div>
+                            </a>
+                            <span id="logout"></span>
                         </li>
                         <li>
                             <a href="cart.html"
@@ -57,6 +70,81 @@
                 </div>
             </nav>
         </header>
+
+        <!-- 登入註冊燈箱 -->
+        <div class="lightbox-bg"></div>
+        <div class="container" id="container">
+            <span class="close"><i class="fas fa-times fa-xs"></i></span>
+            <!-- 註冊 -->
+            <div class="form-container sign-up-container">
+                <form id="signUpForm">
+                    <h2>會員註冊</h2>
+                    <input type="text" id="signUpName" placeholder="輸入姓名" />
+                    <input
+                        type="email"
+                        id="sigUpEmail"
+                        placeholder="輸入email"
+                    />
+                    <input type="text" id="signUpId" placeholder="輸入帳號" />
+                    <input
+                        type="password"
+                        id="signUpPsw"
+                        placeholder="輸入密碼(至少含各一位英數字)"
+                    />
+                    <input
+                        type="password"
+                        id="checkPsw"
+                        placeholder="確認密碼"
+                        name="checkPsw"
+                    />
+                    <input type="button" id="signUpSubmit" value="註冊" />
+
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                </form>
+            </div>
+            <!-- 登入 -->
+            <div class="form-container sign-in-container">
+                <form id="signInForm">
+                    <h2>會員登入</h2>
+                    <input
+                        type="text"
+                        name="memId"
+                        id="memId"
+                        placeholder="輸入帳號"
+                    />
+                    <input
+                        type="password"
+                        name="memPsw"
+                        id="memPsw"
+                        placeholder="輸入密碼"
+                    />
+                    <span id="forgetPsw">忘記密碼?</span>
+                    <input type="button" id="signInSubmit" value="登入" />
+
+                    <div class="notice" style="top: 140px"></div>
+                    <div class="notice" style="top: 198px"></div>
+                </form>
+            </div>
+
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <button type="button" class="check" id="signIn">
+                            登入
+                        </button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <button type="button" class="check" id="signUp">
+                            註冊
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="moon"></div>
         <div class="confirm_title_box">
             <div class="confirm_title">確認資料</div>
@@ -68,14 +156,10 @@
                         <div class="name_title title">姓名</div>
                         <div class="name data_text">溫宗益</div>
                     </div>
-                    <div class="phone_box">
-                        <div class="phone_title title">電話</div>
-                        <div class="phone data_text">091234567</div>
-                    </div>
-                    <div class="add_box">
+                    <!-- <div class="add_box">
                         <div class="add_title title">地址</div>
                         <div class="add data_text">魔幻森林菇菇區123號</div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="cartpro_box">
@@ -90,68 +174,302 @@
                 <div class="total_photoandtext">
                     總額：<img src="./img/dollar.png" />
                 </div>
-                <div class="total_text">6788</div>
+                <div class="total_text">{{prototal}}</div>
             </div>
-            <div class="btn-wrapper">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 65 65"
-                    class="star-svg"
+
+            <!-- 付款方式區塊 -->
+
+            <div id="step1">
+                <h4><span class="highlight">選擇付款方式</span></h4>
+                <div class="allBtn pay-type" style="display: flex">
+                    <div class="row justify-content-center">
+                        <button
+                            type="button"
+                            class="btn-light btn_CARD"
+                            v-bind:class=" {btnActive:isActive===1}"
+                            v-on:click.capture.stop="CardForm=!CardForm"
+                        >
+                            <img v-bind:src="link.CardImgSrc" alt="" /><br />
+                            信用卡/金融卡
+                        </button>
+                    </div>
+
+                    <div class="row justify-content-center mt-3">
+                        <button
+                            type="button"
+                            class="btn-light btn_ATM"
+                            v-bind:class="{btnActive:isActive === 2}"
+                            v-on:click.capture.stop="AtmForm=!AtmForm"
+                        >
+                            <img v-bind:src="link.AtmImg" alt="" /><br />
+                            ATM 轉帳
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card原表單 -->
+            <div
+                class="creditcard"
+                v-show="CardForm"
+                onsubmit="return post_data()"
+            >
+                <form
+                    id="myForm"
+                    class="allBtn"
+                    role="form"
+                    data-toggle="validator"
                 >
-                    <path
-                        data-name="star-10"
-                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
-                        fill="#D0104C"
-                    />
-                    <path
-                        data-name="star-9"
-                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
-                        fill="#489ba9"
-                    />
-                    <path
-                        data-name="star-8"
-                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
-                        fill="#D0104C"
-                    />
-                    <path
-                        data-name="star-7"
-                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
-                        fill="#F05E1C"
-                    />
-                    <path
-                        data-name="star-6"
-                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
-                        fill="#489ba9"
-                    />
-                    <path
-                        data-name="star-5"
-                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
-                        fill="#D0104C"
-                    />
-                    <path
-                        data-name="star-4"
-                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
-                        fill="#F05E1C"
-                    />
-                    <path
-                        data-name="star-3"
-                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
-                        fill="#D0104C"
-                    />
-                    <path
-                        data-name="star-2"
-                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
-                        fill="#489ba9"
-                    />
-                    <path
-                        data-name="star-1"
-                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
-                        fill="#F05E1C"
-                    />
-                </svg>
-                <a class="Btn" href="./payStepDone.html"
-                    ><input class="Btn" type="button" value="送出"
-                /></a>
+                    <div class="pay_input form-group">
+                        <input
+                            type="radio"
+                            id="pay1"
+                            name="payMethod"
+                            v-bind:value="CardPayType.onePay"
+                            v-model.lazy="payType"
+                        />
+                        <label for="pay1"></label>
+                        {{CardPayType.onePay}}
+                        <input
+                            class="ml-5"
+                            type="radio"
+                            id="pay2"
+                            name="payMethod"
+                            v-bind:value="CardPayType.installment"
+                            v-model.lazy="payType"
+                        />
+                        <label for="pay2"></label>
+                        {{CardPayType.installment}}
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="pay_creditCard_number form-group">
+                        <p>信用卡卡號 :</p>
+
+                        <input
+                            type="text"
+                            v-for="(cardInput,index) in inputList"
+                            @keyup="autoTab($event,index)"
+                            maxlength="4"
+                            data-error="請填寫四位數"
+                            minlength="4"
+                            pattern="[0-9]{4}"
+                            class="border-input"
+                        />
+                        －
+
+                        <!-- <input type="text" v-model='cardNum2' id="card_num_2" maxlength="4" data-error="請填寫四位數" required
+                            data-minlength="4" pattern="[0-9]{4}">
+                        －
+                        <input type="text" v-model='cardNum3' id="card_num_3" maxlength="4" required data-error="請填寫四位數"
+                            data-minlength="4" pattern="[0-9]{4}">
+                        －
+                        <input type="text" v-model='cardNum4' id="card_num_4" maxlength="4" data-error="請填寫四位數" required
+                            data-minlength="4" pattern="[0-9]{4}"> -->
+
+                        <div class="help-block with-errors" v-show="textErr">
+                            {{card1ErrMsg}}
+                        </div>
+                    </div>
+
+                    <div class="pay_creditCard_date form-group">
+                        <p>有效月年 :</p>
+                        <select name="month" v-model="cardMonth">
+                            <option value="" disabled selected>Month</option>
+                            <option
+                                id="card_month"
+                                v-bind:value="num < 10 ? '0' + num : num"
+                                v-for="num in 12"
+                                v-bind:key="num"
+                            >
+                                {{num < 10 ? '0' + num : num}}
+                            </option>
+                        </select>
+                        /
+                        <select name="year" v-model="cardYear">
+                            <option value="" disabled selected>Year</option>
+                            <option
+                                id="card_year"
+                                v-bind:value="$index + minCardYear"
+                                v-for="(n,$index) in 12"
+                                v-bind:key="n"
+                            >
+                                {{$index + minCardYear}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="pay_creditCard_last form-group">
+                        <p>背面末三碼</p>
+                        <input
+                            type="text"
+                            v-model="CardBack"
+                            id="card_back_num"
+                            data-error="請填寫三位數"
+                            minlength="3"
+                            maxlength="3"
+                            pattern="[0-9]{3}"
+                            @keyup="testCardBack($event)"
+                        />
+                        <img
+                            src="https://gitlab.com/loveabo103103/payment/raw/master/back-three.svg"
+                            alt="icon"
+                            width="35.3px"
+                        />
+                        <div
+                            class="help-block with-errors"
+                            v-show="BackTextErr"
+                        >
+                            {{card4ErrMsg}}
+                        </div>
+                    </div>
+                    <div class="pay_mail form-group">
+                        <p>填寫付款人信箱 :</p>
+                        <input
+                            type="email"
+                            data-error="請填寫正確信箱地址"
+                            v-model="pay_mail"
+                            @keyup="testMail($event)"
+                        />
+                        <div class="help-block with-errors" v-show="mailErr">
+                            {{card5ErrMsg}}
+                        </div>
+                    </div>
+
+                    <button
+                        id="goS3"
+                        type="button"
+                        class="btn btn-info"
+                        @click="copy_Card();changeBg(1)"
+                    >
+                        確定
+                    </button>
+                </form>
+
+                <div class="pay_close" v-on:click="CardForm=!CardForm">
+                    <img v-bind:src="link.CloseImg" alt="" />
+                </div>
+            </div>
+            <!-- Card原表單 -->
+
+            <!-- ATM原表單 -->
+            <div class="ATM" v-show="AtmForm">
+                <div id="myForm5" class="allBtn">
+                    <table class="table table-hover">
+                        <tr v-for="(AtmTable,index) in AtmTitle">
+                            <td>{{AtmTable}}</td>
+                            <!-- <td>{{AtmTable.AtmCode}}</td> -->
+                        </tr>
+                    </table>
+                    <button
+                        id="goATM"
+                        class="btn btn-info"
+                        @click="copy_Atm();changeBg(2)"
+                    >
+                        確認
+                    </button>
+                </div>
+                <div class="close-atm" v-on:click="AtmForm=!AtmForm">
+                    <img v-bind:src="link.CloseImg" alt="" />
+                </div>
+            </div>
+            <!-- ATM原表單 -->
+
+            <!-- Card打印表單 -->
+            <div class="card-inf" v-show="copyCard">
+                <div class="card-back-inf" style="display: flex">
+                    <div class="card-back-title">付款模式:</div>
+                    <div class="card-back-num">{{payType}}</div>
+                </div>
+                <div class="card-num-inf" style="display: flex">
+                    <div class="card-num-title">信用卡卡號:</div>
+                    <div class="card-num">
+                        <span v-for="card in cardNum">{{card}}-</span>
+                    </div>
+                </div>
+                <div class="card-deadline" style="display: flex">
+                    <div class="card-deadline-title">有效年月:</div>
+                    <div class="card-month">{{cardMonth}}</div>
+                    /
+                    <div class="card-year">{{cardYear}}</div>
+                </div>
+                <div class="card-back-inf" style="display: flex">
+                    <div class="card-back-title">背面末三碼:</div>
+                    <div class="card-back-num">{{CardBack}}</div>
+                </div>
+                <div class="card-email-inf" style="display: flex">
+                    <div class="card-email-title">付款人信箱:</div>
+                    <div class="card-email">{{pay_mail}}</div>
+                </div>
+            </div>
+            <!-- Card打印表單 -->
+
+            <!-- ATM打印表單 -->
+            <table class="ATM_inf" v-show="copyAtm">
+                <tr v-for="(item,index) in AtmTrInfo" :key="index">
+                    <td>{{item.title}} :</td>
+                    <td>{{item.info}}</td>
+                </tr>
+            </table>
+            <!-- ATM打印表單 -->
+            <div class="byu_btn" @click="add_ordlist">
+                <div class="btn-wrapper" @mouseover="btnani">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 65 65"
+                        class="star-svg"
+                    >
+                        <path
+                            data-name="star-10"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#D0104C"
+                        />
+                        <path
+                            data-name="star-9"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#489ba9"
+                        />
+                        <path
+                            data-name="star-8"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#D0104C"
+                        />
+                        <path
+                            data-name="star-7"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#F05E1C"
+                        />
+                        <path
+                            data-name="star-6"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#489ba9"
+                        />
+                        <path
+                            data-name="star-5"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#D0104C"
+                        />
+                        <path
+                            data-name="star-4"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#F05E1C"
+                        />
+                        <path
+                            data-name="star-3"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#D0104C"
+                        />
+                        <path
+                            data-name="star-2"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#489ba9"
+                        />
+                        <path
+                            data-name="star-1"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#F05E1C"
+                        />
+                    </svg>
+                    <button class="Btn" type="submit">送出</button>
+                </div>
             </div>
         </main>
         <!-- 付款方式區塊 -->
@@ -168,5 +486,29 @@
         <script src="./js/cart_pay.js"></script>
         <!-- <script src="./js/registration-pay.js"></script> -->
         <script src="./js/star.js"></script>
+        <script src="js/login.js"></script>
+
+        <script>
+            // scroll更改header背景色
+            window.addEventListener('scroll', function () {
+                let getScrollTop = document.documentElement.scrollTop;
+                let header = document.querySelector('header');
+
+                if (getScrollTop > 60) {
+                    header.classList.add('-active');
+                } else {
+                    header.classList.remove('-active');
+                }
+            });
+
+            // 專門給header接會員照片資料 | 判斷是否登入的new Vue
+            // 必須給new Vue一個名稱(memNavInfo)，才能接到php回傳的會員資料
+            let memNavInfo = new Vue({
+                el: '#memInfo',
+                data: {
+                    memData: {},
+                },
+            });
+        </script>
     </body>
 </html>

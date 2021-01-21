@@ -155,7 +155,7 @@ div.cartpro_box {
                 text-shadow: 0 0 0.2em #f57af5, 0 0 0.2em #f57af5,
                     0 0 0.2em #f57af5;
             }
-            div.close {
+            div.delete {
                 position: absolute;
                 top: 20px;
                 right: 20px;
@@ -181,19 +181,23 @@ div.cartpro_box {
                     text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186,
                         0 0 0.3em #863186;
                     @media (max-width: 1200px) {
-                        width: 20%;
+                        width: 24%;
                     }
                     @media (max-width: 992px) {
-                        width: 24%;
+                        width: 28%;
                     }
                     @media (max-width: 850px) {
                         width: 27%;
                     }
                     @media (max-width: 768px) {
-                        width: 25%;
+                        width: 30%;
+                        margin-top: 15px;
+                    }
+                    @media (max-width: 622px) {
+                        width: 33%;
                     }
                     @media (max-width: 575px) {
-                        width: 30%;
+                        width: 36%;
                         font-size: 16px;
                     }
                     @media (max-width: 375px) {
@@ -257,6 +261,7 @@ div.cartpro_box {
                 }
                 @media (max-width: 768px) {
                     width: 25%;
+                    margin-top: 15px;
                 }
                 @media (max-width: 575px) {
                     width: 30%;
@@ -423,4 +428,46 @@ div.space_box {
         transform: scale(1);
         opacity: 1;
     }
+}
+
+////////
+.num_icon {
+    // display: block;
+    position: absolute;
+    top: 50px;
+    // right: 40px;
+    cursor: pointer;
+    right: 3%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background-color: #dc52ffc0;
+    text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
+    color: #ffffff;
+    font-weight: bold;
+    line-height: 16px;
+    z-index: 999;
+    font-size: 18px;
+    @media (max-width: 700px) {
+        right: 12%;
+        top: 2.5%;
+    }
+    @media (max-width: 570px) {
+        right: 14%;
+    }
+    @media (max-width: 376px) {
+        right: 16%;
+    }
+    .num_text {
+        // border: 1px solid red;
+        text-align: center;
+        align-items: center;
+        cursor: pointer;
+        position: absolute;
+        top: 10%;
+        left: 25%;
+    }
+}
+body {
+    position: relative;
 }

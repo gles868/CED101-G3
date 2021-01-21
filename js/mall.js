@@ -1,10 +1,11 @@
 window.addEventListener('load', function () {
     const vm = new Vue();
     let storage = sessionStorage;
-    // if (storage['addItemList'] == null) {
-    //     storage['addItemList'] = '';
-    // }
-    storage['addItemList'] = [];
+    if (storage['addItemList'] == null) {
+        storage['addItemList'] = '';
+        storage['count'] = '';
+    }
+    // storage['addItemList'] = [];
 
     Vue.component('lightbox', {
         data() {
@@ -12,6 +13,7 @@ window.addEventListener('load', function () {
                 items: '',
                 shop_price: '',
                 count: '',
+                memberno: 5,
             };
         },
         props: ['lightbox', 'itemno'],
@@ -21,30 +23,32 @@ window.addEventListener('load', function () {
                   <div class="close" @click="closelightbox()"><img src="./img/close.png" /></div>
                   <div class="pro_complete_left">
                       <div class="pro_complete_photo">
-                          <div class="heart">
-                              <div class="heart-inner"></div>
-                          </div>
-                          <img :src="items[0].proImg" />
+                      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="-3 -3 30 30" @click="add_favlist">
+                        <g class="fav-1 fav-btn"  @mouseover="changeheart()">
+                            <path fill="#fff" fill-rule="nonzero" stroke="#7F7F7F" stroke-width="2" d="M10.371 19.7c.424.443.985.674 1.599.666a2.122 2.122 0 0 0 1.575-.67l6.853-7.133c1.982-2.073 1.982-5.453 0-7.528-1.957-2.047-5.112-2.047-7.074.006l-1.332 1.373-.717-.75-.604-.629c-1.957-2.047-5.112-2.047-7.068 0-1.983 2.075-1.983 5.453.002 7.53l6.766 7.135z"/>
+                        </g>
+                      </svg>
+                          <img :src="items.proImg" />
                       </div>
                       <div class="pro_complete_price_box">
                           <img src="./img/dollar.png" />
-                          <div class="pro_complete_price">{{items[0].proPrice}}</div>
+                          <div class="pro_complete_price">{{items.proPrice}}</div>
                       </div>
                       <div class="pro_type_box">
                         <img src="./img/kira.png" />
-                        <div class="type_ani">{{items[0].proType}}</div>
+                        <div class="type_ani">{{items.proType}}</div>
                       </div>                      
                   </div>
                   <div class="pro_complete_right">
                       <div class="pro_complete_name_box">
-                          <div class="pro_complete_name">{{items[0].proName}}</div>
+                          <div class="pro_complete_name">{{items.proName}}</div>
                       </div>
                       <div class="pro_complete_content_box">
                           <div class="pro_complete_content1 content">
-                          {{items[0].proDescription}}
+                          {{items.proDescription}}
                           </div>
                       </div>
-                      <div class="addandbuy_box" @click="addToStorage(items[0].proNo,items[0].proName,items[0].proDescription,items[0].proImg,items[0].proPrice,items[0].proType),change_num()">
+                      <div class="addandbuy_box" @click="addToStorage(items.proNo,items.proPrice),change_num()">
                           <span id="props_p5" class="addButton">
                               加入購物車
                               <input
@@ -52,48 +56,45 @@ window.addEventListener('load', function () {
                                   
                               />
                           </span>
-                          <span id="buy_p5" class="buyButton">
-                              直接購買
-                              <input
-                                  type="hidden"
-                                  value="crystalball|p5.png|3394"
-                              />
-                          </span>
+                          
                       </div>
                   </div>
               </div>
           </div>
       `,
         methods: {
+            // 關燈箱
             closelightbox: function () {
                 this.$emit('closelightbox', false);
             },
-            addToStorage(
-                proNo,
-                proName,
-                proDescription,
-                proImg,
-                proPrice,
-                proType
-            ) {
+            addToStorage(proNo, proPrice) {
                 if (storage[proNo]) {
                     // console.log('000');
                     alert('You have checked.');
                 } else {
-                    storage[
-                        proNo
-                    ] = `${proNo}|${proName}|${proDescription}|${proImg}|${proPrice}|${proType}`;
+                    storage[proNo] = `${proNo}|${proPrice}|1`;
                     // storage['addItemList'] += `${proNo},`;
                     storage['addItemList'] += `${proNo}, `;
+
                     // alert(`${proName}`);
                     this.closelightbox();
                 }
             },
+            // 加入購物車的商品數量
             change_num() {
                 this.count++;
                 console.log(11);
                 this.$emit('change_num', this.count);
+                // storage['count'] += 1;
+                if (storage['count']) {
+                    // console.log('000');
+                    storage.setItem('count', `${this.count}`);
+                    // storage['total'] += `${this.total_price} `;
+                } else {
+                    storage['count'] += `${this.count} `;
+                }
             },
+            // 撈燈箱裡的商品資訊
             get_data: async function (itemno) {
                 // console.log(itemno);
 
@@ -120,10 +121,39 @@ window.addEventListener('load', function () {
             change(res) {
                 this.items = res;
             },
+            add_favlist: async function () {
+                const res = await fetch('./php/mall_favlist.php', {
+                    method: 'POST',
+                    mode: 'same-origin',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        itemno: this.itemno,
+                        memberno: this.memberno,
+                    }),
+                });
+            },
+            change(res) {
+                this.items = res;
+            },
+            // 愛心動畫
+            changeheart() {
+                const favs = document.querySelectorAll('.fav-btn');
+                for (let i = 0; i < favs.length; i++) {
+                    let fav = favs[i];
+                    fav.onclick = () => {
+                        fav.classList.toggle('clicked');
+                    };
+                }
+                this.$emit('changeheart', this.heart);
+            },
         },
         created() {
             // console.log("----")
             this.get_data(this.itemno);
+            this.changeheart();
 
             // console.log(this.itemno);
         },
@@ -132,6 +162,9 @@ window.addEventListener('load', function () {
         watch: {
             itemno() {
                 this.get_data(this.itemno);
+            },
+            changeheart() {
+                this.changeheart(this.this.heart);
             },
         },
     });
@@ -145,6 +178,8 @@ window.addEventListener('load', function () {
                 nowPage: 1,
                 pageItem: 9,
                 pageShow: true,
+                isActive: false,
+                btnActiveFirst: true,
             };
         },
         props: ['type', 'alltype'],
@@ -163,9 +198,9 @@ window.addEventListener('load', function () {
                         </div>
                     </div>
                     <div class="pagebutton" v-show='pageShow'>
-                        <button @click='changePage(1)'>1</button>
-                        <button @click='changePage(2)'>2</button>
-                        <button @click='changePage(3)'>3</button>
+                        <button class='fake' @click='changePage(1);changePageColor(1)' v-bind:class=' {btnActive:isActive===1,btnActiveFirst:btnActiveFirst}'>1</button>
+                        <button class='fake' @click='changePage(2);changePageColor(2)' v-bind:class=' {btnActive:isActive===2}'>2</button>
+                        <button class='fake' @click='changePage(3);changePageColor(3)' v-bind:class=' {btnActive:isActive===3}'>3</button>
                     </div>
 
                 </div>
@@ -194,6 +229,13 @@ window.addEventListener('load', function () {
                 //     this.nowPage = this.totalPage
                 // }
             },
+            changePageColor(id) {
+                // let reClass = document.querySelectorAll('.fake');
+                // reClass[0].classList.remove('btnActiveFirst');
+                this.btnActiveFirst = false;
+                this.isActive = id;
+            },
+
             changeitemno: function () {
                 // console.log('----');
                 this.$emit('changeitemno', this.itemno);
@@ -209,7 +251,7 @@ window.addEventListener('load', function () {
             get_data: async function (type_no) {
                 // console.log(type_no);
 
-                const res = await fetch('./php/test.php', {
+                const res = await fetch('./php/pro_list.php', {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
                     mode: 'same-origin', // no-cors, *cors, same-origin
                     // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -232,7 +274,7 @@ window.addEventListener('load', function () {
             change(res) {
                 this.items = res;
             },
-
+            // 撈全部商品分類的全部商品
             get_allpro: async function () {
                 const res = await fetch('./php/all.php', {}).then(function (
                     data
@@ -268,7 +310,7 @@ window.addEventListener('load', function () {
         props: [],
         template: `
                       <div class="list_box">
-                          <div class="pro_all" @click="changealltype(),changecolor(0),pageBack()">
+                          <div class="pro_all" @click="changealltype(),changecolor(0),pageBack(),changetype()">
                           全部商品</div>
                           <div class="pro_att" @click="changetype('攻擊型'),changecolor(1),reNewPage()">
                           攻擊型</div>
@@ -314,7 +356,7 @@ window.addEventListener('load', function () {
         el: '#app',
         data: {
             total: 0,
-            type: '', //預設攻擊型
+            type: '',
             alltype: 0,
             itemno: 3,
             lightbox: false,
@@ -333,9 +375,9 @@ window.addEventListener('load', function () {
             changetype: function (type) {
                 this.type = type;
             },
-            // +=1是為了讓她動
             changealltype: function (alltype) {
                 this.alltype += 1;
+                // this.type = '';
             },
             change_num: function (count) {
                 this.count = count;
