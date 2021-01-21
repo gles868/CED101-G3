@@ -19,6 +19,7 @@
             $_SESSION["memId"] = $memRow["memId"]; 
             $_SESSION["memName"] = $memRow["memName"];
             $_SESSION["memAvatar"] = $memRow["memAvatar"];
+            $_SESSION["memMail"] = $memRow["memMail"];
             // 傳回資料
             echo json_encode($memRow);
         }

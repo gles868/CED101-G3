@@ -31,23 +31,23 @@ window.addEventListener("load", function () {
     let priceBtn = document.getElementsByClassName("coursePrice")
     for (let i = 0; i < priceBtn.length; i++) {
         priceBtn[i].addEventListener('click', function () {
-            let coursePrice = this.id;
+            let coursePrice = this;
             console.log(coursePrice);
-            getCourse(coursePrice);
+            // getCourse(coursePrice);
 
         })
     }
 
 
 
-    // // slick輪播
-    // $('.sliderboard').slick({
-    //     infinite: true,
-    //     slidesToShow: 3,
-    //     slidesToScroll: 3,
-    //     autoplay: true,
-    //     autoplaySpeed: 3000
-    // });
+    // slick輪播
+    $('.sliderboard').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        autoplay: true,
+        autoplaySpeed: 3000
+    });
 
 
     //蝙蝠浮動

@@ -48,6 +48,13 @@ section.course_info {
         width: 550px;
         position: relative;
 
+        div.center-content {
+            position: absolute;
+            top: 8%;
+            left: 75%;
+            z-index: 999;
+        }
+
         img.course_card {
             position: absolute;
             top: 12%;
@@ -369,6 +376,12 @@ section.teacher_info {
         div.teacher_info_block {
             width: 100%;
 
+            p.teacher_name{
+                font-size: 22px;
+                position: absolute;
+                top: 4%;
+            }
+
             img.white_bg {
                 width: 100%;
             }
@@ -432,7 +445,6 @@ section.accessory_container {
             img.white_title {
                 width: 98%
             }
-
         }
 
         div.accessories_needed {
@@ -444,6 +456,18 @@ section.accessory_container {
 
             div.single_accessory {
                 margin-bottom: 20px;
+                display: flex;
+                    justify-content: center;
+              
+
+                div.accessory_block {
+                    display: flex;
+                    justify-content: center;
+                    width: 280px;
+                    
+                }
+
+
             }
 
         }
@@ -452,6 +476,7 @@ section.accessory_container {
 
 
 section.course_container {
+    margin-bottom: 10%;
 
     p {
         color: white;
@@ -627,6 +652,13 @@ section.course_container {
 
 section.calendar {
     margin-bottom: 100px;
+
+    p.calendar_title {
+        color: white;
+        font-size: 26px;
+        letter-spacing: 8px;
+        text-align: center;
+    }
 
     #calendar {
         max-width: 1140px;

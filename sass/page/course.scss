@@ -65,7 +65,7 @@ div.course_filter {
 
 div.filter_container {
     position: relative;
-    top: 40%;
+    top: 30%;
 }
 
 @media (max-width:1139px) {
@@ -77,34 +77,50 @@ div.filter_container {
 
 
 div.course_class {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
     width: 600px;
     margin: 0 auto;
     margin-bottom: 50px;
+
 
 
     h3 {
         font-size: 20px;
         color: $purplered;
         font-weight: $fontWeight;
+        margin-bottom: 20px;
     }
 
     div.fliter_block {
-        width: 430px;
-        display: flex;
-        justify-content: space-between;
+        // width: 430px;
 
 
-        h4 {
-            color: white;
-            background-color: $purplered;
-            border-radius: 15px;
-            padding: 10px 12px 10px 15px;
-            letter-spacing: 5px;
+        label.radio {
+            font-size: 16px;
+            font-weight: 500;
+            // vertical-align: middle;
+            padding: 5px 10px 5px 7px;
+            margin-right: 10px;
             cursor: pointer;
+            background-color: $purplered;
+            border-radius: 10px;
+            color: white;
+            display: inline-block;
         }
+
+        button {
+            border: none;
+            background-color: $purplered;
+            color: white;
+            font-size: 16px;
+            border-radius: 10px;
+            padding: 3px 8px 3px 8px;
+            display: inline-block;
+            cursor: pointer;
+            float: right;
+        }
+
+
     }
 }
 
@@ -115,6 +131,7 @@ div.course_class {
         width: 80%;
         margin: 0 auto;
         margin-bottom: 30px;
+
         h3 {
             font-size: 20px;
             color: white;
@@ -127,17 +144,6 @@ div.course_class {
             justify-content: center;
             margin-top: 20px;
 
-
-            h4 {
-                color: white;
-                background-color: $purplered;
-                border-radius: 15px;
-                padding: 10px 12px 10px 15px;
-                margin-right: 20px;
-                margin-bottom: 10px;
-                letter-spacing: 5px;
-                cursor: pointer;
-            }
         }
     }
 
@@ -145,9 +151,6 @@ div.course_class {
 
 
 div.course_price {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 600px;
     margin: 0 auto;
 
@@ -156,54 +159,56 @@ div.course_price {
         font-size: 20px;
         color: $purplered;
         font-weight: $fontWeight;
+        margin-bottom: 20px;
     }
 
     div.fliter_block {
-        width: 400px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
 
 
-
-        h4 {
-            color: white;
-            background-color: $purplered;
-            border-radius: 15px;
-            padding: 10px 15px;
+        label.radio {
+            font-size: 16px;
+            font-weight: 500;
+            // vertical-align: middle;
+            padding: 5px 10px 5px 7px;
+            margin-right: 10px;
             cursor: pointer;
+            background-color: $purplered;
+            border-radius: 10px;
+            color: white;
+            display: inline-block;
+        }
+
+        button {
+            border: none;
+            background-color: $purplered;
+            color: white;
+            font-size: 16px;
+            border-radius: 10px;
+            padding: 3px 8px 3px 8px;
+            display: inline-block;
+            cursor: pointer;
+            float: right;
         }
     }
-}
 
-@media (max-width:1139px) {
-    div.course_price {
-        display: block;
-        width: 80%;
+    @media (max-width:1139px) {
+        div.course_price {
+            display: block;
+            width: 80%;
 
-        h3 {
-            font-size: 20px;
-            color: white;
-        }
-
-        div.fliter_block {
-            width: 130px;
-            display: inline-block;
-            margin-left: 10%;
-            margin-top: 20px;
-
-            h4 {
+            h3 {
+                font-size: 20px;
                 color: white;
-                background-color: $purplered;
-                border-radius: 15px;
-                padding: 10px 15px;
-                margin-bottom: 10px;
-                cursor: pointer;
+            }
+
+            div.fliter_block {
+                width: 130px;
+                display: inline-block;
+                margin-left: 10%;
+                margin-top: 20px;
             }
         }
     }
-
-
 }
 
 
@@ -227,7 +232,7 @@ div.all_course_card {
         cursor: pointer;
     }
 
-   
+
 }
 
 div.card {
@@ -260,6 +265,15 @@ div.card {
         position: absolute;
         top: 60%;
         right: 25%;
+    }
+    p.course_endDate{
+        font-size: 12px;
+        letter-spacing: 3px;
+        color: #dcb127;
+        position: absolute;
+        top: 95%;
+        right: 15%;
+
     }
 
     p.registration {
@@ -310,7 +324,7 @@ div.all_course_card>div.card:nth-child(4n) {
 
         div.card {
             width: calc((100% - 20px) / 2);
-            margin-right: 20px;
+            // margin-right: 20px;
             margin-bottom: 100px;
         }
     }
@@ -343,7 +357,7 @@ div.all_course_card>div.card:nth-child(4n) {
     width: 1em;
     height: 1em;
     font-size: 18px;
-    
+
 
     .heart-inner {
 
@@ -621,5 +635,3 @@ div.accessory_container {
     transform: rotateY(-180deg);
     transform-style: preserve-3d;
 }
-
-
