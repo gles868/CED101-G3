@@ -1,6 +1,6 @@
 <?php
 //從資料庫抓出班級資料
-require_once "connectced101g3_test.php";
+require_once "connect_ced101g3.php";
 
 $content = trim(file_get_contents("php://input"));
 $decoded = json_decode($content, true);
@@ -29,7 +29,9 @@ $dateRows = $courseDate->fetchAll(PDO::FETCH_ASSOC);
 for($i=0; $i < count($dateRows); $i++){ 
     $data[$i]["title"] = $dateRows[$i]["courseName"];
     $data[$i]["start"] = $dateRows[$i]["courseStartDate"];
+ 
     $data[$i]["url"] = "registration.php?classNo={$dateRows[$i]["classNo"]}";
+
 };
 
 echo json_encode($data);
