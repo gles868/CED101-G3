@@ -612,6 +612,9 @@ var c = 0
 var t
 function timedCount() {
     document.getElementById('txt').value = c
+    // document.getElementById('scroe').value = point;
+    // document.getElementById('bouns').value = Bonus_num;
+    sendP = document.getElementById('totalPo').innerText = parseInt(point) + parseInt(Bonus_num);
     c = c + 10
     t = setTimeout("timedCount()", 100)
 }
@@ -621,6 +624,25 @@ function killbutton() {
     gamerules.kill();
     // gamerules.visible = false;
 }
+// let sendPoint = document.querySelector('#sendPoint');
+// sendPoint.onclick = function () {
+//     // console.log(sendP)
+//     // fetch("./sendPoint.php", {
+//     //     method: "POST",
+//     //     headers: {
+//     //         'Content-Type': 'application/json'
+//     //     },
+//     //     body: JSON.stringify({
+//     //         sendP,
+//     //     }),
+
+//     // }).then((res) => {
+//     //     console.log(res)
+//     // }).catch((err) => {
+//     //     console.log(err)
+//     // })
+
+// }
 
 // function resize() {
 //     const canvas = document.querySelector("canvas");

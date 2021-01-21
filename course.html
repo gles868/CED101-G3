@@ -14,8 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-    <!-- <script src="./js/course/course.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script> -->
+    <script src="./js/course/course.js"></script>
     <title>課程總覽</title>
 </head>
 
@@ -42,25 +41,120 @@
                     <span></span>
                 </div>
                 <ul class="nav-right">
-                    <li><a href="member.html"><i class="fas fa-user-circle fa-lg"></i></a></li>
+                    <li>
+                        <a href="member.html">
+                            <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
+                            <i id="memIcon" class="fas fa-user-circle fa-lg"></i>
+                            <div id="memInfo">
+                                <div id="avatar">
+                                    <img :src="'img/' + this.memData.memAvatar" alt="">
+                                </div>
+                                <!-- <span>{{this.memData.memName}}</span> -->
+                            </div>
+                        </a>
+                        <span id="logout"></span>
+                    </li>
                     <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <main class="main">
+
+    <!-- 登入註冊燈箱 -->
+    <div class="lightbox-bg"></div>
+    <div class="container" id="container">
+        <span class="close"><i class="fas fa-times fa-xs"></i></span>
+        <!-- 註冊 -->
+        <div class="form-container sign-up-container">
+            <form id="signUpForm">
+                <h2>會員註冊</h2>
+                <input type="text" id="signUpName" placeholder="輸入姓名" />
+                <input type="email" id="sigUpEmail" placeholder="輸入email" />
+                <input type="text" id="signUpId" placeholder="輸入帳號" />
+                <input type="password" id="signUpPsw" placeholder="輸入密碼(至少含各一位英數字)" />
+                <input type="password" id="checkPsw" placeholder="確認密碼" name="checkPsw">
+                <input type="button" id="signUpSubmit" value="註冊">
+
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+            </form>
+        </div>
+        <!-- 登入 -->
+        <div class="form-container sign-in-container">
+            <form id="signInForm">
+                <h2>會員登入</h2>
+                <input type="text" name="memId" id="memId" placeholder="輸入帳號" />
+                <input type="password" name="memPsw" id="memPsw" placeholder="輸入密碼" />
+                <span id="forgetPsw">忘記密碼?</span>
+                <input type="button" id="signInSubmit" value="登入">
+
+                <div class="notice" style="top: 140px"></div>
+                <div class="notice" style="top: 198px"></div>
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <button type="button" class="check" id="signIn">登入</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <button type="button" class="check" id="signUp">註冊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <main class="main app">
         <div class="course_filter">
             <img class="img_bat" src="./img/course_cards/bat.png" alt="">
             <div class="filter_container">
                 <div class="course_class">
                     <h3>依照屬性篩選</h3>
                     <div class="fliter_block">
-
-                        <h4 class="courseType" id=" ">全部</h4>
-                        <h4 class="courseType" id="攻擊型">攻擊型</h4>
-                        <h4 class="courseType" id="防禦型">防禦型</h4>
-                        <h4 class="courseType" id="輔助型">輔助型</h4>
+                        <div>
+                            <input type="radio" id="allCourse" :value="courTypeName.allCourse_show" v-model='filterText'
+                                name="typeFilter" @change='filterData'>
+                            <label for="allCourse"></label>
+                            {{courTypeName.allCourse_show}}
+                            <!-- <h4 class="courseType" value="輔助型" :id="輔助型" @click='turnAll'>全部商品</h4> -->
+                            <input type="radio" id="atk" v-bind:value="courTypeName.atk" v-model='filterText'
+                                name="typeFilter" @change='filterData'>
+                            <label for="atk"></label>
+                            {{courTypeName.atk}}
+                            <input type="radio" id="def" v-bind:value="courTypeName.def" v-model='filterText'
+                                name="typeFilter" @change='filterData'>
+                            <label for="def"></label>
+                            {{courTypeName.def}}
+                            <input type="radio" id="sup" v-bind:value="courTypeName.sup" v-model='filterText'
+                                name="typeFilter" @change='filterData'>
+                            <label for="sup"></label>
+                            {{courTypeName.sup}}
+                        </div>
+                        <button @click='cleanType'>清除選項</button>
                     </div>
 
                 </div>
@@ -69,24 +163,77 @@
                 <div class="course_price">
                     <h3>依照價位篩選</h3>
                     <div class="fliter_block">
-                        <h4 class="coursePrice" id="5000">$5000以下</h4>
-                        <h4 class="coursePrice" id="10000">$10000以下</h4>
-                        <h4 class="coursePrice" id="20000">$20000以下</h4>
+                        <input type="radio" id="5000down" :value="priceType.sPrice" v-model='priceText'
+                            name="priceFilter" @change='filterData'>
+                        <label for="5000down"></label>
+                        {{priceType.sPrice}}
+                        <!-- <h4 class="courseType" value="輔助型" :id="輔助型" @click='turnAll'>全部商品</h4> -->
+                        <input type="radio" id="10000down" v-bind:value="priceType.mPrice" v-model='priceText'
+                            name="priceFilter" @change='filterData'>
+                        <label for="10000down"></label>
+                        {{priceType.mPrice}}
+                        <input type="radio" id="10000up" v-bind:value="priceType.lPrice" v-model='priceText'
+                            name="priceFilter" @change='filterData'>
+                        <label for="10000up"></label>
+                        {{priceType.lPrice}}
                     </div>
+                    <button @click='cleanPrice'>清除選項</button>
                 </div>
             </div>
         </div>
 
-        <div class="all_course_card app" id="course_block">
 
+        <!-- 一開始全部商品的畫面 -->
+        <div class="all_course_card" id="course_block" v-show='filterPage1'>
             <div class="card" v-for='classRow in classRows' ontouchstart="this.classList.toggle('hover');">
                 <p class="course_title">{{classRow.courseName}}</p>
-                <div class="center-content">
-                    <div class="heart" @click="changeHeart" data-course="classRow.courseNo">
-                        <!-- 用jquery each去比對從資料庫來的資料，有的話就loved -->
-                        <div class="heart-inner" :id="classRow.courseNo" @click="addFavourite"></div>
+                <!-- <div class="center-content">
+                    <div class="heart" @click="changeHeart($event)">
+                        <div class="heart-inner"></div>
                     </div>
+                </div> -->
+
+                <div class="container">
+                    <div class="front">
+                        <img :src=classRow.courseImg alt="">
+                        <div class="inner">
+
+                        </div>
+                    </div>
+                    <a :href="'./singleCourse.php?courseNo='+classRow.courseNo" target="_parent" alt="">
+                        <div class="back">
+
+                            <img src="./img/course_cards/card_back.png" alt="">
+                            <div class="inner">
+                                <p class="course_price">{{classRow.coursePrice}}</p>
+                                <p class="course_class">屬性：{{classRow.courTypeName}}</p>
+                                <p class="course_endDate">報名截止日期:{{classRow.endDate}}</p>
+                    </a>
+
+
+                    <p class="registration"
+                        @click='classJump(classRow.courseName,classRow.coursePrice,classRow.classNo)'>
+                        立即報名
+                    </p>
+
                 </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <!-- 一開始全部商品的畫面 -->
+
+
+        <!-- 開始篩選類型的畫面 -->
+        <div class="all_course_card" id="course_block" v-show='filterPage2'>
+            <div class="card" v-for='(classRow,index) in filterArray' ontouchstart="this.classList.toggle('hover');">
+                <p class="course_title">{{classRow.courseName}}</p>
+                <!-- <div class="center-content">
+                    <div class="heart" ref='ing' :id=classRow.courseNo @click="changeHeart($event)">
+                        <div class="heart-inner" @click='addFavourite' :id='classRow.courseNo'></div>
+                    </div>
+                </div> -->
+
                 <div class="container">
                     <div class="front">
                         <img :src=classRow.courseImg alt="">
@@ -96,22 +243,27 @@
                     </div>
                     <a :href="'singleCourse.php?courseNo='+classRow.courseNo" target="_parent" alt="">
                         <div class="back">
+
                             <img src="./img/course_cards/card_back.png" alt="">
                             <div class="inner">
-                                <p class="course_price">${{classRow.coursePrice}}</p>
+                                <p class="course_price">{{classRow.coursePrice}}</p>
                                 <p class="course_class">屬性：{{classRow.courTypeName}}</p>
-                                <a href="./registration.html">
-                                    <p class="registration"
-                                        @click='classJump(classRow.courseName,classRow.coursePrice)'> 立即報名
-                                    </p>
-                            </div>
-                        </div>
+                                <p class="course_endDate">報名截止日期:{{classRow.endDate}}</p>
+
                     </a>
+                    <p class="registration"
+                        @click='classJump(classRow.courseName,classRow.coursePrice,classRow.classNo)'>
+                        立即報名
+                    </p>
+
                 </div>
             </div>
 
-
         </div>
+        </div>
+        </div>
+        <!-- 開始篩選類型的畫面 -->
+
 
 
         <div class="course_accessory">
@@ -123,65 +275,43 @@
             <div class="accessory_container">
                 <div class="sliderboard">
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p1.png" alt="">
-                        </a>
+                        <img src="./img/course_cards/accessory/p1.png" alt="">
                     </div>
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p2.png" alt="">
-                        </a>
-
+                        <img src="./img/course_cards/accessory/p2.png" alt="">
                     </div>
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p3.png" alt="">
-                        </a>
-
+                        <img src="./img/course_cards/accessory/p3.png" alt="">
                     </div>
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p4.png" alt="">
-                        </a>
-
+                        <img src="./img/course_cards/accessory/p4.png" alt="">
                     </div>
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p5.png" alt="">
-                        </a>
+                        <img src="./img/course_cards/accessory/p5.png" alt="">
                     </div>
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p6.png" alt="">
-                        </a>
+                        <img src="./img/course_cards/accessory/p6.png" alt="">
                     </div>
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p7.png" alt="">
-                        </a>
+                        <img src="./img/course_cards/accessory/p7.png" alt="">
                     </div>
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p8.png" alt="">
-                        </a>
-
+                        <img src="./img/course_cards/accessory/p8.png" alt="">
                     </div>
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p9.png" alt="">
-                        </a>
-
+                        <img src="./img/course_cards/accessory/p9.png" alt="">
                     </div>
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p10.png" alt="">
-                        </a>
-
+                        <img src="./img/course_cards/accessory/p10.png" alt="">
                     </div>
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p11.png" alt="">
-                        </a>
-
+                        <img src="./img/course_cards/accessory/p11.png" alt="">
                     </div>
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p12.png" alt="">
-                        </a>
-
+                        <img src="./img/course_cards/accessory/p12.png" alt="">
                     </div>
                     <div class="single_accessory">
-                        <a href="mall.html"> <img src="./img/course_cards/accessory/p13.png" alt="">
-                        </a>
-
+                        <img src="./img/course_cards/accessory/p13.png" alt="">
                     </div>
                 </div>
             </div>
@@ -195,139 +325,257 @@
         <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
     </footer>
 
-
+    <script src="js/login.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
 
-    <script>
 
+
+
+    <script>
         let storage = sessionStorage;
+
         let app = new Vue({
             el: '.app',
             data: {
                 classRows: [],
-                loved: false,
-            },
-            created() {
+                lovedCourse: [],
+                filterArray: [],
+                // filterPriceArray: [],
+                // lovedCourseArray: [],
+                filterText: '',
+                filterPage1: true,
+                filterPage2: false,
 
+                courTypeName: {
+                    allCourse_show: '全部商品',
+                    atk: '攻擊型',
+                    def: '防禦型',
+                    sup: '輔助型',
+                },
+                priceText: '',
+                priceType: {
+                    sPrice: '5000以下',
+                    mPrice: '5000~10000',
+                    lPrice: '10000以上',
+                },
             },
+
             methods: {
-                classJump(name, Price) {
-                    storage['className'] = name;
-                    storage['classPrice'] = Price;
-                },
-                changeHeart: function (e) {
-                    e.target.parentNode.classList.toggle('loved');
-                    // console.log(e.target);
-                },
-                addFavourite: function (e) {
-                    let heartClass = e.target.parentNode.className;
-                    // console.log(heartClass);
-                    let courseNo = e.target.id;
-                    if (heartClass == 'heart') {
-                        // alert('已加入收藏');
-                        $.ajax({
-                            method: 'GET',
-                            url: './php/course_addFavourite.php',
-                            type: 'json',
-                            data: `courseNo=${courseNo}`, //click後傳值到PHP
-                            success: function (lovedCourse) {
-                                console.log(lovedCourse); //把新增後資料回傳用變數接收
-                            }
-                        })
-
+                classJump(name, Price, classNo) {
+                    if (memNavInfo.memData.memberNo) {  // 如果有登入會員
+                        window.location.href = './registration.html';
+                        storage['className'] = name;
+                        storage['classPrice'] = Price;
+                        storage['classNo'] = classNo;
                     } else {
-                        $.ajax({
-                            method: 'GET',
-                            url: './php/course_removeFavourite.php',
-                            data: `courseNo=${courseNo}`,
-                        })
+                        // 如果未登入，跳出提示燈箱
+                        alert('請登入會員');
                     }
-                }
+                    // storage['className'] = name;
+                    // storage['classPrice'] = Price;
+                    // storage['classNo'] = classNo;
+                },
+                cleanPrice() {
+                    this.priceText = '';
+
+                    this.filterData();
+                    if (this.filterText == '' && this.priceText == '') {
+                        this.filterPage1 = true
+                        this.filterPage2 = false
+                    }
+
+                },
+                cleanType() {
+                    this.filterText = '';
+                    this.filterData();
+                    if (this.filterText == '' && this.priceText == '') {
+                        this.filterPage1 = true
+                        this.filterPage2 = false
+                        // return false
+                    }
+                },
+
+                // addFavourite: function (e) {
+                //     let heartClass = e.target.parentNode.className;
+                //     // console.log(heartClass);
+                //     let courseNo = e.target.id;
+                //     console.log(e.target.id);
+                //     this.lovedCourse = this.lovedCourse.concat();
+                //     if (heartClass == 'heart') {
+                //         $.ajax({
+                //             method: 'GET',
+                //             url: 'course_addFavourite.php',
+                //             type: 'json',
+                //             data: `courseNo=${courseNo}`, //click後傳值到PHP
+                //             success: function (lovedCourse) {
+                //                 console.log(lovedCourse); //把新增後資料回傳用變數接收
+                //             }
+                //         })
+                //     } else {
+                //         $.ajax({
+                //             method: 'GET',
+                //             url: 'course_removeFavourite.php',
+                //             data: `courseNo=${courseNo}`,
+                //         })
+                //     }
+                // },
+                // changeHeart: function (e) {
+                //     e.target.parentNode.classList.toggle('loved');
+                // },
+                filterData() {
+                    this.filterPage2 = true;
+                    this.filterPage1 = false;
+
+                    if (this.filterText == this.courTypeName.atk) {
+                        this.filterArray = this.classRows.filter(classRow => {
+                            return classRow.courTypeName.match(this.filterText);
+                        });
+                        if (this.priceText == this.priceType.sPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName.match(this.filterText) && classRow.coursePrice < parseInt(this.priceType.sPrice);
+                            });
+                        }
+
+                        if (this.priceText == this.priceType.mPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName.match(this.filterText) && parseInt(this.priceType.sPrice) < classRow.coursePrice && classRow.coursePrice < parseInt(this.priceType.lPrice);
+                            });
+                        }
+
+                        if (this.priceText == this.priceType.lPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName.match(this.filterText) && classRow.coursePrice > parseInt(this.priceType.lPrice);
+                            });
+                        }
+                        if (this.filterArray.length == 0) {
+                            alert('很抱歉,沒有項目符合篩選結果:(')
+                        }
+
+                    }
+
+                    if (this.filterText == this.courTypeName.def) {
+                        this.filterArray = this.classRows.filter(classRow => {
+                            return classRow.courTypeName.match(this.filterText);
+                        });
+                        if (this.priceText == this.priceType.sPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName.match(this.filterText) && classRow.coursePrice < parseInt(this.priceType.sPrice);
+                            });
+                        }
+
+                        if (this.priceText == this.priceType.mPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName.match(this.filterText) && parseInt(this.priceType.sPrice) < classRow.coursePrice && classRow.coursePrice < parseInt(this.priceType.lPrice);
+                            });
+                        }
+
+                        if (this.priceText == this.priceType.lPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName.match(this.filterText) && classRow.coursePrice > parseInt(this.priceType.lPrice);
+                            });
+                        }
+                        if (this.filterArray.length == 0) {
+                            alert('很抱歉,沒有項目符合篩選結果:(')
+                        }
+
+                    }
+                    if (this.filterText == this.courTypeName.sup) {
+                        this.filterArray = this.classRows.filter(classRow => {
+                            return classRow.courTypeName.match(this.filterText);
+                        });
+                        if (this.priceText == this.priceType.sPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName.match(this.filterText) && classRow.coursePrice < parseInt(this.priceType.sPrice);
+                            });
+                        }
+
+                        if (this.priceText == this.priceType.mPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName.match(this.filterText) && parseInt(this.priceType.sPrice) < classRow.coursePrice && classRow.coursePrice < parseInt(this.priceType.lPrice);
+                            });
+                        }
+
+                        if (this.priceText == this.priceType.lPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName.match(this.filterText) && classRow.coursePrice > parseInt(this.priceType.lPrice);
+                            });
+                        }
+                        if (this.filterArray.length == 0) {
+                            alert('很抱歉,沒有項目符合篩選結果:(')
+                        }
+                    }
+                    if (this.filterText == this.courTypeName.allCourse_show) {
+                        this.filterArray = this.classRows.filter(classRow => {
+                            return classRow.courTypeName;
+                        });
+                        if (this.priceText == this.priceType.sPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName && classRow.coursePrice < parseInt(this.priceType.sPrice);
+                            });
+                        } else if (this.priceText == this.priceType.mPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName && parseInt(this.priceType.sPrice) < classRow.coursePrice && classRow.coursePrice < parseInt(this.priceType.lPrice);
+                            });
+                        } else if (this.priceText == this.priceType.lPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName && classRow.coursePrice > parseInt(this.priceType.lPrice);
+                            });
+                        } else if (this.filterArray.length == 0) {
+                            alert('很抱歉,沒有項目符合篩選結果:(')
+                        }
+
+                    }
+
+                    if (this.filterText == '') {
+                        if (this.priceText == this.priceType.sPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName && classRow.coursePrice < parseInt(this.priceType.sPrice);
+                            });
+                        } else if (this.priceText == this.priceType.mPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName && parseInt(this.priceType.sPrice) < classRow.coursePrice && classRow.coursePrice < parseInt(this.priceType.lPrice);
+                            });
+                        } else if (this.priceText == this.priceType.lPrice) {
+                            this.filterArray = this.classRows.filter(classRow => {
+                                return classRow.courTypeName && classRow.coursePrice > parseInt(this.priceType.lPrice);
+                            });
+                        }
+                    }
+                },
+            },
+            computed: {
+
             },
         })
+    </script>
 
-        window.addEventListener("load", function () {
+    <script>
+        window.addEventListener('scroll', function () {
+            let getScrollTop = document.documentElement.scrollTop;
+            let header = document.querySelector('header');
 
-            //取出課程
-            function getCourse(courTypeName) {
-                let xhr = new XMLHttpRequest();
-                xhr.onload = function () {
-                    app.classRows = JSON.parse(xhr.responseText);
-                    console.log(app.classRows);
-                }
-                xhr.open("get", `./php/getCourse.php?courTypeName=${courTypeName}`, false);
-                xhr.send(null);
-                console.log(courTypeName);
-            }
-            getCourse('');
-
-            //取出收藏課程
-            function getlovedCourse() {
-                $.ajax({
-                    method: 'GET',
-                    url: './php/getLovedCourse.php',
-                    type: 'json',
-                    success: function (lovedCourse_load) {
-                        console.log(lovedCourse_load);
-                    }
-                })
-            }
-            getlovedCourse();
-
-            //在課程類別按鈕上綁定click事件
-            let courseTypeBtn = document.getElementsByClassName("courseType")
-            for (let i = 0; i < courseTypeBtn.length; i++) {
-                courseTypeBtn[i].addEventListener('click', function () {
-
-                    let courTypeName = this.id; //攻擊型 防禦型 輔助型
-                    console.log(courTypeName);
-                    getCourse(courTypeName);
-                })
+            if (getScrollTop > 60) {
+                header.classList.add('-active');
+            } else {
+                header.classList.remove('-active');
             }
 
-            //在課程類別按鈕上綁定click事件
-            let priceBtn = document.getElementsByClassName("coursePrice")
-            for (let i = 0; i < priceBtn.length; i++) {
-                priceBtn[i].addEventListener('click', function () {
-                    let coursePrice = this.id;
-                    console.log(coursePrice);
-                    getCourse(coursePrice);
-
-                })
-            }
-
-
-
-            // // slick輪播
-            // $('.sliderboard').slick({
-            //     infinite: true,
-            //     slidesToShow: 3,
-            //     slidesToScroll: 3,
-            //     autoplay: true,
-            //     autoplaySpeed: 3000
-            // });
-
-
-            //蝙蝠浮動
-            gsap.to('.img_bat', { y: 20, duration: 2, repeat: -1, yoyo: true });
-
-
+            // slick輪播
+            $('.sliderboard').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                autoplay: true,
+                autoplaySpeed: 3000
+            });
         });
 
-        //slick輪播
-        $('.sliderboard').slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            autoplay: true,
-            autoplaySpeed: 3000
-        });
-
-
-        //蝙蝠浮動
-        gsap.to('.img_bat', { y: 20, duration: 2, repeat: -1, yoyo: true });
-
-
+        let memNavInfo = new Vue({
+            el: '#memInfo',
+            data: {
+                memData: {},
+            },
+        })
     </script>
 
 </body>

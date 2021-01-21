@@ -8,7 +8,6 @@
     <title>下樓梯！</title>
     <script src="https://cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
-    <!-- <link rel="stylesheet" href="./css/game.css"> -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <style>
         body {
@@ -26,9 +25,105 @@
 </head>
 
 <body>
-    <iframe id="header" src="./iframe.html" frameborder='0' onload="init()"></iframe>
+    <header>
+        <nav>
+            <div class="menu_toggle">
+                <input type="checkbox">
+                <div class="logo">
+                    <a href="index.html"><img src="./img/logo.png"></a>
+                </div>
+                <ul class="nav">
+                    <li><a href="course.html">課程總覽</a></li>
+                    <li><a href="teacher.html">教師總覽</a></li>
+                    <li>
+                        <a href="index.html"><img src="./img/logo.png"></a>
+                    </li>
+                    <li><a href="mall.html">商城</a></li>
+                    <li><a href="game.html">小遊戲</a></li>
+                </ul>
+                <div class="ham">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-right">
+                    <li>
+                        <a href="member.html">
+                            <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
+                            <i id="memIcon" class="fas fa-user-circle fa-lg"></i>
+                            <div id="memInfo">
+                                <div id="avatar">
+                                    <img :src="'img/' + this.memData.memAvatar" alt="">
+                                </div>
+                                <!-- <span>{{this.memData.memName}}</span> -->
+                            </div>
+                        </a>
+                        <span id="logout"></span>
+                    </li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    <input type="text" id="txt" style="display: none;">
+    <!-- 登入註冊燈箱 -->
+    <div class="lightbox-bg"></div>
+    <div class="container" id="container">
+        <span class="close"><i class="fas fa-times fa-xs"></i></span>
+        <!-- 註冊 -->
+        <div class="form-container sign-up-container">
+            <form id="signUpForm">
+                <h2>會員註冊</h2>
+                <input type="text" id="signUpName" placeholder="輸入姓名" />
+                <input type="email" id="sigUpEmail" placeholder="輸入email" />
+                <input type="text" id="signUpId" placeholder="輸入帳號" />
+                <input type="password" id="signUpPsw" placeholder="輸入密碼(至少含各一位英數字)" />
+                <input type="password" id="checkPsw" placeholder="確認密碼" name="checkPsw">
+                <input type="button" id="signUpSubmit" value="註冊">
+
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+            </form>
+        </div>
+        <!-- 登入 -->
+        <div class="form-container sign-in-container">
+            <form id="signInForm">
+                <h2>會員登入</h2>
+                <input type="text" name="memId" id="memId" placeholder="輸入帳號" />
+                <input type="password" name="memPsw" id="memPsw" placeholder="輸入密碼" />
+                <span id="forgetPsw">忘記密碼?</span>
+                <input type="button" id="signInSubmit" value="登入">
+
+                <div class="notice" style="top: 140px"></div>
+                <div class="notice" style="top: 198px"></div>
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <button type="button" class="check" id="signIn">登入</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <button type="button" class="check" id="signUp">註冊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <iframe id="header" src="./iframe.html" frameborder='0' onload="init()"></iframe> -->
+
+    <input type="text" id="txt" hidden>
+    <!-- <input type="text" id="scroe">
+    <input type="text" id="bouns"> -->
+    <!-- <input type="text" id="totalPo"> -->
+
+
+    <div id="totalPo" style="color: aliceblue;"></div>
+    <button id="sendPoint">存進分數</button>
+
     <!-- 計時器  -->
 
     <script src="./js/game.js"></script>
@@ -41,31 +136,90 @@
         <p>copyright{{year}} CED101_G3 {{webName}}.All Rights Reserved</p>
     </footer>
 
+    <script src="js/login.js"></script>
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
     <script>
-        function init() {
-            let template = document.getElementById('header').contentWindow.document;
-            let vm = new Vue({
-                el: '#header',
-                data: {
-                    course: '課程總覽',
-                    teacher: '教師總覽',
-                    mall: '商城',
-                    game: '小遊戲',
-                },
-                template: template.getElementById('header-template'),
-            })
-        }
+        let senPoBtn = document.getElementById('sendPoint');
+        senPoBtn.onclick = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                let memData = JSON.parse(xhr.responseText);
+                if (memData.memberNo) {  // 如果有登入會員
+                    fetch("./php/sendPoint.php", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            sendP,
+                        }),
 
-        new Vue({
-            el: '#footer',
-            data: {
-                year: '©' + new Date().getFullYear(),
-                webName: '麻瓜特訓班',
+                    }).then((res) => {
+                        console.log(res)
+                    }).catch((err) => {
+                        console.log(err)
+                    })
+
+                } else {
+                    // 如果未登入，跳出提示燈箱
+                    alert('請登入會員');
+                }
             }
+            xhr.open('get', 'php/getLoginData.php', true);
+            xhr.send(null);
+        }
+        // showLightbox: function(i) {
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.onload = function () {
+        //         let memData = JSON.parse(xhr.responseText);
+        //         if (memData.memberNo) {  // 如果有登入會員
+        //             // 判斷會員是否已檢舉，傳回memberNo, registNo看是否有皆符合的檢舉編號
+        //             let xhr = new XMLHttpRequest();
+        //             xhr.onload = function () {
+        //                 if (xhr.responseText.indexOf('已檢舉') != -1) {  // 如果回傳'已檢舉'
+        //                     alert('您已檢舉');
+        //                 } else {
+        //                     // 跳燈箱
+        //                     let lightbox = document.querySelectorAll('.lightbox_wrapper');
+        //                     lightbox[i].style.display = '';
+        //                 }
+        //             }
+        //             let registNo = document.getElementsByName('registNo')[i].value;
+        //             console.log(registNo);
+        //             url = `php/memRepoData.php?registNo=${registNo}`;
+        //             xhr.open('get', url, true);
+        //             xhr.send(null);
+
+        //         } else {
+        //             // 如果未登入，跳出提示燈箱
+        //             alert('請登入會員');
+        //         }
+        //     }
+        //     xhr.open('get', 'php/getLoginData.php', true);
+        //     xhr.send(null);
+        // },
+
+        // scroll更改header背景色
+        window.addEventListener('scroll', function () {
+            let getScrollTop = document.documentElement.scrollTop;
+            let header = document.querySelector('header');
+
+            if (getScrollTop > 60) {
+                header.classList.add('-active');
+            } else {
+                header.classList.remove('-active');
+            }
+        });
+
+        let memNavInfo = new Vue({
+            el: '#memInfo',
+            data: {
+                memData: {},
+            },
         })
     </script>
+    <!-- <script src="js/index_scroll.js"></script> -->
 
 
 

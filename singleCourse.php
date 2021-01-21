@@ -1,14 +1,14 @@
 <?php
 
         //取得課程資訊
-        require_once "./php/connectced101g3_test.php";
+        require_once "./php/connect_ced101g3.php";
         $sql = "select * from course where courseNo = ? ";
         $allcourse = $pdo->prepare($sql);
         $allcourse->bindValue(1, $_GET["courseNo"]);
         $allcourse->execute();
         $courseRow = $allcourse->fetch(PDO::FETCH_ASSOC);
         //取得教師資訊
-        require_once "./php/connectced101g3_test.php";
+        require_once "./php/connect_ced101g3.php";
         $sql = "SELECT * from course JOIN class on course.courseNo = class.courseNo
                             JOIN teacher on class.teachNo = teacher.teachNo
                             WHERE course.courseNo = ? ";
@@ -17,7 +17,7 @@
         $allteacher->execute();
         $teacherRow = $allteacher->fetch(PDO::FETCH_ASSOC);
         //取得課程道具
-        require_once "./php/connectced101g3_test.php";
+        require_once "./php/connect_ced101g3.php";
         $sql = "SELECT c.courseNo, p.proImg, p.proName
                     from course c join product p on c.courseNo = p.courseNo
                     where c.courseNo = ?";
@@ -34,7 +34,7 @@
             );
         }
         //取得推薦課程
-        require_once "./php/connectced101g3_test.php";
+        require_once "./php/connect_ced101g3.php";
         $sql = "select c.courseNo, c.courseName, c.courseImg, c.coursePrice, t.courTypeName
                     from course c join coursetype t on c.courTypeNo = t.courTypeNo
                     order by rand() LIMIT 3";
