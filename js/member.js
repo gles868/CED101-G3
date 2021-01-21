@@ -725,7 +725,7 @@ Vue.component('mem-order', {
 
                                             <h4 class="MOL_Contentbox">
                                                 <div class="orederNo">{{value.proOrder}}</div>
-                                                <div class="orderPay" @change="changetype()>{{value.paymentMethod}}</div>
+                                                <div class="orderPay">{{value.paymentMethod}}</div>
                                                 <div class="orderAddress">{{value.deliveryAddress}}</div>
                                                 <div class="orderTotal"><span>$</span>{{value.disTotal}}</div>
                                             </h4>
@@ -794,9 +794,7 @@ Vue.component('mem-order', {
             // 取回res值後，呼叫另一隻函式
             this.orders = res;
         },
-        changetype(){
-            
-        }
+        changetype() {},
     },
     // template 渲染前 會先去執行以下函式
     created() {
