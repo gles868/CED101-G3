@@ -19,10 +19,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    // width: 220px;
-    // height: 400px;
     width: 260px;
     height: 480px;
+
     position: absolute;
     top: 50%;
     left: 50%;
@@ -32,8 +31,10 @@ body {
 
 .magic {
     position: relative;
-    height: 220px;
-    width: 220px;
+    // height: 220px;
+    // width: 220px;
+    height: 280px;
+    width: 280px;
 }
 
 .magic div {
@@ -51,8 +52,10 @@ body {
     transform: translateY(0) perspective(200px) rotateX(60deg) rotate(0);
     border: 3px dotted rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    // width: 200px;
+    // height: 200px;
+    width: 300px;
+    height: 300px;
     animation: ring 1s 6s linear forwards;
     opacity: 0;
 }
@@ -100,37 +103,49 @@ body {
 }
 
 .circle1 {
-    width: 220px;
-    height: 220px;
+    // width: 220px;
+    // height: 220px;
+    width: 260px;
+    height: 260px;
 }
 
 .circle2 {
-    width: 210px;
-    height: 210px;
+    // width: 210px;
+    // height: 210px;
+    width: 240px;
+    height: 240px;
     border-style: dotted;
     opacity: 0;
     animation: fadeIn 0.5s 5s forwards, turnRight 6s 5s linear infinite;
 }
 
 .circle3 {
-    width: 200px;
-    height: 200px;
+    // width: 200px;
+    // height: 200px;
+    width: 220px;
+    height: 220px;
 }
 
 .circle4 {
-    width: 170px;
-    height: 170px;
+    // width: 170px;
+    // height: 170px;
+    width: 190px;
+    height: 190px;
 }
 .circle5 {
-    width: 150px;
-    height: 150px;
+    // width: 150px;
+    // height: 150px;
+    width: 170px;
+    height: 170px;
     border-style: dotted;
     opacity: 0;
     animation: fadeIn 0.5s 4s forwards, turnLeft 6s 4s linear infinite;
 }
 .circle6 {
-    width: 140px;
-    height: 140px;
+    // width: 140px;
+    // height: 140px;
+    width: 160px;
+    height: 160px;
 }
 
 .circle7 {
@@ -1447,19 +1462,20 @@ body {
 .button1 {
     z-index: 999;
     font-size: 30px;
+    text-shadow: 0 0 0.2em #ff0000, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
     text-decoration: none;
     display: inline-block;
     margin: 50px;
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     position: absolute;
     top: 40%;
     left: 20%;
-    line-height: 150px;
+    line-height: 100px;
     text-align: center;
     color: #ffffff;
     // background: rgba(0, 94, 128, 0.7);
-    background-color: #4a4385a2;
+    // background-color: #4a4385a2;
     border-radius: 50%;
     transition: box-shadow 400ms cubic-bezier(0.2, 0, 0.7, 1),
         -webkit-transform 200ms cubic-bezier(0.2, 0, 0.7, 1);
@@ -1468,23 +1484,40 @@ body {
     transition: box-shadow 400ms cubic-bezier(0.2, 0, 0.7, 1),
         transform 200ms cubic-bezier(0.2, 0, 0.7, 1),
         -webkit-transform 200ms cubic-bezier(0.2, 0, 0.7, 1);
+    @media (max-width: 800px) {
+        left: 9%;
+    }
+    @media (max-width: 694px) {
+        left: 3%;
+    }
+    @media (max-width: 588px) {
+        left: 2%;
+    }
+    @media (max-width: 501px) {
+        left: 1%;
+        height: 70px;
+        width: 70px;
+        font-size: 22px;
+        line-height: 80px;
+    }
 }
 .button2 {
     z-index: 999;
+    text-shadow: 0 0 0.2em #ff0000, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
     position: absolute;
     top: 40%;
     font-size: 30px;
     text-decoration: none;
     display: inline-block;
     margin: 50px;
-    height: 150px;
-    width: 150px;
-    line-height: 150px;
+    height: 100px;
+    width: 100px;
+    line-height: 100px;
     text-align: center;
     right: 20%;
     color: #ffffff;
     // background: rgba(0, 94, 128, 0.7);
-    background-color: #4a4385a2;
+    // background-color: #4a4385a2;
     border-radius: 50%;
     transition: box-shadow 400ms cubic-bezier(0.2, 0, 0.7, 1),
         -webkit-transform 200ms cubic-bezier(0.2, 0, 0.7, 1);
@@ -1493,10 +1526,112 @@ body {
     transition: box-shadow 400ms cubic-bezier(0.2, 0, 0.7, 1),
         transform 200ms cubic-bezier(0.2, 0, 0.7, 1),
         -webkit-transform 200ms cubic-bezier(0.2, 0, 0.7, 1);
+    @media (max-width: 800px) {
+        right: 9%;
+    }
+    @media (max-width: 694px) {
+        right: 3%;
+    }
+    @media (max-width: 588px) {
+        right: 2%;
+    }
+    @media (max-width: 501px) {
+        right: 1%;
+        height: 70px;
+        width: 70px;
+        font-size: 22px;
+        line-height: 80px;
+    }
 }
 .button1:hover {
-    box-shadow: 0 0 1px 8px #4a43857c, 0 0 1px 16px #4a438569;
+    text-shadow: 0 0 0.2em #4a43857c, 0 0 0.2em #4a43857c, 0 0 0.2em #4a43857c;
 }
 .button2:hover {
-    box-shadow: 0 0 1px 8px #4a43857c, 0 0 1px 16px #4a438569;
+    text-shadow: 0 0 0.2em #4a43857c, 0 0 0.2em #4a43857c, 0 0 0.2em #4a43857c;
+}
+
+//
+
+.magiccircle {
+    position: absolute;
+    top: -12%;
+    left: 2%;
+    // overflow: hidden;
+    // margin: 50px;
+    img {
+        display: block;
+        animation: rotate 90s infinite;
+        animation-timing-function: linear;
+        @media all and (max-width: 1200px) {
+            width: 80%;
+            min-width: 350px;
+            float: right;
+        }
+        @media all and (max-width: 868px) {
+            display: none;
+        }
+    }
+}
+.star_button {
+    position: absolute;
+    top: 42%;
+    left: 21.5%;
+    width: 150px;
+    // margin: 50px;
+    img {
+        display: block;
+        width: 150px;
+        @media all and (max-width: 1200px) {
+            width: 80%;
+            min-width: 350px;
+            float: right;
+        }
+        @media all and (max-width: 868px) {
+            display: none;
+        }
+    }
+}
+.magiccircle2 {
+    position: absolute;
+    top: 60%;
+    right: -7%;
+    // margin: 50px;
+    img {
+        display: block;
+        animation: rotate 90s infinite;
+        animation-timing-function: linear;
+        @media all and (max-width: 1200px) {
+            width: 80%;
+            min-width: 350px;
+        }
+        @media all and (max-width: 868px) {
+            display: none;
+        }
+    }
+}
+.star_button2 {
+    position: absolute;
+    top: 42%;
+    right: 21.5%;
+    width: 150px;
+    // margin: 50px;
+    img {
+        display: block;
+        width: 150px;
+        @media all and (max-width: 1200px) {
+            width: 80%;
+            min-width: 350px;
+        }
+        @media all and (max-width: 868px) {
+            display: none;
+        }
+    }
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

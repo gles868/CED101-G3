@@ -1,4 +1,5 @@
 window.addEventListener('load', function () {
+    const vm = new Vue();
     let storage = sessionStorage;
     if (storage['total'] == null) {
         storage['total'] = '';
@@ -24,7 +25,7 @@ window.addEventListener('load', function () {
                         <div class="crystalball_name_box">
                             <div class="crystalball_name">{{item_info.proName}}</div>
                         </div>
-                        <div class="close"><img src="./img/close.png" @click="deleteproduct(item_info.proNo)"></div>
+                        <div class="delete"><img src="./img/close.png" @click="deleteproduct(item_info.proNo),cartcount()"></div>
                         <div class="crystalball_text_box">
                             <div class="crystalball_text">
                             {{item_info.proDescription}}
@@ -90,6 +91,36 @@ window.addEventListener('load', function () {
             deleteproduct(itemno) {
                 this.$emit('deleteproduct', itemno);
             },
+            // delete_count(count) {
+            //     this.count--;
+            //     console.log(111);
+            //     // storage.removeItem('count');
+            //     if (storage['count']) {
+            //         // console.log('000');
+            //         storage.setItem('count', `${this.count}`);
+            //         // storage['total'] += `${this.total_price} `;
+            //     } else {
+            //         storage['count'] -= `${this.count} `;
+            //     }
+            // },
+            cartcount() {
+                vm.$emit('count');
+            },
+            // showcart: function (i) {
+            //     let xhr = new XMLHttpRequest();
+            //     xhr.onload = function () {
+            //         let memData = JSON.parse(xhr.responseText);
+            //         if (memData.memberNo) {
+            //             // 如果有登入會員
+            //             console.log(11111);
+            //         } else {
+            //             // 如果未登入，跳出提示燈箱
+            //             alert('請登入會員');
+            //         }
+            //     };
+            //     xhr.open('get', 'php/getLoginData.php', true);
+            //     xhr.send(null);
+            // },
         },
         created() {
             this.get_data(this.itemno);
@@ -110,7 +141,7 @@ window.addEventListener('load', function () {
             deliver_box: true,
             total_box: true,
             Btn: true,
-            count: '',
+            count: 0,
         },
         methods: {
             //切割storage帶的商品編號
@@ -124,6 +155,29 @@ window.addEventListener('load', function () {
                     .split(', ');
                 this.itemlist = items;
             },
+
+            // 切割購物車數量(count)
+            split_count() {
+                let countString = storage.getItem('count');
+                let count = countString;
+                this.count = count;
+                // console.log(434353454354);
+            },
+            // 刪除購物車內容後 count 變化
+
+            // change_num() {
+            //     this.count--;
+            //     console.log(11);
+            //     this.$emit('change_num', this.count);
+            //     // storage['count'] += 1;
+            //     if (storage['count']) {
+            //         // console.log('000');
+            //         storage.setItem('count', `${this.count}`);
+            //         // storage['total'] += `${this.total_price} `;
+            //     } else {
+            //         storage['count'] += `${this.count} `;
+            //     }
+            // },
             changeStatus() {
                 if (this.itemlist == '') {
                     this.space_box = true;
@@ -147,15 +201,19 @@ window.addEventListener('load', function () {
             deleteproduct(itemno) {
                 // 清除storage的資料
                 storage.removeItem(itemno);
+
                 storage['addItemList'] = storage['addItemList'].replace(
                     `${itemno}, `,
                     ''
                 );
+
+                // storage.removeItem(count);
                 console.log(111);
                 this.split_products();
                 // window.location.href = './cart.html';
                 history.go(0);
             },
+
             btnani() {
                 const wrapper = document.querySelector('.btn-wrapper');
                 const stars = [
@@ -234,6 +292,10 @@ window.addEventListener('load', function () {
         created() {
             this.split_products();
             this.changeStatus();
+            this.split_count();
+        },
+        mounted() {
+            vm.$on('cartcount', () => (this.count -= 1));
         },
     });
 });

@@ -97,7 +97,7 @@ div.shop_box {
                 @media (max-width: 376px) {
                     font-size: 16px;
                     // border: 1px solid red;
-                    width: 24%;
+                    width: 25%;
                     opacity: 1;
                 }
             }
@@ -120,6 +120,9 @@ div.shop_box {
                 }
                 @media (max-width: 672px) {
                     width: 23%;
+                }
+                @media (max-width: 376px) {
+                    width: 28%;
                 }
             }
             div.pro_att {
@@ -726,6 +729,7 @@ div.pro_photo {
 ////////
 .num_icon {
     // display: block;
+    cursor: pointer;
     position: absolute;
     top: 50px;
     // right: 40px;
@@ -748,11 +752,12 @@ div.pro_photo {
         right: 14%;
     }
     @media (max-width: 376px) {
-        right: 16%;
+        right: 17%;
     }
     .num_text {
         // border: 1px solid red;
         text-align: center;
+        cursor: pointer;
         align-items: center;
         position: absolute;
         top: 10%;

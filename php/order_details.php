@@ -5,25 +5,55 @@ try {
     $content = trim(file_get_contents("php://input"));
     $decoded = json_decode($content, true);
 
+    $memberno = $decoded["memberno"];
+    $prototal = $decoded["prototal"]; 
+    $orderdate = $decoded["orderdate"]; 
+    $paymentmethod = $decoded["paymentmethod"]; 
+    $deliveryaddress = $decoded["deliveryaddress"];
+    $disTotal = $decoded["disTotal"];
 
-    $item = $decoded["item"];
-    $smalltotal = $decoded["smalltotal"];
-    $num = $decoded["num"];
-    $proorder = $decoded["proorder"];
+
+  
     
-    $sql = "insert into order_details (proOrder,proNo,proPrice,orderNumber)
-            values (:proorder,:item,:smalltotal,:num)";
-    // $grouporddata = $pdo->query($sql);
-    
+    $sql = "insert into product_order (memberNo,orderDate,proTotal,paymentMethod,deliveryAddress,disTotal)
+    values (:memberno,:orderdate,:prototal,:paymentmethod,:deliveryaddress,:disTotal)";
+
     $managerdata = $pdo->prepare($sql);
-    $managerdata->bindValue(":proorder", $proorder);
-    $managerdata->bindValue(":item", $item);
-    $managerdata->bindValue(":smalltotal", $smalltotal);
-    $managerdata->bindValue(":num", $num);
+
+    $managerdata->bindValue(":prototal", $prototal);
+    $managerdata->bindValue(":memberno", $memberno);
+    $managerdata->bindValue(":orderdate", $orderdate);
+    $managerdata->bindValue(":paymentmethod", $paymentmethod);
+    $managerdata->bindValue(":deliveryaddress", $deliveryaddress);
+    $managerdata->bindValue(":disTotal", $disTotal);
 
 
     $managerdata->execute();
 
+
+    $prono = $pdo->LASTINSERTID();
+
+    $ord_items = $decoded["ord_items"];
+    
+    for($i=0;$i<count($ord_items);$i++){
+
+        $item = $ord_items[$i]["item"];
+        $smalltotal = $ord_items[$i]["smalltotal"];
+        $num = $ord_items[$i]["num"];
+
+        $sql = "insert into order_details (proOrder,proNo,proPrice,orderNumber)
+        values (:proorder,:item,:smalltotal,:num)";
+
+    $managerdata = $pdo->prepare($sql);
+
+    $managerdata->bindValue(":proorder", $prono);
+    $managerdata->bindValue(":item", $item);
+    $managerdata->bindValue(":smalltotal", $smalltotal);
+    $managerdata->bindValue(":num", $num);
+
+    $managerdata->execute();
+
+    }
 
 
     echo "修改成功~!!";

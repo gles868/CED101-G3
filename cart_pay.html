@@ -156,14 +156,10 @@
                         <div class="name_title title">姓名</div>
                         <div class="name data_text">溫宗益</div>
                     </div>
-                    <!-- <div class="phone_box">
-                        <div class="phone_title title">電話</div>
-                        <div class="phone data_text">091234567</div>
-                    </div> -->
-                    <div class="add_box">
+                    <!-- <div class="add_box">
                         <div class="add_title title">地址</div>
                         <div class="add data_text">魔幻森林菇菇區123號</div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="cartpro_box">
@@ -180,8 +176,242 @@
                 </div>
                 <div class="total_text">{{prototal}}</div>
             </div>
+
+            <!-- 付款方式區塊 -->
+
+            <div id="step1">
+                <h4><span class="highlight">選擇付款方式</span></h4>
+                <div class="allBtn pay-type" style="display: flex">
+                    <div class="row justify-content-center">
+                        <button
+                            type="button"
+                            class="btn-light btn_CARD"
+                            v-bind:class=" {btnActive:isActive===1}"
+                            v-on:click.capture.stop="CardForm=!CardForm"
+                        >
+                            <img v-bind:src="link.CardImgSrc" alt="" /><br />
+                            信用卡/金融卡
+                        </button>
+                    </div>
+
+                    <div class="row justify-content-center mt-3">
+                        <button
+                            type="button"
+                            class="btn-light btn_ATM"
+                            v-bind:class="{btnActive:isActive === 2}"
+                            v-on:click.capture.stop="AtmForm=!AtmForm"
+                        >
+                            <img v-bind:src="link.AtmImg" alt="" /><br />
+                            ATM 轉帳
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card原表單 -->
+            <div
+                class="creditcard"
+                v-show="CardForm"
+                onsubmit="return post_data()"
+            >
+                <form
+                    id="myForm"
+                    class="allBtn"
+                    role="form"
+                    data-toggle="validator"
+                >
+                    <div class="pay_input form-group">
+                        <input
+                            type="radio"
+                            id="pay1"
+                            name="payMethod"
+                            v-bind:value="CardPayType.onePay"
+                            v-model.lazy="payType"
+                        />
+                        <label for="pay1"></label>
+                        {{CardPayType.onePay}}
+                        <input
+                            class="ml-5"
+                            type="radio"
+                            id="pay2"
+                            name="payMethod"
+                            v-bind:value="CardPayType.installment"
+                            v-model.lazy="payType"
+                        />
+                        <label for="pay2"></label>
+                        {{CardPayType.installment}}
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="pay_creditCard_number form-group">
+                        <p>信用卡卡號 :</p>
+
+                        <input
+                            type="text"
+                            v-for="(cardInput,index) in inputList"
+                            @keyup="autoTab($event,index)"
+                            maxlength="4"
+                            data-error="請填寫四位數"
+                            minlength="4"
+                            pattern="[0-9]{4}"
+                            class="border-input"
+                        />
+                        －
+
+                        <!-- <input type="text" v-model='cardNum2' id="card_num_2" maxlength="4" data-error="請填寫四位數" required
+                            data-minlength="4" pattern="[0-9]{4}">
+                        －
+                        <input type="text" v-model='cardNum3' id="card_num_3" maxlength="4" required data-error="請填寫四位數"
+                            data-minlength="4" pattern="[0-9]{4}">
+                        －
+                        <input type="text" v-model='cardNum4' id="card_num_4" maxlength="4" data-error="請填寫四位數" required
+                            data-minlength="4" pattern="[0-9]{4}"> -->
+
+                        <div class="help-block with-errors" v-show="textErr">
+                            {{card1ErrMsg}}
+                        </div>
+                    </div>
+
+                    <div class="pay_creditCard_date form-group">
+                        <p>有效月年 :</p>
+                        <select name="month" v-model="cardMonth">
+                            <option value="" disabled selected>Month</option>
+                            <option
+                                id="card_month"
+                                v-bind:value="num < 10 ? '0' + num : num"
+                                v-for="num in 12"
+                                v-bind:key="num"
+                            >
+                                {{num < 10 ? '0' + num : num}}
+                            </option>
+                        </select>
+                        /
+                        <select name="year" v-model="cardYear">
+                            <option value="" disabled selected>Year</option>
+                            <option
+                                id="card_year"
+                                v-bind:value="$index + minCardYear"
+                                v-for="(n,$index) in 12"
+                                v-bind:key="n"
+                            >
+                                {{$index + minCardYear}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="pay_creditCard_last form-group">
+                        <p>背面末三碼</p>
+                        <input
+                            type="text"
+                            v-model="CardBack"
+                            id="card_back_num"
+                            data-error="請填寫三位數"
+                            minlength="3"
+                            maxlength="3"
+                            pattern="[0-9]{3}"
+                            @keyup="testCardBack($event)"
+                        />
+                        <img
+                            src="https://gitlab.com/loveabo103103/payment/raw/master/back-three.svg"
+                            alt="icon"
+                            width="35.3px"
+                        />
+                        <div
+                            class="help-block with-errors"
+                            v-show="BackTextErr"
+                        >
+                            {{card4ErrMsg}}
+                        </div>
+                    </div>
+                    <div class="pay_mail form-group">
+                        <p>填寫付款人信箱 :</p>
+                        <input
+                            type="email"
+                            data-error="請填寫正確信箱地址"
+                            v-model="pay_mail"
+                            @keyup="testMail($event)"
+                        />
+                        <div class="help-block with-errors" v-show="mailErr">
+                            {{card5ErrMsg}}
+                        </div>
+                    </div>
+
+                    <button
+                        id="goS3"
+                        type="button"
+                        class="btn btn-info"
+                        @click="copy_Card();changeBg(1)"
+                    >
+                        確定
+                    </button>
+                </form>
+
+                <div class="pay_close" v-on:click="CardForm=!CardForm">
+                    <img v-bind:src="link.CloseImg" alt="" />
+                </div>
+            </div>
+            <!-- Card原表單 -->
+
+            <!-- ATM原表單 -->
+            <div class="ATM" v-show="AtmForm">
+                <div id="myForm5" class="allBtn">
+                    <table class="table table-hover">
+                        <tr v-for="(AtmTable,index) in AtmTitle">
+                            <td>{{AtmTable}}</td>
+                            <!-- <td>{{AtmTable.AtmCode}}</td> -->
+                        </tr>
+                    </table>
+                    <button
+                        id="goATM"
+                        class="btn btn-info"
+                        @click="copy_Atm();changeBg(2)"
+                    >
+                        確認
+                    </button>
+                </div>
+                <div class="close-atm" v-on:click="AtmForm=!AtmForm">
+                    <img v-bind:src="link.CloseImg" alt="" />
+                </div>
+            </div>
+            <!-- ATM原表單 -->
+
+            <!-- Card打印表單 -->
+            <div class="card-inf" v-show="copyCard">
+                <div class="card-back-inf" style="display: flex">
+                    <div class="card-back-title">付款模式:</div>
+                    <div class="card-back-num">{{payType}}</div>
+                </div>
+                <div class="card-num-inf" style="display: flex">
+                    <div class="card-num-title">信用卡卡號:</div>
+                    <div class="card-num">
+                        <span v-for="card in cardNum">{{card}}-</span>
+                    </div>
+                </div>
+                <div class="card-deadline" style="display: flex">
+                    <div class="card-deadline-title">有效年月:</div>
+                    <div class="card-month">{{cardMonth}}</div>
+                    /
+                    <div class="card-year">{{cardYear}}</div>
+                </div>
+                <div class="card-back-inf" style="display: flex">
+                    <div class="card-back-title">背面末三碼:</div>
+                    <div class="card-back-num">{{CardBack}}</div>
+                </div>
+                <div class="card-email-inf" style="display: flex">
+                    <div class="card-email-title">付款人信箱:</div>
+                    <div class="card-email">{{pay_mail}}</div>
+                </div>
+            </div>
+            <!-- Card打印表單 -->
+
+            <!-- ATM打印表單 -->
+            <table class="ATM_inf" v-show="copyAtm">
+                <tr v-for="(item,index) in AtmTrInfo" :key="index">
+                    <td>{{item.title}} :</td>
+                    <td>{{item.info}}</td>
+                </tr>
+            </table>
+            <!-- ATM打印表單 -->
             <div class="byu_btn" @click="add_ordlist">
-                <div class="btn-wrapper">
+                <div class="btn-wrapper" @mouseover="btnani">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 65 65"
@@ -238,9 +468,7 @@
                             fill="#F05E1C"
                         />
                     </svg>
-                    <a class="Btn"
-                        ><input class="Btn" type="button" value="送出"
-                    /></a>
+                    <button class="Btn" type="submit">送出</button>
                 </div>
             </div>
         </main>
