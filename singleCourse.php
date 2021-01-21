@@ -100,7 +100,7 @@
                 <ul class="nav-right">
                     <li>
                         <a href="member.html">
-                        <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
+                            <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
                             <i id="memIcon" class="fas fa-user-circle fa-lg"></i>
                             <div id="memInfo">
                                 <div id="avatar">
@@ -136,7 +136,7 @@
                 <div class="notice"></div>
                 <div class="notice"></div>
             </form>
-        </div>      
+        </div>
         <!-- 登入 -->
         <div class="form-container sign-in-container">
             <form id="signInForm">
@@ -145,12 +145,10 @@
                 <input type="password" name="memPsw" id="memPsw" placeholder="輸入密碼" />
                 <span id="forgetPsw">忘記密碼?</span>
                 <input type="button" id="signInSubmit" value="登入">
-                
                 <div class="notice" style="top: 140px"></div>
                 <div class="notice" style="top: 198px"></div>
             </form>
         </div>
-        
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
@@ -160,14 +158,14 @@
                     <button type="button" class="check" id="signUp">註冊</button>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
 
 
 
     <main class="main">
 
-	 <section class="course_info">
+        <section class="course_info">
             <div class="course_card_block">
                 <div id="app" class="center-content">
                     <div class="heart" @click="changeHeart" data-course="classRow.courseNo">
@@ -178,8 +176,12 @@
                 <img class="light" src="./img/course_cards/singel_class/light.png" alt="">
             </div>
             <div class="info_block">
-                <p class="course_name"> <?=$courseRow["courseName"]?> </p>
-                <p class="course_content"> <?=$courseRow["courseDescription"]?> </p>
+                <p class="course_name">
+                    <?=$courseRow["courseName"]?>
+                </p>
+                <p class="course_content">
+                    <?=$courseRow["courseDescription"]?>
+                </p>
                 <img class="white_bg" src="./img/course_cards/white-bg01.png" alt="">
             </div>
         </section>
@@ -200,9 +202,13 @@
             </div>
             <div class="teacher_info_block">
                 <img class="white_bg" src="./img/course_cards/white-bg01.png" alt="">
-                <p class="teacher_name"> <?=$teacherRow["teachName"]?> </p>
+                <p class="teacher_name">
+                    <?=$teacherRow["teachName"]?>
+                </p>
 
-                <p class="teacher_content"> <?=$teacherRow["teachDescription"]?></p>
+                <p class="teacher_content">
+                    <?=$teacherRow["teachDescription"]?>
+                </p>
             </div>
         </section>
 
@@ -213,7 +219,7 @@
             </div>
 
             <div class="accessories_needed">
-
+                
             <?php
                 for($i = 0; $i < count($data); $i++){
             ?>
@@ -222,10 +228,12 @@
                     <?php
                     for($j =0; $j < 1; $j++){
                     ?>
+                    <div class="accessory_block">
                     <a href="mall.html">
                     <img src="<?=$data[$i][$j]?>" alt="">
                     <p class="name"><?=$data[$i][$j+1]?></p>
                     </a>
+                    </div>
 
                   <?php 
                   }
@@ -235,8 +243,24 @@
 
                 <?php  
                 }
-                ?>
-            </div>
+                ?> 
+                <!-- <div class="single_accessory">
+                    <div class="accessory_block">
+                        <a href="mall.html">
+                            <img src="img/props/p8.png" alt="">
+                            <p class="name">大蜘蛛</p>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="single_accessory">
+                    <div class="accessory_block">
+                        <a href="mall.html">
+                            <img src="img/props/p8.png" alt="">
+                            <p class="name">大蜘蛛</p>
+                        </a>
+                    </div>
+                </div> -->
 
         </section>
 
@@ -249,47 +273,65 @@
             <div class="course_cards">
 
                 <div class="card">
-                    <p class="course_title"><?=$cardData[0][0]?></p>
+                    <p class="course_title">
+                        <?=$cardData[0][0]?>
+                    </p>
 
                     <div class="front">
                         <img class="front_card" src="<?=$cardData[0][1]?>" alt="">
                     </div>
                     <a href="singleCourse.php?courseNo=<?=$cardData[0][4]?>">
-                    <div class="back">
-                        <img class="back_card" src="./img/course_cards/card_back.png" alt="">
-                        <p class="course_price">$<?=$cardData[0][2]?></p>
-                        <p class="course_class">屬性：<?=$cardData[0][3]?></p>
-                    </div>
+                        <div class="back">
+                            <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+                            <p class="course_price">$
+                                <?=$cardData[0][2]?>
+                            </p>
+                            <p class="course_class">屬性：
+                                <?=$cardData[0][3]?>
+                            </p>
+                        </div>
                     </a>
                 </div>
 
                 <div class="card">
-                    <p class="course_title"><?=$cardData[1][0]?></p>
+                    <p class="course_title">
+                        <?=$cardData[1][0]?>
+                    </p>
 
                     <div class="front">
                         <img class="front_card" src="<?=$cardData[1][1]?>" alt="">
                     </div>
                     <a href="singleCourse.php?courseNo=<?=$cardData[1][4]?>">
-                    <div class="back">
-                        <img class="back_card" src="./img/course_cards/card_back.png" alt="">
-                        <p class="course_price">$<?=$cardData[1][2]?></p>
-                        <p class="course_class">屬性：<?=$cardData[1][3]?></p>
-                    </div>
+                        <div class="back">
+                            <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+                            <p class="course_price">$
+                                <?=$cardData[1][2]?>
+                            </p>
+                            <p class="course_class">屬性：
+                                <?=$cardData[1][3]?>
+                            </p>
+                        </div>
                     </a>
                 </div>
 
                 <div class="card">
-                    <p class="course_title"><?=$cardData[2][0]?></p>
+                    <p class="course_title">
+                        <?=$cardData[2][0]?>
+                    </p>
                     <div class="front">
                         <img class="front_card" src="<?=$cardData[2][1]?>" alt="">
                     </div>
                     <a href="singleCourse.php?courseNo=<?=$cardData[2][4]?>">
-                    <div class="back">
-                        <img class="back_card" src="./img/course_cards/card_back.png" alt="">
-                        <p class="course_price">$<?=$cardData[2][2]?></p>
-                        <p class="course_class">屬性：<?=$cardData[2][3]?></p>
-                    </div>
-                </a>
+                        <div class="back">
+                            <img class="back_card" src="./img/course_cards/card_back.png" alt="">
+                            <p class="course_price">$
+                                <?=$cardData[2][2]?>
+                            </p>
+                            <p class="course_class">屬性：
+                                <?=$cardData[2][3]?>
+                            </p>
+                        </div>
+                    </a>
                 </div>
 
             </div>
@@ -313,68 +355,68 @@
     <!-- <script src="./js/login.js"></script> -->
 
     <script>
-     let memNavInfo = new Vue({
+        let memNavInfo = new Vue({
             el: '#memInfo',
             data: {
                 memData: {},
             },
         })
-    let app = new Vue({
+        let app = new Vue({
             el: '#app',
-            data:{
-                group_ord_no:"",
-                info:"",
+            data: {
+                group_ord_no: "",
+                info: "",
             },
-            created(){
+            created() {
                 //切割字串
-            this.group_ord_no = window.location.search.split("=")[1];
-            this.get_mar()
+                this.group_ord_no = window.location.search.split("=")[1];
+                this.get_mar()
             },
             mounted() {
                 // this.test();
             },
 
             methods: {
-                click (){
+                click() {
                     alert('hi')
                 },
                 get_mar: async function () {
 
-                // this.group_ord_no = window.location.search.split("=")[1];
+                    // this.group_ord_no = window.location.search.split("=")[1];
 
 
-                // console.log('send2', drinkno)
-                const res = await fetch('./php/loadCalendar.php', {
-                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'same-origin', // no-cors, *cors, same-origin
-                    // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                    credentials: 'same-origin', // include, *same-origin, omit
-                    headers: {
-                        'Content-Type': 'application/json', // sent request
-                        // Accept: 'application/json', // expected data sent back
-                    },
-                    // redirect: 'follow', // manual, *follow, error
-                    // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                    body: JSON.stringify({
-                        group_ord_no: this.group_ord_no,
-                    }), // body data type must match "Content-Type" header
-                }).then(function (data) {
-                    return data.json()
-                })
-                // 取回res值後，呼叫另一隻函式
-                this.info = res
+                    // console.log('send2', drinkno)
+                    const res = await fetch('./php/loadCalendar.php', {
+                        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                        mode: 'same-origin', // no-cors, *cors, same-origin
+                        // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        credentials: 'same-origin', // include, *same-origin, omit
+                        headers: {
+                            'Content-Type': 'application/json', // sent request
+                            // Accept: 'application/json', // expected data sent back
+                        },
+                        // redirect: 'follow', // manual, *follow, error
+                        // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                        body: JSON.stringify({
+                            group_ord_no: this.group_ord_no,
+                        }), // body data type must match "Content-Type" header
+                    }).then(function (data) {
+                        return data.json()
+                    })
+                    // 取回res值後，呼叫另一隻函式
+                    this.info = res
 
-                this.test()
+                    this.test()
 
-            },
-                test(){
+                },
+                test() {
 
                     var calendarEl = document.getElementById('calendar');
                     var calendar = new FullCalendar.Calendar(calendarEl, {
                         headerToolbar: {
-                        // left: 'prev,next today',
-                        // center: 'title',
-                        // right: 'dayGridMonth',
+                            // left: 'prev,next today',
+                            // center: 'title',
+                            // right: 'dayGridMonth',
                         },
                         initialDate: '2021-01-01',
                         navLinks: true, // can click day/week names to navigate views
@@ -390,47 +432,47 @@
                     // console.log(heartClass);
                     let courseNo = e.target.id;
                     // console.log(e.target.id);
-            let xhr = new XMLHttpRequest();
-            xhr.onload = function(){
-                let memData = JSON.parse(xhr.responseText); 
-                console.log(memData);
-                if(memData.memberNo){  // 如果有登入會員
-                    e.target.parentNode.classList.toggle('loved');
-                                       if (heartClass == 'heart') {
-                                            // alert('已加入收藏');
-                                            $.ajax({
-                                                method: 'GET',
-                                                url: './php/course_addFavourite.php',
-                                                type: 'json',
-                                                data: `courseNo=${courseNo}`, 
-                                                success: function (lovedCourse) {
-                                                    console.log(lovedCourse); 
-                                                }
-                                            })
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = function () {
+                        let memData = JSON.parse(xhr.responseText);
+                        console.log(memData);
+                        if (memData.memberNo) {  // 如果有登入會員
+                            e.target.parentNode.classList.toggle('loved');
+                            if (heartClass == 'heart') {
+                                // alert('已加入收藏');
+                                $.ajax({
+                                    method: 'GET',
+                                    url: './php/course_addFavourite.php',
+                                    type: 'json',
+                                    data: `courseNo=${courseNo}`,
+                                    success: function (lovedCourse) {
+                                        console.log(lovedCourse);
+                                    }
+                                })
 
-                                        } else {
-                                            $.ajax({
-                                                method: 'GET',
-                                                url: './php/course_removeFavourite.php',
-                                                data: `courseNo=${courseNo}`,
-                                            })
-                                        }
-                    
-                }else{
-                    // 如果未登入，跳出提示燈箱
-                    alert('請登入會員');
-                }
-            }
-            xhr.open('get', 'php/getLoginData.php', true);
-            xhr.send(null);   
-                   
+                            } else {
+                                $.ajax({
+                                    method: 'GET',
+                                    url: './php/course_removeFavourite.php',
+                                    data: `courseNo=${courseNo}`,
+                                })
+                            }
+
+                        } else {
+                            // 如果未登入，跳出提示燈箱
+                            alert('請登入會員');
+                        }
+                    }
+                    xhr.open('get', 'php/getLoginData.php', true);
+                    xhr.send(null);
+
                 },
             },
         })
 
         window.addEventListener('load', function () {
-        //取出收藏課程
-        function getlovedCourse() {
+            //取出收藏課程
+            function getlovedCourse() {
                 $.ajax({
                     method: 'GET',
                     url: './php/getLovedCourse.php',
@@ -441,7 +483,7 @@
                 })
             }
 
-        getlovedCourse();
+            getlovedCourse();
 
         });
 
@@ -784,8 +826,8 @@
                 }
             }
         });
-      
-            
+
+
 
         //滾動header變色
         $(window).scroll(function () {

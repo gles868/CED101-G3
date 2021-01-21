@@ -8,10 +8,6 @@ $(function () {
   });
 });
 
-//愛心
-$(".heart").click(function () {
-  $(this).toggleClass("loved");
-});
 
 
 //動畫效果
