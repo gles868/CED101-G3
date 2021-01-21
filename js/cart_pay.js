@@ -226,10 +226,11 @@ window.addEventListener('load', function () {
             });
             this.split_products();
             this.split_total();
-            this.member();
+            // this.member();
         },
         mounted() {
             this.className = storage.getItem('className');
+            this.member();
         },
         methods: {
             split_products() {
@@ -244,26 +245,27 @@ window.addEventListener('load', function () {
                 let total = parseInt(totalString);
                 this.prototal = total;
             },
-            member(){
-                const res = await fetch('./php/.php', {
-                method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                mode: 'same-origin', // no-cors, *cors, same-origin
-                // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: 'same-origin', // include, *same-origin, omit
-                headers: {
-                    'Content-Type': 'application/json', // sent request
-                    // Accept: 'application/json', // expected data sent back
-                },
-                // redirect: 'follow', // manual, *follow, error
-                // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-               // body data type must match "Content-Type" header
-            }).then(function (data) {
-                return data.json();
-            });
-            // 取回res值後，呼叫另一隻函式
-            this.member_info = res;
-
-        },
+            member() {
+                const res = fetch('./php/check_mem.php', {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'same-origin', // no-cors, *cors, same-origin
+                    // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: {
+                        'Content-Type': 'application/json', // sent request
+                        // Accept: 'application/json', // expected data sent back
+                    },
+                })
+                    .then(function (data) {
+                        return data.json();
+                    })
+                    .then(function (data) {
+                        this.member_info = data;
+                    });
+                // 取回res值後，呼叫另一隻函式
+                // this.member_info = res;
+                console.log(this.member_info);
+            },
 
             // add_or() {
             //     // alert(1);
