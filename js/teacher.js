@@ -15,7 +15,7 @@ xhr.onload = function(){
     app.dataRows = JSON.parse(xhr.responseText);
     console.log(app.dataRows);
 }
-xhr.open('get', 'php/teacherData.php', true);
+xhr.open('get', './php/teacherData.php', true);
 xhr.send(null);
 
 Vue.component('teacher-component', {
