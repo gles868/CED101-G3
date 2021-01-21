@@ -794,9 +794,7 @@ Vue.component('mem-order', {
             // 取回res值後，呼叫另一隻函式
             this.orders = res;
         },
-        changetype(){
-            
-        }
+        changetype() {},
     },
     // template 渲染前 會先去執行以下函式
     created() {
