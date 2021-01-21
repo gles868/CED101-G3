@@ -10,17 +10,7 @@ window.addEventListener('load', function () {
     if (storage['total'] == null) {
         storage['total'] = '';
     }
-    Vue.component('memdata', {
-        data() {},
-        template: `                
-        <div class="confirm_data">
-            <div class="name_box">
-                <div class="name_title title">姓名</div>
-                <div class="name data_text">溫宗益</div>
-            </div>
-        </div>`,
-        methods: {},
-    });
+
     Vue.component('products', {
         data() {
             return {
@@ -127,10 +117,9 @@ window.addEventListener('load', function () {
             itemlist: '',
             proorder: 2,
             memberno: 5,
-            orderdate: '2021-01-21',
+            orderdate: '2021-01-20',
             paymentmethod: 1,
             deliveryaddress: 111,
-            member_info: '',
             deadLineDate:
                 new Date().getFullYear() +
                 '年' +
@@ -143,10 +132,9 @@ window.addEventListener('load', function () {
             // orderdate:
             //     new Date().getFullYear() +
             //     '年' +
-            //     (new Date().getMonth() + 1) +
+            //     new Date().getMonth() +
             //     '月' +
-            //     new Date().getDate() +
-            //     '號',
+            //     new Date().getDate(),
 
             CardForm: false,
             AtmForm: false,
@@ -226,7 +214,6 @@ window.addEventListener('load', function () {
             });
             this.split_products();
             this.split_total();
-            this.member();
         },
         mounted() {
             this.className = storage.getItem('className');
@@ -244,27 +231,6 @@ window.addEventListener('load', function () {
                 let total = parseInt(totalString);
                 this.prototal = total;
             },
-            member(){
-                const res = await fetch('./php/.php', {
-                method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                mode: 'same-origin', // no-cors, *cors, same-origin
-                // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: 'same-origin', // include, *same-origin, omit
-                headers: {
-                    'Content-Type': 'application/json', // sent request
-                    // Accept: 'application/json', // expected data sent back
-                },
-                // redirect: 'follow', // manual, *follow, error
-                // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-               // body data type must match "Content-Type" header
-            }).then(function (data) {
-                return data.json();
-            });
-            // 取回res值後，呼叫另一隻函式
-            this.member_info = res;
-
-        },
-
             // add_or() {
             //     // alert(1);
             //     if (this.copyAtm != true && this.copyCard != true) {
@@ -273,7 +239,7 @@ window.addEventListener('load', function () {
             //     } else {
             //     }
             // },
-            //建立訂單
+            //建立訂單明細
             add_ordlist: async function () {
                 let tempString = storage.getItem('addItemList');
                 let list = tempString
@@ -321,6 +287,7 @@ window.addEventListener('load', function () {
                     }),
                 });
             },
+
             //
             copy_Atm() {
                 if (copyHave == 'Have') {
