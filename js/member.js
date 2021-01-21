@@ -100,6 +100,11 @@ Vue.component('courseDate', {
     created() {
         this.get_class();
     },
+    watch: {
+        memberno() {
+            this.get_class();
+        },
+    },
 });
 
 // ----------我的課程>課程清單(組件)----------
@@ -504,7 +509,7 @@ Vue.component('mem-keep', {
             content: 'memKeepCourse',
         };
     },
-    props: [],
+    props: ['memberno'],
 
     template: `
     <!-- 我的收藏開始 -->
@@ -517,7 +522,7 @@ Vue.component('mem-keep', {
                 </ul>
             </div>
             <div class="memKeepContent">
-                <component :is="content"></component>
+                <component :memberno="memberno" :is="content"></component>
             </div>
         </div>
     </section>
@@ -533,64 +538,73 @@ Vue.component('memKeepCourse', {
     data() {
         return {
             //撈出來的 資料
+            keepcourse: '',
         };
     },
-    props: [],
+    props: ['memberno'],
 
     template: `
     <div class="memKeepCourse memcon">
-                    <div class="CRD">
+                    <div class="CRD" v-for="(value,key) in keepcourse">
                         <div class="CRD_pic">
-                            <img src="./img/course_cards/course_07.png" alt="" srcset="" />
+                            <img :src="value.courseImg" />
                         </div>
                         <div class="CRD_Text">
-                            <h4 class="CRD_TextTit">收藏煉金術1</h4>
+                            <h4 class="CRD_TextTit">{{value.courseName}}</h4>
                             <div class="CRD_TextCon">
-                                <h5>煉金術是一門很厲害的課</h5>
-                                <h5>煉金術是一門很厲害的課</h5>
-                                <h5>煉金術是一門很厲害的課</h5>
-                                <h5>煉金術是一門很厲害的課</h5>
-                                <h5>煉金術是一門很厲害的課</h5>
+                                <p>{{value.courseDescription}}</p>
                             </div>
                         </div>
                         <div class="memKeepCourseBtn">
-                            <a href="/registration.html"
-                                ><div class="membtn">報名本課</div></a
-                            >
+                        <!-- <a href="/registration.html">
+                                <div class="membtn">報名本課</div>
+                            </a> -->
                             <div class="MKC_cancel">
-                                <div class="membtn">取消收藏</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="CRD">
-                        <div class="CRD_pic">
-                            <img src="./img/course_cards/course_07.png" alt="" srcset="" />
-                        </div>
-                        <div class="CRD_Text">
-                            <h4 class="CRD_TextTit">收藏煉金術2</h4>
-                            <div class="CRD_TextCon">
-                                <h5>煉金術是一門很厲害的課</h5>
-                                <h5>煉金術是一門很厲害的課</h5>
-                                <h5>煉金術是一門很厲害的課</h5>
-                                <h5>煉金術是一門很厲害的課</h5>
-                                <h5>煉金術是一門很厲害的課</h5>
-                            </div>
-                        </div>
-                        <div class="memKeepCourseBtn">
-                            <a href="/registration.html"
-                                ><div class="membtn">報名本課</div></a
-                            >
-                            <div class="MKC_cancel">
-                                <div class="membtn">取消收藏</div>
+                                <div class="membtn" @click="cancel_keep(value.courListNo)">取消收藏</div>
                             </div>
                         </div>
                     </div>
                 </div>
   `,
-    methods: {},
+    methods: {
+        mem_get_keep_course: async function () {
+            const res = await fetch('./php/mem_get_keep_course.php', {
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    memberno: this.memberno,
+                }),
+            }).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.keepcourse = res;
+        },
+        cancel_keep: async function (courListNo) {
+            const res = await fetch('./php/mem_get_del_course.php', {
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    memberno: this.memberno,
+                    courListNo: courListNo,
+                }),
+            });
+            this.mem_get_keep_course();
+            bus.$emit('getAlert', '取消收藏嚕!!');
+        },
+    },
     // template 渲染前 會先去執行以下函式
-    created() {},
+    created() {
+        this.mem_get_keep_course();
+    },
 });
 
 // ----------我的收藏>商品(組件)----------
@@ -598,54 +612,27 @@ Vue.component('memKeepPro', {
     data() {
         return {
             //撈出來的 資料
+            keeppro: '',
         };
     },
-    props: [],
+    props: ['memberno'],
 
     template: `
     <div class="memKeepPro memcon">
-                    <div class="CRD">
+                    <div class="CRD" v-for="(value,key) in keeppro" >
                         <div class="MKP_pic">
-                            <img src="./img/props/p13.png" alt="" srcset="" />
+                            <img :src="value.proImg" />
                         </div>
                         <div class="CRD_Text">
-                            <h4 class="CRD_TextTit">發光水波蛋蛋1</h4>
+                            <h4 class="CRD_TextTit">{{value.proName}}</h4>
                             <div class="CRD_TextCon">
-                                <h5>發光水波蛋蛋是很厲害的道具</h5>
-                                <h5>發光水波蛋蛋是很厲害的道具</h5>
-                                <h5>發光水波蛋蛋是很厲害的道具</h5>
-                                <h5>發光水波蛋蛋是很厲害的道具</h5>
-                                <h5>發光水波蛋蛋是很厲害的道具</h5>
+                                <p>{{value.proDescription}}</p>
                             </div>
                         </div>
                         <div class="memKeepCourseBtn">
-                            <a href="/mall.html"
-                                ><div class="membtn">直接購買</div></a
-                            >
-                            <div class="MKC_cancel">
-                                <div class="membtn">取消收藏</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="CRD">
-                        <div class="MKP_pic">
-                            <img src="./img/props/p13.png" alt="" srcset="" />
-                        </div>
-                        <div class="CRD_Text">
-                            <h4 class="CRD_TextTit">發光水波蛋蛋2</h4>
-                            <div class="CRD_TextCon">
-                                <h5>發光水波蛋蛋是很厲害的道具</h5>
-                                <h5>發光水波蛋蛋是很厲害的道具</h5>
-                                <h5>發光水波蛋蛋是很厲害的道具</h5>
-                                <h5>發光水波蛋蛋是很厲害的道具</h5>
-                                <h5>發光水波蛋蛋是很厲害的道具</h5>
-                            </div>
-                        </div>
-                        <div class="memKeepCourseBtn">
-                            <a href="/mall.html"
-                                ><div class="membtn">直接購買</div></a
-                            >
+                        <!-- <a href="/mall.html">
+                                <div class="membtn">直接購買</div>
+                            </a> -->
                             <div class="MKC_cancel">
                                 <div class="membtn">取消收藏</div>
                             </div>
@@ -653,252 +640,149 @@ Vue.component('memKeepPro', {
                     </div>
                 </div>
   `,
-    methods: {},
+    methods: {
+        mem_get_keep_pro: async function () {
+            const res = await fetch('./php/mem_get_keep_pro.php', {
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    memberno: this.memberno,
+                }),
+            }).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.keeppro = res;
+        },
+    },
     // template 渲染前 會先去執行以下函式
-    created() {},
+    created() {
+        this.mem_get_keep_pro();
+    },
 });
 
 // ==========歷史訂單============
 Vue.component('mem-order', {
     data() {
-        return {};
+        return {
+            orders: [],
+            // itemList: '',
+        };
     },
-    props: [],
+    props: ['memberno'],
 
     template: `
     <!-- 歷史訂單開始 -->
     <section class="memOrderOut menuCG">
-        <div class="memContent">
-            <div class="memOrder">
-                <div class="memOrederList">
-                    <h4 class="MOL_textbox">
-                        <div class="orederNo">訂單編號</div>
-                        <div class="orderPay">付款方式</div>
-                        <div class="orderAddress">寄送地點</div>
-                        <div class="orderTotal">付款金額</div>
-                        <div></div>
-                    </h4>
-                </div>
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne"
-                                aria-expanded="true"
-                                aria-controls="collapseOne"
-                            >
-                                <!-- 主選單內容先隱藏START     -->
-                                <h4 class="MOL_Intextbox">
-                                    <div class="orederNo">訂單編號</div>
-                                    <div class="orderPay">付款方式</div>
-                                    <div class="orderAddress">寄送地點</div>
-                                    <div class="orderTotal">付款金額</div>
-                                </h4>
-                                <!-- 主選單內容先隱藏END     -->
-
-                                <h4 class="MOL_Contentbox">
-                                    <div class="orederNo">000001</div>
-                                    <div class="orderPay">信用卡付款</div>
-                                    <div class="orderAddress">魔幻森林菇菇區123號</div>
-                                    <div class="orderTotal">$8787</div>
-                                </h4>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseOne"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div class="memOrderContent">
-                                    <div class="MOC_top">
-                                        <h4 class="MOC_title">訂單明細</h4>
-                                    </div>
-                                    <div class="MOC_bottom">
-                                        <div class="MOC_bottomContent">
-                                            <div class="proReview">
-                                                <div class="proTitle">商品預覽</div>
-                                                <h5 class="proContent">
-                                                    <div class="proContentPic">
-                                                        <img src="./img/props/p3.png" />
-                                                    </div>
-                                                </h5>
-                                            </div>
-                                            <div class="proNo">
-                                                <div class="proTitle">商品編號</div>
-                                                <h5 class="proContent">000123</h5>
-                                            </div>
-                                            <div class="proName">
-                                                <div class="proTitle">商品名稱</div>
-                                                <h5 class="proContent">魔力技能書</h5>
-                                            </div>
-                                            <div class="proNumber">
-                                                <div class="proTitle">購買數量</div>
-                                                <h5 class="proContent">1</h5>
-                                            </div>
-                                            <div class="proPrice">
-                                                <div class="proTitle">單價</div>
-                                                <h5 class="proContent">$8787</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="memContent">
+                    <div class="memOrder">
+                        <div class="memOrederList">
+                            <h4 class="MOL_textbox">
+                                <div class="orederNo">訂單編號</div>
+                                <div class="orderPay">付款方式</div>
+                                <div class="orderAddress">寄送地點</div>
+                                <div class="orderTotal">付款金額</div>
+                                <div></div>
+                            </h4>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo"
-                                aria-expanded="false"
-                                aria-controls="collapseTwo"
-                            >
-                                <!-- 主選單內容先隱藏START     -->
-                                <h4 class="MOL_Intextbox">
-                                    <div class="orederNo">訂單編號</div>
-                                    <div class="orderPay">付款方式</div>
-                                    <div class="orderAddress">寄送地點</div>
-                                    <div class="orderTotal">付款金額</div>
-                                </h4>
-                                <!-- 主選單內容先隱藏END     -->
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item" v-for="(value,index) in orders" :key="value.proOrder">
+                                <h2 class="accordion-header" id="headingOne" >
+                                    <button
+                                        class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                        aria-expanded="true"
+                                        aria-controls="collapseOne">
 
-                                <h4 class="MOL_Contentbox">
-                                    <div class="orederNo">000002</div>
-                                    <div class="orderPay">信用卡付款</div>
-                                    <div class="orderAddress">魔幻森林菇菇區123號</div>
-                                    <div class="orderTotal">$8787</div>
-                                </h4>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseTwo"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div class="memOrderContent">
-                                    <div class="MOC_top">
-                                        <h4 class="MOC_title">訂單明細</h4>
-                                    </div>
-                                    <div class="MOC_bottom">
-                                        <div class="MOC_bottomContent">
-                                            <div class="proReview">
-                                                <div class="proTitle">商品預覽</div>
-                                                <h5 class="proContent">
-                                                    <div class="proContentPic">
-                                                        <img src="./img/props/p3.png" />
+                                        <div >
+                                            <!-- 主選單內容先隱藏START     -->
+                                            <h4 class="MOL_Intextbox">
+                                                <div class="orederNo">訂單編號</div>
+                                                <div class="orderPay">付款方式</div>
+                                                <div class="orderAddress">寄送地點</div>
+                                                <div class="orderTotal">付款金額</div>
+                                            </h4>
+                                            <!-- 主選單內容先隱藏END     -->
+
+                                            <h4 class="MOL_Contentbox">
+                                                <div class="orederNo">{{value.proOrder}}</div>
+                                                <div class="orderPay">{{value.paymentMethod}}</div>
+                                                <div class="orderAddress">{{value.deliveryAddress}}</div>
+                                                <div class="orderTotal"><span>$</span>{{value.disTotal}}</div>
+                                            </h4>
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" v-for="(item,index) in value.itemList" :key="item.proOrderNo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="memOrderContent">
+                                            <div class="MOC_top">
+                                                <h4 class="MOC_title">訂單明細</h4>
+                                            </div>
+                                            <div class="MOC_bottom">
+                                                <div class="MOC_bottomContent">
+                                                    <div class="proReview">
+                                                        <div class="proTitle">商品預覽</div>
+                                                        <h5 class="proContent">
+                                                            <div class="proContentPic">
+                                                                <img :src="item.proImg" />
+                                                            </div>
+                                                        </h5>
                                                     </div>
-                                                </h5>
-                                            </div>
-                                            <div class="proNo">
-                                                <div class="proTitle">商品編號</div>
-                                                <h5 class="proContent">000123</h5>
-                                            </div>
-                                            <div class="proName">
-                                                <div class="proTitle">商品名稱</div>
-                                                <h5 class="proContent">魔力技能書</h5>
-                                            </div>
-                                            <div class="proNumber">
-                                                <div class="proTitle">購買數量</div>
-                                                <h5 class="proContent">1</h5>
-                                            </div>
-                                            <div class="proPrice">
-                                                <div class="proTitle">單價</div>
-                                                <h5 class="proContent">$8787</h5>
+                                                    <div class="proNo">
+                                                        <div class="proTitle">商品編號</div>
+                                                        <h5 class="proContent">{{item.proNo}}</h5>
+                                                    </div>
+                                                    <div class="proName">
+                                                        <div class="proTitle">商品名稱</div>
+                                                        <h5 class="proContent">{{item.proName}}</h5>
+                                                    </div>
+                                                    <div class="proNumber">
+                                                        <div class="proTitle">購買數量</div>
+                                                        <h5 class="proContent">{{item.orderNumber}}</h5>
+                                                    </div>
+                                                    <div class="proPrice">
+                                                        <div class="proTitle">單價</div>
+                                                        <h5 class="proContent"><span>$</span>{{item.proPrice}}</h5>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree"
-                                aria-expanded="false"
-                                aria-controls="collapseThree"
-                            >
-                                <!-- 主選單內容先隱藏START     -->
-                                <h4 class="MOL_Intextbox">
-                                    <div class="orederNo">訂單編號</div>
-                                    <div class="orderPay">付款方式</div>
-                                    <div class="orderAddress">寄送地點</div>
-                                    <div class="orderTotal">付款金額</div>
-                                </h4>
-                                <!-- 主選單內容先隱藏END     -->
-
-                                <h4 class="MOL_Contentbox">
-                                    <div class="orederNo">000003</div>
-                                    <div class="orderPay">信用卡付款</div>
-                                    <div class="orderAddress">魔幻森林菇菇區123號</div>
-                                    <div class="orderTotal">$8787</div>
-                                </h4>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseThree"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <div class="memOrderContent">
-                                    <div class="MOC_top">
-                                        <h4 class="MOC_title">訂單明細</h4>
-                                    </div>
-                                    <div class="MOC_bottom">
-                                        <div class="MOC_bottomContent">
-                                            <div class="proReview">
-                                                <div class="proTitle">商品預覽</div>
-                                                <h5 class="proContent">
-                                                    <div class="proContentPic">
-                                                        <img src="./img/props/p3.png" />
-                                                    </div>
-                                                </h5>
-                                            </div>
-                                            <div class="proNo">
-                                                <div class="proTitle">商品編號</div>
-                                                <h5 class="proContent">000123</h5>
-                                            </div>
-                                            <div class="proName">
-                                                <div class="proTitle">商品名稱</div>
-                                                <h5 class="proContent">魔力技能書</h5>
-                                            </div>
-                                            <div class="proNumber">
-                                                <div class="proTitle">購買數量</div>
-                                                <h5 class="proContent">1</h5>
-                                            </div>
-                                            <div class="proPrice">
-                                                <div class="proTitle">單價</div>
-                                                <h5 class="proContent">$8787</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
     <!-- 歷史訂單結束 -->
   `,
-    methods: {},
+    methods: {
+        get_mem_order: async function () {
+            const res = await fetch('./php/mem_get_order.php', {
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    memberno: this.memberno,
+                }),
+            }).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.orders = res;
+        },
+    },
     // template 渲染前 會先去執行以下函式
-    created() {},
+    created() {
+        this.get_mem_order();
+    },
 });
 
 // ==========個人資料============
@@ -1053,30 +937,6 @@ Vue.component('mem-info-edit', {
 </form>
   `,
     methods: {
-        get_mem: async function () {
-            const res = await fetch('./php/mem_get_one.php', {
-                method: 'POST',
-                mode: 'same-origin',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    memberno: this.memberno,
-                }),
-            }).then(function (data) {
-                return data.json();
-            });
-            // 取回res值後，呼叫另一隻函式
-            this.memId = res.memId;
-            this.memPsw = res.memPsw;
-            this.gradeNo = res.gradeNo;
-            this.memName = res.memName;
-            this.memMail = res.memMail;
-            this.memGamePoint = res.memGamePoint;
-            this.courseTimes = res.courseTimes;
-            this.memAvatar = res.memAvatar;
-        },
         meminfo_edit: async function (memname_new, memid_new, old_psw, new_psw, new_psw2, memmail_new) {
             //會員名稱長度是否符合
             if ((this.memname_new.length > 10) | (this.memname_new.length < 1)) {
@@ -1180,7 +1040,7 @@ new Vue({
     data: {
         progress: '',
         content: 'mem-course',
-        memberno: 5,
+        memberno: '',
         memId: '',
         memPsw: '',
         gradeNo: '',
@@ -1191,6 +1051,7 @@ new Vue({
         memAvatar: '',
         nameVal: '',
         memCourseRows: [],
+        getMemData: '',
     },
     methods: {
         get_mem: async function () {
@@ -1214,7 +1075,7 @@ new Vue({
             this.memName = res.memName;
             this.memMail = res.memMail;
             this.memGamePoint = res.memGamePoint;
-            this.courseTimes = res.courseTimes;
+            // this.courseTimes = res.courseTimes;
             this.memAvatar = res.memAvatar;
         },
         receive_info() {
@@ -1222,6 +1083,7 @@ new Vue({
             this.get_mem();
         },
         get_mem_coursetimes: async function () {
+            console.log(this.memberno);
             const res = await fetch('./php/mem_get_coursetimes.php', {
                 method: 'POST',
                 mode: 'same-origin',
@@ -1239,10 +1101,29 @@ new Vue({
             this.courseTimes = res.courseTimes;
             this.progress = (res.courseTimes / 16) * 100;
         },
+        getMemDatafunc: async function () {
+            await fetch('./php/check_mem.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                // body: JSON.stringify({ drink_no: item.drink_no }),
+            })
+                .then((res) => res.json())
+                .then((res) => (this.memberno = res.memberNo));
+            await this.get_mem();
+            await this.get_mem_coursetimes();
+            //沒抓到會員資料導回首頁
+            if (!this.getMemData) {
+                // alert('a');
+                // location.href = `./homepage.html`
+            }
+        },
     },
     created() {
-        this.get_mem();
-        this.get_mem_coursetimes();
+        // this.get_mem();
+        // this.get_mem_coursetimes();
+        this.getMemDatafunc();
     },
     mounted() {
         $(document).ready(function () {
