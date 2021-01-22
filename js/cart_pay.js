@@ -11,22 +11,7 @@ window.addEventListener('load', function () {
     if (storage['total'] == null) {
         storage['total'] = '';
     }
-    Vue.component('memadd', {
-        data() {
-            return {};
-        },
-        template: `
-        <div class="confirm_data">
-            <div class="name_box">
-                <div class="name_title title">姓名</div>
-                <div class="name data_text">溫宗益</div>
-            </div>
-            <div class="add_box">
-                <div class="add_title title">地址</div>
-                <input type="text" class="add data_text" placeholder="請輸入要寄送商品的地址" v-model="mem_add"/> 
-            </div>
-        </div>`,
-    });
+
     Vue.component('products', {
         data() {
             return {
@@ -92,23 +77,7 @@ window.addEventListener('load', function () {
                 this.split_num();
                 this.split_smalltotal();
             },
-            // addproorder: async function () {
-            //     const res = await fetch('./php/order_details.php', {
-            //         method: 'POST',
-            //         mode: 'same-origin',
-            //         credentials: 'same-origin',
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //         },
-            //         body: JSON.stringify({
-            //             total: this.prototal,
-            //             memberno: this.memberno,
-            //             orderdate: this.orderdate,
-            //             paymentmethod: this.paymentmethod,
-            //             deliveryaddress: this.deliveryaddress,
-            //         }),
-            //     });
-            // },
+
             change(res) {
                 this.items = res;
             },
@@ -164,10 +133,15 @@ window.addEventListener('load', function () {
         data: {
             itemlist: '',
             proorder: 2,
-            memberno: 7,
+            mem_info: '',
+            // memberno: '',
+            // memName: '',
             orderdate: '2021-01-20',
             paymentmethod: 1,
-            deliveryaddress: 111,
+            deliveryaddress: '',
+            // mem_address: '',
+
+            //付款區
             deadLineDate:
                 new Date().getFullYear() +
                 '年' +
@@ -177,23 +151,14 @@ window.addEventListener('load', function () {
                 '號' +
                 '23時59分',
             minCardYear: new Date().getFullYear(),
-            // orderdate:
-            //     new Date().getFullYear() +
-            //     '年' +
-            //     new Date().getMonth() +
-            //     '月' +
-            //     new Date().getDate(),
-
             CardForm: false,
             AtmForm: false,
             copyAtm: false,
             copyCard: false,
             isActive: false,
-
             textErr: false,
             BackTextErr: false,
             mailErr: false,
-
             className: '',
             classRows: [],
             payType: '',
@@ -262,11 +227,13 @@ window.addEventListener('load', function () {
             });
             this.split_products();
             this.split_total();
+            this.get_meminfo();
         },
         mounted() {
             this.className = storage.getItem('className');
         },
         methods: {
+            //切商品
             split_products() {
                 let itemString = storage.getItem('addItemList');
                 let items = itemString
@@ -274,19 +241,28 @@ window.addEventListener('load', function () {
                     .split(', ');
                 this.itemlist = items;
             },
+            //切總額
             split_total() {
                 let totalString = storage.getItem('total');
                 let total = parseInt(totalString);
                 this.prototal = total;
             },
-            // add_or() {
-            //     // alert(1);
-            //     if (this.copyAtm != true && this.copyCard != true) {
-            //         alert(1);
-            //         return false;
-            //     } else {
-            //     }
-            // },
+            //撈會員資料
+            get_meminfo: async function () {
+                let that = this;
+                console.log('撈取');
+                let xhr = new XMLHttpRequest();
+                xhr.onload = function () {
+                    let res = JSON.parse(xhr.responseText);
+                    // 將資料寫進 指定為memNavInfo的new Vue裡的data
+                    // memNavInfo.memData = memData;
+                    console.log(res);
+                    that.mem_info = res;
+                    console.log('撈取2');
+                };
+                xhr.open('get', 'php/getLoginData.php', true);
+                xhr.send(null);
+            },
             //建立訂單明細
             add_ordlist: async function () {
                 let tempString = storage.getItem('addItemList');
@@ -322,21 +298,18 @@ window.addEventListener('load', function () {
                     },
                     body: JSON.stringify({
                         ord_items: ord_items,
-                        // item: this.item,
-                        // smalltotal: this.smalltotal,
-                        // num: this.num,
-                        // proorder: this.proorder,
                         prototal: this.prototal,
-                        memberno: this.memberno,
+                        memberno: this.mem_info.memberNo,
                         orderdate: this.orderdate,
                         paymentmethod: this.paymentmethod,
                         deliveryaddress: this.deliveryaddress,
                         disTotal: this.prototal,
                     }),
                 });
+                console.log(this.mem_info.memberNo);
             },
 
-            //
+            // about付款
             copy_Atm() {
                 if (copyHave == 'Have') {
                     this.copyCard = false;
@@ -379,7 +352,6 @@ window.addEventListener('load', function () {
                 }
                 copyHave = 'Have';
             },
-
             changeBg(id) {
                 this.isActive = id;
             },
@@ -480,6 +452,7 @@ window.addEventListener('load', function () {
                     this.passArray.push('mailTextPass');
                 }
             },
+            // 按鈕動畫
             btnani() {
                 const wrapper = document.querySelector('.btn-wrapper');
                 const stars = [

@@ -4,7 +4,10 @@ window.addEventListener('load', function () {
     let storage = sessionStorage;
     if (storage['addItemList'] == null) {
         storage['addItemList'] = '';
-        storage['count'] = '';
+        // storage['count'] = '';
+    }
+    if (storage['count'] == null) {
+        storage['count'] = '0';
     }
     // storage['addItemList'] = [];
 

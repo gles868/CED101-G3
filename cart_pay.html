@@ -15,6 +15,11 @@
         <script src="./vendors/jquery/jquery-3.5.1.min.js"></script>
         <script src="./vendors/Vue/vue.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+        <link
+            rel="Shortcut Icon"
+            type="image/x-icon"
+            href="./img/weblogo.png"
+        />
         <title>麻瓜特訓班 | 確認購買與選擇付款方式</title>
     </head>
 
@@ -151,10 +156,29 @@
         </div>
         <main id="app">
             <div class="confirm_data_box">
-                <memadd></memadd>
+                <div class="confirm_data">
+                    <div class="name_box">
+                        <div class="name_title title">姓名：</div>
+                        <div class="name data_text">{{mem_info.memName}}</div>
+                    </div>
+                    <div class="add_box">
+                        <div class="add_title title">地址：</div>
+                        <input
+                            type="text"
+                            class="add data_text"
+                            placeholder="請輸入您的地址"
+                            maxlength="15"
+                            v-model="deliveryaddress"
+                        />
+                    </div>
+                </div>
             </div>
             <div class="cartpro_box">
-                <products v-for="value in itemlist" :itemno="value"></products>
+                <products
+                    v-for="(value,key) in itemlist"
+                    :key="key"
+                    :itemno="value"
+                ></products>
             </div>
             <div class="deliver_box">
                 <div class="deliver">
@@ -401,11 +425,8 @@
                 </tr>
             </table>
             <!-- ATM打印表單 -->
-            <div
-                class="byu_btn"
-                @click="add_ordlist"
-                onclick="location.href='./payStepDone.html'"
-            >
+            <!-- onclick="location.href='./payStepDone.html'" -->
+            <div class="byu_btn" @click="add_ordlist">
                 <div class="btn-wrapper" @mouseover="btnani">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
