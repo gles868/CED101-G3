@@ -14,10 +14,10 @@ Vue.component('mem-course', {
     <section class="memClassOut menuCG">
         <div class="memContent">
             <div class="memMainAreaClass">
-                <div id="courseDate" @click="content='courseDate'" style="background-color: white;box-shadow: 0 0 0.2em white, 0 0 0.4em white, 0 0 0.3em white">
+                <div id="courseDate" @click="content='courseDate'" >
                     <h3>查看課表時間</h3>
                 </div>
-                <div id="courseStatus" @click="content='courseStatus'" style="background-color: gray; color: white">
+                <div id="courseStatus" @click="content='courseStatus'" >
                     <h3>課程清單</h3>
                 </div>
             </div>
@@ -304,7 +304,9 @@ Vue.component('courseFinish', {
     methods: {
         get_again() {
             console.log('安安安安');
-            this.get_mem_commcourse();
+            setTimeout(this.get_mem_commcourse, 1000);
+
+            // this.get_mem_commcourse();
         },
         get_mem_commcourse: async function () {
             let that = this;
@@ -396,10 +398,7 @@ Vue.component('lightbox_comm', {
                                         />
                                     </div>
                                     <div id="button-container">
-                                        <button type="button" class="user"><i class="fa fa-user"></i></button>
-                                        <button type="button" class="send" @click="sendComm">
-                                            <i class="fas fa-paper-plane"></i>
-                                        </button>
+                                        <button type="button" class="user" @click="sendComm"><i class="fa fa-user"></i></button>
                                     </div>
                                     <input type="hidden" name="registNo" :value="registNo" />
                                     <input type="hidden" name="commStar" :value="rating" />
@@ -437,7 +436,7 @@ Vue.component('lightbox_comm', {
 
         //關燈箱
         changelightbox() {
-            // this.$emit('getcommed');
+            this.$emit('getcommed');
             this.$emit('changelightbox');
             // this.get_mem_regist();
         },
@@ -451,7 +450,7 @@ Vue.component('lightbox_comm', {
             let xhr = new XMLHttpRequest();
             xhr.onload = function () {
                 if (xhr.status == 200) {
-                    alert('成功送出評論');
+                    // alert('成功送出評論');
                     console.log(xhr.responseText);
                     // console.log(this);
                     // let alreadyComment = JSON.parse(xhr.responseText);
@@ -772,7 +771,7 @@ Vue.component('mem-order', {
                         </div>
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item" v-for="(value,index) in orders" :key="value.proOrder">
-                                <h2 class="accordion-header" id="headingOne" >
+                                <h2 class="accordion-header" :id="'heading' + index" >
                                     <button
                                         class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                         aria-expanded="true"
@@ -797,8 +796,8 @@ Vue.component('mem-order', {
                                         </div>
                                     </button>
                                 </h2>
-                                <div id="collapseOne" v-for="(item,index) in value.itemList" :key="item.proOrderNo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
+                                <div id="collapseOne"  class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body" v-for="(item,index) in value.itemList" :key="item.proOrderNo">
                                         <div class="memOrderContent">
                                             <div class="MOC_top">
                                                 <h4 class="MOC_title">訂單明細</h4>
@@ -874,7 +873,7 @@ Vue.component('mem-info', {
             content: 'mem-info-default',
         };
     },
-    props: ['memberno', 'memname', 'memid', 'mempsw', 'memname', 'memmail', 'memgamepoint'],
+    props: ['memberno', 'memname', 'memid', 'mempsw', 'memavatar', 'memname', 'memmail', 'memgamepoint'],
 
     template: `
     <section class="memInfoOut menuCG">
@@ -883,10 +882,11 @@ Vue.component('mem-info', {
                 <div class="memInfoLeft">
                     <div class="memheadBox">
                         <div class="memhead">
-                            <img src="./img/wenhead.jpg" @click="senddata" alt="" />
+                            <img id="imgPreview" :src="memavatar" @click="senddata" alt="" />
                         </div>
                         <div class="memheadCG">
                             <i class="fas fa-camera"></i>
+                            <input type="file" name="upFile" id="upFile" @change="change_img" />
                         </div>
                     </div>
                     <h5 class="memPoint">可折抵點數:{{memgamepoint}}點</h5>
@@ -903,6 +903,35 @@ Vue.component('mem-info', {
     </section>
   `,
     methods: {
+        change_img(event) {
+            let files = event.currentTarget.files;
+            reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('imgPreview').src = reader.result;
+            };
+            reader.readAsDataURL(files[0]);
+
+            // 上傳會員照片 -----------------------
+            let file_2 = document.getElementById('upFile').files[0];
+            let formData = new FormData();
+            formData.append('memberno', this.memberno);
+            formData.append('upFile', file_2);
+
+            //=====ajax
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    console.log(xhr.responseText);
+                    bus.$emit('getAlert', '上傳照片成功!!');
+                } else {
+                    alert(xhr.status);
+                }
+            };
+            xhr.open('post', './php/mem_update_img.php');
+            xhr.send(formData);
+
+            this.$emit('sendup');
+        },
         change(data) {
             this.content = data;
         },
@@ -1130,13 +1159,14 @@ new Vue({
         memMail: '',
         memGamePoint: '',
         courseTimes: '',
-        memAvatar: '',
+        memavatar: '',
         nameVal: '',
         memCourseRows: [],
         getMemData: '',
     },
     methods: {
         get_mem: async function () {
+            // console.log('come on!!');
             const res = await fetch('./php/mem_get_one.php', {
                 method: 'POST',
                 mode: 'same-origin',
@@ -1156,13 +1186,13 @@ new Vue({
             this.gradeNo = res.gradeNo;
             this.memName = res.memName;
             this.memMail = res.memMail;
+            this.memavatar = res.memAvatar;
             this.memGamePoint = res.memGamePoint;
             // this.courseTimes = res.courseTimes;
-            this.memAvatar = res.memAvatar;
         },
         receive_info() {
             console.log('receive_info');
-            this.get_mem();
+            setTimeout(this.get_mem, 1000);
         },
         get_mem_coursetimes: async function () {
             console.log(this.memberno);
@@ -1199,8 +1229,19 @@ new Vue({
             if (!this.memberno) {
                 // alert('a');
                 console.log('沒登入喇喇!!');
-                location.href = `./main.html`;
+                // location.href = `./main.html`;
             }
+        },
+        changeTag(event) {
+            //獲取被點擊的 ID值，並傳送至上層 (new Vue)
+            this.$emit('change', event.currentTarget.id);
+
+            //改變 被點擊之樣式
+            document.querySelectorAll('.meunItem').forEach(function (e) {
+                e.classList.remove('meunItem_on');
+            });
+
+            event.currentTarget.classList.add('meunItem_on');
         },
     },
     created() {
@@ -1209,19 +1250,19 @@ new Vue({
         this.getMemDatafunc();
     },
     mounted() {
-        $(document).ready(function () {
-            $('.memMenuOut>div').click(function () {
-                $('.memMenuOut>div').each(function () {
-                    $(this).css({
-                        backgroundColor: 'rgba(255, 255, 255, 0)',
-                        color: 'white',
-                    });
-                });
-                $(this).css({
-                    backgroundColor: 'white',
-                    color: 'black',
-                });
-            });
-        });
+        // $(document).ready(function () {
+        //     $('.memMenuOut>div').click(function () {
+        //         $('.memMenuOut>div').each(function () {
+        //             $(this).css({
+        //                 backgroundColor: 'rgba(255, 255, 255, 0)',
+        //                 color: 'white',
+        //             });
+        //         });
+        //         $(this).css({
+        //             backgroundColor: 'white',
+        //             color: 'black',
+        //         });
+        //     });
+        // });
     },
 });
