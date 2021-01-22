@@ -251,6 +251,7 @@ div.card {
         font-weight: $fontWeight;
         letter-spacing: 3px;
         color: #e6b619;
+        text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;;
         position: absolute;
         top: -8%;
         right: 35%;
@@ -279,7 +280,7 @@ div.card {
         letter-spacing: 3px;
         color: #dcb127;
         position: absolute;
-        top: 95%;
+        top: 105%;
         right: 15%;
 
     }

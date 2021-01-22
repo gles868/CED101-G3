@@ -1,6 +1,7 @@
      <?php
+        session_start();
        require_once "./php/connect_ced101g3.php";
-       session_start();
+       
         $sql = "SELECT * FROM course JOIN class on course.courseNo = class.courseNo 
                 JOIN coursetype ON course.courTypeNo = coursetype.courTypeNo
                 JOIN teacher ON class.teachNo = teacher.teachNo
