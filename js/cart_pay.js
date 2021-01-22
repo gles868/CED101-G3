@@ -1,4 +1,5 @@
 let copyHave = 'noHave';
+const bus = new Vue();
 
 function post_data() {
     return false;
@@ -10,7 +11,22 @@ window.addEventListener('load', function () {
     if (storage['total'] == null) {
         storage['total'] = '';
     }
-
+    Vue.component('memadd', {
+        data() {
+            return {};
+        },
+        template: `
+        <div class="confirm_data">
+            <div class="name_box">
+                <div class="name_title title">姓名</div>
+                <div class="name data_text">溫宗益</div>
+            </div>
+            <div class="add_box">
+                <div class="add_title title">地址</div>
+                <input type="text" class="add data_text" placeholder="請輸入要寄送商品的地址" v-model="mem_add"/> 
+            </div>
+        </div>`,
+    });
     Vue.component('products', {
         data() {
             return {
@@ -111,12 +127,44 @@ window.addEventListener('load', function () {
             this.get_data(this.itemno);
         },
     });
+
+    //警示燈箱
+    Vue.component('alert_lightbox', {
+        data() {
+            return {
+                alertLightbox: false,
+                alertText: '',
+            };
+        },
+        methods: {
+            closeAlertLightbox() {
+                this.alertLightbox = false;
+            },
+        },
+        mounted() {
+            bus.$on('getAlert', (_alertText) => {
+                this.alertText = _alertText;
+                this.alertLightbox = true;
+            });
+        },
+        template: `
+            <div class="alertLightbox_black" v-if="alertLightbox">
+                <div class="alertLightboxWrapper">
+                    <div class="alertLightbox" >
+                        <div>{{alertText}}</div>
+                        <div @click="closeAlertLightbox">確定</div>
+                    </div>
+                </div>
+            </div>
+        `,
+    });
+
     new Vue({
         el: '#app',
         data: {
             itemlist: '',
             proorder: 2,
-            memberno: 5,
+            memberno: 7,
             orderdate: '2021-01-20',
             paymentmethod: 1,
             deliveryaddress: 111,
@@ -448,15 +496,15 @@ window.addEventListener('load', function () {
                     // animate stars in circle
                     stars.map((star, i) => {
                         const angle = (i / (stars.length / 2)) * Math.PI;
-                        const x = 25 * Math.cos(angle);
-                        const y = 15 * Math.sin(angle);
+                        const x = 30 * Math.cos(angle);
+                        const y = 20 * Math.sin(angle);
                         const timing = (i % 3) * 0.15;
                         bling.to(
                             star,
                             0.5,
                             {
                                 autoAlpha: 1,
-                                scale: 0.8,
+                                scale: 0.9,
                                 x: x,
                                 y: y,
                                 ease: Back.easeOut.config(1.5),

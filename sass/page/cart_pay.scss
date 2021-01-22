@@ -369,3 +369,68 @@ div.total_box {
         opacity: 1;
     }
 }
+
+//警示燈箱
+.alertLightbox_black {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.alertLightboxWrapper {
+    position: absolute;
+    background-color: #d1bee8;
+    box-shadow: 0 0 0.4em ivory;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    height: 300px;
+    align-items: center;
+    font-size: 18px;
+    @media screen and (max-width: 576px) {
+        width: 300px;
+        height: 300px;
+    }
+}
+.alertLightbox {
+    // padding: 60px 50px 50px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    color: ivory;
+    // height: 100%;
+    @include textShadowMem;
+
+    @media screen and (max-width: 576px) {
+        padding: 60px 50px 40px 50px;
+    }
+
+    div:first-child {
+        font-weight: bold;
+        margin: 70px auto;
+        // margin-top: 170px;
+
+        @media screen and (max-width: 576px) {
+            margin-top: 94px;
+        }
+    }
+
+    div:nth-child(2) {
+        background-color: purple;
+        border-radius: 10px;
+        width: 50%;
+        // overflow: hidden;
+        padding: 8px 10px 6px 10px;
+        cursor: pointer;
+    }
+}

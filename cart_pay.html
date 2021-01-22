@@ -151,16 +151,7 @@
         </div>
         <main id="app">
             <div class="confirm_data_box">
-                <div class="confirm_data">
-                    <div class="name_box">
-                        <div class="name_title title">姓名</div>
-                        <div class="name data_text">溫宗益</div>
-                    </div>
-                    <!-- <div class="add_box">
-                        <div class="add_title title">地址</div>
-                        <div class="add data_text">魔幻森林菇菇區123號</div>
-                    </div> -->
-                </div>
+                <memadd></memadd>
             </div>
             <div class="cartpro_box">
                 <products v-for="value in itemlist" :itemno="value"></products>
@@ -475,6 +466,7 @@
                     <button class="Btn" type="submit">送出</button>
                 </div>
             </div>
+            <alert_lightbox></alert_lightbox>
         </main>
         <!-- 付款方式區塊 -->
 
