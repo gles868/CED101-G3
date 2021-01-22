@@ -53,7 +53,7 @@ Vue.component('teacher-component', {
 Vue.component('course-component', {
     props: ['course-no', 'course-name', 'cour-type-name', 'course-price'],
     template: `
-        <a :href="'singleCourse.html?courseNo=' + courseNo">
+        <a :href="'singleCourse.php?courseNo=' + courseNo">
             <div class="card">
                 <div class="title">
                     <h3>{{courseName}}</h3>

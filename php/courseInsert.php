@@ -18,8 +18,13 @@ try {
 			$products = $pdo->prepare( $sql );
 			$products -> bindValue(":memberNo", $_POST["memberNo"]);
 			$products -> bindValue(":classNo", $_POST["classNo"]);
-			$products -> execute();			
-			echo "新增成功~";
+			$products -> execute();		
+			// echo "新增成功~";
+
+			$url = "../registStepDone.html";
+			echo "<script type='text/javascript'>";
+			echo "window.location.href='$url'";
+			echo "</script>";
 	
 
 

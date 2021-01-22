@@ -128,11 +128,11 @@
             <div class="confirm_data">
                 <div class="name_box">
                     <div class="name_title title">姓名</div>
-                    <div class="name data_text">溫宗益</div>
+                    <div class="name data_text">{{mem_info.memName}}</div>
                 </div>
                 <div class="phone_box">
-                    <div class="phone_title title">電話</div>
-                    <div class="phone data_text">091234567</div>
+                    <div class="phone_title title">email</div>
+                    <div class="phone data_text">{{mem_info.memMail}}</div>
                 </div>
             </div>
         </div>
@@ -361,9 +361,9 @@
 
 
 
-    <form action="courseInsert.php" method="post" enctype="multipart/form-data">
-        <input id='memberNo' type="text" name="memberNo" value="1">
-        <input id="classNo" type="text" name="classNo" value="">
+    <form action="php/courseInsert.php" method="post" enctype="multipart/form-data">
+        <input id='memberNo' type="hidden" name="memberNo" value="">
+        <input id="classNo" type="hidden" name="classNo" value="">
         <div class="btn-wrapper">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 65" class="star-svg">
                 <path data-name="star-10"
@@ -456,6 +456,17 @@
                 xhr.open('get', './getCourse.php', true);
                 xhr.send(null);
 
+                //撈會員
+                let mem_info;
+                let xhc = new XMLHttpRequest();
+                xhc.onload = function () {
+                    vm.mem_info = JSON.parse(xhc.responseText);
+                    let memberNo = document.getElementById('memberNo');
+                    memberNo.value = JSON.parse(xhc.responseText).memberNo;
+                };
+                xhc.open('get', 'php/getLoginData.php', true);
+                xhc.send(null);
+
                 let vm = new Vue({
                     el: '#app',
                     data: {
@@ -470,6 +481,7 @@
                         textErr: false,
                         BackTextErr: false,
                         mailErr: false,
+                        mem_info: [],
 
                         className: '',
                         classRows: [],
@@ -660,12 +672,12 @@
             }
         });
 
-        // let memNavInfo = new Vue({
-        //     el: '#memInfo',
-        //     data: {
-        //         memData: {},
-        //     },
-        // })
+        let memNavInfo = new Vue({
+            el: '#memInfo',
+            data: {
+                memData: {},
+            },
+        })
     </script>
 
 </body>
