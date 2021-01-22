@@ -136,7 +136,8 @@ window.addEventListener('load', function () {
             mem_info: '',
             // memberno: '',
             // memName: '',
-            orderdate: '2021-01-20',
+            // orderdate: '2021-01-20',
+            orderdate: '',
             paymentmethod: 1,
             deliveryaddress: '',
             // mem_address: '',
@@ -231,6 +232,13 @@ window.addEventListener('load', function () {
         },
         mounted() {
             this.className = storage.getItem('className');
+            this.orderdate =
+                new Date().getFullYear() +
+                '-' +
+                '0' +
+                (new Date().getMonth() + 1) +
+                '-' +
+                new Date().getDate();
         },
         methods: {
             //切商品
