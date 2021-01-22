@@ -69,6 +69,7 @@
         </header>
 
         <div id="app">
+            <my-count></my-count>
             <section class="memTopOut">
                 <div class="memTop">
                     <div class="memTopUp">
@@ -134,7 +135,7 @@
             </section>
 
             <!-- 整理 -->
-            
+
             <!-- 整理 -->
 
             <!-- 透過<component>去指定其屬性is進行v-bind -->
@@ -171,6 +172,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css" />
 
         <script src="js/member.js"></script>
+        <script src="./js/count_vue.js"></script>
         <!-- <script src="js/login.js"></script> -->
 
         <!-- body 結束標籤之前 bootstrap  -->
@@ -185,11 +187,13 @@
             window.addEventListener('scroll', function () {
                 let getScrollTop = document.documentElement.scrollTop;
                 let header = document.querySelector('header');
-
+                let carticon = document.querySelector('.num_icon');
                 if (getScrollTop > 60) {
                     header.classList.add('-active');
+                    carticon.classList.add('-icon');
                 } else {
                     header.classList.remove('-active');
+                    carticon.classList.remove('-icon');
                 }
             });
 
