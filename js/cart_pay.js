@@ -138,6 +138,7 @@ window.addEventListener('load', function () {
             // memName: '',
             // orderdate: '2021-01-20',
             orderdate: '',
+            memgamepoint: '',
             paymentmethod: 1,
             deliveryaddress: '',
             // mem_address: '',
