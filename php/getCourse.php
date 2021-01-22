@@ -1,17 +1,4 @@
 <?php 
-<<<<<<< HEAD
-	try{
-		require_once("connect_ced101g3.php");
-		$sql = "SELECT *
-		FROM course a join coursetype b on a.courTypeNo = b.courTypeNo join class c on a.courseNo = c.courseNo join teacher d on c.teachNo = d.teachNo
-		order by courseStartDate
-		LIMIT 10";
-			
-		$allCourse = $pdo->prepare($sql);
-		$allCourse->execute();
-		$courseRows = $allCourse->fetchAll(PDO::FETCH_ASSOC);
-		echo json_encode($courseRows);
-=======
  
 
 	require_once("connect_ced101g3.php");
@@ -46,7 +33,6 @@
 	// }
 	// 	$courseRows = $allCourse->fetchAll(PDO::FETCH_ASSOC);
 	// 	echo json_encode($courseRows);
->>>>>>> chu
 	
 	
 		// if($_GET["courTypeName"]){
@@ -67,13 +53,6 @@
 		// $courseRows = $allCourse->fetchAll(PDO::FETCH_ASSOC);
 		// echo json_encode($courseRows);
 
-    }catch(PDOException $e){
-        echo $e->getLine();
-        echo $e->getMessage();
-    }
-
-	
-	
 	
 
 ?>

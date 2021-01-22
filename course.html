@@ -27,7 +27,7 @@
                     <a href="index.html"><img src="./img/logo.png"></a>
                 </div>
                 <ul class="nav">
-                    <li><a href="course.html">課程總覽</a></li>
+                    <li><a class="active" href="course.html">課程總覽</a></li>
                     <li><a href="teacher.html">教師總覽</a></li>
                     <li>
                         <a href="index.html"><img src="./img/logo.png"></a>
@@ -126,8 +126,6 @@
 
 
 
-
-
     <main class="main app">
         <div class="course_filter">
             <img class="img_bat" src="./img/course_cards/bat.png" alt="">
@@ -135,49 +133,59 @@
                 <div class="course_class">
                     <h3>依照屬性篩選</h3>
                     <div class="fliter_block">
-                        <div>
+
+                        <label class="radio" for="allCourse">
                             <input type="radio" id="allCourse" :value="courTypeName.allCourse_show" v-model='filterText'
                                 name="typeFilter" @change='filterData'>
-                            <label for="allCourse"></label>
                             {{courTypeName.allCourse_show}}
-                            <!-- <h4 class="courseType" value="輔助型" :id="輔助型" @click='turnAll'>全部商品</h4> -->
+                        </label>
+                        <!-- <h4 class="courseType" value="輔助型" :id="輔助型" @click='turnAll'>全部商品</h4> -->
+                        <label class="radio" for="atk">
                             <input type="radio" id="atk" v-bind:value="courTypeName.atk" v-model='filterText'
                                 name="typeFilter" @change='filterData'>
-                            <label for="atk"></label>
                             {{courTypeName.atk}}
+                        </label>
+                        <label class="radio" for="def">
                             <input type="radio" id="def" v-bind:value="courTypeName.def" v-model='filterText'
                                 name="typeFilter" @change='filterData'>
-                            <label for="def"></label>
                             {{courTypeName.def}}
+                        </label>
+                        <label class="radio" for="sup">
                             <input type="radio" id="sup" v-bind:value="courTypeName.sup" v-model='filterText'
                                 name="typeFilter" @change='filterData'>
-                            <label for="sup"></label>
                             {{courTypeName.sup}}
-                        </div>
-                        <button @click='cleanType'>清除選項</button>
+                        </label>
+                        <button class="cleanType" @click='cleanType'>清除選項</button>
                     </div>
-
                 </div>
 
 
                 <div class="course_price">
                     <h3>依照價位篩選</h3>
                     <div class="fliter_block">
-                        <input type="radio" id="5000down" :value="priceType.sPrice" v-model='priceText'
-                            name="priceFilter" @change='filterData'>
-                        <label for="5000down"></label>
-                        {{priceType.sPrice}}
+                        <label class="radio" for="5000down">
+                            <input type="radio" id="5000down" :value="priceType.sPrice" v-model='priceText'
+                                name="priceFilter" @change='filterData'>
+                            {{priceType.sPrice}}
+
+                        </label>
                         <!-- <h4 class="courseType" value="輔助型" :id="輔助型" @click='turnAll'>全部商品</h4> -->
-                        <input type="radio" id="10000down" v-bind:value="priceType.mPrice" v-model='priceText'
-                            name="priceFilter" @change='filterData'>
-                        <label for="10000down"></label>
-                        {{priceType.mPrice}}
-                        <input type="radio" id="10000up" v-bind:value="priceType.lPrice" v-model='priceText'
-                            name="priceFilter" @change='filterData'>
-                        <label for="10000up"></label>
-                        {{priceType.lPrice}}
+
+                        <label class="radio" for="10000down"> <input type="radio" id="10000down"
+                                v-bind:value="priceType.mPrice" v-model='priceText' name="priceFilter"
+                                @change='filterData'>
+                            {{priceType.mPrice}}
+                        </label>
+
+
+                        <label class="radio" for="10000up">
+                            <input type="radio" id="10000up" v-bind:value="priceType.lPrice" v-model='priceText'
+                                name="priceFilter" @change='filterData'>
+                            {{priceType.lPrice}}
+                        </label>
+                        <button class="cleanPrice" @click='cleanPrice'>清除選項</button>
+
                     </div>
-                    <button @click='cleanPrice'>清除選項</button>
                 </div>
             </div>
         </div>
@@ -187,11 +195,6 @@
         <div class="all_course_card" id="course_block" v-show='filterPage1'>
             <div class="card" v-for='classRow in classRows' ontouchstart="this.classList.toggle('hover');">
                 <p class="course_title">{{classRow.courseName}}</p>
-                <!-- <div class="center-content">
-                    <div class="heart" @click="changeHeart($event)">
-                        <div class="heart-inner"></div>
-                    </div>
-                </div> -->
 
                 <div class="container">
                     <div class="front">
@@ -371,9 +374,7 @@
                         // 如果未登入，跳出提示燈箱
                         alert('請登入會員');
                     }
-                    // storage['className'] = name;
-                    // storage['classPrice'] = Price;
-                    // storage['classNo'] = classNo;
+
                 },
                 cleanPrice() {
                     this.priceText = '';
@@ -394,34 +395,6 @@
                         // return false
                     }
                 },
-
-                // addFavourite: function (e) {
-                //     let heartClass = e.target.parentNode.className;
-                //     // console.log(heartClass);
-                //     let courseNo = e.target.id;
-                //     console.log(e.target.id);
-                //     this.lovedCourse = this.lovedCourse.concat();
-                //     if (heartClass == 'heart') {
-                //         $.ajax({
-                //             method: 'GET',
-                //             url: 'course_addFavourite.php',
-                //             type: 'json',
-                //             data: `courseNo=${courseNo}`, //click後傳值到PHP
-                //             success: function (lovedCourse) {
-                //                 console.log(lovedCourse); //把新增後資料回傳用變數接收
-                //             }
-                //         })
-                //     } else {
-                //         $.ajax({
-                //             method: 'GET',
-                //             url: 'course_removeFavourite.php',
-                //             data: `courseNo=${courseNo}`,
-                //         })
-                //     }
-                // },
-                // changeHeart: function (e) {
-                //     e.target.parentNode.classList.toggle('loved');
-                // },
                 filterData() {
                     this.filterPage2 = true;
                     this.filterPage1 = false;

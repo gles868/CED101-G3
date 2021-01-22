@@ -29,7 +29,6 @@ $dateRows = $courseDate->fetchAll(PDO::FETCH_ASSOC);
 for($i=0; $i < count($dateRows); $i++){ 
     $data[$i]["title"] = $dateRows[$i]["courseName"];
     $data[$i]["start"] = $dateRows[$i]["courseStartDate"];
- 
     $data[$i]["url"] = "registration.php?classNo={$dateRows[$i]["classNo"]}";
 
 };
