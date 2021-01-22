@@ -7,6 +7,7 @@ try {
 
     $memberno = $decoded["memberno"];
     $prototal = $decoded["prototal"]; 
+    $memgamepoint = $decoded["memgamepoint"];
     $orderdate = $decoded["orderdate"]; 
     $paymentmethod = $decoded["paymentmethod"]; 
     $deliveryaddress = $decoded["deliveryaddress"];
@@ -15,8 +16,8 @@ try {
 
   
     
-    $sql = "insert into product_order (memberNo,orderDate,proTotal,paymentMethod,deliveryAddress,disTotal)
-    values (:memberno,:orderdate,:prototal,:paymentmethod,:deliveryaddress,:disTotal)";
+    $sql = "insert into product_order (memberNo,orderDate,proTotal,memGamePoint,paymentMethod,deliveryAddress,disTotal)
+    values (:memberno,:orderdate,:prototal,:memgamepoint,:paymentmethod,:deliveryaddress,:disTotal)";
 
     $managerdata = $pdo->prepare($sql);
 
