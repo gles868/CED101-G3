@@ -827,10 +827,6 @@ Vue.component('course_add', {
         <div class="add-form">
             <h2 id="courseNameText">新增課程</h2>                                
             <div class="addcoursecon">
-                <div class="acc_title">課程編號</div>
-                <div class="acc_con">{{courseNo}}</div>
-            </div>
-            <div class="addcoursecon">
                 <div class="acc_title">課程類別編號</div>
                 <select name="courseType" id="courTypeNo" class="acc_con" v-model="courTypeNo" @change="changetype()">
                     <option value="1">攻擊型</option>
@@ -1427,11 +1423,7 @@ Vue.component('pro_add', {
     <div class="lightbox">
         <div class="manager_lightbox_close" @click="changelightbox"><img src="./img/close.png" /></div>
         <div class="add-form">
-            <h2 id="pNameText">編輯商品</h2>
-            <div class="addcoursecon">
-                <div class="acc_title">商品編號</div>
-                <div class="acc_con"></div>
-            </div>
+            <h2 id="pNameText">新增商品</h2>            
             <div class="addcoursecon">
                 <div class="acc_title">選擇課程</div>
                 <select name="courseNo" id="courseNo" class="acc_con" v-model="courseNo" >
@@ -1678,6 +1670,394 @@ Vue.component('back-game', {
     // template 渲染前 會先去執行以下函式
     created() {
         this.get_game();
+    },
+});
+
+// ==========開班管理============
+Vue.component('back-class', {
+    data() {
+        return {
+            //撈出來的 班級資料
+            classes: '',
+            lightbox: false,
+            class_edit_lightbox: false,
+            class_add_lightbox: false,
+            classNo: '',
+        };
+    },
+    props: [],
+
+    template: `
+<div class="right-block_class">
+    <div class="right-block">
+        <div class="main">
+            <h2>開班管理</h2>
+            <div class="form-wrap">
+                <div class="add-bar">
+                    <button type="button" id="add-show" name="button" class="add-btn" @click="class_add()">新增班級</button>
+                </div>
+                <div class="content-list">
+                    <table>
+                        <tr>
+                            <th>班級編號</th>
+                            <th>班級類別</th>
+                            <th>授課課程</th>
+                            <th>授課教師</th>
+                            <th>上課日期</th>
+                            <th>編輯</th>
+                        </tr>
+                        <tr v-for="(value,key) in classes" >
+                            <td>{{value.classNo}}</td>
+                            <td>{{changecourTypeNo(value.courTypeNo)}}</td>
+                            <td>{{value.courseName}}</td>
+                            <td>{{value.teachName}}</td>
+                            <td>{{value.courseStartDate}}</td>
+                            <td><button @click="class_edit(value.classNo)">編輯</button></td>
+                        </tr>
+                    </table>
+                    
+                    <class_edit v-if="class_edit_lightbox" :classNo="classNo" @changelightbox="classeditlightbox()"></class_edit>
+                    <class_add v-if="class_add_lightbox"  @changelightbox="classaddlightbox()"></class_add>                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  `,
+    methods: {
+        //呼叫php程式，取回 商品 相關資料，並用json()轉回一般陣列
+        get_class: async function () {
+            const res = await fetch('./php/back_class.php', {}).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.classes = res;
+        },
+        changecourTypeNo(courTypeNo) {
+            if (courTypeNo == 1) {
+                return '攻擊型';
+            } else if (courTypeNo == 2) {
+                return '防禦型';
+            } else if (courTypeNo == 3) {
+                return '輔助型';
+            }
+        },
+        //點擊"編輯" 開啟編輯班級燈箱
+        class_edit(classNo) {
+            this.class_edit_lightbox = true;
+            this.classNo = classNo;
+        },
+        //關閉"編輯商品"燈箱，同時重新渲染畫面
+        classeditlightbox() {
+            this.class_edit_lightbox = false;
+            this.get_class();
+        },
+        //點擊"新增" 開啟新增商品燈箱
+        class_add() {
+            this.class_add_lightbox = true;
+        },
+        //關閉"新增商品"燈箱，同時重新渲染畫面
+        classaddlightbox() {
+            this.class_add_lightbox = false;
+            this.get_classes();
+        },
+    },
+    // template 渲染前 會先去執行以下函式
+    created() {
+        this.get_class();
+    },
+
+    mounted() {},
+}),
+    //----------編輯開班(組件)----------
+    Vue.component('class_edit', {
+        data() {
+            return {
+                courseName: '',
+                teachName: '',
+                maxRegistNum: '',
+                minRegistNum: '',
+                classDescription: '',
+            };
+        },
+        props: ['classNo'],
+
+        template: `
+    <div class="lightbox_add_black">
+        <div class="lightbox">
+            <div class="manager_lightbox_close" @click="changelightbox"><img src="./img/close.png" /></div>
+            <div class="add-form">
+                <h2 id="pNameText">編輯班級</h2>
+                <div class="addcoursecon">
+                    <div class="acc_title">班級編號</div>
+                    <div class="acc_con">{{classNo}}</div>
+                </div>
+                <div class="addcoursecon">
+                    <div class="acc_title">課程名稱</div>
+                    <div class="acc_con">{{courseName}}</div>
+                </div>
+                <div class="addcoursecon">
+                    <div class="acc_title">教師名稱</div>                    
+                    <div class="acc_con">{{teachName}}</div>
+                </div>
+                
+                <div class="addcoursecon">
+                    <div class="acc_title">班級開課描述</div>
+                    <textarea type="text" id="classDescription" class="acc_con" v-model="classDescription"></textarea>
+                </div>
+                <button type="sumbit" class="form_btn"
+                    @click="edit_class_func(maxRegistNum,minRegistNum,classDescription)">確定修改</button>
+            </div>
+        </div>
+    </div>
+        `,
+        methods: {
+            get_class_once: async function () {
+                const res = await fetch('./php/back_class_one.php', {
+                    method: 'POST',
+                    mode: 'same-origin',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        classNo: this.classNo,
+                    }),
+                }).then(function (data) {
+                    return data.json();
+                });
+                this.courseName = res.courseName;
+                this.teachName = res.teachName;
+                this.maxRegistNum = res.maxRegistNum;
+                this.minRegistNum = res.minRegistNum;
+                this.classDescription = res.classDescription;
+            },
+            //呼叫php程式，取回 課程 相關資料，並用json()轉回一般陣列
+            changecourTypeNo(courTypeNo) {
+                if (courTypeNo == 1) {
+                    return '攻擊型';
+                } else if (courTypeNo == 2) {
+                    return '防禦型';
+                } else if (courTypeNo == 3) {
+                    return '輔助型';
+                }
+            },
+            //點擊 確認修改後將資料傳至DB
+            edit_class_func: async function (maxRegistNum, minRegistNum, classDescription) {
+                console.log(maxRegistNum, minRegistNum, classDescription);
+
+                //送出編輯前 確認欄位 是否符合規定
+
+                //班級描述 (1~100字)
+                if (
+                    classDescription.replace(/[^\u4e00-\u9fa5]/g, '') &&
+                    classDescription.length >= 1 &&
+                    classDescription.length <= 100
+                ) {
+                    console.log('商品描述 成功');
+                } else {
+                    alert('班級描述，請輸入中文(1~100字)');
+                }
+
+                const res = await fetch('./php/back_class_update_one.php', {
+                    method: 'POST',
+                    mode: 'same-origin',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        classNo: this.classNo,
+                        // maxRegistNum: maxRegistNum,
+                        // minRegistNum: minRegistNum,
+                        classDescription: classDescription,
+                    }),
+                });
+                //關燈箱
+                this.changelightbox();
+            },
+            //關燈箱
+            changelightbox() {
+                this.$emit('changelightbox');
+            },
+        },
+        created() {
+            this.get_class_once();
+        },
+        watch: {},
+    });
+//----------新增班級(組件)----------
+Vue.component('class_add', {
+    data() {
+        return {
+            today: this.dateFormat,
+
+            courses: '',
+            courseNo: '',
+            proName: '',
+            proImg: '',
+            proDescription: '',
+            proPrice: '',
+            error_text: '',
+            error_text_des: '',
+            error_text_price: '',
+            updatecourseNo: '',
+        };
+    },
+    props: [],
+
+    template: `
+<div class="lightbox_add_black">
+    <div class="lightbox">
+        <div class="manager_lightbox_close" @click="changelightbox"><img src="./img/close.png" /></div>
+        <div class="add-form">
+            <h2 id="pNameText">新增班級</h2>
+            <div class="addcoursecon">
+                <div class="acc_title">選擇課程(一周開一次(一~日))</div>
+                <select name="courseNo" id="courseNo" class="acc_con" v-model="courseNo">
+                    <option value="1">光劍術-哈利波菜·雷蒙尼老師</option>
+                    <option value="2">毒藥術-雅各·科沃斯基老師</option>
+                    <option value="3">詛咒術-雅各·科沃斯基老師</option>
+                    <option value="4">光盾術-鄧不利多·阿不思老師</option>
+                    <option value="5">召喚術-史拉轟·赫瑞司老師</option>
+                    <option value="6">隱身術-尤拉諾斯·蓋亞老師</option>
+                    <option value="7">煉金術-石內卜·阿萊克老師</option>
+                    <option value="8">治癒術-鄧不利多·阿不思老師</option>
+                    <option value="9">飛行術-哈利波菜·雷蒙尼老師</option>
+                    <option value="10">變形術-尤拉諾斯·蓋亞老師</option>
+                </select>
+            </div>
+            <div class="addcoursecon">
+                <div class="acc_title">報名開始日期</div>
+                <input type="text" class="acc_con" v-model="today" disabled="disabled">
+            </div>
+            <div class="addcoursecon">
+                <div class="acc_title">上課日期</div>
+                <div class="acc_con">可選日期(不能選隔天)</div>
+            </div> 
+            <div class="addcoursecon">
+                <div class="acc_title">報名結束日期</div>
+                <div class="acc_con">上課日期-1</div>
+            </div>
+            <div class="addcoursecon">
+                <div class="acc_title">班級開課描述</div>
+                <textarea type="text" id="classDescription" class="acc_con" v-model="classDescription"></textarea>
+            </div>
+            <button type="sumbit" class="form_btn"
+                @click="edit_class_func(maxRegistNum,minRegistNum,classDescription)">確定修改                                
+            </button>
+        </div>
+    </div>
+</div>
+        `,
+    methods: {
+        dateFormat() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
+            var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+            return year + '-' + month + '-' + day;
+        },
+
+        //---------------------------------------------------------------------------------------
+        //呼叫php程式，取回 商品 相關資料，並用json()轉回一般陣列
+        get_pro: async function () {
+            const res = await fetch('./php/back_product.php', {}).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.products = res;
+        },
+        //呼叫php程式，取回 課程 相關資料，並用json()轉回一般陣列
+        get_course: async function () {
+            const res = await fetch('./php/back_course.php', {}).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.courses = res;
+        },
+        changecourTypeNo(courTypeNo) {
+            if (courTypeNo == 1) {
+                return '攻擊型';
+            } else if (courTypeNo == 2) {
+                return '防禦型';
+            } else if (courTypeNo == 3) {
+                return '輔助型';
+            }
+        },
+
+        //關燈箱
+        changelightbox() {
+            this.$emit('changelightbox');
+        },
+        //點擊 確認新增後將資料傳至DB
+        add_pro_func: async function (courseNo, proName, proImg, proDescription, proPrice) {
+            console.log(courseNo, proName, proImg, proDescription, proPrice);
+
+            //送出新增前 確認欄位 是否符合規定
+            //商品名稱 中文(1~6字)
+            if (proName.replace(/[^\u4e00-\u9fa5]/g, '') && proName.length >= 1 && proName.length <= 6) {
+                console.log('商品名稱 成功');
+            } else {
+                this.error_text = '商品名稱，請輸入中文(1~6字)';
+                return '';
+            }
+
+            //商品描述 (1~100字)
+            if (
+                proDescription.replace(/[^\u4e00-\u9fa5]/g, '') &&
+                proDescription.length >= 1 &&
+                proDescription.length <= 100
+            ) {
+                console.log('商品描述 成功');
+            } else {
+                this.error_text_des = '商品描述，請輸入中文(1~100字)';
+                return '';
+            }
+
+            //商品金額 數字
+            if (proPrice.replace(/\D/g, '')) {
+                console.log('商品金額 成功');
+            } else {
+                this.error_text_price = '商品金額，請輸入數字';
+                return '';
+            }
+
+            const res = await fetch('./php/back_insert_product.php', {
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    courseNo: this.updatecourseNo,
+                    proName: proName,
+                    proImg: proImg,
+                    proDescription: proDescription,
+                    proPrice: proPrice,
+                }),
+            }).then(function () {
+                console.log('in');
+            });
+            console.log('完成');
+
+            //關燈箱
+            this.changelightbox();
+            //完成後 重新撈取一次資料
+            console.log('重撈');
+            this.get_pro();
+        },
+    },
+    created() {
+        this.get_pro();
+        this.get_course();
+    },
+    watch: {
+        courseNo() {
+            this.updatecourseNo = this.courseNo.split(',')[0];
+        },
     },
 });
 

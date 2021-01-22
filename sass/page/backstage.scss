@@ -206,7 +206,8 @@ button.hamburger {
 .right-block_course,
 .right-block_comment,
 .right-block_mall,
-.right-block_game {
+.right-block_game,
+.right-block_class {
     width: 85%;
     .right-block {
         width: 100%;
@@ -340,7 +341,8 @@ button.hamburger {
 }
 /* ------------ 右邊區塊=>課程&商城管理燈箱(jQuery) ------------ */
 .right-block_course,
-.right-block_mall {
+.right-block_mall,
+.right-block_class {
     .lightbox_add_black {
         position: fixed;
         top: 0;
