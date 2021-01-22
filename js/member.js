@@ -38,7 +38,8 @@ Vue.component('courseDate', {
     data() {
         return {
             //撈出來的 資料
-            class: { title: '\u6cbb\u7652\u8853', start: '2021-01-16', url: 'singleCourse.php?courseNo=8' },
+            // class: { title: '\u6cbb\u7652\u8853', start: '2021-01-16', url: 'singleCourse.php?courseNo=8' },
+            class: '',
         };
     },
     props: ['memberno'],
