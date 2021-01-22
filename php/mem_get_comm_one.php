@@ -6,25 +6,29 @@ try {
     $decoded = json_decode($content, true);
 
     $mem_no = $decoded["memberno"];
+    $registNo = $decoded["registNo"];
 
+    //撈出 (燈箱)要評論的那門課程
     $sql = "select *
-            from course_list cl join course c on cl.courseNo=c.courseNo
-            where memberNo = :memberNo            
-          ";
+            from registration r join class c on r.classNo = c.classNo
+                                join course co on c.courseNo = co.courseNo
+            where memberNo = :memberno AND c.courseStartDate < curdate() AND r.registNo=:registNo;           
+            ";
 
     // $grouporddata = $pdo->query($sql);
     $per_ord_data = $pdo->prepare($sql);
-    $per_ord_data->bindValue(":memberNo", $mem_no);
+    $per_ord_data->bindValue(":memberno", $mem_no);
+    $per_ord_data->bindValue(":registNo", $registNo);
     $per_ord_data->execute();
 
     // echo "修改成功~!!";
     if ($per_ord_data->rowCount() == 0) { //找不到
         //傳回空的JSON字串
-        echo json_encode("");
+        // echo "{}";
 
     } else { //找得到
         //取回一筆資料
-        $per_ord_datarow = $per_ord_data->fetchAll(PDO::FETCH_ASSOC);
+        $per_ord_datarow = $per_ord_data->fetch(PDO::FETCH_ASSOC);
         
         //送出json字串
         echo json_encode($per_ord_datarow);

@@ -21,6 +21,7 @@
         }else{ //找得到
             //取回一筆資料
             $menuRow = $menu->fetchAll(PDO::FETCH_ASSOC);
+            
 
             for($i=0; $i<count($menuRow); $i++){
                 $sql1 = "select *
@@ -33,6 +34,13 @@
                 $menu1->execute();
                 $menu1Row = $menu1->fetchAll(PDO::FETCH_ASSOC);
                 $menuRow[$i]["itemList"] = $menu1Row;
+
+
+                if($menuRow[$i]["paymentMethod"] == 0){
+                    $menuRow[$i]["pay"] = "信用卡付款";
+                }else if($menuRow[$i]["paymentMethod"] == 1){
+                    $menuRow[$i]["pay"] = "轉帳付款";
+                };
             }
             //送出json字串
             echo json_encode($menuRow);

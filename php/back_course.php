@@ -8,7 +8,7 @@ try {
     // $detail_no = $decoded["detail_no"];
 
     $sql = "select *
-            from course c join courseType ct on c.courTypeNo=ct.courTypeNo
+            from course c join coursetype ct on c.courTypeNo=ct.courTypeNo
             order by courseNo asc
             ";
     // $grouporddata = $pdo->query($sql);

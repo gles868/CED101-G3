@@ -63,8 +63,8 @@ button.hamburger {
             border-radius: 20px;
             transition: 0.3s;
             cursor: pointer;
-            &.active{
-                background-color: #5E5DB9;
+            &.active {
+                background-color: #5e5db9;
             }
         }
     }
@@ -78,7 +78,7 @@ button.hamburger {
     margin-bottom: 10px;
     width: 100%;
     min-width: 200px;
-    input{
+    input {
         width: 80%;
         max-width: 200px;
         height: 27px;
@@ -109,7 +109,7 @@ button.hamburger {
             margin: 0 10px 0 2px;
         }
     }
-    button{
+    button {
         cursor: pointer;
         border-radius: 40px;
         width: 95px;
@@ -117,8 +117,8 @@ button.hamburger {
         border: 1px solid transparent;
         background-color: #6f26a2;
         color: #fff;
-        transition: all .2s;
-        &:hover{
+        transition: all 0.2s;
+        &:hover {
             background-color: #6d289d;
         }
     }
@@ -222,9 +222,9 @@ button.hamburger {
         padding: 10px;
         display: flex;
         overflow: auto;
-        table{
-            tr > td{
-                button{
+        table {
+            tr > td {
+                button {
                     cursor: pointer;
                     border-radius: 3px;
                     width: 60px;
@@ -232,8 +232,8 @@ button.hamburger {
                     border: 1px solid transparent;
                     background-color: #8946a1 !important;
                     color: #fff;
-                    transition: all .2s;
-                    &:hover{
+                    transition: all 0.2s;
+                    &:hover {
                         background-color: #6d289d;
                     }
                 }

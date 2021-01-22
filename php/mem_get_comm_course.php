@@ -7,6 +7,7 @@ try {
 
     $mem_no = $decoded["memberno"];
 
+    //撈出 已完課(待評論)->日期已過 之課程
     $sql = "select *
             from registration r join class c on r.classNo = c.classNo
                                 join course co on c.courseNo = co.courseNo
