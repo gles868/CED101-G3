@@ -297,15 +297,17 @@ Vue.component('courseFinish', {
             </div>
             <div class="CRD_Text" v-if="comm_null">全部已完課課程已評論完畢:))</div>
             <lightbox_comm v-if="lightbox" classNo="classNo" :memberno="memberno" :registNo="registNo"
-            @changelightbox="comm_calss()" @fuck="fuckup"></lightbox_comm>
+            @changelightbox="comm_calss()" @getcommed="get_again"></lightbox_comm>
         </div>
     `,
     methods: {
-        fuckup() {
+        get_again() {
             console.log('安安安安');
             this.get_mem_commcourse();
         },
         get_mem_commcourse: async function () {
+            let that = this;
+            console.log('刷新');
             const res = await fetch('./php/mem_get_comm_course.php', {
                 method: 'POST',
                 mode: 'same-origin',
@@ -314,16 +316,16 @@ Vue.component('courseFinish', {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    memberno: this.memberno,
+                    memberno: that.memberno,
                 }),
             }).then(function (data) {
                 return data.json();
             });
             // 取回res值後，呼叫另一隻函式
-            this.classes = res;
+            that.classes = res;
 
-            if (this.classes == '') {
-                this.comm_null = true;
+            if (that.classes == '') {
+                that.comm_null = true;
             }
         },
         comm_one(classNo, registNo) {
@@ -393,8 +395,8 @@ Vue.component('lightbox_comm', {
                                         />
                                     </div>
                                     <div id="button-container">
-                                        <button class="user"><i class="fa fa-user"></i></button>
-                                        <button class="send" @click="sendComm">
+                                        <button type="button" class="user"><i class="fa fa-user"></i></button>
+                                        <button type="button" class="send" @click="sendComm">
                                             <i class="fas fa-paper-plane"></i>
                                         </button>
                                     </div>
@@ -434,7 +436,7 @@ Vue.component('lightbox_comm', {
 
         //關燈箱
         changelightbox() {
-            // this.$emit('fuck');
+            // this.$emit('getcommed');
             this.$emit('changelightbox');
             // this.get_mem_regist();
         },
@@ -477,7 +479,7 @@ Vue.component('lightbox_comm', {
             }&registNo=${document.getElementsByName('registNo')[0].value}`;
             xhr.send(data_info);
             console.log('00');
-            // this.$emit('fuck');
+            this.$emit('getcommed');
         },
         // sendComm: function () {
         //     this.$emit('send-comm');
@@ -1193,9 +1195,10 @@ new Vue({
             await this.get_mem();
             await this.get_mem_coursetimes();
             //沒抓到會員資料導回首頁
-            if (!this.getMemData) {
+            if (!this.memberno) {
                 // alert('a');
-                // location.href = `./main.html`;
+                console.log('沒登入喇喇!!');
+                location.href = `./main.html`;
             }
         },
     },
