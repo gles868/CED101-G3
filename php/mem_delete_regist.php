@@ -8,7 +8,7 @@ try {
     $mem_no = $decoded["memberno"];
     $registNo = $decoded["registNo"];
 
-
+    //取消報名
     $sql = "delete from registration 
             where memberNo = :memberno AND registNo = :registNo           
             ";

@@ -843,23 +843,23 @@ input {
     text-align: center;
     .orederNo {
         // border: 1px solid green;
-        width: 20%;
-        flex-grow: 1;
+        width: 16%;
+        // flex-grow: 1;
     }
     .orderPay {
         // border: 1px solid blue;
-        width: 24%;
-        flex-grow: 1;
+        width: 25%;
+        // flex-grow: 1;
     }
     .orderAddress {
         // border: 1px solid orange;
         width: 40%;
-        flex-grow: 1;
+        // flex-grow: 1;
     }
     .orderTotal {
         // border: 1px solid pink;
         width: 20%;
-        flex-grow: 1;
+        // flex-grow: 1;
     }
 }
 //預設顯示欄位寬度
@@ -870,30 +870,29 @@ input {
             width: 100%;
             .accordion-button {
                 // border: 1px solid black;
+                width: 100%;
+                > div {
+                    width: 100% !important;
+                }
                 .MOL_Contentbox {
                     display: flex;
-                    justify-content: space-between;
-                    width: 330%;
+                    width: 100%;
                     // border: 1px solid red;
                     .orederNo {
                         // border: 1px solid green;
-                        width: 20%;
-                        flex-grow: 1;
+                        width: 15% !important;
                     }
                     .orderPay {
                         // border: 1px solid blue;
-                        width: 20%;
-                        flex-grow: 1;
+                        width: 25% !important;
                     }
                     .orderAddress {
                         // border: 1px solid orange;
-                        width: 40%;
-                        flex-grow: 1;
+                        width: 40% !important;
                     }
                     .orderTotal {
                         // border: 1px solid pink;
-                        width: 15%;
-                        flex-grow: 1;
+                        width: 20% !important;
                     }
                 }
             }

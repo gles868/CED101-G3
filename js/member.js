@@ -38,7 +38,7 @@ Vue.component('courseDate', {
     data() {
         return {
             //撈出來的 資料
-            class: '',
+            class: { title: '\u6cbb\u7652\u8853', start: '2021-01-16', url: 'singleCourse.php?courseNo=8' },
         };
     },
     props: ['memberno'],
@@ -51,6 +51,30 @@ Vue.component('courseDate', {
     </div>
   `,
     methods: {
+        async get_class_once() {
+            const res = await fetch('./php/mem_get_class.php', {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'same-origin', // no-cors, *cors, same-origin
+                // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Content-Type': 'application/json', // sent request
+                    // Accept: 'application/json', // expected data sent back
+                },
+                // redirect: 'follow', // manual, *follow, error
+                // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                body: JSON.stringify({
+                    memberno: this.memberno,
+                }), // body data type must match "Content-Type" header
+            }).then(function (data) {
+                return data.json();
+            });
+            // 取回res值後，呼叫另一隻函式
+            this.class = res;
+
+            // this.calendar();
+        },
+
         async get_class() {
             const res = await fetch('./php/mem_get_class.php', {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -87,8 +111,8 @@ Vue.component('courseDate', {
                 navLinks: true, // can click day/week names to navigate views
                 editable: true,
                 selectable: true,
-                businessHours: true,
-                dayMaxEvents: true, // allow "more" link when too many events
+                // businessHours: true,
+                // dayMaxEvents: true, // allow "more" link when too many events
 
                 events: this.class,
             });
@@ -98,11 +122,18 @@ Vue.component('courseDate', {
     },
     // template 渲染前 會先去執行以下函式
     created() {
+        // this.get_class();
+        // this.calendar();
+    },
+    mounted() {
         this.get_class();
     },
     watch: {
         memberno() {
             this.get_class();
+        },
+        class() {
+            // this.calendar();
         },
     },
 });
@@ -266,10 +297,14 @@ Vue.component('courseFinish', {
             </div>
             <div class="CRD_Text" v-if="comm_null">全部已完課課程已評論完畢:))</div>
             <lightbox_comm v-if="lightbox" classNo="classNo" :memberno="memberno" :registNo="registNo"
-            @changelightbox="comm_calss()"></lightbox_comm>
+            @changelightbox="comm_calss()" @fuck="fuckup"></lightbox_comm>
         </div>
     `,
     methods: {
+        fuckup() {
+            console.log('安安安安');
+            this.get_mem_commcourse();
+        },
         get_mem_commcourse: async function () {
             const res = await fetch('./php/mem_get_comm_course.php', {
                 method: 'POST',
@@ -310,7 +345,7 @@ Vue.component('courseFinish', {
     mounted() {},
     watch: {},
 });
-// ----------我的課程>課程清單>已完課lightbox(組件)----------
+// ----------我的課程>課程清單>已完課評論lightbox(組件)----------
 Vue.component('lightbox_comm', {
     data() {
         return {
@@ -325,48 +360,57 @@ Vue.component('lightbox_comm', {
     props: ['memberno', 'classNo', 'registNo'],
     template: `
     <div class="lightbox_black">
-                    <div class="lightbox">
-                        <div class="manager_lightbox_close" @click="changelightbox"><img src="./img/close.png"></div>
-                        <div class="CFD_commTitle">
-                            <h4>評論本課</h4>
-                        </div>
-                        <div class="CRD_Text">
-                            <h4 class="CRD_TextTit">{{courseName}}</h4>
-                            <div class="CRD_TextCon">
-                                <h5>完課時間:{{courseStartDate}}</h5>
-                                <h5>{{classDescription}}</h5>
-                            </div>
-                        </div>
-                        <div class="commText">
-                            <form onsubmit="return false;">
-                                <star-rating class="stars" v-model="rating"
-                                    text-class="custom-text"
-                                    :star-size="20"
-                                    @rating-selected ="setRating">
-                                </star-rating>
-                                <div id="input-container">
-                                        <input type="text"
-                                        v-model="commText"
-                                        placeholder="評論老師/課程" 
-                                        maxlength="100">
-                                        </div>
-                                        <div id="button-container">
-                                            <button class="user"><i class="fa fa-user"></i></button>
-                                            <button class="send" @click="sendComm">
-                                                <i class="fas fa-paper-plane"></i>
-                                                </button>
-                                                </div>
-                                    <input type="hidden" name="registNo" :value="registNo">
-                                    <input type="hidden" name="commStar" :value="rating">
-                                    <input type="hidden" name="commContent" :value="commText">
-                            </form>
+                <div class="lightbox">
+                    <div class="manager_lightbox_close" @click="changelightbox" ><img src="./img/close.png" /></div>
+                    <div class="CFD_commTitle">
+                        <h4>評論本課</h4>
+                    </div>
+                    <div class="CRD_Text">
+                        <h4 class="CRD_TextTit">{{courseName}}</h4>
+                        <div class="CRD_TextCon">
+                            <h5>完課時間:{{courseStartDate}}</h5>
+                            <h5>{{classDescription}}</h5>
                         </div>
                     </div>
+                    <div class="commText">
+                        <form onsubmit="return false;">
+                            <star-rating
+                                class="stars"
+                                v-model="rating"
+                                text-class="custom-text"
+                                :star-size="20"
+                                @rating-selected="setRating"
+                            >
+                            </star-rating>
+                            <div class="CFD_commText">
+                                <form action="">
+                                    <div id="input-container">
+                                        <input
+                                            type="text"
+                                            v-model="commText"
+                                            placeholder="評論老師/課程"
+                                            maxlength="100"
+                                        />
+                                    </div>
+                                    <div id="button-container">
+                                        <button class="user"><i class="fa fa-user"></i></button>
+                                        <button class="send" @click="sendComm">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                    <input type="hidden" name="registNo" :value="registNo" />
+                                    <input type="hidden" name="commStar" :value="rating" />
+                                    <input type="hidden" name="commContent" :value="commText" />
+                                </form>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+            </div>
     `,
     methods: {
         get_mem_regist: async function () {
-            const res = await fetch('./php/mem_get_regist.php', {
+            const res = await fetch('./php/mem_get_comm_one.php', {
                 method: 'POST',
                 mode: 'same-origin',
                 credentials: 'same-origin',
@@ -380,6 +424,7 @@ Vue.component('lightbox_comm', {
             }).then(function (data) {
                 return data.json();
             });
+            console.log(res);
             // 取回res值後，呼叫另一隻函式
             this.courseImg = res.courseImg;
             this.courseName = res.courseName;
@@ -389,8 +434,9 @@ Vue.component('lightbox_comm', {
 
         //關燈箱
         changelightbox() {
+            // this.$emit('fuck');
             this.$emit('changelightbox');
-            this.get_mem_regist();
+            // this.get_mem_regist();
         },
 
         setRating: function (rating) {
@@ -398,7 +444,7 @@ Vue.component('lightbox_comm', {
         },
         //星星組件
         sendComm: function () {
-            console.log('00');
+            // console.log('00');
             let xhr = new XMLHttpRequest();
             xhr.onload = function () {
                 if (xhr.status == 200) {
@@ -430,6 +476,8 @@ Vue.component('lightbox_comm', {
                 document.getElementsByName('commContent')[0].value
             }&registNo=${document.getElementsByName('registNo')[0].value}`;
             xhr.send(data_info);
+            console.log('00');
+            // this.$emit('fuck');
         },
         // sendComm: function () {
         //     this.$emit('send-comm');
@@ -439,6 +487,9 @@ Vue.component('lightbox_comm', {
     created() {
         this.get_mem_regist();
     },
+    // watch() {
+    //     this.get_mem_regist();
+    // },
 });
 
 // 組件 - vue star rating
@@ -539,6 +590,7 @@ Vue.component('memKeepCourse', {
         return {
             //撈出來的 資料
             keepcourse: '',
+            comm_null: '',
         };
     },
     props: ['memberno'],
@@ -564,6 +616,7 @@ Vue.component('memKeepCourse', {
                             </div>
                         </div>
                     </div>
+                    <div class="CRD_Text" v-if="comm_null">港快去收藏您喜歡的課程吧~~</div>
                 </div>
   `,
     methods: {
@@ -583,6 +636,10 @@ Vue.component('memKeepCourse', {
             });
             // 取回res值後，呼叫另一隻函式
             this.keepcourse = res;
+
+            if (this.keepcourse == '') {
+                this.comm_null = true;
+            }
         },
         cancel_keep: async function (courListNo) {
             const res = await fetch('./php/mem_del_keep_course.php', {
@@ -613,6 +670,7 @@ Vue.component('memKeepPro', {
         return {
             //撈出來的 資料
             keeppro: '',
+            comm_null: '',
         };
     },
     props: ['memberno'],
@@ -638,6 +696,7 @@ Vue.component('memKeepPro', {
                             </div>
                         </div>
                     </div>
+                    <div class="CRD_Text" v-if="comm_null">港快去收藏您喜歡的小道具喇!!</div>
                 </div>
   `,
     methods: {
@@ -657,6 +716,10 @@ Vue.component('memKeepPro', {
             });
             // 取回res值後，呼叫另一隻函式
             this.keeppro = res;
+
+            if (this.keeppro == '') {
+                this.comm_null = true;
+            }
         },
         cancel_keep: async function (proListNo) {
             const res = await fetch('./php/mem_del_keep_pro.php', {
@@ -686,7 +749,6 @@ Vue.component('mem-order', {
     data() {
         return {
             orders: [],
-            // itemList: '',
         };
     },
     props: ['memberno'],
@@ -725,7 +787,7 @@ Vue.component('mem-order', {
 
                                             <h4 class="MOL_Contentbox">
                                                 <div class="orederNo">{{value.proOrder}}</div>
-                                                <div class="orderPay">{{value.paymentMethod}}</div>
+                                                <div class="orderPay">{{value.pay}}</div>
                                                 <div class="orderAddress">{{value.deliveryAddress}}</div>
                                                 <div class="orderTotal"><span>$</span>{{value.disTotal}}</div>
                                             </h4>
@@ -1133,7 +1195,7 @@ new Vue({
             //沒抓到會員資料導回首頁
             if (!this.getMemData) {
                 // alert('a');
-                // location.href = `./homepage.html`
+                // location.href = `./main.html`;
             }
         },
     },

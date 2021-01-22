@@ -732,8 +732,6 @@ Vue.component('course_edit', {
         },
 
         changetype() {
-            // this.courses[this.edit_key].courTypeNo = event.currentTarget.value;
-
             if (this.courTypeNo == 1) {
                 this.courTypeName = '攻擊型';
             } else if (this.courTypeNo == 2) {
@@ -1718,21 +1716,33 @@ new Vue({
             // 取回res值後，呼叫另一隻函式
             this.employee = res;
         },
+        changeTag(event) {
+            //獲取被點擊的 ID值，並傳送至上層 (new Vue)
+            this.$emit('change', event.currentTarget.id);
+
+            //改變 被點擊之樣式
+            document.querySelectorAll('.left-block>li').forEach(function (e) {
+                e.classList.remove('active');
+            });
+
+            event.currentTarget.classList.add('active');
+        },
     },
     created() {
         this.get_employee_data();
+        this.changeTag();
     },
 });
 
-window.addEventListener('load', function () {
-    // 顯示使用者現在位置
-    let li = document.querySelectorAll('#app .content-wrap > ul > li');
-    for (let i = 0; i < li.length; i++) {
-        li[i].onclick = function () {
-            for (let i = 0; i < li.length; i++) {
-                li[i].classList.remove('active');
-                this.classList.add('active');
-            }
-        };
-    }
-});
+// window.addEventListener('load', function () {
+//     // 顯示使用者現在位置
+//     let li = document.querySelectorAll('#app .content-wrap > ul > li');
+//     for (let i = 0; i < li.length; i++) {
+//         li[i].onclick = function () {
+//             for (let i = 0; i < li.length; i++) {
+//                 li[i].classList.remove('active');
+//                 this.classList.add('active');
+//             }
+//         };
+//     }
+// });

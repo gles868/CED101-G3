@@ -6,19 +6,19 @@ require_once "./connect_ced101g3.php";
 $content = trim(file_get_contents("php://input"));
 $decoded = json_decode($content, true);
 // $mem_no為自定義將需要之物件由打開之jason檔取用的 變數
-$mem_no = $decoded["memberno"];
+// $mem_no = $decoded["memberno"];
 
 $data = array();
 
 $sql = "SELECT co.courseName, c.courseStartDate, co.courseNo 
         FROM registration re join class c on re.classNo = c.classNo
             JOIN course co ON c.courseNo = co.courseNo 
-        where re.memberNo = :memberNo
+        where re.memberNo = 5
         ";
 
 $courseDate = $pdo->prepare($sql);
 //bindValue為定義值:memberNo為$mem_no變數值(sql只認識:memberNo)
-$courseDate->bindValue(":memberNo",$mem_no);
+// $courseDate->bindValue(":memberNo",$mem_no);
 
 $courseDate->execute();
 
