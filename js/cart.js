@@ -201,7 +201,8 @@ window.addEventListener('load', function () {
             deleteproduct(itemno) {
                 // 清除storage的資料
                 storage.removeItem(itemno);
-
+                this.count = this.count - 1;
+                storage['count'] = this.count;
                 storage['addItemList'] = storage['addItemList'].replace(
                     `${itemno}, `,
                     ''
@@ -230,15 +231,15 @@ window.addEventListener('load', function () {
                     // animate stars in circle
                     stars.map((star, i) => {
                         const angle = (i / (stars.length / 2)) * Math.PI;
-                        const x = 25 * Math.cos(angle);
-                        const y = 15 * Math.sin(angle);
+                        const x = 30 * Math.cos(angle);
+                        const y = 20 * Math.sin(angle);
                         const timing = (i % 3) * 0.15;
                         bling.to(
                             star,
                             0.5,
                             {
                                 autoAlpha: 1,
-                                scale: 0.8,
+                                scale: 0.9,
                                 x: x,
                                 y: y,
                                 ease: Back.easeOut.config(1.5),

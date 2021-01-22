@@ -1,4 +1,5 @@
 window.addEventListener('load', function () {
+    // let cc = document.querySelector('.fav-1');
     const vm = new Vue();
     let storage = sessionStorage;
     if (storage['addItemList'] == null) {
@@ -12,55 +13,55 @@ window.addEventListener('load', function () {
             return {
                 items: '',
                 shop_price: '',
-                count: '',
                 memberno: 5,
+                fav: '',
             };
         },
-        props: ['lightbox', 'itemno'],
+        props: ['lightbox', 'itemno', 'count'],
         template: `
-      <div class="product" v-if="lightbox">
-              <div class="pro_complete_box">
-                  <div class="close" @click="closelightbox()"><img src="./img/close.png" /></div>
-                  <div class="pro_complete_left">
-                      <div class="pro_complete_photo">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="-3 -3 30 30" @click="add_favlist">
-                        <g class="fav-1 fav-btn"  @mouseover="changeheart()">
-                            <path fill="#fff" fill-rule="nonzero" stroke="#7F7F7F" stroke-width="2" d="M10.371 19.7c.424.443.985.674 1.599.666a2.122 2.122 0 0 0 1.575-.67l6.853-7.133c1.982-2.073 1.982-5.453 0-7.528-1.957-2.047-5.112-2.047-7.074.006l-1.332 1.373-.717-.75-.604-.629c-1.957-2.047-5.112-2.047-7.068 0-1.983 2.075-1.983 5.453.002 7.53l6.766 7.135z"/>
-                        </g>
-                      </svg>
-                          <img :src="items.proImg" />
-                      </div>
-                      <div class="pro_complete_price_box">
-                          <img src="./img/dollar.png" />
-                          <div class="pro_complete_price">{{items.proPrice}}</div>
-                      </div>
-                      <div class="pro_type_box">
-                        <img src="./img/kira.png" />
-                        <div class="type_ani">{{items.proType}}</div>
-                      </div>                      
-                  </div>
-                  <div class="pro_complete_right">
-                      <div class="pro_complete_name_box">
-                          <div class="pro_complete_name">{{items.proName}}</div>
-                      </div>
-                      <div class="pro_complete_content_box">
-                          <div class="pro_complete_content1 content">
-                          {{items.proDescription}}
-                          </div>
-                      </div>
-                      <div class="addandbuy_box" @click="addToStorage(items.proNo,items.proPrice),change_num()">
-                          <span id="props_p5" class="addButton">
-                              加入購物車
-                              <input
-                                  type="hidden"
-                                  
-                              />
-                          </span>
-                          
-                      </div>
-                  </div>
-              </div>
-          </div>
+        <div class="product" v-if="lightbox">
+        <div class="pro_complete_box">
+            <div class="close" @click="closelightbox()"><img src="./img/close.png" /></div>
+            <div class="pro_complete_left">
+                <div class="pro_complete_photo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="-3 -3 30 30">
+                  <g class="fav-1 fav-btn"  @mouseover="changeheart()">
+                      <path fill="#fff" fill-rule="nonzero" stroke="#7F7F7F" stroke-width="2" d="M10.371 19.7c.424.443.985.674 1.599.666a2.122 2.122 0 0 0 1.575-.67l6.853-7.133c1.982-2.073 1.982-5.453 0-7.528-1.957-2.047-5.112-2.047-7.074.006l-1.332 1.373-.717-.75-.604-.629c-1.957-2.047-5.112-2.047-7.068 0-1.983 2.075-1.983 5.453.002 7.53l6.766 7.135z"/>
+                  </g>
+                </svg>
+                    <img :src="items.proImg" />
+                </div>
+                <div class="pro_complete_price_box">
+                    <img src="./img/dollar.png" />
+                    <div class="pro_complete_price">{{items.proPrice}}</div>
+                </div>
+                <div class="pro_type_box">
+                  <img src="./img/kira.png" />
+                  <div class="type_ani">{{items.proType}}</div>
+                </div>                      
+            </div>
+            <div class="pro_complete_right">
+                <div class="pro_complete_name_box">
+                    <div class="pro_complete_name">{{items.proName}}</div>
+                </div>
+                <div class="pro_complete_content_box">
+                    <div class="pro_complete_content1 content">
+                    {{items.proDescription}}
+                    </div>
+                </div>
+                <div class="addandbuy_box" @click="addToStorage(items.proNo,items.proPrice)">
+                    <span id="props_p5" class="addButton">
+                        加入購物車
+                        <input
+                            type="hidden"
+                            
+                        />
+                    </span>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
       `,
         methods: {
             // 關燈箱
@@ -75,29 +76,34 @@ window.addEventListener('load', function () {
                     storage[proNo] = `${proNo}|${proPrice}|1`;
                     // storage['addItemList'] += `${proNo},`;
                     storage['addItemList'] += `${proNo}, `;
+                    // this.count++;
+                    this.count++;
+                    console.log(this.count);
+                    storage['count'] = this.count;
 
                     // alert(`${proName}`);
                     this.closelightbox();
+                    this.$emit('change_num');
                 }
             },
             // 加入購物車的商品數量
-            change_num() {
-                this.count++;
-                console.log(11);
-                this.$emit('change_num', this.count);
-                // storage['count'] += 1;
-                if (storage['count']) {
-                    // console.log('000');
-                    storage.setItem('count', `${this.count}`);
-                    // storage['total'] += `${this.total_price} `;
-                } else {
-                    storage['count'] += `${this.count} `;
-                }
-            },
+            // change_num() {
+            //     this.count++;
+            //     console.log(11);
+            //     this.$emit('change_num', this.count);
+            //     // storage['count'] += 1;
+            //     if (storage['count']) {
+            //         // console.log('000');
+            //         storage.setItem('count', `${this.count}`);
+            //         // storage['total'] += `${this.total_price} `;
+            //     } else {
+            //         storage['count'] += `${this.count} `;
+            //     }
+            // },
+
             // 撈燈箱裡的商品資訊
             get_data: async function (itemno) {
                 // console.log(itemno);
-
                 const res = await fetch('./php/lightbox.php', {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
                     mode: 'same-origin', // no-cors, *cors, same-origin
@@ -121,6 +127,7 @@ window.addEventListener('load', function () {
             change(res) {
                 this.items = res;
             },
+            //
             add_favlist: async function () {
                 const res = await fetch('./php/mall_favlist.php', {
                     method: 'POST',
@@ -138,22 +145,51 @@ window.addEventListener('load', function () {
             change(res) {
                 this.items = res;
             },
-            // 愛心動畫
-            changeheart() {
-                const favs = document.querySelectorAll('.fav-btn');
-                for (let i = 0; i < favs.length; i++) {
-                    let fav = favs[i];
-                    fav.onclick = () => {
-                        fav.classList.toggle('clicked');
-                    };
-                }
-                this.$emit('changeheart', this.heart);
+            //
+            get_favlist: async function (itemno) {
+                // console.log(itemno);
+                const res = await fetch('./php/pro_getfav.php', {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'same-origin', // no-cors, *cors, same-origin
+                    // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: {
+                        'Content-Type': 'application/json', // sent request
+                        // Accept: 'application/json', // expected data sent back
+                    },
+                    // redirect: 'follow', // manual, *follow, error
+                    // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                    body: JSON.stringify({
+                        itemno: itemno,
+                    }), // body data type must match "Content-Type" header
+                }).then(function (data) {
+                    return data.json();
+                });
+                // 取回res值後，呼叫另一隻函式
+                this.changefav(res);
             },
+            changefav(res) {
+                this.fav = res;
+            },
+
+            // 愛心動畫
+            // changeheart() {
+            //     const favs = document.querySelectorAll('.fav-btn');
+            //     for (let i = 0; i < favs.length; i++) {
+            //         let fav = favs[i];
+            //         fav.onclick = () => {
+            //             fav.classList.toggle('clicked');
+            //         };
+            //     }
+            //     this.$emit('changeheart', this.heart);
+            // },
         },
+        updated() {},
         created() {
             // console.log("----")
             this.get_data(this.itemno);
             this.changeheart();
+            this.get_favlist(this.itemno);
 
             // console.log(this.itemno);
         },
@@ -165,6 +201,9 @@ window.addEventListener('load', function () {
             },
             changeheart() {
                 this.changeheart(this.this.heart);
+            },
+            get_favlist() {
+                this.get_favlist(this.itemno);
             },
         },
     });
@@ -353,7 +392,7 @@ window.addEventListener('load', function () {
     });
 
     new Vue({
-        el: '#app',
+        el: '#app2',
         data: {
             total: 0,
             type: '',
@@ -379,9 +418,15 @@ window.addEventListener('load', function () {
                 this.alltype += 1;
                 // this.type = '';
             },
-            change_num: function (count) {
-                this.count = count;
+            change_num: function () {
+                setTimeout(() => {
+                    this.count = storage.getItem('count');
+                }, 10);
             },
+        },
+        mounted() {
+            this.count = storage.getItem('count');
+            console.log(this.count);
         },
     });
 });
