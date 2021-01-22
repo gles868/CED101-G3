@@ -218,6 +218,7 @@ a {
         i {
             margin: auto 5px;
         }
+        
         .meunItem {
             border: 1px solid ivory;
             color: ivory;
@@ -226,7 +227,8 @@ a {
             padding: 12px 15px;
             font-size: 20px;
         }
-        .meunItem:hover {
+        .meunItem:hover,
+        .meunItem_on {
             background-color: ivory;
             color: black;
         }
