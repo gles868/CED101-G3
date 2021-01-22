@@ -51,6 +51,7 @@ body {
     box-sizing: border-box;
 }
 
+//升上去的圓圈白框
 .magic .ring {
     transform: translateY(0) perspective(200px) rotateX(60deg) rotate(0);
     border: 3px dotted rgba(255, 255, 255, 0.2);
@@ -59,10 +60,11 @@ body {
     // height: 200px;
     width: 300px;
     height: 300px;
-    animation: ring 1s 6s linear forwards;
+    animation: ring 1s 3s linear forwards;
     opacity: 0;
 }
 
+//升上去的白底
 .magic .light {
     width: 220px;
     height: 0;
@@ -73,9 +75,10 @@ body {
     bottom: calc(50% - 89px);
     left: 0;
     right: 0;
-    animation: light 1s 6s linear forwards, fadeOut 1s 13s ease forwards;
+    animation: light 1s 3s linear forwards, fadeOut 1s 13s ease forwards;
 }
 
+//字上升
 .magic .text {
     font-size: 60px;
     width: 60px;
@@ -94,7 +97,7 @@ body {
     bottom: 50%;
     text-align: center;
     overflow: hidden;
-    animation: text 5s 8s linear forwards;
+    animation: text 1.5s 3s linear forwards;
 }
 
 .circle {
@@ -102,7 +105,7 @@ body {
         translateZ(-0.2px);
     border: 3px solid #fff;
     border-radius: 50%;
-    animation: line 3s forwards, line2 0.6s 6s forwards;
+    animation: line 1s forwards, line2 0.6s 6s forwards;
 }
 
 .circle1 {
@@ -119,7 +122,7 @@ body {
     height: 250px;
     border-style: dotted;
     opacity: 0;
-    animation: fadeIn 0.5s 5s forwards, turnRight 6s 5s linear infinite;
+    animation: fadeIn 0.5s 2s forwards, turnRight 6s 2s linear infinite;
 }
 
 .circle3 {
@@ -142,7 +145,7 @@ body {
     height: 170px;
     border-style: dotted;
     opacity: 0;
-    animation: fadeIn 0.5s 4s forwards, turnLeft 6s 4s linear infinite;
+    animation: fadeIn 0.5s 1s forwards, turnLeft 6s 1s linear infinite;
 }
 .circle6 {
     // width: 140px;
@@ -166,7 +169,7 @@ body {
     height: 100px;
     border-style: dotted;
     opacity: 0;
-    animation: fadeIn 0.5s 3s forwards, turnRight 6s 3s linear infinite;
+    animation: fadeIn 0.5s 0.7s forwards, turnRight 6s 0.7s linear infinite;
 }
 
 .circle9 {

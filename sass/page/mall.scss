@@ -733,7 +733,7 @@ div.pro_photo {
     position: absolute;
     top: 50px;
     // right: 40px;
-    right: 3%;
+    right: 2.7%;
     width: 20px;
     height: 20px;
     border-radius: 50px;
@@ -753,6 +753,7 @@ div.pro_photo {
     }
     @media (max-width: 376px) {
         right: 17%;
+        top: 6.5%;
     }
     .num_text {
         // border: 1px solid red;
@@ -764,8 +765,41 @@ div.pro_photo {
         left: 25%;
     }
 }
-body {
-    position: relative;
+// body {
+//     position: relative;
+// }
+// scroll更改header背景色
+.-icon {
+    position: sticky;
+    top: 50px;
+    left: 96%;
+    @media (max-width: 1323px) {
+        left: 95.5%;
+    }
+    @media (max-width: 1049px) {
+        left: 95%;
+    }
+    @media (max-width: 833px) {
+        left: 94.5%;
+    }
+    @media (max-width: 701px) {
+        left: 85%;
+    }
+    @media (max-width: 626px) {
+        left: 84%;
+    }
+    @media (max-width: 561px) {
+        left: 83%;
+    }
+    @media (max-width: 518px) {
+        left: 82%;
+    }
+    @media (max-width: 501px) {
+        left: 81.5%;
+    }
+    @media (max-width: 376px) {
+        left: 77.5%;
+    }
 }
 
 // //愛心開始
