@@ -111,22 +111,21 @@
         </div> 
     </div>
 
-    <!-- select選單 -->
-    <div class="select">
-        <select onchange = "location = this.options[this.selectedIndex].value;">
-            <option value="#" disabled selected>選擇教師</option>
-            <option value="teacher.html#firstPage">A老師</option>
-            <option value="teacher.html#secondPage">B老師</option>
-            <option value="teacher.html#thirdPage">C老師</option>
-            <option value="teacher.html#fourthPage">D老師</option>
-            <option value="teacher.html#fifthPage">E老師</option>
-            <option value="teacher.html#sixthPage">F老師</option>
-        </select>
-    </div>
-
     <div id="app" class="scrollPage">
-        <full-page ref="fullpage" :options="options" id="fullpage">
+        <!-- select選單 -->
+        <div class="select">
+            <select onchange = "location = this.options[this.selectedIndex].value;">
+                <option value="#" disabled selected>選擇教師</option>
+                <option value="teacher.html#firstPage">{{dataRows[0][0].teachName}}</option>
+                <option value="teacher.html#secondPage">{{dataRows[0][1].teachName}}</option>
+                <option value="teacher.html#thirdPage">{{dataRows[0][2].teachName}}</option>
+                <option value="teacher.html#fourthPage">{{dataRows[0][3].teachName}}</option>
+                <option value="teacher.html#fifthPage">{{dataRows[0][4].teachName}}</option>
+                <option value="teacher.html#sixthPage">{{dataRows[0][5].teachName}}</option>
+            </select>
+        </div>
 
+        <full-page ref="fullpage" :options="options" id="fullpage">
             <div class="section">
                 <div class="container">
                     <div class="tr">

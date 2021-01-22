@@ -16,10 +16,14 @@
             $memRow = $member->fetch(PDO::FETCH_ASSOC);
             // 將資料寫進session
             $_SESSION["memberNo"] = $memRow["memberNo"]; 
+            $_SESSION["gradeNo"] = $memRow["gradeNo"]; 
             $_SESSION["memId"] = $memRow["memId"]; 
             $_SESSION["memName"] = $memRow["memName"];
-            $_SESSION["memAvatar"] = $memRow["memAvatar"];
             $_SESSION["memMail"] = $memRow["memMail"];
+            $_SESSION["memAvatar"] = $memRow["memAvatar"];
+            $_SESSION["memGamePoint"] = $memRow["memGamePoint"];
+            $_SESSION["memStatus"] = $memRow["memStatus"];
+            $_SESSION["courseTimes"] = $memRow["memStatus"];
             // 傳回資料
             echo json_encode($memRow);
         }

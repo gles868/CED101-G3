@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="css/payStepDone.css" />
+        <link rel="stylesheet" href="./css/btn.css" />
+        <script src="./vendors/jquery/jquery-3.5.1.min.js"></script>
+        <script src="./vendors/Vue/vue.js"></script>
+        <script src="./js/payStepDone.js"></script>
+        <title>麻瓜特訓班 | 報名完成</title>
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <div class="menu_toggle">
+                    <input type="checkbox" />
+                    <div class="logo">
+                        <a href="index.html"><img src="./img/logo.png" /></a>
+                    </div>
+                    <ul class="nav">
+                        <li><a href="course.html">課程總覽</a></li>
+                        <li><a href="teacher.html">教師總覽</a></li>
+                        <li>
+                            <a href="index.html"
+                                ><img src="./img/logo.png"
+                            /></a>
+                        </li>
+                        <li><a href="mall.html">商城</a></li>
+                        <li><a href="game.html">小遊戲</a></li>
+                    </ul>
+                    <div class="ham">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul class="nav-right">
+                        <li>
+                            <a href="member.html">
+                                <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
+                                <i
+                                    id="memIcon"
+                                    class="fas fa-user-circle fa-lg"
+                                ></i>
+                                <div id="memInfo">
+                                    <div id="avatar">
+                                        <img
+                                            :src="'img/' + this.memData.memAvatar"
+                                            alt=""
+                                        />
+                                    </div>
+                                </div>
+                            </a>
+                            <span id="logout"></span>
+                        </li>
+                        <li>
+                            <a href="cart.html"
+                                ><i class="fas fa-shopping-cart fa-lg"></i
+                            ></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- 登入註冊燈箱 -->
+        <div class="lightbox-bg"></div>
+        <div class="container" id="container">
+            <span class="close"><i class="fas fa-times fa-xs"></i></span>
+            <!-- 註冊 -->
+            <div class="form-container sign-up-container">
+                <form id="signUpForm">
+                    <h2>會員註冊</h2>
+                    <input type="text" id="signUpName" placeholder="輸入姓名" />
+                    <input
+                        type="email"
+                        id="sigUpEmail"
+                        placeholder="輸入email"
+                    />
+                    <input type="text" id="signUpId" placeholder="輸入帳號" />
+                    <input
+                        type="password"
+                        id="signUpPsw"
+                        placeholder="輸入密碼(至少含各一位英數字)"
+                    />
+                    <input
+                        type="password"
+                        id="checkPsw"
+                        placeholder="確認密碼"
+                        name="checkPsw"
+                    />
+                    <input type="button" id="signUpSubmit" value="註冊" />
+
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                </form>
+            </div>
+            <!-- 登入 -->
+            <div class="form-container sign-in-container">
+                <form id="signInForm">
+                    <h2>會員登入</h2>
+                    <input
+                        type="text"
+                        name="memId"
+                        id="memId"
+                        placeholder="輸入帳號"
+                    />
+                    <input
+                        type="password"
+                        name="memPsw"
+                        id="memPsw"
+                        placeholder="輸入密碼"
+                    />
+                    <span id="forgetPsw">忘記密碼?</span>
+                    <input type="button" id="signInSubmit" value="登入" />
+
+                    <div class="notice" style="top: 140px"></div>
+                    <div class="notice" style="top: 198px"></div>
+                </form>
+            </div>
+
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <button type="button" class="check" id="signIn">
+                            登入
+                        </button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <button type="button" class="check" id="signUp">
+                            註冊
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="moon"></div>
+
+        <div class="done_big_box">
+            <div class="girl">
+                <img src="./img/props/pay_girl.png" />
+            </div>
+            <ul class="bubble">
+                <li><img src="./img/bestar.png" /></li>
+                <li><img src="./img/aftar.png" /></li>
+                <li><img src="./img/aftar.png" /></li>
+                <li><img src="./img/bestar.png" /></li>
+                <li><img src="./img/aftar.png" /></li>
+                <li><img src="./img/aftar.png" /></li>
+                <li><img src="./img/bestar.png" /></li>
+                <li><img src="./img/aftar.png" /></li>
+                <li><img src="./img/aftar.png" /></li>
+            </ul>
+            <div class="done_box">
+                <div class="done_text_box">
+                    <div class="text1">報名完成！</div>
+                    <div class="text2">謝謝您的報名</div>
+                </div>
+
+                <div class="btn-wrapper btn">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 65 65"
+                        class="star-svg"
+                    >
+                        <path
+                            data-name="star-10"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#fd7865"
+                        />
+                        <path
+                            data-name="star-9"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#489ba9"
+                        />
+                        <path
+                            data-name="star-8"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#fd7865"
+                        />
+                        <path
+                            data-name="star-7"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#FFFF6F"
+                        />
+                        <path
+                            data-name="star-6"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#489ba9"
+                        />
+                        <path
+                            data-name="star-5"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#fd7865"
+                        />
+                        <path
+                            data-name="star-4"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#FFFF6F"
+                        />
+                        <path
+                            data-name="star-3"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#fd7865"
+                        />
+                        <path
+                            data-name="star-2"
+                            d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                            fill="#489ba9"
+                        />
+                        <path
+                            data-name="star-1"
+                            d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                            fill="#FFFF6F"
+                        />
+                    </svg>
+                    <a class="Btn" href="./index.html"
+                        ><input class="Btn" type="button" value="回首頁"
+                    /></a>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+        <script src="./js/button.js"></script>
+
+        <script src="js/login.js"></script>
+        <script>
+            // scroll更改header背景色
+            window.addEventListener('scroll', function () {
+                let getScrollTop = document.documentElement.scrollTop;
+                let header = document.querySelector('header');
+
+                if (getScrollTop > 60) {
+                    header.classList.add('-active');
+                } else {
+                    header.classList.remove('-active');
+                }
+            });
+
+            // 專門給header接會員照片資料 | 判斷是否登入的new Vue
+            // 必須給new Vue一個名稱(memNavInfo)，才能接到php回傳的會員資料
+            let memNavInfo = new Vue({
+                el: '#memInfo',
+                data: {
+                    memData: {},
+                },
+            });
+        </script>
+    </body>
+</html>

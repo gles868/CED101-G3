@@ -18,10 +18,14 @@ try {
 			$products = $pdo->prepare( $sql );
 			$products -> bindValue(":memberNo", $_POST["memberNo"]);
 			$products -> bindValue(":classNo", $_POST["classNo"]);
-			$products -> execute();	
-			echo "報名成功";
-			// sleep(1);
-			// header('Location: http://localhost:8888/main.html');		
+			$products -> execute();		
+			// echo "新增成功~";
+
+			$url = "../registStepDone.html";
+			echo "<script type='text/javascript'>";
+			echo "window.location.href='$url'";
+			echo "</script>";
+	
 
 
 } catch (PDOException $e) {
