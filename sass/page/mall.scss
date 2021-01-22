@@ -726,7 +726,7 @@ div.pro_photo {
     }
 }
 
-////////
+// 購物車數字
 .num_icon {
     // display: block;
     cursor: pointer;
@@ -765,10 +765,8 @@ div.pro_photo {
         left: 25%;
     }
 }
-// body {
-//     position: relative;
-// }
-// scroll更改header背景色
+
+// scroll更改數字位置
 .-icon {
     position: sticky;
     top: 50px;
