@@ -27,7 +27,7 @@
                     <a href="index.html"><img src="./img/logo.png"></a>
                 </div>
                 <ul class="nav">
-                    <li><a href="course.html">課程總覽</a></li>
+                    <li><a class="active" href="course.html">課程總覽</a></li>
                     <li><a href="teacher.html">教師總覽</a></li>
                     <li>
                         <a href="index.html"><img src="./img/logo.png"></a>
@@ -195,11 +195,6 @@
         <div class="all_course_card" id="course_block" v-show='filterPage1'>
             <div class="card" v-for='classRow in classRows' ontouchstart="this.classList.toggle('hover');">
                 <p class="course_title">{{classRow.courseName}}</p>
-                <!-- <div class="center-content">
-                    <div class="heart" @click="changeHeart($event)">
-                        <div class="heart-inner"></div>
-                    </div>
-                </div> -->
 
                 <div class="container">
                     <div class="front">
@@ -379,7 +374,7 @@
                         // 如果未登入，跳出提示燈箱
                         alert('請登入會員');
                     }
-                    
+
                 },
                 cleanPrice() {
                     this.priceText = '';
@@ -400,34 +395,6 @@
                         // return false
                     }
                 },
-
-                // addFavourite: function (e) {
-                //     let heartClass = e.target.parentNode.className;
-                //     // console.log(heartClass);
-                //     let courseNo = e.target.id;
-                //     console.log(e.target.id);
-                //     this.lovedCourse = this.lovedCourse.concat();
-                //     if (heartClass == 'heart') {
-                //         $.ajax({
-                //             method: 'GET',
-                //             url: 'course_addFavourite.php',
-                //             type: 'json',
-                //             data: `courseNo=${courseNo}`, //click後傳值到PHP
-                //             success: function (lovedCourse) {
-                //                 console.log(lovedCourse); //把新增後資料回傳用變數接收
-                //             }
-                //         })
-                //     } else {
-                //         $.ajax({
-                //             method: 'GET',
-                //             url: 'course_removeFavourite.php',
-                //             data: `courseNo=${courseNo}`,
-                //         })
-                //     }
-                // },
-                // changeHeart: function (e) {
-                //     e.target.parentNode.classList.toggle('loved');
-                // },
                 filterData() {
                     this.filterPage2 = true;
                     this.filterPage1 = false;

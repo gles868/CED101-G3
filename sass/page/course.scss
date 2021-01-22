@@ -138,12 +138,16 @@ div.course_class {
         }
 
         div.fliter_block {
-            width: 250px;
+            width: 300px;
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: right;
             margin-top: 20px;
 
+            label.radio {
+                margin-bottom: 10px;
+            }
+            
         }
     }
 
@@ -164,7 +168,7 @@ div.course_price {
 
     div.fliter_block {
 
-
+        
         label.radio {
             font-size: 16px;
             font-weight: 500;
@@ -190,7 +194,7 @@ div.course_price {
             float: right;
         }
     }
-
+}
     @media (max-width:1139px) {
         div.course_price {
             display: block;
@@ -202,14 +206,18 @@ div.course_price {
             }
 
             div.fliter_block {
-                width: 130px;
-                display: inline-block;
-                margin-left: 10%;
-                margin-top: 20px;
+                width: 300px;
+                display: flex;
+                flex-wrap: wrap;
+
+
+                label.radio {
+                    margin-bottom: 10px;
+                }
             }
         }
     }
-}
+
 
 
 div.all_course_card {
