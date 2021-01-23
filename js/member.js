@@ -915,15 +915,18 @@ Vue.component('mem-info', {
         <div class="memContent">
             <div class="memInfo">
                 <div class="memInfoLeft">
+
                     <div class="memheadBox">
                         <div class="memhead">
                             <img id="imgPreview" :src="memavatar" @click="senddata" alt="" />
                         </div>
                         <div class="memheadCG">
-                            <i class="fas fa-camera"></i>
-                            <input type="file" name="upFile" id="upFile" @change="change_img" />
+                            <label id="preview_con" for="upFile"><img id="preview" src="./img/changeimgicon.png" /></label>
+                            <input type="file" name="upFile" id="upFile" @change="change_img" accept="image/gif,image/jpeg,image/png,image/jpg"  style="display:none;"/>
                         </div>
                     </div>
+
+
                     <h5 class="memPoint">可折抵點數:{{memgamepoint}}點</h5>
                 </div>
                 <div class="memInfoRight">
@@ -1260,11 +1263,12 @@ new Vue({
                 .then((res) => (this.memberno = res.memberNo));
             await this.get_mem();
             await this.get_mem_coursetimes();
+            
             //沒抓到會員資料導回首頁
             if (!this.memberno) {
                 // alert('a');
                 console.log('沒登入喇喇!!');
-                // location.href = `./main.html`;
+                location.href = `./main.html`;
             }
         },
         changeTag(event) {

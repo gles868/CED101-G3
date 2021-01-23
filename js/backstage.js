@@ -1760,7 +1760,7 @@ Vue.component('back-class', {
         //關閉"新增商品"燈箱，同時重新渲染畫面
         classaddlightbox() {
             this.class_add_lightbox = false;
-            this.get_classes();
+            this.get_class();
         },
     },
     // template 渲染前 會先去執行以下函式
@@ -1892,10 +1892,9 @@ Vue.component('class_add', {
     data() {
         return {
             courseNo: '',
-
+            classDescription: '',
             updatecourseNo: '',
             date: '', //選擇的日期
-            postData: '', //要送到後台的資料
         };
     },
     props: [],
@@ -1940,7 +1939,7 @@ Vue.component('class_add', {
 
             <div class="addcoursecon">
                 <div class="acc_title">班級開課描述</div>
-                <textarea type="text" id="classDescription" class="acc_con" v-model="classDescription"></textarea>
+                <textarea type="text" id="classDescription" oninput="if(value.length>100) value=value.substr(0,100)" class="acc_con" v-model="classDescription"></textarea>
             </div>
             <button type="sumbit" class="form_btn"
                 @click="add_class_func">確定新增                                
@@ -1952,31 +1951,36 @@ Vue.component('class_add', {
     methods: {
         add_class_func: async function () {
             //送出新增前 確認欄位 是否符合規定
+            let finish = true;
 
-            const res = await fetch('./php/back_insert_class.php', {
-                method: 'POST',
-                mode: 'same-origin',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    courseNo: courseNo,
-                    teachNo: teachNo,
-                    startDate: startDate,
-                    endDate: endDate,
-                    courseStartDate: courseStartDate,
-                    classDescription: classDescription,
-                }),
-            }).then(function () {
-                console.log('in');
-            });
-            console.log('完成');
+            for (let i = 0; i < Object.values(this.postData).length; i++) {
+                if (!Object.values(this.postData)[i]) {
+                    finish = false;
+                    break;
+                }
+            }
 
-            //關燈箱
-            this.changelightbox();
-            //完成後 重新撈取一次資料
-            // this.get_pro();
+            if (finish == true) {
+                const res = await fetch('./php/back_insert_class.php', {
+                    method: 'POST',
+                    mode: 'same-origin',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(this.postData),
+                }).then(function () {
+                    console.log('in');
+                });
+                console.log('完成');
+
+                //關燈箱
+                this.changelightbox();
+                //完成後 重新撈取一次資料
+                // this.get_pro();
+            } else {
+                alert('no');
+            }
         },
 
         updateDate(date) {
@@ -1987,7 +1991,6 @@ Vue.component('class_add', {
             this.$emit('changelightbox');
         },
     },
-    created() {},
     computed: {
         //今天日期
         today() {
@@ -1998,7 +2001,17 @@ Vue.component('class_add', {
             let today = `${year}-${month + 1}-${date}`;
             return today;
         },
+        //要送到後台的資料
         postData() {
+            let dt = new Date(this.date);
+            dt = dt.setDate(dt.getDate() - 1);
+            dt = new Date(dt);
+
+            let year = dt.getFullYear();
+            let month = dt.getMonth();
+            let date = dt.getDate();
+            let endDay = `${year}-${month + 1}-${date}`;
+
             let data = {
                 // courseNo 課程編號
                 // teachNo 教師編號
@@ -2006,10 +2019,17 @@ Vue.component('class_add', {
                 // endDate	報名結束日期->上課日期-1天
                 // courseStartDate	課程開始日期(上課日期)
                 // classDescription	班級說明(100字內)
+                courseNo: this.courseNo.split('-')[0],
+                teachNo: this.courseNo.split('-')[1],
+                startDate: this.today,
+                courseStartDate: this.date,
+                endDate: endDay,
+                classDescription: this.classDescription,
             };
+
+            return data;
         },
     },
-    watch: {},
 });
 
 //選擇日期
