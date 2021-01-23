@@ -68,6 +68,7 @@
     <link href="./css/singleCourse.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
     <link href="./js/course/fullCalnedar/main.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon-logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
@@ -162,12 +163,12 @@
 
 
 
-    <main class="main">
-
+    <main class="main" id="app">
+        <my-count></my-count>
         <section class="course_info">
             <div class="course_card_block">
-                <div id="app" class="center-content">
-                    <my-count></my-count>
+                <div  class="center-content">
+                    
                     <div class="heart" @click="changeHeart" data-course="classRow.courseNo">
                         <div class="heart-inner" id=<?=$courseRow["courseNo"]?> @click="addFavourite"></div>
                     </div>
@@ -186,7 +187,7 @@
             </div>
         </section>
 
-        <section class="calendar" id="app">
+        <section class="calendar">
             <p class="calendar_title">請點擊課程報名</p>
             <div id='calendar'></div>
         </section>
@@ -231,8 +232,9 @@
                     <div class="accessory_block">
                     <a href="mall.html">
                     <img src="<?=$data[$i][$j]?>" alt="">
-                    <p class="name"><?=$data[$i][$j+1]?></p>
+                    
                     </a>
+                    <p class="name"><?=$data[$i][$j+1]?></p>
                     </div>
 
                   <?php 
@@ -362,6 +364,46 @@
                 memData: {},
             },
         })
+
+        let storage = sessionStorage;
+  if (storage['count'] == null) {
+    storage['count'] = '0';
+  }
+
+  Vue.component('my-count', {
+    data() {
+      return {
+        count: 0,
+      };
+    },
+    props: [],
+    template: `
+    <div class="num_icon">
+        <div class="num_text">{{count}}</div>
+    </div>
+            `,
+
+    methods: {
+      //判斷 目前的購物車中 商品數量
+      checked_count() {
+        let storage = sessionStorage;
+        //判斷 目前有多少商品
+        if (storage.getItem('count') == 0) {
+          // console.log('沒切割')
+        } else {
+          console.log('切割');
+          this.count = storage.getItem('count');
+        }
+        // console.log('有幾個')
+      },
+    },
+    created() { },
+    mounted() {
+      this.checked_count();
+    },
+  });
+
+
         let app = new Vue({
             el: '#app',
             data: {
