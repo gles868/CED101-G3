@@ -54,25 +54,12 @@ new ScrollMagic.Scene({
 .addTo(controller);
 
 // ============== parallax.js ===============
-var scene = document.getElementById('scene');
-var parallaxInstance = new Parallax(scene);
+// var scene = document.getElementById('scene');
+// var parallaxInstance = new Parallax(scene);
 
 // parallaxInstance = new Parallax( document.getElementById( "【物件】" ) , { 
 //     // 參數設定
 // });
-
-// ============== 取得資料 ===============
-window.addEventListener('load', function(){
-    let dataRows;     
-    let xhr = new XMLHttpRequest();
-    xhr.onload = function(){
-        app.dataRows = JSON.parse(xhr.responseText);
-        console.log(app.dataRows);
-    }
-    url = 'php/getIndexData.php';
-    xhr.open('get', url, true);
-    xhr.send(null);
-});
 
 
 let memNavInfo = new Vue({
@@ -86,7 +73,8 @@ Vue.component('teacher-component', {
     props: ['teach-no', 'teach-img', 'teach-name', 'teach-description', 'comm-avg', 'course-name'],
     template: `
         <div>
-            <a href="'singleTeacher.html?teachNo=' + teachNo">
+            <a :href="'singleTeacher.html?teachNo=' + teachNo"
+               title="前往瀏覽該教師✧">
                 <div class="teacher-big1" >
                     <div class="teacher">
                         <div class="shadow"></div>
@@ -101,8 +89,8 @@ Vue.component('teacher-component', {
                         <star-rating v-model="commAvg"
                                     text-class="custom-text"
                                     :increment="0.1"
-                                    :star-size="20"
-                                    :glow="2"
+                                    :star-size="26"
+                                    :glow="3"
                                     :padding="2"
                                     :read-only="true">
                         </star-rating>
@@ -214,19 +202,64 @@ let app = new Vue({
                 master.play(0);
             });
         },
+        mousemoveEvent(){
+            // // ============== mouseover訊息 ===============
+            // $('.card').mousemove(function(e){
+            //     let text = $(this).attr('data-text');
+
+            //     $('.textbox').show().text(text).css({
+            //         left: e.pageX + 10,
+            //         top: e.pageY + 10,
+            //     });
+            // }).mouseleave(function(){
+            //     $('.textbox').hide();
+            // });
+
+            // let card = document.querySelectorAll('.card > a');
+            // card[0].addEventListener('mousemove', function(e){
+            //     let textbox = document.querySelectorAll('.textbox');
+            //     // let text = e.target.getAttribute('data-text');
+                
+            //     textbox[0].innerText = '前往瀏覽課程✧';
+            //     console.log(e.pageX);
+            //     console.log(e.pageY);
+            //     textbox[0].style.display = 'block';
+            //     textbox[0].style.left = e.pageX + 'px';
+            //     textbox[0].style.top = e.pageY + 'px' - '4000px';
+            // });
+
+            // card[0].addEventListener('mouseleave', function(e){
+            //     let textbox = document.querySelectorAll('.textbox');
+            //     // textbox[0].style.display = 'none';
+            //     console.log('leave');
+            // });
+        }
     },
 })
 
 
 // ======= scroll更改header背景色 =======
-window.addEventListener('scroll', function(){
-    let getScrollTop = document.documentElement.scrollTop;
-    let header = document.querySelector('header');
-    
-    if(getScrollTop > 4000){
-        header.classList.add('-active');
-    }else{
-        header.classList.remove('-active');
-    }
-});
+// window.addEventListener('scroll', function () {
+//     let getScrollTop = document.documentElement.scrollTop;
+//     let header = document.querySelector('header');
+//     let carticon = document.querySelector('.num_icon');
+//     if (getScrollTop > 4000) {
+//         header.classList.add('-active');
+//         carticon.classList.add('-icon');
+//     } else {
+//         header.classList.remove('-active');
+//         carticon.classList.remove('-icon');
+//     }
+// });
 
+window.addEventListener('load', function(){
+    // ============== 取得資料 ===============
+    let dataRows;     
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+        app.dataRows = JSON.parse(xhr.responseText);
+    }
+    url = 'php/getIndexData.php';
+    xhr.open('get', url, true);
+    xhr.send(null);
+});

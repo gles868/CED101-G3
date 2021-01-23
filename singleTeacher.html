@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>麻瓜特訓班 | 單一教師</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="shortcut icon" href="img/favicon-logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
+          crossorigin="anonymous"/>
     <link rel="stylesheet" href="css/singleTeacher.css">
     
     <!-- jquery -->
@@ -13,7 +16,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
     <!-- vue-star-rating js -->
     <script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>
-   
+    <script src="./js/count_vue.js"></script>
+
 </head>
 <body>
     <header>
@@ -87,8 +91,8 @@
                 <span id="forgetPsw">忘記密碼?</span>
                 <input type="button" id="signInSubmit" value="登入">
                 
-                <div class="notice" style="top: 140px"></div>
-                <div class="notice" style="top: 198px"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
             </form>
         </div>
         
@@ -105,6 +109,9 @@
     </div>
 
     <div class="bg">
+        <!-- 購物車數字 -->
+        <my-count></my-count>
+
         <div class="section01">
             <teacher-component :data-rows="dataRows[0]">
             </teacher-component>
@@ -183,9 +190,9 @@
             </div>
 
             <!-- 顯示更多btn -->
-            <div class="btn">
+            <!-- <div class="btn">
                 <button class="btn-purple">查看更多</button>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -193,7 +200,7 @@
         <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
     </footer> -->
 
-    <footer>
+    <!-- <footer>
         <p>
             copyright©2021 CED101G3 麻瓜特訓班.All Rights Reserved
         </p>
@@ -205,21 +212,23 @@
             <a href="https://tibamef2e.com"></a>
             為緯育TibaMe提供給[Web/APP前端設計工程師養成班]學員展示作品之平台，若有侵權疑慮，請私訊<a href="https://www.facebook.com/webindex/">［TibaMe-前端設計工程師養成班］</a>
         </p>
-    </footer>
+    </footer> -->
 
     <script src="./js/singleTeacher.js"></script>
     <script src="js/login.js"></script>        
 
     <script>
         // scroll更改header背景色
-        window.addEventListener('scroll', function(){
+        window.addEventListener('scroll', function () {
             let getScrollTop = document.documentElement.scrollTop;
             let header = document.querySelector('header');
-            
-            if(getScrollTop > 60){
+            let carticon = document.querySelector('.num_icon');
+            if (getScrollTop > 60) {
                 header.classList.add('-active');
-            }else{
+                carticon.classList.add('-icon');
+            } else {
                 header.classList.remove('-active');
+                carticon.classList.remove('-icon');
             }
         });
         

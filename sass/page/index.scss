@@ -282,11 +282,17 @@ header{
                     repeat: no-repeat;
                     size: contain;
                 }
+                transition: all 1s;
                 &:hover{
-                    backface-visibility: hidden;
-                    transform-style: preserve-3d;
-                    transform: rotateY(180deg);
-                    transition: all 0.65s ease-out 0s;
+                    background: {
+                        image: url("./../img/index/[lessons]board_shine.png");
+                        repeat: no-repeat;
+                        size: contain;
+                    }
+                    transition: all .4s;
+                    // & .textbox{
+                    //     display: block;
+                    // }
                 }
                 a{
                     display: flex;
@@ -402,6 +408,32 @@ header{
                         }
                     }
                 }
+                // .textbox{
+                //     position: absolute;
+                //     top: 25px;
+                //     left: 90px;
+                //     color: #fff;
+                //     border: 1px solid #fff;
+                //     padding: 10px;
+                //     background-color: #ffffff3d;
+                //     border-radius: 3px;
+                //     display: none;
+                //     width: 110px;
+                // }
+            }
+            .cour_img{
+                background: {
+                    image: url("./../img/course_cards/course_01.png");
+                    repeat: no-repeat;
+                    size: contain;
+                }
+                width: 220px;
+                height: 350px;
+                position: absolute;
+                top: 450px;
+                left: 60px;
+                opacity: 50%;
+                display: none;
             }
         }
         .rock{
@@ -501,11 +533,14 @@ header{
         }
     }
     .tea-all {
-        // border: 1px solid blue;
         display: flex;
         position: relative;
-        width: 75%;
-        margin: 150px auto;
+        width: 100%;
+        height: 100vh;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
         @media all and (max-width: 868px){
             padding: 70px 0;
         }
@@ -521,7 +556,7 @@ header{
         position: relative;
         margin-top: 60px;
         .teacher {
-            width: 50%;
+            width: 60%;
             // border: 1px solid red;
             z-index: 2;
             .shadow{
@@ -542,16 +577,11 @@ header{
         }
     }
     .tea-box {
-        // border: 1px solid blue;
-        width: 85%;
+        width: 95%;
         position: absolute;
         top: -30%;
-        left: 25%;
+        left: 32%;
         z-index: 1;
-        // background-image: url(./img/[teachers]card-04.png);
-        // background-repeat: no-repeat;
-        // height: 100%;
-        // background-size: cover;
         img {
             width: 100%;
         }
@@ -562,12 +592,26 @@ header{
     .inf-all, .inf-all2, .inf-all3{
         // animation: float 2s infinite;
         .tea-name{
-            font-size: $h5;
+            font-size: 22px;
             @include titleStyle;
+            margin: 10px 0 15px;
         }
         .tea-inf {
             width: 80%;
-            margin: 0 auto;
+            height: 80px;
+            margin: 8px auto;
+            white-space: normal;
+            line-height: 1.8;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .vue-star-rating{
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .tea-star{
             // border: 1px solid blue;
@@ -584,16 +628,17 @@ header{
             margin: 15px;
             li {
                 list-style-type: none;
+                font-weight: 600;
+                font-size: 18px;
             }
         }
     }
     .inf-all {
         text-align: center;
-        width: 60%;
-        // border: 1px solid yellow;
+        width: 75%;
         position: absolute;
-        top: -9%;
-        left: 39%;
+        top: -13%;
+        left: 42%;
         z-index: 1;
         color: white;
         @include paraStyle;
@@ -1263,10 +1308,10 @@ header{
                     line-height: 2;
                     background-color: #333333d1;
                     position: absolute;
-                    top: 160px;
+                    top: 140px;
                     padding: 15px 15px 20px;
                     margin-top: -25px;
-                    margin-left: -45px;
+                    margin-left: -55px;
                     p:nth-of-type(2){
                         height: 80px;
                         white-space: normal;
