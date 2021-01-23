@@ -27,6 +27,8 @@
     <script src="./js/vue.js"></script>
     <!-- vue-star-rating js -->
     <script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>
+    
+    <!-- 購物車數字 -->
     <script src="./js/count_vue.js"></script>
 </head>
 
@@ -36,13 +38,13 @@
             <div class="menu_toggle">
                 <input type="checkbox">
                 <div class="logo">
-                    <a href="main.html"><img src="./img/logo.png"></a>
+                    <a href="index.html"><img src="./img/logo.png"></a>
                 </div>
                 <ul class="nav">
                     <li><a href="course.html">課程總覽</a></li>
                     <li><a href="teacher.html">教師總覽</a></li>
                     <li>
-                        <a href="main.html"><img src="./img/logo.png"></a>
+                        <a href="index.html"><img src="./img/logo.png"></a>
                     </li>
                     <li><a href="mall.html">商城</a></li>
                     <li><a href="game.html">小遊戲</a></li>
@@ -66,7 +68,9 @@
                         </a>
                         <span id="logout"></span>
                     </li>
-                    <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+                    <li id="cartlink">
+                        <a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -103,8 +107,8 @@
                 <span id="forgetPsw">忘記密碼?</span>
                 <input type="button" id="signInSubmit" value="登入">
                 
-                <div class="notice" style="top: 140px"></div>
-                <div class="notice" style="top: 198px"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
             </form>
         </div>
         

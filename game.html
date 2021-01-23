@@ -6,6 +6,12 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>下樓梯！</title>
         <script src="https://cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
+
+        <!-- jquery -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
+
+        
+
         <link rel="stylesheet" href="./css/style.css" />
         <link rel="stylesheet" href="./css/game.css" />
         <link
@@ -20,20 +26,21 @@
             }
 
             canvas {
-                margin: 90px auto !important;
+                margin: 15px auto !important;
                 border: 1px solid blue;
                 /* margin-top: 90px; */
             }
 
-            button {
+            .button {
+                display: inline-block;
                 box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
-                position: absolute;
+                /* position: absolute;
                 top: 20%;
-                left: 50%;
-                width: 100px;
+                left: 50%; */
+                width: 150px;
                 height: 40px;
-                margin-top: -20px;
-                margin-left: -50px;
+                margin: 10px auto;
+                text-align: center;
                 background-color: #742275;
                 border-radius: 15px;
                 border: 1px solid #a12ea3;
@@ -44,9 +51,26 @@
                 cursor: pointer;
             }
 
-            .totalPo {
-                top: 18%;
-                left: 50%;
+            .wrapper{
+                /* border: 1px solid red; */
+                text-align: center;
+                padding-right: 40px;
+            }
+            #totalPo {
+                width: 40px;
+                text-align: center;
+                font-weight: 600;
+                font-size: 24px;
+                margin: 0 auto;
+                display: inline-block;
+                text-shadow: 0 0 0.4em #ff0082, 0 0 0.4em #ff0082;
+            }
+            .text{
+                width: 300px;
+                text-align: center;
+                margin: 12px auto;
+                text-shadow: 0 0 0.4em #ff0082, 0 0 0.4em #ff0082;
+                color: #fff;
             }
         </style>
     </head>
@@ -68,7 +92,7 @@
                             /></a>
                         </li>
                         <li><a href="mall.html">商城</a></li>
-                        <li><a href="game.html">小遊戲</a></li>
+                        <li><a class="active" href="game.html">小遊戲</a></li>
                     </ul>
                     <div class="ham">
                         <span></span>
@@ -78,7 +102,6 @@
                     <ul class="nav-right">
                         <li>
                             <a href="member.html">
-                                <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
                                 <i
                                     id="memIcon"
                                     class="fas fa-user-circle fa-lg"
@@ -90,12 +113,11 @@
                                             alt=""
                                         />
                                     </div>
-                                    <!-- <span>{{this.memData.memName}}</span> -->
                                 </div>
                             </a>
                             <span id="logout"></span>
                         </li>
-                        <li>
+                        <li id="cartlink">
                             <a href="cart.html"
                                 ><i class="fas fa-shopping-cart fa-lg"></i
                             ></a>
@@ -159,8 +181,8 @@
                     <span id="forgetPsw">忘記密碼?</span>
                     <input type="button" id="signInSubmit" value="登入" />
 
-                    <div class="notice" style="top: 140px"></div>
-                    <div class="notice" style="top: 198px"></div>
+                    <div class="notice"></div>
+                    <div class="notice"></div>
                 </form>
             </div>
 
@@ -181,28 +203,51 @@
         </div>
         <!-- <iframe id="header" src="./iframe.html" frameborder='0' onload="init()"></iframe> -->
 
+        <div id="app">
+            <!-- 購物車數字 -->
+            <my-count></my-count>
+        </div>
+
         <input type="text" id="txt" hidden />
         <!-- <input type="text" id="scroe">
     <input type="text" id="bouns"> -->
         <!-- <input type="text" id="totalPo"> -->
-        <div id="totalPo" style="color: aliceblue"></div>
-        <button id="sendPoint">存進分數</button>
+        <div class="text">請努力獲取最高分</div>
+        <div class="text">選擇你最高的分數來扣抵商品金額吧！</div>
+
+        <div class="wrapper">
+            <div id="totalPo" style="color: aliceblue"></div>
+            <button class="button" id="sendPoint">點擊存進分數</button>
+        </div>
 
         <!-- 計時器  -->
 
-        <script src="./js/game.js"></script>
+        <!-- <script src="./js/game.js"></script> -->
 
         <div id="game-box">
             <!-- <div id="canvas"></div> -->
         </div>
 
-        <footer id="footer">
-            <p>copyright{{year}} CED101_G3 {{webName}}.All Rights Reserved</p>
+        <footer>
+            <p>
+                copyright©2021 CED101G3 麻瓜特訓班.All Rights Reserved
+            </p>
+            <p>
+                本網站為緯育TibaMe_前端設計工程師班第63期學員專題成果作品 -
+                <a href="">參考資源</a>
+            </p>
+            <p>
+                <a href="https://tibamef2e.com"></a>
+                為緯育TibaMe提供給[Web/APP前端設計工程師養成班]學員展示作品之平台，若有侵權疑慮，請私訊<a href="https://www.facebook.com/webindex/">［TibaMe-前端設計工程師養成班］</a>
+            </p>
         </footer>
 
         <script src="js/login.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+        <!-- 購物車數字 -->
+        <script src="./js/count_vue.js"></script>
+
         <script>
             let senPoBtn = document.getElementById('sendPoint');
             senPoBtn.onclick = function () {
@@ -269,11 +314,13 @@
             window.addEventListener('scroll', function () {
                 let getScrollTop = document.documentElement.scrollTop;
                 let header = document.querySelector('header');
-
+                let carticon = document.querySelector('.num_icon');
                 if (getScrollTop > 60) {
                     header.classList.add('-active');
+                    carticon.classList.add('-icon');
                 } else {
                     header.classList.remove('-active');
+                    carticon.classList.remove('-icon');
                 }
             });
 
@@ -283,6 +330,36 @@
                     memData: {},
                 },
             });
+
+            let app = new Vue({
+                el: '#app',
+                data: {
+                },
+            });
+        </script>
+
+        <script>
+            script = document.createElement('script');
+
+            rwd();
+
+            function rwd() {
+                // document.head.removeChild(document.head.lastChild);
+
+                let winWidth = $(window).width();
+                let script = '';
+                if (winWidth <= 700) {
+                    // alert(12)
+                    script = document.createElement('script');
+                    script.src = './js/game-rwd.js';
+                } else {
+                    script = document.createElement('script');
+                    script.src = './js/game.js';
+                }
+                document.head.replaceChild(script, document.head.lastChild);
+            }
+
+
         </script>
         <!-- <script src="js/index_scroll.js"></script> -->
     </body>

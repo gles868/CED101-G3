@@ -246,12 +246,12 @@ window.addEventListener('scroll', function () {
 
     console.log(getScrollTop);
 
-    if (getScrollTop > 4000) {
+    if (getScrollTop > 60) {
         header.classList.add('-active');
-        // carticon.classList.add('-icon');
+        carticon.classList.add('-icon');
     } else {
         header.classList.remove('-active');
-        // carticon.classList.remove('-icon');
+        carticon.classList.remove('-icon');
     }
 });
 
