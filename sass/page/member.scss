@@ -1115,40 +1115,41 @@ input {
 }
 
 .memheadBox {
-    // border:1px solid blue;
+    // border: 1px solid blue;
     position: relative;
     text-align: center;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     .memhead {
+        // border: 1px solid red;
         width: 100%;
         border-radius: 50%;
         overflow: hidden;
         img {
+            // border: 1px solid pink;
             width: 100%;
         }
     }
     .memheadCG {
-        // border: 1px solid red;
-        background: rgba(0, 0, 0, 0.5);
-        width: 25%;
-        height: 27%;
+        cursor: pointer;
+        // border: 1px solid black;
+        // background: rgba(0, 0, 0, 0.5);
+        background: rgba(204, 154, 62, 0.5);
+        width: 15%;
+        // height: 15%;
+        margin: 0 auto;
         border-radius: 50%;
         position: absolute;
         text-align: center;
-        cursor: pointer;
         bottom: 0;
-        right: 5%;
+        right: 10%;
         box-shadow: 0 0 0.4em white, 0 0 0.4em white, 0 0 0.4em white;
-        i {
-            // border: 1px solid black;
-            // display: block;
-            font-size: 25px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-top: -12px;
-            margin-left: -12px;
+        label {
+            // border: 1px solid purple;
+            width: 100%;
+            img {
+                width: 100%;
+            }
         }
     }
 }
