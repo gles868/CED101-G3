@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-        <link rel="stylesheet" href="css/course_pay.css" />
-        <link rel="stylesheet" href="css/registration-pay.css" />
+    <link rel="stylesheet" href="css/course_pay.css" />
+    <link rel="stylesheet" href="css/registration-pay.css" />
     <link rel="stylesheet" href="./css/btn.css" />
+
+   
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script> -->
     <title>麻瓜特訓班 | 確認購買與選擇付款方式</title>
     <style>
@@ -34,7 +36,7 @@
                     <a href="index.html"><img src="./img/logo.png"></a>
                 </div>
                 <ul class="nav">
-                    <li><a href="course.html">課程總覽</a></li>
+                    <li><a class="active" href="course.html">課程總覽</a></li>
                     <li><a href="teacher.html">教師總覽</a></li>
                     <li>
                         <a href="index.html"><img src="./img/logo.png"></a>
@@ -61,7 +63,9 @@
                         </a>
                         <span id="logout"></span>
                     </li>
-                    <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+                    <li id="cartlink">
+                        <a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -98,8 +102,8 @@
                 <span id="forgetPsw">忘記密碼?</span>
                 <input type="button" id="signInSubmit" value="登入">
 
-                <div class="notice" style="top: 140px"></div>
-                <div class="notice" style="top: 198px"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
             </form>
         </div>
 
@@ -120,7 +124,9 @@
 
 
     <div id="app">
+        <!-- 購物車數字 -->
         <my-count></my-count>
+
         <div class="moon"></div>
         <div class="confirm_title_box">
             <div class="confirm_title">確認資料</div>
@@ -405,7 +411,17 @@
 
 
     <footer>
-        <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
+        <p>
+            copyright©2021 CED101G3 麻瓜特訓班.All Rights Reserved
+        </p>
+        <p>
+            本網站為緯育TibaMe_前端設計工程師班第63期學員專題成果作品 -
+            <a href="">參考資源</a>
+        </p>
+        <p>
+            <a href="https://tibamef2e.com"></a>
+            為緯育TibaMe提供給[Web/APP前端設計工程師養成班]學員展示作品之平台，若有侵權疑慮，請私訊<a href="https://www.facebook.com/webindex/">［TibaMe-前端設計工程師養成班］</a>
+        </p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
@@ -413,10 +429,14 @@
     <script src="./vendors/jquery/jquery-3.5.1.min.js"></script>
     <!-- <script src="./js/cart_pay.js"></script> -->
     <script src="js/login.js"></script>
+    
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
 
+     <!-- 購物車數字 -->
+     <script src="./js/count_vue.js"></script>
+
     <script>
-        let storage = sessionStorage;
+        // let storage = sessionStorage;
         let tom = document.querySelectorAll(".border-input");
         let copyHave = 'noHave';
 
@@ -663,11 +683,13 @@
         window.addEventListener('scroll', function () {
             let getScrollTop = document.documentElement.scrollTop;
             let header = document.querySelector('header');
-
+            let carticon = document.querySelector('.num_icon');
             if (getScrollTop > 60) {
                 header.classList.add('-active');
+                carticon.classList.add('-icon');
             } else {
                 header.classList.remove('-active');
+                carticon.classList.remove('-icon');
             }
         });
 
