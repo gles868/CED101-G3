@@ -9,6 +9,10 @@ window.addEventListener("load", function () {
     xhr.open('get', 'php/getCourse.php', true);
     xhr.send(null);
 
+   
+
+
+
     // let lovedCourse;
     // let xhc = new XMLHttpRequest();
     // xhc.onload = function () {
