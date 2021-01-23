@@ -544,6 +544,83 @@ header{
         @media all and (max-width: 868px){
             padding: 70px 0;
         }
+        @media all and (max-width: 880px){
+            flex-direction: column;
+        }
+        .teachers{
+            &:nth-of-type(1){
+                transform: translate(-40px, -50px);
+                @media all and (max-width: 1175px){
+                    transform: translate(-20px, -40px);
+                }
+                @media all and (max-width: 1100px){
+                    transform: scale(0.85) translate(-20px, -40px);
+                }
+                @media all and (max-width: 1050px){
+                    transform: scale(0.85) translate(70px, -40px);
+                }
+                @media all and (max-width: 880px){
+                    transform: translate(90px, 50px);
+                }
+                @media all and (max-width: 620px){
+                    transform: scale(0.9) translate(40px, 60px);
+                }
+                @media all and (max-width: 565px){
+                    transform: translate(40px, 60px);
+                }
+                @media all and (max-width: 530px){
+                    transform: translate(0px, 60px);
+                }
+            }
+            &:nth-of-type(2){
+                transform: translate(-160px, 110px);
+                @media all and (max-width: 1390px){
+                    transform: translate(-100px, 110px);
+                }
+                @media all and (max-width: 1175px){
+                    transform: translate(-120px, 160px);
+                }
+                @media all and (max-width: 1100px){
+                    transform: scale(0.85) translate(-120px, 160px);
+                }
+                @media all and (max-width: 1050px){
+                    transform: scale(0.85) translate(-200px, 260px);
+                }
+                @media all and (max-width: 880px){
+                    transform: scale(0.9) translate(90px, 0px);
+                }
+                @media all and (max-width: 565px){
+                    transform: translate(40px, 0px);
+                }
+                @media all and (max-width: 530px){
+                    transform: translate(0px, 10px);
+                }
+            }
+            &:nth-of-type(3){
+                transform: translate(-160px, 0px);
+                @media all and (max-width: 1390px){
+                    transform: translate(-110px, 0px);
+                }
+                @media all and (max-width: 1175px){
+                    transform: translate(-100px, -40px);
+                }
+                @media all and (max-width: 1100px){
+                    transform: scale(0.85) translate(-100px, -40px);
+                }
+                @media all and (max-width: 1050px){
+                    transform: scale(0.85) translate(-200px, 10px);
+                }
+                @media all and (max-width: 880px){
+                    transform: scale(0.9) translate(-300px, 500px);
+                }
+                @media all and (max-width: 565px){
+                    transform: translate(-270px, 500px);
+                }
+                @media all and (max-width: 530px){
+                    transform: translate(-300px, 500px);
+                }
+            }
+        }
         .tea-all-in{
             position: relative;
             left: 20%;
@@ -559,6 +636,9 @@ header{
             width: 60%;
             // border: 1px solid red;
             z-index: 2;
+            @media all and (max-width: 565px){
+                width: 75%;
+            }
             .shadow{
                 width: 160px;
                 height: 5px;
@@ -582,13 +662,22 @@ header{
         top: -30%;
         left: 32%;
         z-index: 1;
+        @media all and (max-width: 880px){
+            top: -5%;
+            left: 42%;
+        }
+        @media all and (max-width: 565px){
+            width: 110%;
+            left: 50%;
+            top: -1%;
+        }
         img {
             width: 100%;
         }
     }
     // .tea-box, .tea-box2, .tea-box3{
     //     animation: float 2s infinite;
-    // }
+    // } 
     .inf-all, .inf-all2, .inf-all3{
         // animation: float 2s infinite;
         .tea-name{
@@ -643,6 +732,13 @@ header{
         color: white;
         @include paraStyle;
         margin: 0;
+        @media all and (max-width: 880px){
+            top: 12%;
+            left: 53%;
+        }
+        @media all and (max-width: 565px){
+            left: 68%;
+        }
     }
     .teacher-big2 {
         width: 370px;
@@ -756,6 +852,9 @@ header{
     .float_obj{
         width: 100%;
         height: 100vh;
+        @media all and (max-width: 880px){
+            height: 25vh;
+        }
         div{
             &:nth-child(1){
                 position: absolute;
@@ -782,6 +881,13 @@ header{
         position: absolute;
         right: 200px;
         top: 600px;
+        @media all and (max-width: 880px) {
+            right: 280px;
+            top: 1120px;
+        }
+        @media all and (max-width: 620px){
+            right: 210px;
+        }
         svg{
             position: absolute;
             top: -10px;
@@ -993,6 +1099,10 @@ header{
                     @media all and (max-width: 868px){
                         min-width: 250px;
                         left: -100px;
+                    }
+                    @media all and (max-width: 565px){
+                        top: 290px;
+                        left: -80px;
                     }
                 }
             }
@@ -1457,7 +1567,7 @@ header{
                 width: 150px;
                 position: absolute;
                 bottom: -30px;
-                left: 155px;
+                left: 120px;
             }
         }
         .rock {

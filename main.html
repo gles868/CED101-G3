@@ -27,6 +27,7 @@
     <script src="./js/vue.js"></script>
     <!-- vue-star-rating js -->
     <script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>
+    <script src="./js/count_vue.js"></script>
 </head>
 
 <body>
@@ -156,6 +157,9 @@
     </section>  
 
     <div id="app">
+        <!-- 購物車數字 -->
+        <my-count></my-count>
+
         <div class="bg_wrapper">
             <section id="second">
                 <div class="wrapper">
@@ -575,18 +579,18 @@
     
     <script>
         // scroll更改header背景色
-        window.addEventListener('scroll', function () {
-            let getScrollTop = document.documentElement.scrollTop;
-            let header = document.querySelector('header');
-            let carticon = document.querySelector('.num_icon');
-            if (getScrollTop > 4000) {
-                header.classList.add('-active');
-                carticon.classList.add('-icon');
-            } else {
-                header.classList.remove('-active');
-                carticon.classList.remove('-icon');
-            }
-        });
+        // window.addEventListener('scroll', function () {
+        //     let getScrollTop = document.documentElement.scrollTop;
+        //     let header = document.querySelector('header');
+        //     let carticon = document.querySelector('.num_icon');
+        //     if (getScrollTop > 4000) {
+        //         header.classList.add('-active');
+        //         carticon.classList.add('-icon');
+        //     } else {
+        //         header.classList.remove('-active');
+        //         carticon.classList.remove('-icon');
+        //     }
+        // });
         
         // let memNavInfo = new Vue({
         //     el: '#memInfo',

@@ -72,7 +72,7 @@ let memNavInfo = new Vue({
 Vue.component('teacher-component', {
     props: ['teach-no', 'teach-img', 'teach-name', 'teach-description', 'comm-avg', 'course-name'],
     template: `
-        <div>
+        <div class="teachers">
             <a :href="'singleTeacher.html?teachNo=' + teachNo"
                title="前往瀏覽該教師✧">
                 <div class="teacher-big1" >
@@ -239,18 +239,21 @@ let app = new Vue({
 
 
 // ======= scroll更改header背景色 =======
-// window.addEventListener('scroll', function () {
-//     let getScrollTop = document.documentElement.scrollTop;
-//     let header = document.querySelector('header');
-//     let carticon = document.querySelector('.num_icon');
-//     if (getScrollTop > 4000) {
-//         header.classList.add('-active');
-//         carticon.classList.add('-icon');
-//     } else {
-//         header.classList.remove('-active');
-//         carticon.classList.remove('-icon');
-//     }
-// });
+window.addEventListener('scroll', function () {
+    let getScrollTop = document.documentElement.scrollTop;
+    let header = document.querySelector('header');
+    let carticon = document.querySelector('.num_icon');
+
+    console.log(getScrollTop);
+
+    if (getScrollTop > 4000) {
+        header.classList.add('-active');
+        // carticon.classList.add('-icon');
+    } else {
+        header.classList.remove('-active');
+        // carticon.classList.remove('-icon');
+    }
+});
 
 window.addEventListener('load', function(){
     // ============== 取得資料 ===============
