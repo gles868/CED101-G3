@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>麻瓜特訓班 | 首頁</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="shortcut icon" href="img/favicon-logo.ico" type="image/x-icon">
     <!-- fontawesome -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
+          crossorigin="anonymous"/>
 
     <!-- gsap3 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js"></script>
@@ -162,7 +165,8 @@
                     </div>
             
                     <div class="container">
-                        <div class="card card01" v-for="(course, index) in dataRows[0]">
+                        <div class="card" v-for="(course, index) in dataRows[0]"
+                                          title="前往瀏覽本課程✧">
                             <a :href="'singleCourse.php?courseNo=' + course.courseNo">
                                 <div class="content">
                                     <h3>{{course.courseName}}</h3>
@@ -171,10 +175,10 @@
                                         {{course.courseDescription}}
                                     </p>
                                     <p>│最新開課日期: <span>{{course.courseStartDate}}</span></p>
-                                    <!-- <p>│課程價格: <span>${{course.coursePrice}}</span></p> -->
                                     <p>│報名人數: <span>已有{{course.registNum}}人報名</span></p>
                                 </div>
-                            </a>                            
+                                <!-- <div class="textbox">前往瀏覽課程✧</div> -->
+                            </a>               
                         </div>
                         <!-- <div class="card card01">
                             <a href="./singleCourse.html">
@@ -228,13 +232,13 @@
 
         <section id="third">
             <div class="tea-over">
-                <div class="tea-bg" id="scene">
+                <div class="tea-bg">
                     <div class="title">
                         <h2>熱門教師</h2>
                         <p>總評價最高前三名教師</p>
                     </div>
-                    <div class="tea-all" data-depth="0.2">
-                        <div class="tea-all-in">
+                    <div class="tea-all">
+                        <!-- <div class="tea-all-in"> -->
                             <teacher-component v-for="(teacher, i) in dataRows[1]"
                                                :key="teacher.teachNo"
                                                :teach-no="teacher.teachNo"
@@ -310,9 +314,9 @@
                                     </ul>
                                 </div>
                             </div> -->
-                        </div>
+                        <!-- </div> -->
                     </div>
-                    <div class="float_obj" data-depth="0.4">
+                    <div class="float_obj">
                         <div><img src="./img/index/bat.png" alt=""></div>
                         <div><img src="./img/index/bat.png" alt=""></div>
                     </div>
@@ -571,16 +575,18 @@
     
     <script>
         // scroll更改header背景色
-        // window.addEventListener('scroll', function(){
-        //     let getScrollTop = document.documentElement.scrollTop;
-        //     let header = document.querySelector('header');
-            
-        //     if(getScrollTop > 4000){
-        //         header.classList.add('-active');
-        //     }else{
-        //         header.classList.remove('-active');
-        //     }
-        // });
+        window.addEventListener('scroll', function () {
+            let getScrollTop = document.documentElement.scrollTop;
+            let header = document.querySelector('header');
+            let carticon = document.querySelector('.num_icon');
+            if (getScrollTop > 4000) {
+                header.classList.add('-active');
+                carticon.classList.add('-icon');
+            } else {
+                header.classList.remove('-active');
+                carticon.classList.remove('-icon');
+            }
+        });
         
         // let memNavInfo = new Vue({
         //     el: '#memInfo',

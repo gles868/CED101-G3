@@ -111,22 +111,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <main class="main app">
+        <my-count></my-count>
         <div class="course_filter">
             <img class="img_bat" src="./img/course_cards/bat.png" alt="">
             <div class="filter_container">
@@ -278,43 +264,69 @@
             <div class="accessory_container">
                 <div class="sliderboard">
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p1.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p1.png" alt="">
+                        </a>
                     </div>
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p2.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p2.png" alt="">
+                        </a>
                     </div>
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p3.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p3.png" alt="">
+                        </a>
                     </div>
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p4.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p4.png" alt="">
+                        </a>
                     </div>
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p5.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p5.png" alt="">
+                        </a>
                     </div>
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p6.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p6.png" alt="">
+                        </a>
                     </div>
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p7.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p7.png" alt="">
+                        </a>
                     </div>
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p8.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p8.png" alt="">
+                        </a>
                     </div>
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p9.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p9.png" alt="">
+                        </a>
                     </div>
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p10.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p10.png" alt="">
+                        </a>
                     </div>
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p11.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p11.png" alt="">
+                        </a>
                     </div>
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p12.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p12.png" alt="">
+                        </a>
                     </div>
                     <div class="single_accessory">
-                        <img src="./img/course_cards/accessory/p13.png" alt="">
+                        <a href="mall.html">
+                            <img src="./img/course_cards/accessory/p13.png" alt="">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -524,25 +536,17 @@
 
     <script>
         window.addEventListener('scroll', function () {
-            let getScrollTop = document.documentElement.scrollTop;
-            let header = document.querySelector('header');
-
-            if (getScrollTop > 60) {
-                header.classList.add('-active');
-            } else {
-                header.classList.remove('-active');
-            }
-
-            // slick輪播
-            // $('.sliderboard').slick({
-            //     infinite: true,
-            //     slidesToShow: 3,
-            //     slidesToScroll: 3,
-            //     autoplay: true,
-            //     autoplaySpeed: 3000
-            // });
-        });
-
+                let getScrollTop = document.documentElement.scrollTop;
+                let header = document.querySelector('header');
+                let carticon = document.querySelector('.num_icon');
+                if (getScrollTop > 60) {
+                    header.classList.add('-active');
+                    carticon.classList.add('-icon');
+                } else {
+                    header.classList.remove('-active');
+                    carticon.classList.remove('-icon');
+                }
+            });
         let memNavInfo = new Vue({
             el: '#memInfo',
             data: {

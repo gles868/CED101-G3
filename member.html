@@ -22,6 +22,7 @@
         <!-- 網站小圖 -->
         <!-- <link rel="Shortcut Icon" type="image/x-icon" href="./img/logo.png" /> -->
         <title>麻瓜特訓班 | 會員中心</title>
+        <script src="./js/count_vue.js"></script>
     </head>
 
     <body>
@@ -74,7 +75,7 @@
                 <div class="memTop">
                     <div class="memTopUp">
                         <div class="mempic">
-                            <img src="./img/wenhead.jpg" alt="" />
+                            <img :src="memavatar" alt="" />
                         </div>
                         <div class="memdata">
                             <div class="memName">
@@ -125,16 +126,27 @@
 
             <section class="memMenu">
                 <div class="memMenuOut">
-                    <div class="meunItem" @click="content='mem-course'" style="background-color: white; color: black">
+                    <div class="meunItem meunItem_on" @click="content='mem-course',changeTag($event)">
                         <i class="fas fa-book"></i>我的課程
                     </div>
-                    <div class="meunItem" @click="content='mem-keep'"><i class="fas fa-heart"></i>我的收藏</div>
-                    <div class="meunItem" @click="content='mem-order'"><i class="fas fa-list-alt"></i>歷史訂單</div>
-                    <div class="meunItem" @click="content='mem-info'"><i class="fas fa-user-cog"></i>個人資料</div>
+                    <div class="meunItem" @click="content='mem-keep',changeTag($event)">
+                        <i class="fas fa-heart"></i>我的收藏
+                    </div>
+                    <div class="meunItem" @click="content='mem-order',changeTag($event)">
+                        <i class="fas fa-list-alt"></i>歷史訂單
+                    </div>
+                    <div class="meunItem" @click="content='mem-info',changeTag($event)">
+                        <i class="fas fa-user-cog"></i>個人資料
+                    </div>
                 </div>
             </section>
 
             <!-- 整理 -->
+            <div class="pub_input_container">
+                <label class="input_type upimg_text">文章圖片：</label>
+                <label id="preview_con" for="upimg"><img id="preview" src="./img/mem_img.png" /></label>
+                <input id="upimg" type="file" name="img" accept="image/gif,image/jpeg,image/png,image/jpg" />
+            </div>
 
             <!-- 整理 -->
 
@@ -146,6 +158,7 @@
                 :memName="memName"
                 :memPsw="memPsw"
                 :memId="memId"
+                :memavatar="memavatar"
                 @sendup="receive_info"
                 :is="content"
             ></component>
@@ -172,7 +185,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css" />
 
         <script src="js/member.js"></script>
-        <script src="./js/count_vue.js"></script>
         <!-- <script src="js/login.js"></script> -->
 
         <!-- body 結束標籤之前 bootstrap  -->

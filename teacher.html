@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>麻瓜特訓班 | 教師總覽</title>
+    <link rel="shortcut icon" href="img/favicon-logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="css/teacher.css">
 
@@ -20,6 +21,8 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.js"></script> -->
     <link rel="stylesheet" type="text/css" href="vendors/fullpage/fullpage.min.css">
     <script src="vendors/fullpage/vue-fullpage.min.js"></script>
+    <script src="./js/count_vue.js"></script>
+
 
 </head>
 <body>
@@ -112,6 +115,9 @@
     </div>
 
     <div id="app" class="scrollPage">
+        <!-- 購物車數字 -->
+        <my-count></my-count>
+
         <!-- select選單 -->
         <div class="select">
             <select onchange = "location = this.options[this.selectedIndex].value;">
@@ -691,14 +697,16 @@
 
     <script>
         // scroll更改header背景色
-        window.addEventListener('scroll', function(){
+        window.addEventListener('scroll', function () {
             let getScrollTop = document.documentElement.scrollTop;
             let header = document.querySelector('header');
-            
-            if(getScrollTop > 60){
+            let carticon = document.querySelector('.num_icon');
+            if (getScrollTop > 60) {
                 header.classList.add('-active');
-            }else{
+                carticon.classList.add('-icon');
+            } else {
                 header.classList.remove('-active');
+                carticon.classList.remove('-icon');
             }
         });
         

@@ -115,7 +115,6 @@ Vue.component('comment-component', {
                                 <option value="1">與網站無關</option>
                                 <option value="2">其他</option>
                             </select><br>
-                            <p>{{registNo}}</p>
                             <input type="hidden" name="registNo" :value="registNo">  
                             <input type="button" value="送出" @click="sendReport">
                         </form>
