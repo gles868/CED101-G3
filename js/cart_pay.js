@@ -479,6 +479,12 @@ window.addEventListener('load', function () {
                     this.passArray.push('mailTextPass');
                 }
             },
+            showop() {
+                let creditcardop = document.querySelector('.creditcard');
+                let ATMop = document.querySelector('.ATM');
+                creditcardop.style.opacity = 1;
+                ATMop.style.opacity = 1;
+            },
             // 按鈕動畫
             btnani() {
                 const wrapper = document.querySelector('.btn-wrapper');

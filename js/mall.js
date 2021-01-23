@@ -27,8 +27,8 @@ window.addEventListener('load', function () {
             <div class="close" @click="closelightbox()"><img src="./img/close.png" /></div>
             <div class="pro_complete_left">
                 <div class="pro_complete_photo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="-3 -3 30 30">
-                  <g class="fav-1 fav-btn"  ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="-3 -3 30 30" @click="add_favlist">
+                  <g class="fav-1 fav-btn" @mouseover="changeheart()">
                       <path fill="#fff" fill-rule="nonzero" stroke="#7F7F7F" stroke-width="2" d="M10.371 19.7c.424.443.985.674 1.599.666a2.122 2.122 0 0 0 1.575-.67l6.853-7.133c1.982-2.073 1.982-5.453 0-7.528-1.957-2.047-5.112-2.047-7.074.006l-1.332 1.373-.717-.75-.604-.629c-1.957-2.047-5.112-2.047-7.068 0-1.983 2.075-1.983 5.453.002 7.53l6.766 7.135z"/>
                   </g>
                 </svg>
@@ -89,20 +89,6 @@ window.addEventListener('load', function () {
                     this.$emit('change_num');
                 }
             },
-            // 加入購物車的商品數量
-            // change_num() {
-            //     this.count++;
-            //     console.log(11);
-            //     this.$emit('change_num', this.count);
-            //     // storage['count'] += 1;
-            //     if (storage['count']) {
-            //         // console.log('000');
-            //         storage.setItem('count', `${this.count}`);
-            //         // storage['total'] += `${this.total_price} `;
-            //     } else {
-            //         storage['count'] += `${this.count} `;
-            //     }
-            // },
 
             // 撈燈箱裡的商品資訊
             get_data: async function (itemno) {
@@ -176,22 +162,22 @@ window.addEventListener('load', function () {
             },
 
             // 愛心動畫
-            // changeheart() {
-            //     const favs = document.querySelectorAll('.fav-btn');
-            //     for (let i = 0; i < favs.length; i++) {
-            //         let fav = favs[i];
-            //         fav.onclick = () => {
-            //             fav.classList.toggle('clicked');
-            //         };
-            //     }
-            //     this.$emit('changeheart', this.heart);
-            // },
+            changeheart() {
+                const favs = document.querySelectorAll('.fav-btn');
+                for (let i = 0; i < favs.length; i++) {
+                    let fav = favs[i];
+                    fav.onclick = () => {
+                        fav.classList.toggle('clicked');
+                    };
+                }
+                this.$emit('changeheart', this.heart);
+            },
         },
         updated() {},
         created() {
             // console.log("----")
             this.get_data(this.itemno);
-            // this.changeheart();
+            this.changeheart();
             this.get_favlist(this.itemno);
 
             // console.log(this.itemno);
@@ -202,9 +188,9 @@ window.addEventListener('load', function () {
             itemno() {
                 this.get_data(this.itemno);
             },
-            // changeheart() {
-            //     this.changeheart(this.this.heart);
-            // },
+            changeheart() {
+                this.changeheart(this.this.heart);
+            },
             get_favlist() {
                 this.get_favlist(this.itemno);
             },

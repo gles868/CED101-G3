@@ -298,20 +298,21 @@ div.total_box {
         display: flex;
         .total_photoandtext {
             font-size: 20px;
+
             // align-items: center;
             color: #ffffff;
             text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+        }
+        img {
+            width: 30px;
+            margin-right: 10px;
+            margin-top: 10px;
         }
         .total_text {
             font-size: 18px;
             color: #ffffff;
             margin-left: 10px;
             text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
-            img {
-                width: 30px;
-                margin-right: 10px;
-                margin-top: 10px;
-            }
         }
     }
     .after_total {
