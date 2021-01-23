@@ -2,6 +2,7 @@
     font-family: '微軟正黑體';
 }
 body {
+    margin: 0;
 	background-image: url(../img/bg10.png);
     background-size: cover;
     display: flex;
@@ -59,7 +60,7 @@ footer{
     width: 100%;
     background-color: #191925;
     color: #fff;
-    padding: 20px 0;
+    padding: 0;
     line-height: 0.8;
     @media all and (max-width: 414px){
         height: 80px;            
