@@ -5,20 +5,30 @@ try {
     $content = trim(file_get_contents("php://input"));
     $decoded = json_decode($content, true);
 
-    $classNo = $decoded["classNo"];
-    // $maxRegistNum = $decoded["maxRegistNum"];
-    // $minRegistNum = $decoded["minRegistNum"];
+    $courseNo = $decoded["courseNo"];
+
+    $teachNo = $decoded["teachNo"];
+    $startDate = $decoded["startDate"];
+    $endDate = $decoded["endDate"];
+    $courseStartDate = $decoded["courseStartDate"];
     $classDescription = $decoded["classDescription"];
 
-    $sql = "update class
-            set classDescription = :classDescription
-            where classNo = :classNo
+    $sql = "
+            insert into class(courseNo,teachNo,startDate,endDate,courseStartDate,classDescription)
+            values (:courseNo,:teachNo,:startDate,:endDate,:courseStartDate,:classDescription);
             ";
+    //ok的sql
+    // INSERT INTO `class` (`classNo`, `courseNo`, `teachNo`, `startDate`, `endDate`, `courseStartDate`, `classStatus`, `maxRegistNum`, `minRegistNum`, `RegistNum`, `classDescription`) 
+    // VALUES (NULL, '1', '1', '2021-01-23', '2021-03-05', '2021-03-06', '1', '30', '1', '0', '魚魚測試');
+
+    
     // $grouporddata = $pdo->query($sql);
     $per_ord_data = $pdo->prepare($sql);
-    $per_ord_data->bindValue(":classNo", $classNo);
-    // $per_ord_data->bindValue(":maxRegistNum", $maxRegistNum);
-    // $per_ord_data->bindValue(":minRegistNum", $minRegistNum);
+    $per_ord_data->bindValue(":courseNo", $courseNo);
+    $per_ord_data->bindValue(":teachNo", $teachNo);
+    $per_ord_data->bindValue(":startDate", $startDate);
+    $per_ord_data->bindValue(":endDate", $endDate);
+    $per_ord_data->bindValue(":courseStartDate", $courseStartDate);
     $per_ord_data->bindValue(":classDescription", $classDescription);
 
     $per_ord_data->execute();
@@ -31,7 +41,6 @@ try {
     // } else { //找得到
     //     //取回一筆資料
     //     $per_ord_datarow = $per_ord_data->fetchAll(PDO::FETCH_ASSOC);
-        
 
     //     //送出json字串
     //     echo json_encode($per_ord_datarow);

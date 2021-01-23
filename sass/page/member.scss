@@ -218,7 +218,7 @@ a {
         i {
             margin: auto 5px;
         }
-        
+
         .meunItem {
             border: 1px solid ivory;
             color: ivory;
@@ -289,18 +289,25 @@ a {
 
 .memMainAreaClass {
     // border: 1px solid white;
+    box-shadow: 0 0 0.4em ivory;
     width: 80%;
     margin: 1rem auto;
     text-align: center;
     display: flex;
-}
-
-#courseDate,
-#courseStatus {
-    // border: 1px solid red;
-    width: 50%;
-    padding: 10px;
-    cursor: pointer;
+    .memMainItem {
+        border: 1px solid ivory;
+        width: 50%;
+        padding: 10px;
+        cursor: pointer;
+        color: ivory;
+    }
+    .memMainItem:hover {
+        opacity: 0.8;
+    }
+    .active {
+        background-color: #fff;
+        color: black;
+    }
 }
 
 @media (max-width: 576px) {
@@ -378,9 +385,15 @@ a {
 }
 
 .courseStatus {
-    // border: 1px solid orange;
     width: 80%;
     margin: 1rem auto;
+    .coursemenuItem:hover {
+        background-color: rgba(128, 0, 128, 0.6);
+    }
+    .active {
+        text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4;
+        background-color: rgba(170, 170, 170, 0.5);
+    }
 }
 
 .CRD {
@@ -719,11 +732,18 @@ input {
     margin: 0 auto;
     display: flex;
     align-items: center;
-}
-
-#memKeepTitle > ul > li {
-    padding: 10px 20px;
-    cursor: pointer;
+    .memkeepmenu {
+        padding: 10px 20px;
+        color: white;
+        cursor: pointer;
+    }
+    .memkeepmenu:hover {
+        background-color: rgba(128, 0, 128, 0.6);
+    }
+    .active {
+        background-color: rgba(170, 170, 170, 0.5);
+        text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4;
+    }
 }
 
 .memKeepCourse,
