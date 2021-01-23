@@ -14,10 +14,10 @@ Vue.component('mem-course', {
     <section class="memClassOut menuCG">
         <div class="memContent">
             <div class="memMainAreaClass">
-                <div id="courseDate" @click="content='courseDate'" >
+                <div id="courseDate" class="memMainItem active" @click="content='courseDate',changeTag($event)" >
                     <h3>查看課表時間</h3>
                 </div>
-                <div id="courseStatus" @click="content='courseStatus'" >
+                <div id="courseStatus" class="memMainItem" @click="content='courseStatus',changeTag($event)" >
                     <h3>課程清單</h3>
                 </div>
             </div>
@@ -28,7 +28,19 @@ Vue.component('mem-course', {
     </section>
     <!-- 我的課程結束 -->
   `,
-    methods: {},
+    methods: {
+        changeTag(event) {
+            //獲取被點擊的 ID值，並傳送至上層 (new Vue)
+            this.$emit('change', event.currentTarget.id);
+
+            //改變 被點擊之樣式
+            document.querySelectorAll('.memMainItem').forEach(function (e) {
+                e.classList.remove('active');
+            });
+
+            event.currentTarget.classList.add('active');
+        },
+    },
     // template 渲染前 會先去執行以下函式
     created() {},
 });
@@ -155,23 +167,23 @@ Vue.component('courseStatus', {
     <div id="tab">
         <!-- 頁籤按鈕 -->
         <ul>
-            <li id="tab-content-1" @click="content='courseReg'" style="text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4; background-color: rgba(170, 170, 170, 0.5)">
+            <li id="tab-content-1" class="coursemenuItem active" @click="content='courseReg',changeTag($event)" >
                 <div>
                     <div class="courseReg">
                         <h4>已報名</h4>
                     </div>
                 </div>
             </li>
-            <li id="tab-content-2" @click="content='courseFinish'" >
+            <li id="tab-content-2" class="coursemenuItem" @click="content='courseFinish',changeTag($event)" >
                 <div>
                     <div class="courseFinish">
                         <h4>待評論</h4>
                     </div>
                 </div>
             </li>
-            <li id="tab-content-3">
+            <li id="tab-content-3" class="coursemenuItem" @click="content='courseIng',changeTag($event)">
                 <div>
-                    <div class="courseIng" @click="content='courseIng'">
+                    <div class="courseIng" >
                         <h4>上課中</h4>
                     </div>
                 </div>
@@ -183,7 +195,19 @@ Vue.component('courseStatus', {
     </div>
 </div>
   `,
-    methods: {},
+    methods: {
+        changeTag(event) {
+            //獲取被點擊的 ID值，並傳送至上層 (new Vue)
+            this.$emit('change', event.currentTarget.id);
+
+            //改變 被點擊之樣式
+            document.querySelectorAll('.coursemenuItem').forEach(function (e) {
+                e.classList.remove('active');
+            });
+
+            event.currentTarget.classList.add('active');
+        },
+    },
     // template 渲染前 會先去執行以下函式
     created() {},
 });
@@ -309,7 +333,6 @@ Vue.component('courseFinish', {
             // this.get_mem_commcourse();
         },
         get_mem_commcourse: async function () {
-            let that = this;
             console.log('刷新');
             const res = await fetch('./php/mem_get_comm_course.php', {
                 method: 'POST',
@@ -319,16 +342,16 @@ Vue.component('courseFinish', {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    memberno: that.memberno,
+                    memberno: this.memberno,
                 }),
             }).then(function (data) {
                 return data.json();
             });
             // 取回res值後，呼叫另一隻函式
-            that.classes = res;
+            this.classes = res;
 
-            if (that.classes == '') {
-                that.comm_null = true;
+            if (this.classes == '') {
+                this.comm_null = true;
             }
         },
         comm_one(classNo, registNo) {
@@ -570,8 +593,8 @@ Vue.component('mem-keep', {
         <div class="memContent">
             <div id="memKeepTitle">
                 <ul>
-                    <li id="memKeepCourse" @click="content='memKeepCourse'" style="background-color: rgba(170, 170, 170, 0.5); color: white;text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4; "><h4>課程</h4></li>
-                    <li id="memKeepPro" @click="content='memKeepPro'" style="color: white"><h4>商品</h4></li>
+                    <li id="memKeepCourse" class="memkeepmenu active" @click="content='memKeepCourse',changeTag($event)""><h4>課程</h4></li>
+                    <li id="memKeepPro" class="memkeepmenu" @click="content='memKeepPro',changeTag($event)""><h4>商品</h4></li>
                 </ul>
             </div>
             <div class="memKeepContent">
@@ -581,7 +604,19 @@ Vue.component('mem-keep', {
     </section>
     <!-- 我的收藏結束 -->
   `,
-    methods: {},
+    methods: {
+        changeTag(event) {
+            //獲取被點擊的 ID值，並傳送至上層 (new Vue)
+            this.$emit('change', event.currentTarget.id);
+
+            //改變 被點擊之樣式
+            document.querySelectorAll('.memkeepmenu').forEach(function (e) {
+                e.classList.remove('active');
+            });
+
+            event.currentTarget.classList.add('active');
+        },
+    },
     // template 渲染前 會先去執行以下函式
     created() {},
 });

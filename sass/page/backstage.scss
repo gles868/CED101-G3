@@ -63,9 +63,9 @@ button.hamburger {
             border-radius: 20px;
             transition: 0.3s;
             cursor: pointer;
-            &.active {
-                background-color: #5e5db9;
-            }
+        }
+        .active {
+            background-color: #5e5db9;
         }
     }
 }

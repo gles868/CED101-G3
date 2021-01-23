@@ -1829,8 +1829,8 @@ Vue.component('back-class', {
                 });
                 this.courseName = res.courseName;
                 this.teachName = res.teachName;
-                this.maxRegistNum = res.maxRegistNum;
-                this.minRegistNum = res.minRegistNum;
+                // this.maxRegistNum = res.maxRegistNum;
+                // this.minRegistNum = res.minRegistNum;
                 this.classDescription = res.classDescription;
             },
             //呼叫php程式，取回 課程 相關資料，並用json()轉回一般陣列
@@ -1891,18 +1891,11 @@ Vue.component('back-class', {
 Vue.component('class_add', {
     data() {
         return {
-            today: this.dateFormat,
-
-            courses: '',
             courseNo: '',
-            proName: '',
-            proImg: '',
-            proDescription: '',
-            proPrice: '',
-            error_text: '',
-            error_text_des: '',
-            error_text_price: '',
+
             updatecourseNo: '',
+            date: '', //選擇的日期
+            postData: '', //要送到後台的資料
         };
     },
     props: [],
@@ -1914,18 +1907,18 @@ Vue.component('class_add', {
         <div class="add-form">
             <h2 id="pNameText">新增班級</h2>
             <div class="addcoursecon">
-                <div class="acc_title">選擇課程(一周開一次(一~日))</div>
+                <div class="acc_title">選擇課程</div>
                 <select name="courseNo" id="courseNo" class="acc_con" v-model="courseNo">
-                    <option value="1">光劍術-哈利波菜·雷蒙尼老師</option>
-                    <option value="2">毒藥術-雅各·科沃斯基老師</option>
-                    <option value="3">詛咒術-雅各·科沃斯基老師</option>
-                    <option value="4">光盾術-鄧不利多·阿不思老師</option>
-                    <option value="5">召喚術-史拉轟·赫瑞司老師</option>
-                    <option value="6">隱身術-尤拉諾斯·蓋亞老師</option>
-                    <option value="7">煉金術-石內卜·阿萊克老師</option>
-                    <option value="8">治癒術-鄧不利多·阿不思老師</option>
-                    <option value="9">飛行術-哈利波菜·雷蒙尼老師</option>
-                    <option value="10">變形術-尤拉諾斯·蓋亞老師</option>
+                    <option value="1-1">光劍術-哈利波菜·雷蒙尼老師</option>
+                    <option value="2-2">毒藥術-雅各·科沃斯基老師</option>
+                    <option value="3-2">詛咒術-雅各·科沃斯基老師</option>
+                    <option value="4-6">光盾術-鄧不利多·阿不思老師</option>
+                    <option value="5-6">召喚術-史拉轟·赫瑞司老師</option>
+                    <option value="6-4">隱身術-尤拉諾斯·蓋亞老師</option>
+                    <option value="7-5">煉金術-石內卜·阿萊克老師</option>
+                    <option value="8-3">治癒術-鄧不利多·阿不思老師</option>
+                    <option value="9-1">飛行術-哈利波菜·雷蒙尼老師</option>
+                    <option value="10-4">變形術-尤拉諾斯·蓋亞老師</option>
                 </select>
             </div>
             <div class="addcoursecon">
@@ -1934,97 +1927,33 @@ Vue.component('class_add', {
             </div>
             <div class="addcoursecon">
                 <div class="acc_title">上課日期</div>
-                <div class="acc_con">可選日期(不能選隔天)</div>
+                <div class="acc_con">                  
+                    <date-picker
+                    class="testdata"
+                    @update-date="updateDate"
+                    date-format="yy-mm-dd"
+                    v-model="date"
+                    v-once
+                    ></date-picker>
+                </div>
             </div> 
-            <div class="addcoursecon">
-                <div class="acc_title">報名結束日期</div>
-                <div class="acc_con">上課日期-1</div>
-            </div>
+
             <div class="addcoursecon">
                 <div class="acc_title">班級開課描述</div>
                 <textarea type="text" id="classDescription" class="acc_con" v-model="classDescription"></textarea>
             </div>
             <button type="sumbit" class="form_btn"
-                @click="edit_class_func(maxRegistNum,minRegistNum,classDescription)">確定修改                                
+                @click="add_class_func">確定新增                                
             </button>
         </div>
     </div>
 </div>
         `,
     methods: {
-        dateFormat() {
-            var date = new Date();
-            var year = date.getFullYear();
-            var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
-            var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-            return year + '-' + month + '-' + day;
-        },
-
-        //---------------------------------------------------------------------------------------
-        //呼叫php程式，取回 商品 相關資料，並用json()轉回一般陣列
-        get_pro: async function () {
-            const res = await fetch('./php/back_product.php', {}).then(function (data) {
-                return data.json();
-            });
-            // 取回res值後，呼叫另一隻函式
-            this.products = res;
-        },
-        //呼叫php程式，取回 課程 相關資料，並用json()轉回一般陣列
-        get_course: async function () {
-            const res = await fetch('./php/back_course.php', {}).then(function (data) {
-                return data.json();
-            });
-            // 取回res值後，呼叫另一隻函式
-            this.courses = res;
-        },
-        changecourTypeNo(courTypeNo) {
-            if (courTypeNo == 1) {
-                return '攻擊型';
-            } else if (courTypeNo == 2) {
-                return '防禦型';
-            } else if (courTypeNo == 3) {
-                return '輔助型';
-            }
-        },
-
-        //關燈箱
-        changelightbox() {
-            this.$emit('changelightbox');
-        },
-        //點擊 確認新增後將資料傳至DB
-        add_pro_func: async function (courseNo, proName, proImg, proDescription, proPrice) {
-            console.log(courseNo, proName, proImg, proDescription, proPrice);
-
+        add_class_func: async function () {
             //送出新增前 確認欄位 是否符合規定
-            //商品名稱 中文(1~6字)
-            if (proName.replace(/[^\u4e00-\u9fa5]/g, '') && proName.length >= 1 && proName.length <= 6) {
-                console.log('商品名稱 成功');
-            } else {
-                this.error_text = '商品名稱，請輸入中文(1~6字)';
-                return '';
-            }
 
-            //商品描述 (1~100字)
-            if (
-                proDescription.replace(/[^\u4e00-\u9fa5]/g, '') &&
-                proDescription.length >= 1 &&
-                proDescription.length <= 100
-            ) {
-                console.log('商品描述 成功');
-            } else {
-                this.error_text_des = '商品描述，請輸入中文(1~100字)';
-                return '';
-            }
-
-            //商品金額 數字
-            if (proPrice.replace(/\D/g, '')) {
-                console.log('商品金額 成功');
-            } else {
-                this.error_text_price = '商品金額，請輸入數字';
-                return '';
-            }
-
-            const res = await fetch('./php/back_insert_product.php', {
+            const res = await fetch('./php/back_insert_class.php', {
                 method: 'POST',
                 mode: 'same-origin',
                 credentials: 'same-origin',
@@ -2032,11 +1961,12 @@ Vue.component('class_add', {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    courseNo: this.updatecourseNo,
-                    proName: proName,
-                    proImg: proImg,
-                    proDescription: proDescription,
-                    proPrice: proPrice,
+                    courseNo: courseNo,
+                    teachNo: teachNo,
+                    startDate: startDate,
+                    endDate: endDate,
+                    courseStartDate: courseStartDate,
+                    classDescription: classDescription,
                 }),
             }).then(function () {
                 console.log('in');
@@ -2046,18 +1976,59 @@ Vue.component('class_add', {
             //關燈箱
             this.changelightbox();
             //完成後 重新撈取一次資料
-            console.log('重撈');
-            this.get_pro();
+            // this.get_pro();
+        },
+
+        updateDate(date) {
+            this.date = date;
+        },
+        //關燈箱
+        changelightbox() {
+            this.$emit('changelightbox');
         },
     },
-    created() {
-        this.get_pro();
-        this.get_course();
-    },
-    watch: {
-        courseNo() {
-            this.updatecourseNo = this.courseNo.split(',')[0];
+    created() {},
+    computed: {
+        //今天日期
+        today() {
+            let td = new Date();
+            let year = td.getFullYear();
+            let month = td.getMonth();
+            let date = td.getDate();
+            let today = `${year}-${month + 1}-${date}`;
+            return today;
         },
+        postData() {
+            let data = {
+                // courseNo 課程編號
+                // teachNo 教師編號
+                // startDate	報名開始日期
+                // endDate	報名結束日期->上課日期-1天
+                // courseStartDate	課程開始日期(上課日期)
+                // classDescription	班級說明(100字內)
+            };
+        },
+    },
+    watch: {},
+});
+
+//選擇日期
+Vue.component('date-picker', {
+    template: `<input/>`,
+    props: ['dateFormat'],
+    mounted: function () {
+        var self = this;
+        $(this.$el).datepicker({
+            dateFormat: this.dateFormat,
+            onSelect: function (date) {
+                self.$emit('update-date', date);
+            },
+            minDate: +2,
+            // maxDate: '+1M +10D',
+        });
+    },
+    beforeDestroy: function () {
+        $(this.$el).datepicker('hide').datepicker('destroy');
     },
 });
 
@@ -2075,6 +2046,17 @@ new Vue({
             });
             // 取回res值後，呼叫另一隻函式
             this.employee = res;
+        },
+        changeTag(event) {
+            //獲取被點擊的 ID值，並傳送至上層 (new Vue)
+            this.$emit('change', event.currentTarget.id);
+
+            //改變 被點擊之樣式
+            document.querySelectorAll('.left-block>li').forEach(function (e) {
+                e.classList.remove('active');
+            });
+
+            event.currentTarget.classList.add('active');
         },
     },
     created() {
@@ -2096,33 +2078,8 @@ new Vue({
             // 取回res值後，呼叫另一隻函式
             this.employee = res;
         },
-        changeTag(event) {
-            //獲取被點擊的 ID值，並傳送至上層 (new Vue)
-            this.$emit('change', event.currentTarget.id);
-
-            //改變 被點擊之樣式
-            document.querySelectorAll('.left-block>li').forEach(function (e) {
-                e.classList.remove('active');
-            });
-
-            event.currentTarget.classList.add('active');
-        },
     },
     created() {
         this.get_employee_data();
-        this.changeTag();
     },
 });
-
-// window.addEventListener('load', function () {
-//     // 顯示使用者現在位置
-//     let li = document.querySelectorAll('#app .content-wrap > ul > li');
-//     for (let i = 0; i < li.length; i++) {
-//         li[i].onclick = function () {
-//             for (let i = 0; i < li.length; i++) {
-//                 li[i].classList.remove('active');
-//                 this.classList.add('active');
-//             }
-//         };
-//     }
-// });

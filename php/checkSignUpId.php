@@ -1,6 +1,6 @@
 <?php
     try{
-        require_once("connectced101g3_test.php");
+        require_once("connect_ced101g3.php");
         
         if(isset($_GET['memId'])){
             $sql = "SELECT * FROM member WHERE memId=:memId";
