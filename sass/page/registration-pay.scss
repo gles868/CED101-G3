@@ -1,4 +1,3 @@
-@import '../style.scss';
 #price,
 #name,
 #number {
@@ -149,6 +148,7 @@ ul {
     margin-top: -150px;
     margin-left: -250px;
     background-color: rgb(255, 255, 255);
+    opacity: 0;
 }
 
 .ATM {
@@ -162,6 +162,7 @@ ul {
     margin-top: -190px;
     margin-left: -250px;
     background-color: rgb(255, 255, 255);
+    opacity: 0;
 }
 
 .pay_close {
