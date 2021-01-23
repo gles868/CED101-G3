@@ -6,6 +6,7 @@
         <title>麻瓜特訓班 | 管理員後台</title>
         <!-- Vue -->
         <script src="./js/vue.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- css -->
         <!-- <link
             rel="stylesheet"
@@ -16,6 +17,8 @@
         <link href="css/hamburgers.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/backstage.css" />
         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <!-- 不寫這個會報錯誤 -->
         <link rel="shortcut icon" href="#" />
     </head>
@@ -44,15 +47,15 @@
             <section class="content-wrap">
                 <ul class="left-block">
                     <h2>人員管理</h2>
-                    <li id="back-admin" @click="content='back-admin'" class="active">管理員管理</li>
-                    <li id="back-member" @click="content='back-member'">會員管理</li>
-                    <li id="back-teacher" @click="content='back-teacher'">教師管理</li>
+                    <li id="back-admin" class="active" @click="content='back-admin',changeTag($event)">管理員管理</li>
+                    <li id="back-member" @click="content='back-member',changeTag($event)">會員管理</li>
+                    <li id="back-teacher" @click="content='back-teacher',changeTag($event)">教師管理</li>
                     <h2>後台管理</h2>
-                    <li id="back-course" @click="content='back-course'">課程管理</li>
-                    <li id="back-class" @click="content='back-class'">開班管理</li>
-                    <li id="back-comment" @click="content='back-comment'">留言檢舉管理</li>
-                    <li id="back-mall" @click="content='back-mall'">商城管理</li>
-                    <li id="back-game" @click="content='back-game'">小遊戲管理</li>
+                    <li id="back-course" @click="content='back-course',changeTag($event)">課程管理</li>
+                    <li id="back-class" @click="content='back-class',changeTag($event)">開班管理</li>
+                    <li id="back-comment" @click="content='back-comment',changeTag($event)">留言檢舉管理</li>
+                    <li id="back-mall" @click="content='back-mall',changeTag($event)">商城管理</li>
+                    <li id="back-game" @click="content='back-game',changeTag($event)">小遊戲管理</li>
                 </ul>
             </section>
 
