@@ -30,7 +30,7 @@ Vue.component('my-count', {
             // console.log('有幾個')
         },
     },
-    created() {},
+    created() { },
     mounted() {
         this.checked_count();
     },
