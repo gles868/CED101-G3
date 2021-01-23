@@ -8,7 +8,7 @@ body {
 }
 
 main.main {
-    width: 1140px;
+    width: 100%;
     margin: 0 auto;
 
 }
@@ -39,6 +39,9 @@ main.main {
 }
 
 section.course_info {
+    max-width: 1140px;
+    margin: 0 auto;
+
     display: flex;
     justify-content: space-between;
     margin-bottom: 100px;
@@ -176,6 +179,8 @@ section.course_info {
 
 @media (max-width: 767px) {
     section.course_info {
+        max-width: 1140px;
+        margin: 0 auto;
         display: flex;
         flex-direction: column;
     }
@@ -184,6 +189,8 @@ section.course_info {
 
 //教師資訊
 section.teacher_info {
+    max-width: 1140px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     margin-bottom: 100px;
@@ -377,7 +384,7 @@ section.teacher_info {
         div.teacher_info_block {
             width: 100%;
 
-            p.teacher_name{
+            p.teacher_name {
                 font-size: 22px;
                 position: absolute;
                 top: 4%;
@@ -458,8 +465,10 @@ section.accessory_container {
             div.single_accessory {
                 margin-bottom: 20px;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
-              
+                align-items: center;
+
 
                 div.accessory_block {
                     display: flex;
@@ -467,7 +476,14 @@ section.accessory_container {
                     width: 80%;
                     border: 1px solid white;
 
-                    
+                    a {
+                        text-decoration: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+
                 }
 
 
