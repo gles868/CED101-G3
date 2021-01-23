@@ -138,8 +138,8 @@ window.addEventListener('load', function () {
             // memName: '',
             // orderdate: '2021-01-20',
             orderdate: '',
-            memgamepoint: '',
-            paymentmethod: 1,
+            distotal: '',
+            paymentmethod: '',
             deliveryaddress: '',
             // mem_address: '',
 
@@ -240,6 +240,8 @@ window.addEventListener('load', function () {
                 (new Date().getMonth() + 1) +
                 '-' +
                 new Date().getDate();
+
+            setTimeout(this.dis_aftertotal, 1000);
         },
         methods: {
             //切商品
@@ -255,6 +257,10 @@ window.addEventListener('load', function () {
                 let totalString = storage.getItem('total');
                 let total = parseInt(totalString);
                 this.prototal = total;
+            },
+            // 計算折扣後總額
+            dis_aftertotal() {
+                this.distotal = this.prototal - this.mem_info.memGamePoint;
             },
             //撈會員資料
             get_meminfo: async function () {
@@ -298,6 +304,15 @@ window.addEventListener('load', function () {
                     console.log(ord_item.num);
                     ord_items.push(ord_item);
                 }
+                if (this.deliveryaddress == '') {
+                    bus.$emit('getAlert', '請填寫地址');
+                    return;
+                }
+                if (this.paymentmethod == '') {
+                    bus.$emit('getAlert', '請選擇付款方式');
+                    return;
+                }
+
                 const res = await fetch('./php/order_details.php', {
                     method: 'POST',
                     mode: 'same-origin',
@@ -310,9 +325,10 @@ window.addEventListener('load', function () {
                         prototal: this.prototal,
                         memberno: this.mem_info.memberNo,
                         orderdate: this.orderdate,
+                        memgamepoint: this.mem_info.memGamePoint,
                         paymentmethod: this.paymentmethod,
                         deliveryaddress: this.deliveryaddress,
-                        disTotal: this.prototal,
+                        distotal: this.distotal,
                     }),
                 });
                 console.log(this.mem_info.memberNo);
@@ -325,6 +341,7 @@ window.addEventListener('load', function () {
                 }
                 this.AtmForm = false;
                 this.copyAtm = true;
+                this.paymentmethod = 1;
                 copyHave = 'Have';
             },
             copy_Card() {
@@ -356,6 +373,7 @@ window.addEventListener('load', function () {
                     // console.log(11)
                     this.CardForm = false;
                     this.copyCard = true;
+                    this.paymentmethod = 0;
                 } else {
                     alert('請填寫正確表單');
                 }

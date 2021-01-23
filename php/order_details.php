@@ -11,22 +11,23 @@ try {
     $orderdate = $decoded["orderdate"]; 
     $paymentmethod = $decoded["paymentmethod"]; 
     $deliveryaddress = $decoded["deliveryaddress"];
-    $disTotal = $decoded["disTotal"];
+    $distotal = $decoded["distotal"];
 
 
   
     
     $sql = "insert into product_order (memberNo,orderDate,proTotal,memGamePoint,paymentMethod,deliveryAddress,disTotal)
-    values (:memberno,:orderdate,:prototal,:memgamepoint,:paymentmethod,:deliveryaddress,:disTotal)";
+    values (:memberno,:orderdate,:prototal,:memgamepoint,:paymentmethod,:deliveryaddress,:distotal)";
 
     $managerdata = $pdo->prepare($sql);
 
     $managerdata->bindValue(":prototal", $prototal);
     $managerdata->bindValue(":memberno", $memberno);
     $managerdata->bindValue(":orderdate", $orderdate);
+    $managerdata->bindValue(":memgamepoint", $memgamepoint);
     $managerdata->bindValue(":paymentmethod", $paymentmethod);
     $managerdata->bindValue(":deliveryaddress", $deliveryaddress);
-    $managerdata->bindValue(":disTotal", $disTotal);
+    $managerdata->bindValue(":distotal", $distotal);
 
 
     $managerdata->execute();
@@ -55,6 +56,22 @@ try {
     $managerdata->execute();
 
     }
+
+
+    
+    $sql = "update member
+    set memGamePoint = 0
+    where memberNo = :memberno ";
+
+    $managerdata = $pdo->prepare($sql);
+
+
+    $managerdata->bindValue(":memberno", $memberno);
+
+
+
+    $managerdata->execute();
+
 
 
     echo "修改成功~!!";

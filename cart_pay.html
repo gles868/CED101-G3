@@ -161,6 +161,12 @@
                         <div class="name_title title">姓名：</div>
                         <div class="name data_text">{{mem_info.memName}}</div>
                     </div>
+                    <div class="name_box">
+                        <div class="name_title title">點數：</div>
+                        <div class="name data_text">
+                            {{mem_info.memGamePoint}}
+                        </div>
+                    </div>
                     <div class="add_box">
                         <div class="add_title title">地址：</div>
                         <input
@@ -186,10 +192,26 @@
                 </div>
             </div>
             <div class="total_box">
-                <div class="total_photoandtext">
-                    總額：<img src="./img/dollar.png" />
+                <div class="total_box2">
+                    <div class="before_total">
+                        <div class="total_photoandtext">
+                            總額：<img src="./img/dollar.png" />
+                        </div>
+                        <div class="total_text">{{prototal}}</div>
+                    </div>
+                    <div class="after_total">
+                        <div class="total_photoandtext">點數：</div>
+                        <div class="total_text">{{mem_info.memGamePoint}}</div>
+                    </div>
+                    <div class="dis_total">
+                        <div class="total_photoandtext">
+                            折扣後總額： <img src="./img/dollar.png" />
+                        </div>
+                        <div class="total_text">
+                            <div class="total_text2">{{distotal}}</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="total_text">{{prototal}}</div>
             </div>
 
             <!-- 付款方式區塊 -->
