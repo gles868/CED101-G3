@@ -1,0 +1,388 @@
+@import '../style.scss';
+
+// 標題
+div.confirm_title_box {
+    width: 90%;
+    text-align: left;
+    margin: 20px auto;
+    .confirm_title {
+        font-size: 28px;
+        width: 66%;
+        margin: 20px auto 10px auto;
+        color: #ffffff;
+        text-align: left;
+        text-shadow: 0 0 0.2em #ff0000, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
+        @media (max-width: 768px) {
+            width: 85%;
+        }
+    }
+}
+//確認資料區塊
+div.confirm_data_box {
+    width: 90%;
+    margin: 30px auto 0px auto;
+    padding: 20px 15px;
+    .confirm_data {
+        width: 66%;
+        background-color: #ffffff49;
+        border: 1px solid #ffffff49;
+        border-radius: 30px;
+        margin: 0 auto;
+        padding: 20px;
+        font-size: 24px;
+        color: #ffffff;
+        text-shadow: 0 0 0.2em #863186, 0 0 0.2em #863186, 0 0 0.2em #863186;
+        @media (max-width: 1200px) {
+            width: 70%;
+        }
+        @media (max-width: 768px) {
+            font-size: 20px;
+            width: 90%;
+        }
+        .name_box {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            .name {
+                width: 70%;
+            }
+        }
+        .phone_box {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            .phone {
+                width: 70%;
+            }
+        }
+        .add_box {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            .add {
+                width: 70%;
+            }
+        }
+    }
+}
+
+//購買內容
+
+div.cartpro_box {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    .crystalball_left_box{
+        img{
+            max-width: 100%;
+        }
+    }
+    .cartpro_a_box {
+        width: 65%;
+        display: flex;
+        margin: 30px auto 20px auto;
+        justify-content: space-between;
+        background-color: #ffffff2f;
+        padding: 20px 15px;
+        border: 1px solid #ffffff2f;
+        border-radius: 30px;
+        position: relative;
+        @media (max-width: 1200px) {
+            width: 70%;
+        }
+        @media (max-width: 768px) {
+            flex-direction: column;
+            width: 85%;
+        }
+        .crystalball_left_box {
+            width: 30%;
+            @media (max-width: 768px) {
+                margin: 10px auto;
+                width: 40%;
+            }
+            @media (max-width: 375px) {
+                width: 50%;
+            }
+        }
+        .crystalball_right_box {
+            margin-left: 20px;
+            justify-content: space-around;
+            display: flex;
+            flex-direction: column;
+            @media (max-width: 1200px) {
+                width: 90%;
+                margin-right: 10px;
+            }
+            @media (max-width: 768px) {
+                margin: 0 auto;
+            }
+            .crystalball_name_box {
+                width: 100%;
+                font-size: 24px;
+                margin-bottom: 15px;
+
+                color: #ffffff;
+                text-shadow: 0 0 0.2em #f57af5, 0 0 0.2em #f57af5,
+                    0 0 0.2em #f57af5;
+            }
+            .crystalball_text {
+                font-size: 18px;
+                color: #ffffff;
+                line-height: 30px;
+                text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186,
+                    0 0 0.3em #863186;
+            }
+            .crystalball_priceAmount_box {
+                display: flex;
+                justify-content: flex-end;
+                .amount {
+                    color: #ffffff;
+                    font-size: 18px;
+                    width: 16%;
+                    line-height: 40px;
+                    text-align: center;
+                    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186,
+                        0 0 0.3em #863186;
+                    @media (max-width: 1200px) {
+                        width: 20%;
+                    }
+                    @media (max-width: 992px) {
+                        width: 24%;
+                    }
+                    @media (max-width: 850px) {
+                        width: 27%;
+                    }
+                    @media (max-width: 768px) {
+                        width: 25%;
+                        margin-top: 15px;
+                    }
+                    @media (max-width: 375px) {
+                        width: 40%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+div.pro_complete_price_box {
+    display: flex;
+    text-align: right;
+    color: #ffffff;
+    font-size: 18px;
+    width: 16%;
+    align-items: center;
+    @media (max-width: 1200px) {
+        width: 20%;
+    }
+    @media (max-width: 992px) {
+        width: 24%;
+    }
+    @media (max-width: 850px) {
+        width: 27%;
+    }
+    @media (max-width: 768px) {
+        width: 25%;
+        margin-top: 15px;
+    }
+    @media (max-width: 575px) {
+        width: 30%;
+        font-size: 16px;
+    }
+    @media (max-width: 375px) {
+        width: 40%;
+        font-size: 16px;
+    }
+    img {
+        width: 30px;
+        margin-right: 10px;
+        @media (max-width: 575px) {
+            width: 30%;
+        }
+    }
+}
+
+div.pro_complete_price {
+    text-align: right;
+    text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+}
+div.deliver_box {
+    width: 60%;
+    margin: 0 auto;
+    @media (max-width: 1200px) {
+        width: 70%;
+    }
+    @media (max-width: 768px) {
+        width: 85%;
+    }
+    @media (max-width: 375px) {
+        width: 80%;
+        margin: 0 auto;
+    }
+    img {
+        width: 100%;
+        margin-left: 10px;
+    }
+}
+
+// 總額
+div.total_box {
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+    align-items: flex-end;
+    justify-content: flex-end;
+    line-height: 40px;
+    flex-direction: column;
+    @media (max-width: 375px) {
+        width: 80%;
+    }
+
+    div.total_photoandtext{
+        display:flex;
+        align-items: center;
+        color: white;
+        font-size: 18px;
+        img{
+            width: 30px;
+            margin-right: 10px;
+        }
+    }
+   
+}
+
+// ====================== RWD ======================
+
+@media (max-width: 768px) {
+    div.title {
+        text-align: center;
+    }
+    div.data_text {
+        margin-left: 10px;
+    }
+}
+@media (max-width: 575px) {
+    div.amount {
+        width: 30%;
+        font-size: 16px;
+    }
+    div.title {
+        padding: 4px 0px 0px 0px;
+    }
+    // div.pro_complete_price_box > img {
+    //     width: 30%;
+    // }
+    div.data_text {
+        line-height: 30px;
+    }
+}
+// =================================================================
+.star,
+.planet {
+    border-radius: 100%;
+    position: absolute;
+    display: block;
+}
+
+.star {
+    animation: twinkle 2s linear 0s infinite normal;
+    background: #f6f6f6;
+    z-index: 1;
+    left: 100%;
+    top: 100%;
+}
+
+.planet {
+    animation: twinkle 5s linear 0s infinite normal;
+    box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+    border-radius: 100%;
+    z-index: 2;
+    left: 300%;
+    top: 300%;
+}
+
+@keyframes twinkle {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+//警示燈箱
+.alertLightbox_black {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.alertLightboxWrapper {
+    position: absolute;
+    background-color: #d1bee8;
+    box-shadow: 0 0 0.4em ivory;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    height: 300px;
+    align-items: center;
+    font-size: 18px;
+    @media screen and (max-width: 576px) {
+        width: 300px;
+        height: 300px;
+    }
+}
+.alertLightbox {
+    // padding: 60px 50px 50px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    color: ivory;
+    // height: 100%;
+    @include textShadowMem;
+
+    @media screen and (max-width: 576px) {
+        padding: 60px 50px 40px 50px;
+    }
+
+    div:first-child {
+        font-weight: bold;
+        margin: 70px auto;
+        // margin-top: 170px;
+
+        @media screen and (max-width: 576px) {
+            margin-top: 10px;
+        }
+    }
+
+    div:nth-child(2) {
+        background-color: #f33494;
+        border-radius: 15px;
+        border: 1px solid palevioletred;
+        box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+        width: 40%;
+        // overflow: hidden;
+        padding: 8px 10px 6px 10px;
+        cursor: pointer;
+        @media screen and (max-width: 576px) {
+            width: 70%;
+        }
+    }
+}

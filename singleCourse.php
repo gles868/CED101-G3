@@ -71,7 +71,6 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
-
     <title>單一課程</title>
 </head>
 
@@ -168,6 +167,7 @@
         <section class="course_info">
             <div class="course_card_block">
                 <div id="app" class="center-content">
+                    <my-count></my-count>
                     <div class="heart" @click="changeHeart" data-course="classRow.courseNo">
                         <div class="heart-inner" id=<?=$courseRow["courseNo"]?> @click="addFavourite"></div>
                     </div>
@@ -351,8 +351,9 @@
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <script src="./js/course/fullCalnedar/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-    <script src="./js/course/singleCourse.js"></script>
     <script src="./js/login.js"></script>
+    <script src="./js/course/singleCourse.js"></script>
+
 
     <script>
         let memNavInfo = new Vue({
@@ -488,16 +489,19 @@
         });
 
 
-
-
         //滾動header變色
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 60) {
-                $("header").addClass("-active");
-            } else {
-                $("header").removeClass("-active");
-            }
-        });
+        window.addEventListener('scroll', function () {
+                let getScrollTop = document.documentElement.scrollTop;
+                let header = document.querySelector('header');
+                let carticon = document.querySelector('.num_icon');
+                if (getScrollTop > 10) {
+                    header.classList.add('-active');
+                    carticon.classList.add('-icon');
+                } else {
+                    header.classList.remove('-active');
+                    carticon.classList.remove('-icon');
+                }
+            });
 
     </script>
 </body>

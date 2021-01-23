@@ -21,9 +21,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/cart_pay.css" />
+    <link rel="stylesheet" href="css/course_pay.css" />
     <link rel="stylesheet" href="css/registration-pay.css" />
     <link rel="stylesheet" href="./css/btn.css" />
+    <script src="./js/button.js"></script>
+    <!-- <script src="./js/count_vue.js"></script> -->
+
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script> -->
     <title>麻瓜特訓班 | 確認購買與選擇付款方式</title>
     <style>
@@ -187,7 +190,7 @@
         </div>
         <div class="total_box">
             <div class="total_photoandtext">
-                <img src="./img/dollar.png" /><?=$classRow["coursePrice"]?>
+                <img src="./img/dollar.png" />總額：<?=$classRow["coursePrice"]?>
             </div>
             <div class="total_text"></div>
         </div>
@@ -195,6 +198,8 @@
         <!-- 付款方式區塊 -->
 
         <div id="app">
+        <my-count></my-count>
+
         <div id="step1">
             <h4><span class="highlight">選擇付款方式</span></h4>
             <div class="allBtn pay-type" style="display: flex;">
@@ -422,15 +427,12 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
-    <script src="./js/button.js"></script>
+    
     <script src="./js/login.js"></script>
     <script src="./vendors/jquery/jquery-3.5.1.min.js"></script>
-    <!-- <script src="./js/cart_pay.js"></script> -->
-    <!-- <script src="./js/registration-pay.js"></script> -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
 
     <script>
-
 
         let memNavInfo = new Vue({
             el: '#memInfo',
@@ -650,15 +652,17 @@
         })()
 
         window.addEventListener('scroll', function () {
-            let getScrollTop = document.documentElement.scrollTop;
-            let header = document.querySelector('header');
-
-            if (getScrollTop > 60) {
-                header.classList.add('-active');
-            } else {
-                header.classList.remove('-active');
-            }
-        });
+                let getScrollTop = document.documentElement.scrollTop;
+                let header = document.querySelector('header');
+                let carticon = document.querySelector('.num_icon');
+                if (getScrollTop > 10) {
+                    header.classList.add('-active');
+                    carticon.classList.add('-icon');
+                } else {
+                    header.classList.remove('-active');
+                    carticon.classList.remove('-icon');
+                }
+            });
 
     </script>
 

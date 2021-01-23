@@ -1,3 +1,4 @@
+
 const wrapper = document.querySelector('.btn-wrapper');
 const stars = [...document.querySelectorAll('[data-name^="star"]')]; //解構賦值抓陣列
 const Btn = document.querySelector('.Btn');

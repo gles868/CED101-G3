@@ -8,6 +8,7 @@ window.addEventListener("load", function () {
     }
     xhr.open('get', 'php/getCourse.php', true);
     xhr.send(null);
+    
     let storage = sessionStorage;
     if (storage['count'] == null) {
         storage['count'] = '0';
