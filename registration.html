@@ -33,18 +33,18 @@
     <header>
         <nav>
             <div class="menu_toggle">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <div class="logo">
-                    <a href="main.html"><img src="./img/logo.png"></a>
+                    <a href="main.html"><img src="./img/logo.png" /></a>
                 </div>
                 <ul class="nav">
-                    <li><a class="active" href="course.html">課程總覽</a></li>
+                    <li><a href="course.html">課程總覽</a></li>
                     <li><a href="teacher.html">教師總覽</a></li>
                     <li>
-                        <a href="main.html"><img src="./img/logo.png"></a>
+                        <a href="main.html"><img src="./img/logo.png" /></a>
                     </li>
                     <li><a href="mall.html">商城</a></li>
-                    <li><a href="game.html">小遊戲</a></li>
+                    <li><a class="active" href="game.html">小遊戲</a></li>
                 </ul>
                 <div class="ham">
                     <span></span>
@@ -54,13 +54,11 @@
                 <ul class="nav-right">
                     <li>
                         <a href="member.html">
-                            <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
                             <i id="memIcon" class="fas fa-user-circle fa-lg"></i>
                             <div id="memInfo">
                                 <div id="avatar">
-                                    <img :src="this.memData.memAvatar" alt="">
+                                    <img :src="this.memData.memAvatar" alt="" />
                                 </div>
-                                <!-- <span>{{this.memData.memName}}</span> -->
                             </div>
                         </a>
                         <span id="logout"></span>

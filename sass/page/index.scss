@@ -131,6 +131,15 @@ header{
         line-height: $lineHeight;
         text-shadow: 0 0 0.6em #87f, 0 0 0.2em #87f;
         text-align: center;
+        width: 560px;
+        @media all and (max-width: 700px) {
+            width: 95%;
+        }
+        @media all and (max-width: 414px) {
+            width: 85%;
+            line-height: 2;
+            text-align: left;
+        }
     }
 }
 // .lay3_bg{
@@ -197,12 +206,18 @@ header{
     }
     animation: gradient 15s linear infinite;
     // margin-top: 100px;
+    @media all and (max-width: 1130px){
+        background-size: 100% 100%;
+    }
     .wrapper{
         // border: 2px solid gold;
         height: 100vh;  
         display: flex;
         justify-content: space-between;
         flex-direction: column;
+        @media all and (max-width: 1130px){
+            height: 160vh;
+        }
         @media all and (max-width: 1020px){
            height: 100%;
         }
@@ -243,17 +258,26 @@ header{
                 z-index: 2;
                 display: flex;
                 justify-content: center;
+                @media all and (max-width: 1130px){
+                    padding-top: 80px;
+                }
+                p{
+                    font-size: 16px;
+                    font-weight: 400;
+                    position: absolute;
+                    z-index: 2;
+                    color: #fff;
+                    letter-spacing: 2px;
+                    right: -200px;
+                    top: 125px;
+                    text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #510d84;
+                    @media all and (max-width: 1130px){
+                        top: 138px;
+                        right: -10px;
+                        width: 180px;
+                    }
+                }
             } 
-            p{
-                padding-top: 110px;
-                position: absolute;
-                z-index: 2;
-                color: #fff;
-                letter-spacing: 2px;
-                right: 480px;
-                top: 15px;
-                text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #510d84;
-            }
         }
         .container{
             // border: 1px solid rgb(253, 229, 253);
@@ -262,13 +286,14 @@ header{
             flex-grow: 1;
             margin: 0 50px;
             margin-top: 130px;
-            @media all and (max-width: 1020px){
+            @media all and (max-width: 1130px){
                 flex-wrap: wrap;
             }
             @media all and (max-width: 414px){
                 display: flex;
                 flex-direction: column;
                 flex-wrap: wrap;
+                margin: 130px 30px;
             }
             .card{
                 // border: 1px solid saddlebrown;
@@ -500,6 +525,9 @@ header{
     // }
     .tea-bg{
         // border: 1px solid red;
+        @media screen and (max-width: 400px){
+            height: 250vh;
+        }
         .title{
             // border: 1px solid green;
             position: relative;
@@ -519,17 +547,28 @@ header{
                 z-index: 1;
                 display: flex;
                 justify-content: center;
+                position: relative;
+                @media all and (max-width: 400px){
+                    padding-top: 85px;
+                }
+                p{
+                    // padding-top: 130px;
+                    font-size: 16px;
+                    font-weight: 400;
+                    position: absolute;
+                    z-index: 2;
+                    color: #fff;
+                    letter-spacing: 2px;
+                    right: -200px;
+                    top: 145px;
+                    text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #510d84;
+                    @media all and (max-width: 1130px){
+                        right: -10px;
+                        top: 185px;
+                        width: 180px;
+                    }
+                }
             } 
-            p{
-                padding-top: 130px;
-                position: absolute;
-                z-index: 2;
-                color: #fff;
-                letter-spacing: 2px;
-                right: 480px;
-                top: 15px;
-                text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #510d84;
-            }
         }
     }
     .tea-all {
@@ -540,12 +579,14 @@ header{
         margin: 0 auto;
         display: flex;
         justify-content: space-evenly;
-        align-items: center;
         @media all and (max-width: 868px){
             padding: 70px 0;
         }
         @media all and (max-width: 880px){
             flex-direction: column;
+        }
+        @media all and (max-width: 500px){
+            padding: 0;
         }
         .teachers{
             &:nth-of-type(1){
@@ -571,6 +612,28 @@ header{
                 @media all and (max-width: 530px){
                     transform: translate(0px, 60px);
                 }
+                @media all and (max-width: 400px){
+                    transform: translate(8px, 60px);
+                }
+                a{
+                    display: block;
+                    &:hover{
+                        animation: float 0.8s;
+                    }
+                    .tea-box{
+                        @media all and (max-width: 400px){
+                            left: 10%;
+                            top: -40%;
+                        }
+                    }
+                    .inf-all{
+                        @media all and (max-width: 400px){
+                            left: 20%;
+                            top: -28%;
+                            width: 280px;
+                        }
+                    }
+                }
             }
             &:nth-of-type(2){
                 transform: translate(-160px, 110px);
@@ -594,6 +657,28 @@ header{
                 }
                 @media all and (max-width: 530px){
                     transform: translate(0px, 10px);
+                }
+                @media all and (max-width: 400px){
+                    transform: translate(-290px, 550px);
+                }
+                a{
+                    display: block;
+                    &:hover{
+                        animation: float 0.8s;
+                    }
+                    .tea-box{
+                        @media all and (max-width: 400px){
+                            top: -50%;
+                            left: 7%;
+                        }
+                    }
+                    .inf-all{
+                        @media all and (max-width: 400px){
+                            left: 18%;
+                            top: -38%;
+                            width: 280px;
+                        }
+                    }
                 }
             }
             &:nth-of-type(3){
@@ -619,6 +704,28 @@ header{
                 @media all and (max-width: 530px){
                     transform: translate(-300px, 500px);
                 }
+                @media all and (max-width: 400px){
+                    transform: translate(-600px, 1050px);
+                }
+                a{
+                    display: block;
+                    &:hover{
+                        animation: float 0.8s;
+                    }
+                    .tea-box{
+                        @media all and (max-width: 400px){
+                            top: -50%;
+                            left: 16%;
+                        }
+                    }
+                    .inf-all{
+                        @media all and (max-width: 400px){
+                            top: -38%;
+                            left: 25%;
+                            width: 280px;
+                        }
+                    }
+                }
             }
         }
         .tea-all-in{
@@ -638,6 +745,9 @@ header{
             z-index: 2;
             @media all and (max-width: 565px){
                 width: 75%;
+            }
+            @media all and (max-width: 400px){
+                transform: translate(12px, 40px);
             }
             .shadow{
                 width: 160px;
@@ -861,6 +971,10 @@ header{
                 top: 120px;
                 left: 45px;
                 transform: scale(0.7) rotate(5deg);
+                @media all and (max-width: 400px){
+                    left: -20px;
+                    top: 90px;
+                }
                 img{
                     animation: float 1.8s infinite;
                 }
@@ -870,6 +984,9 @@ header{
                 top: 30px;
                 right: 110px;
                 transform: scale(0.5) rotate(4deg) rotateY(180deg);
+                @media all and (max-width: 400px){
+                    right: -25px;
+                }
                 img{
                     animation: float 1.2s 0.5s infinite;
                 }
@@ -887,6 +1004,13 @@ header{
         }
         @media all and (max-width: 620px){
             right: 210px;
+        }
+        @media (max-width: 500px) {
+            right: 170px;
+        }
+        @media all and (max-width: 400px){
+            top: 1700px;
+            right: 120px;
         }
         svg{
             position: absolute;
@@ -932,9 +1056,9 @@ header{
             width: 70%;
             margin: 0 auto;
         }
-        .tea-bg {
-            height: 100%;
-        }
+        // .tea-bg {
+        //     height: 100%;
+        // }
         .sup-tea-bg {
             display: block;
         }
@@ -1028,7 +1152,7 @@ header{
             @media all and (max-width: 414px){
                 margin-top: 0;             
                 justify-content: center;
-                height: 100px;
+                height: 250px
             }
             h4{
                 font-size: 24px;
@@ -1047,6 +1171,10 @@ header{
                 letter-spacing: 3px;
                 line-height: 1.6;
                 text-shadow: 0 0 0.2em #f57c35, 0 0 0.2em #87f, 0 0 0.2em #87f;
+                @media all and (max-width: 400px){
+                    margin: 10px;
+                    font-size: 28px;
+                }
             }
             .btn-wrapper{
                 position: relative;
@@ -1161,11 +1289,19 @@ header{
         size: cover;
     }
     height: 100vh;
+    margin-bottom: -60px;
     @media all and (max-width: 810px){
         height: 100%;
-        padding: 50px 0;
+        padding: 60px 0 400px 0;
+    }
+    @media all and (max-width: 810px){
+        height: 100%;
+        padding: 60px 0;
     }
     .bg{
+        @media all and (max-width: 500px){
+            height: 200vh;
+        }
         .title{
             // border: 1px solid green;
             position: relative;
@@ -1212,6 +1348,9 @@ header{
             // border: 1px solid green; 
             @media all and (max-width: 810px){
                 margin-top: 150px;
+            }
+            @media all and (max-width: 500px){
+                margin-top: 80px;
             }
             .toy_line {
                 margin-left: 10px;
@@ -1291,6 +1430,7 @@ header{
                     background-color: #333333d1;
                     position: absolute;
                     top: 160px;
+                    z-index: 10;
                     padding: 15px 15px 20px;
                     margin-top: -25px;
                     margin-left: -45px;
@@ -1299,7 +1439,7 @@ header{
                         white-space: normal;
                         line-height: 1.8;
                         display: -webkit-box;
-                        -webkit-line-clamp: 2;
+                        -webkit-line-clamp: 3;
                         overflow: hidden;
                         text-overflow: ellipsis;
                     }
@@ -1309,6 +1449,7 @@ header{
                 position: absolute;
                 bottom: -65px;
                 left: 196px;
+                z-index: 9;
                 font-size: 18px;
                 font-weight: 600;
                 letter-spacing: 2px;
@@ -1316,12 +1457,24 @@ header{
                 margin: 0;
                 line-height: 2;
                 // box-shadow: 0 0 0.6em #ff0024, 0 0 0.4em #2000ff, 0 0 0.4em #d9d4ff;
+                @media all and (max-width: 1000px){
+                    left: 142px;
+                }
+                @media all and (max-width: 500px){
+                    left: 192px;
+                }
             }
             .line{
                 width: 150px;
                 position: absolute;
                 bottom: -30px;
                 left: 155px;
+                @media all and (max-width: 1000px){
+                    left: 100px;
+                }
+                @media all and (max-width: 500px){
+                    left: 150px;
+                }
             }
         }
         .bg_box2 {
@@ -1330,6 +1483,9 @@ header{
             width: 430px;
             transform: translateY(170px);
             @media screen and (max-width: 810px){
+                transform: translateY(120px);
+            }
+            @media all and (max-width: 500px){
                 transform: translateY(20px);
             }
             .toy_line {
@@ -1342,7 +1498,7 @@ header{
                 .toy{
                     position: relative;
                     &:nth-child(1){
-                        width: 70px;
+                        width: 100px;
                         // border: 1px solid black;
                         animation: float 2.5s ease-in-out infinite 0.9s;
                         img {
@@ -1419,6 +1575,7 @@ header{
                     background-color: #333333d1;
                     position: absolute;
                     top: 140px;
+                    z-index: 10;
                     padding: 15px 15px 20px;
                     margin-top: -25px;
                     margin-left: -55px;
@@ -1437,6 +1594,7 @@ header{
                 position: absolute;
                 bottom: -65px;
                 left: 196px;
+                z-index: 9;
                 font-size: 18px;
                 font-weight: 600;
                 letter-spacing: 2px;
@@ -1444,21 +1602,38 @@ header{
                 margin: 0;
                 line-height: 2;
                 // box-shadow: 0 0 0.6em #ff0024, 0 0 0.4em #2000ff, 0 0 0.4em #d9d4ff;
+                @media all and (max-width: 1000px){
+                    left: 121px;
+                }
+                @media all and (max-width: 500px){
+                    left: 150px;
+                    bottom: -50px;
+                }
             }
             .line{
                 width: 150px;
                 position: absolute;
                 bottom: -30px;
                 left: 155px;
+                @media all and (max-width: 1000px){
+                    left: 80px;
+                }
+                @media all and (max-width: 500px){
+                    left: 110px;
+                    bottom: -15px;
+                }
             }
         }
         .bg_box3 {
             // border: 1px solid green;
             position: relative;
-            @media screen and (max-width: 810px){
-                transform: translateY(30px);
-            }
             width: 350px;
+            @media screen and (max-width: 810px){
+                transform: translateY(265px);
+            }
+            @media all and (max-width: 500px){
+                transform: scale(0.9) translateY(30px);
+            }
             .toy_line3 {
                 width: 200px;
                 display: flex;
@@ -1537,6 +1712,7 @@ header{
                     background-color: #333333d1;
                     position: absolute;
                     top: 160px;
+                    z-index: 10;
                     padding: 15px 15px 20px;
                     margin-top: -25px;
                     margin-left: -45px;
@@ -1555,6 +1731,7 @@ header{
                 position: absolute;
                 bottom: -65px;
                 left: 196px;
+                z-index: 9;
                 font-size: 18px;
                 font-weight: 600;
                 letter-spacing: 2px;
@@ -1562,12 +1739,24 @@ header{
                 margin: 0;
                 line-height: 2;
                 // box-shadow: 0 0 0.6em #ff0024, 0 0 0.4em #2000ff, 0 0 0.4em #d9d4ff;
+                @media all and (max-width: 1000px){
+                    left: 103px;
+                }
+                @media all and (max-width: 810px){
+                    left: 162px;
+                }
+                @media all and (max-width: 500px){
+                    left: 155px;
+                }
             }
             .line{
                 width: 150px;
                 position: absolute;
                 bottom: -30px;
                 left: 120px;
+                @media all and (max-width: 1000px){
+                    left: 60px;
+                }
             }
         }
         .rock {
@@ -1605,9 +1794,9 @@ header{
             flex-wrap: wrap;
             height: 100%;
         }
-        .bg {
-            height: 100%;
-        }
+        // .bg {
+        //     height: 100%;
+        // }
     }
     @media screen and (max-width: 575px) {
         .toy_line {

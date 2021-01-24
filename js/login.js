@@ -144,11 +144,7 @@ window.addEventListener('load', function () {
             // 去除空格( \s空字串 \g全域匹配 )
             signInInput[i].value.replace(/\s+/g, '');
         }
-        if (
-            memId.value == '' ||
-            memId.value == undefined ||
-            memId.value == null
-        ) {
+        if (memId.value == '' || memId.value == undefined || memId.value == null) {
             checkNoticeSignIn[0].innerText = '尚未輸入帳號';
             signInInput[0].style.border = '1px solid #f57c35';
             signInInput[0].addEventListener('focus', function () {
@@ -156,11 +152,7 @@ window.addEventListener('load', function () {
                 checkNotice[0].innerText = '';
             });
             console.log(memId.value);
-        } else if (
-            memPsw.value == '' ||
-            memPsw.value == undefined ||
-            memPsw.value == null
-        ) {
+        } else if (memPsw.value == '' || memPsw.value == undefined || memPsw.value == null) {
             checkNoticeSignIn[1].innerText = '尚未輸入密碼';
             signInInput[1].style.border = '1px solid #f57c35';
             signInInput[1].addEventListener('focus', function () {
@@ -198,10 +190,7 @@ window.addEventListener('load', function () {
         };
         let url = 'php/login.php';
         xhr.open('post', url, true);
-        xhr.setRequestHeader(
-            'content-type',
-            'application/x-www-form-urlencoded'
-        );
+        xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
         let data_info = `memId=${memId.value}&memPsw=${memPsw.value}`;
         xhr.send(data_info);
     }
@@ -212,11 +201,7 @@ window.addEventListener('load', function () {
     }
     // 檢測欄位為空-姓名
     function checkName() {
-        if (
-            signUpName.value == '' ||
-            signUpName.value == undefined ||
-            signUpName.value == null
-        ) {
+        if (signUpName.value == '' || signUpName.value == undefined || signUpName.value == null) {
             checkNotice[0].innerText = '尚未輸入姓名';
             warnStyle(0);
             return false;
@@ -225,11 +210,7 @@ window.addEventListener('load', function () {
     // 驗證mail
     function checkEmail() {
         let mailFormat = /^\w+\@\w+\.[A-Za-z]+$/;
-        if (
-            signUpEmail.value == '' ||
-            signUpEmail.value == undefined ||
-            signUpEmail.value == null
-        ) {
+        if (signUpEmail.value == '' || signUpEmail.value == undefined || signUpEmail.value == null) {
             checkNotice[1].innerText = '尚未輸入email';
             warnStyle(1);
             return false;
@@ -260,11 +241,7 @@ window.addEventListener('load', function () {
     }
     // 驗證帳號
     function checkId() {
-        if (
-            signUpId.value == '' ||
-            signUpId.value == undefined ||
-            signUpId.value == null
-        ) {
+        if (signUpId.value == '' || signUpId.value == undefined || signUpId.value == null) {
             checkNotice[2].innerText = '尚未輸入帳號';
             warnStyle(2);
             return false;
@@ -292,11 +269,7 @@ window.addEventListener('load', function () {
     // 驗證密碼
     function checkPsw() {
         let pswFormat = /^(?=.*\d)(?=.*[a-z]).{1,30}$/;
-        if (
-            signUpPsw.value == '' ||
-            signUpPsw.value == undefined ||
-            signUpPsw.value == null
-        ) {
+        if (signUpPsw.value == '' || signUpPsw.value == undefined || signUpPsw.value == null) {
             checkNotice[3].innerText = '尚未輸入密碼';
             warnStyle(3);
             return false;
@@ -308,11 +281,7 @@ window.addEventListener('load', function () {
     }
     // 確認密碼欄位為空
     function checkPswAgain() {
-        if (
-            pswAgain.value == '' ||
-            pswAgain.value == undefined ||
-            pswAgain.value == null
-        ) {
+        if (pswAgain.value == '' || pswAgain.value == undefined || pswAgain.value == null) {
             checkNotice[4].innerText = '尚未輸入密碼';
             warnStyle(4);
             return false;
@@ -364,10 +333,7 @@ window.addEventListener('load', function () {
             };
             let url = 'php/getSignUpMemData.php';
             xhr.open('post', url, true);
-            xhr.setRequestHeader(
-                'content-type',
-                'application/x-www-form-urlencoded'
-            );
+            xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
             let data_info = `memId=${signUpId.value}&memPsw=${signUpPsw.value}&memName=${signUpName.value}&memMail=${signUpEmail.value}`;
             xhr.send(data_info);
         }
@@ -381,6 +347,7 @@ window.addEventListener('load', function () {
                 if (xhr.status == 200) {
                     alert(xhr.responseText);
                     getLoginData();
+                    location.href = `./main.html`;
                 }
             };
             let url = 'php/logout.php';

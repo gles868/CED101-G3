@@ -1,6 +1,6 @@
 <?php
 
-        //取得課程資訊
+        // 判斷是否有登入
         session_start();
         $lovedrow = array();
         require_once "./php/connect_ced101g3.php";
@@ -18,7 +18,7 @@
         }else{
             $lovedrow = [];
         };
-        
+        //判斷是否有收藏
        require_once "./php/connect_ced101g3.php";
         $sql = "select * from course where courseNo = ? ";
         $allcourse = $pdo->prepare($sql);
@@ -32,8 +32,6 @@
             $res = "";
         };
 
-        // echo $_GET["courseNo"],$lovedrow;
-        // print_r($lovedrow);
 
         //取得教師資訊
         require_once "./php/connect_ced101g3.php";
@@ -107,13 +105,13 @@
             <div class="menu_toggle">
                 <input type="checkbox">
                 <div class="logo">
-                    <a href="index.html"><img src="./img/logo.png"></a>
+                    <a href="main.html"><img src="./img/logo.png"></a>
                 </div>
                 <ul class="nav">
                     <li><a href="course.html">課程總覽</a></li>
                     <li><a href="teacher.html">教師總覽</a></li>
                     <li>
-                        <a href="index.html"><img src="./img/logo.png"></a>
+                        <a href="main.html"><img src="./img/logo.png"></a>
                     </li>
                     <li><a href="mall.html">商城</a></li>
                     <li><a href="game.html">小遊戲</a></li>
@@ -130,7 +128,7 @@
                             <i id="memIcon" class="fas fa-user-circle fa-lg"></i>
                             <div id="memInfo">
                                 <div id="avatar">
-                                    <img :src="'img/' + this.memData.memAvatar" alt="">
+                                    <img :src="this.memData.memAvatar" alt="">
                                 </div>
                             </div>
                         </a>
@@ -215,14 +213,14 @@
         </section>
 
         <section class="calendar">
-            <p class="calendar_title">請點擊課程報名</p>
+            <p class="calendar_title">請點擊課程報名 <i class="fas fa-arrow-circle-down"></i>
+            </p>
             <div id='calendar'></div>
         </section>
 
         <section class="teacher_info">
             <div class="teacher_img_block">
                 <img class="teacher_bg" src="./img/course_cards/teacher/teacher-bg.png" alt="">
-
                 <img class="teacher_img" src="img/teacher/<?=$teacherRow["teachImg"]?>" alt="">
                 <a href="./singleTeacher.html?teachNo=<?=$teacherRow["teachNo"]?>">
                     <p class="register">教師資訊</P>
@@ -257,10 +255,10 @@
                     for($j =0; $j < 1; $j++){
                     ?>
                     <div class="accessory_block">
-                    <a href="mall.html">
-                    <img src="<?=$data[$i][$j]?>" alt="">
-                     </a>
-                    <p class="name"><?=$data[$i][$j+1]?></p>
+                        <a href="mall.html">
+                            <img src="<?=$data[$i][$j]?>" alt="">
+                        </a>
+                        <p class="name"><?=$data[$i][$j+1]?></p>
                   
                     </div>
 
@@ -273,23 +271,6 @@
                 <?php  
                 }
                 ?> 
-                <!-- <div class="single_accessory">
-                    <div class="accessory_block">
-                        <a href="mall.html">
-                            <img src="img/props/p8.png" alt="">
-                            <p class="name">大蜘蛛</p>
-                        </a>
-                    </div>
-
-                </div>
-                <div class="single_accessory">
-                    <div class="accessory_block">
-                        <a href="mall.html">
-                            <img src="img/props/p8.png" alt="">
-                            <p class="name">大蜘蛛</p>
-                        </a>
-                    </div>
-                </div> -->
 
         </section>
 
@@ -377,7 +358,7 @@
         </p>
         <p>
             本網站為緯育TibaMe_前端設計工程師班第63期學員專題成果作品 -
-            <a href="">參考資源</a>
+            <a href="resource.html">參考資源</a>
         </p>
         <p>
             <a href="https://tibamef2e.com"></a>
