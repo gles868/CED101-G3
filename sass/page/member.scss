@@ -37,6 +37,25 @@ body {
 a {
     text-decoration: none !important;
 }
+
+// header
+#memInfo {
+    font-size: 18px;
+    font-family: 'Noto-Sans';
+    letter-spacing: 1px;
+    display: block;
+    width: 100px;
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3, 0 0 0.4em #6f00c3;
+}
+header nav .menu_toggle .nav-right li #logout {
+    width: 135px;
+    text-align: center;
+    padding: 0 10px;
+}
+
 .membtn {
     color: ivory;
     border: 1px solid ivory;
@@ -1134,7 +1153,7 @@ input {
         cursor: pointer;
         // border: 1px solid black;
         // background: rgba(0, 0, 0, 0.5);
-        background: rgba(204, 154, 62, 0.5);
+        background: rgba(255, 255, 255, 0.5);
         width: 15%;
         // height: 15%;
         margin: 0 auto;

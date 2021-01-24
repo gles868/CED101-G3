@@ -54,7 +54,7 @@ Vue.component('back-admin', {
                                         <td>{{value.empNo}}</td>
                                         <td>{{value.empName}}</td>
                                         <td>{{value.empId}}</td>
-                                        <td>{{value.empPsw}}</td>
+                                        <td>*****{{value.empPsw.substr(-3,3)}}</td>
                                         <td>
                                             <div class="button" @click="lightbox_show(value.empNo,value.empName,value.empStatus)">
                                                 <input type="checkbox" v-model="value.ischecked" />
@@ -231,7 +231,7 @@ Vue.component('back-member', {
                           <td>{{value.memberNo}}</td>
                           <td>{{value.memName}}</td>
                           <td>{{value.memId}}</td>
-                          <td>{{value.memPsw}}</td>                          
+                          <td>*****{{value.memPsw.substr(-3,3)}}</td>                          
                           <td>{{value.memMail}}</td>
                           <td>
                             <div class="button" @click="lightbox_show(value.memberNo,value.memName,value.memStatus)">
@@ -361,7 +361,7 @@ Vue.component('back-teacher', {
                                         <td>{{value.teachNo}}</td>
                                         <td>{{value.empName}}</td>
                                         <td>{{value.empId}}</td>
-                                        <td>{{value.empPsw}}</td>
+                                        <td>*****{{value.empPsw.substr(-3,3)}}</td>
                                         <td>
                                             <div class="button" @click="lightbox_show(value.empNo,value.empName,value.empStatus)">
                                                 <input type="checkbox" v-model="value.ischecked" />
@@ -1807,7 +1807,7 @@ Vue.component('back-class', {
                     <textarea type="text" id="classDescription" class="acc_con" v-model="classDescription"></textarea>
                 </div>
                 <button type="sumbit" class="form_btn"
-                    @click="edit_class_func(maxRegistNum,minRegistNum,classDescription)">確定修改</button>
+                    @click="edit_class_func(classDescription)">確定修改</button>
             </div>
         </div>
     </div>
@@ -1844,8 +1844,8 @@ Vue.component('back-class', {
                 }
             },
             //點擊 確認修改後將資料傳至DB
-            edit_class_func: async function (maxRegistNum, minRegistNum, classDescription) {
-                console.log(maxRegistNum, minRegistNum, classDescription);
+            edit_class_func: async function (classDescription) {
+                console.log(classDescription);
 
                 //送出編輯前 確認欄位 是否符合規定
 
@@ -1951,6 +1951,8 @@ Vue.component('class_add', {
     methods: {
         add_class_func: async function () {
             //送出新增前 確認欄位 是否符合規定
+
+            //確認 所有欄位都有填寫(所有物件的索引值都不為空直)
             let finish = true;
 
             for (let i = 0; i < Object.values(this.postData).length; i++) {
@@ -1976,10 +1978,8 @@ Vue.component('class_add', {
 
                 //關燈箱
                 this.changelightbox();
-                //完成後 重新撈取一次資料
-                // this.get_pro();
             } else {
-                alert('no');
+                alert('請填寫所有欄位!!!!');
             }
         },
 
@@ -2013,12 +2013,6 @@ Vue.component('class_add', {
             let endDay = `${year}-${month + 1}-${date}`;
 
             let data = {
-                // courseNo 課程編號
-                // teachNo 教師編號
-                // startDate	報名開始日期
-                // endDate	報名結束日期->上課日期-1天
-                // courseStartDate	課程開始日期(上課日期)
-                // classDescription	班級說明(100字內)
                 courseNo: this.courseNo.split('-')[0],
                 teachNo: this.courseNo.split('-')[1],
                 startDate: this.today,
@@ -2096,7 +2090,13 @@ new Vue({
                 return data.json();
             });
             // 取回res值後，呼叫另一隻函式
-            this.employee = res;
+            if (res == '哭阿') {
+                location.href = 'backLogin.html';
+            } else {
+                this.employee = res;
+            }
+
+            console.log(res);
         },
     },
     created() {

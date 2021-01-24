@@ -921,7 +921,7 @@ Vue.component('mem-info', {
                             <img id="imgPreview" :src="memavatar" @click="senddata" alt="" />
                         </div>
                         <div class="memheadCG">
-                            <label id="preview_con" for="upFile"><img id="preview" src="./img/changeimgicon.png" /></label>
+                            <label id="preview_con" for="upFile"><img id="preview" src="./img/mem_camera.png" /></label>
                             <input type="file" name="upFile" id="upFile" @change="change_img" accept="image/gif,image/jpeg,image/png,image/jpg"  style="display:none;"/>
                         </div>
                     </div>
@@ -1261,15 +1261,15 @@ new Vue({
             })
                 .then((res) => res.json())
                 .then((res) => (this.memberno = res.memberNo));
-            await this.get_mem();
-            await this.get_mem_coursetimes();
-            
+            console.log(this.memberno);
             //沒抓到會員資料導回首頁
-            if (!this.memberno) {
+            if (this.memberno == undefined) {
                 // alert('a');
                 console.log('沒登入喇喇!!');
                 location.href = `./main.html`;
             }
+            await this.get_mem();
+            await this.get_mem_coursetimes();
         },
         changeTag(event) {
             //獲取被點擊的 ID值，並傳送至上層 (new Vue)
@@ -1284,24 +1284,7 @@ new Vue({
         },
     },
     created() {
-        // this.get_mem();
-        // this.get_mem_coursetimes();
         this.getMemDatafunc();
     },
-    mounted() {
-        // $(document).ready(function () {
-        //     $('.memMenuOut>div').click(function () {
-        //         $('.memMenuOut>div').each(function () {
-        //             $(this).css({
-        //                 backgroundColor: 'rgba(255, 255, 255, 0)',
-        //                 color: 'white',
-        //             });
-        //         });
-        //         $(this).css({
-        //             backgroundColor: 'white',
-        //             color: 'black',
-        //         });
-        //     });
-        // });
-    },
+    mounted() {},
 });

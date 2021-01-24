@@ -1,13 +1,11 @@
 <?php
+session_start();
 try {
     require_once "./connect_ced101g3.php";
 
-    // $content = trim(file_get_contents("php://input"));
-    // $decoded = json_decode($content, true);
-
-    // $detail_no = $decoded["detail_no"];
-
-    $sql = "select *
+    if(isset($_SESSION['empId'])){
+      
+      $sql = "select *
             from employee
             where empType = 0
             ";
@@ -41,6 +39,17 @@ try {
         echo json_encode($per_ord_datarow);
         // echo $managerdatarow;
     }
+
+  }else{
+      echo json_encode("");
+  };
+
+    // $content = trim(file_get_contents("php://input"));
+    // $decoded = json_decode($content, true);
+
+    // $detail_no = $decoded["detail_no"];
+
+    
 
 } catch (PDOException $e) {
     echo "系統錯誤, 請通知系維護人員~<br>";

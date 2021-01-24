@@ -4,6 +4,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+        <!-- favicon -->
+        <link rel="shortcut icon" href="img/favicon-logo.ico" type="image/x-icon" />
 
         <!-- Bootstrap 的 CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -19,8 +21,6 @@
         <script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>
         <!-- 不寫這個會報錯誤 -->
         <link rel="shortcut icon" href="#" />
-        <!-- 網站小圖 -->
-        <!-- <link rel="Shortcut Icon" type="image/x-icon" href="./img/logo.png" /> -->
         <title>麻瓜特訓班 | 會員中心</title>
         <script src="./js/count_vue.js"></script>
     </head>
@@ -52,22 +52,65 @@
                             <a href="member.html">
                                 <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
                                 <i id="memIcon" class="fas fa-user-circle fa-lg"></i>
-                                <div id="memInfo">
-                                    <div id="avatar">
-                                        <!-- <img :src="'img/' + this.memData.memAvatar" alt="" /> -->
-                                        {{this.memData.memName}} 您好~
-                                    </div>
-                                </div>
+                                <div id="memInfo">{{this.memData.memName}}</div>
                             </a>
                             <span id="logout"></span>
                         </li>
-                        <li>
+                        <li id="cartlink">
                             <a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
                         </li>
                     </ul>
                 </div>
             </nav>
         </header>
+
+        <!-- 登入註冊燈箱 -->
+        <div class="lightbox-bg"></div>
+        <div class="container" id="container">
+            <span class="close"><i class="fas fa-times fa-xs"></i></span>
+            <!-- 註冊 -->
+            <div class="form-container sign-up-container">
+                <form id="signUpForm">
+                    <h2>會員註冊</h2>
+                    <input type="text" id="signUpName" placeholder="輸入姓名" />
+                    <input type="email" id="sigUpEmail" placeholder="輸入email" />
+                    <input type="text" id="signUpId" placeholder="輸入帳號" />
+                    <input type="password" id="signUpPsw" placeholder="輸入密碼(至少含各一位英數字)" />
+                    <input type="password" id="checkPsw" placeholder="確認密碼" name="checkPsw" />
+                    <input type="button" id="signUpSubmit" value="註冊" />
+
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                </form>
+            </div>
+            <!-- 登入 -->
+            <div class="form-container sign-in-container">
+                <form id="signInForm">
+                    <h2>會員登入</h2>
+                    <input type="text" name="memId" id="memId" placeholder="輸入帳號" />
+                    <input type="password" name="memPsw" id="memPsw" placeholder="輸入密碼" />
+                    <span id="forgetPsw">忘記密碼?</span>
+                    <input type="button" id="signInSubmit" value="登入" />
+
+                    <div class="notice"></div>
+                    <div class="notice"></div>
+                </form>
+            </div>
+
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <button type="button" class="check" id="signIn">登入</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <button type="button" class="check" id="signUp">註冊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div id="app">
             <my-count></my-count>
@@ -141,15 +184,6 @@
                 </div>
             </section>
 
-            <!-- 整理 -->
-            <!-- <div class="pub_input_container">
-                <label class="input_type upimg_text">文章圖片：</label>
-                <label id="preview_con" for="upimg"><img id="preview" src="./img/changeimgicon.png" /></label>
-                <input id="upimg" type="file" name="img" accept="image/gif,image/jpeg,image/png,image/jpg" />
-            </div> -->
-
-            <!-- 整理 -->
-
             <!-- 透過<component>去指定其屬性is進行v-bind -->
             <component
                 :memGamePoint="memGamePoint"
@@ -166,11 +200,11 @@
         </div>
 
         <footer>
+            <p>copyright©2021 CED101G3 麻瓜特訓班.All Rights Reserved</p>
             <p>
-                ©2021 CED101G3 麻瓜特訓班 本網站為緯育TibaMe_前端設計工程師班第63期學員專題成果作品 -
+                本網站為緯育TibaMe_前端設計工程師班第63期學員專題成果作品 -
                 <a href="">參考資源</a>
             </p>
-            <br />
             <p>
                 <a href="https://tibamef2e.com"></a>
                 為緯育TibaMe提供給[Web/APP前端設計工程師養成班]學員展示作品之平台，若有侵權疑慮，請私訊<a
@@ -185,7 +219,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css" />
 
         <script src="js/member.js"></script>
-        <!-- <script src="js/login.js"></script> -->
+        <script src="js/login.js"></script>
 
         <!-- body 結束標籤之前 bootstrap  -->
         <script

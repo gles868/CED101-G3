@@ -1,7 +1,7 @@
 // ======== 編輯教師個人資料 ========
 Vue.component('back_teacher_data', {
-    data(){
-        return{
+    data() {
+        return {
             //撈出來的 教師資料
             teachers: '',
             lightbox_teach_no: '',
@@ -38,7 +38,7 @@ Vue.component('back_teacher_data', {
                                     <td>{{teachers.teachNo}}</td>
                                     <td>{{teachers.teachName}}</td>
                                     <td>{{teachers.empId}}</td>
-                                    <td>{{teachers.empPsw}}</td>
+                                    <td>*****{{teachers.empPsw.substr(-3,3)}}</td>
                                     <td>
                                         <button @click="edit_teacher_data(teachers.teachNo, teachers.teachName, teachers.empNo, 
                                                                         teachers.empId, teachers.empPsw)">
@@ -65,15 +65,22 @@ Vue.component('back_teacher_data', {
     methods: {
         // 呼叫php程式，取回 教師 相關資料，並用json()轉回一般陣列
         get_teacher_data: async function () {
-            const res = await fetch('php/backTeacher_data.php', {})
-                        .then(function (data) {
-                            return data.json();
-                        });
+            const res = await fetch('php/backTeacher_data.php', {}).then(function (data) {
+                return data.json();
+            });
             // 取回res值後，呼叫另一隻函式
-            this.teachers = res;
+
+            if (res == '哭阿') {
+                console.log('-----');
+                location.href = 'backLogin.html';
+            } else {
+                console.log('00000');
+
+                this.teachers = res;
+            }
         },
         // 點擊"編輯" 開啟編輯教師燈箱
-        edit_teacher_data(teachNo, teachName, empNo, empId, empPsw){
+        edit_teacher_data(teachNo, teachName, empNo, empId, empPsw) {
             this.teacher_edit_lightbox = true;
             this.teachNo = teachNo;
             this.teachName = teachName;
@@ -82,18 +89,18 @@ Vue.component('back_teacher_data', {
             this.empPsw = empPsw;
         },
         // 關閉"編輯課程"燈箱，同時重新渲染畫面
-        teachereditlightbox(){
+        teachereditlightbox() {
             this.teacher_edit_lightbox = false;
             this.get_teacher_data();
-        }
+        },
     },
     // template渲染前 先執行以下程式 撈出教師資料
     created() {
         this.get_teacher_data();
     },
-})
+});
 
-// ====== 編輯教師個人資料 燈箱組件 ====== 
+// ====== 編輯教師個人資料 燈箱組件 ======
 Vue.component('teacher_edit', {
     data() {
         return {
@@ -249,15 +256,15 @@ Vue.component('course_list', {
     methods: {
         get_teacher_class: async function () {
             const res = await fetch('php/backTeacher_get_classInfo.php', {
-                method: 'POST', 
-                mode: 'same-origin', 
-                credentials: 'same-origin', 
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
                 headers: {
-                    'Content-Type': 'application/json', 
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     teachNo: this.teachNo,
-                }), 
+                }),
             }).then(function (data) {
                 return data.json();
             });
@@ -266,15 +273,15 @@ Vue.component('course_list', {
             this.classes = res;
         },
     },
-    created(){
+    created() {
         this.get_teacher_class();
     },
 });
 
 // ======== 查看課表時間 ========
 Vue.component('course_date', {
-    data(){
-        return{
+    data() {
+        return {
             //撈出來的 教師資料
             class: '',
         };
@@ -295,15 +302,15 @@ Vue.component('course_date', {
     methods: {
         async get_class() {
             const res = await fetch('php/backTeacher_get_class.php', {
-                method: 'POST', 
-                mode: 'same-origin', 
-                credentials: 'same-origin', 
+                method: 'POST',
+                mode: 'same-origin',
+                credentials: 'same-origin',
                 headers: {
-                    'Content-Type': 'application/json', 
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     teachNo: this.teachNo,
-                }), 
+                }),
             }).then(function (data) {
                 return data.json();
             });
@@ -338,14 +345,14 @@ Vue.component('course_date', {
     created() {
         this.get_class();
     },
-})
+});
 
 new Vue({
     el: '#app',
     name: 'teacher',
     data: {
         content: 'back_teacher_data',
-        teachNo: '',  
+        teachNo: '',
         current: 0,
     },
 });
@@ -354,14 +361,13 @@ new Vue({
     el: '#header',
     name: 'header',
     data: {
-        teacher: '',  
+        teacher: '',
     },
     methods: {
         get_teacher_data: async function () {
-            const res = await fetch('php/backTeacher_data.php', {})
-                        .then(function (data) {
-                            return data.json();
-                        });
+            const res = await fetch('php/backTeacher_data.php', {}).then(function (data) {
+                return data.json();
+            });
             // 取回res值後，呼叫另一隻函式
             this.teacher = res;
         },
@@ -371,15 +377,15 @@ new Vue({
     },
 });
 
-window.addEventListener('load', function(){
+window.addEventListener('load', function () {
     // 顯示使用者現在所在位置
     let li = document.querySelectorAll('#app .content-wrap > ul > li');
-    for(let i = 0; i < li.length; i++){
-        li[i].onclick = function(){
-            for(let i = 0; i < li.length; i++){
+    for (let i = 0; i < li.length; i++) {
+        li[i].onclick = function () {
+            for (let i = 0; i < li.length; i++) {
                 li[i].classList.remove('active');
                 this.classList.add('active');
             }
-        }
+        };
     }
 });
