@@ -48,14 +48,16 @@ h4 {
     border-radius: 5px;
     margin-left: 15px;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .btn-light:hover {
     background-color: #bd7fd6;
     color: white;
+    cursor: pointer;
 }
 
-.btn-light>img {
+.btn-light > img {
     width: 61px;
     height: auto;
     margin-bottom: 10px;
@@ -114,7 +116,7 @@ select {
     margin-top: 15px;
 }
 
-.pay_creditCard_number>input {
+.pay_creditCard_number > input {
     width: 60px;
 }
 
@@ -160,8 +162,8 @@ ul {
     color: white;
 }
 
-#end2>div>span,
-#end2>div>p {
+#end2 > div > span,
+#end2 > div > p {
     font-size: 14px;
 }
 

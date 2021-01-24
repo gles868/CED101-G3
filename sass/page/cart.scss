@@ -160,6 +160,7 @@ div.cartpro_box {
                 top: 20px;
                 right: 20px;
                 width: 20px;
+                cursor: pointer;
             }
             div.crystalball_text {
                 font-size: 18px;
@@ -226,10 +227,12 @@ div.cartpro_box {
                     #min {
                         font-size: 22px;
                         width: 30px;
+                        cursor: pointer;
                     }
                     #addamount {
                         font-size: 24px;
                         width: 30px;
+                        cursor: pointer;
                     }
 
                     div.amount_input {
@@ -471,3 +474,7 @@ div.space_box {
 // body {
 //     position: relative;
 // }
+
+.Btn {
+    cursor: pointer;
+}

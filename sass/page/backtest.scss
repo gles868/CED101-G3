@@ -58,8 +58,8 @@ body {
     border-radius: 50%;
     // width: 200px;
     // height: 200px;
-    width: 300px;
-    height: 300px;
+    width: 260px;
+    height: 260px;
     animation: ring 1s 3s linear forwards;
     opacity: 0;
 }
@@ -221,7 +221,7 @@ body {
     transform: translate(-50%, -50%);
     background: rgba(255, 255, 255, 0.733);
     border-radius: 50%;
-    animation: explosion 6s 12s ease forwards;
+    animation: explosion 2s 6s ease forwards;
 }
 
 @keyframes line {
@@ -253,32 +253,32 @@ body {
     }
 }
 
-@keyframes turnRight {
-    0% {
-        transform: perspective(200px) rotateX(60deg) rotate(0);
-    }
-    50% {
-        transform: perspective(200px) rotateX(60deg) rotate(180deg);
-    }
-    100% {
-        transform: perspective(200px) rotateX(60deg) rotate(360deg);
-    }
-}
+// @keyframes turnRight {
+//     0% {
+//         transform: perspective(200px) rotateX(60deg) rotate(0);
+//     }
+//     50% {
+//         transform: perspective(200px) rotateX(60deg) rotate(180deg);
+//     }
+//     100% {
+//         transform: perspective(200px) rotateX(60deg) rotate(360deg);
+//     }
+// }
 
-@keyframes turnLeft {
-    0% {
-        transform: perspective(200px) rotateX(60deg) rotate(0)
-            translateZ(-0.2px);
-    }
-    50% {
-        transform: perspective(200px) rotateX(60deg) rotate(-180deg)
-            translateZ(-0.2px);
-    }
-    100% {
-        transform: perspective(200px) rotateX(60deg) rotate(-360deg)
-            translateZ(-0.2px);
-    }
-}
+// @keyframes turnLeft {
+//     0% {
+//         transform: perspective(200px) rotateX(60deg) rotate(0)
+//             translateZ(-0.2px);
+//     }
+//     50% {
+//         transform: perspective(200px) rotateX(60deg) rotate(-180deg)
+//             translateZ(-0.2px);
+//     }
+//     100% {
+//         transform: perspective(200px) rotateX(60deg) rotate(-360deg)
+//             translateZ(-0.2px);
+//     }
+// }
 
 @keyframes ring {
     0% {
@@ -324,17 +324,17 @@ body {
         padding-top: 0;
     }
 }
-@keyframes vibration {
-    0% {
-        padding-left: 0;
-    }
-    50% {
-        padding-left: 2px;
-    }
-    100% {
-        padding-left: 0;
-    }
-}
+// @keyframes vibration {
+//     0% {
+//         padding-left: 0;
+//     }
+//     50% {
+//         padding-left: 2px;
+//     }
+//     100% {
+//         padding-left: 0;
+//     }
+// }
 @keyframes fadeOut {
     0% {
         opacity: 1;
@@ -1467,7 +1467,7 @@ body {
 
 .button1 {
     z-index: 999;
-    font-size: 30px;
+    font-size: 36px;
     text-shadow: 0 0 0.2em #ff0000, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
     text-decoration: none;
     display: inline-block;
@@ -1503,7 +1503,7 @@ body {
         left: 1%;
         height: 70px;
         width: 70px;
-        font-size: 22px;
+        font-size: 30px;
         line-height: 80px;
     }
 }
@@ -1512,7 +1512,7 @@ body {
     text-shadow: 0 0 0.2em #ff0000, 0 0 0.2em #ca4cca, 0 0 0.2em #ca4cca;
     position: absolute;
     top: 40%;
-    font-size: 30px;
+    font-size: 36px;
     text-decoration: none;
     display: inline-block;
     margin: 50px;
@@ -1545,7 +1545,7 @@ body {
         right: 1%;
         height: 70px;
         width: 70px;
-        font-size: 22px;
+        font-size: 30px;
         line-height: 80px;
     }
 }
@@ -1647,5 +1647,17 @@ body {
     }
     to {
         transform: rotate(0deg);
+    }
+}
+
+//
+footer {
+    position: absolute;
+    width: 35%;
+    bottom: 0;
+    background-color: #1919257a;
+    border-radius: 20px;
+    @media (max-width: 600px) {
+        display: none;
     }
 }

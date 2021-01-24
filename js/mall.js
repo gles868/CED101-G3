@@ -88,7 +88,7 @@ window.addEventListener('load', function () {
             addToStorage(proNo, proPrice) {
                 if (storage[proNo]) {
                     // console.log('000');
-                    alert('已經加入購物車囉！');
+                    alert('已經加入購物車囉：)！');
                 } else {
                     storage[proNo] = `${proNo}|${proPrice}|1`;
                     // storage['addItemList'] += `${proNo},`;
@@ -133,7 +133,7 @@ window.addEventListener('load', function () {
             //
             add_favlist: async function () {
                 if (this.memberno == undefined) {
-                    alert('記得登入才可以收藏ㄛ！');
+                    alert('請先登入才可以收藏喔：)！');
                     return false;
                 } else {
                     const res = await fetch('./php/mall_favlist.php', {
