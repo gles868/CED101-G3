@@ -407,7 +407,7 @@ header nav .menu_toggle .nav-right li #logout {
     width: 80%;
     margin: 1rem auto;
     .coursemenuItem:hover {
-        background-color: rgba(128, 0, 128, 0.6);
+        background-color: rgba(170, 170, 170, 0.5);
     }
     .active {
         text-shadow: 0 0 0.2em rgb(211, 211, 65), 0 0 0.4em rgb(214, 29, 183), 0 0 0.3em #5f93c4;
@@ -757,7 +757,7 @@ input {
         cursor: pointer;
     }
     .memkeepmenu:hover {
-        background-color: rgba(128, 0, 128, 0.6);
+        background-color: rgba(170, 170, 170, 0.5);
     }
     .active {
         background-color: rgba(170, 170, 170, 0.5);
@@ -1372,17 +1372,22 @@ input {
         // margin-top: 170px;
 
         @media screen and (max-width: 576px) {
-            margin-top: 94px;
+            margin-top: 10px;
         }
     }
 
     div:nth-child(2) {
-        background-color: purple;
-        border-radius: 10px;
-        width: 50%;
+        background-color: #f33494;
+        border-radius: 15px;
+        border: 1px solid palevioletred;
+        box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+        width: 40%;
         // overflow: hidden;
         padding: 8px 10px 6px 10px;
         cursor: pointer;
+        @media screen and (max-width: 576px) {
+            width: 70%;
+        }
     }
 }
 
