@@ -30,12 +30,12 @@ div.course_filter {
     background-size: 100%;
     background-repeat: no-repeat;
     opacity: 0.9;
-    width: 960px;
+    width: 880px;
     height: 400px;
     margin: 0 auto;
     border-radius: 20px;
     margin-top: 100px;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
     background-image: url(../img/course_cards/filter_background.png);
     background-repeat: no-repeat;
     position: relative;
@@ -65,7 +65,7 @@ div.course_filter {
 
 div.filter_container {
     position: relative;
-    top: 30%;
+    top: 25%;
 }
 
 @media (max-width:1139px) {
@@ -110,7 +110,7 @@ div.course_class {
 
         button {
             border: none;
-            background-color: $purplered;
+            background-color: #8e623d;
             color: white;
             font-size: 16px;
             border-radius: 10px;
@@ -184,7 +184,7 @@ div.course_price {
 
         button {
             border: none;
-            background-color: $purplered;
+            background-color: #8e623d;
             color: white;
             font-size: 16px;
             border-radius: 10px;
