@@ -472,9 +472,15 @@ section.accessory_container {
 
                 div.accessory_block {
                     display: flex;
+                    flex-direction: column;
                     justify-content: center;
+                    align-items: center;
                     width: 80%;
                     border: 1px solid white;
+                    
+                    p.name{
+                        font-size:26px;
+                    }
 
                     a {
                         text-decoration: none;

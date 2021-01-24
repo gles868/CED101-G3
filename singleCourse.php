@@ -1,12 +1,40 @@
 <?php
 
         //取得課程資訊
+        session_start();
+        $lovedrow = array();
         require_once "./php/connect_ced101g3.php";
+        if(isset($_SESSION["memberNo"])){
+            $sql = "select * from course_list where memberNo = ?"; 
+            $getlovedCourse = $pdo->prepare($sql);
+            $getlovedCourse->bindValue(1, $_SESSION["memberNo"]);
+            $getlovedCourse->execute();
+            $lovedCourseRow = $getlovedCourse->fetchAll();(PDO::FETCH_ASSOC);
+
+            for($k=0;$k<count($lovedCourseRow);$k++){
+                array_push($lovedrow,$lovedCourseRow[$k]["courseNo"]);
+                // echo $lovedCourseRow[$k]["courseNo"];
+            }
+        }else{
+            $lovedrow = [];
+        };
+        
+       require_once "./php/connect_ced101g3.php";
         $sql = "select * from course where courseNo = ? ";
         $allcourse = $pdo->prepare($sql);
         $allcourse->bindValue(1, $_GET["courseNo"]);
         $allcourse->execute();
         $courseRow = $allcourse->fetch(PDO::FETCH_ASSOC);
+   
+        if(in_array($_GET["courseNo"],$lovedrow)){
+            $res = " loved";
+        }else{
+            $res = "";
+        };
+
+        // echo $_GET["courseNo"],$lovedrow;
+        // print_r($lovedrow);
+
         //取得教師資訊
         require_once "./php/connect_ced101g3.php";
         $sql = "SELECT * from course JOIN class on course.courseNo = class.courseNo
@@ -53,9 +81,7 @@
                 $row['courseNo'],
             );
         }
-
 ?>
-
 
 
 
@@ -110,8 +136,9 @@
                         </a>
                         <span id="logout"></span>
                     </li>
-                    <li><a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
-                </ul>
+                    <li id="cartlink">
+                        <a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                    </li>                </ul>
             </div>
         </nav>
     </header>
@@ -145,8 +172,8 @@
                 <input type="password" name="memPsw" id="memPsw" placeholder="輸入密碼" />
                 <span id="forgetPsw">忘記密碼?</span>
                 <input type="button" id="signInSubmit" value="登入">
-                <div class="notice" style="top: 140px"></div>
-                <div class="notice" style="top: 198px"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
             </form>
         </div>
         <div class="overlay-container">
@@ -169,7 +196,7 @@
             <div class="course_card_block">
                 <div  class="center-content">
                     
-                    <div class="heart" @click="changeHeart" data-course="classRow.courseNo">
+                    <div class="heart<?=$res?>" @click="changeHeart" data-course="classRow.courseNo">
                         <div class="heart-inner" id=<?=$courseRow["courseNo"]?> @click="addFavourite"></div>
                     </div>
                 </div>
@@ -232,9 +259,9 @@
                     <div class="accessory_block">
                     <a href="mall.html">
                     <img src="<?=$data[$i][$j]?>" alt="">
-                    
-                    </a>
+                     </a>
                     <p class="name"><?=$data[$i][$j+1]?></p>
+                  
                     </div>
 
                   <?php 
@@ -345,7 +372,17 @@
 
 
     <footer>
-        <p>copyright©2020 CED101_G3 麻瓜特訓班.All Rights Reserved</p>
+        <p>
+            copyright©2021 CED101G3 麻瓜特訓班.All Rights Reserved
+        </p>
+        <p>
+            本網站為緯育TibaMe_前端設計工程師班第63期學員專題成果作品 -
+            <a href="">參考資源</a>
+        </p>
+        <p>
+            <a href="https://tibamef2e.com"></a>
+            為緯育TibaMe提供給[Web/APP前端設計工程師養成班]學員展示作品之平台，若有侵權疑慮，請私訊<a href="https://www.facebook.com/webindex/">［TibaMe-前端設計工程師養成班］</a>
+        </p>
     </footer>
 
 
