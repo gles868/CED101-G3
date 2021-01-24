@@ -51,13 +51,13 @@
             <div class="menu_toggle">
                 <input type="checkbox">
                 <div class="logo">
-                    <a href="index.html"><img src="./img/logo.png"></a>
+                    <a href="main.html"><img src="./img/logo.png"></a>
                 </div>
                 <ul class="nav">
                     <li><a href="course.html">課程總覽</a></li>
                     <li><a href="teacher.html">教師總覽</a></li>
                     <li>
-                        <a href="index.html"><img src="./img/logo.png"></a>
+                        <a href="main.html"><img src="./img/logo.png"></a>
                     </li>
                     <li><a href="mall.html">商城</a></li>
                     <li><a href="game.html">小遊戲</a></li>
@@ -74,7 +74,7 @@
                             <i id="memIcon" class="fas fa-user-circle fa-lg"></i>
                             <div id="memInfo">
                                 <div id="avatar">
-                                    <img :src="'img/' + this.memData.memAvatar" alt="">
+                                    <img :src="this.memData.memAvatar" alt="">
                                 </div>
                             </div>
                         </a>
@@ -431,7 +431,7 @@
         </p>
         <p>
             本網站為緯育TibaMe_前端設計工程師班第63期學員專題成果作品 -
-            <a href="">參考資源</a>
+            <a href="resource.html">參考資源</a>
         </p>
         <p>
             <a href="https://tibamef2e.com"></a>
