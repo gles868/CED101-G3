@@ -338,7 +338,7 @@ window.addEventListener('load', function () {
         props: [],
         template: `
                       <div class="list_box">
-                          <div class="pro_all" @click="changealltype(),changecolor(0),pageBack(),changetype()">
+                          <div class="pro_all" @click="changealltype(),changecolor(0),pageBack(),changetype('')">
                           全部商品</div>
                           <div class="pro_att" @click="changetype('攻擊型'),changecolor(1),reNewPage()">
                           攻擊型</div>

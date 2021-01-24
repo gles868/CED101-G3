@@ -4,16 +4,22 @@ try {
 
     $content = trim(file_get_contents("php://input"));
     $decoded = json_decode($content, true);
-   
-    $type_no = $decoded["type_no"];
+
+    // $type_no = $decoded["type_no"];
+
+    if ($decoded["type_no"] == "") {
+        $type_no = "攻擊型";
+    } else {
+        $type_no = $decoded["type_no"];
+    }
+    ;
 
     // echo json_encode($decoded["type"]);
-
 
     $sql = "select *
             from product
             where proType = :type_no";
-            
+
     // $memberdata = $pdo->query($sql);
     $managerdata = $pdo->prepare($sql);
     $managerdata->bindValue(":type_no", $type_no);

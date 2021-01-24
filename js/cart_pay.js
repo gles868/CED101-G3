@@ -187,7 +187,7 @@ window.addEventListener('load', function () {
                     'https://gitlab.com/loveabo103103/payment/raw/master/credit-card.svg',
                 AtmImg:
                     'https://gitlab.com/loveabo103103/payment/raw/master/atm.svg',
-                CloseImg: './img/close3.png',
+                CloseImg: './img/close.png',
             },
 
             AtmTrInfo: [
@@ -299,9 +299,9 @@ window.addEventListener('load', function () {
                     ord_item.item = item;
                     ord_item.smalltotal = smalltotal;
                     ord_item.num = num;
-                    console.log(ord_item.item);
-                    console.log(ord_item.smalltotal);
-                    console.log(ord_item.num);
+                    // console.log(ord_item.item);
+                    // console.log(ord_item.smalltotal);
+                    // console.log(ord_item.num);
                     ord_items.push(ord_item);
                 }
                 if (this.deliveryaddress == '') {
@@ -312,6 +312,10 @@ window.addEventListener('load', function () {
                     bus.$emit('getAlert', '請選擇付款方式');
                     return;
                 }
+                // if (this.deliveryaddress != '' && this.paymentmethod != '') {
+                //     console.log(11111);
+                //     window.location.href = './payStepDone.html';
+                // }
 
                 const res = await fetch('./php/order_details.php', {
                     method: 'POST',
