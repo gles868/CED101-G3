@@ -28,7 +28,7 @@ window.addEventListener('load', function () {
             <div class="pro_complete_left">
                 <div class="pro_complete_photo">
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="-3 -3 30 30" @click="add_favlist">
-                  <g class="fav-1 fav-btn" @mouseover="changeheart()">
+                  <g class="fav-1 fav-btn">
                       <path fill="#fff" fill-rule="nonzero" stroke="#7F7F7F" stroke-width="2" d="M10.371 19.7c.424.443.985.674 1.599.666a2.122 2.122 0 0 0 1.575-.67l6.853-7.133c1.982-2.073 1.982-5.453 0-7.528-1.957-2.047-5.112-2.047-7.074.006l-1.332 1.373-.717-.75-.604-.629c-1.957-2.047-5.112-2.047-7.068 0-1.983 2.075-1.983 5.453.002 7.53l6.766 7.135z"/>
                   </g>
                 </svg>
@@ -79,9 +79,6 @@ window.addEventListener('load', function () {
                     .then((res) => (this.memberno = res.memberNo));
                 console.log(this.memberno);
                 //沒抓到會員資料導回首頁
-                if (this.memberno == undefined) {
-                    alert('記得登入才可以收藏ㄛ！');
-                }
             },
 
             // 關燈箱
@@ -135,18 +132,30 @@ window.addEventListener('load', function () {
             },
             //
             add_favlist: async function () {
-                const res = await fetch('./php/mall_favlist.php', {
-                    method: 'POST',
-                    mode: 'same-origin',
-                    credentials: 'same-origin',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        itemno: this.itemno,
-                        memberno: this.memberno,
-                    }),
-                });
+                if (this.memberno == undefined) {
+                    alert('記得登入才可以收藏ㄛ！');
+                    return false;
+                } else {
+                    const res = await fetch('./php/mall_favlist.php', {
+                        method: 'POST',
+                        mode: 'same-origin',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            itemno: this.itemno,
+                            memberno: this.memberno,
+                        }),
+                    });
+                    const favs = document.querySelectorAll('.fav-btn');
+                    for (let i = 0; i < favs.length; i++) {
+                        let fav = favs[i];
+
+                        fav.classList.toggle('clicked');
+                    }
+                    this.$emit('changeheart', this.heart);
+                }
             },
             change(res) {
                 this.items = res;
@@ -179,23 +188,24 @@ window.addEventListener('load', function () {
             },
 
             // 愛心動畫
-            changeheart() {
-                const favs = document.querySelectorAll('.fav-btn');
-                for (let i = 0; i < favs.length; i++) {
-                    let fav = favs[i];
-                    fav.onclick = () => {
-                        fav.classList.toggle('clicked');
-                    };
-                }
-                this.$emit('changeheart', this.heart);
-            },
+            // changeheart() {
+            //     const favs = document.querySelectorAll('.fav-btn');
+            //     for (let i = 0; i < favs.length; i++) {
+            //         let fav = favs[i];
+            //         fav.onclick = () => {
+            //             fav.classList.toggle('clicked');
+            //         };
+            //     }
+            //     this.$emit('changeheart', this.heart);
+            // },
         },
-        updated() {},
+        updated() {
+            this.getMemDatafunc();
+        },
         created() {
-            // console.log("----")
             this.getMemDatafunc();
             this.get_data(this.itemno);
-            this.changeheart();
+            // this.changeheart();
             this.get_favlist(this.itemno);
 
             // console.log(this.itemno);
@@ -203,6 +213,9 @@ window.addEventListener('load', function () {
         // 監聽lightbox裡面內容要更改
         // this.get_dara => 呼叫這個函數
         watch: {
+            // getMemDatafuncs(this.memberNo) {
+            //     this.getMemDatafunc();
+            // },
             itemno() {
                 this.get_data(this.itemno);
             },
