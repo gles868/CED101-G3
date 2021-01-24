@@ -78,7 +78,7 @@ Vue.component('comment-component', {
                 <div class="comm_card">
                     <div class="card">
                         <div class="avatar">
-                            <img :src="'img/teacher/' + memAvatar" alt="" width="80px">
+                            <img :src="memAvatar" alt="" width="80px">
                         </div>
                         <p>{{memName}}</p>
                     </div>

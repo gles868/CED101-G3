@@ -53,14 +53,14 @@ header{
                     &:checked{
                         ~ .ham > span{
                             opacity: 1;
-                            transform: rotate(45deg) translate(1px, -1px);
+                            transform: rotate(45deg) translate(2px, -1px);
                             // background-color: #fff;
                             &:nth-child(2){
                                 opacity: 0;
                                 transform: rotate(0deg) scale(0.2, 0.2);
                             }
                             &:nth-child(3){
-                                transform: rotate(-45deg) translate(-1px, 0px);
+                                transform: rotate(-45deg) translate(1px, 0px);
                             }
                         }
                         ~ .nav{
@@ -176,6 +176,9 @@ header{
                                 position: absolute;
                                 bottom: 8px;
                                 left: 0;
+                                @media all and (max-width: 700px){
+                                    transform: translateY(25px);
+                                }
                             }
                         }
                         &:hover{
@@ -183,6 +186,9 @@ header{
                             &::before{
                                 transition: width .3s cubic-bezier(.29,.47,.72,1);
                                 width: 95%;
+                                @media all and (max-width: 700px){
+                                    transform: translateY(25px);
+                                }
                             }
                         }
                         @media all and (max-width: 976px){

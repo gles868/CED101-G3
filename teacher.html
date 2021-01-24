@@ -67,7 +67,7 @@
                                 <div id="memInfo">
                                     <div id="avatar">
                                         <img
-                                            :src="'img/' + this.memData.memAvatar"
+                                            :src="this.memData.memAvatar"
                                             alt=""
                                         />
                                     </div>
@@ -224,7 +224,7 @@
                                 <div class="card">
                                     <div class="avatar">
                                         <img
-                                            :src="'img/teacher/' + dataRows[0][0].memAvatar"
+                                            :src="dataRows[0][0].memAvatar"
                                             alt=""
                                             width="80px"
                                         />
@@ -288,7 +288,7 @@
                                 <div class="card">
                                     <div class="avatar">
                                         <img
-                                            :src="'img/teacher/' + dataRows[0][1].memAvatar"
+                                            :src="dataRows[0][1].memAvatar"
                                             alt=""
                                             width="80px"
                                         />
@@ -352,7 +352,7 @@
                                 <div class="card">
                                     <div class="avatar">
                                         <img
-                                            :src="'img/teacher/' + dataRows[0][2].memAvatar"
+                                            :src="dataRows[0][2].memAvatar"
                                             alt=""
                                             width="80px"
                                         />
@@ -416,7 +416,7 @@
                                 <div class="card">
                                     <div class="avatar">
                                         <img
-                                            :src="'img/teacher/' + dataRows[0][3].memAvatar"
+                                            :src="dataRows[0][3].memAvatar"
                                             alt=""
                                             width="80px"
                                         />
@@ -480,7 +480,7 @@
                                 <div class="card">
                                     <div class="avatar">
                                         <img
-                                            :src="'img/teacher/' + dataRows[0][4].memAvatar"
+                                            :src="dataRows[0][4].memAvatar"
                                             alt=""
                                             width="80px"
                                         />
@@ -544,7 +544,7 @@
                                 <div class="card">
                                     <div class="avatar">
                                         <img
-                                            :src="'img/teacher/' + dataRows[0][5].memAvatar"
+                                            :src="dataRows[0][5].memAvatar"
                                             alt=""
                                             width="80px"
                                         />
@@ -572,6 +572,64 @@
                                     >more →</a
                                 >
                             </div>
+                            <!-- <div class="btn-wrapper" @mouseover="btnani">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 65 65"
+                                    class="star-svg">
+                                    <path
+                                        data-name="star-10"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-9"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-8"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-7"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#F05E1C"
+                                    />
+                                    <path
+                                        data-name="star-6"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-5"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-4"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#F05E1C"
+                                    />
+                                    <path
+                                        data-name="star-3"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-2"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-1"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#F05E1C"
+                                    />
+                                </svg>
+                                <button class="Btn"><a :href="'singleTeacher.html?teachNo=' + teachNo">more</a></button>
+                            </div> -->
                         </div>
                     </div>
                 </div>
