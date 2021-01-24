@@ -196,6 +196,7 @@ header{
                         // border: 1px solid seagreen;
                         display: flex;
                         flex-direction: column;
+                        margin: 10px auto;
                         h3{
                             color: #fff;
                             font-size: $h3;
@@ -227,6 +228,10 @@ header{
                         @include paraStyle;
                         margin-top: 20px;
                         height: 70px;
+                        letter-spacing: 2px;
+                        font-size: 18px;
+                        line-height: 28px;
+                        text-shadow: 0 0 0.2em #6a6a4f, 0 0 0.2em #d61db7, 0 0 0.2em #c45f5f;
                         @media all and (max-width: 768px){
                             display: none;
                         }
@@ -308,6 +313,46 @@ header{
                     margin-bottom: -40px;
                     a{
                         color: #fff;
+                    }
+                }
+                .btn-wrapper{
+                    // border: 1px solid springgreen;
+                    position: absolute;
+                    right: 200px;
+                    top: 600px;
+                    @media all and (max-width: 880px) {
+                        right: 280px;
+                        top: 1120px;
+                    }
+                    @media all and (max-width: 620px){
+                        right: 210px;
+                    }
+                    @media (max-width: 500px) {
+                        right: 170px;
+                    }
+                    @media all and (max-width: 400px){
+                        top: 1700px;
+                        right: 120px;
+                    }
+                    svg{
+                        position: absolute;
+                        top: -10px;
+                    }
+                    .Btn{
+                        box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+                        padding: 8px 15px;
+                        text-align: center;
+                        font-size: 20px;
+                        letter-spacing: 1.5px;
+                        background-color: #f33494;
+                        border-radius: 15px;
+                        border: 1px solid palevioletred;
+                        color: #fff;
+                        margin: 30px 0;
+                        cursor: pointer;
+                        @media (max-width: 375px) {
+                            font-size: 22px;
+                        }
                     }
                 }
             }
