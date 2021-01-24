@@ -1,6 +1,7 @@
-     <?php
-        session_start();
-       require_once "./php/connect_ced101g3.php";
+<?php
+    session_start();
+    try {
+        require_once "./php/connect_ced101g3.php";
        
         $sql = "SELECT * FROM course JOIN class on course.courseNo = class.courseNo 
                 JOIN coursetype ON course.courTypeNo = coursetype.courTypeNo
@@ -10,7 +11,14 @@
         $allClass->bindValue(1, $_GET["classNo"]);
         $allClass->execute();
         $classRow = $allClass->fetch(PDO::FETCH_ASSOC);
-    ?>  
+
+    } catch (PDOException $e) {
+        // $pdo->rollBack();
+        $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
+        $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";	
+        echo $errMsg;
+    }
+?>
 
 
 <!DOCTYPE html>
@@ -25,7 +33,11 @@
     <link rel="shortcut icon" href="img/favicon-logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/registration-pay.css" />
     <link rel="stylesheet" href="./css/btn.css" />
-    <script src="./js/button.js"></script>
+
+    <!-- tweenmax -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+
+    <script src="./js/button.js"></script> -->
     <!-- <script src="./js/count_vue.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script> -->
     <title>麻瓜特訓班 | 確認購買與選擇付款方式</title>
@@ -206,7 +218,7 @@
             <div class="allBtn pay-type" style="display: flex;">
                 <div class="row justify-content-center">
                     <button type="button" class="btn-light btn_CARD" v-bind:class=' {btnActive:isActive===1}'
-                        v-on:click.capture.stop='CardForm=!CardForm'>
+                        v-on:click.capture.stop='CardForm=!CardForm,showop()'>
                         <img v-bind:src="link.CardImgSrc" alt=""><br>
                         信用卡/金融卡
                     </button>
@@ -214,7 +226,7 @@
 
                 <div class="row justify-content-center mt-3">
                     <button type="button" class="btn-light btn_ATM" v-bind:class='{btnActive:isActive === 2}'
-                        v-on:click.capture.stop='AtmForm=!AtmForm'>
+                        v-on:click.capture.stop='AtmForm=!AtmForm,showop()'>
                         <img v-bind:src="link.AtmImg" alt=""><br>
                         ATM 轉帳
                     </button>
@@ -303,13 +315,10 @@
 
         <!-- ATM原表單 -->
         <div class="ATM" v-show='AtmForm'>
-            <div id="myForm5" class="allBtn">
-                <table class="table table-hover">
-                    <tr v-for="(AtmTable,index) in AtmTitle">
-                        <td>{{AtmTable}}</td>
-                        <!-- <td>{{AtmTable.AtmCode}}</td> -->
-                    </tr>
-                </table>
+        <div id="myForm5" class="allBtn">
+                <div>請於各大魔法ATM轉帳付款</div>
+                <div>如超過繳費期限還未繳費</div>
+                <div>會報名失敗唷!</div>
                 <button id="goATM" class="btn btn-info" @click="copy_Atm();changeBg(2)">確認</button>
             </div>
             <div class="close-atm" v-on:click='AtmForm=!AtmForm'>
@@ -436,11 +445,15 @@
             為緯育TibaMe提供給[Web/APP前端設計工程師養成班]學員展示作品之平台，若有侵權疑慮，請私訊<a href="https://www.facebook.com/webindex/">［TibaMe-前端設計工程師養成班］</a>
         </p>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
     
     <script src="./js/login.js"></script>
     <script src="./vendors/jquery/jquery-3.5.1.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
+    <script src="./js/count_vue.js"></script>
+
+    <!-- tweenmax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script src="./js/button.js"></script>
 
     <script>
 
@@ -451,7 +464,7 @@
             },
         })
 
-        let storage = sessionStorage;
+        // let storage = sessionStorage;
         let tom = document.querySelectorAll(".border-input");
 
         let copyHave = 'noHave';
@@ -545,6 +558,12 @@
                         this.AtmForm = false;
                         this.copyAtm = true;
                         copyHave = 'Have';
+                    },
+                    showop() {  //解決開頁閃頁
+                        let creditcardop = document.querySelector('.creditcard');
+                        let ATMop = document.querySelector('.ATM');
+                        creditcardop.style.opacity = 1;
+                        ATMop.style.opacity = 1;
                     },
                     copy_Card() {
                         if (copyHave == 'Have') {
@@ -661,18 +680,18 @@
             })
         })()
 
-        window.addEventListener('scroll', function () {
-                let getScrollTop = document.documentElement.scrollTop;
-                let header = document.querySelector('header');
-                let carticon = document.querySelector('.num_icon');
-                if (getScrollTop > 10) {
-                    header.classList.add('-active');
-                    carticon.classList.add('-icon');
-                } else {
-                    header.classList.remove('-active');
-                    carticon.classList.remove('-icon');
-                }
-            });
+        // window.addEventListener('scroll', function () {
+        //         let getScrollTop = document.documentElement.scrollTop;
+        //         let header = document.querySelector('header');
+        //         let carticon = document.querySelector('.num_icon');
+        //         if (getScrollTop > 10) {
+        //             header.classList.add('-active');
+        //             carticon.classList.add('-icon');
+        //         } else {
+        //             header.classList.remove('-active');
+        //             carticon.classList.remove('-icon');
+        //         }
+        //     });
 
     </script>
 
