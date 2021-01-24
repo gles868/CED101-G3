@@ -13,8 +13,13 @@ try {
 	//.......確定是否上傳成功
 
 	
-			$sql = "INSERT INTO `registration` (`memberNo`, `classNo`) 
-                                    values(:memberNo, :classNo)";
+	$sql = "INSERT INTO registration (`memberNo`, `classNo`) 
+				values(:memberNo, :classNo);
+
+			update class
+			set RegistNum = RegistNum+7
+			where classNo = :classNo;";
+
 			$products = $pdo->prepare( $sql );
 			$products -> bindValue(":memberNo", $_POST["memberNo"]);
 			$products -> bindValue(":classNo", $_POST["classNo"]);
