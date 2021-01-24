@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    try {
         session_start();
         $lovedrow = array();
         require_once "./php/connect_ced101g3.php";
@@ -16,7 +18,8 @@
         }else{
             $lovedrow = [];
         };
-       require_once "./php/connect_ced101g3.php";
+
+        require_once "./php/connect_ced101g3.php";
         $sql = "select * from course where courseNo = ? ";
         $allcourse = $pdo->prepare($sql);
         $allcourse->bindValue(1, $_GET["courseNo"]);
@@ -73,9 +76,15 @@
                 $row['courseNo'],
             );
         }
+
+    } catch (PDOException $e) {
+        // $pdo->rollBack();
+        $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
+        $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";	
+        echo $errMsg;
+    }
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">

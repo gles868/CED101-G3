@@ -5,6 +5,7 @@
         // 取得課程資料
         $sql = "SELECT cl.registNum, cl.courseStartDate, co.courseNo, co.courseName, co.courTypeNo, co.courseImg, co.courseDescription, co.coursePrice
                     FROM class cl JOIN course co ON (cl.courseNo = co.courseNo)
+                    WHERE cl.courseStartDate > curdate()
                     GROUP BY co.courseName
                     ORDER BY cl.registNum DESC
                     LIMIT 3";

@@ -1,10 +1,7 @@
-
 <?php
-$content = trim(file_get_contents("php://input"));
-// $decoded = json_decode($content, true);
-// var_dump($decoded);die;
-$errMsg = "";
 session_start();
+$content = trim(file_get_contents("php://input"));
+$errMsg = "";
 try {
 	require_once("./connect_ced101g3.php");
     // $content = trim(file_get_contents("php//input"));
