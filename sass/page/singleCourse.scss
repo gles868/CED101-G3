@@ -50,6 +50,7 @@ section.course_info {
     div.course_card_block {
         width: 550px;
         position: relative;
+        overflow: hidden;
 
         div.center-content {
             position: absolute;
@@ -116,6 +117,7 @@ section.course_info {
         p.course_content {
             color: $darkgray;
             font-size: $h5;
+            font-weight: 500;
             width: 50%;
             letter-spacing: 3px;
             line-height: 32px;
@@ -244,6 +246,7 @@ section.teacher_info {
         p.teacher_content {
             color: $darkgray;
             font-size: $h5;
+            font-weight: 500;
             width: 50%;
             letter-spacing: 3px;
             line-height: 32px;
@@ -415,19 +418,14 @@ section.accessory_container {
         margin-bottom: 20px;
     }
 
-    p.name {
-        color: white;
-        font-size: $h5;
-        letter-spacing: 3px;
-        text-align: center;
-        width: 220px;
-    }
-
     div.titleimg_block {
         width: 400px;
         margin: 0 auto;
         margin-bottom: 40px;
     }
+
+
+
 
     div.accessories_needed {
         display: flex;
@@ -436,8 +434,40 @@ section.accessory_container {
         margin: 0 auto;
         margin-bottom: 100px;
 
-        div.single_accessory img {
-            width: 75%;
+        div.single_accessory {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+
+            div.accessory_block {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    width: 75%;
+                    margin-bottom: 10px;
+                }
+
+                p.name {
+                    color: white;
+                    font-size: $h5;
+                    letter-spacing: 3px;
+                    text-align: center;
+                    width: 60%;
+                }
+
+                a {
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+            }
         }
     }
 }
@@ -475,11 +505,10 @@ section.accessory_container {
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    width: 80%;
-                    border: 1px solid white;
-                    
-                    p.name{
-                        font-size:26px;
+                    width: 65%;
+
+                    p.name {
+                        font-size: 26px;
                     }
 
                     a {

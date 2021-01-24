@@ -257,10 +257,10 @@
                     for($j =0; $j < 1; $j++){
                     ?>
                     <div class="accessory_block">
-                    <a href="mall.html">
-                    <img src="<?=$data[$i][$j]?>" alt="">
-                     </a>
-                    <p class="name"><?=$data[$i][$j+1]?></p>
+                        <a href="mall.html">
+                            <img src="<?=$data[$i][$j]?>" alt="">
+                        </a>
+                        <p class="name"><?=$data[$i][$j+1]?></p>
                   
                     </div>
 
@@ -273,23 +273,6 @@
                 <?php  
                 }
                 ?> 
-                <!-- <div class="single_accessory">
-                    <div class="accessory_block">
-                        <a href="mall.html">
-                            <img src="img/props/p8.png" alt="">
-                            <p class="name">大蜘蛛</p>
-                        </a>
-                    </div>
-
-                </div>
-                <div class="single_accessory">
-                    <div class="accessory_block">
-                        <a href="mall.html">
-                            <img src="img/props/p8.png" alt="">
-                            <p class="name">大蜘蛛</p>
-                        </a>
-                    </div>
-                </div> -->
 
         </section>
 
