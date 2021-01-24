@@ -221,7 +221,6 @@
         <section class="teacher_info">
             <div class="teacher_img_block">
                 <img class="teacher_bg" src="./img/course_cards/teacher/teacher-bg.png" alt="">
-
                 <img class="teacher_img" src="img/teacher/<?=$teacherRow["teachImg"]?>" alt="">
                 <a href="./singleTeacher.html?teachNo=<?=$teacherRow["teachNo"]?>">
                     <p class="register">教師資訊</P>
