@@ -1,368 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>下樓梯！</title>
-        <script src="https://cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
 
-        <!-- jquery -->
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
-        
-        <!-- favicon -->
-        <link rel="shortcut icon" href="img/favicon-logo.ico" type="image/x-icon">
-        <link rel="stylesheet" href="./css/style.css" />
-        <link rel="stylesheet" href="./css/game.css" />
-        <link
-            rel="stylesheet"
-            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        />
-        <style>
-            body {
-                background-image: url(./img/midnight_2.png);
-                background-size: cover;
-                background-repeat: no-repeat;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>下樓梯！</title>
+    <script src="https://cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
 
-            canvas {
-                margin: 15px auto !important;
-                border: 1px solid blue;
-                /* margin-top: 90px; */
-            }
+    <!-- jquery -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
 
-            .button {
-                display: inline-block;
-                box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
-                /* position: absolute;
+    <!-- favicon -->
+    <link rel="shortcut icon" href="img/favicon-logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/game.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <style>
+        body {
+            background-image: url(./img/midnight_2.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        canvas {
+            margin: 15px auto !important;
+            border: 1px solid blue;
+            /* margin-top: 90px; */
+        }
+
+        .button {
+            display: inline-block;
+            box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+            /* position: absolute;
                 top: 20%;
                 left: 50%; */
-                width: 150px;
-                height: 40px;
-                margin: 10px auto;
-                text-align: center;
-                background-color: #742275;
-                border-radius: 15px;
-                border: 1px solid #a12ea3;
-                color: #fff;
-                font-size: 20px;
-                /* display: none; */
-                outline: none;
-                cursor: pointer;
-            }
+            width: 150px;
+            height: 40px;
+            margin: 10px auto;
+            text-align: center;
+            background-color: #742275;
+            border-radius: 15px;
+            border: 1px solid #a12ea3;
+            color: #fff;
+            font-size: 20px;
+            /* display: none; */
+            outline: none;
+            cursor: pointer;
+        }
 
-            .wrapper{
-                /* border: 1px solid red; */
-                text-align: center;
-                padding-right: 40px;
-            }
-            #totalPo {
-                width: 40px;
-                text-align: center;
-                font-weight: 600;
-                font-size: 24px;
-                margin: 0 auto;
-                display: inline-block;
-                text-shadow: 0 0 0.4em #ff0082, 0 0 0.4em #ff0082;
-            }
-            .text{
-                width: 300px;
-                text-align: center;
-                margin: 12px auto;
-                text-shadow: 0 0 0.4em #ff0082, 0 0 0.4em #ff0082;
-                color: #fff;
-            }
-        </style>
-    </head>
+        .wrapper {
+            /* border: 1px solid red; */
+            text-align: center;
+            padding-right: 40px;
+        }
 
-    <body>
-        <header>
-            <nav>
-                <div class="menu_toggle">
-                    <input type="checkbox" />
-                    <div class="logo">
-                        <a href="index.html"><img src="./img/logo.png" /></a>
-                    </div>
-                    <ul class="nav">
-                        <li><a href="course.html">課程總覽</a></li>
-                        <li><a href="teacher.html">教師總覽</a></li>
-                        <li>
-                            <a href="index.html"
-                                ><img src="./img/logo.png"
-                            /></a>
-                        </li>
-                        <li><a href="mall.html">商城</a></li>
-                        <li><a class="active" href="game.html">小遊戲</a></li>
-                    </ul>
-                    <div class="ham">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <ul class="nav-right">
-                        <li>
-                            <a href="member.html">
-                                <i
-                                    id="memIcon"
-                                    class="fas fa-user-circle fa-lg"
-                                ></i>
-                                <div id="memInfo">
-                                    <div id="avatar">
-                                        <img
-                                            :src="'img/' + this.memData.memAvatar"
-                                            alt=""
-                                        />
-                                    </div>
+        #totalPo {
+            width: 40px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 24px;
+            margin: 0 auto;
+            display: inline-block;
+            text-shadow: 0 0 0.4em #ff0082, 0 0 0.4em #ff0082;
+        }
+
+        .text {
+            width: 300px;
+            text-align: center;
+            margin: 12px auto;
+            text-shadow: 0 0 0.4em #ff0082, 0 0 0.4em #ff0082;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="menu_toggle">
+                <input type="checkbox">
+                <div class="logo">
+                    <a href="main.html"><img src="./img/logo.png"></a>
+                </div>
+                <ul class="nav">
+                    <li><a class="active" href="course.html">課程總覽</a></li>
+                    <li><a href="teacher.html">教師總覽</a></li>
+                    <li>
+                        <a href="main.html"><img src="./img/logo.png"></a>
+                    </li>
+                    <li><a href="mall.html">商城</a></li>
+                    <li><a href="game.html">小遊戲</a></li>
+                </ul>
+                <div class="ham">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-right">
+                    <li>
+                        <a href="member.html">
+                            <!-- <a :href="'member.html?memberNo=' + this.memData.memberNo"> -->
+                            <i id="memIcon" class="fas fa-user-circle fa-lg"></i>
+                            <div id="memInfo">
+                                <div id="avatar">
+                                    <img :src="this.memData.memAvatar" alt="">
                                 </div>
-                            </a>
-                            <span id="logout"></span>
-                        </li>
-                        <li id="cartlink">
-                            <a href="cart.html"
-                                ><i class="fas fa-shopping-cart fa-lg"></i
-                            ></a>
-                        </li>
-                    </ul>
+                                <!-- <span>{{this.memData.memName}}</span> -->
+                            </div>
+                        </a>
+                        <span id="logout"></span>
+                    </li>
+                    <li id="cartlink">
+                        <a href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 登入註冊燈箱 -->
+    <div class="lightbox-bg"></div>
+    <div class="container" id="container">
+        <span class="close"><i class="fas fa-times fa-xs"></i></span>
+        <!-- 註冊 -->
+        <div class="form-container sign-up-container">
+            <form id="signUpForm">
+                <h2>會員註冊</h2>
+                <input type="text" id="signUpName" placeholder="輸入姓名" />
+                <input type="email" id="sigUpEmail" placeholder="輸入email" />
+                <input type="text" id="signUpId" placeholder="輸入帳號" />
+                <input type="password" id="signUpPsw" placeholder="輸入密碼(至少含各一位英數字)" />
+                <input type="password" id="checkPsw" placeholder="確認密碼" name="checkPsw" />
+                <input type="button" id="signUpSubmit" value="註冊" />
+
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+                <div class="notice"></div>
+            </form>
+        </div>
+        <!-- 登入 -->
+        <div class="form-container sign-in-container">
+            <form id="signInForm">
+                <h2>會員登入</h2>
+                <input type="text" name="memId" id="memId" placeholder="輸入帳號" />
+                <input type="password" name="memPsw" id="memPsw" placeholder="輸入密碼" />
+                <span id="forgetPsw">忘記密碼?</span>
+                <input type="button" id="signInSubmit" value="登入" />
+
+                <div class="notice"></div>
+                <div class="notice"></div>
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <button type="button" class="check" id="signIn">
+                        登入
+                    </button>
                 </div>
-            </nav>
-        </header>
-
-        <!-- 登入註冊燈箱 -->
-        <div class="lightbox-bg"></div>
-        <div class="container" id="container">
-            <span class="close"><i class="fas fa-times fa-xs"></i></span>
-            <!-- 註冊 -->
-            <div class="form-container sign-up-container">
-                <form id="signUpForm">
-                    <h2>會員註冊</h2>
-                    <input type="text" id="signUpName" placeholder="輸入姓名" />
-                    <input
-                        type="email"
-                        id="sigUpEmail"
-                        placeholder="輸入email"
-                    />
-                    <input type="text" id="signUpId" placeholder="輸入帳號" />
-                    <input
-                        type="password"
-                        id="signUpPsw"
-                        placeholder="輸入密碼(至少含各一位英數字)"
-                    />
-                    <input
-                        type="password"
-                        id="checkPsw"
-                        placeholder="確認密碼"
-                        name="checkPsw"
-                    />
-                    <input type="button" id="signUpSubmit" value="註冊" />
-
-                    <div class="notice"></div>
-                    <div class="notice"></div>
-                    <div class="notice"></div>
-                    <div class="notice"></div>
-                    <div class="notice"></div>
-                </form>
-            </div>
-            <!-- 登入 -->
-            <div class="form-container sign-in-container">
-                <form id="signInForm">
-                    <h2>會員登入</h2>
-                    <input
-                        type="text"
-                        name="memId"
-                        id="memId"
-                        placeholder="輸入帳號"
-                    />
-                    <input
-                        type="password"
-                        name="memPsw"
-                        id="memPsw"
-                        placeholder="輸入密碼"
-                    />
-                    <span id="forgetPsw">忘記密碼?</span>
-                    <input type="button" id="signInSubmit" value="登入" />
-
-                    <div class="notice"></div>
-                    <div class="notice"></div>
-                </form>
-            </div>
-
-            <div class="overlay-container">
-                <div class="overlay">
-                    <div class="overlay-panel overlay-left">
-                        <button type="button" class="check" id="signIn">
-                            登入
-                        </button>
-                    </div>
-                    <div class="overlay-panel overlay-right">
-                        <button type="button" class="check" id="signUp">
-                            註冊
-                        </button>
-                    </div>
+                <div class="overlay-panel overlay-right">
+                    <button type="button" class="check" id="signUp">
+                        註冊
+                    </button>
                 </div>
             </div>
         </div>
-        <!-- <iframe id="header" src="./iframe.html" frameborder='0' onload="init()"></iframe> -->
+    </div>
+    <!-- <iframe id="header" src="./iframe.html" frameborder='0' onload="init()"></iframe> -->
 
-        <div id="app">
-            <!-- 購物車數字 -->
-            <my-count></my-count>
-        </div>
-
-        <input type="text" id="txt" hidden />
-        <!-- <input type="text" id="scroe">
-    <input type="text" id="bouns"> -->
-        <!-- <input type="text" id="totalPo"> -->
-        <div class="text">請努力獲取最高分</div>
-        <div class="text">選擇你最高的分數來扣抵商品金額吧！</div>
-
-        <div class="wrapper">
-            <div id="totalPo" style="color: aliceblue"></div>
-            <button class="button" id="sendPoint">點擊存進分數</button>
-        </div>
-
-        <!-- 計時器  -->
-
-        <!-- <script src="./js/game.js"></script> -->
-
-        <div id="game-box">
-            <!-- <div id="canvas"></div> -->
-        </div>
-
-        <footer>
-            <p>
-                copyright©2021 CED101G3 麻瓜特訓班.All Rights Reserved
-            </p>
-            <p>
-                本網站為緯育TibaMe_前端設計工程師班第63期學員專題成果作品 -
-                <a href="">參考資源</a>
-            </p>
-            <p>
-                <a href="https://tibamef2e.com"></a>
-                為緯育TibaMe提供給[Web/APP前端設計工程師養成班]學員展示作品之平台，若有侵權疑慮，請私訊<a href="https://www.facebook.com/webindex/">［TibaMe-前端設計工程師養成班］</a>
-            </p>
-        </footer>
-
-        <script src="js/login.js"></script>
-
-        <!-- vue -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+    <div id="app">
         <!-- 購物車數字 -->
-        <script src="./js/count_vue.js"></script>
+        <my-count></my-count>
+    </div>
 
-        <script>
-            let senPoBtn = document.getElementById('sendPoint');
-            senPoBtn.onclick = function () {
-                let xhr = new XMLHttpRequest();
-                xhr.onload = function () {
-                    let memData = JSON.parse(xhr.responseText);
-                    if (memData.memberNo) {
-                        // 如果有登入會員
-                        fetch('./php/sendPoint.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                sendP,
-                            }),
+    <input type="text" id="txt" hidden />
+    <!-- <input type="text" id="scroe">
+    <input type="text" id="bouns"> -->
+    <!-- <input type="text" id="totalPo"> -->
+    <div class="text">請努力獲取最高分</div>
+    <div class="text">選擇你最高的分數來扣抵商品金額吧！</div>
+
+    <div class="wrapper">
+        <div id="totalPo" style="color: aliceblue"></div>
+        <button class="button" id="sendPoint">點擊存進分數</button>
+    </div>
+
+    <!-- 計時器  -->
+
+    <!-- <script src="./js/game.js"></script> -->
+
+    <div id="game-box">
+
+    </div>
+
+    <div id="game-rwd">
+
+    </div>
+
+    <footer>
+        <p>
+            copyright©2021 CED101G3 麻瓜特訓班.All Rights Reserved
+        </p>
+        <p>
+            本網站為緯育TibaMe_前端設計工程師班第63期學員專題成果作品 -
+            <a href="resource.html">參考資源</a>
+        </p>
+        <p>
+            <a href="https://tibamef2e.com"></a>
+            為緯育TibaMe提供給[Web/APP前端設計工程師養成班]學員展示作品之平台，若有侵權疑慮，請私訊<a
+                href="https://www.facebook.com/webindex/">［TibaMe-前端設計工程師養成班］</a>
+        </p>
+    </footer>
+
+    <script src="js/login.js"></script>
+
+    <!-- vue -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+    <!-- 購物車數字 -->
+    <script src="./js/count_vue.js"></script>
+
+    <script>
+        let senPoBtn = document.getElementById('sendPoint');
+        senPoBtn.onclick = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                let memData = JSON.parse(xhr.responseText);
+                if (memData.memberNo) {
+                    // 如果有登入會員
+                    fetch('./php/sendPoint.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            sendP,
+                        }),
+                    })
+                        .then((res) => {
+                            console.log(res);
                         })
-                            .then((res) => {
-                                console.log(res);
-                            })
-                            .catch((err) => {
-                                console.log(err);
-                            });
-                            alert('存取成功');
-                    } else {
-                        // 如果未登入，跳出提示燈箱
-                        alert('請登入會員');
-                    }
-                };
-                xhr.open('get', 'php/getLoginData.php', true);
-                xhr.send(null);
+                        .catch((err) => {
+                            console.log(err);
+                        });
+                    alert('存取成功');
+                } else {
+                    // 如果未登入，跳出提示燈箱
+                    alert('請登入會員');
+                }
             };
-            // showLightbox: function(i) {
-            //     let xhr = new XMLHttpRequest();
-            //     xhr.onload = function () {
-            //         let memData = JSON.parse(xhr.responseText);
-            //         if (memData.memberNo) {  // 如果有登入會員
-            //             // 判斷會員是否已檢舉，傳回memberNo, registNo看是否有皆符合的檢舉編號
-            //             let xhr = new XMLHttpRequest();
-            //             xhr.onload = function () {
-            //                 if (xhr.responseText.indexOf('已檢舉') != -1) {  // 如果回傳'已檢舉'
-            //                     alert('您已檢舉');
-            //                 } else {
-            //                     // 跳燈箱
-            //                     let lightbox = document.querySelectorAll('.lightbox_wrapper');
-            //                     lightbox[i].style.display = '';
-            //                 }
-            //             }
-            //             let registNo = document.getElementsByName('registNo')[i].value;
-            //             console.log(registNo);
-            //             url = `php/memRepoData.php?registNo=${registNo}`;
-            //             xhr.open('get', url, true);
-            //             xhr.send(null);
+            xhr.open('get', 'php/getLoginData.php', true);
+            xhr.send(null);
+        };
+        // showLightbox: function(i) {
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.onload = function () {
+        //         let memData = JSON.parse(xhr.responseText);
+        //         if (memData.memberNo) {  // 如果有登入會員
+        //             // 判斷會員是否已檢舉，傳回memberNo, registNo看是否有皆符合的檢舉編號
+        //             let xhr = new XMLHttpRequest();
+        //             xhr.onload = function () {
+        //                 if (xhr.responseText.indexOf('已檢舉') != -1) {  // 如果回傳'已檢舉'
+        //                     alert('您已檢舉');
+        //                 } else {
+        //                     // 跳燈箱
+        //                     let lightbox = document.querySelectorAll('.lightbox_wrapper');
+        //                     lightbox[i].style.display = '';
+        //                 }
+        //             }
+        //             let registNo = document.getElementsByName('registNo')[i].value;
+        //             console.log(registNo);
+        //             url = `php/memRepoData.php?registNo=${registNo}`;
+        //             xhr.open('get', url, true);
+        //             xhr.send(null);
 
-            //         } else {
-            //             // 如果未登入，跳出提示燈箱
-            //             alert('請登入會員');
-            //         }
-            //     }
-            //     xhr.open('get', 'php/getLoginData.php', true);
-            //     xhr.send(null);
-            // },
+        //         } else {
+        //             // 如果未登入，跳出提示燈箱
+        //             alert('請登入會員');
+        //         }
+        //     }
+        //     xhr.open('get', 'php/getLoginData.php', true);
+        //     xhr.send(null);
+        // },
 
-            // scroll更改header背景色
-            window.addEventListener('scroll', function () {
-                let getScrollTop = document.documentElement.scrollTop;
-                let header = document.querySelector('header');
-                let carticon = document.querySelector('.num_icon');
-                if (getScrollTop > 60) {
-                    header.classList.add('-active');
-                    carticon.classList.add('-icon');
-                } else {
-                    header.classList.remove('-active');
-                    carticon.classList.remove('-icon');
-                }
-            });
-
-            let memNavInfo = new Vue({
-                el: '#memInfo',
-                data: {
-                    memData: {},
-                },
-            });
-
-            let app = new Vue({
-                el: '#app',
-                data: {
-                },
-            });
-        </script>
-
-        <script>
-            script = document.createElement('script');
-
-            rwd();
-
-            function rwd() {
-                // document.head.removeChild(document.head.lastChild);
-
-                let winWidth = $(window).width();
-                let script = '';
-                if (winWidth <= 700) {
-                    // alert(12)
-                    script = document.createElement('script');
-                    script.src = './js/game-rwd.js';
-                } else {
-                    script = document.createElement('script');
-                    script.src = './js/game.js';
-                }
-                document.head.replaceChild(script, document.head.lastChild);
+        // scroll更改header背景色
+        window.addEventListener('scroll', function () {
+            let getScrollTop = document.documentElement.scrollTop;
+            let header = document.querySelector('header');
+            let carticon = document.querySelector('.num_icon');
+            if (getScrollTop > 60) {
+                header.classList.add('-active');
+                carticon.classList.add('-icon');
+            } else {
+                header.classList.remove('-active');
+                carticon.classList.remove('-icon');
             }
+        });
+
+        let memNavInfo = new Vue({
+            el: '#memInfo',
+            data: {
+                memData: {},
+            },
+        });
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+            },
+        });
+    </script>
+
+    <script>
+        script = document.createElement('script');
+
+        rwd();
+
+        function rwd() {
+            // document.head.removeChild(document.head.lastChild);
+
+            let winWidth = $(window).width();
+            let script = '';
+            if (winWidth <= 700) {
+                // alert(12)
+                script = document.createElement('script');
+                script.src = './js/game-rwd.js';
+            } else {
+                script = document.createElement('script');
+                script.src = './js/game.js';
+            }
+            document.head.replaceChild(script, document.head.lastChild);
+        }
 
 
-        </script>
-        <!-- <script src="js/index_scroll.js"></script> -->
-    </body>
+    </script>
+    <!-- <script src="js/index_scroll.js"></script> -->
+</body>
+
 </html>

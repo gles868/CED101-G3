@@ -247,17 +247,17 @@ function speedChange() {
 
     if (c > 0 && c < 20) {
         clearInterval(creatPl);
-        speed_time = 1200;
+        speed_time = 1900;
         creatPl = setInterval(createPlatform, speed_time);
     }
     if (c >= 2000 && c <= 2010) {
         clearInterval(creatPl);
-        speed_time = 800;
+        speed_time = 1200;
         creatPl = setInterval(createPlatform, speed_time);
     }
     if (c > 3000 && c <= 3010) {
         clearInterval(creatPl);
-        speed_time = 600;
+        speed_time = 900;
         creatPl = setInterval(createPlatform, speed_time);
     }
 }
