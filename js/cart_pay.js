@@ -312,10 +312,6 @@ window.addEventListener('load', function () {
                     bus.$emit('getAlert', '請選擇付款方式');
                     return;
                 }
-                // if (this.deliveryaddress != '' && this.paymentmethod != '') {
-                //     console.log(11111);
-                //     window.location.href = './payStepDone.html';
-                // }
 
                 const res = await fetch('./php/order_details.php', {
                     method: 'POST',
@@ -336,6 +332,12 @@ window.addEventListener('load', function () {
                     }),
                 });
                 console.log(this.mem_info.memberNo);
+                if (this.deliveryaddress != '' && this.paymentmethod != '') {
+                    window.location.href = './payStepDone.html';
+                }
+                storage['count'] = '0';
+                storage['addItemList'] = '';
+                storage['total'] = '';
             },
 
             // about付款
