@@ -1,6 +1,4 @@
 <?php
-
-        // 判斷是否有登入
         session_start();
         $lovedrow = array();
         require_once "./php/connect_ced101g3.php";
@@ -18,7 +16,6 @@
         }else{
             $lovedrow = [];
         };
-        //判斷是否有收藏
        require_once "./php/connect_ced101g3.php";
         $sql = "select * from course where courseNo = ? ";
         $allcourse = $pdo->prepare($sql);
@@ -33,7 +30,6 @@
         };
 
 
-        //取得教師資訊
         require_once "./php/connect_ced101g3.php";
         $sql = "SELECT * from course JOIN class on course.courseNo = class.courseNo
                             JOIN teacher on class.teachNo = teacher.teachNo
@@ -42,7 +38,7 @@
         $allteacher->bindValue(1, $_GET["courseNo"]);
         $allteacher->execute();
         $teacherRow = $allteacher->fetch(PDO::FETCH_ASSOC);
-        //取得課程道具
+
         require_once "./php/connect_ced101g3.php";
         $sql = "SELECT c.courseNo, p.proImg, p.proName
                     from course c join product p on c.courseNo = p.courseNo
@@ -59,13 +55,11 @@
                 $row['proName'],
             );
         }
-        //取得推薦課程
         require_once "./php/connect_ced101g3.php";
         $sql = "select c.courseNo, c.courseName, c.courseImg, c.coursePrice, t.courTypeName
                     from course c join coursetype t on c.courTypeNo = t.courTypeNo
                     order by rand() LIMIT 3";
         $allcard = $pdo->prepare($sql);
-        // $allcard->bindValue(1, $_GET["courseNo"]);
         $allcard->execute();
         $cardRow = $allcard->fetchAll(PDO::FETCH_ASSOC);
 
@@ -438,9 +432,7 @@
             },
 
             methods: {
-                click() {
-                    alert('hi')
-                },
+               
                 get_mar: async function () {
 
                     // this.group_ord_no = window.location.search.split("=")[1];
