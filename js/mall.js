@@ -16,7 +16,7 @@ window.addEventListener('load', function () {
             return {
                 items: '',
                 shop_price: '',
-                memberno: 5,
+                memberno: '',
                 fav: '',
             };
         },
@@ -67,6 +67,23 @@ window.addEventListener('load', function () {
     </div>
       `,
         methods: {
+            getMemDatafunc: async function () {
+                await fetch('./php/check_mem.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    // body: JSON.stringify({ drink_no: item.drink_no }),
+                })
+                    .then((res) => res.json())
+                    .then((res) => (this.memberno = res.memberNo));
+                console.log(this.memberno);
+                //沒抓到會員資料導回首頁
+                if (this.memberno == undefined) {
+                    alert('記得登入才可以收藏ㄛ！');
+                }
+            },
+
             // 關燈箱
             closelightbox: function () {
                 this.$emit('closelightbox', false);
@@ -74,7 +91,7 @@ window.addEventListener('load', function () {
             addToStorage(proNo, proPrice) {
                 if (storage[proNo]) {
                     // console.log('000');
-                    alert('You have checked.');
+                    alert('已經加入購物車囉！');
                 } else {
                     storage[proNo] = `${proNo}|${proPrice}|1`;
                     // storage['addItemList'] += `${proNo},`;
@@ -176,6 +193,7 @@ window.addEventListener('load', function () {
         updated() {},
         created() {
             // console.log("----")
+            this.getMemDatafunc();
             this.get_data(this.itemno);
             this.changeheart();
             this.get_favlist(this.itemno);
