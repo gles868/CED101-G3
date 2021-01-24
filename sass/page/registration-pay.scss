@@ -11,11 +11,13 @@
 .highlight {
     position: relative;
 }
+
 #myForm5 {
     color: #ffffff;
     font-size: 18px;
     text-shadow: 0 0 0.3em #582058, 0 0 0.3em #582058, 0 0 0.3em #863186;
 }
+
 h4 {
     font-size: 24px;
     width: 60%;
@@ -53,7 +55,7 @@ h4 {
     color: white;
 }
 
-.btn-light > img {
+.btn-light>img {
     width: 61px;
     height: auto;
     margin-bottom: 10px;
@@ -95,20 +97,24 @@ input[type='email'] {
 select {
     width: 100px;
 }
+
 .pay_creditCard_number {
     margin-top: 15px;
 }
+
 .pay_creditCard_date {
     margin-top: 15px;
 }
+
 .pay_creditCard_last {
     margin-top: 15px;
 }
+
 .pay_mail {
     margin-top: 15px;
 }
 
-.pay_creditCard_number > input {
+.pay_creditCard_number>input {
     width: 60px;
 }
 
@@ -154,8 +160,8 @@ ul {
     color: white;
 }
 
-#end2 > div > span,
-#end2 > div > p {
+#end2>div>span,
+#end2>div>p {
     font-size: 14px;
 }
 
@@ -176,11 +182,13 @@ ul {
     text-shadow: 0 0 0.2em #5c1f5c, 0 0 0.2em #5c1f5c, 0 0 0.2em #5c1f5c;
     font-size: 18px;
     z-index: 999;
+
     @media (max-width: 501px) {
         width: 400px;
         left: 60%;
         padding: 10px;
     }
+
     @media (max-width: 376px) {
         width: 350px;
         left: 70%;
@@ -188,6 +196,7 @@ ul {
         padding: 5px;
     }
 }
+
 .border-input {
     outline: none;
 }
@@ -195,16 +204,19 @@ ul {
 #card_back_num {
     outline: none;
 }
+
 .pay_creditCard_date {
     select {
         outline: none;
     }
 }
+
 .pay_mail {
     input {
         outline: none;
     }
 }
+
 .ATM {
     width: 500px;
     margin: 0 auto;
@@ -219,10 +231,12 @@ ul {
     box-shadow: 3px 2px 2px 4px #a861a8cb;
     opacity: 0;
     z-index: 999;
+
     @media (max-width: 501px) {
         width: 400px;
         left: 60%;
     }
+
     @media (max-width: 376px) {
         width: 350px;
         left: 70%;
@@ -252,14 +266,17 @@ ul {
     color: #ffffff;
     line-height: 50px;
     text-shadow: 0 0 0.2em #863186, 0 0 0.2em #863186, 0 0 0.2em #863186;
+
     @media (max-width: 1200px) {
         width: 70%;
         margin: 0 auto;
     }
+
     @media (max-width: 500px) {
         width: 80%;
         font-size: 18px;
     }
+
     // @media (max-width: 376px) {
     //     width: 90%;
     // }
@@ -305,6 +322,11 @@ ul {
     }
 }
 
+.help-block {
+    color: #ff0000;
+    text-shadow: 0 0 0;
+}
+
 .table {
     line-height: 40px;
 }
@@ -324,6 +346,7 @@ ul {
     .col-lg-4 {
         display: none;
     }
+
     h4 {
         width: 80%;
     }
