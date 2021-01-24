@@ -1,6 +1,6 @@
 <?php
 
-        //取得課程資訊
+        // 判斷是否有登入
         session_start();
         $lovedrow = array();
         require_once "./php/connect_ced101g3.php";
@@ -18,7 +18,7 @@
         }else{
             $lovedrow = [];
         };
-        
+        //判斷是否有收藏
        require_once "./php/connect_ced101g3.php";
         $sql = "select * from course where courseNo = ? ";
         $allcourse = $pdo->prepare($sql);
@@ -32,8 +32,6 @@
             $res = "";
         };
 
-        // echo $_GET["courseNo"],$lovedrow;
-        // print_r($lovedrow);
 
         //取得教師資訊
         require_once "./php/connect_ced101g3.php";
@@ -215,7 +213,8 @@
         </section>
 
         <section class="calendar">
-            <p class="calendar_title">請點擊課程報名</p>
+            <p class="calendar_title">請點擊課程報名 <i class="fas fa-arrow-circle-down"></i>
+            </p>
             <div id='calendar'></div>
         </section>
 
