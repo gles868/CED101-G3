@@ -243,9 +243,6 @@ window.addEventListener('scroll', function () {
     let getScrollTop = document.documentElement.scrollTop;
     let header = document.querySelector('header');
     let carticon = document.querySelector('.num_icon');
-
-    console.log(getScrollTop);
-
     if (getScrollTop > 60) {
         header.classList.add('-active');
         carticon.classList.add('-icon');
