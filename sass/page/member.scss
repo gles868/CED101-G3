@@ -422,6 +422,7 @@ header nav .menu_toggle .nav-right li #logout {
     align-items: center;
     text-align: center;
     border-bottom: 1px dotted ivory;
+    padding: 10px 0;
 }
 .CFD_Top {
     display: flex;
@@ -454,6 +455,10 @@ header nav .menu_toggle .nav-right li #logout {
 .tab-content-2,
 .tab-content-3 {
     background-color: rgba(170, 170, 170, 0.5);
+    .text_null {
+        // border: 1px solid red;
+        width: 100%;
+    }
 }
 
 .CRD_Text {
@@ -469,8 +474,8 @@ header nav .menu_toggle .nav-right li #logout {
     }
 }
 .courseCancel {
-    position: relative;
-    width: 15%;
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 992px) {
@@ -528,7 +533,7 @@ header nav .menu_toggle .nav-right li #logout {
     }
 }
 
-// --------已完課--------
+// --------已完課評論lightbox--------
 .lightbox_black {
     position: fixed;
     top: 0;
@@ -741,7 +746,19 @@ input {
     }
     #input-container {
         input {
-            width: 250px;
+            width: 180px;
+        }
+    }
+}
+
+@media (max-width: 376px) {
+    .lightbox_black {
+        .lightbox {
+            width: 310px;
+            height: 420px;
+            .manager_lightbox_close {
+                margin-bottom: 20px;
+            }
         }
     }
 }
@@ -771,6 +788,9 @@ input {
     background-color: rgba(170, 170, 170, 0.5);
     width: 80%;
     margin: 0 auto;
+    .text_null {
+        width: 100%;
+    }
 }
 
 .memKeepCourseBtn {
@@ -919,22 +939,21 @@ input {
                 .MOL_Contentbox {
                     display: flex;
                     width: 100%;
-                    // border: 1px solid red;
                     .orederNo {
                         // border: 1px solid green;
-                        width: 15% !important;
+                        width: 15%;
                     }
                     .orderPay {
                         // border: 1px solid blue;
-                        width: 25% !important;
+                        width: 25%;
                     }
                     .orderAddress {
                         // border: 1px solid orange;
-                        width: 40% !important;
+                        width: 40%;
                     }
                     .orderTotal {
                         // border: 1px solid pink;
-                        width: 20% !important;
+                        width: 20%;
                     }
                 }
             }
@@ -963,13 +982,13 @@ input {
         }
     }
 }
-.memOrderContent {
-    .MOC_top {
-        h4 {
-            font-size: 20px;
-        }
+
+.MOC_top {
+    h4 {
+        font-size: 20px;
     }
 }
+
 @media (max-width: 768px) {
     .memOrederList {
         h4 {
@@ -987,39 +1006,42 @@ input {
     .accordion-item {
         width: 100%;
         .accordion-header {
-            width: 100%;
-            display: flex;
-            .accordion-button {
+            border: 1px solid black;
+            // width: 100% !important;
+            .accordion-button > div {
+                // border: 1px solid yellow;
+                display: flex !important;
+                // flex-direction: column;
                 width: 100%;
                 color: white;
                 text-shadow: 0 0 0.3em blue, 0 0 0.3em blue, 0 0 0.3em blue;
                 .MOL_Intextbox {
                     // border: 1px solid red;
                     text-align: left;
-                    width: 100%;
+                    width: 40% !important;
                     font-size: 16px;
-                    margin: 10px auto;
+                    margin: 0 !important;
                     display: flex;
                     flex-direction: column;
                     .orederNo,
                     .orderPay,
                     .orderAddress,
                     .orderTotal {
-                        width: 70%;
                         margin: 10px auto;
                     }
                 }
                 .MOL_Contentbox {
-                    margin-left: -50px;
+                    // border: 1px solid black;
+                    width: 100% !important;
+                    padding-left: 20px;
                     flex-direction: column;
                     font-size: 16px;
                     .orederNo,
                     .orderPay,
                     .orderAddress,
                     .orderTotal {
-                        // border: 1px solid green;
-                        width: 100%;
-                        margin: 10px auto;
+                        width: 100% !important;
+                        margin: 0 !important;
                         text-align: left;
                     }
                 }
@@ -1031,17 +1053,20 @@ input {
     }
 }
 
-//訂單明細
+//
+.MOC_title {
+    text-shadow: 0 0 0.3em purple, 0 0 0.3em purple, 0 0 0.3em purple;
+    margin: 20px auto;
+    color: white;
+    text-align: center;
+    // border: 1px solid red;
+}
 .memOrderContent {
     width: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
     color: white;
-}
-.MOC_title {
-    text-shadow: 0 0 0.3em purple, 0 0 0.3em purple, 0 0 0.3em purple;
-    margin-bottom: 20px;
 }
 .MOC_bottomContent {
     display: flex;
@@ -1152,8 +1177,6 @@ input {
     }
     .memheadCG {
         cursor: pointer;
-        // border: 1px solid black;
-        // background: rgba(0, 0, 0, 0.5);
         background: rgba(255, 255, 255, 0.5);
         width: 15%;
         // height: 15%;
@@ -1162,6 +1185,7 @@ input {
         position: absolute;
         text-align: center;
         bottom: 0;
+        padding: 5px;
         right: 10%;
         box-shadow: 0 0 0.4em white, 0 0 0.4em white, 0 0 0.4em white;
         label {
@@ -1195,10 +1219,10 @@ input {
                     line-height: 2rem;
                     margin: 20px;
                     .MIF_Left {
-                        width: 25%;
+                        width: 30%;
                     }
                     .MIF_Right {
-                        width: 50%;
+                        width: 60%;
                     }
                 }
                 .memInfoBtn {
@@ -1236,19 +1260,15 @@ input {
     }
 }
 @media (max-width: 992px) {
-    .memheadBox {
-        // .memhead{
-        //   img {
-        //   }
-        // }
-        .memheadCG {
-            i {
-                font-size: 18px;
-                margin-top: -8px;
-                margin-left: -8px;
-            }
-        }
-    }
+    // .memheadBox {
+    //     .memheadCG {
+    //         i {
+    //             font-size: 18px;
+    //             margin-top: -8px;
+    //             margin-left: -8px;
+    //         }
+    //     }
+    // }
 
     .memInfoFormOut {
         padding: 0px;
@@ -1260,18 +1280,6 @@ input {
     }
 }
 @media (max-width: 768px) {
-    .memheadBox {
-        // .memhead{
-        //   img {
-        //   }
-        // }
-        .memheadCG {
-            i {
-                font-size: 16px;
-            }
-        }
-    }
-
     .memInfoOut {
         h5 {
             font-size: 16px;
@@ -1281,45 +1289,52 @@ input {
         .memInfoFormOut {
             .memInfoForm {
                 width: 100%;
-                .MIF_Data {
-                    margin: 5px 0px;
-                }
             }
         }
     }
 }
 
 @media (max-width: 576px) {
-    .memheadBox {
-        // .memhead{
-        //   img {
-        //   }
-        // }
-        .memheadCG {
-            i {
-                font-size: 20px;
-                margin-top: -10px;
-                margin-left: -10px;
-            }
+    .memInfo {
+        flex-direction: column;
+        .memInfoLeft {
+            width: 100%;
         }
-    }
-    .memInfoRight {
-        width: 90%;
-        .memInfoFormOut {
-            .memInfoForm {
-                .MIF_Data {
-                    margin-bottom: 1rem;
+        .memInfoRight {
+            // border: 1px solid rebeccapurple;
+            width: 100%;
+            .MIF_Data {
+                margin-bottom: 1rem;
+                // border: 1px solid orange;
+                flex-direction: column;
+                width: 90% !important;
+                margin: 0 auto;
+                .MIF_Left {
+                    // border: 1px solid blue;
+                    width: 100% !important;
+                }
+                .MIF_Right {
+                    // border: 1px solid red;
+                    width: 100% !important;
                 }
             }
         }
     }
-    .memInfo {
-        flex-direction: column;
-        align-items: center;
-        .memInfoLeft {
-            width: 90%;
-        }
-    }
+}
+@media (max-width: 375px) {
+    // .MIF_Data {
+    //     border: 1px solid orange;
+    //     flex-direction: column;
+    //     width: 100%;
+    //     .MIF_Left {
+    //         border: 1px solid blue;
+    //         width: 100%;
+    //     }
+    //     .MIF_Right {
+    //         border: 1px solid red;
+    //         width: 100%;
+    //     }
+    // }
 }
 
 //警示燈箱
@@ -1365,6 +1380,10 @@ input {
 
     @media screen and (max-width: 576px) {
         padding: 60px 50px 40px 50px;
+    }
+    @media (max-width: 376px) {
+        padding: 0px;
+        margin-top: 40px;
     }
 
     div:first-child {
