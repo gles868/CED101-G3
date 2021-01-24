@@ -11,7 +11,11 @@
 .highlight {
     position: relative;
 }
-
+#myForm5 {
+    color: #ffffff;
+    font-size: 18px;
+    text-shadow: 0 0 0.3em #582058, 0 0 0.3em #582058, 0 0 0.3em #863186;
+}
 h4 {
     font-size: 24px;
     width: 60%;
@@ -23,12 +27,16 @@ h4 {
 
 .btn-info {
     float: right;
-    background-color: #ffffff;
-    color: #863186;
+    width: 60px;
+    background-color: #f33494;
+    color: #fff;
     padding: 3px 5px 3px 5px;
     text-align: center;
-    border: 3px solid #863186;
+    border: 1px solid palevioletred;
     border-radius: 5px;
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+    cursor: pointer;
+    font-size: 18px;
 }
 
 .btn-light {
@@ -57,19 +65,21 @@ h4 {
     margin-bottom: 35px;
     margin-left: 50px;
     margin-right: 50px;
+    line-height: 50px;
 }
 
 #goS2,
 #goS3 {
     float: right;
-
-    /* margin-bottom: 120px; */
-    background-color: #ffffff;
-    color: #863186;
+    width: 60px;
+    background-color: #f33494;
+    color: #fff;
     padding: 3px 5px 3px 5px;
     text-align: center;
-    border: 3px solid #863186;
+    border: 1px solid palevioletred;
     border-radius: 5px;
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+    cursor: pointer;
 }
 
 #goS1 {
@@ -84,6 +94,18 @@ input[type='email'] {
 
 select {
     width: 100px;
+}
+.pay_creditCard_number {
+    margin-top: 15px;
+}
+.pay_creditCard_date {
+    margin-top: 15px;
+}
+.pay_creditCard_last {
+    margin-top: 15px;
+}
+.pay_mail {
+    margin-top: 15px;
 }
 
 .pay_creditCard_number > input {
@@ -147,22 +169,65 @@ ul {
     padding: 20px;
     margin-top: -150px;
     margin-left: -250px;
-    background-color: rgb(255, 255, 255);
+    background: radial-gradient(100% 100% at bottom center, #e8bef1, #9db7cf);
+    box-shadow: 3px 2px 2px 4px #a861a8cb;
     opacity: 0;
+    color: #fff;
+    text-shadow: 0 0 0.2em #5c1f5c, 0 0 0.2em #5c1f5c, 0 0 0.2em #5c1f5c;
+    font-size: 18px;
+    z-index: 999;
+    @media (max-width: 501px) {
+        width: 400px;
+        left: 60%;
+        padding: 10px;
+    }
+    @media (max-width: 376px) {
+        width: 350px;
+        left: 70%;
+        top: 40%;
+        padding: 5px;
+    }
+}
+.border-input {
+    outline: none;
 }
 
+#card_back_num {
+    outline: none;
+}
+.pay_creditCard_date {
+    select {
+        outline: none;
+    }
+}
+.pay_mail {
+    input {
+        outline: none;
+    }
+}
 .ATM {
     width: 500px;
     margin: 0 auto;
     border-radius: 20px;
     position: fixed;
-    top: 50%;
+    top: 60%;
     left: 50%;
     padding: 20px;
     margin-top: -190px;
     margin-left: -250px;
-    background-color: rgb(255, 255, 255);
+    background: radial-gradient(100% 100% at bottom center, #e8bef1, #9db7cf);
+    box-shadow: 3px 2px 2px 4px #a861a8cb;
     opacity: 0;
+    z-index: 999;
+    @media (max-width: 501px) {
+        width: 400px;
+        left: 60%;
+    }
+    @media (max-width: 376px) {
+        width: 350px;
+        left: 70%;
+        padding: 10px;
+    }
 }
 
 .pay_close {
@@ -195,9 +260,9 @@ ul {
         width: 80%;
         font-size: 18px;
     }
-    @media (max-width: 376px) {
-        width: 90%;
-    }
+    // @media (max-width: 376px) {
+    //     width: 90%;
+    // }
 }
 
 .pay-type {

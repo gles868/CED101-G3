@@ -71,3 +71,24 @@
         left: 77.5%;
     }
 }
+
+//卷軸
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #75517d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #75517d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #1b2947;
+}

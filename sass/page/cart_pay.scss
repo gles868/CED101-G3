@@ -100,8 +100,17 @@ div.confirm_data_box {
             display: flex;
             justify-content: space-around;
             padding: 10px;
+            @media (max-width: 376px) {
+                width: 90%;
+            }
             .name {
                 width: 70%;
+            }
+            .title {
+                @media (max-width: 376px) {
+                    width: 80%;
+                    text-align: left;
+                }
             }
         }
         .phone_box {
@@ -209,8 +218,8 @@ div.cartpro_box {
                         width: 25%;
                         margin-top: 15px;
                     }
-                    @media (max-width: 375px) {
-                        width: 40%;
+                    @media (max-width: 376px) {
+                        width: 50%;
                     }
                 }
             }
@@ -280,9 +289,7 @@ div.deliver_box {
 
 // 總額
 div.total_box {
-    border: 1px solid red;
     display: flex;
-
     width: 60%;
     margin: 0 auto;
     align-items: center;
@@ -296,63 +303,83 @@ div.total_box {
     }
     .before_total {
         display: flex;
+        font-size: 20px;
+        align-items: center;
+        color: #ffffff;
+        text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+        .totaltext1 {
+            width: 125px;
+            text-align: center;
+            align-content: center;
+        }
         .total_photoandtext {
-            font-size: 20px;
-
-            // align-items: center;
+            width: 30px;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        .total_text {
+            font-size: 18px;
             color: #ffffff;
             text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
         }
         img {
             width: 30px;
             margin-right: 10px;
-            margin-top: 10px;
-        }
-        .total_text {
-            font-size: 18px;
-            color: #ffffff;
-            margin-left: 10px;
-            text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
         }
     }
     .after_total {
         display: flex;
-        margin: 0 auto;
-        border: 1px solid red;
+        font-size: 20px;
+        align-items: center;
+        color: #ffffff;
+        text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+        .totaltext1 {
+            width: 125px;
+            text-align: center;
+            align-content: center;
+        }
         .total_photoandtext {
-            font-size: 20px;
-            align-items: center;
-            color: #ffffff;
-            text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+            width: 30px;
+            margin-top: 10px;
+            margin-right: 10px;
         }
         .total_text {
             font-size: 18px;
             color: #ffffff;
-            margin-left: 10px;
             text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+        }
+        img {
+            width: 30px;
+            margin-right: 10px;
         }
     }
     .dis_total {
         display: flex;
 
+        font-size: 20px;
+        align-items: center;
+        color: #ffffff;
+        text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
+        @media (max-width: 376px) {
+            margin-bottom: 30px;
+        }
+
+        .totaltext1 {
+            width: 125px;
+        }
         .total_photoandtext {
-            font-size: 20px;
-            align-items: center;
-            color: #ffffff;
-            text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
-            img {
-                width: 30px;
-            }
+            width: 30px;
+            margin-top: 10px;
+            margin-right: 10px;
         }
         .total_text {
             font-size: 18px;
             color: #ffffff;
-            margin-left: 10px;
             text-shadow: 0 0 0.3em #863186, 0 0 0.3em #863186, 0 0 0.3em #863186;
-            img {
-                width: 30px;
-                margin-right: 10px;
-            }
+        }
+        img {
+            width: 30px;
+            margin-right: 10px;
         }
     }
 }
@@ -382,6 +409,7 @@ div.total_box {
         line-height: 30px;
     }
 }
+
 // =================================================================
 .star,
 .planet {
@@ -489,5 +517,11 @@ div.total_box {
         @media screen and (max-width: 576px) {
             width: 70%;
         }
+    }
+}
+.highlight {
+    @media (max-width: 376px) {
+        width: 80%;
+        margin-left: 40px;
     }
 }
