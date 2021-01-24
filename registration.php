@@ -23,12 +23,10 @@
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/course_pay.css" />
     <link rel="shortcut icon" href="img/favicon-logo.ico" type="image/x-icon">
-
     <link rel="stylesheet" href="css/registration-pay.css" />
     <link rel="stylesheet" href="./css/btn.css" />
     <script src="./js/button.js"></script>
     <!-- <script src="./js/count_vue.js"></script> -->
-
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script> -->
     <title>麻瓜特訓班 | 確認購買與選擇付款方式</title>
     <style>
