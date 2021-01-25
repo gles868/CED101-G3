@@ -621,7 +621,8 @@ Vue.component('back-course', {
         //關閉"編輯課程"燈箱，同時重新渲染畫面
         courseeditlightbox() {
             this.course_edit_lightbox = false;
-            this.get_course();
+            setTimeout(this.get_course, 100);
+            // this.get_course();
         },
         //點擊"新增" 開啟新增課程燈箱
         course_add() {
@@ -682,7 +683,7 @@ Vue.component('course_edit', {
             <div class="addcoursecon">
                 <div class="acc_title">課程圖片</div>
                 <!-- <img :src="courseImg" alt="" > -->
-                <input id="file" type="file" class="acc_con"  />
+                <input id="upFile" type="file" class="acc_con"  />
             </div>
             <div class="addcoursecon">
                 <div class="acc_title">課程描述</div>
@@ -777,22 +778,47 @@ Vue.component('course_edit', {
                 return '';
             }
 
-            const res = await fetch('./php/back_course_update_one.php', {
-                method: 'POST',
-                mode: 'same-origin',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    courseNo: this.courseNo,
-                    courTypeNo: courTypeNo,
-                    courseName: courseName,
-                    courseImg: courseImg,
-                    courseDescription: courseDescription,
-                    coursePrice: coursePrice,
-                }),
-            });
+            // const res = await fetch('./php/back_course_update_one.php', {
+            //     method: 'POST',
+            //     mode: 'same-origin',
+            //     credentials: 'same-origin',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({
+            //         courseNo: this.courseNo,
+            //         courTypeNo: courTypeNo,
+            //         courseName: courseName,
+            //         courseImg: courseImg,
+            //         courseDescription: courseDescription,
+            //         coursePrice: coursePrice,
+            //     }),
+            // });
+
+            // 上傳會員照片 -----------------------
+            let file_2 = document.getElementById('upFile').files[0];
+            let formData = new FormData();
+            formData.append('courseNo', this.courseNo);
+            formData.append('courTypeNo', this.courTypeNo);
+            formData.append('courseName', this.courseName);
+            formData.append('coursePrice', this.coursePrice);
+            formData.append('courseDescription', this.courseDescription);
+
+            formData.append('upFile', file_2);
+
+            //=====ajax
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    console.log(xhr.responseText);
+                    // bus.$emit('getAlert', '上傳照片成功!!');
+                } else {
+                    // alert(xhr.status);
+                }
+            };
+            xhr.open('post', './php/back_course_update_one.php');
+            xhr.send(formData);
+
             //關燈箱
             this.changelightbox();
         },
@@ -1208,7 +1234,8 @@ Vue.component('back-mall', {
         //關閉"編輯商品"燈箱，同時重新渲染畫面
         proeditlightbox() {
             this.pro_edit_lightbox = false;
-            this.get_pro();
+            // this.get_pro();
+            setTimeout(this.get_pro, 100);
         },
         //點擊"新增" 開啟新增商品燈箱
         pro_add() {
@@ -1217,7 +1244,8 @@ Vue.component('back-mall', {
         //關閉"新增商品"燈箱，同時重新渲染畫面
         proaddlightbox() {
             this.pro_add_lightbox = false;
-            this.get_pro();
+            // this.get_pro();
+            setTimeout(this.get_pro, 100);
         },
     },
     // template 渲染前 會先去執行以下函式
@@ -1241,6 +1269,7 @@ Vue.component('back-mall', {
                 error_text_des: '',
                 error_text_price: '',
                 updatecourseNo: '',
+                proType: '',
             };
         },
         props: ['proNo'],
@@ -1257,11 +1286,9 @@ Vue.component('back-mall', {
             </div>
             <div class="addcoursecon">
                 <div class="acc_title">選擇課程</div>
-                <select name="courseNo" id="courseNo" class="acc_con" v-model="courseNo" >
+                <select name="courseNo" id="courseNo"   class="acc_con" v-model="courseNo" >
                     <option v-for="(value,key) in courses">
-                    {{value.courseNo}},
-                    {{changecourTypeNo(value.courTypeNo)}},
-                    {{value.courseName}}</option>
+                    {{value.courseNo}},{{changecourTypeNo(value.courTypeNo)}},{{value.courseName}}</option>
                 </select>
             </div>
             <div class="addcoursecon">
@@ -1277,7 +1304,7 @@ Vue.component('back-mall', {
             <div class="addcoursecon">
                 <div class="acc_title">商品圖片</div>
                 <!-- <img :src="proImg" alt="" > -->
-                <input id="file" type="file" class="acc_con"  />
+                <input id="upFile" type="file" class="acc_con"  />
             </div>
             <div class="addcoursecon">
                 <div class="acc_title">商品描述</div>
@@ -1333,6 +1360,12 @@ Vue.component('back-mall', {
                     return '輔助型';
                 }
             },
+            //切換類型
+            changeType(event) {
+                if (event.currentTarget.value) {
+                }
+            },
+
             //點擊 確認修改後將資料傳至DB
             edit_pro_func: async function (courseNo, proName, proImg, proDescription, proPrice) {
                 console.log(courseNo, proName, proImg, proDescription, proPrice);
@@ -1366,22 +1399,48 @@ Vue.component('back-mall', {
                     return '';
                 }
 
-                const res = await fetch('./php/back_pro_update_one.php', {
-                    method: 'POST',
-                    mode: 'same-origin',
-                    credentials: 'same-origin',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        proNo: this.proNo,
-                        courseNo: this.updatecourseNo,
-                        proName: proName,
-                        proImg: proImg,
-                        proDescription: proDescription,
-                        proPrice: proPrice,
-                    }),
-                });
+                // const res = await fetch('./php/back_pro_update_one.php', {
+                //     method: 'POST',
+                //     mode: 'same-origin',
+                //     credentials: 'same-origin',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //     },
+                //     body: JSON.stringify({
+                //         proNo: this.proNo,
+                //         courseNo: this.updatecourseNo,
+                //         proName: proName,
+                //         proDescription: proDescription,
+                //         proPrice: proPrice,
+                //         proType: this.proType,
+                //     }),
+                // });
+
+                // 上傳會員照片 -----------------------
+                let file_2 = document.getElementById('upFile').files[0];
+                let formData = new FormData();
+                formData.append('proNo', this.proNo);
+                formData.append('courseNo', this.updatecourseNo);
+                formData.append('proName', proName);
+                formData.append('proDescription', proDescription);
+                formData.append('proPrice', proPrice);
+                formData.append('proType', this.proType);
+
+                formData.append('upFile', file_2);
+
+                //=====ajax
+                let xhr = new XMLHttpRequest();
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        console.log(xhr.responseText);
+                        // bus.$emit('getAlert', '上傳照片成功!!');
+                    } else {
+                        // alert(xhr.status);
+                    }
+                };
+                xhr.open('post', './php/back_pro_update_one.php');
+                xhr.send(formData);
+
                 //關燈箱
                 this.changelightbox();
             },
@@ -1397,6 +1456,7 @@ Vue.component('back-mall', {
         watch: {
             courseNo() {
                 this.updatecourseNo = this.courseNo.split(',')[0];
+                this.proType = this.courseNo.split(',')[1];
             },
         },
     });
@@ -1560,118 +1620,119 @@ Vue.component('pro_add', {
     watch: {
         courseNo() {
             this.updatecourseNo = this.courseNo.split(',')[0];
+            this.proType = this.courseNo.split(',')[1];
         },
     },
 });
 
 // ==========遊戲管理============
-Vue.component('back-game', {
-    data() {
-        return {
-            //撈出來的 遊戲規則資料
-            games: '',
-            lightbox: false,
-            lightbox_game_no: '',
-            lightbox_status: '',
-            lightbox_text: '',
-        };
-    },
-    props: [],
+// Vue.component('back-game', {
+//     data() {
+//         return {
+//             //撈出來的 遊戲規則資料
+//             games: '',
+//             lightbox: false,
+//             lightbox_game_no: '',
+//             lightbox_status: '',
+//             lightbox_text: '',
+//         };
+//     },
+//     props: [],
 
-    template: `
-  <div class="right-block_game">
-                <div class="right-block">
-                    <div class="main">
-                        <h2>小遊戲管理</h2>
-                        <div class="form-wrap">
-                            <div class="add-bar">
-                                <input type="text" id="scoreMin" placeholder="得分下限" />
-                                <input type="text" id="scoreMax" placeholder="得分上限" />
-                                <input type="text" id="memGamePoint" placeholder="獲得點數" />
-                                <button type="button" id="add" name="button" class="add-btn">新增</button>
-                            </div>
-                            <div class="content-list">
-                                <table>
-                                    <tr>
-                                        <th>編號</th>
-                                        <th>得分下限</th>
-                                        <th>得分上限</th>
-                                        <th>獲得點數</th>
-                                        <th>啟用</th>
-                                    </tr>
-                                    <tr v-for="(value,key) in games">
-                                        <td>{{value.gameruleNo}}</td>
-                                        <td>{{value.scoreMin}}</td>
-                                        <td>{{value.scoreMax}}</td>
-                                        <td>{{value.scoreMin}}<=Point<={{value.scoreMax}}</td>
-                                        <td>
-                                            <div class="button" @click="lightbox_show(value.gameruleNo,value.gameStatus)">
-                                                <input type="checkbox" v-model="value.ischecked" />
-                                                <label ></label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div class="lightbox_black" v-if="lightbox">
-                                    <div class="lightbox" >
-                                        <div class="manager_lightbox_close" @click="lightbox = false"><img src="./img/close.png"></div>
-                                        <div>確定要將  遊戲規則 - <span>{{lightbox_game_no}}號 </span><span>{{lightbox_text}}</span>嗎??</div>
-                                        <div @click="change_status(lightbox_game_no,lightbox_status)">確定修改</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-  `,
-    methods: {
-        //呼叫php程式，取回 管理員帳號 相關資料，並用json()轉回一般陣列
-        get_game: async function () {
-            const res = await fetch('./php/back_game.php', {}).then(function (data) {
-                return data.json();
-            });
-            // 取回res值後，呼叫另一隻函式
-            this.games = res;
-        },
-        // 點擊修改後，顯示燈箱 並帶入值
-        lightbox_show: function (gameruleNo, gameStatus) {
-            this.lightbox = true;
-            this.lightbox_game_no = gameruleNo;
+//     template: `
+//   <div class="right-block_game">
+//                 <div class="right-block">
+//                     <div class="main">
+//                         <h2>小遊戲管理</h2>
+//                         <div class="form-wrap">
+//                             <div class="add-bar">
+//                                 <input type="text" id="scoreMin" placeholder="得分下限" />
+//                                 <input type="text" id="scoreMax" placeholder="得分上限" />
+//                                 <input type="text" id="memGamePoint" placeholder="獲得點數" />
+//                                 <button type="button" id="add" name="button" class="add-btn">新增</button>
+//                             </div>
+//                             <div class="content-list">
+//                                 <table>
+//                                     <tr>
+//                                         <th>編號</th>
+//                                         <th>得分下限</th>
+//                                         <th>得分上限</th>
+//                                         <th>獲得點數</th>
+//                                         <th>啟用</th>
+//                                     </tr>
+//                                     <tr v-for="(value,key) in games">
+//                                         <td>{{value.gameruleNo}}</td>
+//                                         <td>{{value.scoreMin}}</td>
+//                                         <td>{{value.scoreMax}}</td>
+//                                         <td>{{value.scoreMin}}<=Point<={{value.scoreMax}}</td>
+//                                         <td>
+//                                             <div class="button" @click="lightbox_show(value.gameruleNo,value.gameStatus)">
+//                                                 <input type="checkbox" v-model="value.ischecked" />
+//                                                 <label ></label>
+//                                             </div>
+//                                         </td>
+//                                     </tr>
+//                                 </table>
+//                                 <div class="lightbox_black" v-if="lightbox">
+//                                     <div class="lightbox" >
+//                                         <div class="manager_lightbox_close" @click="lightbox = false"><img src="./img/close.png"></div>
+//                                         <div>確定要將  遊戲規則 - <span>{{lightbox_game_no}}號 </span><span>{{lightbox_text}}</span>嗎??</div>
+//                                         <div @click="change_status(lightbox_game_no,lightbox_status)">確定修改</div>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//   `,
+//     methods: {
+//         //呼叫php程式，取回 管理員帳號 相關資料，並用json()轉回一般陣列
+//         get_game: async function () {
+//             const res = await fetch('./php/back_game.php', {}).then(function (data) {
+//                 return data.json();
+//             });
+//             // 取回res值後，呼叫另一隻函式
+//             this.games = res;
+//         },
+//         // 點擊修改後，顯示燈箱 並帶入值
+//         lightbox_show: function (gameruleNo, gameStatus) {
+//             this.lightbox = true;
+//             this.lightbox_game_no = gameruleNo;
 
-            if (gameStatus == 0) {
-                this.lightbox_status = 1;
-                this.lightbox_text = '啟用';
-            } else if (gameStatus == 1) {
-                this.lightbox_status = 0;
-                this.lightbox_text = '停用';
-            }
-        },
-        // 點擊 確定修改後 觸發 php程式。完成後 重新撈取一次資料
-        change_status: async function (gameruleNo, status) {
-            const res = await fetch('./php/back_update_gamerule.php', {
-                method: 'POST',
-                mode: 'same-origin',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    gameruleNo: gameruleNo,
-                    gameStatus: status,
-                }),
-            });
-            //關閉燈箱
-            this.lightbox = false;
-            //完成後 重新撈取一次資料
-            this.get_game();
-        },
-    },
-    // template 渲染前 會先去執行以下函式
-    created() {
-        this.get_game();
-    },
-});
+//             if (gameStatus == 0) {
+//                 this.lightbox_status = 1;
+//                 this.lightbox_text = '啟用';
+//             } else if (gameStatus == 1) {
+//                 this.lightbox_status = 0;
+//                 this.lightbox_text = '停用';
+//             }
+//         },
+//         // 點擊 確定修改後 觸發 php程式。完成後 重新撈取一次資料
+//         change_status: async function (gameruleNo, status) {
+//             const res = await fetch('./php/back_update_gamerule.php', {
+//                 method: 'POST',
+//                 mode: 'same-origin',
+//                 credentials: 'same-origin',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                 },
+//                 body: JSON.stringify({
+//                     gameruleNo: gameruleNo,
+//                     gameStatus: status,
+//                 }),
+//             });
+//             //關閉燈箱
+//             this.lightbox = false;
+//             //完成後 重新撈取一次資料
+//             this.get_game();
+//         },
+//     },
+//     // template 渲染前 會先去執行以下函式
+//     created() {
+//         this.get_game();
+//     },
+// });
 
 // ==========開班管理============
 Vue.component('back-class', {

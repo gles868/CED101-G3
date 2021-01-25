@@ -2,14 +2,14 @@
 try {
     require_once "./connect_ced101g3.php";
 
-    $content = trim(file_get_contents("php://input"));
-    $decoded = json_decode($content, true);
+    // $content = trim(file_get_contents("php://input"));
+    // $decoded = json_decode($content, true);
 
-    $courseNo = $decoded["courseNo"];
-    $courTypeNo = $decoded["courTypeNo"];
-    $courseName = $decoded["courseName"];
-    $courseDescription = $decoded["courseDescription"];
-    $coursePrice = $decoded["coursePrice"];
+    $courseNo = $_POST["courseNo"];
+    $courTypeNo = $_POST["courTypeNo"];
+    $courseName = $_POST["courseName"];
+    $courseDescription = $_POST["courseDescription"];
+    $coursePrice = $_POST["coursePrice"];
 
     $sql = "update course
             set courTypeNo = :courTypeNo,
@@ -27,6 +27,49 @@ try {
     $per_ord_data->bindValue(":coursePrice", $coursePrice);
 
     $per_ord_data->execute();
+
+
+   
+        if ($_FILES["upFile"]["error"] == UPLOAD_ERR_OK) {
+            // 設定要存照片的路徑(以php檔案為出發點)
+            $dir = "../img/course_cards";
+            //取出檔案副檔名(.PNG ...等等)
+            $fileInfoArr = pathinfo($_FILES["upFile"]["name"]);
+            // 創造不會重複的亂碼
+            $imageNo = uniqid();
+            //決定檔案名稱
+            $fileName = "{$imageNo}.{$fileInfoArr["extension"]}"; //312543544.gif
+            //先檢查images資料夾存不存在
+            if (file_exists($dir) == false) {
+                mkdir($dir, 0777, true); //make directory
+            }
+            //將檔案copy到要放的路徑
+            $from = $_FILES["upFile"]["tmp_name"];
+            $to = "{$dir}/$fileName";
+            if (copy($from, $to) === true) {
+    
+                $sql = "update course
+                set courseImg = :courseImg
+                where courseNo = :courseNo";
+                $products = $pdo->prepare($sql);
+                $products->bindValue(":courseNo", $courseNo);
+                $products->bindValue(":courseImg", "./img/course_cards/{$fileName}");
+                $products->execute();
+    
+            } else {
+                // echo "失敗~";
+            }
+    
+        } else {
+            // echo "錯誤代碼 : {$_FILES["upFile"]["error"]} <br>";
+            // echo "新增失敗<br>";
+        }
+
+  
+
+
+    
+
 
     echo "修改成功~!!";
     // if ($per_ord_data->rowCount() == 0) { //找不到
