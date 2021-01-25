@@ -728,6 +728,79 @@ div.pro_photo {
 }
 
 // 購物車數字
+// .num_icon {
+//     // display: block;
+//     cursor: pointer;
+//     position: absolute;
+//     top: 50px;
+//     // right: 40px;
+//     right: 2.7%;
+//     width: 20px;
+//     height: 20px;
+//     border-radius: 50px;
+//     background-color: #dc52ffc0;
+//     text-shadow: 0 0 0.2em #87f, 0 0 0.2em #87f, 0 0 0.2em #87f;
+//     color: #ffffff;
+//     font-weight: bold;
+//     line-height: 16px;
+//     z-index: 999;
+//     font-size: 18px;
+//     @media (max-width: 701px) {
+//         right: 12%;
+//         top: 6%;
+//     }
+//     @media (max-width: 570px) {
+//         right: 14%;
+//     }
+//     @media (max-width: 376px) {
+//         right: 17%;
+//         top: 6.5%;
+//     }
+//     .num_text {
+//         // border: 1px solid red;
+//         text-align: center;
+//         cursor: pointer;
+//         align-items: center;
+//         position: absolute;
+//         top: 10%;
+//         left: 25%;
+//     }
+// }
+
+// // scroll更改數字位置
+// .-icon {
+//     position: sticky;
+//     top: 50px;
+//     left: 96%;
+//     @media (max-width: 1323px) {
+//         left: 95.5%;
+//     }
+//     @media (max-width: 1049px) {
+//         left: 95%;
+//     }
+//     @media (max-width: 833px) {
+//         left: 94.5%;
+//     }
+//     @media (max-width: 701px) {
+//         left: 85%;
+//     }
+//     @media (max-width: 626px) {
+//         left: 84%;
+//     }
+//     @media (max-width: 561px) {
+//         left: 83%;
+//     }
+//     @media (max-width: 518px) {
+//         left: 82%;
+//     }
+//     @media (max-width: 501px) {
+//         left: 81.5%;
+//     }
+//     @media (max-width: 376px) {
+//         left: 77.5%;
+//     }
+// }
+// 購物車數字
 .num_icon {
     // display: block;
     cursor: pointer;
@@ -754,7 +827,7 @@ div.pro_photo {
     }
     @media (max-width: 376px) {
         right: 17%;
-        top: 6.5%;
+        top: 5%;
     }
     .num_text {
         // border: 1px solid red;
@@ -800,7 +873,6 @@ div.pro_photo {
         left: 77.5%;
     }
 }
-
 // //愛心開始
 
 svg {
