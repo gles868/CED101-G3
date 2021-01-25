@@ -51,7 +51,7 @@ Vue.component('teacher-component', {
 
 // 組件 - 課程
 Vue.component('course-component', {
-    props: ['course-no', 'course-name', 'cour-type-name', 'course-price'],
+    props: ['course-no', 'course-name', 'cour-type-name', 'course-price', 'course-description'],
     template: `
         <a :href="'singleCourse.php?courseNo=' + courseNo">
             <div class="card">
@@ -61,6 +61,7 @@ Vue.component('course-component', {
                 <div class="info">
                     <p>屬性: {{courTypeName}}</p>
                     <p>價錢: $ {{coursePrice}}</p>
+                    <p>{{courseDescription}}</p>
                 </div>
                 <img src="./img/course_cards/card_back.png" alt="">
                 <div class="shadow"></div>

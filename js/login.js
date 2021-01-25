@@ -26,6 +26,8 @@ window.addEventListener('load', function () {
 
     // 登出
     let logout = document.getElementById('logout');
+    // 忘記密碼
+    let forgetPsw = document.getElementById('forgetPsw');
 
     // 導覽列
     let memIcon = document.getElementById('memIcon');
@@ -39,6 +41,9 @@ window.addEventListener('load', function () {
     // =============== 註冊事件聆聽 ===============
     // 載入會員資料
     getLoginData();
+
+    // 隱藏忘記密碼
+    forgetPsw.style.display = 'none';
 
     // 燈箱
     closeSpan.addEventListener('click', closeLightbox);

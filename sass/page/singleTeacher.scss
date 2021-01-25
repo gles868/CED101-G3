@@ -180,6 +180,10 @@ header{
                         @include paraStyle;
                         margin-top: 20px;
                         height: 60px;
+                        letter-spacing: 2px;
+                        font-size: 18px;
+                        line-height: 28px;
+                        text-shadow: 0 0 0.2em #6a6a4f, 0 0 0.2em #d61db7, 0 0 0.2em #c45f5f;
                     }
                 }
             }
@@ -241,6 +245,22 @@ header{
                     @include paraStyle;
                     font-size: $h5;
                     line-height: 1.6;
+                    font-weight: 600;
+                    letter-spacing: 2px;
+                    p{
+                        &:nth-child(3){
+                            font-size: 14px;
+                            width: 85%;
+                            height: 80px;
+                            margin: 13px auto;
+                            white-space: normal;
+                            line-height: 1.8;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 3;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
                 }
                 img{
                     border-radius: 15px;

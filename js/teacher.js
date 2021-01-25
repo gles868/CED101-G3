@@ -154,9 +154,12 @@ let app = new Vue({
             let Btn = document.querySelectorAll('.Btn');
 
             TweenMax.set(stars, { autoAlpha: 0, x: 0, y: 0 });
-            TweenMax.set(stars, { autoAlpha: 0, x: 0, y: 0 });
             TweenMax.set(Btn[0], { scale: 1, transformOrigin: '50% 50%' });
             TweenMax.set(Btn[1], { scale: 1, transformOrigin: '50% 50%' });
+            TweenMax.set(Btn[2], { scale: 1, transformOrigin: '50% 50%' });
+            TweenMax.set(Btn[3], { scale: 1, transformOrigin: '50% 50%' });
+            TweenMax.set(Btn[4], { scale: 1, transformOrigin: '50% 50%' });
+            TweenMax.set(Btn[5], { scale: 1, transformOrigin: '50% 50%' });
 
             function setAnimation() {
                 let bling = new TimelineMax({});
@@ -208,6 +211,50 @@ let app = new Vue({
                     },
                     0
                 );
+                bling.to(
+                    Btn[2],
+                    0.4,
+                    {
+                        scale: 0.9,
+                        yoyo: true,
+                        repeat: 1,
+                        ease: Circ.easeInOut,
+                    },
+                    0
+                );
+                bling.to(
+                    Btn[3],
+                    0.4,
+                    {
+                        scale: 0.9,
+                        yoyo: true,
+                        repeat: 1,
+                        ease: Circ.easeInOut,
+                    },
+                    0
+                );
+                bling.to(
+                    Btn[4],
+                    0.4,
+                    {
+                        scale: 0.9,
+                        yoyo: true,
+                        repeat: 1,
+                        ease: Circ.easeInOut,
+                    },
+                    0
+                );
+                bling.to(
+                    Btn[5],
+                    0.4,
+                    {
+                        scale: 0.9,
+                        yoyo: true,
+                        repeat: 1,
+                        ease: Circ.easeInOut,
+                    },
+                    0
+                );
 
                 return bling;
             }
@@ -219,6 +266,18 @@ let app = new Vue({
                 master.play(0);
             });
             Btn[1].addEventListener('mouseover', () => {
+                master.play(0);
+            });
+            Btn[2].addEventListener('mouseover', () => {
+                master.play(0);
+            });
+            Btn[3].addEventListener('mouseover', () => {
+                master.play(0);
+            });
+            Btn[4].addEventListener('mouseover', () => {
+                master.play(0);
+            });
+            Btn[5].addEventListener('mouseover', () => {
                 master.play(0);
             });
         },
