@@ -379,7 +379,7 @@ window.addEventListener('load', function () {
                     // console.log(11)
                     this.CardForm = false;
                     this.copyCard = true;
-                    this.paymentmethod = 0;
+                    this.paymentmethod = '0';
                 } else {
                     alert('請填寫正確表單');
                 }
