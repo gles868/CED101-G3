@@ -216,12 +216,13 @@ header{
                 position: relative;
                 margin: 20px;
                 transition: all 1s;
+                text-shadow: 0 0 0.2em #62622a, 0 0 0.2em #d61db7;
                 &:hover{
                     transform: translateY(-30px);
                     transition: all 0.4s ease-out;
                 }
                 &:hover > img{
-                    box-shadow: 0 0 0.4em rgb(127, 75, 196);
+                    box-shadow: 0 0 0.4em #7f4bc4, 0 0 0.4em #7f4bc4;
                     transition: all 0.4s ease-out;
                 }
                 .title{
@@ -250,7 +251,7 @@ header{
                     p{
                         &:nth-child(3){
                             font-size: 14px;
-                            width: 85%;
+                            width: 75%;
                             height: 80px;
                             margin: 13px auto;
                             white-space: normal;
@@ -264,6 +265,7 @@ header{
                 }
                 img{
                     border-radius: 15px;
+                    box-shadow: 0 0 0.5em #62622a, 0 0 0.5em #d61db7, 0 0 0.42em #774848;
                 }
                 .shadow{
                     width: 250px;
