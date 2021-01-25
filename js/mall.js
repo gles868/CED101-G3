@@ -257,9 +257,11 @@ window.addEventListener('load', function () {
                         </div>
                     </div>
                     <div class="pagebutton" v-show='pageShow'>
-                        <button class='fake' @click='changePage(1);changePageColor(1)' v-bind:class=' {btnActive:isActive===1,btnActiveFirst:btnActiveFirst}'>1</button>
-                        <button class='fake' @click='changePage(2);changePageColor(2)' v-bind:class=' {btnActive:isActive===2}'>2</button>
-                        <button class='fake' @click='changePage(3);changePageColor(3)' v-bind:class=' {btnActive:isActive===3}'>3</button>
+                        <div class="page_box">
+                            <button class='fake' @click='changePage(1);changePageColor(1)' v-bind:class=' {btnActive:isActive===1,btnActiveFirst:btnActiveFirst}'>1</button>
+                            <button class='fake' @click='changePage(2);changePageColor(2)' v-bind:class=' {btnActive:isActive===2}'>2</button>
+                            <button class='fake' @click='changePage(3);changePageColor(3)' v-bind:class=' {btnActive:isActive===3}'>3</button>
+                        </div>
                     </div>
 
                 </div>

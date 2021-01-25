@@ -30,6 +30,9 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     animation: vibration 0.1s 8s 50;
+    @media (max-width: 376px) {
+        display: none;
+    }
 }
 
 .magic {
@@ -363,13 +366,13 @@ body {
     height: 100%;
 }
 
-.bg-animation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+// .bg-animation {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+// }
 #stars {
     width: 1px;
     height: 1px;
@@ -1503,7 +1506,7 @@ body {
         left: 1%;
         height: 70px;
         width: 70px;
-        font-size: 30px;
+        font-size: 28px;
         line-height: 80px;
     }
 }
@@ -1542,10 +1545,10 @@ body {
         right: 2%;
     }
     @media (max-width: 501px) {
-        right: 1%;
+        left: 1%;
         height: 70px;
         width: 70px;
-        font-size: 30px;
+        font-size: 28px;
         line-height: 80px;
     }
 }
@@ -1570,7 +1573,7 @@ body {
         animation-timing-function: linear;
         @media all and (max-width: 1200px) {
             width: 80%;
-            min-width: 350px;
+
             float: right;
         }
         @media all and (max-width: 868px) {
@@ -1606,15 +1609,38 @@ body {
         display: block;
         animation: rotate2 90s infinite;
         animation-timing-function: linear;
-        @media all and (max-width: 1200px) {
+        @media (max-width: 1200px) {
             width: 80%;
-            min-width: 350px;
         }
-        @media all and (max-width: 868px) {
+        @media (max-width: 868px) {
             display: none;
         }
     }
 }
+.magiccircle3 {
+    img {
+        display: none;
+        @media (max-width: 376px) {
+            display: block;
+            width: 250px;
+            animation: rotate2 90s infinite;
+            animation-timing-function: linear;
+            top: 32%;
+            left: 14%;
+            position: absolute;
+        }
+    }
+}
+// .logo {
+//     img {
+//         display: none;
+//         @media (max-width: 376px) {
+//             display: block;
+//             width: 100px;
+//             position: absolute;
+//         }
+//     }
+// }
 .star_button2 {
     position: absolute;
     top: 42%;

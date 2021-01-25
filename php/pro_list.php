@@ -18,7 +18,7 @@ try {
 
     $sql = "select *
             from product
-            where proType = :type_no";
+            where proType = :type_no and proStatus = 1";
 
     // $memberdata = $pdo->query($sql);
     $managerdata = $pdo->prepare($sql);
