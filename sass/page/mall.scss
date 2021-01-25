@@ -882,9 +882,19 @@ svg {
 // 全部商品的頁數
 
 .pagebutton {
-    margin: 10px auto;
-
+    margin: 10px auto 0 auto;
+    width: 100%;
+    display: flex;
     // background-image: url('./img/star2.png');
+    .page_box {
+        width: 30%;
+
+        margin: 0 auto;
+        text-align: center;
+        @media (max-width: 376px) {
+            width: 70%;
+        }
+    }
     button {
         width: 30px;
         height: 30px;
