@@ -196,7 +196,7 @@ header{
                         // border: 1px solid seagreen;
                         display: flex;
                         flex-direction: column;
-                        margin: 10px auto;
+                        margin: 10px;
                         h3{
                             color: #fff;
                             font-size: $h3;
@@ -319,24 +319,24 @@ header{
                     // border: 1px solid springgreen;
                     position: absolute;
                     right: 200px;
-                    top: 600px;
-                    @media all and (max-width: 880px) {
-                        right: 280px;
-                        top: 1120px;
+                    top: 580px;
+                    @media all and (max-width: 768px) {
+                        right: 25px;
+                        top: 30px;
                     }
                     @media all and (max-width: 620px){
-                        right: 210px;
+                        // right: 210px;
                     }
                     @media (max-width: 500px) {
-                        right: 170px;
+                        // right: 170px;
                     }
                     @media all and (max-width: 400px){
-                        top: 1700px;
-                        right: 120px;
+                        right: 12px;
+                        top: 27px;
                     }
                     svg{
                         position: absolute;
-                        top: -10px;
+                        transform: scale(1.5);
                     }
                     .Btn{
                         box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
@@ -352,6 +352,9 @@ header{
                         cursor: pointer;
                         @media (max-width: 375px) {
                             font-size: 22px;
+                        }
+                        a{
+                            color: #fff;
                         }
                     }
                 }

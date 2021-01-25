@@ -14,6 +14,7 @@ Vue.component('back_teacher_data', {
             empNo: '',
             empId: '',
             empPsw: '',
+            teachDescription: '',
         };
     },
     props: [],
@@ -28,20 +29,22 @@ Vue.component('back_teacher_data', {
                                 <tr>
                                     <th>員工編號</th>
                                     <th>教師編號</th>
-                                    <th>教師名稱</th>
                                     <th>帳號</th>
                                     <th>密碼</th>
+                                    <th>教師名稱</th>
+                                    <th>教師描述</th>
                                     <th>編輯</th>
                                 </tr>
                                 <tr>
                                     <td>{{teachers.empNo}}</td>
                                     <td>{{teachers.teachNo}}</td>
-                                    <td>{{teachers.teachName}}</td>
                                     <td>{{teachers.empId}}</td>
                                     <td>*****{{teachers.empPsw.substr(-3,3)}}</td>
+                                    <td>{{teachers.teachName}}</td>
+                                    <td>{{teachers.teachDescription}}</td>
                                     <td>
                                         <button @click="edit_teacher_data(teachers.teachNo, teachers.teachName, teachers.empNo, 
-                                                                        teachers.empId, teachers.empPsw)">
+                                                                          teachers.empId, teachers.empPsw, teachers.teachDescription)">
                                             編輯
                                         </button>
                                     </td>
@@ -50,10 +53,11 @@ Vue.component('back_teacher_data', {
 
                             <teacher_edit v-if="teacher_edit_lightbox" 
                                           :teachNo="teachNo" 
-                                          :teachName="teachName"
                                           :empNo="empNo"
                                           :empId="empId"
                                           :empPsw="empPsw"
+                                          :teachName="teachName"
+                                          :teachDescription="teachDescription"
                                           @changelightbox="teachereditlightbox()">
                             </teacher_edit>
                         </div>
@@ -80,13 +84,14 @@ Vue.component('back_teacher_data', {
             }
         },
         // 點擊"編輯" 開啟編輯教師燈箱
-        edit_teacher_data(teachNo, teachName, empNo, empId, empPsw) {
+        edit_teacher_data(teachNo, teachName, empNo, empId, empPsw, teachDescription) {
             this.teacher_edit_lightbox = true;
             this.teachNo = teachNo;
             this.teachName = teachName;
             this.empNo = empNo;
             this.empId = empId;
             this.empPsw = empPsw;
+            this.teachDescription = teachDescription;
         },
         // 關閉"編輯課程"燈箱，同時重新渲染畫面
         teachereditlightbox() {
@@ -115,7 +120,7 @@ Vue.component('teacher_edit', {
             // error_text_price: '',
         };
     },
-    props: ['teachNo', 'teachName', 'empNo', 'empId', 'empPsw'],
+    props: ['teachNo', 'teachName', 'empNo', 'empId', 'empPsw', 'teachDescription'],
 
     template: `
         <div class="lightbox_add_black">
@@ -130,12 +135,7 @@ Vue.component('teacher_edit', {
                     <div class="addcoursecon">
                         <div class="acc_title">教師編號</div>
                         <div class="acc_con">{{teachNo}}</div>
-                    </div>
-                    <div class="addcoursecon">
-                        <div class="acc_title">教師名稱</div>
-                        <input type="text" id="teachName" class="acc_con" v-model="teachName"/>
-                        {{error_text}}
-                    </div>  
+                    </div> 
                     <div class="addcoursecon">
                         <div class="acc_title">帳號</div>
                         <div class="acc_con">{{empId}}</div>
@@ -144,7 +144,17 @@ Vue.component('teacher_edit', {
                         <div class="acc_title">密碼</div>
                         <div class="acc_con">{{empPsw}}</div>
                     </div>
-                    <div class="form_btn" @click="edit_teacher_func(teachName)">
+                    <div class="addcoursecon">
+                        <div class="acc_title">教師名稱</div>
+                        <input type="text" id="teachName" class="acc_con" v-model="teachName"/>
+                        {{error_text}}
+                    </div> 
+                    <div class="addcoursecon">
+                        <div class="acc_title">教師描述</div>
+                        <textarea id="teachDescription" class="acc_con" v-model="teachDescription"/>
+                        {{error_text}}
+                    </div> 
+                    <div class="form_btn" @click="edit_teacher_func(teachName, teachDescription)">
                         確定修改
                     </div>                                                
                 </div>                                                                    
@@ -160,8 +170,9 @@ Vue.component('teacher_edit', {
         //     this.courses[this.edit_key].courseName = event.currentTarget.value;
         // },
         // 點擊 確認修改後將資料傳至DB
-        edit_teacher_func: async function (teachName) {
+        edit_teacher_func: async function (teachName, teachDescription) {
             console.log(teachName);
+            console.log(teachDescription);
 
             // 送出編輯前 確認欄位 是否符合規定
             // 教師名稱 中文1~10字
@@ -169,6 +180,18 @@ Vue.component('teacher_edit', {
                 console.log('教師名稱 成功');
             } else {
                 this.error_text = '教師名稱，請輸入中文(1~10字)';
+                return '';
+            }
+
+            //教師描述 (1~100字)
+            if (
+                teachDescription.replace(/[^\u4e00-\u9fa5]/g, '') &&
+                teachDescription.length >= 1 &&
+                teachDescription.length <= 100
+            ) {
+                console.log('教師描述 成功');
+            } else {
+                this.error_text_des = '教師描述，請輸入中文(1~100字)';
                 return '';
             }
 
@@ -191,18 +214,15 @@ Vue.component('teacher_edit', {
                     teachNo: this.teachNo,
                     empNo: this.empNo,
                     empId: this.empId,
-                    teachName: teachName,
                     empPsw: this.empPsw,
+                    teachName: teachName,
+                    teachDescription: teachDescription,
                 }),
             });
             // 關燈箱
             this.changelightbox();
         },
     },
-    // created() {
-    //     this.get_course();
-    // },
-    watch: {},
 });
 
 // ======== 課程清單 ========

@@ -22,6 +22,7 @@
             
             $_SESSION["teachNo"] = $empRow["teachNo"];
             $_SESSION["teachName"] = $empRow["teachName"];
+            $_SESSION["teachDescription"] = $empRow["teachDescription"];
             // 傳回資料
             echo json_encode($empRow);
         }

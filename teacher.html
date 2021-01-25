@@ -12,21 +12,20 @@
 
         <!-- jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- tweenmax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
         <!-- vueJs -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
         <!-- vue-star-rating js -->
         <script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>
 
+
         <!-- fullpage.js -->
+        <link rel="stylesheet" type="text/css" href="vendors/fullpage/fullpage.min.css">
+        <script src="vendors/fullpage/vue-fullpage.min.js"></script>
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/vendors/jquery.easings.min.jss"></script> -->
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/vendors/scrolloverflow.min.js"></script> -->
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.js"></script> -->
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="vendors/fullpage/fullpage.min.css"
-        />
-        <script src="vendors/fullpage/vue-fullpage.min.js"></script>
 
         <script src="./js/count_vue.js"></script>
     </head>
@@ -36,7 +35,7 @@
                 <div class="menu_toggle">
                     <input type="checkbox" />
                     <div class="logo">
-                        <a href="index.html"><img src="./img/logo.png" /></a>
+                        <a href="main.html"><img src="./img/logo.png" /></a>
                     </div>
                     <ul class="nav">
                         <li><a href="course.html">課程總覽</a></li>
@@ -44,7 +43,7 @@
                             <a class="active" href="teacher.html">教師總覽</a>
                         </li>
                         <li>
-                            <a href="index.html"
+                            <a href="main.html"
                                 ><img src="./img/logo.png"
                             /></a>
                         </li>
@@ -246,11 +245,69 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="more">
+                            <!-- <div class="more">
                                 <a
                                     :href="'singleTeacher.html?teachNo=' + dataRows[0][0].teachNo"
                                     >more →</a
                                 >
+                            </div> -->
+                            <div class="btn-wrapper" @mouseover="btnani">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 65 65"
+                                    class="star-svg">
+                                    <path
+                                        data-name="star-10"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-9"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-8"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-7"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#F05E1C"
+                                    />
+                                    <path
+                                        data-name="star-6"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-5"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-4"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#F05E1C"
+                                    />
+                                    <path
+                                        data-name="star-3"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-2"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-1"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#F05E1C"
+                                    />
+                                </svg>
+                                <button class="Btn"><a :href="'singleTeacher.html?teachNo=' + dataRows[0][0].teachNo">more</a></button>
                             </div>
                         </div>
                     </div>
@@ -310,11 +367,69 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="more">
+                            <!-- <div class="more">
                                 <a
                                     :href="'singleTeacher.html?teachNo=' + dataRows[0][1].teachNo"
                                     >more →</a
                                 >
+                            </div> -->
+                            <div class="btn-wrapper" @mouseover="btnani">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 65 65"
+                                    class="star-svg">
+                                    <path
+                                        data-name="star-10"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-9"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-8"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-7"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#F05E1C"
+                                    />
+                                    <path
+                                        data-name="star-6"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-5"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-4"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#F05E1C"
+                                    />
+                                    <path
+                                        data-name="star-3"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-2"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-1"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#F05E1C"
+                                    />
+                                </svg>
+                                <button class="Btn"><a :href="'singleTeacher.html?teachNo=' + dataRows[0][1].teachNo">more</a></button>
                             </div>
                         </div>
                     </div>
@@ -374,11 +489,69 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="more">
+                            <!-- <div class="more">
                                 <a
                                     :href="'singleTeacher.html?teachNo=' + dataRows[0][2].teachNo"
                                     >more →</a
                                 >
+                            </div> -->
+                            <div class="btn-wrapper" @mouseover="btnani">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 65 65"
+                                    class="star-svg">
+                                    <path
+                                        data-name="star-10"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-9"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-8"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-7"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#F05E1C"
+                                    />
+                                    <path
+                                        data-name="star-6"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-5"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-4"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#F05E1C"
+                                    />
+                                    <path
+                                        data-name="star-3"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-2"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-1"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#F05E1C"
+                                    />
+                                </svg>
+                                <button class="Btn"><a :href="'singleTeacher.html?teachNo=' + dataRows[0][2].teachNo">more</a></button>
                             </div>
                         </div>
                     </div>
@@ -438,11 +611,69 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="more">
+                            <!-- <div class="more">
                                 <a
                                     :href="'singleTeacher.html?teachNo=' + dataRows[0][3].teachNo"
                                     >more →</a
                                 >
+                            </div> -->
+                            <div class="btn-wrapper" @mouseover="btnani">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 65 65"
+                                    class="star-svg">
+                                    <path
+                                        data-name="star-10"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-9"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-8"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-7"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#F05E1C"
+                                    />
+                                    <path
+                                        data-name="star-6"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-5"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-4"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#F05E1C"
+                                    />
+                                    <path
+                                        data-name="star-3"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-2"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-1"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#F05E1C"
+                                    />
+                                </svg>
+                                <button class="Btn"><a :href="'singleTeacher.html?teachNo=' + dataRows[0][3].teachNo">more</a></button>
                             </div>
                         </div>
                     </div>
@@ -502,11 +733,66 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="more">
-                                <a
-                                    :href="'singleTeacher.html?teachNo=' + dataRows[0][4].teachNo"
-                                    >more →</a
-                                >
+                            <!-- <div class="more">
+                                <a :href="'singleTeacher.html?teachNo=' + dataRows[0][4].teachNo">more →</a>
+                            </div> -->
+                            <div class="btn-wrapper" @mouseover="btnani">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 65 65"
+                                    class="star-svg">
+                                    <path
+                                        data-name="star-10"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-9"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-8"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-7"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#F05E1C"
+                                    />
+                                    <path
+                                        data-name="star-6"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-5"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-4"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#F05E1C"
+                                    />
+                                    <path
+                                        data-name="star-3"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#D0104C"
+                                    />
+                                    <path
+                                        data-name="star-2"
+                                        d="M32.32 35.25c-.34 0-.21-1.14-1-2s-1.95-.8-1.94-1.13 1.14-.21 2-1 .8-2 1.13-1.94.21 1.14 1 2 2 .8 1.94 1.13-1.14.21-2 1-.8 1.95-1.13 1.94z"
+                                        fill="#489ba9"
+                                    />
+                                    <path
+                                        data-name="star-1"
+                                        d="M32.34 34.24c-.22 0-.14-.76-.68-1.34s-1.31-.53-1.3-.76.76-.14 1.34-.68.53-1.31.76-1.3.14.76.68 1.34 1.31.53 1.3.76-.76.14-1.34.68-.53 1.31-.76 1.3z"
+                                        fill="#F05E1C"
+                                    />
+                                </svg>
+                                <button class="Btn"><a :href="'singleTeacher.html?teachNo=' + dataRows[0][4].teachNo">more</a></button>
                             </div>
                         </div>
                     </div>
@@ -566,13 +852,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="more">
+                            <!-- <div class="more">
                                 <a
                                     :href="'singleTeacher.html?teachNo=' + dataRows[0][5].teachNo"
                                     >more →</a
                                 >
-                            </div>
-                            <!-- <div class="btn-wrapper" @mouseover="btnani">
+                            </div> -->
+                            <div class="btn-wrapper" @mouseover="btnani">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 65 65"
@@ -628,8 +914,8 @@
                                         fill="#F05E1C"
                                     />
                                 </svg>
-                                <button class="Btn"><a :href="'singleTeacher.html?teachNo=' + teachNo">more</a></button>
-                            </div> -->
+                                <button class="Btn"><a :href="'singleTeacher.html?teachNo=' + dataRows[0][5].teachNo">more</a></button>
+                            </div>
                         </div>
                     </div>
                 </div>

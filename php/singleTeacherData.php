@@ -12,7 +12,7 @@
         $singleTeacherRows = $singleTeacher->fetch(PDO::FETCH_ASSOC);
 
         // 取得課程資料
-        $sql = "SELECT DISTINCT cour.courseNo, cour.courseName, cour.coursePrice, courtype.courTypeName
+        $sql = "SELECT DISTINCT cour.courseNo, cour.courseName, cour.coursePrice, cour.courseDescription, courtype.courTypeName
                     FROM `course` cour JOIN `coursetype` courtype ON (cour.courTypeNo = courtype.courTypeNo)
                                        JOIN `class` class ON (cour.courseNo = class.courseNo)
                                        JOIN `teacher` teach ON (class.teachNo = teach.teachNo)
