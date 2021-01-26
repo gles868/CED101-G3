@@ -241,7 +241,7 @@ Vue.component('courseReg', {
             <div class="membtn" @click="regist_cancel(value.classNo,value.registNo)">取消報名</div>
         </div>
     </div>
-    <div class="CRD_Text" v-if="comm_null">全部已報名課程都上完嚕!!記得去給老師評論唷:))</div>
+    <div class="CRD_Text text_null" v-if="comm_null">全部已報名課程都上完嚕!!記得去給老師評論唷:))</div>
 </div>
   `,
     methods: {
@@ -320,7 +320,7 @@ Vue.component('courseFinish', {
                     <div class="membtn" @click="comm_one(value.classNo,value.registNo)">評論本課</div>
                 </div>
             </div>
-            <div class="CRD_Text" v-if="comm_null">全部已完課課程已評論完畢:))</div>
+            <div class="CRD_Text text_null" v-if="comm_null">全部已完課課程已評論完畢:))</div>
             <lightbox_comm v-if="lightbox" classNo="classNo" :memberno="memberno" :registNo="registNo"
             @changelightbox="comm_calss()" @getcommed="get_again"></lightbox_comm>
         </div>
@@ -546,7 +546,7 @@ Vue.component('courseIng', {
             </div>
         </div>
     </div>
-    <div class="CRD_Text" v-if="comm_null">今天沒課唷!還不快去報名新課程!!</div>
+    <div class="CRD_Text text_null" v-if="comm_null">今天沒課唷!還不快去報名新課程!!</div>
 </div>
   `,
     methods: {
@@ -653,7 +653,7 @@ Vue.component('memKeepCourse', {
                             </div>
                         </div>
                     </div>
-                    <div class="CRD_Text" v-if="comm_null">港快去收藏您喜歡的課程吧~~</div>
+                    <div class="CRD_Text text_null" v-if="comm_null">港快去收藏您喜歡的課程吧~~</div>
                 </div>
   `,
     methods: {
@@ -733,7 +733,7 @@ Vue.component('memKeepPro', {
                             </div>
                         </div>
                     </div>
-                    <div class="CRD_Text" v-if="comm_null">港快去收藏您喜歡的小道具喇!!</div>
+                    <div class="CRD_Text text_null" v-if="comm_null">快去收藏您喜歡的小道具喇!!</div>
                 </div>
   `,
     methods: {
